@@ -1,0 +1,553 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: Machete\n"
+"POT-Creation-Date: 2016-11-05 22:46+0100\n"
+"PO-Revision-Date: 2016-11-05 22:48+0100\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"Language: es_ES\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Generator: Poedit 1.8.11\n"
+"X-Poedit-Basepath: ..\n"
+"X-Poedit-WPHeader: machete.php\n"
+"X-Poedit-SourceCharset: UTF-8\n"
+"X-Poedit-KeywordsList: __;_e;_n:1,2;_x:1,2c;_ex:1,2c;_nx:4c,1,2;esc_attr__;"
+"esc_attr_e;esc_attr_x:1,2c;esc_html__;esc_html_e;esc_html_x:1,2c;_n_noop:1,2;"
+"_nx_noop:3c,1,2;__ngettext_noop:1,2\n"
+"X-Poedit-SearchPath-0: .\n"
+"X-Poedit-SearchPathExcluded-0: *.js\n"
+
+#: inc/admin_about_content.php:4
+msgid "Welcome to Machete!"
+msgstr "¡Bienvenido a Machete!"
+
+#: inc/admin_about_content.php:6
+msgid ""
+"Machete is now installed and ready to use. Machete solves common WordPress "
+"problems using as little resources as posible. Machete lets you use less "
+"plugins. Machete optimizes."
+msgstr ""
+"Machete ya está instalado y listo para usarse. Machete resuelve problemas "
+"comunes de WordPress usando tan pocos recursos como sea posible. Machete "
+"hace que puedas usar menos plugins. Machete optimiza."
+
+#: inc/admin_about_content.php:12
+msgid ""
+"Machete is not meant to be safe. Machete is a suite of tools that can break "
+"things if not handled with care. As a rule of thumb, don't use any option "
+"you don't understand."
+msgstr ""
+"Machete no está hecho para ser seguro. Las herramientas de Machete, como "
+"cualquier herramienta, pueden romper cosas si no se usan con cuidado. No "
+"uses ninguna opción que no entiendas."
+
+#: inc/admin_about_content.php:22 inc/admin_cleanup_content.php:6
+msgid ""
+"WordPress places a lot of code inside the &lt;head&gt; tag just to keep "
+"backward compatiblity or enable optional features. You can disable most of "
+"it and save some time from each page request while making your installation "
+"safer."
+msgstr ""
+"WordPress mete un montón de códido dentro de la etiqueta &lt;head&gt; sólo "
+"para mantener la compatibilidad con código antiguo y habilitar algunas "
+"funciones opcionales. Puedes deshabilitar la mayorí a y ahorrar algo de "
+"tiempo de cada carga de página y de paso hacer tu instalación más segura."
+
+#: inc/admin_about_content.php:23 inc/admin_about_content.php:25
+#: inc/admin_about_content.php:26 inc/admin_cleanup_content.php:5
+#: machete_admin.php:68 machete_admin.php:69
+msgid "Header Cleanup"
+msgstr "Limpieza de cabecera"
+
+#: inc/admin_about_content.php:26 inc/admin_about_content.php:36
+#: inc/admin_about_content.php:46
+msgid "Configure"
+msgstr "Configurar"
+
+#: inc/admin_about_content.php:32 inc/admin_cookies_content.php:24
+msgid ""
+"We know you hate cookie warning bars. Well, this is the less hateable cookie "
+"bar you'll find. It is really light, it won't affect your PageSpeed score "
+"and plays well with static cache plugins."
+msgstr ""
+"Sabemos que odias las barras de aviso de cookies. Bueno, pues esta es la "
+"barra de cookies menos odiable que vas a encontrar. Es muy ligera, no afecta "
+"a tu puntuación de PageSpeed y funciona bien con los plugins de caché "
+"estática."
+
+#: inc/admin_about_content.php:33 inc/admin_about_content.php:35
+#: inc/admin_about_content.php:36 inc/admin_cookies_content.php:23
+#: machete_admin.php:77
+msgid "Cookie Law Warning"
+msgstr "Aviso de Ley de Cookies"
+
+#: inc/admin_about_content.php:42 inc/admin_utils_content.php:47
+msgid ""
+"You don't need a zillion plugins to perform easy task like inserting a "
+"verification meta tag (Google Search Console, Bing, Pinterest), a json-ld "
+"snippet or a custom styleseet (Google Fonts, Print Styles, accesibility "
+"tweaks...)."
+msgstr ""
+"No hacen falta chorrocientos plugins para realizar tareas sencillas como "
+"instertar una metaetiqueta de verificación (Google Search Console, Bing, "
+"Pinterest), un fragmento de json-ld snippet o una hoja de estilos "
+"personalizada (Google Fonts, estilos de impresión, ajustes de "
+"accesibilidad...)."
+
+#: inc/admin_about_content.php:43 inc/admin_about_content.php:45
+#: inc/admin_about_content.php:46 inc/admin_utils_content.php:45
+#: machete_admin.php:86
+msgid "Analytics and Custom Code"
+msgstr "Analytics y Código personalizado"
+
+#: inc/admin_cleanup_content.php:8 inc/admin_cookies_content.php:28
+#: inc/admin_utils_content.php:49
+msgid "Performance impact:"
+msgstr "Impacto en el rendimiento:"
+
+#: inc/admin_cleanup_content.php:8
+msgid ""
+"This section stores all its settings in a single autoloaded configuration "
+"variable."
+msgstr ""
+"Esta sección almacena todos sus ajustes en una sola variable de "
+"configuración."
+
+#: inc/admin_cleanup_content.php:19
+msgid "RSD"
+msgstr "RSD"
+
+#: inc/admin_cleanup_content.php:20
+msgid ""
+"Remove Really Simple Discovery(RSD) links. They are used for automatic "
+"pingbacks."
+msgstr ""
+"Quitar los enlaces  Really Simple Discovery(RSD). Se usan para los pingback "
+"automáticos."
+
+#: inc/admin_cleanup_content.php:23
+msgid "WLW"
+msgstr "WLW"
+
+#: inc/admin_cleanup_content.php:24
+msgid ""
+"Remove the link to wlwmanifest.xml. It is needed to support Windows Live "
+"Writer. Yes, seriously."
+msgstr ""
+"Quitar el enlace a wlwmanifest.xml. Es necesario para trabajar con Windows "
+"Live Writer. Sí, en serio."
+
+#: inc/admin_cleanup_content.php:27
+msgid "feed_links"
+msgstr "feed_links"
+
+#: inc/admin_cleanup_content.php:28
+msgid ""
+"Remove Automatics RSS links. RSS will still work, but you will need to "
+"provide your own links."
+msgstr ""
+"Quitar los enlaces RSS automáticos. Los feeds RSS seguirán funcionando, pero "
+"tendrás que enlazarlos tú manualmente."
+
+#: inc/admin_cleanup_content.php:31
+msgid "adjacent_posts"
+msgstr "adjacent_posts"
+
+#: inc/admin_cleanup_content.php:32
+msgid "Remove the next and previous post links from the header"
+msgstr "Quitar de la cabecera los enlaces a la entradas anterior y siguiente"
+
+#: inc/admin_cleanup_content.php:35
+msgid "shortlink"
+msgstr "shortlink"
+
+#: inc/admin_cleanup_content.php:36
+msgid "Remove the shortlink url from header"
+msgstr "Quitar la url del shortlink de la cabecera"
+
+#: inc/admin_cleanup_content.php:39
+msgid "wp_generator"
+msgstr "wp_generator"
+
+#: inc/admin_cleanup_content.php:40
+msgid ""
+"Remove WordPress meta generator tag. Used by atackers to detect the "
+"WordPress version."
+msgstr ""
+"Quitar la metaetiqueta \"generator\" de WordPress. La usan los hackers para "
+"detectar la versión de WordPress."
+
+#: inc/admin_cleanup_content.php:43
+msgid "version"
+msgstr "version"
+
+#: inc/admin_cleanup_content.php:44
+msgid ""
+"Remove WordPress version var (?ver=) after styles and scripts. Used by "
+"atackers to detect the WordPress version."
+msgstr ""
+"Quitar la variable de versión de WordPress (?ver=) de los estilos y los "
+"scripts. La usan los hackers para detectar la versión de WordPress."
+
+#: inc/admin_cleanup_content.php:47
+msgid "Emojicons"
+msgstr "Emojicons"
+
+#: inc/admin_cleanup_content.php:48
+msgid ""
+"Remove lots of emoji styles and scripts from the header, RSS, mail function, "
+"tinyMCE editor..."
+msgstr ""
+"Quitar un montón de scripts y hojas de estilo para los emoij de la cabecera, "
+"los feeds RSS, la función mail,  tinyMCE editor..."
+
+#: inc/admin_cleanup_content.php:51
+msgid "Json API"
+msgstr "Json API"
+
+#: inc/admin_cleanup_content.php:52
+msgid "Disable Json API and remove link from header. Use with care."
+msgstr ""
+"Deshabilitar el Json API y quitar el enlace de la cabecera. Úsalo con "
+"cuidado."
+
+#: inc/admin_cleanup_content.php:55
+msgid "recent_comments_style"
+msgstr "recent_comments_style"
+
+#: inc/admin_cleanup_content.php:56
+msgid "Removes a block of inline CSS used by old themes from the header"
+msgstr "Quitar de la cabecera un bloque de CSS que usaban los temas antiguos."
+
+#: inc/admin_cleanup_content.php:59
+msgid "dns-prefetch"
+msgstr "dns-prefetch"
+
+#: inc/admin_cleanup_content.php:60
+msgid "Removes dns-prefetch links from the header"
+msgstr "Quitar de la cabecera los enlaces dns-prefetch"
+
+#: inc/admin_cleanup_content.php:83
+msgid "Remove"
+msgstr "Quitar"
+
+#: inc/admin_cleanup_content.php:84
+msgid "Explanation"
+msgstr "Explicación"
+
+#: inc/admin_cleanup_functions.php:8 inc/admin_cookies_functions.php:46
+msgid "Error saving configuration to database."
+msgstr "Error al guardar la configuración a base de datos."
+
+#: inc/admin_cleanup_functions.php:14
+msgid "No changes were needed."
+msgstr "No se realizaron cambios."
+
+#: inc/admin_cookies_content.php:5
+msgid ""
+"This website uses cookies to improve performance and enhance the user "
+"experience for those who visit our website. By continuing to browse this "
+"site, you agree to our <a href=\"/cookies/\" style=\"color: #007FFF\">cookie "
+"policy</a>."
+msgstr ""
+"Utilizamos cookies propias y de terceros para mejorar nuestros servicios "
+"mediante el análisis de sus hábitos de navegación. Si continúa navegando "
+"entendemos que conoce cómo cambiar la configuración y acepta nuestra <a href="
+"\"/cookies/\" style=\"color: #007FFF\">política de cookies</a>. "
+
+#: inc/admin_cookies_content.php:6
+msgid "Accept cookies"
+msgstr "Aceptar cookies"
+
+#: inc/admin_cookies_content.php:28
+msgid ""
+"This tool adds 0,4Kb and a single database request request to each page "
+"load. The remaining <abbr title=\"~1.1Kb if GZipped\">~2.5Kb</abbr> of code "
+"is loaded asynchronously via javascript from a pregenerated static file."
+msgstr ""
+"Esta herramienta añade 0,4Kb y una sola petición a base de datos a cada "
+"carga de página. Los demás <abbr title=\"~1.1Kb comprimidos con  GZip"
+"\">~2.5Kb</abbr> de código se cargan de forma asíncrona mediante javascript "
+"desde un fichero estático pregenerado."
+
+#: inc/admin_cookies_content.php:43 inc/admin_cookies_content.php:44
+msgid "Cookie alert status"
+msgstr "Estado del aviso de cookies"
+
+#: inc/admin_cookies_content.php:45
+msgid "Enabled"
+msgstr "Habilitado"
+
+#: inc/admin_cookies_content.php:46
+msgid "Disabled"
+msgstr "Deshabilitado"
+
+#: inc/admin_cookies_content.php:52
+msgid "Cookie warning text"
+msgstr "Texto del aviso de cookies"
+
+#: inc/admin_cookies_content.php:58
+msgid "Accept button text"
+msgstr "Texto del botón de aceptación"
+
+#: inc/admin_cookies_content.php:63 inc/admin_cookies_content.php:64
+msgid "Cookie bar theme"
+msgstr "Tema de la barra de cookies"
+
+#: inc/admin_cookies_content.php:65
+msgid "Light"
+msgstr "Claro"
+
+#: inc/admin_cookies_content.php:66
+msgid "Dark"
+msgstr "Oscuro"
+
+#: inc/admin_cookies_content.php:85 inc/admin_cookies_functions.php:22
+msgid "Cookie warning text can't be blank"
+msgstr "El texto del aviso de cookies no puede estar en blanco"
+
+#: inc/admin_cookies_content.php:89 inc/admin_cookies_functions.php:28
+msgid "Accept button text can't be blank"
+msgstr "El texto del botón de aceptar no puede estar en blanco"
+
+#: inc/admin_cookies_functions.php:10 inc/admin_utils_functions.php:10
+#, php-format
+msgid "Error creating data dir %s please check file permissions"
+msgstr ""
+"Error al crear el directorio %s comprueba los permisos de archivo, por favor"
+
+#: inc/admin_cookies_functions.php:16
+#, php-format
+msgid "Error reading cookie bar template %s"
+msgstr "Error al leer la plantilla de la barra de cookies %s"
+
+#: inc/admin_cookies_functions.php:34
+#, php-format
+msgid ""
+"Error writing static javascript file to %s please check file permissions. "
+"Aborting to prevent inconsistent state."
+msgstr ""
+"Error al guardar el fichero estático de JavaScript a %s , comprueba los "
+"permisos. Cancelando para evitar un estado inconsistente."
+
+#: inc/admin_cookies_functions.php:40
+#, php-format
+msgid ""
+"Could not delete old javascript file from %s please check file permissions . "
+"Aborting to prevent inconsistent state."
+msgstr ""
+"Error guardar el fichero estático antiguo de %s , comprueba los permisos. "
+"Cancelando para evitar un estado inconsistente."
+
+#: inc/admin_utils_content.php:49
+msgid ""
+"This tool generates up to three static HTML files that are loaded via PHP on "
+"each pageview. When enabled, custom body content requires one aditional "
+"database request."
+msgstr ""
+"Esta herramienta genara dos ficheros de HTML estático que se cargar mediante "
+"PHP en cada vista de página. Cuando está habilitado, el contenido para el "
+"&lt;body&gt; requiere una llamada adicional a base de datos."
+
+#: inc/admin_utils_content.php:63
+msgid "Tracking ID"
+msgstr "ID de seguimiento"
+
+#: inc/admin_utils_content.php:65
+msgid "Format:"
+msgstr "Formato:"
+
+#: inc/admin_utils_content.php:69
+msgid "Tracking Code"
+msgstr "Código de seguimiento"
+
+#: inc/admin_utils_content.php:71
+msgid "Standard Google Analytics tracking code"
+msgstr "Código de seguimiento estándar de Google Analytics"
+
+#: inc/admin_utils_content.php:72
+msgid "PageSpeed-optimized tracking code"
+msgstr "Código de seguimiento optimizado para PageSpeed"
+
+#: inc/admin_utils_content.php:73
+msgid "No tracking code"
+msgstr "Sin código de seguimiento"
+
+#: inc/admin_utils_content.php:80 inc/admin_utils_content.php:81
+msgid "Custom header content"
+msgstr "Contenido para la cabecera"
+
+#: inc/admin_utils_content.php:84
+#, php-format
+msgid ""
+"This code is included before the closing <code>&lt;/head&gt;</code> label."
+"<br>Content is saved to <code>%s</code> and served using PHP's "
+"<code>readme()</code> function, so no PHP or shortcodes here."
+msgstr ""
+"Esta código se incluye antes de la etiqueta de cierre <code>&lt;/head&gt;</"
+"code>.<br>El contenido se guarda en <code>%s</code> y se sirve usando la "
+"función <code>readme()</code> de PHP, así que nada de PHP o shortcodes aquí."
+
+#: inc/admin_utils_content.php:89 inc/admin_utils_content.php:99
+msgid "Custom body content"
+msgstr "Contenido para el &lt;body&gt;"
+
+#: inc/admin_utils_content.php:91
+msgid ""
+"This block is meant to be included just after the begining of the <code>&lt;"
+"body&gt;</code> label, and it's mainly used for conversion tracking codes. "
+"There isn't any standard hook here, which leave you with two options:"
+msgstr ""
+"Este bloque está pensado para ser incluido justo al principio de la etiqueta "
+"<code>&lt;body&gt;</code> y se suele usar para insertar códigos de "
+"seguimiento de conversiones. Como no hay ningún hook estándar aquí, tienes "
+"dos opciones:"
+
+#: inc/admin_utils_content.php:94
+msgid "Custom body content injection method"
+msgstr "Método para inyectar el código personalizado para el body"
+
+#: inc/admin_utils_content.php:95
+#, php-format
+msgid ""
+"Try to inject the code automatically using <a href=\"%s\" target=\"_blank\" "
+"rel=\"nofollow\">Yaniv Friedensohn's method</a>"
+msgstr ""
+"Intentar inyectar automáticamente el código usando el <a href=\"%s\" target="
+"\"_blank\" rel=\"nofollow\">método de Yaniv Friedensohn</a>"
+
+#: inc/admin_utils_content.php:96
+msgid ""
+"Edit your theme's <code>header.php</code> template manually and include this "
+"function:"
+msgstr ""
+"Editar manualmente la plantilla <code>header.php</code> de tu tema y añadir "
+"esta función:"
+
+#: inc/admin_utils_content.php:100
+#, php-format
+msgid ""
+"Content is saved to <code>%s</code> and served using PHP.  Inclusion method "
+"varies, so no PHP code or shortcodes here."
+msgstr ""
+"El contenido se guarda en el fichero <code>%s</code> y se sirve usando PHP.  "
+"Como puede insertarse de distintas formas, no uses código PHP ni shortcodes "
+"aquí."
+
+#: inc/admin_utils_content.php:107 inc/admin_utils_content.php:108
+msgid "Custom footer content"
+msgstr "Contenido para el pie"
+
+#: inc/admin_utils_content.php:109
+#, php-format
+msgid ""
+"This code is included when the <code>wp_footer</code> action is called, "
+"normally just before the closing <code>&lt;/body&gt;</code> label."
+"<br>Content is saved to <code>%s</code> and served using PHP's "
+"<code>readme()</code> function, so no PHP or shortcodes here."
+msgstr ""
+"Este código se incuye cuando se ejecuta la acción <code>wp_footer</code>, "
+"normalmente justo antes del cierre de la etiqueta <code>&lt;/body&gt;</code>."
+"<br>El contenido se guarda en <code>%s</code> y se sirve usando la función "
+"<code>readme()</code> de PHP, así que nada de código PHP o shortcodes aquí."
+
+#: inc/admin_utils_content.php:150 inc/admin_utils_functions.php:16
+msgid "That doesn't look like a valid Google Analytics tracking ID"
+msgstr ""
+"Eso no parece que eso sea un ID de seguimiento de Google Analytics válido"
+
+#: inc/admin_utils_functions.php:22
+msgid "Something went wrong. Unknown tracking code format requested."
+msgstr ""
+"Se ha producido un error. Has solicitado un formato de código desconocido."
+
+#: machete_admin.php:27
+#, php-format
+msgid "<a href=\"%s\">Settings</a>"
+msgstr "<a href =\"%s\">Ajustes</a>"
+
+#: machete_admin.php:54
+msgid "You do not have sufficient permissions to access this page."
+msgstr "No tienes permisos suficientes para acceder a esta página."
+
+#: machete_admin.php:78 machete_admin.php:99
+msgid "Cookie Law"
+msgstr "Ley de Cookies"
+
+#: machete_admin.php:87 machete_admin.php:100
+msgid "Analytics & Code"
+msgstr "Analytics y Código"
+
+#: machete_admin.php:98
+msgid "Cleanup"
+msgstr "Limpieza"
+
+#: machete_admin.php:101
+msgid "About Machete"
+msgstr "Acerca de Machete"
+
+#: machete_admin.php:119
+msgid "Options saved!"
+msgstr "¡ajustes guardados!"
+
+#. Plugin Name of the plugin/theme
+msgid "Machete"
+msgstr "Machete"
+
+#. Plugin URI of the plugin/theme
+#. Author URI of the plugin/theme
+msgid "http://www.nilovelez.com"
+msgstr "http://www.nilovelez.com"
+
+#. Description of the plugin/theme
+msgid ""
+"Machete is a lean and simple suite of tools that solve common WordPress "
+"anoyances: cookie bar, tracking codes, header cleanup"
+msgstr ""
+"Machete es una colección de herramientas sencillas y eficientes que "
+"resuelven molestias comunes de WordPress: barra de cookies, códigos de "
+"seguimiento, limpieza de cabecera"
+
+#. Author of the plugin/theme
+msgid "Nilo Velez"
+msgstr "Nilo Vélez"
+
+#~ msgid ""
+#~ "This tool generates two static HTML files that are loaded via PHP on each "
+#~ "pageview without making any request to the database."
+#~ msgstr ""
+#~ "Esta herramienta genara dos ficheros de HTML estático que se cargar "
+#~ "mediante PHP en cada vista de página sin hacer ninguna petición a la base "
+#~ "de datos."
+
+#~ msgid "Machete Header Cleanup"
+#~ msgstr "Machete - Limpieza de cabecera"
+
+#~ msgid "Machete Cookie Law Warning"
+#~ msgstr "Machete - Aviso de Ley de Cookies"
+
+#~ msgid "Machete Analytics and Custom Code"
+#~ msgstr "Machete - Analytics y código personalizado"
+
+#~ msgid ""
+#~ "This code is included when the <code>wp_footer</code> action is called, "
+#~ "normallyjust before the closing <code>&lt;/body&gt;</code> label."
+#~ "<br>Content is saved to <code>%s</code> and served using PHP's "
+#~ "<code>readme()</code> function, so no PHP or shortcodes here."
+#~ msgstr ""
+#~ "This code is included when the <code>wp_footer</code> action is called, "
+#~ "normallyjust before the closing <code>&lt;/body&gt;</code> label."
+#~ "<br>Content is saved to <code>%s</code> and served using PHP's "
+#~ "<code>readme()</code> function, so no PHP or shortcodes here."
+
+#~ msgid "Machete Tracking and Custom Code"
+#~ msgstr "Machete - Seguimiento y código personalizado"
+
+#~ msgid "Tracking & customize"
+#~ msgstr "Seguimiento y personalización"
+
+#~ msgid "Tracking"
+#~ msgstr "Seguimiento"

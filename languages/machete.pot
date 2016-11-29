@@ -1,0 +1,442 @@
+#, fuzzy
+msgid ""
+msgstr ""
+"Plural-Forms: nplurals=INTEGER; plural=EXPRESSION;\n"
+"Project-Id-Version: Machete\n"
+"POT-Creation-Date: 2016-11-05 22:46+0100\n"
+"PO-Revision-Date: 2016-11-03 19:23+0100\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 1.8.11\n"
+"X-Poedit-Basepath: ..\n"
+"X-Poedit-WPHeader: machete.php\n"
+"X-Poedit-SourceCharset: UTF-8\n"
+"X-Poedit-KeywordsList: __;_e;_n:1,2;_x:1,2c;_ex:1,2c;_nx:4c,1,2;esc_attr__;"
+"esc_attr_e;esc_attr_x:1,2c;esc_html__;esc_html_e;esc_html_x:1,2c;_n_noop:1,2;"
+"_nx_noop:3c,1,2;__ngettext_noop:1,2\n"
+"X-Poedit-SearchPath-0: .\n"
+"X-Poedit-SearchPathExcluded-0: *.js\n"
+
+#: inc/admin_about_content.php:4
+msgid "Welcome to Machete!"
+msgstr ""
+
+#: inc/admin_about_content.php:6
+msgid ""
+"Machete is now installed and ready to use. Machete solves common WordPress "
+"problems using as little resources as posible. Machete lets you use less "
+"plugins. Machete optimizes."
+msgstr ""
+
+#: inc/admin_about_content.php:12
+msgid ""
+"Machete is not meant to be safe. Machete is a suite of tools that can break "
+"things if not handled with care. As a rule of thumb, don't use any option "
+"you don't understand."
+msgstr ""
+
+#: inc/admin_about_content.php:22 inc/admin_cleanup_content.php:6
+msgid ""
+"WordPress places a lot of code inside the &lt;head&gt; tag just to keep "
+"backward compatiblity or enable optional features. You can disable most of "
+"it and save some time from each page request while making your installation "
+"safer."
+msgstr ""
+
+#: inc/admin_about_content.php:23 inc/admin_about_content.php:25
+#: inc/admin_about_content.php:26 inc/admin_cleanup_content.php:5
+#: machete_admin.php:68 machete_admin.php:69
+msgid "Header Cleanup"
+msgstr ""
+
+#: inc/admin_about_content.php:26 inc/admin_about_content.php:36
+#: inc/admin_about_content.php:46
+msgid "Configure"
+msgstr ""
+
+#: inc/admin_about_content.php:32 inc/admin_cookies_content.php:24
+msgid ""
+"We know you hate cookie warning bars. Well, this is the less hateable cookie "
+"bar you'll find. It is really light, it won't affect your PageSpeed score "
+"and plays well with static cache plugins."
+msgstr ""
+
+#: inc/admin_about_content.php:33 inc/admin_about_content.php:35
+#: inc/admin_about_content.php:36 inc/admin_cookies_content.php:23
+#: machete_admin.php:77
+msgid "Cookie Law Warning"
+msgstr ""
+
+#: inc/admin_about_content.php:42 inc/admin_utils_content.php:47
+msgid ""
+"You don't need a zillion plugins to perform easy task like inserting a "
+"verification meta tag (Google Search Console, Bing, Pinterest), a json-ld "
+"snippet or a custom styleseet (Google Fonts, Print Styles, accesibility "
+"tweaks...)."
+msgstr ""
+
+#: inc/admin_about_content.php:43 inc/admin_about_content.php:45
+#: inc/admin_about_content.php:46 inc/admin_utils_content.php:45
+#: machete_admin.php:86
+msgid "Analytics and Custom Code"
+msgstr ""
+
+#: inc/admin_cleanup_content.php:8 inc/admin_cookies_content.php:28
+#: inc/admin_utils_content.php:49
+msgid "Performance impact:"
+msgstr ""
+
+#: inc/admin_cleanup_content.php:8
+msgid ""
+"This section stores all its settings in a single autoloaded configuration "
+"variable."
+msgstr ""
+
+#: inc/admin_cleanup_content.php:19
+msgid "RSD"
+msgstr ""
+
+#: inc/admin_cleanup_content.php:20
+msgid ""
+"Remove Really Simple Discovery(RSD) links. They are used for automatic "
+"pingbacks."
+msgstr ""
+
+#: inc/admin_cleanup_content.php:23
+msgid "WLW"
+msgstr ""
+
+#: inc/admin_cleanup_content.php:24
+msgid ""
+"Remove the link to wlwmanifest.xml. It is needed to support Windows Live "
+"Writer. Yes, seriously."
+msgstr ""
+
+#: inc/admin_cleanup_content.php:27
+msgid "feed_links"
+msgstr ""
+
+#: inc/admin_cleanup_content.php:28
+msgid ""
+"Remove Automatics RSS links. RSS will still work, but you will need to "
+"provide your own links."
+msgstr ""
+
+#: inc/admin_cleanup_content.php:31
+msgid "adjacent_posts"
+msgstr ""
+
+#: inc/admin_cleanup_content.php:32
+msgid "Remove the next and previous post links from the header"
+msgstr ""
+
+#: inc/admin_cleanup_content.php:35
+msgid "shortlink"
+msgstr ""
+
+#: inc/admin_cleanup_content.php:36
+msgid "Remove the shortlink url from header"
+msgstr ""
+
+#: inc/admin_cleanup_content.php:39
+msgid "wp_generator"
+msgstr ""
+
+#: inc/admin_cleanup_content.php:40
+msgid ""
+"Remove WordPress meta generator tag. Used by atackers to detect the "
+"WordPress version."
+msgstr ""
+
+#: inc/admin_cleanup_content.php:43
+msgid "version"
+msgstr ""
+
+#: inc/admin_cleanup_content.php:44
+msgid ""
+"Remove WordPress version var (?ver=) after styles and scripts. Used by "
+"atackers to detect the WordPress version."
+msgstr ""
+
+#: inc/admin_cleanup_content.php:47
+msgid "Emojicons"
+msgstr ""
+
+#: inc/admin_cleanup_content.php:48
+msgid ""
+"Remove lots of emoji styles and scripts from the header, RSS, mail function, "
+"tinyMCE editor..."
+msgstr ""
+
+#: inc/admin_cleanup_content.php:51
+msgid "Json API"
+msgstr ""
+
+#: inc/admin_cleanup_content.php:52
+msgid "Disable Json API and remove link from header. Use with care."
+msgstr ""
+
+#: inc/admin_cleanup_content.php:55
+msgid "recent_comments_style"
+msgstr ""
+
+#: inc/admin_cleanup_content.php:56
+msgid "Removes a block of inline CSS used by old themes from the header"
+msgstr ""
+
+#: inc/admin_cleanup_content.php:59
+msgid "dns-prefetch"
+msgstr ""
+
+#: inc/admin_cleanup_content.php:60
+msgid "Removes dns-prefetch links from the header"
+msgstr ""
+
+#: inc/admin_cleanup_content.php:83
+msgid "Remove"
+msgstr ""
+
+#: inc/admin_cleanup_content.php:84
+msgid "Explanation"
+msgstr ""
+
+#: inc/admin_cleanup_functions.php:8 inc/admin_cookies_functions.php:46
+msgid "Error saving configuration to database."
+msgstr ""
+
+#: inc/admin_cleanup_functions.php:14
+msgid "No changes were needed."
+msgstr ""
+
+#: inc/admin_cookies_content.php:5
+msgid ""
+"This website uses cookies to improve performance and enhance the user "
+"experience for those who visit our website. By continuing to browse this "
+"site, you agree to our <a href=\"/cookies/\" style=\"color: #007FFF\">cookie "
+"policy</a>."
+msgstr ""
+
+#: inc/admin_cookies_content.php:6
+msgid "Accept cookies"
+msgstr ""
+
+#: inc/admin_cookies_content.php:28
+msgid ""
+"This tool adds 0,4Kb and a single database request request to each page "
+"load. The remaining <abbr title=\"~1.1Kb if GZipped\">~2.5Kb</abbr> of code "
+"is loaded asynchronously via javascript from a pregenerated static file."
+msgstr ""
+
+#: inc/admin_cookies_content.php:43 inc/admin_cookies_content.php:44
+msgid "Cookie alert status"
+msgstr ""
+
+#: inc/admin_cookies_content.php:45
+msgid "Enabled"
+msgstr ""
+
+#: inc/admin_cookies_content.php:46
+msgid "Disabled"
+msgstr ""
+
+#: inc/admin_cookies_content.php:52
+msgid "Cookie warning text"
+msgstr ""
+
+#: inc/admin_cookies_content.php:58
+msgid "Accept button text"
+msgstr ""
+
+#: inc/admin_cookies_content.php:63 inc/admin_cookies_content.php:64
+msgid "Cookie bar theme"
+msgstr ""
+
+#: inc/admin_cookies_content.php:65
+msgid "Light"
+msgstr ""
+
+#: inc/admin_cookies_content.php:66
+msgid "Dark"
+msgstr ""
+
+#: inc/admin_cookies_content.php:85 inc/admin_cookies_functions.php:22
+msgid "Cookie warning text can't be blank"
+msgstr ""
+
+#: inc/admin_cookies_content.php:89 inc/admin_cookies_functions.php:28
+msgid "Accept button text can't be blank"
+msgstr ""
+
+#: inc/admin_cookies_functions.php:10 inc/admin_utils_functions.php:10
+#, php-format
+msgid "Error creating data dir %s please check file permissions"
+msgstr ""
+
+#: inc/admin_cookies_functions.php:16
+#, php-format
+msgid "Error reading cookie bar template %s"
+msgstr ""
+
+#: inc/admin_cookies_functions.php:34
+#, php-format
+msgid ""
+"Error writing static javascript file to %s please check file permissions. "
+"Aborting to prevent inconsistent state."
+msgstr ""
+
+#: inc/admin_cookies_functions.php:40
+#, php-format
+msgid ""
+"Could not delete old javascript file from %s please check file permissions . "
+"Aborting to prevent inconsistent state."
+msgstr ""
+
+#: inc/admin_utils_content.php:49
+msgid ""
+"This tool generates up to three static HTML files that are loaded via PHP on "
+"each pageview. When enabled, custom body content requires one aditional "
+"database request."
+msgstr ""
+
+#: inc/admin_utils_content.php:63
+msgid "Tracking ID"
+msgstr ""
+
+#: inc/admin_utils_content.php:65
+msgid "Format:"
+msgstr ""
+
+#: inc/admin_utils_content.php:69
+msgid "Tracking Code"
+msgstr ""
+
+#: inc/admin_utils_content.php:71
+msgid "Standard Google Analytics tracking code"
+msgstr ""
+
+#: inc/admin_utils_content.php:72
+msgid "PageSpeed-optimized tracking code"
+msgstr ""
+
+#: inc/admin_utils_content.php:73
+msgid "No tracking code"
+msgstr ""
+
+#: inc/admin_utils_content.php:80 inc/admin_utils_content.php:81
+msgid "Custom header content"
+msgstr ""
+
+#: inc/admin_utils_content.php:84
+#, php-format
+msgid ""
+"This code is included before the closing <code>&lt;/head&gt;</code> label."
+"<br>Content is saved to <code>%s</code> and served using PHP's "
+"<code>readme()</code> function, so no PHP or shortcodes here."
+msgstr ""
+
+#: inc/admin_utils_content.php:89 inc/admin_utils_content.php:99
+msgid "Custom body content"
+msgstr ""
+
+#: inc/admin_utils_content.php:91
+msgid ""
+"This block is meant to be included just after the begining of the <code>&lt;"
+"body&gt;</code> label, and it's mainly used for conversion tracking codes. "
+"There isn't any standard hook here, which leave you with two options:"
+msgstr ""
+
+#: inc/admin_utils_content.php:94
+msgid "Custom body content injection method"
+msgstr ""
+
+#: inc/admin_utils_content.php:95
+#, php-format
+msgid ""
+"Try to inject the code automatically using <a href=\"%s\" target=\"_blank\" "
+"rel=\"nofollow\">Yaniv Friedensohn's method</a>"
+msgstr ""
+
+#: inc/admin_utils_content.php:96
+msgid ""
+"Edit your theme's <code>header.php</code> template manually and include this "
+"function:"
+msgstr ""
+
+#: inc/admin_utils_content.php:100
+#, php-format
+msgid ""
+"Content is saved to <code>%s</code> and served using PHP.  Inclusion method "
+"varies, so no PHP code or shortcodes here."
+msgstr ""
+
+#: inc/admin_utils_content.php:107 inc/admin_utils_content.php:108
+msgid "Custom footer content"
+msgstr ""
+
+#: inc/admin_utils_content.php:109
+#, php-format
+msgid ""
+"This code is included when the <code>wp_footer</code> action is called, "
+"normally just before the closing <code>&lt;/body&gt;</code> label."
+"<br>Content is saved to <code>%s</code> and served using PHP's "
+"<code>readme()</code> function, so no PHP or shortcodes here."
+msgstr ""
+
+#: inc/admin_utils_content.php:150 inc/admin_utils_functions.php:16
+msgid "That doesn't look like a valid Google Analytics tracking ID"
+msgstr ""
+
+#: inc/admin_utils_functions.php:22
+msgid "Something went wrong. Unknown tracking code format requested."
+msgstr ""
+
+#: machete_admin.php:27
+#, php-format
+msgid "<a href=\"%s\">Settings</a>"
+msgstr ""
+
+#: machete_admin.php:54
+msgid "You do not have sufficient permissions to access this page."
+msgstr ""
+
+#: machete_admin.php:78 machete_admin.php:99
+msgid "Cookie Law"
+msgstr ""
+
+#: machete_admin.php:87 machete_admin.php:100
+msgid "Analytics & Code"
+msgstr ""
+
+#: machete_admin.php:98
+msgid "Cleanup"
+msgstr ""
+
+#: machete_admin.php:101
+msgid "About Machete"
+msgstr ""
+
+#: machete_admin.php:119
+msgid "Options saved!"
+msgstr ""
+
+#. Plugin Name of the plugin/theme
+msgid "Machete"
+msgstr ""
+
+#. Plugin URI of the plugin/theme
+#. Author URI of the plugin/theme
+msgid "http://www.nilovelez.com"
+msgstr ""
+
+#. Description of the plugin/theme
+msgid ""
+"Machete is a lean and simple suite of tools that solve common WordPress "
+"anoyances: cookie bar, tracking codes, header cleanup"
+msgstr ""
+
+#. Author of the plugin/theme
+msgid "Nilo Velez"
+msgstr ""

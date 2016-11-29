@@ -1,0 +1,91 @@
+.machete-wrap {
+    position: relative;
+    margin: 25px 40px 0 20px;
+    max-width: 1050px;
+    font-size: 15px;
+}
+
+.wrap.machete-wrap .nav-tab-wrapper {
+    margin-bottom: 30px;
+}
+
+.machete-wrap .machete-logo {
+    border: none;
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 150px;
+    height: 150px;
+    -webkit-box-shadow: 0 1px 3px rgba(0,0,0,.2);
+    box-shadow: 0 1px 3px rgba(0,0,0,.2);
+}
+
+.machete-important-notice {
+    padding: 30px;
+    margin: 0px 0px 30px;
+    background: #fff;
+}
+@media (min-width: 1200px){
+    .machete-warning {
+        background: #fff url(warning.png) 50px 50% no-repeat;
+    }
+}
+
+.machete-screenshot {
+    background-color: #FF9800;
+}
+
+
+.machete-wrap .theme-screenshot .module-info {
+    position: absolute;
+    padding: 1em;
+}
+.machete-wrap .theme:hover .theme-screenshot img {
+    opacity: .15 !important;
+}
+
+
+.machete-welcome-blocks h3 > span {
+    margin-right: 10px;
+}
+.machete-welcome-blocks h3 {
+    font-size: 1em;
+    margin: 1.4em 0 0.6em;
+    font-weight: normal;
+}
+.machete-welcome-blocks .feature-section.col,
+.machete-welcome-blocks .feature-section .col {
+    margin-top: 0;
+
+}
+.machete-options-table .column-title {
+    width: 20%;
+}
+
+
+
+.machete-section-wrap h1 {
+    font-size: 28px;
+}
+
+.machete-section-wrap .tab-description,
+.machete-section-wrap .tab-performance {
+    font-weight: 400;
+    line-height: 1.6em;
+    font-size: 15px;
+}
+.machete-section-wrap .tab-performance span {
+    background: #fff;
+    line-height: 24px;
+    padding: 0.5em 0.7em;
+    border-radius: 4px;
+    display: inline-block;
+}
+.machete-section-wrap .tab-performance strong{
+    color: #FF9900;
+}
+
+.machete-section-wrap .tab-performance .dashicons {
+    line-height: 26px;
+    color: #FF9900;
+}
