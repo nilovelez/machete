@@ -39,13 +39,13 @@ class MACHETE_MAINTENANCE {
             return false;
         }*/
 
-        $status = 1;
+        $status = 'maintenance';
 
         $msg = '';
-        if($status == '1'){
-        	$msg = __('Coming Soon Mode Active','coming-soon');
-        }elseif($status == '2'){
-        	$msg = __('Maintenance Mode Active','coming-soon');
+        if($status == 'coming_soon'){
+        	$msg = __('Coming Soon Mode','coming-soon');
+        }elseif($status == 'maintenance'){
+        	$msg = __('Maintenance Mode','coming-soon');
         }
     	//Add the main siteadmin menu item
         $wp_admin_bar->add_menu( array(
@@ -72,13 +72,13 @@ class MACHETE_MAINTENANCE {
         $status = 'coming_soon';
 
 
-        if(empty($_GET['preview'])){
-            $_GET['preview'] = false;
+        if(empty($_GET['mct_preview'])){
+            $_GET['mct_preview'] = false;
         }
 
         // Check if Preview
         $is_preview = false;
-        if ((isset($_GET['preview']) && $_GET['preview'] == 'true')) {
+        if ((isset($_GET['mct_preview']) && $_GET['mct_preview'] == 'true')) {
             $is_preview = true;
         }
 
@@ -99,17 +99,17 @@ class MACHETE_MAINTENANCE {
 
         // check magic link
         session_start();
-        if ((isset($_GET['token']) && $_GET['token'] == 'logout')) {
-            if (isset($_SESSION['token'])){
-                $_SESSION['token'] = '';
+        if ((isset($_GET['cht_token']) && $_GET['mct_token'] == 'logout')) {
+            if (isset($_SESSION['mct_token'])){
+                $_SESSION['mct_token'] = '';
             }
         }
 
         
-        if ((isset($_GET['token']) && $_GET['token'] == 'magic')) {
-            $_SESSION['token'] = $_GET['token'];
+        if ((isset($_GET['mct_token']) && $_GET['mct_token'] == 'magic')) {
+            $_SESSION['mct_token'] = $_GET['mct_token'];
             return false;
-        }else if((isset($_SESSION['token']) && $_SESSION['token'] == 'magic')){
+        }else if((isset($_SESSION['mct_token']) && $_SESSION['mct_token'] == 'magic')){
             return false;
         }
 

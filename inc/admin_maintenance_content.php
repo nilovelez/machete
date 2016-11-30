@@ -3,13 +3,17 @@ if ( ! defined( 'MACHETE_ADMIN_INIT' ) ) exit;
 
 
 $machete_maintenance_default_settings = array(
-		'page_id' => 'content_page_id',
+		'page_id' => '',
 		'site_status' => 'online',
 		'token' => strtoupper(substr(MD5(rand()),0,12))
 		);
 
 if(!$machete_maintenance_settings = get_option('machete_maintenance_settings')){
 	$machete_maintenance_settings = $machete_maintenance_default_settings;
+	
+	// default option values saved WITHOUT autoload
+        update_option( 'machete_maintenance_settings', $machete_maintenance_settings, 'yes' );
+
 };
 
 ?>
@@ -20,7 +24,7 @@ if(!$machete_maintenance_settings = get_option('machete_maintenance_settings')){
 <div class="wrap machete-wrap machete-section-wrap">
 	<h1><?php _e('Coming Soon & Maintenance Mode','machete') ?></h1>
 
-	<p class="tab-description"><?php _e('You don\'t need a zillion plugins to perform easy task like inserting a verification meta tag (Google Search Console, Bing, Pinterest), a json-ld snippet or a custom styleseet (Google Fonts, Print Styles, accesibility tweaks...).','machete') ?></p>
+	<p class="tab-description"><?php _e('If you have to close yout website temporarly to the public, the navive WordPress maintenance mode falls short and most coming soon plugins are bulky, incomplete or expensive. Machete maintenance mode is light, simple and versatile.','machete') ?></p>
 	<?php machete_admin_tabs('machete-maintenance'); ?>
 	<!--<p class="tab-performance"><span><strong><i class="dashicons dashicons-clock"></i> <?php _e('Performance impact:','machete') ?></strong> <?php _e('This tool generates up to three static HTML files that are loaded via PHP on each pageview. When enabled, custom body content requires one aditional database request.','machete') ?></span></p>-->
 
@@ -57,9 +61,8 @@ if(!$machete_maintenance_settings = get_option('machete_maintenance_settings')){
 
 		 <tr valign="top"><th scope="row"><?php _e('Magic Link','machete') ?></th>
             <td>
-                
-				<?php echo esc_url( home_url( '/?token='.$machete_maintenance_settings['token'] ) ); ?>
-
+                <?php echo esc_url( home_url( '/?mct_token='.$machete_maintenance_settings['token'] ) ); ?>
+		<p class="description"><?php _e('You can use this link to grant anyone access to the website when it is in maintenance mode.','machete') ?></p>
 
             </td>
         </tr>
@@ -77,7 +80,7 @@ if(!$machete_maintenance_settings = get_option('machete_maintenance_settings')){
                     ?>
                 </select>
 
-                <a href="#" class="button action"><?php _e('Preview','machete') ?></a>
+                <a href="<?php echo esc_url( home_url( '/?mct_preview=true')); ?>" target="machete_preview" class="button action"><?php _e('Preview','machete') ?></a>
                 <input name="submit" id="submit" class="button button-primary" value="<?php _e('Save','machete') ?>" type="submit">
             </td>
         </tr>
@@ -89,12 +92,12 @@ if(!$machete_maintenance_settings = get_option('machete_maintenance_settings')){
             <p class="description"><?php _e('For your reference, this is the HTML used to render the Maintenance page:','machete') ?></p>
             <pre style="color: #00f; font-weight: bold;">&lt;html&gt;
   &lt;head&gt;
-    &lt;title&gt;<span style="color: #000;">[<?php _e('selected page title goes here','machete') ?>]</span>&lt;/title&gt;
+    &lt;title&gt;<span style="color: #000;">[<?php _e('title of the selected page','machete') ?>]</span>&lt;/title&gt;
     <span style="color: #000;">[&hellip;]</span>
   &lt;/head&gt;
   &lt;body <span style="color: #c00;">id</span>=<span style="color: #f0f;">"maintenance_page"</span>&gt;
     &lt;div <span style="color: #c00;">id</span>=<span style="color: #f0f;">"content"</span>&gt;
-      <span style="color: #000;">[<?php _e('selected page content goes here','machete') ?>]</span>
+      <span style="color: #000;">[<?php _e('content of the selected page','machete') ?>]</span>
     &lt;/div&gt;
   &lt;/body&gt;
 &lt;/html&gt;</pre>
