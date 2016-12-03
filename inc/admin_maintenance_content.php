@@ -62,6 +62,7 @@ if(!$machete_maintenance_settings = get_option('machete_maintenance_settings')){
 		 <tr valign="top"><th scope="row"><?php _e('Magic Link','machete') ?></th>
             <td>
                 <?php echo esc_url( home_url( '/?mct_token='.$machete_maintenance_settings['token'] ) ); ?>
+                <input name="change_token" id="change_token" class="button button-primary" value="<?php _e('change','machete') ?>" type="button">
 		<p class="description"><?php _e('You can use this link to grant anyone access to the website when it is in maintenance mode.','machete') ?></p>
 
             </td>
@@ -130,6 +131,12 @@ MACHETE.maintenance = (function($){
 
 
 (function($){
+	$('#change_token').click(function()){
+		if (confirm(<?php _e('Are you sure you want to change the magic token?','machete') ?>)){
+			// llamada ajax an un php que cambia el token (con nonce);	
+		}
+	}
+
 	$('#mache-maintenance-options').submit(function( e ) {
 	
 		/*

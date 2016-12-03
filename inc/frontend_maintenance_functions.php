@@ -24,13 +24,15 @@ class MACHETE_MAINTENANCE {
         
     }
 
-    function add_scripts($hook) {
-        wp_register_style( 'machete-maintenance-styles', MACHETE_BASE_URL.'css/maintenance-style.css', false);
+    function add_scripts( $hook ) {
+        wp_register_style(
+		'machete-maintenance-styles',
+		MACHETE_BASE_URL.'css/maintenance-style.css',
+		false);
         wp_enqueue_style('machete-maintenance-styles');
-   
     }
 
-	function admin_bar_menu($str){
+    function admin_bar_menu( $str ){
         global $wp_admin_bar;
         /*global $seed_csp4_settings,$wp_admin_bar;
         extract($seed_csp4_settings);
