@@ -57,7 +57,7 @@ if(!$machete_cookies_settings = get_option('machete_cookies_settings')){
 <tr>
 <th scope="row"><label for="warning_text"><?php _e('Cookie warning text','machete') ?></label></th>
 <td><textarea name="warning_text" rows="3" cols="50" id="warning_text" class="large-text code"><?php echo esc_textarea(stripslashes($machete_cookies_settings['warning_text'])) ?></textarea>
-</p>
+<p class="description" style="text-align: right;"><a id="restore_cookie_text_btn"><?php _e('Restore default warning text','machete') ?></a></p>
 </fieldset></td>
 </tr>
 <tr>
@@ -97,6 +97,9 @@ if(!$machete_cookies_settings = get_option('machete_cookies_settings')){
 			e.preventDefault();
 			return;
 		}
+	});
+	$('#restore_cookie_text_btn').click(function() {
+		$( '#warning_text' ).val('<?php _e('By continuing to browse the site, you are agreeing to our use of cookies as described in our <a href="/cookies/" style="color: #007FFF">cookie policy</a>.', 'machete' ); ?>');
 	});
 })(jQuery);
 
