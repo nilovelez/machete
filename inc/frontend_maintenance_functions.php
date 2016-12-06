@@ -3,22 +3,28 @@
 
 class MACHETE_MAINTENANCE {
 
-    function __construct(){
+    private $settings;
+
+    function __construct($settings){
 
 		// Actions & Filters if the landing page is active or being previewed
-		$status = 'maintenance';
+		//$status = 'maintenance';
 
         //echo '<h1>holaaa</h1>';
 
+        $this->settings = $settings;
+        extract($this->settings);
+
+
 		
-		if(((!empty($status) && $status === 'maintenance') || (!empty($status) && $status === 'coming_soon')) || (isset($_GET['cs_preview']) && $_GET['cs_preview'] == 'true')){
+		if(((!empty($site_status) && $site_status === 'maintenance') || (!empty($site_status) && $site_status === 'coming_soon')) || (isset($_GET['cs_preview']) && $_GET['cs_preview'] == 'true')){
 			if(function_exists('bp_is_active')){
 		        add_action( 'template_redirect', array(&$this,'render_comingsoon_page'),9);
 		    }else{
 		        add_action( 'template_redirect', array(&$this,'render_comingsoon_page'));
 		    }
-            add_action( 'admin_bar_menu',array( &$this, 'admin_bar_menu' ), 1000 );
-            add_action( 'wp_enqueue_scripts', array(&$this,'add_scripts') );
+            //add_action( 'admin_bar_menu',array( &$this, 'admin_bar_menu' ), 1000 );
+            //add_action( 'wp_enqueue_scripts', array(&$this,'add_scripts') );
         }
 
         
@@ -32,7 +38,7 @@ class MACHETE_MAINTENANCE {
         wp_enqueue_style('machete-maintenance-styles');
     }
 
-    function admin_bar_menu( $str ){
+    function admin_bar_menu(){
         global $wp_admin_bar;
         /*global $seed_csp4_settings,$wp_admin_bar;
         extract($seed_csp4_settings);
@@ -41,23 +47,24 @@ class MACHETE_MAINTENANCE {
             return false;
         }*/
 
-        $status = 'maintenance';
+        extract($this->settings);
 
         $msg = '';
-        if($status == 'coming_soon'){
+        if($site_status == 'coming_soon'){
         	$msg = __('Coming Soon Mode','coming-soon');
-        }elseif($status == 'maintenance'){
+        }elseif($site_status == 'maintenance'){
         	$msg = __('Maintenance Mode','coming-soon');
         }
     	//Add the main siteadmin menu item
         $wp_admin_bar->add_menu( array(
-            'id'     => 'seed-csp4-notice',
-            'href' => admin_url().'options-general.php?page=seed_csp4',
+            'id'     => 'machete-maintenance-notice',
+            'href' => admin_url('admin.php?page=machete-maintenance'),
             'parent' => 'top-secondary',
             'title'  => $msg,
-            'meta'   => array( 'class' => 'csp4-mode-active' ),
+            'meta'   => array( 'class' => 'machete-maintenance-active' ),
         ) );
     }
+
 
 
     function render_comingsoon_page() {
@@ -71,12 +78,8 @@ class MACHETE_MAINTENANCE {
         }
         */
 
-        $status = 'coming_soon';
+        extract($this->settings);
 
-
-        if(empty($_GET['mct_preview'])){
-            $_GET['mct_preview'] = false;
-        }
 
         // Check if Preview
         $is_preview = false;
@@ -115,7 +118,7 @@ class MACHETE_MAINTENANCE {
             return false;
         }
 
-        if($status == 'coming_soon'){
+        if($site_status == 'coming_soon'){
             // coming soon default content
             $html_content = array(
                 'title' => __('Coming soon','machete'),
@@ -224,5 +227,7 @@ if(@file_exists(MACHETE_DATA_PATH.'header.html')){
 	
 
 }
+if($machete_maintenance_settings = get_option('machete_maintenance_settings')){
+    $machete_maintenance = new MACHETE_MAINTENANCE($machete_maintenance_settings);
 
-$machete_maintenance = new MACHETE_MAINTENANCE;
+}

@@ -1,3 +1,14 @@
+#wpadminbar .machete-maintenance-active > .ab-item{
+    color:#fff;
+    background-color: #f90;
+}
+
+#wpadminbar .machete-maintenance-active:hover > .ab-item{
+    background-color: #a30 !important;
+    color:#fff !important;;
+}
+
+
 .machete-wrap {
     position: relative;
     margin: 25px 40px 0 20px;

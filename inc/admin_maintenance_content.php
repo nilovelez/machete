@@ -2,23 +2,31 @@
 if ( ! defined( 'MACHETE_ADMIN_INIT' ) ) exit;
 
 
-$machete_maintenance_default_settings = array(
+if(!$machete_maintenance_settings = get_option('machete_maintenance_settings')){
+	$machete_maintenance_settings = array(
 		'page_id' => '',
 		'site_status' => 'online',
 		'token' => strtoupper(substr(MD5(rand()),0,12))
 		);
-
-if(!$machete_maintenance_settings = get_option('machete_maintenance_settings')){
-	$machete_maintenance_settings = $machete_maintenance_default_settings;
-	
 	// default option values saved WITHOUT autoload
-        update_option( 'machete_maintenance_settings', $machete_maintenance_settings, 'yes' );
+    update_option( 'machete_maintenance_settings', $machete_maintenance_settings, 'no' );
 
 };
 
+$machete_preview_base_url = home_url( '/?mct_preview=true');
+if ($machete_maintenance_settings['page_id']) {
+	$machete_preview_url = home_url( '/?mct_preview=true&mct_page_id=' . $machete_maintenance_settings['page_id'] );
+} else {
+	$machete_preview_url = $machete_preview_base_url;
+}
+
+$machete_magic_base_url = home_url( '/?mct_token=');
+$machete_magic_url      = home_url( '/?mct_token=' . $machete_maintenance_settings['token']);
+
+
+
+
 ?>
-
-
 
 
 <div class="wrap machete-wrap machete-section-wrap">
@@ -42,18 +50,18 @@ if(!$machete_maintenance_settings = get_option('machete_maintenance_settings')){
 		<th scope="row"><?php _e('Set site status','machete') ?></th>
 		<td><fieldset>
 			<label>
-				<input name="site_status" value="standard" type="radio"
+				<input name="site_status" value="online" type="radio"
 				<?php checked($machete_maintenance_settings['site_status'],'online') ?>>
 				<strong><?php _e('Online','machete') ?></strong> - <?php _e('WordPress works as usual','machete') ?>
 			</label><br>
 
 			<label>
-				<input name="site_status" value="machete" type="radio"
+				<input name="site_status" value="coming_soon" type="radio"
 				<?php checked($machete_maintenance_settings['site_status'],'coming_soon') ?>>
 				<strong><?php _e('Coming soon','machete') ?></strong> - <?php _e('Site closed. All pages have a meta robots noindex, nofollow','machete') ?>
 			</label><br>
 			<label>
-				<input name="site_status" value="none" type="radio" 
+				<input name="site_status" value="maintenance" type="radio" 
 				<?php checked($machete_maintenance_settings['site_status'],'maintenance') ?>>
 				<strong><?php _e('Maintenance','machete') ?></strong> - <?php _e('Site closed. All pages return 503 Service unavailable','machete') ?></label><br>
 		</fieldset></td>
@@ -61,8 +69,9 @@ if(!$machete_maintenance_settings = get_option('machete_maintenance_settings')){
 
 		 <tr valign="top"><th scope="row"><?php _e('Magic Link','machete') ?></th>
             <td>
-                <?php echo esc_url( home_url( '/?mct_token='.$machete_maintenance_settings['token'] ) ); ?>
-                <input name="change_token" id="change_token" class="button button-primary" value="<?php _e('change','machete') ?>" type="button">
+            	<input type="hidden" name="token" id="token_fld" value="<?php echo $machete_maintenance_settings['token']; ?>">
+                <a href="<?php echo $machete_magic_url; ?>" id="machete_magic_link"><?php echo $machete_magic_url; ?></a>
+                <button name="change_token" id="change_token_btn" class="button action"><?php _e('change','machete') ?></button>
 		<p class="description"><?php _e('You can use this link to grant anyone access to the website when it is in maintenance mode.','machete') ?></p>
 
             </td>
@@ -70,19 +79,19 @@ if(!$machete_maintenance_settings = get_option('machete_maintenance_settings')){
 
         <tr valign="top"><th scope="row"><?php _e('Choose a page for the content','machete') ?></th>
             <td>
-                <select name="content_page_id">
+                <select name="page_id" id="page_id_fld">
                 	<option value=""><?php _e('Use default content','machete') ?></option>
                     <?php
                     if( $pages = get_pages() ){
                         foreach( $pages as $page ){
-                            echo '<option value="' . $page->ID . '" ' . selected( $page->ID, $options['content_page_id'] ) . '>' . $page->post_title . '</option>';
+                            echo '<option value="' . $page->ID . '" ' . selected( $page->ID, $machete_maintenance_settings['page_id'] ) . '>' . $page->post_title . '</option>';
                         }
                     }
                     ?>
                 </select>
 
-                <a href="<?php echo esc_url( home_url( '/?mct_preview=true')); ?>" target="machete_preview" class="button action"><?php _e('Preview','machete') ?></a>
-                <input name="submit" id="submit" class="button button-primary" value="<?php _e('Save','machete') ?>" type="submit">
+                <a href="<?php echo $machete_preview_url ?>" target="machete_preview" id="preview_maintenance_btn" class="button action"><?php _e('Preview','machete') ?></a>
+                
             </td>
         </tr>
         <tr valign="top"><th scope="row"><?php _e('Customize maintenance page','machete') ?></th>
@@ -103,10 +112,13 @@ if(!$machete_maintenance_settings = get_option('machete_maintenance_settings')){
   &lt;/body&gt;
 &lt;/html&gt;</pre>
             </td>
+
+        </tr>
     </table>
    
-</form>
+<?php submit_button(); ?>
 
+</form>
 
 		
 
@@ -115,42 +127,48 @@ if(!$machete_maintenance_settings = get_option('machete_maintenance_settings')){
 
 <script>
 
-MACHETE = window.MACHETE || {};
-
-MACHETE.maintenance = (function($){
-
-	return {
-		isAnalytics: function(str){
-			if (!str) return false;
-	    	// http://code.google.com/apis/analytics/docs/concepts/gaConceptsAccounts.html#webProperty
-	    	return (/^ua-\d{4,9}-\d{1,4}$/i).test(str.toString());
-		}
-	}
-
-})(jQuery);
-
-
 (function($){
-	$('#change_token').click(function()){
-		if (confirm(<?php _e('Are you sure you want to change the magic token?','machete') ?>)){
-			// llamada ajax an un php que cambia el token (con nonce);	
+
+	var machete_preview_base_url = '<?php echo $machete_preview_url ?>';
+	var machete_magic_base_url   = '<?php echo $machete_magic_base_url ?>';
+
+	var random_token = function(){
+		var chrs = '0123456789ABCDEF';
+		var token = '';
+		for (var i = 0, n = 12; i < n; i++){
+			token += chrs.substr(Math.round(Math.random()*15),1);
 		}
+		return token;
 	}
+	
+	$('#change_token_btn').click(function(e){
+		
+		if (confirm('<?php _e('Are you sure you want to change the magic token?','machete') ?>')){
+			var new_token = random_token();
+			var new_magic_url = machete_magic_base_url + new_token;
+
+			$('#machete_magic_link').attr('href',new_magic_url).html(new_magic_url);
+			$('#token_fld').val(new_token);
+		}
+		e.preventDefault();
+		return;
+	});
+
+	$('#page_id_fld').change(function(e){
+		var content_page_id = '';
+		if (content_page_id = $('#content_page_id option:selected').val()){
+			
+			$('#preview_maintenance_btn').attr('href',machete_preview_base_url+'&mct_page_id='+content_page_id);
+			console.log(content_page_id);
+		}else{
+			$('#preview_maintenance_btn').attr('href', machete_preview_base_url);
+			console.log('vacío');
+		}
+			
+	});
 
 	$('#mache-maintenance-options').submit(function( e ) {
 	
-		/*
-		var tracking_id = $('#tracking_id').val();
-		var site_status = $('input[name=site_status]:checked', '#mache-maintenance-options').val();
-
-		console.log(site_status);
-
-		if (!MACHETE.maintenance.isAnalytics(tracking_id) && (site_status != 'none')){
-			window.alert('<?php echo esc_js(__('That doesn\'t look like a valid Google Analytics tracking ID', 'machete' )); ?>');
-			e.preventDefault();
-			return;
-		}
-		*/
 	});
 })(jQuery);
 

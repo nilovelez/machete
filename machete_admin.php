@@ -178,6 +178,16 @@ function machete_utils_page_content() {
 
 
 /* Machete Maintenance */
+if (isset($_POST['machete-maintenance-saved'])){
+
+  check_admin_referer( 'machete_save_maintenance' );
+  require('inc/admin_maintenance_functions.php');
+  
+  if(machete_maintenance_save_options()){
+    add_action( 'admin_notices', 'machete_save_success' );
+  }
+}
+
 function machete_maintenance_page_content() {
   require('inc/admin_maintenance_content.php');
 }

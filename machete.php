@@ -50,5 +50,12 @@ function machete_init(){
 
 		require_once('machete_admin.php');	
 	}
+
+	if ( is_admin() || is_user_logged_in() ) {
+		require_once('inc/admin_bar.php');
+	}
+
 }
 add_action('init','machete_init');
+
+

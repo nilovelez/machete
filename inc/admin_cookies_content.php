@@ -73,7 +73,6 @@ if(!$machete_cookies_settings = get_option('machete_cookies_settings')){
 	
 </fieldset></td>
 </tr>
-
 </tbody></table>
 
 

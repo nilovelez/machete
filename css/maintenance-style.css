@@ -1,9 +1,9 @@
-#wpadminbar .csp4-mode-active > .ab-item{
+#wpadminbar .machete-maintenance-active > .ab-item{
 	color:#fff;
 	background-color: #f90;
 }
 
-#wpadminbar .csp4-mode-active:hover > .ab-item{
+#wpadminbar .machete-maintenance-active:hover > .ab-item{
 	background-color: #a30 !important;
 	color:#fff !important;;
 }

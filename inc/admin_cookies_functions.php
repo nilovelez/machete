@@ -165,4 +165,4 @@ function machete_cookies_save_options() {
 	}
 
 }
-endif; // machete_utils_save_options()
+endif; // machete_cookies_save_options()
