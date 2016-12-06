@@ -12,10 +12,10 @@ if(!$machete_maintenance_settings = get_option('machete_maintenance_settings')){
     update_option( 'machete_maintenance_settings', $machete_maintenance_settings, 'no' );
 
 };
+$machete_preview_base_url = home_url( '/?mct_preview=' . wp_create_nonce('maintenance_preview_nonce') );
 
-$machete_preview_base_url = home_url( '/?mct_preview=true');
 if ($machete_maintenance_settings['page_id']) {
-	$machete_preview_url = home_url( '/?mct_preview=true&mct_page_id=' . $machete_maintenance_settings['page_id'] );
+	$machete_preview_url = $machete_preview_base_url . '&mct_page_id=' . $machete_maintenance_settings['page_id'];
 } else {
 	$machete_preview_url = $machete_preview_base_url;
 }
@@ -71,7 +71,7 @@ $machete_magic_url      = home_url( '/?mct_token=' . $machete_maintenance_settin
             <td>
             	<input type="hidden" name="token" id="token_fld" value="<?php echo $machete_maintenance_settings['token']; ?>">
                 <a href="<?php echo $machete_magic_url; ?>" id="machete_magic_link"><?php echo $machete_magic_url; ?></a>
-                <button name="change_token" id="change_token_btn" class="button action"><?php _e('change','machete') ?></button>
+                <button name="change_token" id="change_token_btn" class="button action"><?php _e('change secret token','machete') ?></button>
 		<p class="description"><?php _e('You can use this link to grant anyone access to the website when it is in maintenance mode.','machete') ?></p>
 
             </td>
@@ -143,7 +143,7 @@ $machete_magic_url      = home_url( '/?mct_token=' . $machete_maintenance_settin
 	
 	$('#change_token_btn').click(function(e){
 		
-		if (confirm('<?php _e('Are you sure you want to change the magic token?','machete') ?>')){
+		if (confirm('<?php _e('Are you sure you want to change the secret token?\nThis will invalidate previously-shared links.','machete') ?>')){
 			var new_token = random_token();
 			var new_magic_url = machete_magic_base_url + new_token;
 

@@ -1,4 +1,6 @@
 <?php
+if ( ! defined( 'ABSPATH' ) ) exit;
+
 if($machete_maintenance_settings = get_option('machete_maintenance_settings') ) {
     if (!empty($machete_maintenance_settings['site_status']) &&
      ($machete_maintenance_settings['site_status'] != 'online') ){
@@ -16,24 +18,37 @@ if($machete_maintenance_settings = get_option('machete_maintenance_settings') ) 
 
 		function machete_coming_soon_admin_bar() {
 			global $wp_admin_bar;
+
+			if (current_user_can('manage_options')){
+		    	$href = admin_url('admin.php?page=machete-maintenance');
+		    }else{
+		    	$href = admin_url('index.php');
+		    }
 		    
-			$wp_admin_bar->add_menu( array(
+			//Add the main siteadmin menu item
+		    $wp_admin_bar->add_menu( array(
 		        'id'     => 'machete-maintenance-notice',
-		        'href' => admin_url('admin.php?page=machete-maintenance'),
+		        'href' => $href,
 		        'parent' => 'top-secondary',
-		        'title'  => __('Coming Soon Mode','coming-soon'),
-		        'meta'   => array( 'class' => 'machete-maintenance-active' ),
+		        'title'  => __('Coming Soon','coming-soon'),
+		        'meta'   => array( 'class' => 'machete-coming-soon-active' ),
 		    ) );
 		}		    
 		function machete_maintenance_admin_bar() {
 		    global $wp_admin_bar;
+
+		    if (current_user_can('manage_options')){
+		    	$href = admin_url('admin.php?page=machete-maintenance');
+		    }else{
+		    	$href = admin_url('index.php');
+		    }
 		     
 			//Add the main siteadmin menu item
 		    $wp_admin_bar->add_menu( array(
 		        'id'     => 'machete-maintenance-notice',
-		        'href' => admin_url('admin.php?page=machete-maintenance'),
+		        'href' => $href,
 		        'parent' => 'top-secondary',
-		        'title'  => __('Maintenance Mode','coming-soon'),
+		        'title'  => __('Maintenance','coming-soon'),
 		        'meta'   => array( 'class' => 'machete-maintenance-active' ),
 		    ) );
 		    

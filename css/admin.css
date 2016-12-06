@@ -1,11 +1,29 @@
-#wpadminbar .machete-maintenance-active > .ab-item{
+#wpadminbar .machete-maintenance-active > .ab-item, 
+#wpadminbar .machete-coming-soon-active > .ab-item{
     color:#fff;
-    background-color: #f90;
+    background-color: rgba(0,0,0,0.5);
+    padding-left: 32px;
+    position: relative;
 }
-
-#wpadminbar .machete-maintenance-active:hover > .ab-item{
-    background-color: #a30 !important;
-    color:#fff !important;;
+#wpadminbar .machete-maintenance-active > .ab-item:before, 
+#wpadminbar .machete-coming-soon-active > .ab-item:before {
+    content: '';
+    display: block;
+    position: absolute;
+    left: 10px;
+    top: 50%;
+    width: 12px;
+    height: 12px;
+    border: 1px solid #fff;
+    background-color: #f90;
+    border-radius: 8px;
+    padding: 0;
+    -ms-transform: translate(0, -50%); /* IE 9 */
+    -webkit-transform: translate(0, -50%); /* Safari */
+    transform: translate(0, -50%);
+}
+#wpadminbar .machete-maintenance-active > .ab-item:before {
+    background-color: #c00;  
 }
 
 

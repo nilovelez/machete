@@ -1,17 +1,7 @@
-#wpadminbar .machete-maintenance-active > .ab-item{
-	color:#fff;
-	background-color: #f90;
-}
-
-#wpadminbar .machete-maintenance-active:hover > .ab-item{
-	background-color: #a30 !important;
-	color:#fff !important;;
-}
-
 #maintenance_page {
 	font-family: Helvetica, Arial, sans-serif;
-	font-size: 13px;
-	line-height: 1.25;
+	font-size: 14px;
+	line-height: 1.4;
 	background: #eee;
 }
 

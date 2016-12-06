@@ -1,5 +1,5 @@
 <?php
-
+if ( ! defined( 'ABSPATH' ) ) exit;
 
 class MACHETE_MAINTENANCE {
 
@@ -7,17 +7,18 @@ class MACHETE_MAINTENANCE {
 
     function __construct($settings){
 
-		// Actions & Filters if the landing page is active or being previewed
-		//$status = 'maintenance';
-
-        //echo '<h1>holaaa</h1>';
-
         $this->settings = $settings;
         extract($this->settings);
-
-
 		
-		if(((!empty($site_status) && $site_status === 'maintenance') || (!empty($site_status) && $site_status === 'coming_soon')) || (isset($_GET['mct_preview']) && $_GET['mct_preview'] == 'true')){
+		if(
+            (
+                (!empty($site_status) && $site_status === 'maintenance') ||
+                (!empty($site_status) && $site_status === 'coming_soon')
+            ) ||
+                (isset($_GET['mct_preview']) &&
+                wp_verify_nonce($_GET['mct_preview'],'maintenance_preview_nonce')
+            )
+        ){
 			if(function_exists('bp_is_active')){
 		        add_action( 'template_redirect', array(&$this,'render_comingsoon_page'),9);
 		    }else{
@@ -30,43 +31,7 @@ class MACHETE_MAINTENANCE {
         
     }
 
-    function add_scripts( $hook ) {
-        wp_register_style(
-		'machete-maintenance-styles',
-		MACHETE_BASE_URL.'css/maintenance-style.css',
-		false);
-        wp_enqueue_style('machete-maintenance-styles');
-    }
-
-    function admin_bar_menu(){
-        global $wp_admin_bar;
-        /*global $seed_csp4_settings,$wp_admin_bar;
-        extract($seed_csp4_settings);
-
-        if(!isset($status)){
-            return false;
-        }*/
-
-        extract($this->settings);
-
-        $msg = '';
-        if($site_status == 'coming_soon'){
-        	$msg = __('Coming Soon Mode','coming-soon');
-        }elseif($site_status == 'maintenance'){
-        	$msg = __('Maintenance Mode','coming-soon');
-        }
-    	//Add the main siteadmin menu item
-        $wp_admin_bar->add_menu( array(
-            'id'     => 'machete-maintenance-notice',
-            'href' => admin_url('admin.php?page=machete-maintenance'),
-            'parent' => 'top-secondary',
-            'title'  => $msg,
-            'meta'   => array( 'class' => 'machete-maintenance-active' ),
-        ) );
-    }
-
-
-
+   
     function render_comingsoon_page() {
 
         extract($this->settings);
@@ -74,9 +39,9 @@ class MACHETE_MAINTENANCE {
 
         // Check if Preview
         $is_preview = false;
-        if ((isset($_GET['mct_preview']) && $_GET['mct_preview'] == 'true')) {
-            $is_preview = true;
-        }
+        if (isset($_GET['mct_preview'])){
+            $is_preview = true; 
+        } 
 
         // Exit if a custom login page
         if(empty($disable_default_excluded_urls)){
