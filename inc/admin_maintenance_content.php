@@ -156,7 +156,7 @@ $machete_magic_url      = home_url( '/?mct_token=' . $machete_maintenance_settin
 
 	$('#page_id_fld').change(function(e){
 		var content_page_id = '';
-		if (content_page_id = $('#content_page_id option:selected').val()){
+		if (content_page_id = $('#page_id_fld option:selected').val()){
 			
 			$('#preview_maintenance_btn').attr('href',machete_preview_base_url+'&mct_page_id='+content_page_id);
 			console.log(content_page_id);

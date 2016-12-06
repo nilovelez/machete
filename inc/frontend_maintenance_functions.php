@@ -17,7 +17,7 @@ class MACHETE_MAINTENANCE {
 
 
 		
-		if(((!empty($site_status) && $site_status === 'maintenance') || (!empty($site_status) && $site_status === 'coming_soon')) || (isset($_GET['cs_preview']) && $_GET['cs_preview'] == 'true')){
+		if(((!empty($site_status) && $site_status === 'maintenance') || (!empty($site_status) && $site_status === 'coming_soon')) || (isset($_GET['mct_preview']) && $_GET['mct_preview'] == 'true')){
 			if(function_exists('bp_is_active')){
 		        add_action( 'template_redirect', array(&$this,'render_comingsoon_page'),9);
 		    }else{
@@ -69,15 +69,6 @@ class MACHETE_MAINTENANCE {
 
     function render_comingsoon_page() {
 
-        //extract(seed_csp4_get_settings());
-        /*
-        if(!isset($status)){
-            $err =  new WP_Error('error', __("Please enter your settings.", 'coming-soon'));
-            echo $err->get_error_message();
-            exit();
-        }
-        */
-
         extract($this->settings);
 
 
@@ -104,17 +95,17 @@ class MACHETE_MAINTENANCE {
 
         // check magic link
         session_start();
-        if ((isset($_GET['cht_token']) && $_GET['mct_token'] == 'logout')) {
+        if ((isset($_GET['mct_token']) && $_GET['mct_token'] == 'logout')) {
             if (isset($_SESSION['mct_token'])){
                 $_SESSION['mct_token'] = '';
             }
         }
 
         
-        if ((isset($_GET['mct_token']) && $_GET['mct_token'] == 'magic')) {
+        if ((isset($_GET['mct_token']) && $_GET['mct_token'] === $token)) {
             $_SESSION['mct_token'] = $_GET['mct_token'];
             return false;
-        }else if((isset($_SESSION['mct_token']) && $_SESSION['mct_token'] == 'magic')){
+        }else if((isset($_SESSION['mct_token']) && $_SESSION['mct_token'] === $token)){
             return false;
         }
 
@@ -134,28 +125,38 @@ class MACHETE_MAINTENANCE {
             );
         }
         
+        if (isset($_GET['mct_page_id']) && !empty((int) $_GET['mct_page_id'])){
+            $page_id = $_GET['mct_page_id'];
+        }
 
-/*
-        $page = get_post(701);
-        if ($page){
+        if ($page = get_post($page_id)){
             $html_content = array(
                 'title' => str_replace(']]>', ']]&gt;', apply_filters('the_title', $page->post_title)),
                 'body'  => str_replace(']]>', ']]&gt;', apply_filters('the_content', $page->post_content)),
                 'content_class' => 'custom'
                 );
-        }
-
-*/      
+        }      
        
-        
-        
 
-
+        if($site_status == 'maintenance'){
+            header('HTTP/1.1 503 Service Temporarily Unavailable');
+            header('Status: 503 Service Temporarily Unavailable');
+            header('Retry-After: 86400'); // retry in a day
+        }
 
 
         ?><!DOCTYPE html>
 <html><head>
-<title><?php $html_content['title'] ?></title>
+<title><?php echo $html_content['title'] ?></title>
+
+<?php // set headers
+    
+    if($site_status == 'coming_soon'){
+        echo '<meta name="robots" content="noindex,follow" />';
+    }
+?>
+
+
 
 <link rel="stylesheet" href="<?php echo MACHETE_BASE_URL.'css/maintenance-style.css' ?>" >
 
@@ -183,44 +184,7 @@ if(@file_exists(MACHETE_DATA_PATH.'header.html')){
         exit();
 
 
-        // Finally check if we should show the coming soon page.
-        $this->comingsoon_rendered = true;
-
-        // set headers
-        if($status == 'maintenance'){
-            header('HTTP/1.1 503 Service Temporarily Unavailable');
-            header('Status: 503 Service Temporarily Unavailable');
-            header('Retry-After: 86400'); // retry in a day
-            $csp4_maintenance_file = WP_CONTENT_DIR."/maintenance.php";
-            if(!empty($enable_maintenance_php) and file_exists($csp4_maintenance_file)){
-                include_once( $csp4_maintenance_file );
-                exit();
-            }
-        }
-
-        // render template tags
-        if(empty($html)){
-            $template = $this->get_default_template();
-            require_once( SEED_CSP4_PLUGIN_PATH.'/themes/default/functions.php' );
-            $template_tags = array(
-                '{Title}' => seed_csp4_title(),
-                '{MetaDescription}' => seed_csp4_metadescription(),
-                '{Privacy}' => seed_csp4_privacy(),
-                '{Favicon}' => seed_csp4_favicon(),
-                '{CustomCSS}' => seed_csp4_customcss(),
-                '{Head}' => seed_csp4_head(),
-                '{Footer}' => seed_csp4_footer(),
-                '{Logo}' => seed_csp4_logo(),
-                '{Headline}' => seed_csp4_headline(),
-                '{Description}' => seed_csp4_description(),
-                '{Credit}' => seed_csp4_credit(),
-                '{Append_HTML}' => seed_csp4_append_html(),
-                );
-            echo strtr($template, $template_tags);
-        }else{
-            echo $html;
-        }
-        exit();
+      
 
     }
 

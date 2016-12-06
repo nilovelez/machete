@@ -20,12 +20,10 @@
 	max-width: 768px;
 	margin: 0 auto;
 	text-align: center;
+	padding-top: 45px;
 }
 
 /* defult content styles */
-#maintenance_page #content.default {
-	padding-top: 45px;
-}
 #maintenance_page #content.default h1{
 	font-size: 48px;
 	font-weight: bold;
