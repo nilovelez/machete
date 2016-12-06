@@ -31,6 +31,11 @@
     box-shadow: 0 1px 3px rgba(0,0,0,.2);
 }
 
+.machete-wrap .nav-tab {
+    padding: 5px 10px !important;
+    font-size: 14px !important;
+}
+
 .machete-important-notice {
     padding: 30px;
     margin: 0px 0px 30px;
