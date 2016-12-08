@@ -82,6 +82,4 @@ if (!navigator.userAgent || (
 </script><?php 
 }
 
-
-
 require_once( 'inc/frontend_maintenance_functions.php' );

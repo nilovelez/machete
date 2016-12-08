@@ -8,11 +8,12 @@ if($machete_maintenance_settings = get_option('machete_maintenance_settings') ) 
 		function machete_admin_bar_scripts() {
 		    wp_register_style(
 			'machete-maintenance-styles',
-			MACHETE_BASE_URL.'css/maintenance-style.css',
+			MACHETE_BASE_URL.'css/maintenance-admin-bar.css',
 			false);
 		    wp_enqueue_style('machete-maintenance-styles');
 		}
 		add_action( 'wp_enqueue_scripts', 'machete_admin_bar_scripts' );
+		add_action( 'admin_enqueue_scripts', 'machete_admin_bar_scripts' );
 	    			
 
 

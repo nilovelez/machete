@@ -14,8 +14,8 @@ class MACHETE_MAINTENANCE {
             (
                 (!empty($site_status) && $site_status === 'maintenance') ||
                 (!empty($site_status) && $site_status === 'coming_soon')
-            ) ||
-                (isset($_GET['mct_preview']) &&
+            ) || (
+                isset($_GET['mct_preview']) &&
                 wp_verify_nonce($_GET['mct_preview'],'maintenance_preview_nonce')
             )
         ){
@@ -24,11 +24,7 @@ class MACHETE_MAINTENANCE {
 		    }else{
 		        add_action( 'template_redirect', array(&$this,'render_comingsoon_page'));
 		    }
-            //add_action( 'admin_bar_menu',array( &$this, 'admin_bar_menu' ), 1000 );
-            //add_action( 'wp_enqueue_scripts', array(&$this,'add_scripts') );
-        }
-
-        
+        }       
     }
 
    
@@ -43,16 +39,14 @@ class MACHETE_MAINTENANCE {
             $is_preview = true; 
         } 
 
-        // Exit if a custom login page
-        if(empty($disable_default_excluded_urls)){
-            if(preg_match("/login|admin|dashboard|account/i",$_SERVER['REQUEST_URI']) > 0 && $is_preview == false){
+
+        if($is_preview === false){
+            // Exit if a custom login page
+            if(preg_match("/login|admin|dashboard|account/i",$_SERVER['REQUEST_URI']) > 0){
                 return false;
             }
-        }
-
-
-        // Check if user is logged in.
-        if($is_preview === false){
+        
+            // Check if user is logged in.
             if(is_user_logged_in()){
                 return false;
             }
@@ -120,9 +114,6 @@ class MACHETE_MAINTENANCE {
         echo '<meta name="robots" content="noindex,follow" />';
     }
 ?>
-
-
-
 <link rel="stylesheet" href="<?php echo MACHETE_BASE_URL.'css/maintenance-style.css' ?>" >
 
 <?php

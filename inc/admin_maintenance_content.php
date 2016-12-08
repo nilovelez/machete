@@ -34,7 +34,7 @@ $machete_magic_url      = home_url( '/?mct_token=' . $machete_maintenance_settin
 
 	<p class="tab-description"><?php _e('If you have to close yout website temporarly to the public, the navive WordPress maintenance mode falls short and most coming soon plugins are bulky, incomplete or expensive. Machete maintenance mode is light, simple and versatile.','machete') ?></p>
 	<?php machete_admin_tabs('machete-maintenance'); ?>
-	<!--<p class="tab-performance"><span><strong><i class="dashicons dashicons-clock"></i> <?php _e('Performance impact:','machete') ?></strong> <?php _e('This tool generates up to three static HTML files that are loaded via PHP on each pageview. When enabled, custom body content requires one aditional database request.','machete') ?></span></p>-->
+	<p class="tab-performance"><span><strong><i class="dashicons dashicons-clock"></i> <?php _e('Performance impact:','machete') ?></strong> <?php _e('This section stores all its settings in a single autoloaded configuration variable.','machete') ?></span></p>
 
 
 
@@ -63,7 +63,8 @@ $machete_magic_url      = home_url( '/?mct_token=' . $machete_maintenance_settin
 			<label>
 				<input name="site_status" value="maintenance" type="radio" 
 				<?php checked($machete_maintenance_settings['site_status'],'maintenance') ?>>
-				<strong><?php _e('Maintenance','machete') ?></strong> - <?php _e('Site closed. All pages return 503 Service unavailable','machete') ?></label><br>
+				<strong><?php _e('Maintenance','machete') ?></strong> - <?php _e('Site closed. All pages return 503 Service unavailable','machete') ?>
+			</label><br>
 		</fieldset></td>
 		</tr>
 
@@ -94,10 +95,21 @@ $machete_magic_url      = home_url( '/?mct_token=' . $machete_maintenance_settin
                 
             </td>
         </tr>
-        <tr valign="top"><th scope="row"><?php _e('Customize maintenance page','machete') ?></th>
-            <td>
+       
+    </table>
+   
+<?php submit_button(); ?>
 
-            <p class="description"><?php printf(__('You can customize the maintenance page CSS using the %sAnalytics & Code tab','machete'),
+</form>
+
+
+<div class="postbox machete-helpbox" data-collapsed="false">
+<button type="button" class="handlediv button-link"><span class="toggle-indicator" aria-hidden="true"><span class="dashicons dashicons-arrow-up"></span></span></button>
+	<h3 class="hndle"><span><span class="dashicons dashicons-sos"></span> <?php echo _e('How do I customize the maintenance page?','machete') ?></span></h2>
+	<div class="inside">
+		<table class="form-table"><tbody><tr valign="top"><th scope="row"></th><td>
+
+			<p class="description"><?php printf(__('You can customize the maintenance page CSS using the %sAnalytics & Code tab','machete'),
             '<a href="'.admin_url('admin.php?page=machete-utils').'">') ?></a></p>
             <p class="description"><?php _e('For your reference, this is the HTML used to render the Maintenance page:','machete') ?></p>
             <pre style="color: #00f; font-weight: bold;">&lt;html&gt;
@@ -111,15 +123,9 @@ $machete_magic_url      = home_url( '/?mct_token=' . $machete_maintenance_settin
     &lt;/div&gt;
   &lt;/body&gt;
 &lt;/html&gt;</pre>
-            </td>
-
-        </tr>
-    </table>
-   
-<?php submit_button(); ?>
-
-</form>
-
+		</td></tr></tbody></table> 
+    </div>
+</div>
 		
 
 </div>
@@ -166,6 +172,37 @@ $machete_magic_url      = home_url( '/?mct_token=' . $machete_maintenance_settin
 		}
 			
 	});
+
+	$('button.handlediv').click(function( e ){
+		$( this ).parent().find('.hndle').click();
+	});
+
+	$('.machete-helpbox .hndle').click(function( e ){
+		var container  = $( this ).parent();
+
+		if (container.attr('data-collapsed') == 'false'){
+			close_helpbox(container);
+		} else {
+			open_helpbox(container);
+		}
+		
+	});
+	
+	var close_helpbox  = function(elem){
+		elem.attr('data-collapsed','true');
+		elem.find('div.inside').hide();
+		elem.find('.toggle-indicator span').attr('class','dashicons dashicons-arrow-down');
+	}
+	var open_helpbox  = function(elem){
+		elem.attr('data-collapsed','false');
+		elem.find('div.inside').show();
+		elem.find('.toggle-indicator span').attr('class','dashicons dashicons-arrow-up');
+	}
+
+	$('.machete-helpbox').each(function (index){
+		close_helpbox($( this ));
+	});
+
 
 	$('#mache-maintenance-options').submit(function( e ) {
 	
