@@ -2,7 +2,7 @@
 Contributors: nilovelez
 Tags: cookies, analytics, code, css, javascript, admin
 Requires at least: 4.3
-Tested up to: 4.6.1
+Tested up to: 4.7
 Stable tag: trunk
 License: WTFPL
 License URI: http://www.wtfpl.net/txt/copying/
