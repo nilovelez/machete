@@ -88,7 +88,7 @@ class MACHETE_MAINTENANCE {
             $page_id = $_GET['mct_page_id'];
         }
 
-        if ($page = get_post($page_id)){
+        if (!empty( $page ) && $page = get_post( $page_id )){
             $html_content = array(
                 'title' => str_replace(']]>', ']]&gt;', apply_filters('the_title', $page->post_title)),
                 'body'  => str_replace(']]>', ']]&gt;', apply_filters('the_content', $page->post_content)),

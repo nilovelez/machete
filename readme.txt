@@ -48,10 +48,13 @@ Yes, but Machete does it well enough and probably is much lighter.
 
 == Changelog ==
 
+= 1.5.1 =
+* Fixed a weird unexpected bug when calling get_post()
+
 = 1.5 =
 * New maintenance and coming soon module!
 * Huge code cleanup
-* Added cursor:pointer to 'accept cookies' button
+* Added cursor:pointer to 'accept cookies' button (thanks frantorres)
 * Added 'Restore default warning text' link to cookie page'
 * Finished WordPress 4.7 testing
 
