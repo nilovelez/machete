@@ -24,6 +24,8 @@ We know you hate cookie warning bars. Well, this is the less hateable cookie bar
 = Analytics and custom code: =
 You don't need a zillion plugins to perform easy task like inserting a verification meta tag (Google Search Console, Bing, Pinterest), a json-ld snippet or a custom styleseet (Google Fonts, Print Styles, accesibility tweaks...).
 
+= Maintenance mode: =
+The maintenance mode that ships with WordPress is just a basic lockdown that is activated whenever you do a major update. With machete Maintenance Mode you can hide your uncomplete page from visitors and search engines, give your clients a secure temporary access and lock you site without affecting your SEO.
 
 == Installation ==
 
@@ -45,6 +47,13 @@ Yes, but Machete does it well enough and probably is much lighter.
 3. This is not your typical tracking script...
 
 == Changelog ==
+
+= 1.5 =
+* New maintenance and coming soon module!
+* Huge code cleanup
+* Added cursor:pointer to 'accept cookies' button
+* Added 'Restore default warning text' link to cookie page'
+* Finished WordPress 4.7 testing
 
 = 1.4.6 = 
 * (hopefully) the last modification to the cookie bar styles
@@ -91,6 +100,9 @@ Yes, but Machete does it well enough and probably is much lighter.
 * First publicly available version
 
 == Upgrade Notice ==
+
+= 1.5 = 
+¡New module! Maintenance and coming soon mode.
 
 = 1.4.6 =
 Cookie bar has been (slightly) redesigned. Resave your cookie bar settings to regenerate the static files.

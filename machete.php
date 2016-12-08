@@ -1,7 +1,7 @@
 <?php
 /*
 Plugin Name: Machete
-Plugin URI: http://www.nilovelez.com
+Plugin URI: http://machete.nilovelez.com
 Description: Machete is a lean and simple suite of tools that solve common WordPress anoyances: cookie bar, tracking codes, header cleanup
 Version: 1.5
 Author: Nilo Velez
