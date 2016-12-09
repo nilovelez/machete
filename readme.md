@@ -14,9 +14,11 @@ We know you hate cookie warning bars. Well, this is the less hateable cookie bar
 ### Analytics and custom code:
 You don't need a zillion plugins to perform easy task like inserting a verification meta tag (Google Search Console, Bing, Pinterest), a json-ld snippet or a custom styleseet (Google Fonts, Print Styles, accesibility tweaks...).
 
+### Maintenance mode:
+The maintenance mode that ships with WordPress is just a basic lockdown that is activated whenever you do a major update. With machete Maintenance Mode you can hide your uncomplete page from visitors and search engines, give your clients a secure temporary access and lock you site without affecting your SEO.
+
 
 ##Installation
-
 1. Upload the plugin files to the `/wp-content/plugins/machete` directory, or install the plugin through the WordPress plugins screen directly.
 2. Activate the plugin through the 'Plugins' screen in WordPress
 3. Configure each tool using the corresponding link on the **Machete** side menu

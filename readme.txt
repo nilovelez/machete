@@ -48,6 +48,10 @@ Yes, but Machete does it well enough and probably is much lighter.
 
 == Changelog ==
 
+= 1.5.2 =
+* Fixed a typo that prevented the use of custom content in the maintenance page
+* Updated language strings
+
 = 1.5.1 =
 * Fixed a weird unexpected bug when calling get_post()
 
@@ -57,6 +61,7 @@ Yes, but Machete does it well enough and probably is much lighter.
 * Added cursor:pointer to 'accept cookies' button (thanks frantorres)
 * Added 'Restore default warning text' link to cookie page'
 * Finished WordPress 4.7 testing
+* Updated language strings
 
 = 1.4.6 = 
 * (hopefully) the last modification to the cookie bar styles
@@ -103,6 +108,9 @@ Yes, but Machete does it well enough and probably is much lighter.
 * First publicly available version
 
 == Upgrade Notice ==
+
+= 1.5.2 =
+Fixes maintenance module content issue.
 
 = 1.5 = 
 ¡New module! Maintenance and coming soon mode.

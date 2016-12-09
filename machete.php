@@ -3,7 +3,7 @@
 Plugin Name: Machete
 Plugin URI: http://machete.nilovelez.com
 Description: Machete is a lean and simple suite of tools that solve common WordPress anoyances: cookie bar, tracking codes, header cleanup
-Version: 1.5.1
+Version: 1.5.2
 Author: Nilo Velez
 Author URI: http://www.nilovelez.com
 License: WTFPL
@@ -22,6 +22,9 @@ function machete_screen_activate() {
 	set_transient( '_machete_welcome_redirect', true, 30 );
 }
 
+function machete_load_plugin_textdomain() {
+    load_plugin_textdomain( 'machete', FALSE, basename( dirname( __FILE__ ) ) . '/languages/' );
+}
 
 function machete_init(){
 
@@ -39,19 +42,15 @@ function machete_init(){
 		require_once('machete_frontend.php');
 
 		if ( is_user_logged_in() ){
+			// only logged in users need l10n
+			add_action( 'plugins_loaded', 'machete_load_plugin_textdomain' );
 			require_once('inc/admin_bar.php');
 		}
 
 	}else if (current_user_can('manage_options')){
 		
 		define('MACHETE_ADMIN_INIT',true);
-
-		// font-end doesn't need l10n
-		function machete_load_plugin_textdomain() {
-		    load_plugin_textdomain( 'machete', FALSE, basename( dirname( __FILE__ ) ) . '/languages/' );
-		}
 		add_action( 'plugins_loaded', 'machete_load_plugin_textdomain' );
-
 		require_once('machete_admin.php');	
 		require_once('inc/admin_bar.php');
 	}
