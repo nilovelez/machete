@@ -135,7 +135,7 @@ $machete_magic_url      = home_url( '/?mct_token=' . $machete_maintenance_settin
 
 (function($){
 
-	var machete_preview_base_url = '<?php echo $machete_preview_url ?>';
+	var machete_preview_base_url = '<?php echo $machete_preview_base_url ?>';
 	var machete_magic_base_url   = '<?php echo $machete_magic_base_url ?>';
 
 	var random_token = function(){

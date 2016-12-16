@@ -83,9 +83,13 @@ class MACHETE_MAINTENANCE {
                 'content_class' => 'default'
             );
         }
+
+
         
-        if (isset($_GET['mct_page_id']) && !empty((int) $_GET['mct_page_id'])){
-            $page_id = $_GET['mct_page_id'];
+        if (isset($_GET['mct_page_id']) && (intval($_GET['mct_page_id']) > 0)){
+            $page_id = intval($_GET['mct_page_id']);
+        }else if($is_preview){
+            $page_id = null;
         }
 
         if (!empty( $page_id ) && $page = get_post( $page_id )){

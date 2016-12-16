@@ -48,6 +48,10 @@ Yes, but Machete does it well enough and probably is much lighter.
 
 == Changelog ==
 
+= 1.5.3 =
+* Fixed an error that caused an error 500 in some environments (thanks cheteronda)
+* Some minor usability fixed on the maintenance settings page
+
 = 1.5.2 =
 * Fixed a typo that prevented the use of custom content in the maintenance page
 * Updated language strings
@@ -108,6 +112,9 @@ Yes, but Machete does it well enough and probably is much lighter.
 * First publicly available version
 
 == Upgrade Notice ==
+
+= 1.5.3 =
+Fixes an error that causes an error 500 in some environments
 
 = 1.5.2 =
 Fixes maintenance module content issue.
