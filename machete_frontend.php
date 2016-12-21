@@ -2,7 +2,7 @@
 if ( ! defined( 'ABSPATH' ) ) exit;
 
 if(($machete_cleanup_settings = get_option('machete_cleanup_settings')) && (count($machete_cleanup_settings) > 0)){
-	require_once('inc/frontend_cleanup_functions.php');
+	require_once('inc/cleanup/frontend_functions.php');
 	machete_optimize($machete_cleanup_settings);
 }
 
@@ -27,27 +27,27 @@ if(@file_exists(MACHETE_DATA_PATH.'body.html')){
 	){
 		// automatic body injection
 		add_filter('body_class','machete_inject_alfonso_content',10001);
-		function machete_inject_alfonso_content( $classes ){
+		function machete_inject_body_content( $classes ){
 			$alfonso_content = file_get_contents(MACHETE_DATA_PATH.'body.html');
 			$classes[] = '">'.$alfonso_content.'<br style="display: none';
 			return $classes;
 		}
 
 		// disable manual body injection
-		function machete_custom_alfonso_content() {
+		function machete_custom_body_content() {
 			echo '';
 		}
 
 	}else{
 
 		// manual body injection
-		function machete_custom_alfonso_content() {
+		function machete_custom_body_content() {
 			readfile(MACHETE_DATA_PATH.'body.html');
 		}
 	}	
 }else{
 	// disable manual body injection
-	function machete_custom_alfonso_content() {
+	function machete_custom_body_content() {
 		echo '';
 	}
 }
@@ -82,4 +82,4 @@ if (!navigator.userAgent || (
 </script><?php 
 }
 
-require_once( 'inc/frontend_maintenance_functions.php' );
+require_once( 'inc/maintenance/frontend_functions.php' );

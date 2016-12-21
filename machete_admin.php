@@ -137,7 +137,7 @@ function machete_save_success() {
 if (isset($_POST['machete-cleanup-saved'])){
 
   check_admin_referer( 'machete_save_cleanup' );
-	require('inc/admin_cleanup_functions.php');
+	require('inc/cleanup/admin_functions.php');
 	
 	if(machete_cleanup_save_options()){
 		add_action( 'admin_notices', 'machete_save_success' );
@@ -145,35 +145,35 @@ if (isset($_POST['machete-cleanup-saved'])){
 }
 
 function machete_cleanup_page_content() {
-	require('inc/admin_cleanup_content.php');
+	require('inc/cleanup/admin_content.php');
 }
 
 /* Machete Cookies Bar */
 if (isset($_POST['machete-cookies-saved'])){
 
   check_admin_referer( 'machete_save_cookies' );
-	require('inc/admin_cookies_functions.php');
+	require('inc/cookies/admin_functions.php');
 	
 	if(machete_cookies_save_options()){
 		add_action( 'admin_notices', 'machete_save_success' );
 	}
 }
 function machete_cookies_page_content() {
-	require('inc/admin_cookies_content.php');
+	require('inc/cookies/admin_content.php');
 }
 
 /* Machete Utils */
 if (isset($_POST['machete-utils-saved'])){
 
   check_admin_referer( 'machete_save_utils' );
-	require('inc/admin_utils_functions.php');
+	require('inc/utils/admin_functions.php');
 	
 	if(machete_utils_save_options()){
 		add_action( 'admin_notices', 'machete_save_success' );
 	}
 }
 function machete_utils_page_content() {
-	require('inc/admin_utils_content.php');
+	require('inc/utils/admin_content.php');
 }
 
 
@@ -181,7 +181,7 @@ function machete_utils_page_content() {
 if (isset($_POST['machete-maintenance-saved'])){
 
   check_admin_referer( 'machete_save_maintenance' );
-  require('inc/admin_maintenance_functions.php');
+  require('inc/maintenance/admin_functions.php');
   
   if(machete_maintenance_save_options()){
     add_action( 'admin_notices', 'machete_save_success' );
@@ -189,13 +189,13 @@ if (isset($_POST['machete-maintenance-saved'])){
 }
 
 function machete_maintenance_page_content() {
-  require('inc/admin_maintenance_content.php');
+  require('inc/maintenance/admin_content.php');
 }
 
 
 /* Machete About */
 function machete_about_page_content() {
-	require('inc/admin_about_content.php');
+	require('inc/about/admin_content.php');
 }
 
 

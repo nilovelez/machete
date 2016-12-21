@@ -44,7 +44,7 @@ function machete_init(){
 		if ( is_user_logged_in() ){
 			// only logged in users need l10n
 			add_action( 'plugins_loaded', 'machete_load_plugin_textdomain' );
-			require_once('inc/admin_bar.php');
+			require_once('inc/maintenance/admin_bar.php');
 		}
 
 	}else if (current_user_can('manage_options')){
@@ -52,7 +52,7 @@ function machete_init(){
 		define('MACHETE_ADMIN_INIT',true);
 		add_action( 'plugins_loaded', 'machete_load_plugin_textdomain' );
 		require_once('machete_admin.php');	
-		require_once('inc/admin_bar.php');
+		require_once('inc/maintenance/admin_bar.php');
 	}
 }
 add_action('init','machete_init');
