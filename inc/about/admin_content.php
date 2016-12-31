@@ -19,10 +19,10 @@
 			<div class="theme">
 				<div class="theme-wrapper">
 					<div class="theme-screenshot">
-						<div class="module-info"><?php _e('WordPress places a lot of code inside the &lt;head&gt; tag just to keep backward compatiblity or enable optional features. You can disable most of it and save some time from each page request while making your installation safer.','machete') ?></div>
-						<img src="<?php echo MACHETE_BASE_URL ?>img/cleanup.png" alt="<?php _e('Header Cleanup','machete') ?>">
+						<div class="module-info"><?php _e('WordPress has a los of code just to keep backward compatiblity or enable optional features. You can disable most of it and save some time from each page request while making your installation safer.','machete') ?></div>
+						<img src="<?php echo MACHETE_BASE_URL ?>img/cleanup.png" alt="<?php _e('WordPress Optimization','machete') ?>">
 					</div>
-					<h3 class="theme-name"><span><?php _e('Header Cleanup','machete') ?></span></h3>
+					<h3 class="theme-name"><span><?php _e('WordPress Optimization','machete') ?></span></h3>
 					<div class="theme-actions"><a href="<?php echo admin_url('admin.php?page=machete-cleanup') ?>" class="button button-primary" title="<?php __('Configure','machete').' '.__('Header Cleanup','machete') ?>"><?php _e('Configure','machete') ?></a></div>
 				</div>
 			</div>

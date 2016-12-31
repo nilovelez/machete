@@ -25,6 +25,9 @@ function machete_optimize($settings){
     return false;
   }
 
+  /********* HEADER CLEANUP ***********/
+
+
   // remove really simple discovery link
   if (in_array('rsd_link',$settings)) {
     remove_action('wp_head', 'rsd_link');
@@ -131,6 +134,21 @@ function machete_optimize($settings){
       );
     });
   }
+
+  /********* OPTIMIZATION TWEAKS ***********/
+  if (in_array('jquery-migrate',$settings)) {
+    add_filter( 'wp_default_scripts', 'machete_dequeue_jquery_migrate' );
+    function machete_dequeue_jquery_migrate( &$scripts){
+      if(!is_admin()){
+        $scripts->remove( 'jquery');
+        $scripts->add( 'jquery', false, array( 'jquery-core' ), '1.12.4' );
+      }
+    }
+  }
+
+  // pdf_thumbnails está en machete_admin.php
+  // limit_revisions está en machete_admin.php
+
 }
 
 function machete_remove_ver_css_js( $src ) {

@@ -32,7 +32,7 @@ add_filter( 'plugin_action_links', 'machete_filter_plugin_action_links', 10, 2 )
 
 
 function machete_remove_help_tabs() {
-  $screen = get_current_screen();
+  if(!$screen = get_current_screen()) return;
   if (strpos($screen->id, 'machete') === false) return;
     $screen->remove_help_tabs();
 }
@@ -64,9 +64,18 @@ function machete_pages() {
   	);
 
   add_submenu_page(
+    'machete',
+    __('About Machete','machete'),
+    __('About Machete','machete'),
+    'manage_options',
+    'machete',
+    'machete_about_page_content'
+  );
+
+  add_submenu_page(
   	'machete',
-    __('Header Cleanup','machete'),
-    __('Header Cleanup','machete'),
+    __('WordPress Optimization','machete'),
+    __('Optimization','machete'),
     'manage_options',
     'machete-cleanup',
     'machete_cleanup_page_content'
@@ -102,13 +111,14 @@ function machete_pages() {
 add_action('admin_menu', 'machete_pages');
 
 
+
 function machete_admin_tabs($current = '') {
 	$tabs = array(
-		'machete-cleanup' => __('Cleanup','machete'),
+		'machete-cleanup' => __('Optimization','machete'),
 		'machete-cookies' => __('Cookie Law','machete'),
 		'machete-utils' => __('Analytics & Code','machete'),
 		'machete-maintenance' => __('Maintenance Mode','machete'),
-    'machete' => __('About Machete','machete')
+    //'machete' => __('About Machete','machete')
 		);
 
 	echo '<h2 class="nav-tab-wrapper">';
@@ -215,6 +225,24 @@ if(
     add_filter( 'tiny_mce_plugins', 'machete_disable_emojicons_tinymce' );
 
   }
+
+  if (in_array('pdf_thumbnails',$machete_cleanup_settings)) {
+    function machete_disable_pdf_previews() {
+      $fallbacksizes = array();
+      return $fallbacksizes;
+    }
+    add_filter('fallback_intermediate_image_sizes', 'machete_disable_pdf_previews');
+  }
+
+  if (in_array('limit_revisions',$machete_cleanup_settings)) {
+    if ( defined('WP_POST_REVISIONS') && (WP_POST_REVISIONS != false)) {
+      add_filter( 'wp_revisions_to_keep', 'machete_revisions_filter', 10, 2 );
+      function machete_revisions_filter( $num, $post ) {
+         return 5;
+      }
+    }
+  }
+
 }
 
 if ( ! function_exists( 'machete_disable_emojicons_tinymce' ) ) :

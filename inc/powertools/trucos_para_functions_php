@@ -1,0 +1,76 @@
+// even more smart jquery inclusion :)
+add_action( 'init', 'jquery_register' );
+
+// register from google and for footer
+function jquery_register() {
+
+if ( !is_admin() ) {
+
+    wp_deregister_script( 'jquery' );
+    wp_register_script( 'jquery', ( 'https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js' ), false, null, true );
+    wp_enqueue_script( 'jquery' );
+}
+}
+
+// https://derekshirk.com/what-is-migrate-js-and-why-does-wordpress-enqueue-it/
+
+
+// Annoying JQMIGRATE: Migrate is in console after update to WP 4.5
+// http://wordpress.stackexchange.com/a/224666/45686
+
+add_action( 'wp_default_scripts', function( $scripts ) {
+    if ( ! empty( $scripts->registered['jquery'] ) ) {
+        $jquery_dependencies = $scripts->registered['jquery']->deps;
+        $scripts->registered['jquery']->deps = array_diff( $jquery_dependencies, array( 'jquery-migrate' ) );
+    }
+} );
+
+
+/**
+ * Set the post revisions unless the constant was set in wp-config.php
+ */
+if (!defined('WP_POST_REVISIONS')) define('WP_POST_REVISIONS', 5);
+
+
+// Remove annoying P filter
+if(function_exists('capital_P_dangit')) {
+    foreach ( array( 'the_content', 'the_title' ) as $filter ) 
+        remove_filter( $filter, 'capital_P_dangit', 11 ); 
+
+    remove_filter('comment_text', 'capital_P_dangit', 31 );
+}
+
+
+
+if(extension_loaded("zlib") && (ini_get("output_handler") != "ob_gzhandler"))
+   add_action('wp', create_function('', '@ob_end_clean();@ini_set("zlib.output_compression", 1);'));
+
+
+
+
+
+Enable shortcodes in widgets
+
+// shortcode in widgets
+if ( !is_admin() ){
+    add_filter('widget_text', 'do_shortcode', 11);
+}
+
+add_filter('wp_default_editor', create_function('', 'return "html";'));
+
+
+Enable oEmbed in Text/HTML Widgets
+
+add_filter( 'widget_text', array( $wp_embed, 'run_shortcode' ), 8 );
+add_filter( 'widget_text', array( $wp_embed, 'autoembed'), 8 );
+
+I use this for youtube video widgets and flickr stuff.
+
+
+
+Remove Auto Linking of URLs in WordPress Comments
+remove_filter('comment_text', 'make_clickable', 9);
+
+
+Nice! I was looking for that make_clickable() function to apply it to the_content! Why didn't they do it in the first place? It's as simple as adding add_filter( 'the_content', 'make_clickable'); Alternatively it could be done when the post is saved by using a different hook
+http://stackoverflow.com/a/5036802/288906
