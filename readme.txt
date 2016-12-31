@@ -48,6 +48,14 @@ Yes, but Machete does it well enough and probably is much lighter.
 
 == Changelog ==
 
+= 1.6 = 
+* Some mayor internal changes
+* "Header cleanup" is now "WordPress Optimization"
+* Added option to disable PDF thumbnails
+* Added option to limit post revisions
+* Added option toremove jQuery-migrate
+* Updated language strings
+
 = 1.5.3 =
 * Fixed an error that caused an error 500 in some environments (thanks cheteronda)
 * Some minor usability fixed on the maintenance settings page
