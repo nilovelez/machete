@@ -48,6 +48,9 @@ Yes, but Machete does it well enough and probably is much lighter.
 
 == Changelog ==
 
+= 1.6.1 =
+* Fixed some language strings
+
 = 1.6 = 
 * Some mayor internal changes
 * "Header cleanup" is now "WordPress Optimization"

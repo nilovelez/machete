@@ -81,7 +81,7 @@ if(!$machete_alfonso_content = @file_get_contents(MACHETE_DATA_PATH.'body.html')
 <td><fieldset><legend class="screen-reader-text"><span><?php _e('Custom header content','machete') ?></span></legend>
 
 
-<p><label for="header_content"><?php printf(__('This code is included before the closing <code>&lt;/head&gt;</code> label.<br>Content is saved to <code>%s</code> and served using PHP\'s <code>readme()</code> function, so no PHP or shortcodes here.','machete'), MACHETE_RELATIVE_DATA_PATH.'header.html') ?></label></p>
+<p><label for="header_content"><?php printf(__('This code is included before the closing <code>&lt;/head&gt;</code> label.<br>Content is saved to <code>%s</code> and served using PHP\'s <code>readfile()</code> function, so no PHP or shortcodes here.','machete'), MACHETE_RELATIVE_DATA_PATH.'header.html') ?></label></p>
 <p><textarea name="header_content" rows="8" cols="50" id="header_content" class="large-text code"><?php if (!empty($machete_header_content)) echo esc_textarea($machete_header_content) ?></textarea></p>
 </fieldset></td>
 </tr>
@@ -93,7 +93,7 @@ if(!$machete_alfonso_content = @file_get_contents(MACHETE_DATA_PATH.'body.html')
 
 <fieldset style="margin: 1em 0;"><legend class="screen-reader-text"><span><?php _e('Custom body content injection method','machete') ?></span></legend>
 	<label><input name="alfonso_content_injection_method" value="auto" type="radio" <?php if ($machete_utils_settings['alfonso_content_injection_method'] =='auto') echo 'checked="checked"'; ?>> <?php printf(__('Try to inject the code automatically using <a href="%s" target="_blank" rel="nofollow">Yaniv Friedensohn\'s method</a>','machete'), 'http://www.affectivia.com/blog/placing-the-google-tag-manager-in-wordpress-after-the-body-tag/') ?></label><br>
-	<label><input name="alfonso_content_injection_method" value="manual" type="radio" <?php if ($machete_utils_settings['alfonso_content_injection_method'] =='manual') echo 'checked="checked"'; ?>> <?php _e('Edit your theme\'s <code>header.php</code> template manually and include this function:','machete') ?> <code>&lt;?php machete_custom_alfonso_content() ?&gt;</code></label>
+	<label><input name="alfonso_content_injection_method" value="manual" type="radio" <?php if ($machete_utils_settings['alfonso_content_injection_method'] =='manual') echo 'checked="checked"'; ?>> <?php _e('Edit your theme\'s <code>header.php</code> template manually and include this function:','machete') ?> <code>&lt;?php machete_custom_body_content() ?&gt;</code></label>
 </fieldset>
 
 <fieldset><legend class="screen-reader-text"><span><?php _e('Custom body content','machete') ?></span></legend>
@@ -106,7 +106,7 @@ if(!$machete_alfonso_content = @file_get_contents(MACHETE_DATA_PATH.'body.html')
 <tr>
 <th scope="row"><?php _e('Custom footer content','machete') ?></th>
 <td><fieldset><legend class="screen-reader-text"><span><?php _e('Custom footer content','machete') ?></span></legend>
-<p><label for="footer_content"><?php printf(__('This code is included when the <code>wp_footer</code> action is called, normally just before the closing <code>&lt;/body&gt;</code> label.<br>Content is saved to <code>%s</code> and served using PHP\'s <code>readme()</code> function, so no PHP or shortcodes here.','machete'), MACHETE_RELATIVE_DATA_PATH.'header.html') ?></label></p>
+<p><label for="footer_content"><?php printf(__('This code is included when the <code>wp_footer</code> action is called, normally just before the closing <code>&lt;/body&gt;</code> label.<br>Content is saved to <code>%s</code> and served using PHP\'s <code>readfile()</code> function, so no PHP or shortcodes here.','machete'), MACHETE_RELATIVE_DATA_PATH.'header.html') ?></label></p>
 <p>
 <textarea name="footer_content" rows="8" cols="50" id="footer_content" class="large-text code"><?php if (!empty($machete_footer_content)) echo esc_textarea($machete_footer_content)  ?></textarea>
 </p>
