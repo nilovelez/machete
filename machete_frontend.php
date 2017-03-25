@@ -7,6 +7,8 @@ if(($machete_cleanup_settings = get_option('machete_cleanup_settings')) && (coun
 }
 
 
+
+
 if(@file_exists(MACHETE_DATA_PATH.'header.html')){
 	add_action( 'wp_head', function(){
   		readfile(MACHETE_DATA_PATH.'header.html');
@@ -26,7 +28,7 @@ if(@file_exists(MACHETE_DATA_PATH.'body.html')){
 		($machete_utils_settings['alfonso_content_injection_method'] == 'auto')
 	){
 		// automatic body injection
-		add_filter('body_class','machete_inject_alfonso_content',10001);
+		add_filter('body_class','machete_inject_body_content',10001);
 		function machete_inject_body_content( $classes ){
 			$alfonso_content = file_get_contents(MACHETE_DATA_PATH.'body.html');
 			$classes[] = '">'.$alfonso_content.'<br style="display: none';
@@ -83,3 +85,10 @@ if (!navigator.userAgent || (
 }
 
 require_once( 'inc/maintenance/frontend_functions.php' );
+
+
+
+if(($machete_powertools_settings = get_option('machete_powertools_settings')) && (count($machete_powertools_settings) > 0)){
+	require_once('inc/powertools/frontend_functions.php');
+	machete_powertools($machete_powertools_settings);
+}

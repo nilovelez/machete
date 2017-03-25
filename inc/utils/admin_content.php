@@ -36,10 +36,11 @@ if(!$machete_footer_content = @file_get_contents(MACHETE_DATA_PATH.'footer.html'
 if(!$machete_alfonso_content = @file_get_contents(MACHETE_DATA_PATH.'body.html')){
 	$machete_alfonso_content = '';
 }
-?>
 
 
-
+if (defined ('MACHETE_POWERTOOLS_INIT') ) {
+	include (MACHETE_POWERTOOLS_BASE_PATH.'utils_highlight.php');
+} ?>
 
 <div class="wrap machete-wrap machete-section-wrap">
 	<h1><?php _e('Analytics and Custom Code','machete') ?></h1>

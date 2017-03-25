@@ -138,10 +138,10 @@ function machete_optimize($settings){
   /********* OPTIMIZATION TWEAKS ***********/
   if (in_array('jquery-migrate',$settings)) {
     add_filter( 'wp_default_scripts', 'machete_dequeue_jquery_migrate' );
-    function machete_dequeue_jquery_migrate( &$scripts){
-      if(!is_admin()){
-        $scripts->remove( 'jquery');
-        $scripts->add( 'jquery', false, array( 'jquery-core' ), '1.12.4' );
+    function machete_dequeue_jquery_migrate( $scripts){
+      if ( !empty( $scripts->registered['jquery'] ) ) {
+        $jquery_dependencies = $scripts->registered['jquery']->deps;
+        $scripts->registered['jquery']->deps = array_diff( $jquery_dependencies, array( 'jquery-migrate' ) );
       }
     }
   }

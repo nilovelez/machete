@@ -74,3 +74,11 @@ remove_filter('comment_text', 'make_clickable', 9);
 
 Nice! I was looking for that make_clickable() function to apply it to the_content! Why didn't they do it in the first place? It's as simple as adding add_filter( 'the_content', 'make_clickable'); Alternatively it could be done when the post is saved by using a different hook
 http://stackoverflow.com/a/5036802/288906
+
+
+
+// añadir extractos a las páginas
+add_action( 'init', 'my_add_excerpts_to_pages' );
+function my_add_excerpts_to_pages() {
+  add_post_type_support( 'page', 'excerpt' );
+}
