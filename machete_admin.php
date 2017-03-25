@@ -173,8 +173,8 @@ function machete_admin_tabs($current = '') {
 		'machete-cleanup' => __('Optimization','machete'),
 		'machete-cookies' => __('Cookie Law','machete'),
 		'machete-utils' => __('Analytics & Code','machete'),
-		//'machete-maintenance' => __('Maintenance Mode','machete'),
-    'machete-directory' => __('Resource','machete')
+		'machete-maintenance' => __('Maintenance Mode','machete'),
+    //'machete-directory' => __('Resource','machete')
     
     //'machete' => __('About Machete','machete')
 	);

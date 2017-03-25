@@ -60,11 +60,12 @@ class MACHETE_MAINTENANCE {
             }
         }
 
+        if((isset($_SESSION['mct_token']) && $_SESSION['mct_token'] === $token)){
+            return false;
+        }
         
         if ((isset($_GET['mct_token']) && $_GET['mct_token'] === $token)) {
             $_SESSION['mct_token'] = $_GET['mct_token'];
-            return false;
-        }else if((isset($_SESSION['mct_token']) && $_SESSION['mct_token'] === $token)){
             return false;
         }
 
