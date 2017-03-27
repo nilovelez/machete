@@ -2,7 +2,7 @@
 Contributors: nilovelez
 Tags: cookies, analytics, code, css, javascript, admin
 Requires at least: 4.3
-Tested up to: 4.7
+Tested up to: 4.7.3
 Stable tag: trunk
 License: WTFPL
 License URI: http://www.wtfpl.net/txt/copying/
@@ -47,6 +47,10 @@ Yes, but Machete does it well enough and probably is much lighter.
 3. This is not your typical tracking script...
 
 == Changelog ==
+
+= 1.6.2 = 
+* Fixed magic link session reported in some servers
+* Fixed the jQuery-migrate remover. It shout play better with complex themes now
 
 = 1.6.1 =
 * Fixed some language strings
