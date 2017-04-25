@@ -9,6 +9,9 @@ function machete_powertools($settings){
   'widget_oembed'
   'rss_thumbnails'
   'page_excerpts'
+
+  'move_scripts_footer'
+  'defer_all_scripts'
   */
 
   // enable shortcodes in widgets
@@ -45,9 +48,27 @@ function machete_powertools($settings){
 
 
 
+  // Script to Move JavaScript from the Head to the Footer
+  if (in_array('move_scripts_footer',$settings)) {
+    function machete_remove_head_scripts() { 
+       remove_action('wp_head', 'wp_print_scripts'); 
+       remove_action('wp_head', 'wp_print_head_scripts', 9); 
+       remove_action('wp_head', 'wp_enqueue_scripts', 1);
 
+       add_action('wp_footer', 'wp_print_scripts', 5);
+       add_action('wp_footer', 'wp_enqueue_scripts', 5);
+       add_action('wp_footer', 'wp_print_head_scripts', 5); 
+    } 
+    add_action( 'wp_enqueue_scripts', 'machete_remove_head_scripts' );
+  }
 
-
+  //Defer all JS
+  if (in_array('defer_all_scripts',$settings)) {
+    function machete_js_defer_attr($tag){
+      return str_replace( ' src', ' defer="defer" src', $tag );
+    }
+    add_filter( 'script_loader_tag', 'machete_js_defer_attr', 10 );
+  }
    
 
 

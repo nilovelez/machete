@@ -75,7 +75,15 @@ $machete_powertools_array = array(
 	'save_with_keyboard' => array(
 		'title' => __('Save with keyboard','machete'),
 		'description' => __('Lets you save your posts, pages, theme and plugin files in the most natural way: pressing Ctrl+S (or Cmd+S on Mac). It saves as draft unpublished posts/pages and updates the ones that are already public','machete')
-	)
+	),
+	'move_scripts_footer' => array(
+		'title' => __('Move scripts to footer','machete'),
+		'description' => __('Move all JS queued scripts from header to footer. Machete will de-register the call for the JavaScript to load in the HEAD section of the site and re-register it to the FOOTER.','machete')
+	),	
+	'defer_all_scripts' => array(
+		'title' => __('Defer your JavaScript','machete'),
+		'description' => __('The defer attribute also downloads the JS file during HTML parsing, but it only executes it after the parsing has completed. Executed in order of appearance on the page','machete')
+	),	
 	
 );
 

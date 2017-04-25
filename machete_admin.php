@@ -335,6 +335,22 @@ if(
     }
   }
 
+  //Slow default heartbeat
+  if (in_array('slow_heartbeat',$machete_cleanup_settings)) {
+    function machete_slow_heartbeat( $settings ) {
+      $settings['interval'] = 60; 
+      return $settings;
+    }
+    add_filter( 'heartbeat_settings', 'machete_slow_heartbeat' );
+  }
+
+  //Empty trash sooner
+  if (in_array('empty_trash_soon',$machete_cleanup_settings)) {
+    if (!defined('EMPTY_TRASH_DAYS')) {
+      define('EMPTY_TRASH_DAYS', 7);
+    }
+  }
+
 }
 
 if ( ! function_exists( 'machete_disable_emojicons_tinymce' ) ) :

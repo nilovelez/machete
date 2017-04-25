@@ -15,37 +15,6 @@ if ( !is_admin() ) {
 // https://derekshirk.com/what-is-migrate-js-and-why-does-wordpress-enqueue-it/
 
 
-// Annoying JQMIGRATE: Migrate is in console after update to WP 4.5
-// http://wordpress.stackexchange.com/a/224666/45686
-
-add_action( 'wp_default_scripts', function( $scripts ) {
-    if ( ! empty( $scripts->registered['jquery'] ) ) {
-        $jquery_dependencies = $scripts->registered['jquery']->deps;
-        $scripts->registered['jquery']->deps = array_diff( $jquery_dependencies, array( 'jquery-migrate' ) );
-    }
-} );
-
-
-/**
- * Set the post revisions unless the constant was set in wp-config.php
- */
-if (!defined('WP_POST_REVISIONS')) define('WP_POST_REVISIONS', 5);
-
-
-// Remove annoying P filter
-if(function_exists('capital_P_dangit')) {
-    foreach ( array( 'the_content', 'the_title' ) as $filter ) 
-        remove_filter( $filter, 'capital_P_dangit', 11 ); 
-
-    remove_filter('comment_text', 'capital_P_dangit', 31 );
-}
-
-
-
-if(extension_loaded("zlib") && (ini_get("output_handler") != "ob_gzhandler"))
-   add_action('wp', create_function('', '@ob_end_clean();@ini_set("zlib.output_compression", 1);'));
-
-
 
 
 

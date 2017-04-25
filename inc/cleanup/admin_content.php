@@ -76,6 +76,25 @@ $machete_optimize_array = array(
 		'title' => __('remove jQuery-migrate','machete'),
 		'description' => __('jQuery-migrate provides diagnostics that can simplify upgrading to new versions of jQuery, you can safely disable it.','machete')
 	),
+	// @fpuente addons
+	'oembed_scripts' => array(
+		'title' => __('Remove oEmbed Scripts','machete'),
+		'description' => __('Since WordPress 4.4, oEmbed is installed and available by default. If you don’t need oEmbed, you can remove it.','machete')
+	),
+	'slow_heartbeat' => array(
+		'title' => __('Slow Heartbeat','machete'),
+		'description' => __('By default, heartbeat makes a post call every 15 seconds on post edit pages. Change to 60 seconds (less CPU usage).','machete')
+	),	
+	'comments_reply_feature' => array(
+		'title' => __('JS Comment reply','machete'),
+		'description' => __('Load the comment-reply JS file only when needed.','machete')
+	),
+	
+	'empty_trash_soon' => array(
+		'title' => __('Empty trash every week','machete'),
+		'description' => __('You can shorten the time posts are kept in the trash, which is 30 days by default, to 1 week.','machete')
+	),
+	
 );
 
 $machete_all_optimize_checked = (count(array_intersect(array_keys($machete_optimize_array), $machete_cleanup_settings)) == count($machete_optimize_array)) ? true : false;

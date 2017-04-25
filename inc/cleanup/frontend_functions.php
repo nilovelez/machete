@@ -19,7 +19,15 @@ function machete_optimize($settings){
   'json_api',
   'wp_resource_hints',
   'recentcomments',
-  'xmlrpc');*/
+  'xmlrpc',
+
+
+  'oembed_scripts',
+  'slow_heartbeat',
+  'comments_reply_feature',
+  'empty_trash_soon',
+
+  );*/
 
   if (empty($settings)){
     return false;
@@ -148,6 +156,31 @@ function machete_optimize($settings){
 
   // pdf_thumbnails está en machete_admin.php
   // limit_revisions está en machete_admin.php
+
+
+  if (in_array('oembed_scripts',$settings)) {
+    //Remove oEmbed Scripts
+    //Since WordPress 4.4, oEmbed is installed and available by default. WordPress assumes you’ll want to easily embed media like tweets and YouTube videos so includes the scripts as standard. If you don’t need oEmbed, you can remove it
+    wp_deregister_script('wp-embed');
+  }
+
+  // slow_heartbeat está en machete_admin.php
+
+  if (in_array('comments_reply_feature',$settings)) {
+    //Only load the comment-reply.js when needed
+    function machete_queue_comment_reply(){
+        if (is_singular() && (get_option('thread_comments') == 1) && comments_open() && have_comments()) {
+          wp_enqueue_script('comment-reply');
+        } else {
+          wp_dequeue_script('comment-reply');
+        }
+    }
+    add_action('wp_print_scripts', 'machete_queue_comment_reply', 100);
+  }
+
+  //empty_trash_soon está en machete_admin.php
+
+
 
 }
 
