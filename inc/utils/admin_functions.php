@@ -68,6 +68,14 @@ function machete_utils_save_options() {
 			return false;
 		}
 
+		if ( isset( $_POST['tacking_anonymize'] )){
+			$settings['tacking_anonymize'] = 1;
+			$anonymizeIp = ',{anonymizeIp: true}';
+		}else{
+			$settings['tacking_anonymize'] = 0;
+			$anonymizeIp = '';
+		}
+
 		// let's generate the Google Analytics tracking code
 		if($_POST['tracking_format'] == 'machete'){
 			$header_content .= 'if (!navigator.userAgent || ('."\n";
@@ -82,7 +90,7 @@ function machete_utils_save_options() {
 			$header_content .= 'm=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)'."\n";
 			$header_content .= '})(window,document,\'script\',\'https://www.google-analytics.com/analytics.js\',\'ga\');'."\n";
 
-			$header_content .= 'ga(\'create\', \''.$_POST['tracking_id'].'\', \'auto\');'."\n";
+			$header_content .= 'ga(\'create\', \''.$_POST['tracking_id'].'\', \'auto\''.$anonymizeIp.');'."\n";
 			$header_content .= 'ga(\'send\', \'pageview\');'."\n";
 			
 		}

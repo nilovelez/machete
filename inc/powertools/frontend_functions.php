@@ -29,4 +29,26 @@ function machete_powertools($settings){
     add_post_type_support( 'page', 'excerpt' );
   }
 
+  // enable rss thumbnails
+  if (in_array('rss_thumbnails',$settings)) {
+    function machete_add_rss_thumbnail($content) {
+      global $post;
+      
+      if(has_post_thumbnail($post->ID)) {
+          $content = '<div class="post-thumbnail-feed">' . get_the_post_thumbnail($post->ID, 'full') . '</div>' . $content;
+      }
+      return $content;
+    }
+    add_filter('the_excerpt_rss', 'machete_add_rss_thumbnail');
+    add_filter('the_content_feed', 'machete_add_rss_thumbnail');
+  }
+
+
+
+
+
+
+   
+
+
 }

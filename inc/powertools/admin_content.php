@@ -3,7 +3,7 @@
 <div class="wrap machete-wrap machete-section-wrap">
 	<h1><?php _e('Machete PowerTools','machete') ?></h1>
 
-	<p class="tab-description"><?php _e('You don\'t need a zillion plugins to perform easy task like inserting a verification meta tag (Google Search Console, Bing, Pinterest), a json-ld snippet or a custom styleseet (Google Fonts, Print Styles, accesibility tweaks...).','machete') ?></p>
+	<!--<p class="tab-description"><?php _e('You don\'t need a zillion plugins to perform easy task like inserting a verification meta tag (Google Search Console, Bing, Pinterest), a json-ld snippet or a custom styleseet (Google Fonts, Print Styles, accesibility tweaks...).','machete') ?></p>-->
 	<?php machete_admin_tabs('machete-powertools'); ?>
 	<!--<p class="tab-performance"><span><strong><i class="dashicons dashicons-clock"></i> <?php _e('Performance impact:','machete') ?></strong> <?php _e('This tool generates up to three static HTML files that are loaded via PHP on each pageview. When enabled, custom body content requires one aditional database request.','machete') ?></span></p>-->
 
@@ -22,7 +22,6 @@ if(!$machete_powertools_settings = get_option('machete_powertools_settings')){
 	<table class="form-table">
 	<tbody><tr>
 
-	<tr>
 	<th scope="row"><label for="tracking_id"><?php _e('Delete Expired Transients','machete') ?></label></th>
 	<td><input type="submit" name="action" value="<?php _e('Purge Transients','machete') ?>" class="button button-primary">
 	<p class="description" id="tracking_id_description" style="display: none;"><?php _e('Format:','machete') ?></p></td>
@@ -71,8 +70,12 @@ $machete_powertools_array = array(
 	),
 	'page_excerpts' => array(
 		'title' => __('Excerpts in Pages','machete'),
-		'description' => __('','machete')
+		'description' => __('Enables excerpts in pages. Useless for most people but awesome qhen combined with a page builder like Visual Composer','machete')
 	),
+	'save_with_keyboard' => array(
+		'title' => __('Save with keyboard','machete'),
+		'description' => __('Lets you save your posts, pages, theme and plugin files in the most natural way: pressing Ctrl+S (or Cmd+S on Mac). It saves as draft unpublished posts/pages and updates the ones that are already public','machete')
+	)
 	
 );
 
@@ -92,7 +95,7 @@ $machete_all_powertools_checked = (count($machete_powertools_settings) == count(
 		
 
 
-		<table class="wp-list-table widefat fixed striped posts machete-powertools-table machete-optimize-table">
+		<table class="wp-list-table widefat fixed striped posts machete-options-table machete-powertools-table">
 		<thead>
 			<tr>
 				<td class="manage-column column-cb check-column " ><input type="checkbox" name="check_all" id="machete_powertools_checkall_fld" <?php if ($machete_all_powertools_checked) echo 'checked' ?>></td>

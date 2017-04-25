@@ -86,9 +86,9 @@ if (!navigator.userAgent || (
 
 require_once( 'inc/maintenance/frontend_functions.php' );
 
-
-
-if(($machete_powertools_settings = get_option('machete_powertools_settings')) && (count($machete_powertools_settings) > 0)){
-	require_once('inc/powertools/frontend_functions.php');
-	machete_powertools($machete_powertools_settings);
+if (defined ('MACHETE_POWERTOOLS_INIT') ) {
+	if(($machete_powertools_settings = get_option('machete_powertools_settings')) && (count($machete_powertools_settings) > 0)){
+		require_once('inc/powertools/frontend_functions.php');
+		machete_powertools($machete_powertools_settings);
+	}
 }

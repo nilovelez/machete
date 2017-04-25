@@ -128,11 +128,4 @@ function machete_powertools_flush_rewrite_rules(){
 
 	return true;
 }
-
-
-
-
-
-
-
 endif; // machete_powertools_save_options()

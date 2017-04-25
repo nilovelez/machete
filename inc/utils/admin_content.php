@@ -4,6 +4,7 @@ if ( ! defined( 'MACHETE_ADMIN_INIT' ) ) exit;
 $machete_utils_default_settings = array(
 		'tracking_id' => '',
 		'tracking_format' => 'none',
+		'tacking_anonymize' => 0,
 		'alfonso_content_injection_method' => 'manual'
 		);
 
@@ -68,13 +69,18 @@ if (defined ('MACHETE_POWERTOOLS_INIT') ) {
 
 <tr>
 <th scope="row"><?php _e('Tracking Code','machete') ?></th>
-<td><fieldset><legend class="screen-reader-text"><span>Código de seguimiento</span></legend>
+<td><fieldset><legend class="screen-reader-text"><span><?php _e('Tracking Code','machete') ?></span></legend>
 	<label><input name="tracking_format" value="standard" type="radio" <?php if ($machete_utils_settings['tracking_format'] =='standard') echo 'checked="checked"'; ?>> <?php _e('Standard Google Analytics tracking code','machete') ?></label><br>
 	<label><input name="tracking_format" value="machete" type="radio" <?php if ($machete_utils_settings['tracking_format'] =='machete') echo 'checked="checked"'; ?>> <?php _e('PageSpeed-optimized tracking code','machete') ?></label><br>
 	<label><input name="tracking_format" value="none" type="radio" <?php if ($machete_utils_settings['tracking_format'] =='none') echo 'checked="checked"'; ?>> <?php _e('No tracking code','machete') ?></label><br>
 </fieldset></td>
 </tr>
-
+<tr>
+<th scope="row"><?php _e('Anonymize user IPs','machete') ?></th>
+<td><fieldset><legend class="screen-reader-text"><span><?php _e('Anonymize user IPs','machete') ?></span></legend>
+	<label><input name="tacking_anonymize" value="1" type="checkbox" <?php if ($machete_utils_settings['tacking_anonymize'] =='1') echo 'checked="checked"'; ?>> <?php _e('Check to anonymize visitor IPs. This feature is designed to help site owners comply with their own privacy policies or, in some countries, recommendations from local data protection authorities.','machete') ?></label><br>
+</fieldset></td>
+</tr>
 
 
 <tr>

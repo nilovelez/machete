@@ -55,7 +55,19 @@
 					<h3 class="theme-name"><span><?php _e('Maintenance Mode','machete') ?></span></h3>
 					<div class="theme-actions"><a href="<?php echo admin_url('admin.php?page=machete-maintenance') ?>" class="button button-primary" title="<?php __('Configure','machete').' '.__('Maintenance Mode','machete') ?>"><?php _e('Configure','machete') ?></a></div>
 				</div>
-			</div>								
+			</div>
+			<?php if (defined ('MACHETE_POWERTOOLS_INIT') ) { ?>
+			<div class="theme">
+				<div class="theme-wrapper">
+					<div class="theme-screenshot">
+						<div class="module-info"><?php _e('','machete') ?></div>
+						<img src="<?php echo MACHETE_BASE_URL ?>img/power_tools.png" alt="<?php _e('Machete PowerTools','machete') ?>">
+					</div>
+					<h3 class="theme-name"><span><?php _e('Machete PowerTools','machete') ?></span></h3>
+					<div class="theme-actions"><a href="<?php echo admin_url('admin.php?page=machete-powertools') ?>" class="button button-primary" title="<?php __('Configure','machete').' '.__('Machete PowerTools','machete') ?>"><?php _e('Configure','machete') ?></a></div>
+				</div>
+			</div>
+			<?php } ?>								
 		</div>
 	</div>	
 			

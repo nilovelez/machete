@@ -225,7 +225,7 @@ if (isset($_POST['machete-cookies-saved'])){
 	require('inc/cookies/admin_functions.php');
 	
 	if(machete_cookies_save_options()){
-		add_action( 'admin_notices', 'machete_save_success' );
+		new Machete_Notice(__( 'Options saved!', 'machete' ), 'success');
 	}
 }
 function machete_cookies_page_content() {
@@ -239,7 +239,7 @@ if (isset($_POST['machete-utils-saved'])){
 	require('inc/utils/admin_functions.php');
 	
 	if(machete_utils_save_options()){
-		add_action( 'admin_notices', 'machete_save_success' );
+		new Machete_Notice(__( 'Options saved!', 'machete' ), 'success');
 	}
 }
 function machete_utils_page_content() {
@@ -254,7 +254,7 @@ if (isset($_POST['machete-maintenance-saved'])){
   require('inc/maintenance/admin_functions.php');
   
   if(machete_maintenance_save_options()){
-    add_action( 'admin_notices', 'machete_save_success' );
+    new Machete_Notice(__( 'Options saved!', 'machete' ), 'success');
   }
 }
 function machete_maintenance_page_content() {
@@ -282,7 +282,7 @@ if (isset($_POST['machete-powertools-saved'])){
   require('inc/powertools/admin_functions.php');
   
   if(machete_powertools_save_options()){
-    add_action( 'admin_notices', 'machete_save_success' );
+    new Machete_Notice(__( 'Options saved!', 'machete' ), 'success');
   }
 }
 
@@ -292,7 +292,7 @@ if (isset($_POST['machete-powertools-action'])){
   require('inc/powertools/admin_functions.php');
   
   if(machete_powertools_do_action()){
-    add_action( 'admin_notices', 'machete_action_success' );
+    new Machete_Notice(__( 'Options saved!', 'machete' ), 'success');
   }
 }
 
@@ -347,14 +347,32 @@ function machete_disable_emojicons_tinymce( $plugins ) {
 endif;
 
 
-// Machete powertools actions specific to the back-end
-if(
-  ($machete_powertools_settings = get_option('machete_powertools_settings')) &&
-  (count($machete_powertools_settings) > 0)){
+if (defined ('MACHETE_POWERTOOLS_INIT') ) {
+  // Machete powertools actions specific to the back-end
+  if(
+    ($machete_powertools_settings = get_option('machete_powertools_settings')) &&
+    (count($machete_powertools_settings) > 0)){
 
-    // enable page_excerpts
-    if (in_array('page_excerpts',$machete_powertools_settings)) {
-      add_post_type_support( 'page', 'excerpt' );
-    }
+      // enable page_excerpts
+      if (in_array('page_excerpts',$machete_powertools_settings)) {
+        add_post_type_support( 'page', 'excerpt' );
+      }
 
+      // save with keyboard
+      if (in_array('save_with_keyboard',$machete_powertools_settings)) {
+        function machete_save_with_keyboard() {
+
+          wp_register_script('machete_save_with_keyboard',MACHETE_POWERTOOLS_BASE_URL.'vendor/save-with-keyboard/saveWithKeyboard.js',array('jquery'));
+          $translation_array = array(
+            'save_button_tooltip' => __( 'Ctrl+S or Cmd+S to click', 'machete' ),
+            'preview_button_tooltip' => __( 'Ctrl+P or Cmd+P to preview', 'machete' )
+          );
+          wp_localize_script( 'machete_save_with_keyboard', 'l10n_strings', $translation_array );
+          wp_enqueue_script( 'machete_save_with_keyboard' );
+        }
+        add_action('admin_enqueue_scripts','machete_save_with_keyboard');
+      }
+
+
+  }
 }
