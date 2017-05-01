@@ -79,7 +79,7 @@ endif;
 
 
 
-function machete_pages() {
+function machete_menu() {
 
 	if ( !current_user_can( 'manage_options' ) )  {
 		wp_die( __( 'You do not have sufficient permissions to access this page.' ) );
@@ -95,7 +95,7 @@ function machete_pages() {
   );
 
 }
-add_action('admin_menu', 'machete_pages');
+add_action('admin_menu', 'machete_menu');
 
 
 
