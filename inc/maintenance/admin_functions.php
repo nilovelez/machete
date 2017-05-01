@@ -1,9 +1,24 @@
 <?php
 if ( ! defined( 'MACHETE_ADMIN_INIT' ) ) exit;
 
+function machete_maintenance_page() {
+   add_submenu_page(
+    'machete',
+    __('Coming Soon & Maintenance Mode','machete'),
+    __('Maintenance Mode','machete'),
+    'manage_options',
+    'machete-maintenance',
+    'machete_maintenance_page_content'
+  );
+}
+add_action('admin_menu', 'machete_maintenance_page');
+
+function machete_maintenance_page_content() {
+	require('admin_content.php');
+}
+
+
 if ( ! function_exists( 'machete_maintenance_save_options' ) ) :
-
-
 function machete_array_equal($a, $b) {
     return (
          is_array($a) && is_array($b) && 
@@ -84,3 +99,14 @@ function machete_maintenance_save_options() {
 
 }
 endif; // machete_maintenance_save_options()
+
+/* Machete Maintenance */
+if (isset($_POST['machete-maintenance-saved'])){
+
+  check_admin_referer( 'machete_save_maintenance' );
+  
+  if(machete_maintenance_save_options()){
+    new Machete_Notice(__( 'Options saved!', 'machete' ), 'success');
+  }
+}
+require_once('admin_bar.php');

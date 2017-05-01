@@ -1,9 +1,26 @@
 <?php
 if ( ! defined( 'MACHETE_ADMIN_INIT' ) ) exit;
 
+
+function machete_cookies_page() {
+   add_submenu_page(
+  	'machete',
+  	__('Cookie Law Warning','machete'),
+    __('Cookie Law','machete'),
+    'manage_options',
+    'machete-cookies',
+    'machete_cookies_page_content'
+  );
+}
+add_action('admin_menu', 'machete_cookies_page');
+
+
+function machete_cookies_page_content() {
+	require('admin_content.php');
+}
+
+
 if ( ! function_exists( 'machete_cookies_save_options' ) ) :
-
-
 
 function machete_cookies_error_mkdir() { ?>
     <div class="notice notice-error is-dismissible">
@@ -166,3 +183,13 @@ function machete_cookies_save_options() {
 
 }
 endif; // machete_cookies_save_options()
+
+
+/* Machete Cookies Bar */
+if (isset($_POST['machete-cookies-saved'])){
+
+  	check_admin_referer( 'machete_save_cookies' );
+	if(machete_cookies_save_options()){
+		new Machete_Notice(__( 'Options saved!', 'machete' ), 'success');
+	}
+}

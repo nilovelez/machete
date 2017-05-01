@@ -1,10 +1,24 @@
 <?php
 if ( ! defined( 'MACHETE_ADMIN_INIT' ) ) exit;
 
+function machete_powertools_page() {
+  add_submenu_page(
+	  'machete',
+	  __('PowerTools','machete'),
+	  '<span style="color: #ff9900">'.__('PowerTools','machete').'</span>',
+	  'manage_options',
+	  'machete-powertools',
+	  'machete_powertools_page_content'
+	);
+}
+add_action('admin_menu', 'machete_powertools_page');
+
+function machete_powertools_page_content() {
+  require('admin_content.php');
+}
+
 
 if ( ! function_exists( 'machete_powertools_save_options' ) ) :
-
-
 function machete_powertools_save_options() {
 
 	if (isset($_POST['optionEnabled'])){
@@ -129,3 +143,47 @@ function machete_powertools_flush_rewrite_rules(){
 	return true;
 }
 endif; // machete_powertools_save_options()
+
+
+if (isset($_POST['machete-powertools-saved'])){
+
+  check_admin_referer( 'machete_save_powertools' );
+  if(machete_powertools_save_options()){
+    new Machete_Notice(__( 'Options saved!', 'machete' ), 'success');
+  }
+}
+
+if (isset($_POST['machete-powertools-action'])){
+
+  check_admin_referer( 'machete_powertools_action' );
+  if(machete_powertools_do_action()){
+    new Machete_Notice(__( 'Options saved!', 'machete' ), 'success');
+  }
+}
+
+
+// Machete powertools actions specific to the back-end
+if(
+    ($machete_powertools_settings = get_option('machete_powertools_settings')) &&
+    (count($machete_powertools_settings) > 0)){
+
+    // enable page_excerpts
+    if (in_array('page_excerpts',$machete_powertools_settings)) {
+        add_post_type_support( 'page', 'excerpt' );
+    }
+
+    // save with keyboard
+    if (in_array('save_with_keyboard',$machete_powertools_settings)) {
+        function machete_save_with_keyboard() {
+
+          wp_register_script('machete_save_with_keyboard',MACHETE_POWERTOOLS_BASE_URL.'vendor/save-with-keyboard/saveWithKeyboard.js',array('jquery'));
+          $translation_array = array(
+            'save_button_tooltip' => __( 'Ctrl+S or Cmd+S to click', 'machete' ),
+            'preview_button_tooltip' => __( 'Ctrl+P or Cmd+P to preview', 'machete' )
+          );
+          wp_localize_script( 'machete_save_with_keyboard', 'l10n_strings', $translation_array );
+          wp_enqueue_script( 'machete_save_with_keyboard' );
+        }
+        add_action('admin_enqueue_scripts','machete_save_with_keyboard');
+    }
+}

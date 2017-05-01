@@ -1,9 +1,25 @@
 <?php
 if ( ! defined( 'MACHETE_ADMIN_INIT' ) ) exit;
 
-if ( ! function_exists( 'machete_utils_save_options' ) ) :
-	
+function machete_utils_page() {
+  add_submenu_page(
+  	'machete',
+  	__('Analytics and Custom Code','machete'),
+    __('Analytics & Code','machete'),
+    'manage_options',
+    'machete-utils',
+    'machete_utils_page_content'
+  );
+}
+add_action('admin_menu', 'machete_utils_page');
 
+
+function machete_utils_page_content() {
+	require('admin_content.php');
+}
+
+
+if ( ! function_exists( 'machete_utils_save_options' ) ) :
 	
 function machete_utils_error_mkdir() { ?>
     <div class="notice notice-error is-dismissible">
@@ -152,3 +168,12 @@ function machete_utils_save_options() {
 
 }
 endif; // machete_utils_save_options()
+
+
+/* Machete Utils */
+if (isset($_POST['machete-utils-saved'])){
+	check_admin_referer( 'machete_save_utils' );
+	if(machete_utils_save_options()){
+		new Machete_Notice(__( 'Options saved!', 'machete' ), 'success');
+	}
+}
