@@ -49,12 +49,13 @@ Yes, but Machete does it well enough and probably is much lighter.
 == Changelog ==
 
 = 1.7 =
-
 Added new actios to the optimization module:
+
 * Remove oEmbed Scripts
 * Slow Heartbeat
 * JS Comment reply
 * Empty trash every week
+
 Thank you, @fpuente
 
 * Added 'Anonymize user IPs' option to analytics code 

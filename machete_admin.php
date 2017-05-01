@@ -1,6 +1,8 @@
 <?php
 if ( ! defined( 'MACHETE_ADMIN_INIT' ) ) exit;
 
+add_action( 'plugins_loaded', 'machete_load_plugin_textdomain' );
+
 function machete_do_activation_redirect() {
   // Bail if no activation redirect
     if ( ! get_transient( '_machete_welcome_redirect' ) ) {
@@ -203,16 +205,10 @@ function machete_action_success() {
 }
 
 
-//update_option( $option, $new_value, $autoload );
-if (isset($_POST['machete-cleanup-saved'])){
 
-  check_admin_referer( 'machete_save_cleanup' );
-	require('inc/cleanup/admin_functions.php');
-	
-	if(machete_cleanup_save_options()){
-		add_action( 'admin_notices', 'machete_save_success' );
-	}
-}
+require('inc/cleanup/admin_functions.php');
+
+
 
 function machete_cleanup_page_content() {
 	require('inc/cleanup/admin_content.php');
@@ -260,6 +256,8 @@ if (isset($_POST['machete-maintenance-saved'])){
 function machete_maintenance_page_content() {
   require('inc/maintenance/admin_content.php');
 }
+
+require_once('inc/maintenance/admin_bar.php');
 
 
 

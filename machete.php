@@ -38,22 +38,10 @@ function machete_init(){
 	define('MACHETE_DATA_URL',  $machete_get_upload_dir['baseurl'].'/machete/');
 
 	if ( ! is_admin() ) {
-
 		require_once('machete_frontend.php');
-
-		if ( is_user_logged_in() ){
-			// only logged in users need l10n
-			add_action( 'plugins_loaded', 'machete_load_plugin_textdomain' );
-			require_once('inc/maintenance/admin_bar.php');
-		}
-
 	}else if (current_user_can('manage_options')){
-		
 		define('MACHETE_ADMIN_INIT',true);
-		add_action( 'plugins_loaded', 'machete_load_plugin_textdomain' );
 		require_once('machete_admin.php');	
-		require_once('inc/maintenance/admin_bar.php');
 	}
 }
 add_action('init','machete_init');
-

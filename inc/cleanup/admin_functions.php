@@ -1,6 +1,8 @@
 <?php
 if ( ! defined( 'MACHETE_ADMIN_INIT' ) ) exit;
 
+
+
 if ( ! function_exists( 'machete_cleanup_save_options' ) ) :
 
 function machete_cleanup_error_save_options() { ?>
@@ -57,3 +59,13 @@ function machete_cleanup_save_options() {
 	return false;
 }
 endif; // machete_cleanup_save_options()
+
+
+
+//update_option( $option, $new_value, $autoload );
+if (isset($_POST['machete-cleanup-saved'])){
+  	check_admin_referer( 'machete_save_cleanup' );
+	if(machete_cleanup_save_options()){
+		new Machete_Notice(__( 'Options saved!', 'machete' ), 'success');
+	}
+}
