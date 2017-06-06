@@ -48,6 +48,9 @@ Yes, but Machete does it well enough and probably is much lighter.
 
 == Changelog ==
 
+= 1.7.2 =
+* Rollback to re-enable the option to remove oEmbed Scripts. WordPress 4.8 doesn't need the oembed script but the JSON API
+
 = 1.7.1 =
 * Disabled Remove oEmbed Scripts as it interferes with WordPress 4.8 video widget
 

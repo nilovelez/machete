@@ -43,10 +43,6 @@ $machete_cleanup_array = array(
 		'title' => __('version','machete'),
 		'description' => __('Remove WordPress version var (?ver=) after styles and scripts. Used by atackers to detect the WordPress version.','machete')
 	),
-	'json_api' => array(
-		'title' => __('Json API','machete'),
-		'description' => __('Disable Json API and remove link from header. Use with care.','machete')
-	),
 	'recentcomments' => array(
 		'title' => __('recent_comments_style','machete'),
 		'description' => __('Removes a block of inline CSS used by old themes from the header','machete')
@@ -60,6 +56,10 @@ $machete_cleanup_array = array(
 );
 
 $machete_optimize_array = array(
+	'json_api' => array(
+		'title' => __('JSON API','machete'),
+		'description' => __('Disable Json API and remove link from header. Use with care.','machete') . ' <br><span style="color: red">'.__('The video widget added in WordPress 4.8 needs the JSON API to work','machete').'</span>'
+	),
 	'emojicons' => array(
 		'title' => __('Emojicons','machete'),
 		'description' => __('Remove lots of emoji styles and scripts from the header, RSS, mail function, tinyMCE editor...','machete')
@@ -74,15 +74,15 @@ $machete_optimize_array = array(
 	),
 	'jquery-migrate' => array(
 		'title' => __('remove jQuery-migrate','machete'),
-		'description' => __('jQuery-migrate provides diagnostics that can simplify upgrading to new versions of jQuery, you can safely disable it.','machete')
+		'description' => __('jQuery-migrate provides diagnostics that can simplify upgrading to new versions of jQuery, you can safely disable it.','machete'). ' <br><span style="color: red">'.__('Breaks some themes that depend on visual builders, like Avada or The7','machete').'</span>'
 	),
 	// @fpuente addons
-	/*
+	
 	'oembed_scripts' => array(
 		'title' => __('Remove oEmbed Scripts','machete'),
 		'description' => __('Since WordPress 4.4, oEmbed is installed and available by default. If you don’t need oEmbed, you can remove it.','machete')
 	),
-	*/
+	
 	'slow_heartbeat' => array(
 		'title' => __('Slow Heartbeat','machete'),
 		'description' => __('By default, heartbeat makes a post call every 15 seconds on post edit pages. Change to 60 seconds (less CPU usage).','machete')

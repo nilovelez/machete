@@ -16,12 +16,12 @@ function machete_optimize($settings){
   'wp_generator',
   'ver',
   'emojicons',
-  'json_api',
   'wp_resource_hints',
   'recentcomments',
   'xmlrpc',
 
 
+  'json_api',
   'oembed_scripts',
   'slow_heartbeat',
   'comments_reply_feature',
@@ -157,13 +157,13 @@ function machete_optimize($settings){
   // pdf_thumbnails está en machete_admin.php
   // limit_revisions está en machete_admin.php
 
-  /*
+  
   if (in_array('oembed_scripts',$settings)) {
     //Remove oEmbed Scripts
     //Since WordPress 4.4, oEmbed is installed and available by default. WordPress assumes you’ll want to easily embed media like tweets and YouTube videos so includes the scripts as standard. If you don’t need oEmbed, you can remove it
     wp_deregister_script('wp-embed');
   }
-  */
+  
 
   // slow_heartbeat está en machete_admin.php
 
