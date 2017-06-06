@@ -26,6 +26,25 @@ function machete_load_plugin_textdomain() {
     load_plugin_textdomain( 'machete', FALSE, basename( dirname( __FILE__ ) ) . '/languages/' );
 }
 
+class machete_module {
+	function __construct(){
+
+	}
+}
+
+$machete_modules = array(
+	'about' => array(),
+	'cleanup' => array(),
+	'cookies' => array(),
+	'directory' => array(),
+	'maintenance' => array(),
+	'powertools' => array(),
+	'utils' => array()
+);
+
+
+
+
 function machete_init(){
 
 	$machete_get_upload_dir = wp_upload_dir();
@@ -36,6 +55,12 @@ function machete_init(){
 	define('MACHETE_DATA_PATH', $machete_get_upload_dir['basedir'].'/machete/');
 	define('MACHETE_RELATIVE_DATA_PATH', substr(MACHETE_DATA_PATH, strlen(ABSPATH)-1));
 	define('MACHETE_DATA_URL',  $machete_get_upload_dir['baseurl'].'/machete/');
+
+
+
+
+
+
 
 	if ( ! is_admin() ) {
 		require_once('machete_frontend.php');
