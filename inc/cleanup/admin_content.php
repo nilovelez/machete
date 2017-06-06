@@ -77,10 +77,12 @@ $machete_optimize_array = array(
 		'description' => __('jQuery-migrate provides diagnostics that can simplify upgrading to new versions of jQuery, you can safely disable it.','machete')
 	),
 	// @fpuente addons
+	/*
 	'oembed_scripts' => array(
 		'title' => __('Remove oEmbed Scripts','machete'),
 		'description' => __('Since WordPress 4.4, oEmbed is installed and available by default. If you don’t need oEmbed, you can remove it.','machete')
 	),
+	*/
 	'slow_heartbeat' => array(
 		'title' => __('Slow Heartbeat','machete'),
 		'description' => __('By default, heartbeat makes a post call every 15 seconds on post edit pages. Change to 60 seconds (less CPU usage).','machete')
