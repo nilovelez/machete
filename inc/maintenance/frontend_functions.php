@@ -152,3 +152,10 @@ if(@file_exists(MACHETE_DATA_PATH.'header.html')){
 	
 
 }
+
+if($machete_maintenance_settings = get_option('machete_maintenance_settings')){
+    if(is_admin_bar_showing()){
+        require_once('admin_bar.php');
+    }
+    $machete_maintenance = new MACHETE_MAINTENANCE($machete_maintenance_settings);
+}

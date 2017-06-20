@@ -228,3 +228,7 @@ order deny,allow
 deny from all
 </Files>
 */
+
+if(($machete_cleanup_settings = get_option('machete_cleanup_settings')) && (count($machete_cleanup_settings) > 0)){
+  machete_optimize($machete_cleanup_settings);
+}
