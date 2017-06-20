@@ -70,6 +70,8 @@ function machete_powertools($settings){
     add_filter( 'script_loader_tag', 'machete_js_defer_attr', 10 );
   }
    
+}
 
-
+if(($machete_powertools_settings = get_option('machete_powertools_settings')) && (count($machete_powertools_settings) > 0)){
+    machete_powertools($machete_powertools_settings);
 }

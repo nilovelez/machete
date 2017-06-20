@@ -80,7 +80,6 @@ endif;
 
 
 function machete_menu() {
-
 	if ( !current_user_can( 'manage_options' ) )  {
 		wp_die( __( 'You do not have sufficient permissions to access this page.' ) );
 	}
@@ -100,21 +99,11 @@ add_action('admin_menu', 'machete_menu');
 
 
 function machete_admin_tabs($current = '') {
-  $machete_admin_tabs = array(
-    'machete-cleanup' => __('Optimization','machete'),
-    'machete-cookies' => __('Cookie Law','machete'),
-    'machete-utils' => __('Analytics & Code','machete'),
-    'machete-maintenance' => __('Maintenance Mode','machete'),
-    //'machete-directory' => __('Resource','machete')
-    //'machete' => __('About Machete','machete')
-  );
-
-  if (defined ('MACHETE_POWERTOOLS_INIT') ) {
-    $machete_admin_tabs['machete-powertools'] = __('PowerTools','machete');
-  }
-	
+  global $machete_active_modules;
+  	
   echo '<h2 class="nav-tab-wrapper">';
-	foreach($machete_admin_tabs as $slug => $title) {
+	foreach($machete_active_modules as $slug => $title) {
+    $slug = 'machete-'.$slug;
 		if ($slug == $current){
 			echo '<a href="#" class="nav-tab-active nav-tab '.$slug.'-tab">'.$title.'</a>';
 		}else{
@@ -133,14 +122,8 @@ function machete_action_success() {
   new Machete_Notice(__( 'Action succesfully executed!', 'machete' ), 'success');
 }
 
-
 require('inc/about/admin_functions.php');
-require('inc/cleanup/admin_functions.php');
-require('inc/cookies/admin_functions.php');
-require('inc/utils/admin_functions.php');
-require('inc/maintenance/admin_functions.php');
-//require('inc/directory/admin_functions.php');
 
-if (defined ('MACHETE_POWERTOOLS_INIT') ) {
-  require('inc/powertools/admin_functions.php');
+foreach ($machete_active_modules as $machete_module => $machete_module_name) {
+    @require_once('inc/'.$machete_module.'/admin_functions.php');
 }

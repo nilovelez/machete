@@ -2,7 +2,7 @@
 Contributors: nilovelez
 Tags: cookies, analytics, code, css, javascript, admin
 Requires at least: 4.3
-Tested up to: 4.7.3
+Tested up to: 4.8
 Stable tag: trunk
 License: WTFPL
 License URI: http://www.wtfpl.net/txt/copying/
@@ -47,6 +47,12 @@ Yes, but Machete does it well enough and probably is much lighter.
 3. This is not your typical tracking script...
 
 == Changelog ==
+
+= 1.7.2 =
+* Rollback to re-enable the option to remove oEmbed Scripts. WordPress 4.8 doesn't need the oembed script but the JSON API
+
+= 1.7.1 =
+* Disabled Remove oEmbed Scripts as it interferes with WordPress 4.8 video widget
 
 = 1.7 =
 Added new actios to the optimization module:

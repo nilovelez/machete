@@ -3,7 +3,7 @@
 Plugin Name: Machete
 Plugin URI: https://machetewp.com
 Description: Machete is a lean and simple suite of tools that solve common WordPress anoyances: cookie bar, tracking codes, header cleanup
-Version: 1.7
+Version: 1.7.2
 Author: Nilo Velez
 Author URI: http://www.nilovelez.com
 License: WTFPL
@@ -26,26 +26,12 @@ function machete_load_plugin_textdomain() {
     load_plugin_textdomain( 'machete', FALSE, basename( dirname( __FILE__ ) ) . '/languages/' );
 }
 
-class machete_module {
-	function __construct(){
-
-	}
-}
-
-$machete_modules = array(
-	'about' => array(),
-	'cleanup' => array(),
-	'cookies' => array(),
-	'directory' => array(),
-	'maintenance' => array(),
-	'powertools' => array(),
-	'utils' => array()
-);
-
-
-
+$machete_active_modules = array();
 
 function machete_init(){
+	global $machete_active_modules;
+
+	if ( is_admin() &&  ! current_user_can('manage_options')) return;
 
 	$machete_get_upload_dir = wp_upload_dir();
 	define('MACHETE_BASE_PATH', plugin_dir_path( __FILE__ ));
@@ -56,15 +42,19 @@ function machete_init(){
 	define('MACHETE_RELATIVE_DATA_PATH', substr(MACHETE_DATA_PATH, strlen(ABSPATH)-1));
 	define('MACHETE_DATA_URL',  $machete_get_upload_dir['baseurl'].'/machete/');
 
-
-
-
-
-
+	$machete_active_modules = array(
+		'cleanup' => __('Optimization','machete'),
+    	'cookies' => __('Cookie Law','machete'),
+    	'utils' => __('Analytics & Code','machete'),
+    	'maintenance' => __('Maintenance Mode','machete'),
+	);
+	if (defined ('MACHETE_POWERTOOLS_INIT') ) {
+		$machete_active_modules['powertools'] = __('PowerTools','machete'); 
+	}
 
 	if ( ! is_admin() ) {
 		require_once('machete_frontend.php');
-	}else if (current_user_can('manage_options')){
+	} else {
 		define('MACHETE_ADMIN_INIT',true);
 		require_once('machete_admin.php');	
 	}

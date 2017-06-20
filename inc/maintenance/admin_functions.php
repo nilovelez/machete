@@ -109,4 +109,6 @@ if (isset($_POST['machete-maintenance-saved'])){
     new Machete_Notice(__( 'Options saved!', 'machete' ), 'success');
   }
 }
-require_once('admin_bar.php');
+if(is_admin_bar_showing()){
+	require_once('admin_bar.php');
+}
