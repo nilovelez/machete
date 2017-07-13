@@ -163,19 +163,21 @@
 			'is_active' => true,
 			'role' => 'admin'
 		),
-	);
-
-	if (defined ('MACHETE_POWERTOOLS_INIT') ) {
-		$module_info['powertools'] = array(
-
+		'powertools' => array(
 			'full_title' => __('Machete PowerTools','machete'),
 			'description' => __('','machete'),
 			'is_active' => false,
 			'role' => 'admin'
-		
-		);
+		)
+	);
+
+	if (defined ('MACHETE_POWERTOOLS_INIT') ) {
+		$module_info['powertools']['is_active'] = true;
 
 	}
+
+
+
 	?>
 
 		<div id="machete-module-list">
