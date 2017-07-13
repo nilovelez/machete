@@ -80,14 +80,17 @@ endif;
 
 
 function machete_menu() {
-	if ( !current_user_can( 'manage_options' ) )  {
+	
+  /*
+  if ( !current_user_can( 'manage_options' ) )  {
 		wp_die( __( 'You do not have sufficient permissions to access this page.' ) );
 	}
+  */
 
   add_menu_page(
   	'Machete',
   	'Machete',
-  	'manage_options',
+  	'publish_posts', // targeting Author role
   	'machete',
   	'machete_about_page_content',
   	plugin_dir_url( __FILE__ ) . 'img/machete.svg'
@@ -100,14 +103,20 @@ add_action('admin_menu', 'machete_menu');
 
 function machete_admin_tabs($current = '') {
   global $machete_active_modules;
+
+  $is_admin = current_user_can('manage_options') ? true : false;
   	
   echo '<h2 class="nav-tab-wrapper">';
-	foreach($machete_active_modules as $slug => $title) {
+	foreach($machete_active_modules as $slug => $args) {
+
+    if (!$is_admin && ($args['role'] == 'admin')) continue;
+    if (!$is_admin && ($args['role'] == 'admin')) continue;
+
     $slug = 'machete-'.$slug;
 		if ($slug == $current){
-			echo '<a href="#" class="nav-tab-active nav-tab '.$slug.'-tab">'.$title.'</a>';
+			echo '<a href="#" class="nav-tab-active nav-tab '.$slug.'-tab">'.$args['title'].'</a>';
 		}else{
-			echo '<a href="'.admin_url('admin.php?page='.$slug).'" class="nav-tab '.$slug.'-tab">'.$title.'</a>';
+			echo '<a href="'.admin_url('admin.php?page='.$slug).'" class="nav-tab '.$slug.'-tab">'.$args['title'].'</a>';
 		}
 	}
 	echo '</h2>';
