@@ -7,7 +7,7 @@ function machete_cleanup_page() {
   	'machete',
     __('WordPress Optimization','machete'),
     __('Optimization','machete'),
-    'manage_options',
+    'manage_options', // targeting Admin role    
     'machete-cleanup',
     'machete_cleanup_page_content'
   );

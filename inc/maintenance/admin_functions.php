@@ -6,7 +6,7 @@ function machete_maintenance_page() {
     'machete',
     __('Coming Soon & Maintenance Mode','machete'),
     __('Maintenance Mode','machete'),
-    'manage_options',
+    'publish_posts', // targeting Author role
     'machete-maintenance',
     'machete_maintenance_page_content'
   );

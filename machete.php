@@ -31,8 +31,6 @@ $machete_active_modules = array();
 function machete_init(){
 	global $machete_active_modules;
 
-	if ( is_admin() &&  ! current_user_can('manage_options')) return;
-
 	$machete_get_upload_dir = wp_upload_dir();
 	define('MACHETE_BASE_PATH', plugin_dir_path( __FILE__ ));
 	define('MACHETE_RELATIVE_BASE_PATH', substr(MACHETE_BASE_PATH, strlen(ABSPATH)-1));
@@ -43,13 +41,29 @@ function machete_init(){
 	define('MACHETE_DATA_URL',  $machete_get_upload_dir['baseurl'].'/machete/');
 
 	$machete_active_modules = array(
-		'cleanup' => __('Optimization','machete'),
-    	'cookies' => __('Cookie Law','machete'),
-    	'utils' => __('Analytics & Code','machete'),
-    	'maintenance' => __('Maintenance Mode','machete'),
+		'cleanup' => array(
+			'title' => __('Optimization','machete'),
+			'role' => 'admin'
+		),
+    	'cookies' => array(
+			'title' => __('Cookie Law','machete'),
+			'role' => 'author'
+		),
+    	'utils' => array(
+			'title' => __('Analytics & Code','machete'),
+			'role' => 'admin'
+		),
+    	'maintenance' => array(
+			'title' => __('Maintenance Mode','machete'),
+			'role' => 'author'
+		),
 	);
+
 	if (defined ('MACHETE_POWERTOOLS_INIT') ) {
-		$machete_active_modules['powertools'] = __('PowerTools','machete'); 
+		$machete_active_modules['powertools'] = array(
+			'title' => __('PowerTools','machete'),
+			'role' => 'admin'
+		); 
 	}
 
 	if ( ! is_admin() ) {

@@ -7,7 +7,7 @@ function machete_cookies_page() {
   	'machete',
   	__('Cookie Law Warning','machete'),
     __('Cookie Law','machete'),
-    'manage_options',
+    'publish_posts', // targeting Author role
     'machete-cookies',
     'machete_cookies_page_content'
   );

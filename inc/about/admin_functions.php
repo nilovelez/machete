@@ -6,7 +6,7 @@ function machete_about_page() {
     'machete',
     __('About Machete','machete'),
     __('About Machete','machete'),
-    'manage_options',
+    'publish_posts', // targeting Author role
     'machete',
     'machete_about_page_content'
   );
