@@ -93,7 +93,7 @@
 	}
 	#machete-module-list .machete-module h3 {
 	    color: #0073aa;
-	    font-size: 1.4em;
+	    font-size: 1.3em;
 	    font-weight: 500;
 	    margin-top: 0;
 	}
@@ -141,25 +141,25 @@
 	$module_info = array(
 		'cleanup' => array(
 			'full_title' => __('WordPress Optimization','machete'),
-			'description' => __('WordPress has a los of code just to keep backward compatiblity or enable optional features. You can disable most of it and save some time from each page request while making your installation safer.','machete'),
+			'description' => __('Reduces much of the legacy code bloat in WordPress page headers. It also has some tweaks to make you site faster and safer.','machete'),
 			'is_active' => true,
 			'role' => 'admin'
 		),
 		'cookies' => array(
 			'full_title' => __('Cookie Law Warning','machete'),
-			'description' => __('We know you hate cookie warning bars. Well, this is the less hateable cookie bar you\'ll find. It is really light, it won\'t affect your PageSpeed score and plays well with static cache plugins.','machete'),
+			'description' => __('Light and responsive cookie law warning bar that won\'t affect your PageSpeed score and plays well with static cache plugins.','machete'),
 			'is_active' => true,
 			'role' => 'author'
 		),
 		'utils' => array(
 			'full_title' => __('Analytics and Custom Code','machete'),
-			'description' => __('You don\'t need a zillion plugins to perform easy task like inserting a verification meta tag (Google Search Console, Bing, Pinterest), a json-ld snippet or a custom styleseet (Google Fonts, Print Styles, accesibility tweaks...).','machete'),
+			'description' => __('Google Analytics tracking code manager and a simple editor to insert HTML, CSS and JS snippets or site verification tags.'),
 			'is_active' => true,
 			'role' => 'admin'
 		),
 		'maintenance' => array(
 			'full_title' => __('Maintenance Mode','machete'),
-			'description' => __('If you have to close yout website temporarly to the public, the navive WordPress maintenance mode falls short and most coming soon plugins are bulky, incomplete or expensive. Machete maintenance mode is light, simple and versatile.','machete'),
+			'description' => __('Customizable maintenance page to close your site during updates or development. It has a "magic link" to grant temporary access.','machete'),
 			'is_active' => true,
 			'role' => 'admin'
 		),
