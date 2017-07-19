@@ -65,7 +65,6 @@
 	    position: relative;
 	    overflow: hidden;
 	}
-
 	#machete-module-list .machete-module .machete-module-image {
 	    width: 128px;
 	    height: 128px;
@@ -93,9 +92,10 @@
 	}
 	#machete-module-list .machete-module h3 {
 	    color: #0073aa;
-	    font-size: 1.3em;
+	    font-size: 1.4em;
 	    font-weight: 500;
 	    margin-top: 0;
+	    margin-right: 10px;
 	}
 	#machete-module-list .machete-module.module-is-inactive h3 {
 	    color: #666;
@@ -108,20 +108,27 @@
 	}
 
 	#machete-module-list .machete-module .machete-module-active-indicator {
-	    float: right;
-	    margin: 0 0 10px 10px;
-	    background: #00a0d2;
+	    background: #ff9900;
 	    padding: 4px 10px;
 	    color: #fff;
-	    border-radius: 3px;
-	    -webkit-transition: all 0.35s ease;
-	    -moz-transition: all 0.35s ease;
-	    -o-transition: all 0.35s ease;
-	    transition: all 0.35s ease;
+	    display: inline-block;
+	    width: 200px;
+	    text-align: center;
+	    position: absolute;
+	    top: 20px;
+	    right: -80px;
+	    transform: rotate(45deg);
 	}
 
+	#machete-module-list .machete-module .machete-module-bottom {
+		background-color: #fafafa;
+		border-top: 1px solid #D9D9D9;
+	    padding: 20px;
+	    clear: left;	
+	}
+
+
 	#machete-module-list .machete-module .machete-module-toggle-active {
-	    margin-top: 15px;
 	    display: inline-block;
 	}
 
@@ -163,6 +170,12 @@
 			'is_active' => true,
 			'role' => 'admin'
 		),
+		'clone' => array(
+			'full_title' => __('Post & Page Cloner','machete'),
+			'description' => __('Customizable maintenance page to close your site during updates or development. It has a "magic link" to grant temporary access.','machete'),
+			'is_active' => false,
+			'role' => 'admin'
+		),
 		'powertools' => array(
 			'full_title' => __('Machete PowerTools','machete'),
 			'description' => __('','machete'),
@@ -195,12 +208,20 @@
 					<div class="machete-module-description">
 						<?php echo $args['description'] ?>
 					</div>
+					<?php if ($args['is_active']){ ?><div class="machete-module-active-indicator"><?php _e('Active','machete') ?></div><?php } ?>
 
+				</div>
+				<div class="machete-module-bottom">
 					<div class="machete-module-toggle-active">
 						<button class="button-secondary machete-module-activate" data-status="1">Activar</button>
 						<button class="button-secondary machete-module-deactivate" data-status="0">Desactivar</button>
 					</div>
+
+					
+
 				</div>
+
+
 			</div></div>
 
 		<?php } ?>
