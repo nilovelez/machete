@@ -102,15 +102,18 @@ add_action('admin_menu', 'machete_menu');
 
 
 function machete_admin_tabs($current = '') {
-  global $machete_active_modules;
+  global $machete_modules;
 
   $is_admin = current_user_can('manage_options') ? true : false;
   	
   echo '<h2 class="nav-tab-wrapper">';
-	foreach($machete_active_modules as $slug => $args) {
+	foreach($machete_modules as $slug => $args) {
 
     if (!$is_admin && ($args['role'] == 'admin')) continue;
-    if (!$is_admin && ($args['role'] == 'admin')) continue;
+    //if (!$is_admin && ($args['role'] == 'admin')) continue;
+
+    if ( ! $args['is_active'] ) continue;
+    if ( ! $args['has_config'] ) continue;
 
     $slug = 'machete-'.$slug;
 		if ($slug == $current){
@@ -133,6 +136,7 @@ function machete_action_success() {
 
 require('inc/about/admin_functions.php');
 
-foreach ($machete_active_modules as $machete_module => $machete_module_name) {
+foreach ($machete_modules as $machete_module => $args) {
+    if ( ! $args['is_active'] ) continue;
     @require_once('inc/'.$machete_module.'/admin_functions.php');
 }

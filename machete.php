@@ -13,8 +13,16 @@ Text Domain: machete
 Domain Path: /languages
 */
 
-
 if ( ! defined( 'ABSPATH' ) ) exit;
+
+$machete_get_upload_dir = wp_upload_dir();
+define('MACHETE_BASE_PATH', plugin_dir_path( __FILE__ ));
+define('MACHETE_RELATIVE_BASE_PATH', substr(MACHETE_BASE_PATH, strlen(ABSPATH)-1));
+define('MACHETE_BASE_URL',  plugin_dir_url( __FILE__ ));
+
+define('MACHETE_DATA_PATH', $machete_get_upload_dir['basedir'].'/machete/');
+define('MACHETE_RELATIVE_DATA_PATH', substr(MACHETE_DATA_PATH, strlen(ABSPATH)-1));
+define('MACHETE_DATA_URL',  $machete_get_upload_dir['baseurl'].'/machete/');
 
 
 register_activation_hook( __FILE__, 'machete_screen_activate' );
@@ -26,45 +34,13 @@ function machete_load_plugin_textdomain() {
     load_plugin_textdomain( 'machete', FALSE, basename( dirname( __FILE__ ) ) . '/languages/' );
 }
 
-$machete_active_modules = array();
+if (!isset($machete_modules)) $machete_modules = array();
 
 function machete_init(){
-	global $machete_active_modules;
+	global $machete_modules;
 
-	$machete_get_upload_dir = wp_upload_dir();
-	define('MACHETE_BASE_PATH', plugin_dir_path( __FILE__ ));
-	define('MACHETE_RELATIVE_BASE_PATH', substr(MACHETE_BASE_PATH, strlen(ABSPATH)-1));
-	define('MACHETE_BASE_URL',  plugin_dir_url( __FILE__ ));
+	require ('machete_modules.php');
 
-	define('MACHETE_DATA_PATH', $machete_get_upload_dir['basedir'].'/machete/');
-	define('MACHETE_RELATIVE_DATA_PATH', substr(MACHETE_DATA_PATH, strlen(ABSPATH)-1));
-	define('MACHETE_DATA_URL',  $machete_get_upload_dir['baseurl'].'/machete/');
-
-	$machete_active_modules = array(
-		'cleanup' => array(
-			'title' => __('Optimization','machete'),
-			'role' => 'admin'
-		),
-    	'cookies' => array(
-			'title' => __('Cookie Law','machete'),
-			'role' => 'author'
-		),
-    	'utils' => array(
-			'title' => __('Analytics & Code','machete'),
-			'role' => 'admin'
-		),
-    	'maintenance' => array(
-			'title' => __('Maintenance Mode','machete'),
-			'role' => 'author'
-		),
-	);
-
-	if (defined ('MACHETE_POWERTOOLS_INIT') ) {
-		$machete_active_modules['powertools'] = array(
-			'title' => __('PowerTools','machete'),
-			'role' => 'admin'
-		); 
-	}
 
 	if ( ! is_admin() ) {
 		require_once('machete_frontend.php');
