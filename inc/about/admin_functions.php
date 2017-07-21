@@ -16,6 +16,8 @@ add_action('admin_menu', 'machete_about_page');
 function machete_about_page_content() {
 	global $machete_modules;
 	require('admin_content.php');
+	add_filter('admin_footer_text', 'machete_footer_text');
+
 }
 
 function machete_manage_modules ($module, $action){

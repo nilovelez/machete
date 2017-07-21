@@ -15,6 +15,7 @@ add_action('admin_menu', 'machete_powertools_page');
 
 function machete_powertools_page_content() {
   require('admin_content.php');
+  add_filter('admin_footer_text', 'machete_footer_text');
 }
 
 

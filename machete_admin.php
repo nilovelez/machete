@@ -21,6 +21,11 @@ function machete_do_activation_redirect() {
 add_action( 'admin_init', 'machete_do_activation_redirect' );
 
 
+function machete_footer_text() {
+    /* translators: %s: five stars */
+    return sprintf( __( 'If you like <strong>Machete</strong> please %sleave us a rating of 5 stars%s. Thank you in advance!', 'machete' ), '<a href="https://wordpress.org/support/plugin/machete/reviews/#new-post" target="_blank">','</a>' );
+}
+
 function machete_filter_plugin_action_links( $plugin_actions, $plugin_file ) {
 
   $new_actions = array();

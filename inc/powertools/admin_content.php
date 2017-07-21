@@ -52,10 +52,6 @@ if(!$machete_powertools_settings = get_option('machete_powertools_settings')){
 };
 
 $machete_powertools_array = array(
-	'post_cloner' => array(
-		'title' => __('Post/Page clone','machete'),
-		'description' => __('Enables the "clone post" feature for every post type except "product".','machete')
-	),
 	'widget_shortcodes' => array(
 		'title' => __('Shortcodes in Widgets','machete'),
 		'description' => __('Enables the use of shortcodes in text/html widgets. It may slightly impact performance','machete')
