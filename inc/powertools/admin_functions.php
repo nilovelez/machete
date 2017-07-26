@@ -60,25 +60,6 @@ function machete_powertools_save_options() {
 	return false;
 }
 
-function machete_powertools_do_action(){
-
-	switch ($_POST['action']){
-		case __('Purge Transients','machete') :
-			return machete_powertools_purge_transients();
-			break;
-		case __('Purge Post Revisions','machete') :
-			return machete_powertools_purge_post_revisions();
-			break;
-		case __('Flush Rewrite Rules','machete') :
-			return machete_powertools_flush_rewrite_rules();
-			break;
-		default:
-			return false;
-
-	}
-
-	return false;
-}
 
 function machete_powertools_purge_transients(){
 	//echo '<h1 style="text-align: right">'.__('Purge Transients','machete').'</h1>';
@@ -106,7 +87,9 @@ function machete_powertools_purge_transients(){
 		AND b.option_value < %d";
 	$rows2 = $wpdb->query( $wpdb->prepare( $sql, $wpdb->esc_like( '_site_transient_' ) . '%', $wpdb->esc_like( '_site_transient_timeout_' ) . '%', time() ) );
 
-	echo '<div class="updated inline"><p>' . sprintf( __( '%d Transients Rows Cleared', 'woocommerce' ), $rows + $rows2 ) . '</p></div>';
+	new Machete_Notice(
+	  sprintf( __( '%d Transients Rows Cleared', 'machete' ), $rows + $rows2 ), 'success'
+	);
 
 	return true;
 }
@@ -125,7 +108,7 @@ function machete_powertools_purge_post_revisions(){
 		ON (a.ID = b.object_id)
 		LEFT JOIN wp_postmeta c ON (a.ID = c.post_id);";
 	$rows = $wpdb->query($sql);
-	echo '<div class="updated inline"><p>' . sprintf( __( '%d Post revisions deleted', 'woocommerce' ), $rows) . '</p></div>';
+	//echo '<div class="updated inline"><p>' . sprintf( __( '%d Post revisions deleted', 'woocommerce' ), $rows) . '</p></div>';
 	
 	new Machete_Notice(
 	  sprintf( _n( 'Success! %s Post revision deleted.', 'Success! %s Post revisions deleted.', $rows, 'machete' ), $rows ),
@@ -136,10 +119,11 @@ function machete_powertools_purge_post_revisions(){
 }
 
 function machete_powertools_flush_rewrite_rules(){
-	//echo '<h1 style="text-align: right">'.__('Flush Rewrite Rules','machete').'</h1>';
-	
 	flush_rewrite_rules();
 
+	new Machete_Notice(
+	  __('Rewrite rules flushed', 'machete' ), 'success'
+	);
 
 	return true;
 }
@@ -156,10 +140,23 @@ if (isset($_POST['machete-powertools-saved'])){
 
 if (isset($_POST['machete-powertools-action'])){
 
-  check_admin_referer( 'machete_powertools_action' );
-  if(machete_powertools_do_action()){
-    new Machete_Notice(__( 'Options saved!', 'machete' ), 'success');
-  }
+	check_admin_referer( 'machete_powertools_action' );
+
+	switch ($_POST['action']){
+		case __('Purge Transients','machete') :
+			return machete_powertools_purge_transients();
+			break;
+		case __('Purge Post Revisions','machete') :
+			return machete_powertools_purge_post_revisions();
+			break;
+		case __('Flush Rewrite Rules','machete') :
+			return machete_powertools_flush_rewrite_rules();
+			break;
+		default:
+			new Machete_Notice(__( 'Unknown action requested', 'machete' ), 'error');
+			return false;
+
+	}
 }
 
 
@@ -172,6 +169,13 @@ if(
     if (in_array('page_excerpts',$machete_powertools_settings)) {
         add_post_type_support( 'page', 'excerpt' );
     }
+
+    // enable oembed in text widgets
+	if (in_array('widget_oembed',$settings)) {
+		global $wp_embed;
+		add_filter( 'widget_text', array( $wp_embed, 'run_shortcode' ), 8 );
+		add_filter( 'widget_text', array( $wp_embed, 'autoembed'), 8 );
+	}
 
     // save with keyboard
     if (in_array('save_with_keyboard',$machete_powertools_settings)) {

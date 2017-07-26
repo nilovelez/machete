@@ -4,7 +4,6 @@ if ( ! defined( 'ABSPATH' ) ) exit;
 function machete_powertools($settings){
 
   /*
-  'post_cloner'
   'widget_shortcodes'
   'widget_oembed'
   'rss_thumbnails'
