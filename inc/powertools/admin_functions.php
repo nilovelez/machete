@@ -177,7 +177,7 @@ if(
     if (in_array('save_with_keyboard',$machete_powertools_settings)) {
         function machete_save_with_keyboard() {
 
-          wp_register_script('machete_save_with_keyboard',MACHETE_POWERTOOLS_BASE_URL.'vendor/save-with-keyboard/saveWithKeyboard.js',array('jquery'));
+          wp_register_script('machete_save_with_keyboard',MACHETE_BASE_URL.'vendor/save-with-keyboard/saveWithKeyboard.js',array('jquery'));
           $translation_array = array(
             'save_button_tooltip' => __( 'Ctrl+S or Cmd+S to click', 'machete' ),
             'preview_button_tooltip' => __( 'Ctrl+P or Cmd+P to preview', 'machete' )

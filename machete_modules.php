@@ -49,8 +49,8 @@ $machete_modules['clone'] = array(
 );
 $machete_modules['powertools'] = array(
 	'title' => __('PowerTools','machete'),
-	'full_title' => __('Machete Powertools','machete'),
-	'description' => __('','machete'),
+	'full_title' => __('Machete PowerTools','machete'),
+	'description' => __('Machete PowerTools is an free upgrade module targeted at WordPress developers and power users.','machete'),
 	'is_active' => false,
 	'has_config' => true,
 	'can_be_disabled' => false,
@@ -67,6 +67,7 @@ if($machete_disabled_modules = get_option('machete_disabled_modules')){
 
 if (defined('MACHETE_POWERTOOLS_INIT')) {
 	$machete_modules['powertools']['is_active'] = true;
+	$machete_modules['powertools']['description'] = __('Machete PowerTools are now active!','machete');
 }
 
 

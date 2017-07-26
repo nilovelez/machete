@@ -40,7 +40,7 @@ if(!$machete_alfonso_content = @file_get_contents(MACHETE_DATA_PATH.'body.html')
 
 
 if (defined ('MACHETE_POWERTOOLS_INIT') ) {
-	include (MACHETE_POWERTOOLS_BASE_PATH.'utils_highlight.php');
+	include (MACHETE_BASE_PATH.'inc/powertools/utils_highlight.php');
 } ?>
 
 <div class="wrap machete-wrap machete-section-wrap">
