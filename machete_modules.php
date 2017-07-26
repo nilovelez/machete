@@ -39,7 +39,7 @@ $machete_modules['maintenance'] = array(
 	'role' => 'author'
 );
 $machete_modules['clone'] = array(
-	'title' => __('Post & Page Clone','machete'),
+	'title' => __('Post & Page Cloner','machete'),
 	'full_title' => __('Post & Page Cloner','machete'),
 	'description' => __('Adds a "duplicate" link to post, page and most post types lists. Also adds "copy to new draft" function to the post editor.','machete'),
 	'is_active' => true,
