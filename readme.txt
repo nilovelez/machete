@@ -53,6 +53,9 @@ Yes, but Machete does it well enough and probably is much lighter.
 
 = 2.0 = 
 * Huge internal refactor. Machete modules can now be disabled individually.
+* New Post & Page Cloner module
+* redefined user role system. Authors can now access some function and backend actions are executed with all user levels
+* Shiny new Icons!
 
 = 1.7.2 =
 * Rollback to re-enable the option to remove oEmbed Scripts. WordPress 4.8 doesn't need the oembed script but the JSON API
