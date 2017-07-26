@@ -41,7 +41,7 @@ $machete_modules['maintenance'] = array(
 $machete_modules['clone'] = array(
 	'title' => __('Post & Page Clone','machete'),
 	'full_title' => __('Post & Page Cloner','machete'),
-	'description' => __('','machete'),
+	'description' => __('Adds a "duplicate" link to post, page and most post types lists. Also adds "copy to new draft" function to the post editor.','machete'),
 	'is_active' => true,
 	'has_config' => false,
 	'can_be_disabled' => true,
@@ -67,7 +67,7 @@ if($machete_disabled_modules = get_option('machete_disabled_modules')){
 
 if (defined('MACHETE_POWERTOOLS_INIT')) {
 	$machete_modules['powertools']['is_active'] = true;
-	$machete_modules['powertools']['description'] = __('Machete PowerTools are now active!','machete');
+	$machete_modules['powertools']['description'] = __('Machete PowerTools are now active! Enjoy your new toy!','machete');
 }
 
 
