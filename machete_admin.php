@@ -48,7 +48,7 @@ add_action('admin_head', 'machete_remove_help_tabs' );
 
 
 function machete_enqueue_custom_admin_style() {
-        wp_register_style( 'custom_wp_admin_css', plugin_dir_url( __FILE__ ) . 'css/admin.css', false, '1.0.0' );
+        wp_register_style( 'custom_wp_admin_css', plugin_dir_url( __FILE__ ) . 'css/admin_v2.css', false, '2.0.0' );
         wp_enqueue_style( 'custom_wp_admin_css' );
 }
 add_action( 'admin_enqueue_scripts', 'machete_enqueue_custom_admin_style' );

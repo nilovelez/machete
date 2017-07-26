@@ -51,6 +51,9 @@ Yes, but Machete does it well enough and probably is much lighter.
 
 == Changelog ==
 
+= 2.0.1 =
+* renamed the admin.css file to admin_v2.css to prevent display problems to users who have the old stylesheet cached
+
 = 2.0 = 
 * Huge internal refactor. Machete modules can now be disabled individually.
 * New Post & Page Cloner module
