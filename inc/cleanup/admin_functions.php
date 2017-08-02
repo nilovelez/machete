@@ -88,6 +88,15 @@ if(
 
   }
 
+  if (in_array('capital_P_dangit',$settings)) {
+    foreach ( array( 'the_content', 'the_title', 'wp_title', 'comment_text' ) as $filter ) {
+      $priority = has_filter( $filter, 'capital_P_dangit' );
+      if ( $priority !== FALSE ) {
+        remove_filter( $filter, 'capital_P_dangit', $priority );
+      }
+    }
+  }
+
   if (in_array('pdf_thumbnails',$machete_cleanup_settings)) {
     function machete_disable_pdf_previews() {
       $fallbacksizes = array();

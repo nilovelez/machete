@@ -51,6 +51,10 @@ $machete_cleanup_array = array(
 		'title' => __('dns-prefetch','machete'),
 		'description' => __('Removes dns-prefetch links from the header','machete')
 	),
+	'capital_P_dangit' => array(
+		'title' => __('capital_P_dangit'),
+		'description' => __('Removes the filter that converts Wordpress to WordPress in every dang title, content or comment text.','machete')
+	),
 	
 	
 );

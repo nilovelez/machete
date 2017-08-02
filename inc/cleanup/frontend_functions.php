@@ -143,6 +143,15 @@ function machete_optimize($settings){
     });
   }
 
+  if (in_array('capital_P_dangit',$settings)) {
+    foreach ( array( 'the_content', 'the_title', 'wp_title', 'comment_text' ) as $filter ) {
+      $priority = has_filter( $filter, 'capital_P_dangit' );
+      if ( $priority !== FALSE ) {
+        remove_filter( $filter, 'capital_P_dangit', $priority );
+      }
+    }
+  }
+
   /********* OPTIMIZATION TWEAKS ***********/
   if (in_array('jquery-migrate',$settings)) {
     add_filter( 'wp_default_scripts', 'machete_dequeue_jquery_migrate' );
