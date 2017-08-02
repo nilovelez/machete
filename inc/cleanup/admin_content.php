@@ -129,16 +129,18 @@ $machete_all_cleanup_checked = (count(array_intersect(array_keys($machete_cleanu
 		<thead>
 			<tr>
 				<td class="manage-column column-cb check-column " ><input type="checkbox" name="check_all" id="machete_cleanup_checkall_fld" <?php if ($machete_all_cleanup_checked) echo 'checked' ?>></td>
-				<th class="column-title"><?php _e('Remove','machete') ?></th>
+				<th class="column-title manage-column column-primary"><?php _e('Remove','machete') ?></th>
 				<th><?php _e('Explanation','machete') ?></th>
 			</tr>
 		</thead>
 		<tbody>
 		<?php foreach($machete_cleanup_array as $option_slug => $option){ ?>
 			<tr>
-				<td><input type="checkbox" name="optionEnabled[]" value="<?php echo $option_slug ?>" id="<?php echo $option_slug ?>_fld" <?php if (in_array($option_slug, $machete_cleanup_settings)) echo 'checked' ?>></td>
-				<td class="column-title column-primary"><strong><?php echo $option['title'] ?></strong></td>
-				<td><?php echo $option['description'] ?></td>
+				<th scope="row" class="check-column"><input type="checkbox" name="optionEnabled[]" value="<?php echo $option_slug ?>" id="<?php echo $option_slug ?>_fld" <?php if (in_array($option_slug, $machete_cleanup_settings)) echo 'checked' ?>></th>
+				<td class="column-title column-primary"><strong><?php echo $option['title'] ?></strong>
+				<button type="button" class="toggle-row"><span class="screen-reader-text"><?php _e('Show more details','machete') ?></span></button>
+				</td>
+				<td data-colname="<?php _e('Explanation','machete') ?>"><?php echo $option['description'] ?></td>
 			</tr>
 
 		<?php } ?>
@@ -155,17 +157,19 @@ $machete_all_cleanup_checked = (count(array_intersect(array_keys($machete_cleanu
 		<table class="wp-list-table widefat fixed striped posts machete-options-table machete-optimize-table">
 		<thead>
 			<tr>
-				<td class="manage-column column-cb check-column " ><input type="checkbox" name="check_all" id="machete_optimize_checkall_fld" <?php if ($machete_all_optimize_checked) echo 'checked' ?>></td>
-				<th class="column-title"><?php _e('Remove','machete') ?></th>
+				<td class="manage-column column-cb check-column " ><input type="checkbox" name="check_all" id="machete_cleanup_checkall_fld" <?php if ($machete_all_cleanup_checked) echo 'checked' ?>></td>
+				<th class="column-title manage-column column-primary"><?php _e('Remove','machete') ?></th>
 				<th><?php _e('Explanation','machete') ?></th>
 			</tr>
 		</thead>
 		<tbody>
 		<?php foreach($machete_optimize_array as $option_slug => $option){ ?>
 			<tr>
-				<td><input type="checkbox" name="optionEnabled[]" value="<?php echo $option_slug ?>" id="<?php echo $option_slug ?>_fld" <?php if (in_array($option_slug, $machete_cleanup_settings)) echo 'checked' ?>></td>
-				<td class="column-title column-primary"><strong><?php echo $option['title'] ?></strong></td>
-				<td><?php echo $option['description'] ?></td>
+				<th scope="row" class="check-column"><input type="checkbox" name="optionEnabled[]" value="<?php echo $option_slug ?>" id="<?php echo $option_slug ?>_fld" <?php if (in_array($option_slug, $machete_cleanup_settings)) echo 'checked' ?>></th>
+				<td class="column-title column-primary"><strong><?php echo $option['title'] ?></strong>
+				<button type="button" class="toggle-row"><span class="screen-reader-text"><?php _e('Show more details','machete') ?></span></button>
+				</td>
+				<td data-colname="<?php _e('Explanation','machete') ?>"><?php echo $option['description'] ?></td>
 			</tr>
 
 		<?php } ?>
