@@ -27,7 +27,7 @@ define('MACHETE_DATA_URL',  $machete_get_upload_dir['baseurl'].'/machete/');
 
 register_activation_hook( __FILE__, 'machete_screen_activate' );
 function machete_screen_activate() {
-	set_transient( '_machete_welcome_redirect', true, 30 );
+	add_option( 'machete_activation_welcome', 'pending');
 }
 
 function machete_load_plugin_textdomain() {

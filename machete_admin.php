@@ -4,19 +4,20 @@ if ( ! defined( 'MACHETE_ADMIN_INIT' ) ) exit;
 add_action( 'plugins_loaded', 'machete_load_plugin_textdomain' );
 
 function machete_do_activation_redirect() {
+  
   // Bail if no activation redirect
-    if ( ! get_transient( '_machete_welcome_redirect' ) ) {
-    return;
-  }
-  // Delete the redirect transient
-  delete_transient( '_machete_welcome_redirect' );
+  if (get_option( 'machete_activation_welcome') == 'pending' ){
+    delete_option( 'machete_activation_welcome' );
+    
+    // Bail if activating from network, or bulk
+    if ( is_network_admin() || isset( $_GET['activate-multi'] ) ) {
+      return;
+    }
 
-  // Bail if activating from network, or bulk
-  if ( is_network_admin() || isset( $_GET['activate-multi'] ) ) {
-    return;
+    // Redirect to about page
+    wp_safe_redirect( add_query_arg( array( 'page' => 'machete' ), admin_url( 'admin.php' ) ) );
   }
-  // Redirect to about page
-  wp_safe_redirect( add_query_arg( array( 'page' => 'machete' ), admin_url( 'admin.php' ) ) );
+  
 }
 add_action( 'admin_init', 'machete_do_activation_redirect' );
 
