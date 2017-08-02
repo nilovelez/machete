@@ -20,6 +20,9 @@ The maintenance mode that ships with WordPress is just a basic lockdown that is 
 ### Post & Page cloner ###
 Adds a "duplicate" link to post, page and most post types lists. Also adds "copy to new draft" function to the post editor.
 
+### Post & Page cloner ###
+Adds a "duplicate" link to post, page and most post types lists. Also adds "copy to new draft" function to the post editor.
+
 
 ##Installation
 1. Upload the plugin files to the `/wp-content/plugins/machete` directory, or install the plugin through the WordPress plugins screen directly.

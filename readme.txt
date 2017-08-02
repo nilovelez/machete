@@ -51,6 +51,11 @@ Yes, but Machete does it well enough and probably is much lighter.
 
 == Changelog ==
 
+= 2.0.2 =
+* Added an option to remove the capital_P_dangit filter
+* Fixed the mobile styles of the admin tabs
+* Switched the welcome check from a transient to an option saving 3 queries from each admin pageload
+
 = 2.0.1 =
 * renamed the admin.css file to admin_v2.css to prevent display problems to users who have the old stylesheet cached
 
