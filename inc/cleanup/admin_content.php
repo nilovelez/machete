@@ -1,5 +1,22 @@
 <?php if ( ! defined( 'MACHETE_ADMIN_INIT' ) ) exit;?>
 
+<style>
+	.machete_security_badge {
+		padding: 2px 5px;
+		display: inline-block;
+		font-weight: normal;
+		font-size: 14px;
+		border-radius: 4px;
+		color: #fff;
+		background-color: #999;
+		margin-left: 10px;
+	}
+	.machete_safe_badge {background-color: #4ab866;}
+	.machete_warning_badge {background-color: #f0b849;}
+	.machete_danger_badge {background-color: #d94f4f;}
+
+</style>
+
 <div class="wrap machete-wrap machete-section-wrap">
 
 		<h1><?php _e('WordPress Optimization','machete') ?></h1>
@@ -51,19 +68,11 @@ $machete_cleanup_array = array(
 		'title' => __('dns-prefetch','machete'),
 		'description' => __('Removes dns-prefetch links from the header','machete')
 	),
-	'capital_P_dangit' => array(
-		'title' => __('capital_P_dangit'),
-		'description' => __('Removes the filter that converts Wordpress to WordPress in every dang title, content or comment text.','machete')
-	),
 	
 	
 );
 
 $machete_optimize_array = array(
-	'json_api' => array(
-		'title' => __('JSON API','machete'),
-		'description' => __('Disable Json API and remove link from header. Use with care.','machete') . ' <br><span style="color: red">'.__('The video widget added in WordPress 4.8 needs the JSON API to work','machete').'</span>'
-	),
 	'emojicons' => array(
 		'title' => __('Emojicons','machete'),
 		'description' => __('Remove lots of emoji styles and scripts from the header, RSS, mail function, tinyMCE editor...','machete')
@@ -76,36 +85,64 @@ $machete_optimize_array = array(
 		'title' => __('Limit Post Revisions','machete'),
 		'description' => __('Limits the number of stored revisions to 5 only WP_POST_REVISIONS constant has been defined.','machete')
 	),
-	'jquery-migrate' => array(
-		'title' => __('remove jQuery-migrate','machete'),
-		'description' => __('jQuery-migrate provides diagnostics that can simplify upgrading to new versions of jQuery, you can safely disable it.','machete'). ' <br><span style="color: red">'.__('Breaks some themes that depend on visual builders, like Avada or The7','machete').'</span>'
-	),
-	// @fpuente addons
 	
-	'oembed_scripts' => array(
-		'title' => __('Remove oEmbed Scripts','machete'),
-		'description' => __('Since WordPress 4.4, oEmbed is installed and available by default. If you don’t need oEmbed, you can remove it.','machete')
-	),
 	
-	'slow_heartbeat' => array(
+	'slow_heartbeat' => array( // @fpuente addons
 		'title' => __('Slow Heartbeat','machete'),
 		'description' => __('By default, heartbeat makes a post call every 15 seconds on post edit pages. Change to 60 seconds (less CPU usage).','machete')
 	),	
-	'comments_reply_feature' => array(
+	'comments_reply_feature' => array( // @fpuente addons
 		'title' => __('JS Comment reply','machete'),
 		'description' => __('Load the comment-reply JS file only when needed.','machete')
 	),
 	
-	'empty_trash_soon' => array(
+	'empty_trash_soon' => array( // @fpuente addons
 		'title' => __('Empty trash every week','machete'),
 		'description' => __('You can shorten the time posts are kept in the trash, which is 30 days by default, to 1 week.','machete')
 	),
+
+	'capital_P_dangit' => array(
+		'title' => __('capital_P_dangit'),
+		'description' => __('Removes the filter that converts Wordpress to WordPress in every dang title, content or comment text.','machete')
+	),
+
+	'disable_editor' => array(
+		'title' => __('Plugin and theme editor','machete'),
+		'description' => __('Disables the plugins and theme editor. A mostly useless tool that can be very dangerous in the wrong hands.','machete')
+	),
+	'intermediate_image_sizes' => array(
+		'title' => __('medium_large thumbnail','machete'),
+		'description' => __('Prevents WordPress from generating the medium_large 768px thumbnail size of image uploads.','machete')
+	),
+
 	
 );
 
-$machete_all_optimize_checked = (count(array_intersect(array_keys($machete_optimize_array), $machete_cleanup_settings)) == count($machete_optimize_array)) ? true : false;
+$machete_tweaks_array = array(
+	'json_api' => array(
+		'title' => __('JSON API','machete'),
+		'description' => __('Disable Json API and remove link from header. Use with care.','machete') . ' <br><span style="color: red">'.__('The video widget added in WordPress 4.8 needs the JSON API to work','machete').'</span>'
+	),
+	'jquery-migrate' => array(
+		'title' => __('remove jQuery-migrate','machete'),
+		'description' => __('jQuery-migrate provides diagnostics that can simplify upgrading to new versions of jQuery, you can safely disable it.','machete'). ' <br><span style="color: red">'.__('Breaks some themes that depend on visual builders, like Avada or The7','machete').'</span>'
+	),
+	'oembed_scripts' => array( // @fpuente addons
+		'title' => __('Remove oEmbed Scripts','machete'),
+		'description' => __('Since WordPress 4.4, oEmbed is installed and available by default. If you don’t need oEmbed, you can remove it.','machete')
+	),
+	
+	
+	
+	
+);
 
 $machete_all_cleanup_checked = (count(array_intersect(array_keys($machete_cleanup_array), $machete_cleanup_settings)) == count($machete_cleanup_array)) ? true : false;
+
+$machete_all_optimize_checked = (count(array_intersect(array_keys($machete_optimize_array), $machete_cleanup_settings)) == count($machete_optimize_array)) ? true : false;
+
+$machete_all_tweaks_checked = (count(array_intersect(array_keys($machete_tweaks_array), $machete_cleanup_settings)) == count($machete_tweaks_array)) ? true : false;
+
 ?>
 
 	
@@ -120,7 +157,7 @@ $machete_all_cleanup_checked = (count(array_intersect(array_keys($machete_cleanu
 
 			<input type="hidden" name="machete-cleanup-saved" value="true">
 
-		<h3><?php _e('Header Cleanup','machete') ?></h3>
+		<h3><?php _e('Header Cleanup','machete') ?>  <span class="machete_security_badge machete_safe_badge"><?php _e('Completely safe','machete') ?></span></h3>
 
 		<p><?php _e('This section removes code from the &lt;head&gt; tag. This makes your site faster and reduces the amount of information revealed to a potential attacker.','machete') ?></p>
 
@@ -148,7 +185,11 @@ $machete_all_cleanup_checked = (count(array_intersect(array_keys($machete_cleanu
 		</tbody>
 		</table>
 
-		<h3><?php _e('Optimization Tweaks','machete') ?></h3>
+
+
+
+
+		<h3><?php _e('Feature Cleanup','machete') ?> <span class="machete_security_badge machete_warning_badge"><?php _e('Mostly safe','machete') ?></span></h3>
 
 		<p><?php _e('This section goes futher disabling optional features. All options can be safely activated, but keep an eye on potiential plugin compatibility issues.','machete') ?></p>
 
@@ -157,7 +198,7 @@ $machete_all_cleanup_checked = (count(array_intersect(array_keys($machete_cleanu
 		<table class="wp-list-table widefat fixed striped posts machete-options-table machete-optimize-table">
 		<thead>
 			<tr>
-				<td class="manage-column column-cb check-column " ><input type="checkbox" name="check_all" id="machete_cleanup_checkall_fld" <?php if ($machete_all_cleanup_checked) echo 'checked' ?>></td>
+				<td class="manage-column column-cb check-column " ><input type="checkbox" name="check_all" id="machete_cleanup_checkall_fld" <?php if ($machete_all_optimize_checked) echo 'checked' ?>></td>
 				<th class="column-title manage-column column-primary"><?php _e('Remove','machete') ?></th>
 				<th><?php _e('Explanation','machete') ?></th>
 			</tr>
@@ -176,6 +217,37 @@ $machete_all_cleanup_checked = (count(array_intersect(array_keys($machete_cleanu
 
 		</tbody>
 		</table>
+
+
+		<h3><?php _e('Optimization Tweaks','machete') ?>  <span class="machete_security_badge machete_danger_badge"><?php _e('Handle with care','machete') ?></span></h3>
+
+		<p><?php _e('Options in this section have the most impact on WordPress performance, but also the most potential of screwing things up.','machete') ?></p>
+
+
+
+		<table class="wp-list-table widefat fixed striped posts machete-options-table machete-optimize-table">
+		<thead>
+			<tr>
+				<td class="manage-column column-cb check-column " ><input type="checkbox" name="check_all" id="machete_cleanup_checkall_fld" <?php if ($machete_all_tweaks_checked) echo 'checked' ?>></td>
+				<th class="column-title manage-column column-primary"><?php _e('Remove','machete') ?></th>
+				<th><?php _e('Explanation','machete') ?></th>
+			</tr>
+		</thead>
+		<tbody>
+		<?php foreach($machete_tweaks_array as $option_slug => $option){ ?>
+			<tr>
+				<th scope="row" class="check-column"><input type="checkbox" name="optionEnabled[]" value="<?php echo $option_slug ?>" id="<?php echo $option_slug ?>_fld" <?php if (in_array($option_slug, $machete_cleanup_settings)) echo 'checked' ?>></th>
+				<td class="column-title column-primary"><strong><?php echo $option['title'] ?></strong>
+				<button type="button" class="toggle-row"><span class="screen-reader-text"><?php _e('Show more details','machete') ?></span></button>
+				</td>
+				<td data-colname="<?php _e('Explanation','machete') ?>"><?php echo $option['description'] ?></td>
+			</tr>
+
+		<?php } ?>
+
+		</tbody>
+		</table>
+
 		<?php submit_button(); ?>
 		</form>
 

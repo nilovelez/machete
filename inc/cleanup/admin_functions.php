@@ -130,6 +130,15 @@ if(
     }
   }
 
+  if (in_array('disable_editor',$machete_cleanup_settings)) {
+    if (!defined('DISALLOW_FILE_EDIT')) {
+      define('DISALLOW_FILE_EDIT',true);
+    }
+  }
+  if (in_array('intermediate_image_sizes',$machete_cleanup_settings)) {
+    add_filter( 'intermediate_image_sizes', '__return_empty_array', 999 );
+  }
+
 }
 
 if ( ! function_exists( 'machete_disable_emojicons_tinymce' ) ) :

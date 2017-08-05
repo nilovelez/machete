@@ -151,6 +151,7 @@ function machete_optimize($settings){
       }
     }
   }
+  
 
   /********* OPTIMIZATION TWEAKS ***********/
   if (in_array('jquery-migrate',$settings)) {
@@ -190,7 +191,9 @@ function machete_optimize($settings){
 
   //empty_trash_soon está en machete_admin.php
 
-
+  if (in_array('intermediate_image_sizes',$machete_cleanup_settings)) {
+    add_filter( 'intermediate_image_sizes', '__return_empty_array', 999 );
+  }
 
 }
 
