@@ -72,11 +72,9 @@ if (isset($_POST['machete-cleanup-saved'])){
 
 
 // Machete cleanup actions specific to the back-end
-if(
-  ($machete_cleanup_settings = get_option('machete_cleanup_settings')) &&
-  (count($machete_cleanup_settings) > 0)){
 
-  if (in_array('emojicons',$machete_cleanup_settings)) {
+function machete_backend_optimize($settings){
+  if (in_array('emojicons',$settings)) {
     remove_action( 'admin_print_styles', 'print_emoji_styles' );
     //remove_action( 'wp_head', 'print_emoji_detection_script', 7 );
     remove_action( 'admin_print_scripts', 'print_emoji_detection_script' );
@@ -97,7 +95,7 @@ if(
     }
   }
 
-  if (in_array('pdf_thumbnails',$machete_cleanup_settings)) {
+  if (in_array('pdf_thumbnails',$settings)) {
     function machete_disable_pdf_previews() {
       $fallbacksizes = array();
       return $fallbacksizes;
@@ -105,7 +103,7 @@ if(
     add_filter('fallback_intermediate_image_sizes', 'machete_disable_pdf_previews');
   }
 
-  if (in_array('limit_revisions',$machete_cleanup_settings)) {
+  if (in_array('limit_revisions',$settings)) {
     if ( defined('WP_POST_REVISIONS') && (WP_POST_REVISIONS != false)) {
       add_filter( 'wp_revisions_to_keep', 'machete_revisions_filter', 10, 2 );
       function machete_revisions_filter( $num, $post ) {
@@ -115,7 +113,7 @@ if(
   }
 
   //Slow default heartbeat
-  if (in_array('slow_heartbeat',$machete_cleanup_settings)) {
+  if (in_array('slow_heartbeat',$settings)) {
     function machete_slow_heartbeat( $settings ) {
       $settings['interval'] = 60; 
       return $settings;
@@ -124,19 +122,20 @@ if(
   }
 
   //Empty trash sooner
-  if (in_array('empty_trash_soon',$machete_cleanup_settings)) {
+  if (in_array('empty_trash_soon',$settings)) {
     if (!defined('EMPTY_TRASH_DAYS')) {
       define('EMPTY_TRASH_DAYS', 7);
     }
   }
 
-  if (in_array('disable_editor',$machete_cleanup_settings)) {
+  if (in_array('medium_large_size',$settings)) {
+    add_image_size( 'medium_large', 0, 0);
+  }
+  
+  if (in_array('disable_editor',$settings)) {
     if (!defined('DISALLOW_FILE_EDIT')) {
       define('DISALLOW_FILE_EDIT',true);
     }
-  }
-  if (in_array('intermediate_image_sizes',$machete_cleanup_settings)) {
-    add_filter( 'intermediate_image_sizes', '__return_empty_array', 999 );
   }
 
 }
@@ -149,3 +148,9 @@ function machete_disable_emojicons_tinymce( $plugins ) {
   return array();
 }
 endif;
+
+if(
+  ($machete_cleanup_settings = get_option('machete_cleanup_settings')) &&
+  (count($machete_cleanup_settings) > 0)){
+    machete_backend_optimize($machete_cleanup_settings);
+}

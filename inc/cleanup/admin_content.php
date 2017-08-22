@@ -105,14 +105,17 @@ $machete_optimize_array = array(
 		'title' => __('capital_P_dangit'),
 		'description' => __('Removes the filter that converts Wordpress to WordPress in every dang title, content or comment text.','machete')
 	),
-
 	'disable_editor' => array(
 		'title' => __('Plugin and theme editor','machete'),
 		'description' => __('Disables the plugins and theme editor. A mostly useless tool that can be very dangerous in the wrong hands.','machete')
 	),
-	'intermediate_image_sizes' => array(
+	'medium_large_size' => array(
 		'title' => __('medium_large thumbnail','machete'),
 		'description' => __('Prevents WordPress from generating the medium_large 768px thumbnail size of image uploads.','machete')
+	),
+	'comment_autolinks' => array(
+		'title' => __('No comment autolinks','machete'),
+		'description' => __('URLs in comments are converted to links by default. This feature is often exploited by spammers.','machete')
 	),
 
 	

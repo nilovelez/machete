@@ -151,7 +151,7 @@ function machete_optimize($settings){
       }
     }
   }
-  
+
 
   /********* OPTIMIZATION TWEAKS ***********/
   if (in_array('jquery-migrate',$settings)) {
@@ -191,8 +191,12 @@ function machete_optimize($settings){
 
   //empty_trash_soon está en machete_admin.php
 
-  if (in_array('intermediate_image_sizes',$machete_cleanup_settings)) {
-    add_filter( 'intermediate_image_sizes', '__return_empty_array', 999 );
+  if (in_array('medium_large_size',$settings)) {
+    add_image_size( 'medium_large', 0, 0);
+  }
+
+  if (in_array('comment_autolinks',$settings)) {
+    remove_filter('comment_text', 'make_clickable', 9); 
   }
 
 }
@@ -244,3 +248,4 @@ deny from all
 if(($machete_cleanup_settings = get_option('machete_cleanup_settings')) && (count($machete_cleanup_settings) > 0)){
   machete_optimize($machete_cleanup_settings);
 }
+
