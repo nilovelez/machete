@@ -51,6 +51,12 @@ Yes, but Machete does it well enough and probably is much lighter.
 
 == Changelog ==
 
+= 2.1 = 
+* Optimization functions are now divided in header cleanup, feature cleanup and optimization tweaks.
+* Added options to remove medium_large thumbnail size
+* Added option to disable plugin and theme editor
+* Added option to remove comment autolinks
+
 = 2.0.2 =
 * Added an option to remove the capital_P_dangit filter
 * Fixed the mobile styles of the admin tabs
