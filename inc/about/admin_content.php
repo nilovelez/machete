@@ -16,7 +16,12 @@
 
 
 		<div id="machete-module-list">
-		<?php foreach ($machete_modules as $slug => $args){ ?>
+		<?php 
+
+		foreach ($machete->modules as $module) {
+			$args = $module->params;
+			$slug = $args['slug'];
+			 ?>
 			<div class="machete-module-wrap"><div class="machete-module <?php echo $slug.'-module' ?> module-is-<?php echo $args['is_active'] ? 'active' : 'inactive' ?>">
 				
 				<?php if ($args['is_active'] && $args['has_config']) { ?>

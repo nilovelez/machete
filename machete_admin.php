@@ -24,7 +24,7 @@ add_action( 'admin_init', 'machete_do_activation_redirect' );
 
 function machete_footer_text() {
     /* translators: %s: five stars */
-    return sprintf( __( 'If you like <strong>Machete</strong>, please %sleave us a rating of %s. Thank you!', 'machete' ), '<a href="https://wordpress.org/support/plugin/machete/reviews/#new-post" target="_blank">','5&starf;</a>' );
+    return ' '.sprintf( __( 'If you like <strong>Machete</strong>, please %sleave us a rating of %s. Thank you!', 'machete' ), '<a href="https://wordpress.org/support/plugin/machete/reviews/#new-post" target="_blank">','5&starf;</a>' ). ' '  ;
 }
 
 function machete_filter_plugin_action_links( $plugin_actions, $plugin_file ) {
@@ -42,15 +42,15 @@ add_filter( 'plugin_action_links', 'machete_filter_plugin_action_links', 10, 2 )
 function machete_remove_help_tabs() {
   if(!$screen = get_current_screen()) return;
   if (strpos($screen->id, 'machete') === false) return;
-    $screen->remove_help_tabs();
+    //$screen->remove_help_tabs();
 }
 add_action('admin_head', 'machete_remove_help_tabs' );
 
 
 
 function machete_enqueue_custom_admin_style() {
-        wp_register_style( 'custom_wp_admin_css', plugin_dir_url( __FILE__ ) . 'css/admin_v2.css', false, '2.0.0' );
-        wp_enqueue_style( 'custom_wp_admin_css' );
+  wp_register_style( 'machete_admin_css', plugin_dir_url( __FILE__ ) . 'css/admin_v2.css', false, '2.0.0' );
+  wp_enqueue_style( 'machete_admin_css' );
 }
 add_action( 'admin_enqueue_scripts', 'machete_enqueue_custom_admin_style' );
 
@@ -86,19 +86,25 @@ endif;
 
 
 function machete_menu() {
-	
+	global $machete;
   add_menu_page(
   	'Machete',
   	'Machete',
   	'publish_posts', // targeting Author role
-  	'machete',
-  	'machete_about_page_content',
-  	plugin_dir_url( __FILE__ ) . 'img/machete.svg'
+    'machete',
+    'machete_about_page_content',
+    plugin_dir_url( __FILE__ ) . 'img/machete.svg'
   );
 
 }
 add_action('admin_menu', 'machete_menu');
 
+
+function machete_about_page_content() {
+  global $machete;
+  require('inc/about/admin_content.php');
+  add_filter('admin_footer_text', 'machete_footer_text');
+}
 
 
 function machete_admin_tabs($current = '') {
@@ -134,14 +140,16 @@ function machete_action_success() {
   new Machete_Notice(__( 'Action succesfully executed!', 'machete' ), 'success');
 }
 
-require('inc/about/admin_functions.php');
+//require('inc/about/admin_functions.php');
 
-foreach ($machete_modules as $machete_module => $args) {
-    if ( ! $args['is_active'] ) continue;
-    @require_once('inc/'.$machete_module.'/admin_functions.php');
-}
+
 
 foreach ($machete->modules as $module) {
     if ( ! $module->params['is_active'] ) continue;
     $module->admin();
+}
+
+foreach ($machete_modules as $machete_module => $args) {
+    if ( ! $args['is_active'] ) continue;
+    @require_once('inc/'.$machete_module.'/admin_functions.php');
 }

@@ -1,7 +1,7 @@
 <?php
 if ( ! defined( 'MACHETE_ADMIN_INIT' ) ) exit;
 
-function content_clone(){
+function machete_content_clone(){
 	global $wpdb;
 	if (! ( isset( $_GET['post']) || isset( $_POST['post'])  || ( isset($_REQUEST['action']) && 'machete_clone' == $_REQUEST['action'] ) ) ) {
 		wp_die('No post to duplicate has been supplied!');
@@ -71,7 +71,7 @@ function content_clone(){
 		wp_die('Couldn\'t find any post/page with this id: ' . $post_id);
 	}
 }
-add_action( 'admin_action_machete_clone', 'content_clone' );
+add_action( 'admin_action_machete_clone', 'machete_content_clone' );
  
 // Adds the "clone" link to the post and page lists
 function content_clone_link( $actions, $post ) {
@@ -106,11 +106,3 @@ if (current_user_can('edit_posts')) {
 	add_action( 'post_submitbox_start', 'machete_clone_custom_button');
 	//add_action( 'wp_before_admin_bar_render', 'duplicate_page_admin_bar_link');
 }
-
-
-/*
-
-$actions['duplicate'] = '<a href="' . wp_nonce_url( admin_url( 'edit.php?post_type=product&action=duplicate_product&amp;post=' . $post->ID ), 'woocommerce-duplicate-product_' . $post->ID ) . '" aria-label="' . esc_attr__( 'Make a duplicate from this product', 'woocommerce' )
-			. '" rel="permalink">' . __( 'Duplicate', 'woocommerce' ) . '</a>';
-
-			*/

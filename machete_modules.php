@@ -77,6 +77,14 @@ class machete_module {
 		//add_action( 'admin_notices', array( $this, 'display_notice' ) );
 	}
 
+	public function save_success_notice(){
+		$this->notice(__( 'Options saved!', 'machete' ), 'success');
+	}
+	public function save_error_notice(){
+		$this->notice(__( 'Error saving configuration to database.', 'machete' ), 'error');
+	}
+				
+
 	function display_notice() {
 
 		if (!empty($this->notice_message)){
@@ -89,7 +97,11 @@ class machete_module {
 }
 
 
+require_once('inc/about/module.php');
 require_once('inc/cleanup/module.php');
+
+//var_dump($machete);
+
 
 $machete_modules['cookies'] = array(
 	'title' => __('Cookie Law','machete'),

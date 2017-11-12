@@ -21,7 +21,6 @@ class machete_cleanup_module extends machete_module {
 	}
 
 	function save_settings() {
-
 		
 		if (isset($_POST['optionEnabled'])){
 
@@ -43,20 +42,20 @@ class machete_cleanup_module extends machete_module {
 			}
 			if (update_option('machete_cleanup_settings',$settings)){
 				$this->settings = $settings;
-				$this->notice(__( 'Options saved!', 'machete' ), 'success');
+				$this->save_success_notice();
 				return true;
 			}else{
-				$this->notice(__( 'Error saving configuration to database.', 'machete' ), 'error');
+				$this->save_error_notice();
 				return false;
 			}
 
 		}else{
 			if (delete_option('machete_cleanup_settings')){
 				$this->settings = array();
-				$this->notice(__( 'Options saved!', 'machete' ), 'success');
+				$this->save_success_notice();
 				return true;
 			}else{
-				$this->notice(__( 'Error saving configuration to database.', 'machete' ), 'error');
+				$this->save_error_notice();
 				return false;
 			}
 		}
