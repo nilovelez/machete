@@ -45,10 +45,10 @@ class machete {
 	}
 
 	public function init(){
-
+		global $machete;
 		global $machete_modules;
 
-		require ('machete_modules.php');
+		require ('inc/machete_modules.php');
 
 
 		if ( ! is_admin() ) {

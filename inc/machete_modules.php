@@ -25,7 +25,7 @@ class machete_module {
 		if ($this->params['has_config']){
 			$this->read_settings();
 		}
-		require('inc/'.$this->params['slug'].'/admin_functions.php');
+		require($this->params['slug'].'/admin_functions.php');
 		if ($this->params['has_config']){
 			add_action( 'admin_menu', array(&$this, 'register_sub_menu') );
 		}
@@ -42,7 +42,8 @@ class machete_module {
 		  );
 	}
 	public function submenu_page_callback(){
-		require('inc/'.$this->params['slug'].'/admin_content.php');
+		global $machete;
+  		require($this->params['slug'].'/admin_content.php');
   		add_filter('admin_footer_text', 'machete_footer_text');
 	}
 
@@ -50,7 +51,7 @@ class machete_module {
 		if ($this->params['has_config']){
 			$this->read_settings();
 		}
-		require('inc/'.$this->params['slug'].'/frontend_functions.php');
+		require($this->params['slug'].'/frontend_functions.php');
 	}
 
 	public function export(){
@@ -97,8 +98,8 @@ class machete_module {
 }
 
 
-require_once('inc/about/module.php');
-require_once('inc/cleanup/module.php');
+require_once('about/module.php');
+require_once('cleanup/module.php');
 
 //var_dump($machete);
 
@@ -131,7 +132,7 @@ $machete_modules['maintenance'] = array(
 	'role' => 'author'
 );
 
-require_once('inc/clone/module.php');
+require_once('clone/module.php');
 
 
 $machete_modules['importexport'] = array(

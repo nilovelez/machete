@@ -21,8 +21,9 @@ function machete_about_page_content() {
 
 }
 */
-
+/*
 function machete_manage_modules ($module, $action){
+	global $machete;
 	global $machete_modules;
 	
 	if (empty($module) || empty($action) || in_array($action, array('enable','disable'))) {
@@ -30,7 +31,7 @@ function machete_manage_modules ($module, $action){
 	}
 
 	if ( ! array_key_exists( $module, $machete_modules)) {
-		new Machete_Notice(__( 'Uknown module:', 'machete' ) . ' ' . $module, 'error');
+		$machete->notice(__( 'Uknown module:', 'machete' ) . ' ' . $module, 'error');
 		return false;
 	}
 
@@ -82,19 +83,6 @@ function machete_manage_modules ($module, $action){
 			new Machete_Notice(__( 'Error saving configuration to database.', 'machete' ), 'error');
 			return false;
 		}
-
-
-	}
-
-
-
-	
-
-}
-
-if (isset($_GET['machete-action'])){
-  	check_admin_referer( 'machete_action_' . $_GET['module'] );
-	if(machete_manage_modules($_GET['module'], $_GET['machete-action'])){
-		new Machete_Notice(__( 'Options saved!', 'machete' ), 'success');
 	}
 }
+*/
