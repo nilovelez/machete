@@ -1,16 +1,96 @@
 <?php
 if ( ! defined( 'ABSPATH' ) ) exit;
 
+class machete_module {
+	public $params = array(
+		'slug' => '',
+		'title' => '',
+		'full_title' => '',
+		'description' => '',
+		'is_active' => true,
+		'has_config' => true,
+		'can_be_disabled' => true,
+		'role' => 'manage_options'
+	);
+	public $settings = array();
+	public $default_settings = array();
 
-$machete_modules['cleanup'] = array(
-	'title' => __('Optimization','machete'),
-	'full_title' => __('WordPress Optimization','machete'),
-	'description' => __('Reduces much of the legacy code bloat in WordPress page headers. It also has some tweaks to make you site faster and safer.','machete'),
-	'is_active' => true,
-	'has_config' => true,
-	'can_be_disabled' => false,
-	'role' => 'admin'
-);
+	private function read_settings(){
+		if(!$this->settings = get_option('machete_'.$this->params['slug'].'_settings')){
+			$this->settings = $this->default_settings;
+		};
+	}
+
+	public function admin(){
+		if ($this->params['has_config']){
+			$this->read_settings();
+		}
+		require('inc/'.$this->params['slug'].'/admin_functions.php');
+		if ($this->params['has_config']){
+			add_action( 'admin_menu', array(&$this, 'register_sub_menu') );
+		}
+	}
+
+	public function register_sub_menu() {
+		add_submenu_page(
+		  	'machete',
+		    $this->params['full_title'],
+		    $this->params['title'],
+		    $this->params['role'],    
+		    'machete-'.$this->params['slug'],
+		    array(&$this, 'submenu_page_callback')
+		  );
+	}
+	public function submenu_page_callback(){
+		require('inc/'.$this->params['slug'].'/admin_content.php');
+  		add_filter('admin_footer_text', 'machete_footer_text');
+	}
+
+	public function frontend() {
+		if ($this->params['has_config']){
+			$this->read_settings();
+		}
+		require('inc/'.$this->params['slug'].'/frontend_functions.php');
+	}
+
+	public function export(){
+
+	}
+
+	public function import(){
+
+	}
+
+	public $notice_message;
+	public $notice_class;
+	public function notice( $message, $level = 'info', $dismissible = true) {
+
+		$this->notice_message = $message;
+
+		if (!in_array($level, array('error','warning','info','success'))){
+			$level = 'info';
+		}
+		$this->notice_class = 'notice notice-'.$level;
+		if ($dismissible){
+			$this->notice_class .= ' is-dismissible';
+		}
+		//add_action( 'admin_notices', array( $this, 'display_notice' ) );
+	}
+
+	function display_notice() {
+
+		if (!empty($this->notice_message)){
+		?>
+		<div class="<?php echo $this->notice_class ?>">
+			<p><?php echo $this->notice_message; ?></p>
+		</div>
+		<?php }
+	}
+}
+
+
+require_once('inc/cleanup/module.php');
+
 $machete_modules['cookies'] = array(
 	'title' => __('Cookie Law','machete'),
 	'full_title' => __('Cookie Law Warning','machete'),
@@ -38,15 +118,21 @@ $machete_modules['maintenance'] = array(
 	'can_be_disabled' => true,
 	'role' => 'author'
 );
-$machete_modules['clone'] = array(
-	'title' => __('Post & Page Cloner','machete'),
-	'full_title' => __('Post & Page Cloner','machete'),
-	'description' => __('Adds a "duplicate" link to post, page and most post types lists. Also adds "copy to new draft" function to the post editor.','machete'),
+
+require_once('inc/clone/module.php');
+
+
+$machete_modules['importexport'] = array(
+	'title' => __('Import/Export Options','machete'),
+	'full_title' => __('Import/Export Options','machete'),
+	'description' => __('','machete'),
 	'is_active' => true,
-	'has_config' => false,
-	'can_be_disabled' => true,
-	'role' => 'author'
+	'has_config' => true,
+	'can_be_disabled' => false,
+	'role' => 'admin'
 );
+
+
 $machete_modules['powertools'] = array(
 	'title' => __('PowerTools','machete'),
 	'full_title' => __('Machete PowerTools','machete'),
@@ -61,6 +147,9 @@ if($machete_disabled_modules = get_option('machete_disabled_modules')){
 	foreach ($machete_disabled_modules as $module) {
 		if (isset($machete_modules[$module]) && $machete_modules[$module]['can_be_disabled']){
 			$machete_modules[$module]['is_active'] = false;
+		}
+		if (isset($machete->modules[$module]) && $machete->modules[$module]['can_be_disabled']){
+			$machete->modules[$module]['is_active'] = false;
 		}
 	}
 }

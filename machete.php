@@ -36,17 +36,28 @@ function machete_load_plugin_textdomain() {
 
 if (!isset($machete_modules)) $machete_modules = array();
 
-function machete_init(){
-	global $machete_modules;
 
-	require ('machete_modules.php');
+class machete {
+	public $modules = array();
+
+	public function __construct(){
+		add_action('init',array($this,'init'));
+	}
+
+	public function init(){
+
+		global $machete_modules;
+
+		require ('machete_modules.php');
 
 
-	if ( ! is_admin() ) {
-		require_once('machete_frontend.php');
-	} else {
-		define('MACHETE_ADMIN_INIT',true);
-		require_once('machete_admin.php');	
+		if ( ! is_admin() ) {
+			define('MACHETE_FRONT_INIT',true);
+			require_once('machete_frontend.php');
+		} else {
+			define('MACHETE_ADMIN_INIT',true);
+			require_once('machete_admin.php');	
+		}
 	}
 }
-add_action('init','machete_init');
+$machete = new machete();

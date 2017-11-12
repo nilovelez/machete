@@ -87,12 +87,6 @@ endif;
 
 function machete_menu() {
 	
-  /*
-  if ( !current_user_can( 'manage_options' ) )  {
-		wp_die( __( 'You do not have sufficient permissions to access this page.' ) );
-	}
-  */
-
   add_menu_page(
   	'Machete',
   	'Machete',
@@ -145,4 +139,9 @@ require('inc/about/admin_functions.php');
 foreach ($machete_modules as $machete_module => $args) {
     if ( ! $args['is_active'] ) continue;
     @require_once('inc/'.$machete_module.'/admin_functions.php');
+}
+
+foreach ($machete->modules as $module) {
+    if ( ! $module->params['is_active'] ) continue;
+    $module->admin();
 }

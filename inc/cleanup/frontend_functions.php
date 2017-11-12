@@ -62,6 +62,7 @@ function machete_optimize($settings){
   // remove the shortlink url from header
   if (in_array('shortlink',$settings)) {
     remove_action('wp_head', 'wp_shortlink_wp_head', 10, 0 );
+    remove_action('template_redirect', 'wp_shortlink_header', 11, 0);
   }
 
   // remove wordpress generator version
@@ -245,7 +246,7 @@ deny from all
 </Files>
 */
 
-if(($machete_cleanup_settings = get_option('machete_cleanup_settings')) && (count($machete_cleanup_settings) > 0)){
-  machete_optimize($machete_cleanup_settings);
+if(count($this->settings) > 0){
+  machete_optimize($this->settings);
 }
 
