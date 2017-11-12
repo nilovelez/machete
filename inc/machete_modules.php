@@ -161,8 +161,8 @@ if($machete_disabled_modules = get_option('machete_disabled_modules')){
 		if (isset($machete_modules[$module]) && $machete_modules[$module]['can_be_disabled']){
 			$machete_modules[$module]['is_active'] = false;
 		}
-		if (isset($machete->modules[$module]) && $machete->modules[$module]['can_be_disabled']){
-			$machete->modules[$module]['is_active'] = false;
+		if (isset($machete->modules[$module]) && $machete->modules[$module]->params['can_be_disabled']){
+			$machete->modules[$module]->params['is_active'] = false;
 		}
 	}
 }

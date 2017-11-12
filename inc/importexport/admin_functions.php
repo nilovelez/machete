@@ -20,6 +20,7 @@ function machete_importexport_page_content() {
 
 }
 
+/*
 function machete_manage_importexport ($module, $action){
 	global $machete_modules;
 	
@@ -96,3 +97,4 @@ if (isset($_GET['machete-action'])){
 		new Machete_Notice(__( 'Options saved!', 'machete' ), 'success');
 	}
 }
+*/

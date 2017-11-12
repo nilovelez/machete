@@ -53,7 +53,7 @@ class machete_about_module extends machete_module {
 				$this->notice(__( 'Nothing to do. The module was already disabled.', 'machete' ), 'notice');
 				return false;
 			}
-			if ( ! $machete->modules[$module]['can_be_disabled'] ) {
+			if ( ! $machete->modules[$module]->params['can_be_disabled'] ) {
 				$this->notice(__( 'Sorry, you can\'t disable that module', 'machete' ), 'warning');
 				return false;
 			} 
@@ -61,7 +61,7 @@ class machete_about_module extends machete_module {
 			$disabled_modules[] = $module;
 
 			if (update_option('machete_disabled_modules',$disabled_modules)){
-				$machete->modules[$module]['is_active'] = false;
+				$machete->modules[$module]->params['is_active'] = false;
 				$this->notice(__( 'Options saved!', 'machete' ), 'success');
 				return true;
 
@@ -74,7 +74,7 @@ class machete_about_module extends machete_module {
 		}
 
 		if ($action == 'activate') {
-			if($machete_modules[$module]['is_active']){
+			if($machete->modules[$module]->params['is_active']){
 				$this->notice(__( 'Nothing to do. The module was already active.', 'machete' ), 'notice');
 				return false;
 			}
@@ -86,7 +86,7 @@ class machete_about_module extends machete_module {
 			$disabled_modules = array_diff($disabled_modules, array($module));
 
 			if (update_option('machete_disabled_modules',$disabled_modules)){
-				$machete->modules[$module]['is_active'] = true;
+				$machete->modules[$module]->params['is_active'] = true;
 				$this->notice(__( 'Options saved!', 'machete' ), 'success');
 				return true;
 
