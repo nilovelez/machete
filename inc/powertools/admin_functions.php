@@ -171,7 +171,7 @@ if(
     }
 
     // enable oembed in text widgets
-	if (in_array('widget_oembed',$settings)) {
+	if (in_array('widget_oembed',$machete_powertools_settings)) {
 		global $wp_embed;
 		add_filter( 'widget_text', array( $wp_embed, 'run_shortcode' ), 8 );
 		add_filter( 'widget_text', array( $wp_embed, 'autoembed'), 8 );
