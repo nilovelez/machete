@@ -1,15 +1,6 @@
 <?php if ( ! defined( 'MACHETE_ADMIN_INIT' ) ) exit; ?>
 
 
-<?php
-if (isset($_GET['machete-action'])){
-  	check_admin_referer( 'machete_action_' . $_GET['module'] );
-	$machete->modules['about']->manage_modules($_GET['module'], $_GET['machete-action']);
-}
-
-?>
-
-
 	<div class="wrap about-wrap machete-wrap">
 			<h1><?php _e('Welcome to Machete!','machete') ?></h1>
 

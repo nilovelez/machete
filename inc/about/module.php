@@ -17,7 +17,12 @@ class machete_about_module extends machete_module {
 	}
 	public function admin(){
 		
-		require('admin_functions.php');
+		// if this is called after the admin_menu hook, the modules you disable
+		// are still shown in the side menu until you reload
+		if (isset($_GET['machete-action'])){
+		  	check_admin_referer( 'machete_action_' . $_GET['module'] );
+			$this->manage_modules($_GET['module'], $_GET['machete-action']);
+		}
 		add_action( 'admin_menu', array(&$this, 'register_sub_menu') );
 	}
 	public function register_sub_menu() {
