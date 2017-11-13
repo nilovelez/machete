@@ -16,8 +16,22 @@ class machete_cleanup_module extends machete_module {
 			//'role' => 'manage_options'
 			)
 		);
-		
+	}
 
+	public function admin(){
+		$this->read_settings();
+		if( count( $this->settings ) > 0 ) { 
+			require( 'admin_functions.php' );
+		}
+		add_action( 'admin_menu', array(&$this, 'register_sub_menu') );
+	}
+
+	public function frontend(){
+		$this->read_settings();
+		if( count( $this->settings ) > 0 ) { 
+			require( 'frontend_functions.php' );
+		}
+		add_action( 'admin_menu', array(&$this, 'register_sub_menu') );
 	}
 
 	function save_settings() {

@@ -94,7 +94,7 @@ foreach ($machete_modules as $machete_module => $args) {
 		<tbody>
 		<?php foreach($machete_exportable_modules as $machete_module => $args){ ?>
 			<tr>
-				<th scope="row" class="check-column"><input type="checkbox" name="moduleEnabled[]" value="<?php echo $option_slug ?>" id="<?php echo $option_slug ?>_fld" <?php if ($args['checked']) echo 'checked' ?>></th>
+				<th scope="row" class="check-column"><input type="checkbox" name="moduleEnabled[]" value="<?php echo $option_slug ?>" id="<?php echo $args['slug'] ?>_fld" <?php if ($args['checked']) echo 'checked' ?>></th>
 				<td class="column-title column-primary"><strong><?php echo $args['full_title'] ?></strong>
 				<button type="button" class="toggle-row"><span class="screen-reader-text"><?php _e('Show more details','machete') ?></span></button>
 				</td>

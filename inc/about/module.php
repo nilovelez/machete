@@ -25,6 +25,7 @@ class machete_about_module extends machete_module {
 		}
 		add_action( 'admin_menu', array(&$this, 'register_sub_menu') );
 	}
+	public function frontend() {}
 	public function register_sub_menu() {
 		add_submenu_page(
 		  	'machete',

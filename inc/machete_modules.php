@@ -15,7 +15,7 @@ class machete_module {
 	public $settings = array();
 	public $default_settings = array();
 
-	private function read_settings(){
+	public function read_settings(){
 		if(!$this->settings = get_option('machete_'.$this->params['slug'].'_settings')){
 			$this->settings = $this->default_settings;
 		};
