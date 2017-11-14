@@ -6,7 +6,8 @@
 
 				<div class="about-text"><?php _e('Machete is now installed and ready to use. Machete solves common WordPress problems using as little resources as posible. Machete lets you use less plugins. Machete optimizes.','machete') ?></div>
 		<div class="machete-logo"><img src="<?php echo MACHETE_BASE_URL ?>img/logo_machete.png"></div>
-		<?php machete_admin_tabs('machete'); ?>
+		
+		<?php $machete->admin_tabs(); ?>
 		
 		<div class="feature-section">
 		<div class="machete-important-notice  machete-warning">

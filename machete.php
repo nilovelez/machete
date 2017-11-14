@@ -59,5 +59,31 @@ class machete {
 			require_once('machete_admin.php');	
 		}
 	}
+
+	function admin_tabs($current = '') {
+		//global $machete_modules;
+
+		$is_admin = current_user_can('manage_options') ? true : false;
+
+		echo '<h2 class="nav-tab-wrapper">';
+		foreach($this->modules as $module) {
+
+			$params = $module->params;
+
+			if (!$is_admin && ($params['role'] == 'manage_options')) continue;
+			//if (!$is_admin && ($args['role'] == 'admin')) continue;
+
+			if ( ! $params['is_active'] ) continue;
+			if ( ! $params['has_config'] ) continue;
+
+			$slug = 'machete-'.$params['slug'];
+			if ($slug == $current){
+				echo '<a href="#" class="nav-tab-active nav-tab '.$slug.'-tab">'.$params['title'].'</a>';
+			}else{
+				echo '<a href="'.admin_url('admin.php?page='.$slug).'" class="nav-tab '.$slug.'-tab">'.$params['title'].'</a>';
+			}
+		}
+		echo '</h2>';
+	}
 }
 $machete = new machete();

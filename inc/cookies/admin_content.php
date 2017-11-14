@@ -29,7 +29,7 @@ if(!$machete_cookies_settings = get_option('machete_cookies_settings')){
 	<h1><?php _e('Cookie Law Warning','machete') ?></h1>
 	<p class="tab-description"><?php _e('We know you hate cookie warning bars. Well, this is the less hateable cookie bar you\'ll find. It is really light, it won\'t affect your PageSpeed score and plays well with static cache plugins.','machete') ?></p>
 
-	<?php machete_admin_tabs('machete-cookies'); ?>
+	<?php $machete->admin_tabs('machete-cookies'); ?>
 
 	<p class="tab-performance"><span><strong><i class="dashicons dashicons-clock"></i> <?php _e('Performance impact:','machete') ?></strong> <?php _e('This tool adds 0,4Kb and a single database request request to each page load. The remaining <abbr title="~1.1Kb if GZipped">~2.5Kb</abbr> of code is loaded asynchronously via javascript from a pregenerated static file.','machete') ?></span></p>
 

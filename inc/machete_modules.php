@@ -80,7 +80,7 @@ class machete_module {
 		if ($dismissible){
 			$this->notice_class .= ' is-dismissible';
 		}
-		//add_action( 'admin_notices', array( $this, 'display_notice' ) );
+		add_action( 'admin_notices', array( $this, 'display_notice' ) );
 	}
 
 	public function save_success_notice(){
@@ -105,6 +105,7 @@ class machete_module {
 
 require_once('about/module.php');
 require_once('cleanup/module.php');
+require_once('cookies/module.php');
 
 //var_dump($machete);
 
@@ -164,9 +165,11 @@ $machete_modules['powertools'] = array(
 
 if($machete_disabled_modules = get_option('machete_disabled_modules')){
 	foreach ($machete_disabled_modules as $module) {
+		/*
 		if (isset($machete_modules[$module]) && $machete_modules[$module]['can_be_disabled']){
 			$machete_modules[$module]['is_active'] = false;
 		}
+		*/
 		if (isset($machete->modules[$module]) && $machete->modules[$module]->params['can_be_disabled']){
 			$machete->modules[$module]->params['is_active'] = false;
 		}

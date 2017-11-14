@@ -3,6 +3,7 @@ if ( ! defined( 'ABSPATH' ) ) exit;
 
 
 class machete_about_module extends machete_module {
+	
 	function __construct(){
 		$this->init( array(
 			'slug' => 'about',
@@ -68,11 +69,11 @@ class machete_about_module extends machete_module {
 
 			if (update_option('machete_disabled_modules',$disabled_modules)){
 				$machete->modules[$module]->params['is_active'] = false;
-				$this->notice(__( 'Options saved!', 'machete' ), 'success');
+				$this->save_success_notice();
 				return true;
 
 			}else{
-				$this->notice(__( 'Error saving configuration to database.', 'machete' ), 'error');
+				$this->save_error_notice();
 				return false;
 			}
 
@@ -93,11 +94,11 @@ class machete_about_module extends machete_module {
 
 			if (update_option('machete_disabled_modules',$disabled_modules)){
 				$machete->modules[$module]->params['is_active'] = true;
-				$this->notice(__( 'Options saved!', 'machete' ), 'success');
+				$this->save_success_notice();
 				return true;
 
 			}else{
-				$this->notice(__( 'Error saving configuration to database.', 'machete' ), 'error');
+				$this->save_error_notice();
 				return false;
 			}
 		}

@@ -55,7 +55,7 @@ function machete_enqueue_custom_admin_style() {
 add_action( 'admin_enqueue_scripts', 'machete_enqueue_custom_admin_style' );
 
 
-
+/*
 if ( ! class_exists( 'Machete_Notice' ) ):
 class Machete_Notice {
   private $message;
@@ -81,7 +81,7 @@ class Machete_Notice {
   }
 }
 endif;
-
+*/
 
 
 
@@ -102,11 +102,11 @@ add_action('admin_menu', 'machete_menu');
 
 function machete_about_page_content() {
   global $machete;
-  require('inc/about/admin_content.php');
+  require( MACHETE_BASE_PATH . 'inc/about/admin_content.php' );
   add_filter('admin_footer_text', 'machete_footer_text');
 }
 
-
+/*
 function machete_admin_tabs($current = '') {
   global $machete_modules;
 
@@ -130,6 +130,7 @@ function machete_admin_tabs($current = '') {
 	}
 	echo '</h2>';
 }
+*/
 
 
 function machete_save_success() {

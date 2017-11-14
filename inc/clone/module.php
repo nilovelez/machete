@@ -3,6 +3,7 @@ if ( ! defined( 'ABSPATH' ) ) exit;
 
 
 class machete_clone_module extends machete_module {
+	
 	function __construct(){
 		$this->init( array(
 			'slug' => 'clone',

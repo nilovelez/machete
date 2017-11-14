@@ -112,8 +112,6 @@ $this->all_optimize_checked = (count(array_intersect(array_keys($this->optimize_
 
 $this->all_tweaks_checked = (count(array_intersect(array_keys($this->tweaks_array), $this->settings)) == count($this->tweaks_array)) ? true : false;
 
-
-
 ?>
 
 <style>
@@ -135,13 +133,10 @@ $this->all_tweaks_checked = (count(array_intersect(array_keys($this->tweaks_arra
 
 <div class="wrap machete-wrap machete-section-wrap">
 
-
 	<h1><?php _e('WordPress Optimization','machete') ?></h1>
 	
-	<?php $this->display_notice() ?>
-
 	<p class="tab-description"><?php _e('WordPress has a los of code just to keep backward compatiblity or enable optional features. You can disable most of it and save some time from each page request while making your installation safer','machete') ?></p>
-	<?php machete_admin_tabs('machete-cleanup'); ?>
+	<?php $machete->admin_tabs('machete-cleanup'); ?>
 	<p class="tab-performance"><span><strong><i class="dashicons dashicons-clock"></i> <?php _e('Performance impact:','machete') ?></strong> <?php _e('This section stores all its settings in a single autoloaded configuration variable.','machete') ?></span></p>		
 
 
@@ -247,8 +242,7 @@ $this->all_tweaks_checked = (count(array_intersect(array_keys($this->tweaks_arra
 		</form>
 
 	</div>
-			
-  </div>
+</div>
 
 <script>
 (function($){
