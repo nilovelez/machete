@@ -161,28 +161,26 @@ if (in_array('oembed_scripts',$this->settings)) {
 }
 
 
-  // slow_heartbeat está en machete_admin.php
+// slow_heartbeat está en machete_admin.php
 
-  if (in_array('comments_reply_feature',$this->settings)) {
-    //Only load the comment-reply.js when needed
-    
-    add_action('wp_print_scripts', function(){
-        if (is_singular() && (get_option('thread_comments') == 1) && comments_open() && have_comments()) {
-          wp_enqueue_script('comment-reply');
-        } else {
-          wp_dequeue_script('comment-reply');
-        }
-    }, 100);
-  }
+if (in_array('comments_reply_feature',$this->settings)) {
+  //Only load the comment-reply.js when needed
+  
+  add_action('wp_print_scripts', function(){
+      if (is_singular() && (get_option('thread_comments') == 1) && comments_open() && have_comments()) {
+        wp_enqueue_script('comment-reply');
+      } else {
+        wp_dequeue_script('comment-reply');
+      }
+  }, 100);
+}
 
-  //empty_trash_soon está en machete_admin.php
+//empty_trash_soon está en machete_admin.php
 
-  if (in_array('medium_large_size',$this->settings)) {
-    add_image_size( 'medium_large', 0, 0);
-  }
+if (in_array('medium_large_size',$this->settings)) {
+  add_image_size( 'medium_large', 0, 0);
+}
 
-  if (in_array('comment_autolinks',$this->settings)) {
-    remove_filter('comment_text', 'make_clickable', 9); 
-  }
-
+if (in_array('comment_autolinks',$this->settings)) {
+  remove_filter('comment_text', 'make_clickable', 9); 
 }

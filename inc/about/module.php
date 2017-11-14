@@ -4,7 +4,7 @@ if ( ! defined( 'ABSPATH' ) ) exit;
 
 class machete_about_module extends machete_module {
 	function __construct(){
-		$this->params = array_merge($this->params, array(
+		$this->init( array(
 			'slug' => 'about',
 			'title' => __('About Machete','machete'),
 			'full_title' => __('About Machete','machete'),

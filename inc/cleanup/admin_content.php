@@ -105,11 +105,6 @@ $this->tweaks_array = array(
   
 );
 
-//update_option( $option, $new_value, $autoload );
-if (isset($_POST['machete-cleanup-saved'])){
-    check_admin_referer( 'machete_save_cleanup' );
-  	$this->save_settings();
-}
 
 $this->all_cleanup_checked = (count(array_intersect(array_keys($this->cleanup_array), $this->settings)) == count($this->cleanup_array)) ? true : false;
 

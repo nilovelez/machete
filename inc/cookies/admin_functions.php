@@ -1,7 +1,7 @@
 <?php
 if ( ! defined( 'MACHETE_ADMIN_INIT' ) ) exit;
 
-
+/*
 function machete_cookies_page() {
    add_submenu_page(
   	'machete',
@@ -14,11 +14,11 @@ function machete_cookies_page() {
 }
 add_action('admin_menu', 'machete_cookies_page');
 
-
 function machete_cookies_page_content() {
 	require('admin_content.php');
 	add_filter('admin_footer_text', 'machete_footer_text');
 }
+*/
 
 
 if ( ! function_exists( 'machete_cookies_save_options' ) ) :
@@ -65,14 +65,14 @@ function machete_cookies_error_save_options() { ?>
     </div>
 <?php }
 
+	/*
 function machete_cookies_save_options() {
 
-	/*
 	bar_status: disabled | enabled
 	warning_text
 	accept_text
 	bar_theme: light | dark
-	*/
+	* /
 	if(!$settings = get_option('machete_cookies_settings')){
 		$settings = array();
 	};
@@ -183,10 +183,11 @@ function machete_cookies_save_options() {
 	}
 
 }
+*/
 endif; // machete_cookies_save_options()
 
+/*
 
-/* Machete Cookies Bar */
 if (isset($_POST['machete-cookies-saved'])){
 
   	check_admin_referer( 'machete_save_cookies' );
@@ -194,3 +195,4 @@ if (isset($_POST['machete-cookies-saved'])){
 		new Machete_Notice(__( 'Options saved!', 'machete' ), 'success');
 	}
 }
+*/

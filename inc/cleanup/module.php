@@ -5,7 +5,7 @@ if ( ! defined( 'ABSPATH' ) ) exit;
 class machete_cleanup_module extends machete_module {
 
 	function __construct(){
-		$this->params = array_merge($this->params, array(
+		$this->init( array(
 			'slug' => 'cleanup',
 			'title' => __('Optimization','machete'),
 			'full_title' => __('WordPress Optimization','machete'),
@@ -17,11 +17,16 @@ class machete_cleanup_module extends machete_module {
 			)
 		);
 	}
-
 	public function admin(){
 		$this->read_settings();
+
+		if ( isset( $_POST['machete-cleanup-saved'] ) ){
+		    check_admin_referer( 'machete_save_cleanup' );
+		  	$this->save_settings();
+		}
+
 		if( count( $this->settings ) > 0 ) { 
-			require( 'admin_functions.php' );
+			require($this->path . 'admin_functions.php' );
 		}
 		add_action( 'admin_menu', array(&$this, 'register_sub_menu') );
 	}
@@ -29,9 +34,8 @@ class machete_cleanup_module extends machete_module {
 	public function frontend(){
 		$this->read_settings();
 		if( count( $this->settings ) > 0 ) { 
-			require( 'frontend_functions.php' );
+			require($this->path . 'frontend_functions.php' );
 		}
-		add_action( 'admin_menu', array(&$this, 'register_sub_menu') );
 	}
 
 	function save_settings() {

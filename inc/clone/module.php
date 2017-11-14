@@ -4,7 +4,7 @@ if ( ! defined( 'ABSPATH' ) ) exit;
 
 class machete_clone_module extends machete_module {
 	function __construct(){
-		$this->params = array_merge($this->params, array(
+		$this->init( array(
 			'slug' => 'clone',
 			'title' => __('Post & Page Cloner','machete'),
 			'full_title' => __('Post & Page Cloner','machete'),

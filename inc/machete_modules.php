@@ -15,6 +15,11 @@ class machete_module {
 	public $settings = array();
 	public $default_settings = array();
 
+	public function init( $params = array() ){
+		$this->params = array_merge($this->params, $params);
+		$this->path = MACHETE_BASE_PATH.'inc/'.$this->params['slug'].'/';
+	}
+
 	public function read_settings(){
 		if(!$this->settings = get_option('machete_'.$this->params['slug'].'_settings')){
 			$this->settings = $this->default_settings;
@@ -25,7 +30,7 @@ class machete_module {
 		if ($this->params['has_config']){
 			$this->read_settings();
 		}
-		require($this->params['slug'].'/admin_functions.php');
+		require($this->path.'admin_functions.php');
 		if ($this->params['has_config']){
 			add_action( 'admin_menu', array(&$this, 'register_sub_menu') );
 		}
@@ -43,7 +48,7 @@ class machete_module {
 	}
 	public function submenu_page_callback(){
 		global $machete;
-  		require($this->params['slug'].'/admin_content.php');
+  		require($this->path.'admin_content.php');
   		add_filter('admin_footer_text', 'machete_footer_text');
 	}
 
@@ -51,7 +56,7 @@ class machete_module {
 		if ($this->params['has_config']){
 			$this->read_settings();
 		}
-		require($this->params['slug'].'/frontend_functions.php');
+		require($this->path.'frontend_functions.php');
 	}
 
 	public function export(){
@@ -103,7 +108,7 @@ require_once('cleanup/module.php');
 
 //var_dump($machete);
 
-
+/*
 $machete_modules['cookies'] = array(
 	'title' => __('Cookie Law','machete'),
 	'full_title' => __('Cookie Law Warning','machete'),
@@ -113,6 +118,7 @@ $machete_modules['cookies'] = array(
 	'can_be_disabled' => true,
 	'role' => 'author'
 );
+*/
 $machete_modules['utils'] = array(
 	'title' => __('Analytics & Code','machete'),
 	'full_title' => __('Analytics and Custom Code','machete'),

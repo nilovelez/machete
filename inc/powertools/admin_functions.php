@@ -127,6 +127,27 @@ function machete_powertools_flush_rewrite_rules(){
 
 	return true;
 }
+
+function machete_powertools_flush_wpcache(){
+	wp_cache_flush();
+
+	new Machete_Notice(
+	  __('Object cache flushed', 'machete' ), 'success'
+	);
+
+	return true;
+}
+
+function machete_powertools_flush_opcache(){
+	opcache_reset();
+
+	new Machete_Notice(
+	  __('Opcache flushed', 'machete' ), 'success'
+	);
+
+	return true;
+}
+
 endif; // machete_powertools_save_options()
 
 
@@ -152,12 +173,20 @@ if (isset($_POST['machete-powertools-action'])){
 		case __('Flush Rewrite Rules','machete') :
 			return machete_powertools_flush_rewrite_rules();
 			break;
+		case __('Flush Opcache','machete') :
+			return machete_powertools_flush_opcache();
+			break;
+		case __('Flush Object Cache','machete') :
+			return machete_powertools_flush_wpcache();
+			break;
 		default:
 			new Machete_Notice(__( 'Unknown action requested', 'machete' ), 'error');
 			return false;
 
 	}
 }
+
+
 
 
 // Machete powertools actions specific to the back-end

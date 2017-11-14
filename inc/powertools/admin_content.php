@@ -33,12 +33,28 @@ if(!$machete_powertools_settings = get_option('machete_powertools_settings')){
 	<p class="description" id="tracking_id_description" style="display: none;"><?php _e('Format:','machete') ?></p></td>
 	</tr>
 	-->
-
 	<tr>
 	<th scope="row"><label for="tracking_id"><?php _e('Delete Permalink Cache','machete') ?></label></th>
 	<td><input type="submit" name="action" value="<?php _e('Flush Rewrite Rules','machete') ?>" class="button button-primary">
 	<p class="description" id="tracking_id_description" style="display: none;"><?php _e('Format:','machete') ?></p></td>
 	</tr>
+
+	<?php if (function_exists('opcache_reset')) { ?>
+	<tr>
+	<th scope="row"><label for="tracking_id"><?php _e('Delete Opcache contents','machete') ?></label></th>
+	<td><input type="submit" name="action" value="<?php _e('Flush Opcache','machete') ?>" class="button button-primary">
+	<p class="description" id="tracking_id_description" style="display: none;"><?php _e('Format:','machete') ?></p></td>
+	</tr>
+	<?php } ?>
+
+	<tr>
+	<th scope="row"><label for="tracking_id"><?php _e('Delete WordPress object cache contents','machete') ?></label></th>
+	<td><input type="submit" name="action" value="<?php _e('Flush Object Cache','machete') ?>" class="button button-primary">
+	<p class="description" id="tracking_id_description" style="display: none;"><?php _e('Format:','machete') ?></p></td>
+	</tr>
+
+
+	
 
 
 	</tbody></table>	
