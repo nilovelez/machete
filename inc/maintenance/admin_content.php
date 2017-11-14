@@ -33,7 +33,7 @@ $machete_magic_url      = home_url( '/?mct_token=' . $machete_maintenance_settin
 	<h1><?php _e('Coming Soon & Maintenance Mode','machete') ?></h1>
 
 	<p class="tab-description"><?php _e('If you have to close yout website temporarly to the public, the navive WordPress maintenance mode falls short and most coming soon plugins are bulky, incomplete or expensive. Machete maintenance mode is light, simple and versatile.','machete') ?></p>
-	<?php machete_admin_tabs('machete-maintenance'); ?>
+	<?php $machete->admin_tabs('machete-maintenance'); ?>
 	<p class="tab-performance"><span><strong><i class="dashicons dashicons-clock"></i> <?php _e('Performance impact:','machete') ?></strong> <?php _e('This section stores all its settings in a single autoloaded configuration variable.','machete') ?></span></p>
 
 

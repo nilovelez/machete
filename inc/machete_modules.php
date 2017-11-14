@@ -23,7 +23,9 @@ class machete_module {
 	public function read_settings(){
 		if(!$this->settings = get_option('machete_'.$this->params['slug'].'_settings')){
 			$this->settings = $this->default_settings;
-		};
+		}else{
+			$this->settings = array_merge($this->default_settings, $this->settings);
+		}
 	}
 
 	public function admin(){
@@ -107,6 +109,9 @@ require_once('about/module.php');
 require_once('cleanup/module.php');
 require_once('cookies/module.php');
 
+require_once('utils/module.php');
+require_once('maintenance/module.php');
+require_once('clone/module.php');
 //var_dump($machete);
 
 /*
@@ -120,6 +125,7 @@ $machete_modules['cookies'] = array(
 	'role' => 'author'
 );
 */
+/*
 $machete_modules['utils'] = array(
 	'title' => __('Analytics & Code','machete'),
 	'full_title' => __('Analytics and Custom Code','machete'),
@@ -129,6 +135,8 @@ $machete_modules['utils'] = array(
 	'can_be_disabled' => true,
 	'role' => 'admin'
 );
+*/
+/*
 $machete_modules['maintenance'] = array(
 	'title' => __('Maintenance Mode','machete'),
 	'full_title' => __('Maintenance Mode','machete'),
@@ -138,8 +146,8 @@ $machete_modules['maintenance'] = array(
 	'can_be_disabled' => true,
 	'role' => 'author'
 );
+*/
 
-require_once('clone/module.php');
 
 
 $machete_modules['importexport'] = array(

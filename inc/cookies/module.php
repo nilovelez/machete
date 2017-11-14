@@ -1,7 +1,6 @@
 <?php
 if ( ! defined( 'ABSPATH' ) ) exit;
 
-
 class machete_cookies_module extends machete_module {
 
 	function __construct(){
@@ -16,6 +15,15 @@ class machete_cookies_module extends machete_module {
 			'role' => 'publish_posts' // targeting Author role
 			)
 		);
+		$this->default_settings = array(
+			'bar_status' => 'disabled',
+			'warning_text' => __('By continuing to browse the site, you are agreeing to our use of cookies as described in our <a href="/cookies/" style="color: #007FFF">cookie policy</a>.','machete'),
+			'accept_text' => __('Accept cookies','machete'),
+			'bar_theme' => 'light'
+			);
+
+		// Si continúas navegando por esta web, entendemos que aceptas las cookies que usamos para mejorar nuestros servicios.
+		// By continuing to browse the site, you are agreeing to our use of cookies as described in our cookie policy.
 	}
 	
 	public function admin(){

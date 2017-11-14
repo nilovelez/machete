@@ -47,7 +47,7 @@ if (defined ('MACHETE_POWERTOOLS_INIT') ) {
 	<h1><?php _e('Analytics and Custom Code','machete') ?></h1>
 
 	<p class="tab-description"><?php _e('You don\'t need a zillion plugins to perform easy task like inserting a verification meta tag (Google Search Console, Bing, Pinterest), a json-ld snippet or a custom styleseet (Google Fonts, Print Styles, accesibility tweaks...).','machete') ?></p>
-	<?php machete_admin_tabs('machete-utils'); ?>
+	<?php $machete->admin_tabs('machete-utils'); ?>
 	<p class="tab-performance"><span><strong><i class="dashicons dashicons-clock"></i> <?php _e('Performance impact:','machete') ?></strong> <?php _e('This tool generates up to three static HTML files that are loaded via PHP on each pageview. When enabled, custom body content requires one aditional database request.','machete') ?></span></p>
 
 
