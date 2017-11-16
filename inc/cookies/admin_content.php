@@ -45,7 +45,9 @@
 <th scope="row"><?php _e('Cookie bar theme','machete') ?></th>
 <td><fieldset><legend class="screen-reader-text"><span><?php _e('Cookie bar theme','machete') ?></span></legend>
 	<label><input name="bar_theme" value="light" type="radio" <?php if ($this->settings['bar_theme'] =='light') echo 'checked="checked"'; ?>> <?php _e('Light','machete') ?></label><br>
-	<label><input name="bar_theme" value="dark" type="radio" <?php if ($this->settings['bar_theme'] =='dark') echo 'checked="checked"'; ?>> <?php _e('Dark','machete') ?></label>
+	<label><input name="bar_theme" value="dark" type="radio" <?php if ($this->settings['bar_theme'] =='dark') echo 'checked="checked"'; ?>> <?php _e('Dark','machete') ?></label><br>
+
+	<label><input name="bar_theme" value="cookie" type="radio" <?php if ($this->settings['bar_theme'] =='cookie') echo 'checked="checked"'; ?>> <?php _e('Cookie!','machete') ?></label>
 	
 </fieldset></td>
 </tr>
@@ -54,6 +56,39 @@
 
 <?php submit_button(); ?>
 </form>
+
+
+
+
+<div class="postbox machete-helpbox" data-collapsed="false">
+<button type="button" class="handlediv button-link"><span class="toggle-indicator" aria-hidden="true"><span class="dashicons dashicons-arrow-up"></span></span></button>
+	<h3 class="hndle"><span><span class="dashicons dashicons-sos"></span> <?php echo _e('How do I customize the cookie bar?','machete') ?></span></h2>
+	<div class="inside">
+		<table class="form-table"><tbody><tr valign="top"><th scope="row"></th><td>
+
+			<p class="description"><?php printf(__('You can customize the cookie bar CSS using the %sAnalytics & Code tab','machete'),
+            '<a href="'.admin_url('admin.php?page=machete-utils').'">') ?></a></p>
+            <p class="description"><?php _e('For your reference, this is the HTML used to render the cookie bar:','machete') ?></p>
+            <pre style="color: #00f; font-weight: bold;">&lt;html&gt;
+  &lt;head&gt;
+    &lt;title&gt;<span style="color: #000;">[<?php _e('title of the selected page','machete') ?>]</span>&lt;/title&gt;
+    <span style="color: #000;">[&hellip;]</span>
+  &lt;/head&gt;
+  &lt;body <span style="color: #c00;">id</span>=<span style="color: #f0f;">"maintenance_page"</span>&gt;
+    &lt;div <span style="color: #c00;">id</span>=<span style="color: #f0f;">"content"</span>&gt;
+      <span style="color: #000;">[<?php _e('content of the selected page','machete') ?>]</span>
+    &lt;/div&gt;
+  &lt;/body&gt;
+&lt;/html&gt;</pre>
+		</td></tr></tbody></table> 
+    </div>
+</div>
+
+
+
+
+
+
 </div>
 
 
@@ -77,6 +112,39 @@
 		$( '#warning_text' ).val('<?php echo $this->default_settings['warning_text'] ?>');
 		$( '#accept_text' ).val('<?php echo $this->default_settings['accept_text'] ?>');
 	});
+
+
+	$('button.handlediv').click(function( e ){
+		$( this ).parent().find('.hndle').click();
+	});
+
+	$('.machete-helpbox .hndle').click(function( e ){
+		var container  = $( this ).parent();
+
+		if (container.attr('data-collapsed') == 'false'){
+			close_helpbox(container);
+		} else {
+			open_helpbox(container);
+		}
+		
+	});
+	
+	var close_helpbox  = function(elem){
+		elem.attr('data-collapsed','true');
+		elem.find('div.inside').hide();
+		elem.find('.toggle-indicator span').attr('class','dashicons dashicons-arrow-down');
+	}
+	var open_helpbox  = function(elem){
+		elem.attr('data-collapsed','false');
+		elem.find('div.inside').show();
+		elem.find('.toggle-indicator span').attr('class','dashicons dashicons-arrow-up');
+	}
+
+	$('.machete-helpbox').each(function (index){
+		close_helpbox($( this ));
+	});
+
+
 })(jQuery);
 
 
