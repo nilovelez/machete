@@ -1,19 +1,6 @@
 <?php
 if ( ! defined( 'MACHETE_ADMIN_INIT' ) ) exit;
 
-$machete_utils_default_settings = array(
-		'tracking_id' => '',
-		'tracking_format' => 'none',
-		'tacking_anonymize' => 0,
-		'alfonso_content_injection_method' => 'manual'
-		);
-
-if(!$machete_utils_settings = get_option('machete_utils_settings')){
-	$machete_utils_settings = $machete_utils_default_settings;
-}else{
-	$machete_utils_settings = array_merge($machete_utils_default_settings, $machete_utils_settings);
-}
-
 
 if($machete_header_content = @file_get_contents(MACHETE_DATA_PATH.'header.html')){
 	$machete_header_content = explode('<!-- Machete Header -->', $machete_header_content);
@@ -38,10 +25,37 @@ if(!$machete_alfonso_content = @file_get_contents(MACHETE_DATA_PATH.'body.html')
 	$machete_alfonso_content = '';
 }
 
+/*
+add_action( 'admin_enqueue_scripts', function() {
+    if ( 'profile' !== get_current_screen()->id ) {
+        return;
+    }
+ 
+    // Enqueue code editor and settings for manipulating HTML.
+    $settings = wp_enqueue_code_editor( array( 'type' => 'text/html' ) );
+ 
+    // Bail if user disabled CodeMirror.
+    if ( false === $settings ) {
+        return;
+    }
+ 
+} );
+*/
+$settings = wp_enqueue_code_editor( array( 'type' => 'text/html' ) );
 
-if (defined ('MACHETE_POWERTOOLS_INIT') ) {
-	include (MACHETE_BASE_PATH.'inc/powertools/utils_highlight.php');
-} ?>
+if ( false !== $settings ) {
+
+	$json_settings = wp_json_encode( $settings );
+
+	$machete_code_editor = 'jQuery( function() { ' . "/n";
+	$machete_code_editor .= sprintf(' wp.codeEditor.initialize( "header_content", %s );', $json_settings ) . "/n";
+	$machete_code_editor .= sprintf(' wp.codeEditor.initialize( "alfonso_content", %s );',$json_settings ) . "/n";
+	$machete_code_editor .= sprintf(' wp.codeEditor.initialize( "footer_content", %s );', $json_settings ) . "/n";
+	$machete_code_editor .= ' } );' . "/n";
+	
+	wp_add_inline_script('code-editor', $machete_code_editor);
+}
+?>
 
 <div class="wrap machete-wrap machete-section-wrap">
 	<h1><?php _e('Analytics and Custom Code','machete') ?></h1>
@@ -63,22 +77,22 @@ if (defined ('MACHETE_POWERTOOLS_INIT') ) {
 
 <tr>
 <th scope="row"><label for="tracking_id"><?php _e('Tracking ID','machete') ?></label></th>
-<td><input name="tracking_id" id="tracking_id" aria-describedby="tracking_id_description" value="<?php echo $machete_utils_settings['tracking_id'] ?>" class="regular-text" type="text">
+<td><input name="tracking_id" id="tracking_id" aria-describedby="tracking_id_description" value="<?php echo $this->settings['tracking_id'] ?>" class="regular-text" type="text">
 <p class="description" id="tracking_id_description"><?php _e('Format:','machete') ?> UA-12345678-1</p></td>
 </tr>
 
 <tr>
 <th scope="row"><?php _e('Tracking Code','machete') ?></th>
 <td><fieldset><legend class="screen-reader-text"><span><?php _e('Tracking Code','machete') ?></span></legend>
-	<label><input name="tracking_format" value="standard" type="radio" <?php if ($machete_utils_settings['tracking_format'] =='standard') echo 'checked="checked"'; ?>> <?php _e('Standard Google Analytics tracking code','machete') ?></label><br>
-	<label><input name="tracking_format" value="machete" type="radio" <?php if ($machete_utils_settings['tracking_format'] =='machete') echo 'checked="checked"'; ?>> <?php _e('PageSpeed-optimized tracking code','machete') ?></label><br>
-	<label><input name="tracking_format" value="none" type="radio" <?php if ($machete_utils_settings['tracking_format'] =='none') echo 'checked="checked"'; ?>> <?php _e('No tracking code','machete') ?></label><br>
+	<label><input name="tracking_format" value="standard" type="radio" <?php if ($this->settings['tracking_format'] =='standard') echo 'checked="checked"'; ?>> <?php _e('Standard Google Analytics tracking code','machete') ?></label><br>
+	<label><input name="tracking_format" value="machete" type="radio" <?php if ($this->settings['tracking_format'] =='machete') echo 'checked="checked"'; ?>> <?php _e('PageSpeed-optimized tracking code','machete') ?></label><br>
+	<label><input name="tracking_format" value="none" type="radio" <?php if ($this->settings['tracking_format'] =='none') echo 'checked="checked"'; ?>> <?php _e('No tracking code','machete') ?></label><br>
 </fieldset></td>
 </tr>
 <tr>
 <th scope="row"><?php _e('Anonymize user IPs','machete') ?></th>
 <td><fieldset><legend class="screen-reader-text"><span><?php _e('Anonymize user IPs','machete') ?></span></legend>
-	<label><input name="tacking_anonymize" value="1" type="checkbox" <?php if ($machete_utils_settings['tacking_anonymize'] =='1') echo 'checked="checked"'; ?>> <?php _e('Check to anonymize visitor IPs. This feature is designed to help site owners comply with their own privacy policies or, in some countries, recommendations from local data protection authorities.','machete') ?></label><br>
+	<label><input name="tacking_anonymize" value="1" type="checkbox" <?php if ($this->settings['tacking_anonymize'] =='1') echo 'checked="checked"'; ?>> <?php _e('Check to anonymize visitor IPs. This feature is designed to help site owners comply with their own privacy policies or, in some countries, recommendations from local data protection authorities.','machete') ?></label><br>
 </fieldset></td>
 </tr>
 
@@ -99,8 +113,8 @@ if (defined ('MACHETE_POWERTOOLS_INIT') ) {
 
 
 <fieldset style="margin: 1em 0;"><legend class="screen-reader-text"><span><?php _e('Custom body content injection method','machete') ?></span></legend>
-	<label><input name="alfonso_content_injection_method" value="auto" type="radio" <?php if ($machete_utils_settings['alfonso_content_injection_method'] =='auto') echo 'checked="checked"'; ?>> <?php printf(__('Try to inject the code automatically using <a href="%s" target="_blank" rel="nofollow">Yaniv Friedensohn\'s method</a>','machete'), 'http://www.affectivia.com/blog/placing-the-google-tag-manager-in-wordpress-after-the-body-tag/') ?></label><br>
-	<label><input name="alfonso_content_injection_method" value="manual" type="radio" <?php if ($machete_utils_settings['alfonso_content_injection_method'] =='manual') echo 'checked="checked"'; ?>> <?php _e('Edit your theme\'s <code>header.php</code> template manually and include this function:','machete') ?> <code>&lt;?php machete_custom_body_content() ?&gt;</code></label>
+	<label><input name="alfonso_content_injection_method" value="auto" type="radio" <?php if ($this->settings['alfonso_content_injection_method'] =='auto') echo 'checked="checked"'; ?>> <?php printf(__('Try to inject the code automatically using <a href="%s" target="_blank" rel="nofollow">Yaniv Friedensohn\'s method</a>','machete'), 'http://www.affectivia.com/blog/placing-the-google-tag-manager-in-wordpress-after-the-body-tag/') ?></label><br>
+	<label><input name="alfonso_content_injection_method" value="manual" type="radio" <?php if ($this->settings['alfonso_content_injection_method'] =='manual') echo 'checked="checked"'; ?>> <?php _e('Edit your theme\'s <code>header.php</code> template manually and include this function:','machete') ?> <code>&lt;?php machete_custom_body_content() ?&gt;</code></label>
 </fieldset>
 
 <fieldset><legend class="screen-reader-text"><span><?php _e('Custom body content','machete') ?></span></legend>
