@@ -61,9 +61,7 @@ class machete_cookies_module extends machete_module {
 
 		$machete_cookies_bar_html = 'var machete_cookies_bar_html = \'<style>@media (min-width: 1024px) {#machete_cookie_bar {margin-bottom: 5px; border-radius: 4px; border-width: 1px; border-style: solid;} #machete_accept_cookie_btn {margin: -5px -5px 10px 10px;}}</style><div id="machete_cookie_bar" style="padding: 15px; margin-left: auto; margin-right: auto; max-width: 960px; border-top-style: solid; border-top-width: 1px; font-family: sans-serif; font-size: 13px; color: {{color}}; background-color: {{background_color}}; border-color: {{border_color}}; "><a id="machete_accept_cookie_btn" style="cursor: pointer; text-decoration: none; display: block; padding: 5px 10px; float: right; margin-left: 10px; white-space: nowrap; border-radius: 4px; background-color: {{btn_background_color}}; border-bottom: 2px solid {{btn_border_color}}; color: {{btn_color}};">{{accept_text}}</a> {{warning_text}}</div>\';';
 
-
-		$cookie_bg_css = 'background-image: url('.MACHETE_BASE_URL.'img/cookie_monster.svg); background-repeat: no-repeat; background-position: 10px 50%; padding-left: 72px; background-size: 48px; min-height: 60px;';
-
+		/*
 
 		$cookies_bar_themes = array(
 		'light' => array(
@@ -89,6 +87,22 @@ class machete_cookies_module extends machete_module {
 			'{{btn_color}}' => '#fff',
 			'{{btn_background_color}}' => '#337ab7',
 			'{{btn_border_color}}' => '#2e6da4',
+			)
+		);
+		*/
+
+		$cookies_bar_themes = array(
+			'light' => array(
+				'template' => 'light.html',
+				'extra_css' => ''
+			),
+			'dark' => array(
+				'template' => 'dark.html',
+				'extra_css' => ''
+			),
+			'cookies' => array(
+				'template' => 'cookies.html',
+				'extra_css' => '#machete_cookie_bar {background-image: url('.MACHETE_BASE_URL.'img/cookie_monster.svg);}'
 			)
 		);
 

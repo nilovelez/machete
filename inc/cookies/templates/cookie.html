@@ -1,0 +1,49 @@
+<style>
+#machete_cookie_bar {
+	padding: 15px;
+	margin-left: auto;
+	margin-right: auto;
+	max-width: 960px;
+	border-top-style: solid;
+	border-top-width: 1px;
+	font-family: sans-serif;
+	font-size: 13px;
+	color: #31708f;
+	background-color: #d9edf7;
+	background-repeat: no-repeat;
+	background-position: 10px 50%;
+	padding-left: 72px;
+	background-size: 48px;
+	min-height: 60px;
+	border-color: #bce8f1;
+}
+#machete_cookie_bar_btn {
+	cursor: pointer;
+	text-decoration: none;
+	display: block;
+	padding: 5px 10px;
+	float: right;
+	margin-left: 10px;
+	white-space: nowrap;
+	border-radius: 4px;
+	background-color: #337ab7;
+	border-bottom: 2px solid #2e6da4;
+	color: #fff;
+}
+
+
+@media (min-width:1024px) {
+	#machete_cookie_bar {
+		margin-bottom: 5px;
+		border-radius: 4px;
+		border-width: 1px;
+		border-style: solid;
+	}
+	#machete_accept_cookie_btn {
+		margin: -5px -5px 10px 10px;
+	}
+}
+{{extra_css}}
+</style>
+
+<div id="machete_cookie_bar" class="machete_cookie_bar"><a id="machete_accept_cookie_btn" class="machete_accept_cookie_btn">{{accept_text}}</a> {{ warning_text }}</div>
