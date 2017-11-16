@@ -32,13 +32,13 @@
 					<a class="machete-module-image"
 						href="<?php echo admin_url('admin.php?page=machete-'.$slug) ?>"
 						title="<?php echo __('Configure','machete').' '.$args['full_title'] ?>">
-						<img src="<?php echo MACHETE_BASE_URL ?>inc/<?php echo $slug ?>/banner.svg">
+						<img src="<?php echo MACHETE_BASE_URL .'inc/'. $slug ?>/banner.svg">
 					</a>
 
 				<?php } else { ?>
 
 					<span class="machete-module-image" title="<?php echo $args['full_title'] ?>">
-						<img src="<?php echo MACHETE_BASE_URL ?>inc/<?php echo $slug ?>/banner.svg">
+						<img src="<?php echo MACHETE_BASE_URL . 'inc/' . $slug ?>/banner.svg">
 					</span>
 
 				<?php } ?>
