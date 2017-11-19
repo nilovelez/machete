@@ -17,9 +17,12 @@ $machete_export['utils']= array(
 );
 
 
+$machete_export['utils']['settings'] = $machete->modules['utils']->settings;
+/*
 if($machete_utils_settings = get_option('machete_utils_settings')){
 	$machete_export['utils']['settings'] = $machete_utils_settings;
 }
+*/
 
 if($machete_header_content = @file_get_contents(MACHETE_DATA_PATH.'header.html')){
 	$machete_header_content = explode('<!-- Machete Header -->', $machete_header_content);
@@ -33,7 +36,7 @@ if($machete_header_content = @file_get_contents(MACHETE_DATA_PATH.'header.html')
 		default:
 			$machete_header_content = implode('',array_slice($machete_header_content, 1));
 	}
-	$machete_export['utils']['header_content'];
+	$machete_export['utils']['header_content'] = base64_encode($machete_header_content);
 }
 
 $machete_export['utils']['footer_content'] = @file_get_contents(MACHETE_DATA_PATH.'footer.html');
@@ -70,7 +73,7 @@ foreach ($machete_modules as $machete_module => $args) {
 
 
 
-<form id="mache-utils-options" action="" method="POST">
+<form id="mache-importexport-options" action="" method="POST">
 
 <?php wp_nonce_field( 'machete_save_utils' ); ?>
 <input type="hidden" name="machete-utils-saved" value="true">
