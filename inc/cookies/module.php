@@ -25,6 +25,30 @@ class machete_cookies_module extends machete_module {
 
 		// Si continúas navegando por esta web, entendemos que aceptas las cookies que usamos para mejorar nuestros servicios.
 		// By continuing to browse the site, you are agreeing to our use of cookies as described in our cookie policy.
+	
+		$this->themes = array(
+			'light' => array(
+				'template' => $this->path.'templates/light.html',
+				'extra_css' => ''
+			),
+			'dark' => array(
+				'template' => $this->path.'templates/dark.html',
+				'extra_css' => ''
+			),
+			'new_light' => array(
+				'template' => $this->path.'templates/new_light.html',
+				'extra_css' => ''
+			),
+			'new_dark' => array(
+				'template' => $this->path.'templates/new_dark.html',
+				'extra_css' => ''
+			),
+			'cookie' => array(
+				'template' => $this->path.'templates/cookie.html',
+				'extra_css' => '#machete_cookie_bar {background-image: url('.MACHETE_BASE_URL.'img/cookie_monster.svg);}'
+			)
+		);
+
 	}
 	
 	public function admin(){
@@ -36,6 +60,11 @@ class machete_cookies_module extends machete_module {
 		}
 
 		add_action( 'admin_menu', array(&$this, 'register_sub_menu') );
+	}
+
+	public function frontend() {
+		$this->read_settings();
+		add_action( 'wp_footer', array(&$this,'render_cookie_bar'));
 	}
 	
 	function save_settings() {
@@ -54,65 +83,28 @@ class machete_cookies_module extends machete_module {
 			}
 		}
 
-		if(!$cookies_bar_js = @file_get_contents(MACHETE_BASE_PATH.'templates/cookies_bar_js.js')){
-			$this->notice(sprintf( __( 'Error reading cookie bar template %s', 'machete' ), MACHETE_RELATIVE_BASE_PATH.'templates/cookies_bar_js.js'), 'error');
+		if(!$cookies_bar_js = @file_get_contents($this->path.'templates/cookies_bar_js.min.js')){
+			$this->notice(sprintf( __( 'Error reading cookie bar template %s', 'machete' ), $this->path.'templates/cookies_bar_js.js'), 'error');
 			return false;
 		}
 
-		$machete_cookies_bar_html = 'var machete_cookies_bar_html = \'<style>@media (min-width: 1024px) {#machete_cookie_bar {margin-bottom: 5px; border-radius: 4px; border-width: 1px; border-style: solid;} #machete_accept_cookie_btn {margin: -5px -5px 10px 10px;}}</style><div id="machete_cookie_bar" style="padding: 15px; margin-left: auto; margin-right: auto; max-width: 960px; border-top-style: solid; border-top-width: 1px; font-family: sans-serif; font-size: 13px; color: {{color}}; background-color: {{background_color}}; border-color: {{border_color}}; "><a id="machete_accept_cookie_btn" style="cursor: pointer; text-decoration: none; display: block; padding: 5px 10px; float: right; margin-left: 10px; white-space: nowrap; border-radius: 4px; background-color: {{btn_background_color}}; border-bottom: 2px solid {{btn_border_color}}; color: {{btn_color}};">{{accept_text}}</a> {{warning_text}}</div>\';';
-
-		/*
-
-		$cookies_bar_themes = array(
-		'light' => array(
-			'{{color}}' => '#222',
-			'{{background_color}}' => '#fff',
-			'{{border_color}}' => '#ddd',
-			'{{btn_color}}' => '#000',
-			'{{btn_background_color}}' => '#ddd',
-			'{{btn_border_color}}' => '#999',
-			),
-		'dark' => array(
-			'{{color}}' => '#999',
-			'{{background_color}}' => '#111',
-			'{{border_color}}' => '#999',
-			'{{btn_color}}' => '#000',
-			'{{btn_background_color}}' => '#999',
-			'{{btn_border_color}}' => '#000',
-			),
-		'cookie' => array(
-			'{{color}}' => '#31708f',
-			'{{background_color}}' => '#d9edf7; '. $cookie_bg_css,
-			'{{border_color}}' => '#bce8f1',
-			'{{btn_color}}' => '#fff',
-			'{{btn_background_color}}' => '#337ab7',
-			'{{btn_border_color}}' => '#2e6da4',
-			)
-		);
-		*/
-
-		$cookies_bar_themes = array(
-			'light' => array(
-				'template' => 'light.html',
-				'extra_css' => ''
-			),
-			'dark' => array(
-				'template' => 'dark.html',
-				'extra_css' => ''
-			),
-			'cookies' => array(
-				'template' => 'cookies.html',
-				'extra_css' => '#machete_cookie_bar {background-image: url('.MACHETE_BASE_URL.'img/cookie_monster.svg);}'
-			)
-		);
+		$html_replaces = array();
 
 		
-		if (!empty($_POST['bar_theme']) && (array_key_exists($_POST['bar_theme'], $cookies_bar_themes))){
+
+		
+		if (!empty($_POST['bar_theme']) && (array_key_exists($_POST['bar_theme'], $this->themes))){
 			$settings['bar_theme'] = $_POST['bar_theme'];
 		}else{
 			$settings['bar_theme'] = 'light';
 		}
-		$html_replaces = $cookies_bar_themes[$settings['bar_theme']];	
+
+		if(!$cookies_bar_html = @file_get_contents($this->themes[$settings['bar_theme']]['template'])){
+			$this->notice(sprintf( __( 'Error reading cookie bar template %s', 'machete' ), $cookies_bar_themes[$settings['bar_theme']]['template']), 'error');
+			return false;
+		}
+
+		$cookies_bar_html = "var machete_cookies_bar_html = '".addslashes($cookies_bar_html)."'; \n";
 
 		$settings['bar_status'] = sanitize_text_field($_POST['bar_status']);
 		if (empty($settings['bar_status']) || ($settings['bar_status'] != 'disabled')){
@@ -133,10 +125,12 @@ class machete_cookies_module extends machete_module {
 		}
 		$html_replaces['{{accept_text}}']  = $settings['accept_text'];
 
+		$html_replaces['{{extra_css}}'] = $this->themes[$settings['bar_theme']]['extra_css'];
+
 		$cookies_bar_js = str_replace(
 			array_keys($html_replaces),
 			array_values($html_replaces),
-			$machete_cookies_bar_html
+			$cookies_bar_html
 			)."\n".$cookies_bar_js;
 
 
@@ -172,5 +166,62 @@ class machete_cookies_module extends machete_module {
 		}
 
 	}
+
+	function preview_cookie_bar(){ 
+
+
+
+		/*
+		if(!$machete_cookies_settings = get_option('machete_cookies_settings')){
+			return false;
+		}
+		*/
+		if(!isset($this->settings['bar_status']) || ($this->settings['bar_status'] != 'enabled') ){
+				return false;
+		}
+		if(!isset($this->settings['cookie_filename'])){
+			return false;
+		}
+		if(!file_exists(MACHETE_DATA_PATH.$this->settings['cookie_filename'])){
+			return false;
+		}
+
+		echo '<script>';
+		readfile(MACHETE_DATA_URL.$this->settings['cookie_filename']);
+		echo '</script>';
+
+	}
+
+	function render_cookie_bar(){ 
+		/*
+		if(!$machete_cookies_settings = get_option('machete_cookies_settings')){
+			return false;
+		}
+		*/
+		if(!isset($this->settings['bar_status']) || ($this->settings['bar_status'] != 'enabled') ){
+				return false;
+		}
+		if(!isset($this->settings['cookie_filename'])){
+			return false;
+		}
+		if(!file_exists(MACHETE_DATA_PATH.$this->settings['cookie_filename'])){
+			return false;
+		}
+
+		?><script>
+	if (!navigator.userAgent || (
+	    (navigator.userAgent.indexOf("Speed Insights") == -1) &&
+	    (navigator.userAgent.indexOf("Googlebot") == -1)
+	)) {(function(){
+	    var s = document.createElement('script'); s.type = 'text/javascript';
+	    s.async = true; s.src = '<?php echo MACHETE_DATA_URL.$this->settings['cookie_filename'] ?>';
+	    var body = document.getElementsByTagName('body')[0];
+	    body.appendChild(s);
+	})()}
+	</script><?php 
+	}
+
+
+
 }
 $machete->modules['cookies'] = new machete_cookies_module();
