@@ -26,6 +26,7 @@ class machete_module {
 		}else{
 			$this->settings = array_merge($this->default_settings, $this->settings);
 		}
+		return($this->settings);
 	}
 
 	public function admin(){
@@ -114,42 +115,12 @@ require_once('maintenance/module.php');
 require_once('clone/module.php');
 //var_dump($machete);
 
-/*
-$machete_modules['cookies'] = array(
-	'title' => __('Cookie Law','machete'),
-	'full_title' => __('Cookie Law Warning','machete'),
-	'description' => __('Light and responsive cookie law warning bar that won\'t affect your PageSpeed score and plays well with static cache plugins.','machete'),
-	'is_active' => true,
-	'has_config' => true,
-	'can_be_disabled' => true,
-	'role' => 'author'
-);
-*/
-/*
-$machete_modules['utils'] = array(
-	'title' => __('Analytics & Code','machete'),
-	'full_title' => __('Analytics and Custom Code','machete'),
-	'description' => __('Google Analytics tracking code manager and a simple editor to insert HTML, CSS and JS snippets or site verification tags.'),
-	'is_active' => true,
-	'has_config' => true,
-	'can_be_disabled' => true,
-	'role' => 'admin'
-);
-*/
-/*
-$machete_modules['maintenance'] = array(
-	'title' => __('Maintenance Mode','machete'),
-	'full_title' => __('Maintenance Mode','machete'),
-	'description' => __('Customizable maintenance page to close your site during updates or development. It has a "magic link" to grant temporary access.','machete'),
-	'is_active' => true,
-	'has_config' => true,
-	'can_be_disabled' => true,
-	'role' => 'author'
-);
-*/
+require_once('importexport/module.php');
+//require_once('importexport/module.php');
 
 
 
+/*
 $machete_modules['importexport'] = array(
 	'title' => __('Import/Export Options','machete'),
 	'full_title' => __('Import/Export Options','machete'),
@@ -159,6 +130,7 @@ $machete_modules['importexport'] = array(
 	'can_be_disabled' => false,
 	'role' => 'admin'
 );
+*/
 
 
 $machete_modules['powertools'] = array(

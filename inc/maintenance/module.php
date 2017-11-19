@@ -87,6 +87,7 @@ class machete_maintenance_module extends machete_module {
 
 		// option saved WITH autoload
 		if(update_option( 'machete_maintenance_settings', $settings, 'yes' )){
+			$this->settings = $settings;
 			$this->save_success_notice();
 			return true;
 		}else{
