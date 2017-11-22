@@ -162,5 +162,40 @@ class machete_utils_module extends machete_module {
 
 	}
 
+	public function export(){
+
+		$export = array(
+			'settings' => $this->settings,
+			'header_content' => '',
+			'alfonso_content' => '',
+			'footer_content' => ''
+		);
+
+		if($machete_header_content = @file_get_contents(MACHETE_DATA_PATH.'header.html')){
+
+			$machete_header_content = explode('<!-- Machete Header -->', $machete_header_content);
+			switch(count($machete_header_content)){
+				case 1:
+					$machete_header_content = $machete_header_content[0];
+					break;
+				case 2:
+					$machete_header_content = $machete_header_content[1];
+					break;
+				default:
+					$machete_header_content = implode('',array_slice($machete_header_content, 1));
+			}
+			$export['header_content'] = base64_encode($machete_header_content);
+		}
+		if (file_exists(MACHETE_DATA_PATH.'body.html')){
+			$export['alfonso_content'] = base64_encode(file_get_contents(MACHETE_DATA_PATH.'body.html'));
+		}
+
+		if (file_exists(MACHETE_DATA_PATH.'footer.html')){
+			$export['footer_content'] = base64_encode(file_get_contents(MACHETE_DATA_PATH.'footer.html'));
+		}
+
+		return $export;
+	}
+
 }
 $machete->modules['utils'] = new machete_utils_module();

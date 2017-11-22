@@ -55,36 +55,6 @@ function machete_enqueue_custom_admin_style() {
 add_action( 'admin_enqueue_scripts', 'machete_enqueue_custom_admin_style' );
 
 
-/*
-if ( ! class_exists( 'Machete_Notice' ) ):
-class Machete_Notice {
-  private $message;
-  private $css_classes;
-  public function __construct( $message, $level = 'info', $dismissible = true) {
-    $this->message = $message;
-    
-    if (!in_array($level, array('error','warning','info','success'))){
-      $level = 'info';
-    }
-    $this->css_classes = 'notice notice-'.$level;
-    if ($dismissible){
-      $this->css_classes .= ' is-dismissible';
-    }
-    add_action( 'admin_notices', array( $this, 'display_admin_notice' ) );
-  }
-  public function display_admin_notice() {
-    ?>
-    <div class="<?php echo $this->css_classes ?>">
-      <p><?php echo $this->message; ?></p>
-    </div>
-    <?php
-  }
-}
-endif;
-*/
-
-
-
 function machete_menu() {
 	global $machete;
   add_menu_page(
@@ -105,32 +75,6 @@ function machete_about_page_content() {
   require( MACHETE_BASE_PATH . 'inc/about/admin_content.php' );
   add_filter('admin_footer_text', 'machete_footer_text');
 }
-
-/*
-function machete_admin_tabs($current = '') {
-  global $machete_modules;
-
-  $is_admin = current_user_can('manage_options') ? true : false;
-  	
-  echo '<h2 class="nav-tab-wrapper">';
-	foreach($machete_modules as $slug => $args) {
-
-    if (!$is_admin && ($args['role'] == 'admin')) continue;
-    //if (!$is_admin && ($args['role'] == 'admin')) continue;
-
-    if ( ! $args['is_active'] ) continue;
-    if ( ! $args['has_config'] ) continue;
-
-    $slug = 'machete-'.$slug;
-		if ($slug == $current){
-			echo '<a href="#" class="nav-tab-active nav-tab '.$slug.'-tab">'.$args['title'].'</a>';
-		}else{
-			echo '<a href="'.admin_url('admin.php?page='.$slug).'" class="nav-tab '.$slug.'-tab">'.$args['title'].'</a>';
-		}
-	}
-	echo '</h2>';
-}
-*/
 
 
 function machete_save_success() {

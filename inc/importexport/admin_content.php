@@ -2,62 +2,7 @@
 if ( ! defined( 'MACHETE_ADMIN_INIT' ) ) exit;
 
 
-$machete_export = array();
-
-$machete_export['utils']= array(
-	'settings' => array(
-		'tracking_id' => '',
-		'tracking_format' => 'none',
-		'tacking_anonymize' => 0,
-		'alfonso_content_injection_method' => 'manual'
-	),
-	'header_content' => '',
-	'alfonso_content' => '',
-	'footer_content' => ''
-);
-
-
-$machete_export['utils']['settings'] = $machete->modules['utils']->settings;
-/*
-if($machete_utils_settings = get_option('machete_utils_settings')){
-	$machete_export['utils']['settings'] = $machete_utils_settings;
-}
-*/
-
-if($machete_header_content = @file_get_contents(MACHETE_DATA_PATH.'header.html')){
-	$machete_header_content = explode('<!-- Machete Header -->', $machete_header_content);
-	switch(count($machete_header_content)){
-		case 1:
-			$machete_header_content = $machete_header_content[0];
-			break;
-		case 2:
-			$machete_header_content = $machete_header_content[1];
-			break;
-		default:
-			$machete_header_content = implode('',array_slice($machete_header_content, 1));
-	}
-	$machete_export['utils']['header_content'] = base64_encode($machete_header_content);
-}
-
-$machete_export['utils']['footer_content'] = @file_get_contents(MACHETE_DATA_PATH.'footer.html');
-$machete_export['utils']['alfonso_content'] = @file_get_contents(MACHETE_DATA_PATH.'body.html');
-
-$machete_export_data = base64_encode(serialize($machete_export));
-
-
-
-$machete_exportable_modules = array();
-
-foreach ($machete_modules as $machete_module => $args) {
-    if ( ! $args['has_config'] ) continue;
-    $machete_exportable_modules[$machete_module] = array(
-    	'title' => $args['title'],
-    	'full_title' => $args['full_title'],
-    	'checked' => true
-    );
-    $machete_all_exportable_modules_checked = true;
-}
-
+$machete_all_exportable_modules_checked = true;
 
 ?>
 
@@ -75,8 +20,8 @@ foreach ($machete_modules as $machete_module => $args) {
 
 <form id="mache-importexport-options" action="" method="POST">
 
-<?php wp_nonce_field( 'machete_save_utils' ); ?>
-<input type="hidden" name="machete-utils-saved" value="true">
+<?php wp_nonce_field( 'machete_importexport_export' ); ?>
+<input type="hidden" name="machete-importexport-export" value="true">
 
 
 
@@ -95,7 +40,7 @@ foreach ($machete_modules as $machete_module => $args) {
 			</tr>
 		</thead>
 		<tbody>
-		<?php foreach($machete_exportable_modules as $machete_module => $args){ ?>
+		<?php foreach($this->exportable_modules as $machete_module => $args){ ?>
 			<tr>
 				<th scope="row" class="check-column"><input type="checkbox" name="moduleEnabled[]" value="<?php echo $option_slug ?>" id="<?php echo $args['slug'] ?>_fld" <?php if ($args['checked']) echo 'checked' ?>></th>
 				<td class="column-title column-primary"><strong><?php echo $args['full_title'] ?></strong>
@@ -117,6 +62,10 @@ foreach ($machete_modules as $machete_module => $args) {
 
 
 <?php
+
+$machete_export_data = $this->export();
+
+
 echo '<pre>';
 print_r(unserialize(base64_decode($machete_export_data)));
 echo '</pre>';

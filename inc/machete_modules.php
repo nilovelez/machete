@@ -1,7 +1,7 @@
 <?php
 if ( ! defined( 'ABSPATH' ) ) exit;
 
-class machete_module {
+abstract class machete_module {
 	public $params = array(
 		'slug' => '',
 		'title' => '',
@@ -12,15 +12,15 @@ class machete_module {
 		'can_be_disabled' => true,
 		'role' => 'manage_options'
 	);
-	public $settings = array();
-	public $default_settings = array();
+	protected $settings = array();
+	protected $default_settings = array();
 
-	public function init( $params = array() ){
+	protected function init( $params = array() ){
 		$this->params = array_merge($this->params, $params);
 		$this->path = MACHETE_BASE_PATH.'inc/'.$this->params['slug'].'/';
 	}
 
-	public function read_settings(){
+	protected function read_settings(){
 		if(!$this->settings = get_option('machete_'.$this->params['slug'].'_settings')){
 			$this->settings = $this->default_settings;
 		}else{
@@ -55,18 +55,18 @@ class machete_module {
   		add_filter('admin_footer_text', 'machete_footer_text');
 	}
 
-	public function frontend() {
+	protected function frontend() {
 		if ($this->params['has_config']){
 			$this->read_settings();
 		}
 		require($this->path.'frontend_functions.php');
 	}
 
-	public function export(){
-
+	protected function export(){
+		return $this->settings;
 	}
 
-	public function import(){
+	protected function import(){
 
 	}
 
@@ -86,16 +86,14 @@ class machete_module {
 		add_action( 'admin_notices', array( $this, 'display_notice' ) );
 	}
 
-	public function save_success_notice(){
+	protected function save_success_notice(){
 		$this->notice(__( 'Options saved!', 'machete' ), 'success');
 	}
-	public function save_error_notice(){
+	protected function save_error_notice(){
 		$this->notice(__( 'Error saving configuration to database.', 'machete' ), 'error');
 	}
 				
-
-	function display_notice() {
-
+	public function display_notice() {
 		if (!empty($this->notice_message)){
 		?>
 		<div class="<?php echo $this->notice_class ?>">

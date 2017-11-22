@@ -67,7 +67,7 @@ class machete_cookies_module extends machete_module {
 		add_action( 'wp_footer', array(&$this,'render_cookie_bar'));
 	}
 	
-	function save_settings() {
+	protected function save_settings() {
 
 		/*
 		bar_status: disabled | enabled
@@ -167,7 +167,7 @@ class machete_cookies_module extends machete_module {
 
 	}
 
-	function preview_cookie_bar(){ 
+	protected function preview_cookie_bar(){ 
 
 
 
@@ -192,7 +192,7 @@ class machete_cookies_module extends machete_module {
 
 	}
 
-	function render_cookie_bar(){ 
+	protected function render_cookie_bar(){ 
 		/*
 		if(!$machete_cookies_settings = get_option('machete_cookies_settings')){
 			return false;
@@ -220,8 +220,5 @@ class machete_cookies_module extends machete_module {
 	})()}
 	</script><?php 
 	}
-
-
-
 }
 $machete->modules['cookies'] = new machete_cookies_module();
