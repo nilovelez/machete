@@ -34,7 +34,7 @@ class machete_utils_module extends machete_module {
 		add_action( 'admin_menu', array(&$this, 'register_sub_menu') );
 	}
 
-	function save_settings() {
+	protected function save_settings() {
 
 		/*
 		tracking_id
@@ -47,7 +47,7 @@ class machete_utils_module extends machete_module {
 		
 		if (!is_dir(MACHETE_DATA_PATH)){
 			if(!@mkdir(MACHETE_DATA_PATH)){
-				$this->notices( sprintf( __( 'Error creating data dir %s please check file permissions', 'machete' ), MACHETE_DATA_PATH), 'error');
+				$this->notice( sprintf( __( 'Error creating data dir %s please check file permissions', 'machete' ), MACHETE_DATA_PATH), 'error');
 				return false;
 			}
 		}
@@ -60,7 +60,7 @@ class machete_utils_module extends machete_module {
 			if(!preg_match('/^ua-\d{4,9}-\d{1,4}$/i', strval( $_POST['tracking_id'] ))){
 				// invalid Analytics Tracking ID
 				// http://code.google.com/apis/analytics/docs/concepts/gaConceptsAccounts.html#webProperty
-				$this->notices( __( 'That doesn\'t look like a valid Google Analytics tracking ID', 'machete' ), 'warning');
+				$this->notice( __( 'That doesn\'t look like a valid Google Analytics tracking ID', 'machete' ), 'warning');
 				return false;
 			}
 
@@ -68,7 +68,7 @@ class machete_utils_module extends machete_module {
 
 			if( !in_array( $_POST['tracking_format'], array('standard','machete','none') )){
 				// I don't know that tracking format
-				$this->notices( __( 'Something went wrong. Unknown tracking code format requested.', 'machete' ), 'warning');
+				$this->notice( __( 'Something went wrong. Unknown tracking code format requested.', 'machete' ), 'warning');
 				return false;
 			}
 
@@ -148,6 +148,18 @@ class machete_utils_module extends machete_module {
 				unlink(MACHETE_DATA_PATH.'footer.html');
 			}
 		}
+		
+		if(
+			(0 == count(array_diff($settings, $this->settings))) &&
+			(0 == count(array_diff($this->settings, $settings)))
+			){
+			// no removes && no adds
+			// ToDo: check for changes in the other sections
+			//       give "no changes" notice only if no changes at all
+			//if (!$silent) $this->notice(__( 'No changes were needed.', 'machete' ), 'info');
+			return false;
+		}
+		
 
 
 		// option saved WITHOUT autoload
