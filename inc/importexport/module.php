@@ -19,14 +19,20 @@ class machete_importexport_module extends machete_module {
 
 	}
 
+	protected $checked_modules = array();
+	protected $exportable_modules = array();
+
+	protected $uploaded_backup_data = array();
+
+
 	public function frontend() {
 		return;
 	}
 
 	public function admin(){
 		global $machete;
-		$this->checked_modules = array();
-		$this->exportable_modules = array();
+		
+
 		foreach ($machete->modules as $module) {
 
 			$params = $module->params;
@@ -42,10 +48,13 @@ class machete_importexport_module extends machete_module {
 		}
 
 		if (isset($_POST['machete-importexport-export'])){
-			// ToDo: nonce
+		  	
 		  	check_admin_referer( 'machete_importexport_export' );
+		  	
 		  	if (isset( $_POST['moduleChecked'] ) && ( count($_POST['moduleChecked']) > 0) ){
+			
 				$this->checked_modules = $_POST['moduleChecked'];
+			
 				$export_file = $this->export();
 				
 				header('Content-disposition: attachment; filename=machete_export.json');
@@ -55,6 +64,13 @@ class machete_importexport_module extends machete_module {
 				exit();
 		  	}
 		}
+		if (isset($_POST['machete-importexport-import'])){
+		  	check_admin_referer( 'machete_importexport_import' );
+
+		  	$this->import();
+		}
+
+		// ToDo: check $this->checked_modules
 		$this->all_exportable_modules_checked = true;
 		add_action( 'admin_menu', array(&$this, 'register_sub_menu') );
 	}
@@ -88,5 +104,38 @@ class machete_importexport_module extends machete_module {
 		return json_encode($export, JSON_PRETTY_PRINT | JSON_UNESCAPED_UNICODE);
 
 	}
+
+	protected function import() {
+		global $machete;
+
+	  	if ( empty( $_FILES ) || (! isset( $_FILES[ 'machete-backup-file' ] ) ) ) return false;
+
+	  	$backup_file = $_FILES['machete-backup-file']['tmp_name'];
+
+  		if ($backup_data = @file_get_contents( $backup_file ) ){
+			@unlink( $backup_file );
+  		}else{
+  			$this->notice(__('You haven\'t uploaded a backup file'), 'warning');
+  			return false;
+  		}
+
+  		if ( 
+  			( ! $this->uploaded_backup_data = json_decode($backup_data, true) ) ||
+  			( !is_array( $this->uploaded_backup_data ) )
+  		){
+  			$this->notice(__('You haven\'t uploaded a valid Machete backup file'), 'warning');
+  			return false;
+  		}
+  		
+  		foreach ($this->uploaded_backup_data as $module => $module_data){
+
+  		}
+
+
+  		//$this->notice(__('An error occurred while uploading the backup file'), 'error');
+
+	}
+
+
 }
 $machete->modules['importexport'] = new machete_importexport_module;

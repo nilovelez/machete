@@ -20,13 +20,10 @@ if ( ! defined( 'MACHETE_ADMIN_INIT' ) ) exit;
 
 <form id="mache-importexport-options" action="" method="POST">
 
-<?php wp_nonce_field( 'machete_importexport_export' ); ?>
-<input type="hidden" name="machete-importexport-export" value="true">
+	<?php wp_nonce_field( 'machete_importexport_export' ); ?>
+	<input type="hidden" name="machete-importexport-export" value="true">
 
-
-
-
-<h3><?php _e('Export Machete Options','machete') ?> </h3>
+	<h3><?php _e('Export Machete Options','machete') ?> </h3>
 
 		<p><?php _e('This section goes futher disabling optional features. All options can be safely activated, but keep an eye on potiential plugin compatibility issues.','machete') ?></p>
 
@@ -54,11 +51,29 @@ if ( ! defined( 'MACHETE_ADMIN_INIT' ) ) exit;
 		</tbody>
 		</table>
 
-<?php submit_button(__('Download config backup', 'machete')); ?>
+		<?php submit_button(__('Download config backup', 'machete')); ?>
 		
 </form>
-</div>
 
+
+<form id="mache-importexport-restore" action="" method="POST" enctype="multipart/form-data">
+
+	<?php wp_nonce_field( 'machete_importexport_import' ); ?>
+	<input type="hidden" name="machete-importexport-import" value="true">
+	<input type="hidden" name="MAX_FILE_SIZE" value="1000000" />
+
+	<h3><?php _e('Import Machete Options','machete') ?> </h3>
+
+	<p><?php _e('This section goes futher disabling optional features. All options can be safely activated, but keep an eye on potiential plugin compatibility issues.','machete') ?></p>
+
+	<label class="screen-reader-text" for="machete-backup-file"><?php _e('Machete backup file to restore') ?></label>
+	<input type="file" id="machete-backup-file" name="machete-backup-file">
+
+	<?php submit_button(__('Upload config backup', 'machete')); ?>
+	
+</form>	
+
+</div>
 
 
 <?php
@@ -69,4 +84,9 @@ $machete_export_data = $this->export();
 echo '<pre>';
 print_r(unserialize(base64_decode($machete_export_data)));
 echo '</pre>';
+
+echo '<pre>';
+print_r($this->uploaded_backup_data);
+echo '</pre>';
+
 ?>
