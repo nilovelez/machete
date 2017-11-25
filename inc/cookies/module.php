@@ -169,13 +169,6 @@ class machete_cookies_module extends machete_module {
 
 	protected function preview_cookie_bar(){ 
 
-
-
-		/*
-		if(!$machete_cookies_settings = get_option('machete_cookies_settings')){
-			return false;
-		}
-		*/
 		if(!isset($this->settings['bar_status']) || ($this->settings['bar_status'] != 'enabled') ){
 				return false;
 		}
@@ -193,11 +186,7 @@ class machete_cookies_module extends machete_module {
 	}
 
 	protected function render_cookie_bar(){ 
-		/*
-		if(!$machete_cookies_settings = get_option('machete_cookies_settings')){
-			return false;
-		}
-		*/
+		
 		if(!isset($this->settings['bar_status']) || ($this->settings['bar_status'] != 'enabled') ){
 				return false;
 		}

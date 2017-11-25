@@ -85,12 +85,13 @@ function machete_action_success() {
   new Machete_Notice(__( 'Action succesfully executed!', 'machete' ), 'success');
 }
 
-foreach ($machete->modules as $module) {
+foreach ($machete->modules as &$module) {
     if ( ! $module->params['is_active'] ) continue;
     $module->admin();
 }
-
+/*
 foreach ($machete_modules as $machete_module => $args) {
     if ( ! $args['is_active'] ) continue;
     @require_once('inc/'.$machete_module.'/admin_functions.php');
 }
+*/

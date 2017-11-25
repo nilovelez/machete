@@ -121,6 +121,14 @@ class machete_cleanup_module extends machete_module {
 		  
 		);
 	}
+
+	public function frontend(){
+		$this->read_settings();
+		if( count( $this->settings ) > 0 ) { 
+			require($this->path . 'frontend_functions.php' );
+		}
+	}
+	
 	public function admin(){
 		$this->read_settings();
 
@@ -144,13 +152,6 @@ class machete_cleanup_module extends machete_module {
 		$this->all_tweaks_checked = (count(array_intersect(array_keys($this->tweaks_array), $this->settings)) == count($this->tweaks_array)) ? true : false;
 
 		add_action( 'admin_menu', array(&$this, 'register_sub_menu') );
-	}
-
-	public function frontend(){
-		$this->read_settings();
-		if( count( $this->settings ) > 0 ) { 
-			require($this->path . 'frontend_functions.php' );
-		}
 	}
 
 	protected function save_settings( $options = array(), $silent = false ) {

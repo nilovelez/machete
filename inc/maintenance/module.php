@@ -26,7 +26,16 @@ class machete_maintenance_module extends machete_module {
 		// By continuing to browse the site, you are agreeing to our use of cookies as described in our cookie policy.
 	}
 
-
+	public function frontend(){
+		$this->read_settings();
+		if( count( $this->settings ) > 0 ) { 
+			require($this->path . 'frontend_functions.php' );
+			if(is_admin_bar_showing()){
+        		require_once($this->path . 'admin_bar.php');
+    		}
+    		$machete_maintenance = new MACHETE_MAINTENANCE($this->settings);
+		}
+	}
 
 	public function admin(){
 		$this->read_settings();
@@ -39,7 +48,7 @@ class machete_maintenance_module extends machete_module {
 		add_action( 'admin_menu', array(&$this, 'register_sub_menu') );
 
 		if(is_admin_bar_showing()){
-			require_once('admin_bar.php');
+			require_once($this->path . 'admin_bar.php');
 		}
 	}
 

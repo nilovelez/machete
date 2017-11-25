@@ -19,6 +19,9 @@ class machete_importexport_module extends machete_module {
 
 	}
 
+	public function frontend() {
+		return;
+	}
 
 	public function admin(){
 		global $machete;
@@ -44,16 +47,15 @@ class machete_importexport_module extends machete_module {
 		  	if (isset( $_POST['moduleChecked'] ) && ( count($_POST['moduleChecked']) > 0) ){
 				$this->checked_modules = $_POST['moduleChecked'];
 				$export_file = $this->export();
-				// ToDo: Force Download
-
-				header('Content-disposition: attachment; filemame=machete_export.json');
+				
+				header('Content-disposition: attachment; filename=machete_export.json');
 				header('Content-Type: application/json');
 				header('Pragma: no-cache');
 				echo $export_file;
 				exit();
 		  	}
 		}
-
+		$this->all_exportable_modules_checked = true;
 		add_action( 'admin_menu', array(&$this, 'register_sub_menu') );
 	}
 
@@ -61,6 +63,14 @@ class machete_importexport_module extends machete_module {
 	protected function export() {
 		global $machete;
 		
+		/*
+		echo '<pre>';
+		print_r ($this->exportable_modules);
+		print_r ($this->checked_modules);
+		echo '</pre>';
+		*/
+
+
 		$export = array();
 
 		foreach ($this->checked_modules as $slug){
@@ -74,8 +84,8 @@ class machete_importexport_module extends machete_module {
 		    ); 
 		    
 		}
-		return base64_encode(serialize($export));
-
+		//return base64_encode(serialize($export));
+		return json_encode($export, JSON_PRETTY_PRINT | JSON_UNESCAPED_UNICODE);
 
 	}
 }
