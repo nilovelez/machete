@@ -26,7 +26,6 @@ class machete_utils_module extends machete_module {
 
 	public function admin(){
 		$this->read_settings();
-
 		if (isset($_POST['machete-utils-saved'])){
   			check_admin_referer( 'machete_save_utils' );
 			$this->save_settings();
@@ -174,14 +173,9 @@ class machete_utils_module extends machete_module {
 
 	}
 
-	public function export(){
+	protected function export(){
 
-		$export = array(
-			'settings' => $this->settings,
-			'header_content' => '',
-			'alfonso_content' => '',
-			'footer_content' => ''
-		);
+		$export = $this->settings;
 
 		if($machete_header_content = @file_get_contents(MACHETE_DATA_PATH.'header.html')){
 

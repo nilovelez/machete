@@ -146,7 +146,7 @@ class machete_cleanup_module extends machete_module {
 		add_action( 'admin_menu', array(&$this, 'register_sub_menu') );
 	}
 
-	protected function frontend(){
+	public function frontend(){
 		$this->read_settings();
 		if( count( $this->settings ) > 0 ) { 
 			require($this->path . 'frontend_functions.php' );
@@ -195,7 +195,7 @@ class machete_cleanup_module extends machete_module {
 		return false;
 	}
 
-	public function import( $options = array() ){
+	protected function import( $options = array() ){
 		if (!is_array($options) || (count($options) == 0)) return false;
 		$valid_options = array_merge(
 			array_keys($this->cleanup_array), 

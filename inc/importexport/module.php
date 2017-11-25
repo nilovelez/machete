@@ -17,13 +17,12 @@ class machete_importexport_module extends machete_module {
 			)
 		);
 
-		
-
-
 	}
+
 
 	public function admin(){
 		global $machete;
+		$this->checked_modules = array();
 		$this->exportable_modules = array();
 		foreach ($machete->modules as $module) {
 
@@ -39,6 +38,22 @@ class machete_importexport_module extends machete_module {
 
 		}
 
+		if (isset($_POST['machete-importexport-export'])){
+			// ToDo: nonce
+		  	check_admin_referer( 'machete_importexport_export' );
+		  	if (isset( $_POST['moduleChecked'] ) && ( count($_POST['moduleChecked']) > 0) ){
+				$this->checked_modules = $_POST['moduleChecked'];
+				$export_file = $this->export();
+				// ToDo: Force Download
+
+				header('Content-disposition: attachment; filemame=machete_export.json');
+				header('Content-Type: application/json');
+				header('Pragma: no-cache');
+				echo $export_file;
+				exit();
+		  	}
+		}
+
 		add_action( 'admin_menu', array(&$this, 'register_sub_menu') );
 	}
 
@@ -48,12 +63,14 @@ class machete_importexport_module extends machete_module {
 		
 		$export = array();
 
-		foreach ($this->exportable_modules as $module => $options) {
-			$params = $machete->modules[$module]->params;
+		foreach ($this->checked_modules as $slug){
+			if ( !in_array( $slug ,  array_keys( $this->exportable_modules ) ) ) continue;
+
+			$params = $machete->modules[$slug]->params;
 
 			$export[$params['slug']] = array(
 		    	'is_active' => $params['is_active'],
-		    	'settings' => $machete->modules[$params['slug']]->export()
+		    	'settings' => $machete->modules[$slug]->export()
 		    ); 
 		    
 		}

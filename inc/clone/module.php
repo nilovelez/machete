@@ -17,5 +17,8 @@ class machete_clone_module extends machete_module {
 			)
 		);
 	}
+	public function frontend() {
+		return;
+	}
 }
 $machete->modules['clone'] = new machete_clone_module();

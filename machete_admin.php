@@ -85,10 +85,6 @@ function machete_action_success() {
   new Machete_Notice(__( 'Action succesfully executed!', 'machete' ), 'success');
 }
 
-//require('inc/about/admin_functions.php');
-
-
-
 foreach ($machete->modules as $module) {
     if ( ! $module->params['is_active'] ) continue;
     $module->admin();

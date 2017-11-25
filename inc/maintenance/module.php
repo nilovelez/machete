@@ -43,7 +43,7 @@ class machete_maintenance_module extends machete_module {
 		}
 	}
 
-	function save_settings() {
+	protected function save_settings() {
 
 		/*
 		page_id: int

@@ -1,6 +1,7 @@
 <?php
 if ( ! defined( 'MACHETE_ADMIN_INIT' ) ) exit;
 
+/*
 function machete_powertools_page() {
   add_submenu_page(
 	  'machete',
@@ -17,6 +18,7 @@ function machete_powertools_page_content() {
   require('admin_content.php');
   add_filter('admin_footer_text', 'machete_footer_text');
 }
+*/
 
 
 if ( ! function_exists( 'machete_powertools_save_options' ) ) :

@@ -55,7 +55,7 @@ abstract class machete_module {
   		add_filter('admin_footer_text', 'machete_footer_text');
 	}
 
-	protected function frontend() {
+	public function frontend() {
 		if ($this->params['has_config']){
 			$this->read_settings();
 		}
@@ -107,30 +107,14 @@ abstract class machete_module {
 require_once('about/module.php');
 require_once('cleanup/module.php');
 require_once('cookies/module.php');
-
 require_once('utils/module.php');
 require_once('maintenance/module.php');
 require_once('clone/module.php');
-//var_dump($machete);
-
 require_once('importexport/module.php');
-//require_once('importexport/module.php');
-
+require_once('powertools/module.php');
 
 
 /*
-$machete_modules['importexport'] = array(
-	'title' => __('Import/Export Options','machete'),
-	'full_title' => __('Import/Export Options','machete'),
-	'description' => __('','machete'),
-	'is_active' => true,
-	'has_config' => true,
-	'can_be_disabled' => false,
-	'role' => 'admin'
-);
-*/
-
-
 $machete_modules['powertools'] = array(
 	'title' => __('PowerTools','machete'),
 	'full_title' => __('Machete PowerTools','machete'),
@@ -140,6 +124,7 @@ $machete_modules['powertools'] = array(
 	'can_be_disabled' => false,
 	'role' => 'admin'
 );
+*/
 
 if($machete_disabled_modules = get_option('machete_disabled_modules')){
 	foreach ($machete_disabled_modules as $module) {
@@ -155,8 +140,8 @@ if($machete_disabled_modules = get_option('machete_disabled_modules')){
 }
 
 if (defined('MACHETE_POWERTOOLS_INIT')) {
-	$machete_modules['powertools']['is_active'] = true;
-	$machete_modules['powertools']['description'] = __('Machete PowerTools are now active! Enjoy your new toy!','machete');
+	$machete->modules['powertools']->params['is_active'] = true;
+	$machete->modules['powertools']->params['description'] = __('Machete PowerTools are now active! Enjoy your new toy!','machete');
 }
 
 
