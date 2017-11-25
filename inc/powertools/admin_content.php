@@ -7,11 +7,6 @@
 	<?php $machete->admin_tabs('machete-powertools'); ?>
 	<!--<p class="tab-performance"><span><strong><i class="dashicons dashicons-clock"></i> <?php _e('Performance impact:','machete') ?></strong> <?php _e('This tool generates up to three static HTML files that are loaded via PHP on each pageview. When enabled, custom body content requires one aditional database request.','machete') ?></span></p>-->
 
-<?php
-if(!$machete_powertools_settings = get_option('machete_powertools_settings')){
-	$machete_powertools_settings = array();
-};
-?>
 
 
 <form id="mache-powertools-actions" action="" method="POST">
@@ -61,93 +56,39 @@ if(!$machete_powertools_settings = get_option('machete_powertools_settings')){
 </form>
 
 
-<?php
 
-if(!$machete_powertools_settings = get_option('machete_powertools_settings')){
-	$machete_powertools_settings = array();
-};
+<form id="machete-powertools-options" action="" method="POST">
 
-$machete_powertools_array = array(
-	'widget_shortcodes' => array(
-		'title' => __('Shortcodes in Widgets','machete'),
-		'description' => __('Enables the use of shortcodes in text/html widgets. It may slightly impact performance','machete')
-	),
-	'widget_oembed' => array(
-		'title' => __('OEmbed in Widgets','machete'),
-		'description' => __('Enables OEMbed in text/html widgets.','machete')
-	),
-	'rss_thumbnails' => array(
-		'title' => __('Thumbnails in RSS','machete'),
-		'description' => __('Add the featured image or the first attached image as the thumbnail of each post in the RSS feed','machete')
-	),
-	'page_excerpts' => array(
-		'title' => __('Excerpts in Pages','machete'),
-		'description' => __('Enables excerpts in pages. Useless for most people but awesome qhen combined with a page builder like Visual Composer','machete')
-	),
-	'save_with_keyboard' => array(
-		'title' => __('Save with keyboard','machete'),
-		'description' => __('Lets you save your posts, pages, theme and plugin files in the most natural way: pressing Ctrl+S (or Cmd+S on Mac). It saves as draft unpublished posts/pages and updates the ones that are already public','machete')
-	),
-	'move_scripts_footer' => array(
-		'title' => __('Move scripts to footer','machete'),
-		'description' => __('Move all JS queued scripts from header to footer. Machete will de-register the call for the JavaScript to load in the HEAD section of the site and re-register it to the FOOTER.','machete')
-	),	
-	'defer_all_scripts' => array(
-		'title' => __('Defer your JavaScript','machete'),
-		'description' => __('The defer attribute also downloads the JS file during HTML parsing, but it only executes it after the parsing has completed. Executed in order of appearance on the page','machete')
-	),	
-	
-);
+	<?php wp_nonce_field( 'machete_save_powertools' ); ?>
 
-$machete_all_powertools_checked = (count($machete_powertools_settings) == count($machete_powertools_array)) ? true : false;
-?>
+	<input type="hidden" name="machete-powertools-saved" value="true">
+	<h3><?php _e('Machete Toolbox','machete') ?></h3>
 
 
+	<table class="wp-list-table widefat fixed striped posts machete-options-table machete-powertools-table">
+	<thead>
+		<tr>
+			<td class="manage-column column-cb check-column " ><input type="checkbox" name="check_all" id="machete_cleanup_checkall_fld" <?php if ($this->all_powertools_checked) echo 'checked' ?>></td>
+			<th class="column-title manage-column column-primary"><?php _e('Remove','machete') ?></th>
+			<th><?php _e('Explanation','machete') ?></th>
+		</tr>
+	</thead>
+	<tbody>
+	<?php foreach($this->powertools_array as $option_slug => $option){ ?>
+		<tr>
+			<th scope="row" class="check-column"><input type="checkbox" name="optionEnabled[]" value="<?php echo $option_slug ?>" id="<?php echo $option_slug ?>_fld" <?php if (in_array($option_slug, $this->settings)) echo 'checked' ?>></th>
+			<td class="column-title column-primary"><strong><?php echo $option['title'] ?></strong>
+			<button type="button" class="toggle-row"><span class="screen-reader-text"><?php _e('Show more details','machete') ?></span></button>
+			</td>
+			<td data-colname="<?php _e('Explanation','machete') ?>"><?php echo $option['description'] ?></td>
+		</tr>
 
-	<form id="machete-powertools-options" action="" method="POST">
+	<?php } ?>
 
-		<?php wp_nonce_field( 'machete_save_powertools' ); ?>
-
-		<input type="hidden" name="machete-powertools-saved" value="true">
-
-		<h3><?php _e('Machete Toolbox','machete') ?></h3>
-
-		
-
-
-		<table class="wp-list-table widefat fixed striped posts machete-options-table machete-powertools-table">
-		<thead>
-			<tr>
-				<td class="manage-column column-cb check-column " ><input type="checkbox" name="check_all" id="machete_cleanup_checkall_fld" <?php if ($machete_all_powertools_checked) echo 'checked' ?>></td>
-				<th class="column-title manage-column column-primary"><?php _e('Remove','machete') ?></th>
-				<th><?php _e('Explanation','machete') ?></th>
-			</tr>
-		</thead>
-		<tbody>
-		<?php foreach($machete_powertools_array as $option_slug => $option){ ?>
-			<tr>
-				<th scope="row" class="check-column"><input type="checkbox" name="optionEnabled[]" value="<?php echo $option_slug ?>" id="<?php echo $option_slug ?>_fld" <?php if (in_array($option_slug, $machete_powertools_settings)) echo 'checked' ?>></th>
-				<td class="column-title column-primary"><strong><?php echo $option['title'] ?></strong>
-				<button type="button" class="toggle-row"><span class="screen-reader-text"><?php _e('Show more details','machete') ?></span></button>
-				</td>
-				<td data-colname="<?php _e('Explanation','machete') ?>"><?php echo $option['description'] ?></td>
-			</tr>
-
-		<?php } ?>
-
-		</tbody>
-		</table>
-		<?php submit_button(); ?>
-	</form>
-
-
-
-
-
-
-
-
-
+	</tbody>
+	</table>
+	<?php submit_button(); ?>
+</form>
 
 </div>
 

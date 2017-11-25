@@ -1,225 +1,33 @@
 <?php
 if ( ! defined( 'MACHETE_ADMIN_INIT' ) ) exit;
 
-/*
-function machete_powertools_page() {
-  add_submenu_page(
-	  'machete',
-	  __('PowerTools','machete'),
-	  '<span style="color: #ff9900">'.__('PowerTools','machete').'</span>',
-	  'manage_options',
-	  'machete-powertools',
-	  'machete_powertools_page_content'
-	);
-}
-add_action('admin_menu', 'machete_powertools_page');
 
-function machete_powertools_page_content() {
-  require('admin_content.php');
-  add_filter('admin_footer_text', 'machete_footer_text');
-}
-*/
-
-
-if ( ! function_exists( 'machete_powertools_save_options' ) ) :
-function machete_powertools_save_options() {
-
-	if (isset($_POST['optionEnabled'])){
-
-		$settings = $_POST['optionEnabled'];
-
-		for($i = 0; $i < count($settings); $i++){
-			$settings[$i] = sanitize_text_field($settings[$i]);
-		}
-		
-		if ($old_options = get_option('machete_powertools_settings')){
-			if(
-				(0 == count(array_diff($settings, $old_options))) &&
-				(0 == count(array_diff($old_options, $settings)))
-				){
-				// no removes && no adds
-				new Machete_Notice(__( 'No changes were needed.', 'machete' ), 'info');
-				return false;
-			}
-		}
-		
-
-		if (update_option('machete_powertools_settings',$settings)){
-			return true;
-		}else{
-			new Machete_Notice(__( 'Error saving configuration to database.', 'machete' ), 'error');
-			return false;
-		}
-
-	}else{
-		if (delete_option('machete_powertools_settings')){
-			return true;
-		}else{
-			new Machete_Notice(__( 'Error saving configuration to database.', 'machete' ), 'error');
-			return false;
-		}
-	}
-	return false;
+// enable page_excerpts
+if (in_array('page_excerpts',$this->settings)) {
+    add_post_type_support( 'page', 'excerpt' );
 }
 
-
-function machete_powertools_purge_transients(){
-	//echo '<h1 style="text-align: right">'.__('Purge Transients','machete').'</h1>';
-	
-	global $wpdb;
-
-	/*
-	 * Deletes all expired transients. The multi-table delete syntax is used.
-	 * to delete the transient record from table a, and the corresponding.
-	 * transient_timeout record from table b.
-	 *
-	 * Based on code inside core's upgrade_network() function.
-	 */
-	$sql = "DELETE a, b FROM $wpdb->options a, $wpdb->options b
-		WHERE a.option_name LIKE %s
-		AND a.option_name NOT LIKE %s
-		AND b.option_name = CONCAT( '_transient_timeout_', SUBSTRING( a.option_name, 12 ) )
-		AND b.option_value < %d";
-	$rows = $wpdb->query( $wpdb->prepare( $sql, $wpdb->esc_like( '_transient_' ) . '%', $wpdb->esc_like( '_transient_timeout_' ) . '%', time() ) );
-
-	$sql = "DELETE a, b FROM $wpdb->options a, $wpdb->options b
-		WHERE a.option_name LIKE %s
-		AND a.option_name NOT LIKE %s
-		AND b.option_name = CONCAT( '_site_transient_timeout_', SUBSTRING( a.option_name, 17 ) )
-		AND b.option_value < %d";
-	$rows2 = $wpdb->query( $wpdb->prepare( $sql, $wpdb->esc_like( '_site_transient_' ) . '%', $wpdb->esc_like( '_site_transient_timeout_' ) . '%', time() ) );
-
-	new Machete_Notice(
-	  sprintf( __( '%d Transients Rows Cleared', 'machete' ), $rows + $rows2 ), 'success'
-	);
-
-	return true;
+// enable oembed in text widgets
+if (in_array('widget_oembed',$this->settings)) {
+	global $wp_embed;
+	add_filter( 'widget_text', array( $wp_embed, 'run_shortcode' ), 8 );
+	add_filter( 'widget_text', array( $wp_embed, 'autoembed'), 8 );
 }
 
-function machete_powertools_purge_post_revisions(){
-	//echo '<h1 style="text-align: right">'.__('Purge Post Revisions','machete').'</h1>';
-	
-	global $wpdb;
+// save with keyboard
+if (in_array('save_with_keyboard',$this->settings)) {
+    function machete_save_with_keyboard() {
 
-	// DELETE ALL UNUSED POST REVISIONS
-	$sql = "
-	DELETE a,b,c
-		FROM wp_posts a
-		WHERE a.post_type = 'revision'
-		LEFT JOIN wp_term_relationships b
-		ON (a.ID = b.object_id)
-		LEFT JOIN wp_postmeta c ON (a.ID = c.post_id);";
-	$rows = $wpdb->query($sql);
-	//echo '<div class="updated inline"><p>' . sprintf( __( '%d Post revisions deleted', 'woocommerce' ), $rows) . '</p></div>';
-	
-	new Machete_Notice(
-	  sprintf( _n( 'Success! %s Post revision deleted.', 'Success! %s Post revisions deleted.', $rows, 'machete' ), $rows ),
-	  'success'
-	);
-
-	return true;
-}
-
-function machete_powertools_flush_rewrite_rules(){
-	flush_rewrite_rules();
-
-	new Machete_Notice(
-	  __('Rewrite rules flushed', 'machete' ), 'success'
-	);
-
-	return true;
-}
-
-function machete_powertools_flush_wpcache(){
-	wp_cache_flush();
-
-	new Machete_Notice(
-	  __('Object cache flushed', 'machete' ), 'success'
-	);
-
-	return true;
-}
-
-function machete_powertools_flush_opcache(){
-	opcache_reset();
-
-	new Machete_Notice(
-	  __('Opcache flushed', 'machete' ), 'success'
-	);
-
-	return true;
-}
-
-endif; // machete_powertools_save_options()
-
-
-if (isset($_POST['machete-powertools-saved'])){
-
-  check_admin_referer( 'machete_save_powertools' );
-  if(machete_powertools_save_options()){
-    new Machete_Notice(__( 'Options saved!', 'machete' ), 'success');
-  }
-}
-
-if (isset($_POST['machete-powertools-action'])){
-
-	check_admin_referer( 'machete_powertools_action' );
-
-	switch ($_POST['action']){
-		case __('Purge Transients','machete') :
-			return machete_powertools_purge_transients();
-			break;
-		case __('Purge Post Revisions','machete') :
-			return machete_powertools_purge_post_revisions();
-			break;
-		case __('Flush Rewrite Rules','machete') :
-			return machete_powertools_flush_rewrite_rules();
-			break;
-		case __('Flush Opcache','machete') :
-			return machete_powertools_flush_opcache();
-			break;
-		case __('Flush Object Cache','machete') :
-			return machete_powertools_flush_wpcache();
-			break;
-		default:
-			new Machete_Notice(__( 'Unknown action requested', 'machete' ), 'error');
-			return false;
-
-	}
-}
-
-
-
-
-// Machete powertools actions specific to the back-end
-if(
-    ($machete_powertools_settings = get_option('machete_powertools_settings')) &&
-    (count($machete_powertools_settings) > 0)){
-
-    // enable page_excerpts
-    if (in_array('page_excerpts',$machete_powertools_settings)) {
-        add_post_type_support( 'page', 'excerpt' );
+      
     }
+    add_action('admin_enqueue_scripts', function(){
+    	wp_register_script('machete_save_with_keyboard',MACHETE_BASE_URL.'vendor/save-with-keyboard/saveWithKeyboard.js',array('jquery'));
+    	$translation_array = array(
+    		'save_button_tooltip' => __( 'Ctrl+S or Cmd+S to click', 'machete' ),
+    		'preview_button_tooltip' => __( 'Ctrl+P or Cmd+P to preview', 'machete' )
+    	);
+    	wp_localize_script( 'machete_save_with_keyboard', 'l10n_strings', $translation_array );
+    	wp_enqueue_script( 'machete_save_with_keyboard' );
 
-    // enable oembed in text widgets
-	if (in_array('widget_oembed',$machete_powertools_settings)) {
-		global $wp_embed;
-		add_filter( 'widget_text', array( $wp_embed, 'run_shortcode' ), 8 );
-		add_filter( 'widget_text', array( $wp_embed, 'autoembed'), 8 );
-	}
-
-    // save with keyboard
-    if (in_array('save_with_keyboard',$machete_powertools_settings)) {
-        function machete_save_with_keyboard() {
-
-          wp_register_script('machete_save_with_keyboard',MACHETE_BASE_URL.'vendor/save-with-keyboard/saveWithKeyboard.js',array('jquery'));
-          $translation_array = array(
-            'save_button_tooltip' => __( 'Ctrl+S or Cmd+S to click', 'machete' ),
-            'preview_button_tooltip' => __( 'Ctrl+P or Cmd+P to preview', 'machete' )
-          );
-          wp_localize_script( 'machete_save_with_keyboard', 'l10n_strings', $translation_array );
-          wp_enqueue_script( 'machete_save_with_keyboard' );
-        }
-        add_action('admin_enqueue_scripts','machete_save_with_keyboard');
-    }
+    });
 }

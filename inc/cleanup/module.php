@@ -204,8 +204,8 @@ class machete_cleanup_module extends machete_module {
 				array_keys($this->tweaks_array)
 				)
 			);
-		$active_options = array_intersect($options, $valid_options);
-		return ( $this->save_settings($active_options) );
+		$valid_active_options = array_intersect($options, $valid_options);
+		return ( $this->save_settings($valid_active_options) );
 	}
 }
 $machete->modules['cleanup'] = new machete_cleanup_module();
