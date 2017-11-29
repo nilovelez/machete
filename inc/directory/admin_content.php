@@ -1,4 +1,4 @@
-<?php if ( ! defined( 'MACHETE_ADMIN_INIT' ) ) exit;?>
+<?php if ( ! defined( 'MACHETE_ADMIN_INIT' ) ) exit; ?>
 
 <div class="wrap machete-wrap machete-section-wrap">
 

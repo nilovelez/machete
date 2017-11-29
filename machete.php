@@ -25,10 +25,9 @@ define('MACHETE_RELATIVE_DATA_PATH', substr(MACHETE_DATA_PATH, strlen(ABSPATH)-1
 define('MACHETE_DATA_URL',  $machete_get_upload_dir['baseurl'].'/machete/');
 
 
-register_activation_hook( __FILE__, 'machete_screen_activate' );
-function machete_screen_activate() {
+register_activation_hook( __FILE__, function(){
 	add_option( 'machete_activation_welcome', 'pending');
-}
+});
 
 function machete_load_plugin_textdomain() {
     load_plugin_textdomain( 'machete', FALSE, basename( dirname( __FILE__ ) ) . '/languages/' );

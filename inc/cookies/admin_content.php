@@ -1,7 +1,5 @@
 <?php if ( ! defined( 'MACHETE_ADMIN_INIT' ) ) exit; ?>
 
-<?php //add_action( 'admin_footer', array(&$this,'preview_cookie_bar')); ?>
-
 <div class="wrap machete-wrap machete-section-wrap">
 	<h1><?php _e('Cookie Law Warning','machete') ?></h1>
 	<p class="tab-description"><?php _e('We know you hate cookie warning bars. Well, this is the less hateable cookie bar you\'ll find. It is really light, it won\'t affect your PageSpeed score and plays well with static cache plugins.','machete') ?></p>
