@@ -1,0 +1,10 @@
+function delete_refill_cf7() {
+	?>
+	<script>
+	if(wpcf7) {
+		wpcf7.cached = 0;
+	}
+	</script>
+	<?php
+}
+add_action('wp_after_admin_bar_render', 'delete_refill_cf7');
