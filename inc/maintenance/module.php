@@ -22,8 +22,6 @@ class machete_maintenance_module extends machete_module {
 			'token' => strtoupper(substr(MD5(rand()),0,12))
 			);
 
-		// Si continúas navegando por esta web, entendemos que aceptas las cookies que usamos para mejorar nuestros servicios.
-		// By continuing to browse the site, you are agreeing to our use of cookies as described in our cookie policy.
 	}
 
 	public function frontend(){
@@ -38,12 +36,33 @@ class machete_maintenance_module extends machete_module {
 	}
 
 	public function admin(){
+
 		$this->read_settings();
+		
+		// the maintenance token should be saved as soon as possible
+		//to keep it from changing on every page load
+		if ( ! get_option('machete_'.$this->params['slug'].'_settings') ){
+			// default option values saved WITHOUT autoload
+    		update_option( 'machete_'.$this->params['slug'].'_settings', $this->default_settings, 'no' );
+		}
 
 		if ( isset( $_POST['machete-maintenance-saved'] ) ){
 		    check_admin_referer( 'machete_save_maintenance' );
 		  	$this->save_settings();
 		}
+
+		$this->preview_base_url = home_url( '/?mct_preview=' . wp_create_nonce('maintenance_preview_nonce') );
+
+		if ($this->settings['page_id']) {
+			$this->preview_url = $this->preview_base_url . '&mct_page_id=' . $this->settings['page_id'];
+		} else {
+			$this->preview_url = $this->preview_base_url;
+		}
+
+		$this->magic_base_url = home_url( '/?mct_token=');
+		$this->magic_url      = home_url( '/?mct_token=' . $this->settings['token']);
+
+
 
 		add_action( 'admin_menu', array(&$this, 'register_sub_menu') );
 

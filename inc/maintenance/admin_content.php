@@ -1,32 +1,4 @@
-<?php
-if ( ! defined( 'MACHETE_ADMIN_INIT' ) ) exit;
-
-
-if(!$machete_maintenance_settings = get_option('machete_maintenance_settings')){
-	$machete_maintenance_settings = array(
-		'page_id' => '',
-		'site_status' => 'online',
-		'token' => strtoupper(substr(MD5(rand()),0,12))
-		);
-	// default option values saved WITHOUT autoload
-    update_option( 'machete_maintenance_settings', $machete_maintenance_settings, 'no' );
-
-};
-$machete_preview_base_url = home_url( '/?mct_preview=' . wp_create_nonce('maintenance_preview_nonce') );
-
-if ($machete_maintenance_settings['page_id']) {
-	$machete_preview_url = $machete_preview_base_url . '&mct_page_id=' . $machete_maintenance_settings['page_id'];
-} else {
-	$machete_preview_url = $machete_preview_base_url;
-}
-
-$machete_magic_base_url = home_url( '/?mct_token=');
-$machete_magic_url      = home_url( '/?mct_token=' . $machete_maintenance_settings['token']);
-
-
-
-
-?>
+<?php if ( ! defined( 'MACHETE_ADMIN_INIT' ) ) exit; ?>
 
 
 <div class="wrap machete-wrap machete-section-wrap">
@@ -51,18 +23,18 @@ $machete_magic_url      = home_url( '/?mct_token=' . $machete_maintenance_settin
 		<td><fieldset>
 			<label>
 				<input name="site_status" value="online" type="radio"
-				<?php checked($machete_maintenance_settings['site_status'],'online') ?>>
+				<?php checked($this->settings['site_status'],'online') ?>>
 				<strong><?php _e('Online','machete') ?></strong> - <?php _e('WordPress works as usual','machete') ?>
 			</label><br>
 
 			<label>
 				<input name="site_status" value="coming_soon" type="radio"
-				<?php checked($machete_maintenance_settings['site_status'],'coming_soon') ?>>
+				<?php checked($this->settings['site_status'],'coming_soon') ?>>
 				<strong><?php _e('Coming soon','machete') ?></strong> - <?php _e('Site closed. All pages have a meta robots noindex, nofollow','machete') ?>
 			</label><br>
 			<label>
 				<input name="site_status" value="maintenance" type="radio" 
-				<?php checked($machete_maintenance_settings['site_status'],'maintenance') ?>>
+				<?php checked($this->settings['site_status'],'maintenance') ?>>
 				<strong><?php _e('Maintenance','machete') ?></strong> - <?php _e('Site closed. All pages return 503 Service unavailable','machete') ?>
 			</label><br>
 		</fieldset></td>
@@ -70,8 +42,8 @@ $machete_magic_url      = home_url( '/?mct_token=' . $machete_maintenance_settin
 
 		 <tr valign="top"><th scope="row"><?php _e('Magic Link','machete') ?></th>
             <td>
-            	<input type="hidden" name="token" id="token_fld" value="<?php echo $machete_maintenance_settings['token']; ?>">
-                <a href="<?php echo $machete_magic_url; ?>" id="machete_magic_link"><?php echo $machete_magic_url; ?></a>
+            	<input type="hidden" name="token" id="token_fld" value="<?php echo $this->settings['token']; ?>">
+                <a href="<?php echo $this->magic_url; ?>" id="machete_magic_link"><?php echo $this->magic_url; ?></a>
                 <button name="change_token" id="change_token_btn" class="button action"><?php _e('change secret token','machete') ?></button>
 		<p class="description"><?php _e('You can use this link to grant anyone access to the website when it is in maintenance mode.','machete') ?></p>
 
@@ -85,13 +57,13 @@ $machete_magic_url      = home_url( '/?mct_token=' . $machete_maintenance_settin
                     <?php
                     if( $pages = get_pages() ){
                         foreach( $pages as $page ){
-                            echo '<option value="' . $page->ID . '" ' . selected( $page->ID, $machete_maintenance_settings['page_id'] ) . '>' . $page->post_title . '</option>';
+                            echo '<option value="' . $page->ID . '" ' . selected( $page->ID, $this->settings['page_id'] ) . '>' . $page->post_title . '</option>';
                         }
                     }
                     ?>
                 </select>
 
-                <a href="<?php echo $machete_preview_url ?>" target="machete_preview" id="preview_maintenance_btn" class="button action"><?php _e('Preview','machete') ?></a>
+                <a href="<?php echo $this->preview_url ?>" target="machete_preview" id="preview_maintenance_btn" class="button action"><?php _e('Preview','machete') ?></a>
                 
             </td>
         </tr>
@@ -135,8 +107,8 @@ $machete_magic_url      = home_url( '/?mct_token=' . $machete_maintenance_settin
 
 (function($){
 
-	var machete_preview_base_url = '<?php echo $machete_preview_base_url ?>';
-	var machete_magic_base_url   = '<?php echo $machete_magic_base_url ?>';
+	var machete_preview_base_url = '<?php echo $this->preview_base_url ?>';
+	var machete_magic_base_url   = '<?php echo $this->magic_base_url ?>';
 
 	var random_token = function(){
 		var chrs = '0123456789ABCDEF';
