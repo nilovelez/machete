@@ -34,9 +34,6 @@ function machete_load_plugin_textdomain() {
     load_plugin_textdomain( 'machete', FALSE, basename( dirname( __FILE__ ) ) . '/languages/' );
 }
 
-if (!isset($machete_modules)) $machete_modules = array();
-
-
 class machete {
 	public $modules = array();
 
@@ -46,10 +43,8 @@ class machete {
 
 	public function init(){
 		global $machete;
-		global $machete_modules;
-
+		
 		require ('inc/machete_modules.php');
-
 
 		if ( ! is_admin() ) {
 			define('MACHETE_FRONT_INIT',true);
@@ -61,8 +56,7 @@ class machete {
 	}
 
 	function admin_tabs($current = '') {
-		//global $machete_modules;
-
+				
 		$is_admin = current_user_can('manage_options') ? true : false;
 
 		echo '<h2 class="nav-tab-wrapper">';
@@ -71,8 +65,7 @@ class machete {
 			$params = $module->params;
 
 			if (!$is_admin && ($params['role'] == 'manage_options')) continue;
-			//if (!$is_admin && ($args['role'] == 'admin')) continue;
-
+			
 			if ( ! $params['is_active'] ) continue;
 			if ( ! $params['has_config'] ) continue;
 
