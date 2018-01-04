@@ -119,15 +119,10 @@ if (in_array('wp_resource_hints',$this->settings)) {
 }
 
 if (in_array('recentcomments',$this->settings)) {
-  add_action( 'widgets_init', function(){
-    // Remove the annoying:
-    // <style type="text/css">.recentcomments a{display:inline !important;padding:0 !important;margin:0 !important;}</style> added in the header
-    global $wp_widget_factory;
-    remove_action( 
-        'wp_head', 
-        array( $wp_widget_factory->widgets['WP_Widget_Recent_Comments'], 'recent_comments_style' ) 
-    );
-  });
+  // Remove the annoying:
+  // <style type="text/css">.recentcomments a{display:inline !important;padding:0 !important;margin:0 !important;}</style>
+  // added in the header
+  add_filter('show_recent_comments_widget_style', '__return_false');
 }
 
 if (in_array('capital_P_dangit',$this->settings)) {
@@ -142,12 +137,15 @@ if (in_array('capital_P_dangit',$this->settings)) {
 
 /********* OPTIMIZATION TWEAKS ***********/
 if (in_array('jquery-migrate',$this->settings)) {
-  add_filter( 'wp_default_scripts', function ( $scripts){
-    if ( !empty( $scripts->registered['jquery'] ) ) {
-      $jquery_dependencies = $scripts->registered['jquery']->deps;
-      $scripts->registered['jquery']->deps = array_diff( $jquery_dependencies, array( 'jquery-migrate' ) );
-    }
-  });
+  
+  global $wp_scripts;
+
+  if ( !empty( $wp_scripts->registered['jquery'] ) ) {
+    $wp_scripts->registered['jquery']->deps = array_diff(
+        $wp_scripts->registered['jquery']->deps,
+        array( 'jquery-migrate' )
+    );
+  }
 }
 
 // pdf_thumbnails está en machete_admin.php
