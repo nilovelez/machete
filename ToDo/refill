@@ -8,3 +8,7 @@ function delete_refill_cf7() {
 	<?php
 }
 add_action('wp_after_admin_bar_render', 'delete_refill_cf7');
+
+
+
+wp_add_inline_script('code-editor', $code);
