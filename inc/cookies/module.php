@@ -167,6 +167,14 @@ class machete_cookies_module extends machete_module {
 
 	}
 
+	protected function export(){
+		$export = $this->settings;
+		if ( !empty( stripslashes( $export['warning_text'] ) ) ){
+			$export['warning_text'] = stripslashes($export['warning_text']);
+		}
+		return $export;
+	}
+
 	protected function preview_cookie_bar(){ 
 
 		if(!isset($this->settings['bar_status']) || ($this->settings['bar_status'] != 'enabled') ){
@@ -185,7 +193,7 @@ class machete_cookies_module extends machete_module {
 
 	}
 
-	protected function render_cookie_bar(){ 
+	public function render_cookie_bar(){ 
 		
 		if(!isset($this->settings['bar_status']) || ($this->settings['bar_status'] != 'enabled') ){
 				return false;
