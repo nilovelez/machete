@@ -9,8 +9,6 @@
 	<p class="tab-performance"><span><strong><i class="dashicons dashicons-clock"></i> <?php _e('Performance impact:','machete') ?></strong> <?php _e('This section stores all its settings in a single autoloaded configuration variable.','machete') ?></span></p>
 
 
-
-
 <form id="mache-maintenance-options" action="" method="POST">
 
 <?php wp_nonce_field( 'machete_save_maintenance' ); ?>

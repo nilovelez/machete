@@ -31,7 +31,7 @@ class machete_maintenance_module extends machete_module {
 			if(is_admin_bar_showing()){
         		require_once($this->path . 'admin_bar.php');
     		}
-    		$machete_maintenance = new MACHETE_MAINTENANCE($this->settings);
+    		$machete_maintenance = new machete_maintenance_page($this->settings);
 		}
 	}
 
@@ -127,4 +127,3 @@ class machete_maintenance_module extends machete_module {
 
 }
 $machete->modules['maintenance'] = new machete_maintenance_module();
-

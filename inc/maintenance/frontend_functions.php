@@ -1,7 +1,7 @@
 <?php
 if ( ! defined( 'ABSPATH' ) ) exit;
 
-class MACHETE_MAINTENANCE {
+class machete_maintenance_page {
 
     private $settings;
 
@@ -47,7 +47,7 @@ class MACHETE_MAINTENANCE {
             }
         
             // Check if user is logged in.
-            if(is_user_logged_in()){
+            if( is_user_logged_in() && current_user_can('publish_posts') ){
                 return false;
             }
         }
