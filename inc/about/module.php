@@ -38,16 +38,17 @@ class machete_about_module extends machete_module {
 		  );
 	}
 
-	protected function manage_modules ($module, $action){
+	protected function manage_modules ($module, $action, $silent = false){
 		global $machete;
 		//global $machete_modules;
 		
 		if (empty($module) || empty($action) || in_array($action, array('enable','disable'))) {
-			wp_die(__( 'Bad request', 'machete' ));
+			if (!$silent) $this->notice(__( 'Bad request', 'machete' ), 'error');
+			return false;
 		}
 
 		if ( ! array_key_exists( $module, $machete->modules)) {
-			$this->notice(__( 'Uknown module:', 'machete' ) . ' ' . $module, 'error');
+			if (!$silent) $this->notice(__( 'Uknown module:', 'machete' ) . ' ' . $module, 'error');
 			return false;
 		}
 
@@ -57,11 +58,11 @@ class machete_about_module extends machete_module {
 		
 		if ($action == 'deactivate') {
 			if(in_array($module, $disabled_modules)){
-				$this->notice(__( 'Nothing to do. The module was already disabled.', 'machete' ), 'notice');
+				if (!$silent) $this->notice(__( 'Nothing to do. The module was already disabled.', 'machete' ), 'notice');
 				return false;
 			}
 			if ( ! $machete->modules[$module]->params['can_be_disabled'] ) {
-				$this->notice(__( 'Sorry, you can\'t disable that module', 'machete' ), 'warning');
+				if (!$silent) $this->notice(__( 'Sorry, you can\'t disable that module', 'machete' ), 'warning');
 				return false;
 			} 
 
@@ -69,11 +70,11 @@ class machete_about_module extends machete_module {
 
 			if (update_option('machete_disabled_modules',$disabled_modules)){
 				$machete->modules[$module]->params['is_active'] = false;
-				$this->save_success_notice();
+				if (!$silent) $this->save_success_notice();
 				return true;
 
 			}else{
-				$this->save_error_notice();
+				if (!$silent) $this->save_error_notice();
 				return false;
 			}
 
