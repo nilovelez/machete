@@ -66,7 +66,7 @@ abstract class machete_module {
 		return $this->settings;
 	}
 
-	protected function import(){
+	protected function import( $settings ){
 
 	}
 
@@ -82,14 +82,6 @@ abstract class machete_module {
 		$this->notice(__( 'Error saving configuration to database.', 'machete' ), 'error');
 	}
 				
-	public function display_notice() {
-		if (!empty($this->notice_message)){
-		?>
-		<div class="<?php echo $this->notice_class ?>">
-			<p><?php echo $this->notice_message; ?></p>
-		</div>
-		<?php }
-	}
 }
 
 
@@ -103,25 +95,9 @@ require_once('importexport/module.php');
 require_once('powertools/module.php');
 
 
-/*
-$machete_modules['powertools'] = array(
-	'title' => __('PowerTools','machete'),
-	'full_title' => __('Machete PowerTools','machete'),
-	'description' => __('Machete PowerTools is an free upgrade module targeted at WordPress developers and power users.','machete'),
-	'is_active' => false,
-	'has_config' => true,
-	'can_be_disabled' => false,
-	'role' => 'admin'
-);
-*/
-
 if($machete_disabled_modules = get_option('machete_disabled_modules')){
 	foreach ($machete_disabled_modules as $module) {
-		/*
-		if (isset($machete_modules[$module]) && $machete_modules[$module]['can_be_disabled']){
-			$machete_modules[$module]['is_active'] = false;
-		}
-		*/
+		
 		if (isset($machete->modules[$module]) && $machete->modules[$module]->params['can_be_disabled']){
 			$machete->modules[$module]->params['is_active'] = false;
 		}
@@ -132,5 +108,3 @@ if (defined('MACHETE_POWERTOOLS_INIT')) {
 	$machete->modules['powertools']->params['is_active'] = true;
 	$machete->modules['powertools']->params['description'] = __('Machete PowerTools are now active! Enjoy your new toy!','machete');
 }
-
-
