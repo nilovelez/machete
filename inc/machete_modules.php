@@ -70,20 +70,9 @@ abstract class machete_module {
 
 	}
 
-	public $notice_message;
-	public $notice_class;
 	public function notice( $message, $level = 'info', $dismissible = true) {
-
-		$this->notice_message = $message;
-
-		if (!in_array($level, array('error','warning','info','success'))){
-			$level = 'info';
-		}
-		$this->notice_class = 'notice notice-'.$level;
-		if ($dismissible){
-			$this->notice_class .= ' is-dismissible';
-		}
-		add_action( 'admin_notices', array( $this, 'display_notice' ) );
+		global $machete;
+		$machete->notice( $message, $level, $dismissible);
 	}
 
 	protected function save_success_notice(){
