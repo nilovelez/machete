@@ -133,7 +133,8 @@ class machete {
 
 			if (update_option('machete_disabled_modules',$disabled_modules)){
 				$this->modules[$module]->params['is_active'] = false;
-				if (!$silent) $this->notice(sprintf(__('Module %s disabled succesfully', 'machete'), $module ), 'success');
+				if (!$silent) $this->notice(sprintf(__('Module %s disabled succesfully', 'machete'),
+					$this->modules[$module]->params['title'] ), 'success');
 				return true;
 
 			}else{
@@ -158,7 +159,8 @@ class machete {
 
 			if (update_option('machete_disabled_modules',$disabled_modules)){
 				$this->modules[$module]->params['is_active'] = true;
-				if (!$silent) $this->notice(sprintf(__('Module %s enabled succesfully', 'machete'), $module ), 'success');
+				if (!$silent) $this->notice(sprintf(__('Module %s enabled succesfully', 'machete'),
+					$this->modules[$module]->params['title'] ), 'success');
 				return true;
 
 			}else{
