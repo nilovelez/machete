@@ -3,12 +3,9 @@
 <div class="wrap machete-wrap machete-section-wrap">
 	<h1><?php _e('Import/Export Options','machete') ?></h1>
 
-	<p class="tab-description"><?php _e('You don\'t need a zillion plugins to perform easy task like inserting a verification meta tag (Google Search Console, Bing, Pinterest), a json-ld snippet or a custom styleseet (Google Fonts, Print Styles, accesibility tweaks...).','machete') ?></p>
+	<p class="tab-description"><?php _e('You can use this section to backup and restore your Machete configuration. You can also take a backup from one site and restore to another. Be careful, your current configuration will be overwritten when you import a backup file','machete') ?></p>
 	<?php $machete->admin_tabs('machete-importexport'); ?>
 	
-<?php /*
-	<p class="tab-performance"><span><strong><i class="dashicons dashicons-clock"></i> <?php _e('Performance impact:','machete') ?></strong> <?php _e('This tool generates up to three static HTML files that are loaded via PHP on each pageview. When enabled, custom body content requires one aditional database request.','machete') ?></span></p> */ ?>
-
 
 
 
@@ -19,7 +16,7 @@
 
 	<h3><?php _e('Export Machete Options','machete') ?> </h3>
 
-		<p><?php _e('This section goes futher disabling optional features. All options can be safely activated, but keep an eye on potiential plugin compatibility issues.','machete') ?></p>
+		<p><?php _e('Select the modules from which you want to export the settings and click "download config backup" to get a .json file with the backup.','machete') ?></p>
 
 
 
@@ -49,7 +46,6 @@
 		
 </form>
 
-
 <form id="mache-importexport-restore" action="" method="POST" enctype="multipart/form-data">
 
 	<?php wp_nonce_field( 'machete_importexport_import' ); ?>
@@ -58,7 +54,7 @@
 
 	<h3><?php _e('Import Machete Options','machete') ?> </h3>
 
-	<p><?php _e('This section goes futher disabling optional features. All options can be safely activated, but keep an eye on potiential plugin compatibility issues.','machete') ?></p>
+	<p><?php _e('Select a Machete backup file and click the "upload config backup" to import it. Please keep in mind that the module settings inscluded in the backup file will overwrite your current setting for those modules.','machete') ?></p>
 
 	<label class="screen-reader-text" for="machete-backup-file"><?php _e('Machete backup file to restore') ?></label>
 	<input type="file" id="machete-backup-file" name="machete-backup-file">
