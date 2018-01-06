@@ -62,12 +62,20 @@ abstract class machete_module {
 		require($this->path.'frontend_functions.php');
 	}
 
+	protected function save_settings( $settings = array(), $silent = false ) {
+		return true;
+	}
+
 	protected function export(){
 		return $this->settings;
 	}
 
-	protected function import( $settings ){
-
+	protected function import( $settings = array() ){
+		if ( $this->save_settings($settings, true) ){
+			return __('Settings succesfully restored from backup', 'machete') . "\n";
+		}else{
+			return __('Error restoring settings backup', 'machete') . "\n";
+		}
 	}
 
 	public function notice( $message, $level = 'info', $dismissible = true) {

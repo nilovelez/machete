@@ -56,7 +56,7 @@ class machete_cookies_module extends machete_module {
 
 		if (isset($_POST['machete-cookies-saved'])){
   			check_admin_referer( 'machete_save_cookies' );
-			$this->save_settings();
+			$this->save_settings( $_POST );
 		}
 
 		add_action( 'admin_menu', array(&$this, 'register_sub_menu') );
@@ -67,7 +67,7 @@ class machete_cookies_module extends machete_module {
 		add_action( 'wp_footer', array(&$this,'render_cookie_bar'));
 	}
 	
-	protected function save_settings() {
+	protected function save_settings( $settings = array(), $silent = false) {
 
 		/*
 		bar_status: disabled | enabled
@@ -78,52 +78,56 @@ class machete_cookies_module extends machete_module {
 		
 		if (!is_dir(MACHETE_DATA_PATH)){
 			if(!@mkdir(MACHETE_DATA_PATH)){
-				$this->notice(sprintf( __( 'Error creating data dir %s please check file permissions', 'machete' ), MACHETE_RELATIVE_DATA_PATH), 'error');
+				if (!$silent) $this->notice(sprintf( __( 'Error creating data dir %s please check file permissions', 'machete' ), MACHETE_RELATIVE_DATA_PATH), 'error');
 				return false;
 			}
 		}
 
 		if(!$cookies_bar_js = @file_get_contents($this->path.'templates/cookies_bar_js.min.js')){
-			$this->notice(sprintf( __( 'Error reading cookie bar template %s', 'machete' ), $this->path.'templates/cookies_bar_js.js'), 'error');
+			if (!$silent) $this->notice(sprintf( __( 'Error reading cookie bar template %s', 'machete' ), $this->path.'templates/cookies_bar_js.js'), 'error');
 			return false;
 		}
 
 		$html_replaces = array();
 
 		
-
-		
-		if (!empty($_POST['bar_theme']) && (array_key_exists($_POST['bar_theme'], $this->themes))){
-			$settings['bar_theme'] = $_POST['bar_theme'];
+		if (! empty($settings['bar_theme']) && ( array_key_exists( $settings['bar_theme'], $this->themes ))){
+			$new_settings['bar_theme'] = $settings['bar_theme'];
 		}else{
-			$settings['bar_theme'] = 'light';
+			$new_setting = 'light';
 		}
 
 		if(!$cookies_bar_html = @file_get_contents($this->themes[$settings['bar_theme']]['template'])){
-			$this->notice(sprintf( __( 'Error reading cookie bar template %s', 'machete' ), $cookies_bar_themes[$settings['bar_theme']]['template']), 'error');
+			if (!$silent) $this->notice(sprintf( __( 'Error reading cookie bar template %s', 'machete' ), $cookies_bar_themes[$settings['bar_theme']]['template']), 'error');
 			return false;
 		}
 
 		$cookies_bar_html = "var machete_cookies_bar_html = '".addslashes($cookies_bar_html)."'; \n";
 
-		$settings['bar_status'] = sanitize_text_field($_POST['bar_status']);
+		$settings['bar_status'] = sanitize_text_field($settings['bar_status']);
 		if (empty($settings['bar_status']) || ($settings['bar_status'] != 'disabled')){
-			$settings['bar_status'] = 'enabled';
+			$new_settings['bar_status'] = 'enabled';
+		}else{
+			$new_settings['bar_status'] = 'disabled';
 		}
 
-		$settings['warning_text'] = trim(wptexturize($_POST['warning_text']));
+		$settings['warning_text'] = trim(wptexturize($settings['warning_text']));
 		if (empty($settings['warning_text'])){
-			$ths->notice ( __('Cookie warning text can\'t be blank', 'machete' ), 'warning' );
+			if (!$silent) $this->notice ( __('Cookie warning text can\'t be blank', 'machete' ), 'warning' );
 			return false;
 		}
 		$html_replaces['{{warning_text}}'] = $settings['warning_text'];
+		$new_settings['warning_text'] = $settings['warning_text'];
 
-		$settings['accept_text'] = trim(sanitize_text_field($_POST['accept_text']));
+
+		$settings['accept_text'] = trim(sanitize_text_field($settings['accept_text']));
 		if (empty($settings['accept_text'])){
-			$ths->notice ( __('Accept button text can\'t be blank', 'machete' ), 'warning' );
+			if (!$silent) $this->notice ( __('Accept button text can\'t be blank', 'machete' ), 'warning' );
 			return false;
 		}
 		$html_replaces['{{accept_text}}']  = $settings['accept_text'];
+		$new_settings['accept_text'] = $settings['accept_text'];
+
 
 		$html_replaces['{{extra_css}}'] = $this->themes[$settings['bar_theme']]['extra_css'];
 
@@ -138,30 +142,30 @@ class machete_cookies_module extends machete_module {
 		$old_cookie_filename = $this->settings['cookie_filename'];
 
 		// cheap and dirty pseudo-random filename generation
-		$settings['cookie_filename'] = 'cookies_'.strtolower(substr(MD5(time()),0,8)).'.js';
+		$new_settings['cookie_filename'] = 'cookies_'.strtolower(substr(MD5(time()),0,8)).'.js';
 		
 		
-		if($settings['bar_status'] == 'enabled'){
-			if(!@file_put_contents(MACHETE_DATA_PATH.$settings['cookie_filename'], $cookies_bar_js)){
-				$this->notice(sprintf( __( 'Error writing static javascript file to %s please check file permissions. Aborting to prevent inconsistent state.', 'machete' ), MACHETE_RELATIVE_DATA_PATH), 'error');
+		if($new_settings['bar_status'] == 'enabled'){
+			if(!@file_put_contents(MACHETE_DATA_PATH.$new_settings['cookie_filename'], $cookies_bar_js)){
+				if (!$silent) $this->notice(sprintf( __( 'Error writing static javascript file to %s please check file permissions. Aborting to prevent inconsistent state.', 'machete' ), MACHETE_RELATIVE_DATA_PATH), 'error');
 				return false;
 			}
 		}
 
 		if (!empty($old_cookie_filename) && file_exists(MACHETE_DATA_PATH.$old_cookie_filename)){
 			if(!unlink(MACHETE_DATA_PATH.$old_cookie_filename)){
-				$this->notice (sprintf( __( 'Could not delete old javascript file from %s please check file permissions . Aborting to prevent inconsistent state.', 'machete' ), MACHETE_RELATIVE_DATA_PATH), 'warning');
+				if (!$silent) $this->notice (sprintf( __( 'Could not delete old javascript file from %s please check file permissions . Aborting to prevent inconsistent state.', 'machete' ), MACHETE_RELATIVE_DATA_PATH), 'warning');
 				return false;
 			}
 		}
 		
 		// option saved WITH autoload
-		if(update_option( 'machete_cookies_settings', $settings, 'yes' )){
-			$this->settings = $settings;
-			$this->save_success_notice();
+		if(update_option( 'machete_cookies_settings', $new_settings, 'yes' )){
+			$this->settings = $new_settings;
+			if (!$silent) $this->save_success_notice();
 			return true;
 		}else{
-			$this->save_error_notice();
+			if (!$silent) $this->save_error_notice();
 			return false;
 		}
 

@@ -158,6 +158,16 @@ class machete_cleanup_module extends machete_module {
 		
 		if ( count($options) > 0 ){
 
+			$valid_options = array_merge(
+			array_keys($this->cleanup_array), 
+			array_merge(
+				array_keys($this->optimize_array),
+				array_keys($this->tweaks_array)
+				)
+			);
+			$options = array_intersect($options, $valid_options);
+		
+
 			for($i = 0; $i < count($options); $i++){
 				$options[$i] = sanitize_text_field($options[$i]);
 			}
@@ -169,15 +179,15 @@ class machete_cleanup_module extends machete_module {
 					){
 					// no removes && no adds
 					if (!$silent) $this->notice(__( 'No changes were needed.', 'machete' ), 'info');
-					return false;
+					return true;
 				}
 			}
 			if (update_option('machete_cleanup_settings',$options)){
 				$this->settings = $options;
-				$this->save_success_notice();
+				if (!$silent) $this->save_success_notice();
 				return true;
 			}else{
-				$this->save_error_notice();
+				if (!$silent) $this->save_error_notice();
 				return false;
 			}
 
@@ -193,20 +203,9 @@ class machete_cleanup_module extends machete_module {
 		}
 		
 		if (!$silent) $this->notice(__( 'No changes were needed.', 'machete' ), 'info');		
-		return false;
+		return true;
 	}
 
-	protected function import( $options = array() ){
-		if (!is_array($options) || (count($options) == 0)) return false;
-		$valid_options = array_merge(
-			array_keys($this->cleanup_array), 
-			array_merge(
-				array_keys($this->optimize_array),
-				array_keys($this->tweaks_array)
-				)
-			);
-		$valid_active_options = array_intersect($options, $valid_options);
-		return ( $this->save_settings($valid_active_options) );
-	}
+	
 }
 $machete->modules['cleanup'] = new machete_cleanup_module();

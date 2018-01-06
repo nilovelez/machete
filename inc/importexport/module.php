@@ -17,12 +17,14 @@ class machete_importexport_module extends machete_module {
 			)
 		);
 
+
 	}
 
 	protected $checked_modules = array();
 	protected $exportable_modules = array();
-
 	protected $uploaded_backup_data = array();
+
+	protected $import_log = '';
 
 
 	public function frontend() {
@@ -56,8 +58,9 @@ class machete_importexport_module extends machete_module {
 				$this->checked_modules = $_POST['moduleChecked'];
 			
 				$export_file = $this->export();
+				$export_filename = 'machete_backup_'.strtolower(date('jMY')).'.json';
 				
-				header('Content-disposition: attachment; filename=machete_export.json');
+				header('Content-disposition: attachment; filename='.$export_filename);
 				header('Content-Type: application/json');
 				header('Pragma: no-cache');
 				echo $export_file;
@@ -105,7 +108,7 @@ class machete_importexport_module extends machete_module {
 
 	}
 
-	protected function import() {
+	protected function import( $settings = array() ) {
 		global $machete;
 
 	  	if ( empty( $_FILES ) || (! isset( $_FILES[ 'machete-backup-file' ] ) ) ) return false;
@@ -127,10 +130,46 @@ class machete_importexport_module extends machete_module {
   			return false;
   		}
   		
+ 
   		foreach ($this->uploaded_backup_data as $module => $module_data){
+  			
+  			if (!array_key_exists($module, $machete->modules)){
+  				$this->import_log .= __('Ignored uknown module:').' '.$module."\n\n";
+  				continue;
+  			}
+  			$this->import_log .= __('Importing module: ').' '.$module."\n";
+  			$this->import_log .= "===============================\n";
 
+  			
+  			// manage module activation/deactivation
+  			if (array_key_exists('is_active', $module_data) && is_bool($module_data['is_active']) ){
+  				if ($module_data['is_active']){
+  					if ( $machete->manage_modules($module, 'activate', true) ){
+  						$this->import_log .= __('Module activated succesfully')."\n";
+  					}
+  				}else{
+  					if ( $machete->manage_modules($module, 'deactivate', true) ){
+  						$this->import_log .= __('Module deactivated succesfully')."\n";
+  					}
+  				}
+  			}
+  			
+  			if ( array_key_exists('settings', $module_data) &&
+  				( count( $module_data['settings'] > 0 ) ) &&
+  				$machete->modules[$module]->params['has_config']
+  				){
+  				
+  				$this->import_log .= var_export( $module_data['settings'] , true) . "\n";
+  				
+  				$this->import_log .= $machete->modules[$module]->import( $module_data['settings'] );
+  				$this->import_log .= "\n";
+  			}
+		
+
+  			
   		}
-
+  		
+  		
 
   		//$this->notice(__('An error occurred while uploading the backup file'), 'error');
 

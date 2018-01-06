@@ -28,12 +28,12 @@ class machete_utils_module extends machete_module {
 		$this->read_settings();
 		if (isset($_POST['machete-utils-saved'])){
   			check_admin_referer( 'machete_save_utils' );
-			$this->save_settings();
+			$this->save_settings( $_POST );
 		}
 		add_action( 'admin_menu', array(&$this, 'register_sub_menu') );
 	}
 
-	protected function save_settings() {
+	protected function save_settings( $settings = array(), $silent = false) {
 
 		/*
 		tracking_id
@@ -46,70 +46,67 @@ class machete_utils_module extends machete_module {
 		
 		if (!is_dir(MACHETE_DATA_PATH)){
 			if(!@mkdir(MACHETE_DATA_PATH)){
-				$this->notice( sprintf( __( 'Error creating data dir %s please check file permissions', 'machete' ), MACHETE_DATA_PATH), 'error');
+				if (!$silent) $this->notice( sprintf( __( 'Error creating data dir %s please check file permissions', 'machete' ), MACHETE_DATA_PATH), 'error');
 				return false;
 			}
 		}
 
-		if(!empty($_POST['tracking_id'])){
+		if(!empty($settings['tracking_id'])){
 
-			
-			$settings['tracking_id'] = $_POST['tracking_id'];
-
-			if(!preg_match('/^ua-\d{4,9}-\d{1,4}$/i', strval( $_POST['tracking_id'] ))){
+			if(!preg_match('/^ua-\d{4,9}-\d{1,4}$/i', strval( $settings['tracking_id'] ))){
 				// invalid Analytics Tracking ID
 				// http://code.google.com/apis/analytics/docs/concepts/gaConceptsAccounts.html#webProperty
-				$this->notice( __( 'That doesn\'t look like a valid Google Analytics tracking ID', 'machete' ), 'warning');
+				if (!$silent) $this->notice( __( 'That doesn\'t look like a valid Google Analytics tracking ID', 'machete' ), 'warning');
 				return false;
 			}
+			$new_settings['tracking_id'] = $settings['tracking_id'];
 
-			$settings['tracking_format'] = $_POST['tracking_format'];
-
-			if( !in_array( $_POST['tracking_format'], array('standard','machete','none') )){
+			if( !in_array( $settings['tracking_format'], array('standard','machete','none') )){
 				// I don't know that tracking format
-				$this->notice( __( 'Something went wrong. Unknown tracking code format requested.', 'machete' ), 'warning');
+				if (!$silent) $this->notice( __( 'Something went wrong. Unknown tracking code format requested.', 'machete' ), 'warning');
 				return false;
 			}
+			$new_settings['tracking_format'] = $settings['tracking_format'];
 
-			if ( isset( $_POST['tacking_anonymize'] )){
-				$settings['tacking_anonymize'] = 1;
+			if ( isset( $settings['tacking_anonymize'] )){
+				$new_settings['tacking_anonymize'] = 1;
 				$anonymizeIp = ',{anonymizeIp: true}';
 			}else{
-				$settings['tacking_anonymize'] = 0;
+				$new_settings['tacking_anonymize'] = 0;
 				$anonymizeIp = '';
 			}
 
 			// let's generate the Google Analytics tracking code
-			if($_POST['tracking_format'] == 'machete'){
+			if($new_settings['tracking_format'] == 'machete'){
 				$header_content .= 'if (!navigator.userAgent || ('."\n";
 				$header_content .= '  (navigator.userAgent.indexOf("Speed Insights") == -1) &&'."\n";
 				$header_content .= '  (navigator.userAgent.indexOf("Googlebot") == -1)'."\n";
 				$header_content .= ')) {'."\n";
 			}
-			if($_POST['tracking_format'] != 'none'){
+			if($new_settings['tracking_format'] != 'none'){
 				
 				$header_content .= '(function(i,s,o,g,r,a,m){i[\'GoogleAnalyticsObject\']=r;i[r]=i[r]||function(){'."\n";
 				$header_content .= '(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),'."\n";
 				$header_content .= 'm=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)'."\n";
 				$header_content .= '})(window,document,\'script\',\'https://www.google-analytics.com/analytics.js\',\'ga\');'."\n";
 
-				$header_content .= 'ga(\'create\', \''.$_POST['tracking_id'].'\', \'auto\''.$anonymizeIp.');'."\n";
+				$header_content .= 'ga(\'create\', \''.$settings['tracking_id'].'\', \'auto\''.$anonymizeIp.');'."\n";
 				$header_content .= 'ga(\'send\', \'pageview\');'."\n";
 				
 			}
-			if($_POST['tracking_format'] == 'machete'){
+			if($new_settings['tracking_format'] == 'machete'){
 				$header_content .= '}'."\n";
 			}
-			if($_POST['tracking_format'] != 'none'){
+			if($new_settings['tracking_format'] != 'none'){
 				$header_content = "<script>\n".$header_content."</script>\n<!-- Machete Header -->\n";
 			}
 		}else{
-			$settings['tracking_id'] = '';
-			$settings['tracking_format'] = 'none';
+			$new_settings['tracking_id'] = '';
+			$new_settings['tracking_format'] = 'none';
 		}
 
-		if(!empty($_POST['header_content'])){
-			$header_content .= stripslashes(wptexturize($_POST['header_content']));
+		if(!empty($settings['header_content'])){
+			$header_content .= stripslashes(wptexturize($settings['header_content']));
 		}
 
 		if(!empty($header_content)){
@@ -121,16 +118,16 @@ class machete_utils_module extends machete_module {
 		}
 
 
-		if(!empty($_POST['alfonso_content_injection_method']) &&
+		if(!empty($settings['alfonso_content_injection_method']) &&
 			($this->settings['alfonso_content_injection_method'] == 'auto')){
-			$settings['alfonso_content_injection_method'] = 'auto';
+			$new_settings['alfonso_content_injection_method'] = 'auto';
 		}else{
-			$settings['alfonso_content_injection_method'] = 'manual';
+			$new_settings['alfonso_content_injection_method'] = 'manual';
 		}
 
 
-		if(!empty($_POST['alfonso_content'])){
-			$alfonso_content = stripslashes(wptexturize($_POST['alfonso_content']));
+		if(!empty($settings['alfonso_content'])){
+			$alfonso_content = stripslashes(wptexturize($settings['alfonso_content']));
 			file_put_contents(MACHETE_DATA_PATH.'body.html', $alfonso_content, LOCK_EX);
 		}else{
 			if (file_exists(MACHETE_DATA_PATH.'body.html')){
@@ -139,8 +136,8 @@ class machete_utils_module extends machete_module {
 		}
 
 
-		if(!empty($_POST['footer_content'])){
-			$footer_content = stripslashes(wptexturize($_POST['footer_content']));
+		if(!empty($settings['footer_content'])){
+			$footer_content = stripslashes(wptexturize($settings['footer_content']));
 			file_put_contents(MACHETE_DATA_PATH.'footer.html', $footer_content, LOCK_EX);
 		}else{
 			if (file_exists(MACHETE_DATA_PATH.'footer.html')){
@@ -149,25 +146,25 @@ class machete_utils_module extends machete_module {
 		}
 		
 		if(
-			(0 == count(array_diff($settings, $this->settings))) &&
-			(0 == count(array_diff($this->settings, $settings)))
+			(0 == count(array_diff($new_settings, $this->settings))) &&
+			(0 == count(array_diff($this->settings, $new_settings)))
 			){
 			// no removes && no adds
 			// ToDo: check for changes in the other sections
 			//       give "no changes" notice only if no changes at all
 			//if (!$silent) $this->notice(__( 'No changes were needed.', 'machete' ), 'info');
-			return false;
+			return true;
 		}
 		
 
 
 		// option saved WITHOUT autoload
-		if(update_option( 'machete_utils_settings', $settings, 'no' )){
-			$this->settings = $settings;
-			$this->save_success_notice();
+		if(update_option( 'machete_utils_settings', $new_settings, 'no' )){
+			$this->settings = $new_settings;
+			if (!$silent) $this->save_success_notice();
 			return true;
 		}else{
-			$this->save_error_notice();
+			if (!$silent) $this->save_error_notice();
 			return false;
 		}
 

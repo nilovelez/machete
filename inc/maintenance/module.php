@@ -48,7 +48,7 @@ class machete_maintenance_module extends machete_module {
 
 		if ( isset( $_POST['machete-maintenance-saved'] ) ){
 		    check_admin_referer( 'machete_save_maintenance' );
-		  	$this->save_settings();
+		  	$this->save_settings( $_POST );
 		}
 
 		$this->preview_base_url = home_url( '/?mct_preview=' . wp_create_nonce('maintenance_preview_nonce') );
@@ -71,7 +71,7 @@ class machete_maintenance_module extends machete_module {
 		}
 	}
 
-	protected function save_settings() {
+	protected function save_settings( $settings = array(), $silent = false) {
 
 		/*
 		page_id: int
@@ -80,19 +80,18 @@ class machete_maintenance_module extends machete_module {
 		*/
 		$old_settings = $this->settings;
 
-
-		if (!empty($_POST['site_status']) && (in_array($_POST['site_status'], array('online','coming_soon','maintenance')))){
-			$settings['site_status'] = $_POST['site_status'];
+		if (empty($settings['site_status']) || (in_array($settings['site_status'], array('online','coming_soon','maintenance')))){
+			$settings['site_status'] = $this->default_settings ['site_status'];
 		}
 
-		if (!empty($_POST['token'])){
-			$settings['token'] = sanitize_text_field($_POST['token']);
+		if (!empty($settings['token'])){
+			$settings['token'] = sanitize_text_field($settings['token']);
 		}
 
-		if (!empty($_POST['page_id'])){
-			$settings['page_id'] = (int) sanitize_text_field($_POST['page_id']);
+		if (!empty($settings['page_id'])){
+			$settings['page_id'] = (int) sanitize_text_field($settings['page_id']);
 			if (empty($settings['page_id'])){
-				$this->notice( __( 'Content page id is not a valid page id', 'machete' ), 'warning' );
+				if (!$silent) $this->notice( __( 'Content page id is not a valid page id', 'machete' ), 'warning' );
 				return false;
 			}
 		}else{
@@ -108,18 +107,18 @@ class machete_maintenance_module extends machete_module {
 		}
 
 		if (isset($old_settings) && is_equal_array($old_settings, $settings)){
-			$this->notice( __( 'No changes were needed.', 'machete' ), 'notice' );
-			return false;
+			if (!$silent) $this->notice( __( 'No changes were needed.', 'machete' ), 'notice' );
+			return true;
 		}
 
 
 		// option saved WITH autoload
 		if(update_option( 'machete_maintenance_settings', $settings, 'yes' )){
 			$this->settings = $settings;
-			$this->save_success_notice();
+			if (!$silent) $this->save_success_notice();
 			return true;
 		}else{
-			$this->save_error_notice();
+			if (!$silent) $this->save_error_notice();
 			return false;
 		}
 
