@@ -26,7 +26,7 @@ abstract class machete_module {
 		}else{
 			$this->settings = array_merge($this->default_settings, $this->settings);
 		}
-		return($this->settings);
+		return $this->settings;
 	}
 
 	public function admin(){
@@ -67,7 +67,7 @@ abstract class machete_module {
 	}
 
 	protected function export(){
-		return $this->settings;
+		return $this->read_settings();
 	}
 
 	protected function import( $settings = array() ){

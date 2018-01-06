@@ -39,7 +39,7 @@ class machete_importexport_module extends machete_module {
 
 			$params = $module->params;
 			if ( 'importexport' == $params['slug'] ) continue;
-		    if ( ! $params['has_config'] ) continue;
+		    if ( ! $params['has_config'] && ! $params['can_be_disabled'] ) continue;
 
 		    $this->exportable_modules[$params['slug']] = array(
 		    	'title' => $params['title'],
@@ -81,14 +81,6 @@ class machete_importexport_module extends machete_module {
 
 	protected function export() {
 		global $machete;
-		
-		/*
-		echo '<pre>';
-		print_r ($this->exportable_modules);
-		print_r ($this->checked_modules);
-		echo '</pre>';
-		*/
-
 
 		$export = array();
 
@@ -97,10 +89,13 @@ class machete_importexport_module extends machete_module {
 
 			$params = $machete->modules[$slug]->params;
 
-			$export[$params['slug']] = array(
-		    	'is_active' => $params['is_active'],
-		    	'settings' => $machete->modules[$slug]->export()
-		    ); 
+			$export[$params['slug']] = array();
+			if ( $params['can_be_disabled'] ){
+		    	$export[$params['slug']]['is_active'] = $params['is_active'];
+			}
+			if ( $params['has_config'] ) {
+		    	$export[$params['slug']]['settings'] = $machete->modules[$slug]->export();
+		    }
 		    
 		}
 		//return base64_encode(serialize($export));

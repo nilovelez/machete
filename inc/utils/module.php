@@ -170,6 +170,23 @@ class machete_utils_module extends machete_module {
 
 	}
 
+	protected function import( $settings = array() ){
+
+		$encoded_fields = array('header_content', 'alfonso_content', 'footer_content');
+
+		foreach ($encoded_fields as $encoded_field){
+			if (array_key_exists($encoded_field, $settings) && ! empty($settings[$encoded_field]) ){
+				$settings[$encoded_field] = base64_decode($settings[$encoded_field]);
+			}
+		}
+			
+		if ( $this->save_settings($settings, true) ){
+			return __('Settings succesfully restored from backup', 'machete') . "\n";
+		}else{
+			return __('Error restoring settings backup', 'machete') . "\n";
+		}
+	}
+
 	protected function export(){
 
 		$export = $this->settings;

@@ -7,7 +7,6 @@ class machete_powertools_module extends machete_module {
 	function __construct(){
 		$this->init( array(
 			'slug' => 'powertools',
-			//'title' => __('PowerTools','machete'),
 			'title' => '<span style="color: #ff9900">'.__('PowerTools','machete').'</span>',
 			'full_title' => __('Machete PowerTools','machete'),
 			'description' => __('Machete PowerTools is an free upgrade module targeted at WordPress developers and power users.','machete'),
@@ -108,6 +107,8 @@ class machete_powertools_module extends machete_module {
 
 	protected function save_settings( $options = array(), $silent = false ) {
 
+		$options = array_intersect($options, array_keys($this->powertools_array) );
+		
 		if ( count($options) > 0 ){
 
 			for($i = 0; $i < count($options); $i++){
@@ -121,19 +122,19 @@ class machete_powertools_module extends machete_module {
 					){
 					// no removes && no adds
 					if (!$silent) $this->notice(__( 'No changes were needed.', 'machete' ), 'info');
-					return false;
+					return true;
 				}
 			}
 			if (update_option('machete_powertools_settings',$options)){
 				$this->settings = $options;
-				$this->save_success_notice();
+				if (!$silent) $this->save_success_notice();
 				return true;
 			}else{
-				$this->save_error_notice();
+				if (!$silent) $this->save_error_notice();
 				return false;
 			}
 
-		}else{
+		}elseif (count($this->settings) > 0 ){
 			if ( delete_option('machete_powertools_settings')){
 				$this->settings = array();
 				if (!$silent) $this->save_success_notice();
@@ -143,16 +144,11 @@ class machete_powertools_module extends machete_module {
 				return false;
 			}
 		}
+
 		if (!$silent) $this->notice(__( 'No changes were needed.', 'machete' ), 'info');		
-		return false;
+		return true;
 	}
 
-	protected function import( $options = array() ){
-		if (!is_array($options) || (count($options) == 0)) return false;
-		
-		$valid_active_options = array_intersect($options, $this->powertools_array);
-		return ( $this->save_settings($valid_active_options) );
-	}
 	
 	private function purge_transients(){
 		//echo '<h1 style="text-align: right">'.__('Purge Transients','machete').'</h1>';

@@ -156,17 +156,16 @@ class machete_cleanup_module extends machete_module {
 
 	protected function save_settings( $options = array(), $silent = false ) {
 		
-		if ( count($options) > 0 ){
-
-			$valid_options = array_merge(
+		$valid_options = array_merge(
 			array_keys($this->cleanup_array), 
 			array_merge(
 				array_keys($this->optimize_array),
 				array_keys($this->tweaks_array)
 				)
 			);
-			$options = array_intersect($options, $valid_options);
-		
+		$options = array_intersect($options, $valid_options);
+
+		if ( count($options) > 0 ){
 
 			for($i = 0; $i < count($options); $i++){
 				$options[$i] = sanitize_text_field($options[$i]);

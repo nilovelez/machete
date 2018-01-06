@@ -3,7 +3,7 @@ if ( ! defined( 'MACHETE_ADMIN_INIT' ) ) exit;
 
 
 if($machete_header_content = @file_get_contents(MACHETE_DATA_PATH.'header.html')){
-	$machete_header_content = explode('<!-- Machete Header -->', $machete_header_content);
+	$machete_header_content = explode("<!-- Machete Header -->\n", $machete_header_content);
 	switch(count($machete_header_content)){
 		case 1:
 			$machete_header_content = $machete_header_content[0];
