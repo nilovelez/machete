@@ -1,8 +1,8 @@
 === Machete ===
 Contributors: nilovelez
 Tags: cookies, analytics, code, css, javascript, admin
-Requires at least: 4.3
-Tested up to: 4.8
+Requires at least: 4.6
+Tested up to: 4.9.1
 Stable tag: trunk
 License: WTFPL
 License URI: http://www.wtfpl.net/txt/copying/

@@ -29,6 +29,18 @@ if (in_array('capital_P_dangit',$this->settings)) {
     }
   }
 }
+/********* OPTIMIZATION TWEAKS ***********/
+if (in_array('jquery-migrate',$this->settings)) {
+  
+  global $wp_scripts;
+
+  if ( !empty( $wp_scripts->registered['jquery'] ) ) {
+    $wp_scripts->registered['jquery']->deps = array_diff(
+        $wp_scripts->registered['jquery']->deps,
+        array( 'jquery-migrate' )
+    );
+  }
+}
 
 if (in_array('pdf_thumbnails',$this->settings)) {
   
