@@ -138,9 +138,7 @@ class machete_cookies_module extends machete_module {
 			)."\n".$cookies_bar_js;
 
 
-		// delete old .js file and generate a new one to prevent caching
-		$old_cookie_filename = $this->settings['cookie_filename'];
-
+		
 		// cheap and dirty pseudo-random filename generation
 		$new_settings['cookie_filename'] = 'cookies_'.strtolower(substr(MD5(time()),0,8)).'.js';
 		
@@ -152,8 +150,9 @@ class machete_cookies_module extends machete_module {
 			}
 		}
 
-		if (!empty($old_cookie_filename) && file_exists(MACHETE_DATA_PATH.$old_cookie_filename)){
-			if(!unlink(MACHETE_DATA_PATH.$old_cookie_filename)){
+		// delete old .js file and generate a new one to prevent caching
+		if (!empty($this->settings['cookie_filename']) && file_exists(MACHETE_DATA_PATH.$this->settings['cookie_filename'])){
+			if(!unlink(MACHETE_DATA_PATH.$this->settings['cookie_filename'])){
 				if (!$silent) $this->notice (sprintf( __( 'Could not delete old javascript file from %s please check file permissions . Aborting to prevent inconsistent state.', 'machete' ), MACHETE_RELATIVE_DATA_PATH), 'warning');
 				return false;
 			}
@@ -172,7 +171,7 @@ class machete_cookies_module extends machete_module {
 	}
 
 	protected function export(){
-		$export = $this->settings;
+		$export = $this->read_settings();
 		if ( !empty( stripslashes( $export['warning_text'] ) ) ){
 			$export['warning_text'] = stripslashes($export['warning_text']);
 		}

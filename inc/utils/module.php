@@ -69,10 +69,8 @@ class machete_utils_module extends machete_module {
 			$new_settings['tracking_format'] = $settings['tracking_format'];
 
 			if ( isset( $settings['tacking_anonymize'] )){
-				$new_settings['tacking_anonymize'] = 1;
 				$anonymizeIp = ',{anonymizeIp: true}';
 			}else{
-				$new_settings['tacking_anonymize'] = 0;
 				$anonymizeIp = '';
 			}
 
@@ -105,6 +103,12 @@ class machete_utils_module extends machete_module {
 			$new_settings['tracking_format'] = 'none';
 		}
 
+		if ( isset( $settings['tacking_anonymize'] )){
+			$new_settings['tacking_anonymize'] = 1;
+		}else{
+			$new_settings['tacking_anonymize'] = 0;
+		}
+
 		if(!empty($settings['header_content'])){
 			$header_content .= stripslashes(wptexturize($settings['header_content']));
 		}
@@ -118,13 +122,14 @@ class machete_utils_module extends machete_module {
 		}
 
 
-		if(!empty($settings['alfonso_content_injection_method']) &&
-			($this->settings['alfonso_content_injection_method'] == 'auto')){
-			$new_settings['alfonso_content_injection_method'] = 'auto';
+		if(
+			isset($settings['alfonso_content_injection_method']) &&
+			in_array($settings['alfonso_content_injection_method'], array('auto', 'manual'))
+		){
+			$new_settings['alfonso_content_injection_method'] = $settings['alfonso_content_injection_method'];
 		}else{
-			$new_settings['alfonso_content_injection_method'] = 'manual';
+			$new_settings['alfonso_content_injection_method'] = $this->default_settings['alfonso_content_injection_method'];
 		}
-
 
 		if(!empty($settings['alfonso_content'])){
 			$alfonso_content = stripslashes(wptexturize($settings['alfonso_content']));

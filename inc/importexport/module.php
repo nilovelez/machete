@@ -137,7 +137,7 @@ class machete_importexport_module extends machete_module {
 
   			
   			// manage module activation/deactivation
-  			if (array_key_exists('is_active', $module_data) && is_bool($module_data['is_active']) ){
+  			if (array_key_exists('is_active', $module_data) && is_bool($module_data['is_active']) && ($module != 'powertools') ){
   				if ($module_data['is_active']){
   					if ( $machete->manage_modules($module, 'activate', true) ){
   						$this->import_log .= __('Module activated succesfully')."\n";
