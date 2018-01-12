@@ -67,14 +67,20 @@ class machete_cookies_module extends machete_module {
 		add_action( 'wp_footer', array(&$this,'render_cookie_bar'));
 	}
 	
-	protected function save_settings( $settings = array(), $silent = false) {
+	protected function save_settings( $options = array(), $silent = false) {
 
 		/*
 		bar_status: disabled | enabled
 		warning_text
 		accept_text
 		bar_theme: light | dark
+
+		// $options : values from _POST or import script
+		// $settings : values to save
+
 		*/
+		$settings = $this->default_settings;
+		$html_replaces = array();
 		
 		if (!is_dir(MACHETE_DATA_PATH)){
 			if(!@mkdir(MACHETE_DATA_PATH)){
@@ -87,49 +93,41 @@ class machete_cookies_module extends machete_module {
 			if (!$silent) $this->notice(sprintf( __( 'Error reading cookie bar template %s', 'machete' ), $this->path.'templates/cookies_bar_js.js'), 'error');
 			return false;
 		}
-
-		$html_replaces = array();
-
-		
-		if (! empty($settings['bar_theme']) && ( array_key_exists( $settings['bar_theme'], $this->themes ))){
-			$new_settings['bar_theme'] = $settings['bar_theme'];
-		}else{
-			$new_setting = 'light';
+			
+		if (! empty($options['bar_theme']) && ( array_key_exists( $options['bar_theme'], $this->themes ))){
+			$settings['bar_theme'] = $options['bar_theme'];
 		}
 
-		if(!$cookies_bar_html = @file_get_contents($this->themes[$settings['bar_theme']]['template'])){
-			if (!$silent) $this->notice(sprintf( __( 'Error reading cookie bar template %s', 'machete' ), $cookies_bar_themes[$settings['bar_theme']]['template']), 'error');
+		if(!$cookies_bar_html = @file_get_contents($this->themes[$options['bar_theme']]['template'])){
+			if (!$silent) $this->notice(sprintf( __( 'Error reading cookie bar template %s', 'machete' ), $cookies_bar_themes[$options['bar_theme']]['template']), 'error');
 			return false;
 		}
-
 		$cookies_bar_html = "var machete_cookies_bar_html = '".addslashes($cookies_bar_html)."'; \n";
 
-		$settings['bar_status'] = sanitize_text_field($settings['bar_status']);
-		if (empty($settings['bar_status']) || ($settings['bar_status'] != 'disabled')){
-			$new_settings['bar_status'] = 'enabled';
-		}else{
-			$new_settings['bar_status'] = 'disabled';
+		$options['bar_status'] = sanitize_text_field($options['bar_status']);
+		if (empty($options['bar_status']) || ($options['bar_status'] != 'disabled')){
+			$settings['bar_status'] = 'enabled';
 		}
 
-		$settings['warning_text'] = trim(wptexturize($settings['warning_text']));
-		if (empty($settings['warning_text'])){
+		$options['warning_text'] = trim(wptexturize($options['warning_text']));
+		if (empty($options['warning_text'])){
 			if (!$silent) $this->notice ( __('Cookie warning text can\'t be blank', 'machete' ), 'warning' );
 			return false;
 		}
-		$html_replaces['{{warning_text}}'] = $settings['warning_text'];
-		$new_settings['warning_text'] = $settings['warning_text'];
+		$html_replaces['{{warning_text}}'] = $options['warning_text'];
+		$settings['warning_text'] = $options['warning_text'];
 
 
-		$settings['accept_text'] = trim(sanitize_text_field($settings['accept_text']));
-		if (empty($settings['accept_text'])){
+		$options['accept_text'] = trim(sanitize_text_field($options['accept_text']));
+		if (empty($options['accept_text'])){
 			if (!$silent) $this->notice ( __('Accept button text can\'t be blank', 'machete' ), 'warning' );
 			return false;
 		}
-		$html_replaces['{{accept_text}}']  = $settings['accept_text'];
-		$new_settings['accept_text'] = $settings['accept_text'];
+		$html_replaces['{{accept_text}}']  = $options['accept_text'];
+		$settings['accept_text'] = $options['accept_text'];
 
 
-		$html_replaces['{{extra_css}}'] = $this->themes[$settings['bar_theme']]['extra_css'];
+		$html_replaces['{{extra_css}}'] = $this->themes[$options['bar_theme']]['extra_css'];
 
 		$cookies_bar_js = str_replace(
 			array_keys($html_replaces),
@@ -140,11 +138,11 @@ class machete_cookies_module extends machete_module {
 
 		
 		// cheap and dirty pseudo-random filename generation
-		$new_settings['cookie_filename'] = 'cookies_'.strtolower(substr(MD5(time()),0,8)).'.js';
+		$settings['cookie_filename'] = 'cookies_'.strtolower(substr(MD5(time()),0,8)).'.js';
 		
 		
-		if($new_settings['bar_status'] == 'enabled'){
-			if(!@file_put_contents(MACHETE_DATA_PATH.$new_settings['cookie_filename'], $cookies_bar_js)){
+		if($settings['bar_status'] == 'enabled'){
+			if(!@file_put_contents(MACHETE_DATA_PATH.$settings['cookie_filename'], $cookies_bar_js)){
 				if (!$silent) $this->notice(sprintf( __( 'Error writing static javascript file to %s please check file permissions. Aborting to prevent inconsistent state.', 'machete' ), MACHETE_RELATIVE_DATA_PATH), 'error');
 				return false;
 			}
@@ -159,8 +157,8 @@ class machete_cookies_module extends machete_module {
 		}
 		
 		// option saved WITH autoload
-		if(update_option( 'machete_cookies_settings', $new_settings, 'yes' )){
-			$this->settings = $new_settings;
+		if(update_option( 'machete_cookies_settings', $settings, 'yes' )){
+			$this->settings = $settings;
 			if (!$silent) $this->save_success_notice();
 			return true;
 		}else{

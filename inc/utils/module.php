@@ -33,7 +33,7 @@ class machete_utils_module extends machete_module {
 		add_action( 'admin_menu', array(&$this, 'register_sub_menu') );
 	}
 
-	protected function save_settings( $settings = array(), $silent = false) {
+	protected function save_settings( $options = array(), $silent = false) {
 
 		/*
 		tracking_id
@@ -41,7 +41,7 @@ class machete_utils_module extends machete_module {
 		header_content
 		footer_content
 		*/
-
+		$settings = $this->default_settings;
 		$header_content = '';
 		
 		if (!is_dir(MACHETE_DATA_PATH)){
@@ -51,66 +51,66 @@ class machete_utils_module extends machete_module {
 			}
 		}
 
-		if(!empty($settings['tracking_id'])){
+		if(!empty($options['tracking_id'])){
 
-			if(!preg_match('/^ua-\d{4,9}-\d{1,4}$/i', strval( $settings['tracking_id'] ))){
+			if(!preg_match('/^ua-\d{4,9}-\d{1,4}$/i', strval( $options['tracking_id'] ))){
 				// invalid Analytics Tracking ID
 				// http://code.google.com/apis/analytics/docs/concepts/gaConceptsAccounts.html#webProperty
 				if (!$silent) $this->notice( __( 'That doesn\'t look like a valid Google Analytics tracking ID', 'machete' ), 'warning');
 				return false;
 			}
-			$new_settings['tracking_id'] = $settings['tracking_id'];
+			$settings['tracking_id'] = $options['tracking_id'];
 
-			if( !in_array( $settings['tracking_format'], array('standard','machete','none') )){
+			if( !in_array( $options['tracking_format'], array('standard','machete','none') )){
 				// I don't know that tracking format
 				if (!$silent) $this->notice( __( 'Something went wrong. Unknown tracking code format requested.', 'machete' ), 'warning');
 				return false;
 			}
-			$new_settings['tracking_format'] = $settings['tracking_format'];
+			$settings['tracking_format'] = $options['tracking_format'];
 
-			if ( isset( $settings['tacking_anonymize'] )){
+			if ( isset( $options['tacking_anonymize'] )){
 				$anonymizeIp = ',{anonymizeIp: true}';
 			}else{
 				$anonymizeIp = '';
 			}
 
 			// let's generate the Google Analytics tracking code
-			if($new_settings['tracking_format'] == 'machete'){
+			if($settings['tracking_format'] == 'machete'){
 				$header_content .= 'if (!navigator.userAgent || ('."\n";
 				$header_content .= '  (navigator.userAgent.indexOf("Speed Insights") == -1) &&'."\n";
 				$header_content .= '  (navigator.userAgent.indexOf("Googlebot") == -1)'."\n";
 				$header_content .= ')) {'."\n";
 			}
-			if($new_settings['tracking_format'] != 'none'){
+			if($settings['tracking_format'] != 'none'){
 				
 				$header_content .= '(function(i,s,o,g,r,a,m){i[\'GoogleAnalyticsObject\']=r;i[r]=i[r]||function(){'."\n";
 				$header_content .= '(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),'."\n";
 				$header_content .= 'm=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)'."\n";
 				$header_content .= '})(window,document,\'script\',\'https://www.google-analytics.com/analytics.js\',\'ga\');'."\n";
 
-				$header_content .= 'ga(\'create\', \''.$settings['tracking_id'].'\', \'auto\''.$anonymizeIp.');'."\n";
+				$header_content .= 'ga(\'create\', \''.$options['tracking_id'].'\', \'auto\''.$anonymizeIp.');'."\n";
 				$header_content .= 'ga(\'send\', \'pageview\');'."\n";
 				
 			}
-			if($new_settings['tracking_format'] == 'machete'){
+			if($settings['tracking_format'] == 'machete'){
 				$header_content .= '}'."\n";
 			}
-			if($new_settings['tracking_format'] != 'none'){
+			if($settings['tracking_format'] != 'none'){
 				$header_content = "<script>\n".$header_content."</script>\n<!-- Machete Header -->\n";
 			}
 		}else{
-			$new_settings['tracking_id'] = '';
-			$new_settings['tracking_format'] = 'none';
+			$settings['tracking_id'] = '';
+			$settings['tracking_format'] = 'none';
 		}
 
-		if ( isset( $settings['tacking_anonymize'] )){
-			$new_settings['tacking_anonymize'] = 1;
+		if ( isset( $options['tacking_anonymize'] )){
+			$settings['tacking_anonymize'] = 1;
 		}else{
-			$new_settings['tacking_anonymize'] = 0;
+			$settings['tacking_anonymize'] = 0;
 		}
 
-		if(!empty($settings['header_content'])){
-			$header_content .= stripslashes(wptexturize($settings['header_content']));
+		if(!empty($options['header_content'])){
+			$header_content .= stripslashes(wptexturize($options['header_content']));
 		}
 
 		if(!empty($header_content)){
@@ -123,16 +123,16 @@ class machete_utils_module extends machete_module {
 
 
 		if(
-			isset($settings['alfonso_content_injection_method']) &&
-			in_array($settings['alfonso_content_injection_method'], array('auto', 'manual'))
+			isset($options['alfonso_content_injection_method']) &&
+			in_array($options['alfonso_content_injection_method'], array('auto', 'manual'))
 		){
-			$new_settings['alfonso_content_injection_method'] = $settings['alfonso_content_injection_method'];
+			$settings['alfonso_content_injection_method'] = $options['alfonso_content_injection_method'];
 		}else{
-			$new_settings['alfonso_content_injection_method'] = $this->default_settings['alfonso_content_injection_method'];
+			$settings['alfonso_content_injection_method'] = $this->default_settings['alfonso_content_injection_method'];
 		}
 
-		if(!empty($settings['alfonso_content'])){
-			$alfonso_content = stripslashes(wptexturize($settings['alfonso_content']));
+		if(!empty($options['alfonso_content'])){
+			$alfonso_content = stripslashes(wptexturize($options['alfonso_content']));
 			file_put_contents(MACHETE_DATA_PATH.'body.html', $alfonso_content, LOCK_EX);
 		}else{
 			if (file_exists(MACHETE_DATA_PATH.'body.html')){
@@ -141,8 +141,8 @@ class machete_utils_module extends machete_module {
 		}
 
 
-		if(!empty($settings['footer_content'])){
-			$footer_content = stripslashes(wptexturize($settings['footer_content']));
+		if(!empty($options['footer_content'])){
+			$footer_content = stripslashes(wptexturize($options['footer_content']));
 			file_put_contents(MACHETE_DATA_PATH.'footer.html', $footer_content, LOCK_EX);
 		}else{
 			if (file_exists(MACHETE_DATA_PATH.'footer.html')){
@@ -151,8 +151,8 @@ class machete_utils_module extends machete_module {
 		}
 		
 		if(
-			(0 == count(array_diff($new_settings, $this->settings))) &&
-			(0 == count(array_diff($this->settings, $new_settings)))
+			(0 == count(array_diff($settings, $this->settings))) &&
+			(0 == count(array_diff($this->settings, $settings)))
 			){
 			// no removes && no adds
 			// ToDo: check for changes in the other sections
@@ -164,8 +164,8 @@ class machete_utils_module extends machete_module {
 
 
 		// option saved WITHOUT autoload
-		if(update_option( 'machete_utils_settings', $new_settings, 'no' )){
-			$this->settings = $new_settings;
+		if(update_option( 'machete_utils_settings', $settings, 'no' )){
+			$this->settings = $settings;
 			if (!$silent) $this->save_success_notice();
 			return true;
 		}else{

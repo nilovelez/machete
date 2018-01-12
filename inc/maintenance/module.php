@@ -71,31 +71,30 @@ class machete_maintenance_module extends machete_module {
 		}
 	}
 
-	protected function save_settings( $settings = array(), $silent = false) {
+	protected function save_settings( $options = array(), $silent = false) {
 
 		/*
 		page_id: int
 		site_status: online | coming_soon | maintenance
 		token: string
 		*/
-		$old_settings = $this->settings;
+		
+		$settings = $this->default_settings;
 
-		if (empty($settings['site_status']) || (in_array($settings['site_status'], array('online','coming_soon','maintenance')))){
-			$settings['site_status'] = $this->default_settings ['site_status'];
+		if (! empty($options['site_status']) && (in_array($options['site_status'], array('online','coming_soon','maintenance')))){
+			$settings['site_status'] = $options ['site_status'];
 		}
 
-		if (!empty($settings['token'])){
-			$settings['token'] = sanitize_text_field($settings['token']);
+		if (!empty($options['token'])){
+			$settings['token'] = sanitize_text_field($options['token']);
 		}
 
-		if (!empty($settings['page_id'])){
-			$settings['page_id'] = (int) sanitize_text_field($settings['page_id']);
-			if (empty($settings['page_id'])){
+		if (!empty($options['page_id'])){
+			$settings['page_id'] = (int) sanitize_text_field($options['page_id']);
+			if (empty($options['page_id'])){
 				if (!$silent) $this->notice( __( 'Content page id is not a valid page id', 'machete' ), 'warning' );
 				return false;
 			}
-		}else{
-			$settings['page_id'] = '';
 		}
 
 		function is_equal_array($a, $b) {
@@ -106,7 +105,7 @@ class machete_maintenance_module extends machete_module {
 		    );
 		}
 
-		if (isset($old_settings) && is_equal_array($old_settings, $settings)){
+		if (isset($this->settings) && is_equal_array($this->settings, $settings)){
 			if (!$silent) $this->notice( __( 'No changes were needed.', 'machete' ), 'notice' );
 			return true;
 		}
