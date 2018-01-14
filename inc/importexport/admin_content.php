@@ -63,28 +63,13 @@
 	
 </form>	
 
-</div>
-
-
 <?php
 if ( !empty($this->import_log) ) {
-	echo '<div style="background-color: #ffe; border: 1px solid #ddd; padding: 15px;"><pre>';
+	echo '<div style="background-color: #ffe; border: 1px solid #ddd; padding: 15px; overflow-x: auto;"><pre>';
 	//print_r($machete->modules);
   	echo $this->import_log;
   	echo '</pre></div>';
 }
-
-/*
-
-$machete_export_data = $this->export();
-
-echo '<pre>';
-print_r(unserialize(base64_decode($machete_export_data)));
-echo '</pre>';
-
-echo '<pre>';
-print_r($this->uploaded_backup_data);
-echo '</pre>';
-*/
-
 ?>
+
+</div>

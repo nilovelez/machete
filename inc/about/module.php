@@ -28,6 +28,8 @@ class machete_about_module extends machete_module {
 	}
 	public function frontend() {}
 	public function register_sub_menu() {
+		// this can't use the default register_sub_menu
+		// it has to replace the parent Machete menu link
 		add_submenu_page(
 		  	'machete',
 		    $this->params['full_title'],
@@ -35,7 +37,7 @@ class machete_about_module extends machete_module {
 		    $this->params['role'],    
 		    'machete',
 		    'machete_about_page_content'
-		  );
+		);
 	}
 
 

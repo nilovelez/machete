@@ -157,8 +157,8 @@ class machete_importexport_module extends machete_module {
   				$this->import_log .= var_export( $module_data['settings'] , true) . "\n";
   				
   				$this->import_log .= $machete->modules[$module]->import( $module_data['settings'] );
-  				$this->import_log .= "\n";
   			}
+  			$this->import_log .= "\n";
 		
 
   			

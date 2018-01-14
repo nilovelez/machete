@@ -41,7 +41,7 @@ class machete_utils_module extends machete_module {
 		header_content
 		footer_content
 		*/
-		$settings = $this->default_settings;
+		$settings = $this->read_settings();
 		$header_content = '';
 		
 		if (!is_dir(MACHETE_DATA_PATH)){
@@ -150,17 +150,13 @@ class machete_utils_module extends machete_module {
 			}
 		}
 		
-		if(
-			(0 == count(array_diff($settings, $this->settings))) &&
-			(0 == count(array_diff($this->settings, $settings)))
-			){
+		if ($this->is_equal_array($this->settings, $settings)){
 			// no removes && no adds
 			// ToDo: check for changes in the other sections
 			//       give "no changes" notice only if no changes at all
-			//if (!$silent) $this->notice(__( 'No changes were needed.', 'machete' ), 'info');
+			//if (!$silent) $this->save_no_change_notice();
 			return true;
-		}
-		
+		}	
 
 
 		// option saved WITHOUT autoload

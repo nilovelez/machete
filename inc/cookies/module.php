@@ -79,7 +79,7 @@ class machete_cookies_module extends machete_module {
 		// $settings : values to save
 
 		*/
-		$settings = $this->default_settings;
+		$settings = $this->read_settings();
 		$html_replaces = array();
 		
 		if (!is_dir(MACHETE_DATA_PATH)){
@@ -104,16 +104,19 @@ class machete_cookies_module extends machete_module {
 		}
 		$cookies_bar_html = "var machete_cookies_bar_html = '".addslashes($cookies_bar_html)."'; \n";
 
-		$options['bar_status'] = sanitize_text_field($options['bar_status']);
-		if (empty($options['bar_status']) || ($options['bar_status'] != 'disabled')){
+		if (empty($options['bar_status']) || ($options['bar_status'] == 'disabled')){
+			$settings['bar_status'] = 'disabled';
+		}else{
 			$settings['bar_status'] = 'enabled';
 		}
 
-		$options['warning_text'] = trim(wptexturize($options['warning_text']));
-		if (empty($options['warning_text'])){
+		if (empty($options['warning_text']) || empty(trim($options['warning_text']))){
 			if (!$silent) $this->notice ( __('Cookie warning text can\'t be blank', 'machete' ), 'warning' );
 			return false;
+		}else{
+			$options['warning_text'] = trim(wptexturize($options['warning_text']));
 		}
+		
 		$html_replaces['{{warning_text}}'] = $options['warning_text'];
 		$settings['warning_text'] = $options['warning_text'];
 

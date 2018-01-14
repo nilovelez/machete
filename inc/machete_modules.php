@@ -89,6 +89,20 @@ abstract class machete_module {
 	protected function save_error_notice(){
 		$this->notice(__( 'Error saving configuration to database.', 'machete' ), 'error');
 	}
+	protected function save_no_changes_notice(){
+		$this->notice(__( 'No changes were needed.', 'machete' ), 'info');
+	}
+
+	
+
+	/* utils */
+	public function is_equal_array($a, $b) {
+	    return (
+	         is_array($a) && is_array($b) && 
+	         count($a) == count($b) &&
+	         array_diff($a, $b) === array_diff($b, $a)
+	    );
+	}
 				
 }
 

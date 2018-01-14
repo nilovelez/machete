@@ -49,6 +49,13 @@ class machete_powertools_module extends machete_module {
 		);
 	}
 
+	public function frontend(){
+		$this->read_settings();
+		if( count( $this->settings ) > 0 ) { 
+			require($this->path . 'frontend_functions.php' );
+		}
+	}
+
 	public function admin(){
 		$this->read_settings();
 
@@ -98,15 +105,8 @@ class machete_powertools_module extends machete_module {
 		add_action( 'admin_menu', array(&$this, 'register_sub_menu') );
 	}
 
-	public function frontend(){
-		$this->read_settings();
-		if( count( $this->settings ) > 0 ) { 
-			require($this->path . 'frontend_functions.php' );
-		}
-	}
-
 	protected function save_settings( $options = array(), $silent = false ) {
-
+		$this->read_settings();
 		$options = array_intersect($options, array_keys($this->powertools_array) );
 		
 		if ( count($options) > 0 ){
@@ -115,16 +115,11 @@ class machete_powertools_module extends machete_module {
 				$options[$i] = sanitize_text_field($options[$i]);
 			}
 			
-			if ($old_options = $this->settings){
-				if(
-					(0 == count(array_diff($options, $old_options))) &&
-					(0 == count(array_diff($old_options, $options)))
-					){
-					// no removes && no adds
-					if (!$silent) $this->notice(__( 'No changes were needed.', 'machete' ), 'info');
-					return true;
-				}
-			}
+			if ($this->is_equal_array($this->settings, $options)){
+				if (!$silent) $this->save_no_change_notice();
+				return true;
+			}			
+
 			if (update_option('machete_powertools_settings',$options)){
 				$this->settings = $options;
 				if (!$silent) $this->save_success_notice();
@@ -145,7 +140,7 @@ class machete_powertools_module extends machete_module {
 			}
 		}
 
-		if (!$silent) $this->notice(__( 'No changes were needed.', 'machete' ), 'info');		
+		if (!$silent) $this->save_no_change_notice();		
 		return true;
 	}
 

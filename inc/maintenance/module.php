@@ -78,8 +78,7 @@ class machete_maintenance_module extends machete_module {
 		site_status: online | coming_soon | maintenance
 		token: string
 		*/
-		
-		$settings = $this->default_settings;
+		$settings = $this->read_settings();
 
 		if (! empty($options['site_status']) && (in_array($options['site_status'], array('online','coming_soon','maintenance')))){
 			$settings['site_status'] = $options ['site_status'];
@@ -97,16 +96,8 @@ class machete_maintenance_module extends machete_module {
 			}
 		}
 
-		function is_equal_array($a, $b) {
-		    return (
-		         is_array($a) && is_array($b) && 
-		         count($a) == count($b) &&
-		         array_diff($a, $b) === array_diff($b, $a)
-		    );
-		}
-
-		if (isset($this->settings) && is_equal_array($this->settings, $settings)){
-			if (!$silent) $this->notice( __( 'No changes were needed.', 'machete' ), 'notice' );
+		if ($this->is_equal_array($this->settings, $settings)){
+			if (!$silent) $this->save_no_change_notice();
 			return true;
 		}
 
