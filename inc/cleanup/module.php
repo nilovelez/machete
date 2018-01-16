@@ -112,7 +112,7 @@ class machete_cleanup_module extends machete_module {
 		  ),
 		  'jquery-migrate' => array(
 		    'title' => __('remove jQuery-migrate','machete'),
-		    'description' => __('jQuery-migrate provides diagnostics that can simplify upgrading to new versions of jQuery, you can safely disable it.','machete') . ' <br><span style="color: red">'.__('Breaks some themes that depend on visual builders, like Avada or The7','machete').'</span>'
+		    'description' => __('jQuery-migrate provides diagnostics that can simplify upgrading to new versions of jQuery, you can safely disable it.','machete') . ' <br><span style="color: red">'.__('May break some themes and plugins that depend on legacy code.','machete').'</span>'
 		  ),
 		  'oembed_scripts' => array( // @fpuente addons
 		    'title' => __('Remove oEmbed Scripts','machete'),
