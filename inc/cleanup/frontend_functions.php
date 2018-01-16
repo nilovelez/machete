@@ -23,6 +23,8 @@ $settings = array(
 'comments_reply_feature',
 'empty_trash_soon',
 
+'wpcf7_refill'
+
 );*/
 
 
@@ -181,4 +183,13 @@ if (in_array('medium_large_size',$this->settings)) {
 
 if (in_array('comment_autolinks',$this->settings)) {
   remove_filter('comment_text', 'make_clickable', 9); 
+}
+
+if (in_array('wpcf7_refill',$this->settings)) {
+  add_action( 'wp_enqueue_scripts', function(){
+    wp_localize_script( 'contact-form-7', 'wpcf7', array(
+      'cached' => 0,
+      'jqueryUi' => 1
+    ));
+  }, 10);
 }
