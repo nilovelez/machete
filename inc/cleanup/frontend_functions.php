@@ -192,7 +192,6 @@ if (in_array('wpcf7_refill',$this->settings)) {
         'root' => esc_url_raw( rest_url( 'contact-form-7/v1' ) ),
         'namespace' => 'contact-form-7/v1',
       ),
-      'cached' => 0,
       'jqueryUi' => 1
     ));
   }, 10);
