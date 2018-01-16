@@ -56,16 +56,15 @@ Yes, but Machete does it well enough and probably is much lighter.
 * Added new designs for the cookie bar warning
 * Deleted old icons
 * Added option to remove Contact Form 7 refill scripts
-
-* Fix module management issues in about tab
-* Fixed false ‘error saving to database’ notice
-* Fixed option to remove jquery-migrate to redice compatibility issues
+* Fixed option to remove jquery-migrate to reduce compatibility issues
 
 = 3.0 =
 * New module estructure, modules are lighter and more isolated now.
 * New import-export module to backup and restore machete settings
 * Huge code refactor
 * Huge module cleanup
+* Fix module management issues in about tab
+* Fixed false ‘error saving to database’ notice
 
 = 2.1 = 
 * Optimization functions are now divided in header cleanup, feature cleanup and optimization tweaks.
