@@ -51,6 +51,20 @@ Yes, but Machete does it well enough and probably is much lighter.
 
 == Changelog ==
 
+= 3.0.4 =
+* New module estructure, modules are lighter and more isolated now.
+* New import-export module to backup and restore machete settings
+* Added native WordPress code editor to the custom code module
+* Added new designs for the cookie bar warning
+* Huge code refactor
+* Huge module cleanup
+* Deleted old icons
+* Added option to remove Contact Form 7 refill scripts
+
+* Fix module management issues in about tab
+* Fixed false ‘error saving to database’ notice
+* Fixed option to remove jquery-migrate to redice compatibility issues
+
 = 2.1 = 
 * Optimization functions are now divided in header cleanup, feature cleanup and optimization tweaks.
 * Added options to remove medium_large thumbnail size
