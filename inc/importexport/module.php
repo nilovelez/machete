@@ -7,7 +7,7 @@ class machete_importexport_module extends machete_module {
 	function __construct(){
 		$this->init( array(
 			'slug' => 'importexport',
-			'title' => __('Import/Export Options','machete'),
+			'title' => __('Import/Export','machete'),
 			'full_title' => __('Import/Export Options','machete'),
 			'description' => __('You can use this section to backup and restore your Machete configuration. You can also take a backup from one site and restore to another.','machete'),
 			//'is_active' => true,
