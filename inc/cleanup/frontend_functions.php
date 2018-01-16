@@ -188,6 +188,10 @@ if (in_array('comment_autolinks',$this->settings)) {
 if (in_array('wpcf7_refill',$this->settings)) {
   add_action( 'wp_enqueue_scripts', function(){
     wp_localize_script( 'contact-form-7', 'wpcf7', array(
+      'apiSettings' => array(
+        'root' => esc_url_raw( rest_url( 'contact-form-7/v1' ) ),
+        'namespace' => 'contact-form-7/v1',
+      ),
       'cached' => 0,
       'jqueryUi' => 1
     ));
