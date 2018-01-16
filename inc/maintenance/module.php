@@ -97,7 +97,7 @@ class machete_maintenance_module extends machete_module {
 		}
 
 		if ($this->is_equal_array($this->settings, $settings)){
-			if (!$silent) $this->save_no_change_notice();
+			if (!$silent) $this->save_no_changes_notice();
 			return true;
 		}
 

@@ -178,7 +178,7 @@ class machete_cleanup_module extends machete_module {
 			}
 			
 			if ($this->is_equal_array($this->settings, $options)){
-				if (!$silent) $this->save_no_change_notice();
+				if (!$silent) $this->save_no_changes_notice();
 				return true;
 			}
 
@@ -202,7 +202,7 @@ class machete_cleanup_module extends machete_module {
 			}
 		}
 		
-		if (!$silent) $this->save_no_change_notice();	
+		if (!$silent) $this->save_no_changes_notice();	
 		return true;
 	}
 

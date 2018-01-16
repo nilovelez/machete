@@ -154,7 +154,7 @@ class machete_utils_module extends machete_module {
 			// no removes && no adds
 			// ToDo: check for changes in the other sections
 			//       give "no changes" notice only if no changes at all
-			//if (!$silent) $this->save_no_change_notice();
+			//if (!$silent) $this->save_no_changes_notice();
 			return true;
 		}	
 
