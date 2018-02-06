@@ -7,6 +7,7 @@ abstract class machete_module {
 		'title' => '',
 		'full_title' => '',
 		'description' => '',
+		'is_external' => false,
 		'is_active' => true,
 		'has_config' => true,
 		'can_be_disabled' => true,

@@ -40,7 +40,7 @@ add_filter( 'plugin_action_links', function( $plugin_actions, $plugin_file ) {
 
 // enqueue admin styles
 add_action( 'admin_enqueue_scripts', function(){
-  wp_register_style( 'machete_admin_css', plugin_dir_url( __FILE__ ) . 'css/admin_v2.css', false, '2.0.0' );
+  wp_register_style( 'machete_admin_css', plugin_dir_url( __FILE__ ) . 'css/admin_v4.css', false, '4.0.0' );
   wp_enqueue_style( 'machete_admin_css' );
 });
 
