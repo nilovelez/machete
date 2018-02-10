@@ -5,6 +5,17 @@ if(@file_exists(MACHETE_DATA_PATH.'header.html')){
 	add_action( 'wp_head', function(){
   		readfile(MACHETE_DATA_PATH.'header.html');
 	});
+
+	add_filter ( 'wpcf7_contact_form_properties', function( $properties, $wpcf7 ){
+		global $machete;
+		$machete->modules['utils']->last_wpcf7 = $wpcf7->title();
+		add_filter( 'wpcf7_form_hidden_fields', function( $hidden_fields ) {
+			global $machete;
+			$hidden_fields['machete_cf7_title'] = $machete->modules['utils']->last_wpcf7;
+			return $hidden_fields;
+		}, 10, 1);
+		return $properties;
+	}, 10, 2);
 }
 
 if(@file_exists(MACHETE_DATA_PATH.'footer.html')){
