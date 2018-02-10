@@ -11,7 +11,7 @@ if(@file_exists(MACHETE_DATA_PATH.'header.html')){
 		$machete->modules['utils']->last_wpcf7 = $wpcf7->title();
 		add_filter( 'wpcf7_form_hidden_fields', function( $hidden_fields ) {
 			global $machete;
-			$hidden_fields['machete_cf7_title'] = $machete->modules['utils']->last_wpcf7;
+			$hidden_fields['machete_wpcf7_title'] = $machete->modules['utils']->last_wpcf7;
 			return $hidden_fields;
 		}, 10, 1);
 		return $properties;
