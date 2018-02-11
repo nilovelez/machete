@@ -20,6 +20,7 @@ class machete_utils_module extends machete_module {
 			'tracking_id' => '',
 			'tracking_format' => 'none',
 			'tacking_anonymize' => 0,
+			'track_wpcf7' => 0,
 			'alfonso_content_injection_method' => 'manual'
 			);
 	}
@@ -70,8 +71,18 @@ class machete_utils_module extends machete_module {
 
 			if ( isset( $options['tacking_anonymize'] )){
 				$anonymizeIp = ',{anonymizeIp: true}';
+				$settings['tacking_anonymize'] = 1;
 			}else{
 				$anonymizeIp = '';
+				$settings['tacking_anonymize'] = 0;
+			}
+
+			if ( isset( $options['track_wpcf7'] )){
+				$settings['track_wpcf7'] = 1;
+				$track_wpcf7 = @file_get_contents($this->path.'templates/wpcf7.tpl.min.js');
+			}else{
+				$track_wpcf7 = '';
+				$settings['track_wpcf7'] = 0;
 			}
 
 			// let's generate the Google Analytics tracking code
@@ -83,14 +94,16 @@ class machete_utils_module extends machete_module {
 			}
 			if($settings['tracking_format'] != 'none'){
 				
-				$header_content .= '(function(i,s,o,g,r,a,m){i[\'GoogleAnalyticsObject\']=r;i[r]=i[r]||function(){'."\n";
-				$header_content .= '(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),'."\n";
-				$header_content .= 'm=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)'."\n";
-				$header_content .= '})(window,document,\'script\',\'https://www.google-analytics.com/analytics.js\',\'ga\');'."\n";
-
-				$header_content .= 'ga(\'create\', \''.$options['tracking_id'].'\', \'auto\''.$anonymizeIp.');'."\n";
-				$header_content .= 'ga(\'send\', \'pageview\');'."\n";
-				
+				$js_replaces = array(
+					'{{anonymizeIp}}' => $anonymizeIp,
+					'{{tracking_id}}' => $options['tracking_id'],
+					'{{track_wpcf7}}' => $track_wpcf7
+				);
+				$header_content .= str_replace(
+					array_keys($js_replaces),
+					array_values($js_replaces),
+					@file_get_contents($this->path.'templates/analytics.tpl.js')
+				);
 			}
 			if($settings['tracking_format'] == 'machete'){
 				$header_content .= '}'."\n";
@@ -101,12 +114,6 @@ class machete_utils_module extends machete_module {
 		}else{
 			$settings['tracking_id'] = '';
 			$settings['tracking_format'] = 'none';
-		}
-
-		if ( isset( $options['tacking_anonymize'] )){
-			$settings['tacking_anonymize'] = 1;
-		}else{
-			$settings['tacking_anonymize'] = 0;
 		}
 
 		if(!empty($options['header_content'])){

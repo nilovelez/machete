@@ -85,16 +85,23 @@ if ( false !== $settings ) {
 <th scope="row"><?php _e('Tracking Code','machete') ?></th>
 <td><fieldset><legend class="screen-reader-text"><span><?php _e('Tracking Code','machete') ?></span></legend>
 	<label><input name="tracking_format" value="standard" type="radio" <?php if ($this->settings['tracking_format'] =='standard') echo 'checked="checked"'; ?>> <?php _e('Standard Google Analytics tracking code','machete') ?></label><br>
-	<label><input name="tracking_format" value="machete" type="radio" <?php if ($this->settings['tracking_format'] =='machete') echo 'checked="checked"'; ?>> <?php _e('PageSpeed-optimized tracking code','machete') ?></label><br>
+	<label><input name="tracking_format" value="machete" type="radio" <?php if ($this->settings['tracking_format'] =='machete') echo 'checked="checked"'; ?>> <acronym title="<?php _e('Uses JavaScript to hide the tracking code from PageSpeed and GoogleBot') ?>"><?php _e('PageSpeed-optimized tracking code','machete') ?><acronym></label><br>
 	<label><input name="tracking_format" value="none" type="radio" <?php if ($this->settings['tracking_format'] =='none') echo 'checked="checked"'; ?>> <?php _e('No tracking code','machete') ?></label><br>
+</fieldset></td>
+</tr>
+<th scope="row"><?php _e('Track Contact Form 7','machete') ?></th>
+<td><fieldset><legend class="screen-reader-text"><span><?php _e('Anonymize user IPs','machete') ?></span></legend>
+	<label><input name="track_wpcf7" value="1" type="checkbox" <?php if ($this->settings['track_wpcf7'] =='1') echo 'checked="checked"'; ?>> <?php sprintf(_e('Launch a Google Analytics event whenever a visitor submits a <a href="%s">Contact Form 7</a> form.','machete'),'https://wordpress.org/plugins/contact-form-7/') ?></label><br>
 </fieldset></td>
 </tr>
 <tr>
 <th scope="row"><?php _e('Anonymize user IPs','machete') ?></th>
 <td><fieldset><legend class="screen-reader-text"><span><?php _e('Anonymize user IPs','machete') ?></span></legend>
-	<label><input name="tacking_anonymize" value="1" type="checkbox" <?php if ($this->settings['tacking_anonymize'] =='1') echo 'checked="checked"'; ?>> <?php _e('Check to anonymize visitor IPs. This feature is designed to help site owners comply with their own privacy policies or, in some countries, recommendations from local data protection authorities.','machete') ?></label><br>
+	<label><input name="tacking_anonymize" value="1" type="checkbox" <?php if ($this->settings['tacking_anonymize'] =='1') echo 'checked="checked"'; ?>> <?php _e('Check to anonymize visitor IPs. Required in some countries.','machete') ?></label><br>
 </fieldset></td>
 </tr>
+
+
 
 
 <tr>
