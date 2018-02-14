@@ -79,9 +79,7 @@ class machete_utils_module extends machete_module {
 
 			if ( isset( $options['track_wpcf7'] )){
 				$settings['track_wpcf7'] = 1;
-				$track_wpcf7 = @file_get_contents($this->path.'templates/wpcf7.tpl.min.js');
 			}else{
-				$track_wpcf7 = '';
 				$settings['track_wpcf7'] = 0;
 			}
 
@@ -96,8 +94,7 @@ class machete_utils_module extends machete_module {
 				
 				$js_replaces = array(
 					'{{anonymizeIp}}' => $anonymizeIp,
-					'{{tracking_id}}' => $options['tracking_id'],
-					'{{track_wpcf7}}' => $track_wpcf7
+					'{{tracking_id}}' => $options['tracking_id']
 				);
 				$header_content .= str_replace(
 					array_keys($js_replaces),
