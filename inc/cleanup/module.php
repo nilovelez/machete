@@ -69,8 +69,6 @@ class machete_cleanup_module extends machete_module {
 		    'title' => __('Limit Post Revisions','machete'),
 		    'description' => __('Limits the number of stored revisions to 5 only WP_POST_REVISIONS constant has been defined.','machete')
 		  ),
-		  
-		  
 		  'slow_heartbeat' => array( // @fpuente addons
 		    'title' => __('Slow Heartbeat','machete'),
 		    'description' => __('By default, heartbeat makes a post call every 15 seconds on post edit pages. Change to 60 seconds (less CPU usage).','machete')
@@ -110,6 +108,10 @@ class machete_cleanup_module extends machete_module {
 		    'title' => __('JSON API','machete'),
 		    'description' => __('Disable Json API and remove link from header. Use with care.','machete') . ' <br><span style="color: red">'.__('The video widget added in WordPress 4.8 needs the JSON API to work','machete').'</span>'
 		  ),
+		  'xmlrpc' => array(
+		    'title' => __('XML-RPC','machete'),
+		    'description' => __('Disable the XML-RPC interface. ','machete') . ' <br><span style="color: red">'.__('','machete').'</span>'
+		  ),
 		  'jquery-migrate' => array(
 		    'title' => __('remove jQuery-migrate','machete'),
 		    'description' => __('jQuery-migrate provides diagnostics that can simplify upgrading to new versions of jQuery, you can safely disable it.','machete') . ' <br><span style="color: red">'.__('May break some themes and plugins that depend on legacy code.','machete').'</span>'
@@ -131,7 +133,7 @@ class machete_cleanup_module extends machete_module {
 	public function frontend(){
 		$this->read_settings();
 		if( count( $this->settings ) > 0 ) { 
-			require($this->path . 'frontend_functions.php' );
+			require($this->path . 'optimization.php' );
 		}
 	}
 	
@@ -148,7 +150,7 @@ class machete_cleanup_module extends machete_module {
 		}
 
 		if( count( $this->settings ) > 0 ) { 
-			require($this->path . 'admin_functions.php' );
+			require($this->path . 'optimization.php' );
 		}
 
 		$this->all_cleanup_checked = (count(array_intersect(array_keys($this->cleanup_array), $this->settings)) == count($this->cleanup_array)) ? true : false;
