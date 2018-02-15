@@ -1,7 +1,7 @@
 <?php
 if ( ! defined( 'ABSPATH' ) ) exit;
 
-if(@file_exists(MACHETE_DATA_PATH.'header.html')){
+if(file_exists(MACHETE_DATA_PATH.'header.html')){
 	add_action( 'wp_head', function(){
   		readfile(MACHETE_DATA_PATH.'header.html');
 	});
@@ -26,21 +26,21 @@ if(@file_exists(MACHETE_DATA_PATH.'header.html')){
 	}
 }
 
-if(@file_exists(MACHETE_DATA_PATH.'custom.css')){
-	wp_enqueue_script(
-		'machete_custom_css',
-		MACHETE_DATA_PATH.'custom.css',
+if(file_exists(MACHETE_DATA_PATH.'custom.css')){
+	wp_enqueue_style(
+		'machete-custom',
+		MACHETE_DATA_URL.'custom.css',
 		array(), MACHETE_VERSION
 	);
 }
 
-if(@file_exists(MACHETE_DATA_PATH.'footer.html')){
+if(file_exists(MACHETE_DATA_PATH.'footer.html')){
 	add_action( 'wp_footer', function(){
   		readfile(MACHETE_DATA_PATH.'footer.html');
 	});
 }
 
-if(@file_exists(MACHETE_DATA_PATH.'body.html')){
+if(file_exists(MACHETE_DATA_PATH.'body.html')){
 	if(
 		!empty($this->settings['alfonso_content_injection_method']) &&
 		($this->settings['alfonso_content_injection_method'] == 'auto')
