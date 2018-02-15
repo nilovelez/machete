@@ -45,6 +45,10 @@ class machete_powertools_module extends machete_module {
 			'defer_all_scripts' => array(
 				'title' => __('Defer your JavaScript','machete'),
 				'description' => __('The defer attribute also downloads the JS file during HTML parsing, but it only executes it after the parsing has completed. Executed in order of appearance on the page','machete')
+			),
+			'disable_feeds' => array(
+				'title' => __('Disable all feeds','machete'),
+				'description' => __('RSS, RDF, Atom... disables all of them and makes life a little less easy for leechers.','machete')
 			),	
 		);
 	}
@@ -52,7 +56,7 @@ class machete_powertools_module extends machete_module {
 	public function frontend(){
 		$this->read_settings();
 		if( count( $this->settings ) > 0 ) { 
-			require($this->path . 'frontend_functions.php' );
+			require($this->path . 'powertools.php' );
 		}
 	}
 
@@ -97,7 +101,7 @@ class machete_powertools_module extends machete_module {
 		
 
 		if( count( $this->settings ) > 0 ) { 
-			require($this->path . 'admin_functions.php' );
+			require($this->path . 'powertools.php' );
 		}
 
 		$this->all_powertools_checked = (count(array_intersect(array_keys($this->powertools_array), $this->settings)) == count($this->powertools_array)) ? true : false;
@@ -116,7 +120,7 @@ class machete_powertools_module extends machete_module {
 			}
 			
 			if ($this->is_equal_array($this->settings, $options)){
-				if (!$silent) $this->save_no_change_notice();
+				if (!$silent) $this->save_no_changes_notice();
 				return true;
 			}			
 
@@ -140,7 +144,7 @@ class machete_powertools_module extends machete_module {
 			}
 		}
 
-		if (!$silent) $this->save_no_change_notice();		
+		if (!$silent) $this->save_no_changes_notice();		
 		return true;
 	}
 
