@@ -3,7 +3,7 @@
 Plugin Name: Machete
 Plugin URI: https://machetewp.com
 Description: Machete is a lean and simple suite of tools that makes WordPress development easier: cookie bar, tracking codes, custom code editor, header cleanup, post and page cloner
-Version: 3.0.4
+Version: 3.0.5
 Author: Nilo Velez
 Author URI: https://www.nilovelez.com
 License: WTFPL
@@ -24,7 +24,7 @@ define('MACHETE_DATA_PATH', $machete_get_upload_dir['basedir'].'/machete/');
 define('MACHETE_RELATIVE_DATA_PATH', substr(MACHETE_DATA_PATH, strlen(ABSPATH)-1));
 define('MACHETE_DATA_URL',  $machete_get_upload_dir['baseurl'].'/machete/');
 
-define('MACHETE_VERSION', '3.0.4');
+define('MACHETE_VERSION', '3.0.5');
 
 register_activation_hook( __FILE__, function(){
 	add_option( 'machete_activation_welcome', 'pending');
