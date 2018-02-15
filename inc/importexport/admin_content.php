@@ -54,7 +54,7 @@
 
 	<h3><?php _e('Import Machete Options','machete') ?> </h3>
 
-	<p><?php _e('Select a Machete backup file and click the "upload config backup" to import it. Please keep in mind that the module settings inscluded in the backup file will overwrite your current setting for those modules.','machete') ?></p>
+	<p><?php _e('Select a Machete backup file and click the "upload config backup" to import it. Please keep in mind that the module settings included in the backup file will overwrite your current setting for those modules.','machete') ?></p>
 
 	<label class="screen-reader-text" for="machete-backup-file"><?php _e('Machete backup file to restore') ?></label>
 	<input type="file" id="machete-backup-file" name="machete-backup-file">
