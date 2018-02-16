@@ -1,7 +1,7 @@
 <?php if ( ! defined( 'MACHETE_ADMIN_INIT' ) ) exit; ?>
 
 
-	<div class="wrap about-wrap machete-wrap">
+	<div class="wrap about-wrap machete-wrap full-width-layout">
 			<h1><?php _e('Welcome to Machete!','machete') ?></h1>
 
 				<div class="about-text"><?php _e('Machete is now installed and ready to use. Machete solves common WordPress problems using as little resources as posible. Machete lets you use less plugins. Machete optimizes.','machete') ?></div>
