@@ -110,7 +110,8 @@ class machete_cookies_module extends machete_module {
 			$settings['bar_status'] = 'enabled';
 		}
 
-		if (empty($options['warning_text']) || empty(trim($options['warning_text']))){
+		$options['warning_text'] = sanitize_text_field($options['warning_text']);
+		if (empty($options['warning_text'])){
 			if (!$silent) $this->notice ( __('Cookie warning text can\'t be blank', 'machete' ), 'warning' );
 			return false;
 		}else{
@@ -121,7 +122,7 @@ class machete_cookies_module extends machete_module {
 		$settings['warning_text'] = $options['warning_text'];
 
 
-		$options['accept_text'] = trim(sanitize_text_field($options['accept_text']));
+		$options['accept_text'] = sanitize_text_field($options['accept_text']);
 		if (empty($options['accept_text'])){
 			if (!$silent) $this->notice ( __('Accept button text can\'t be blank', 'machete' ), 'warning' );
 			return false;

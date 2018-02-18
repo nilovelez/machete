@@ -51,6 +51,9 @@ Yes, but Machete does it well enough and probably is much lighter.
 
 == Changelog ==
 
+= 3.1.1 =
+* Fixed a stupid PHP 5.4 bug (props @cheteronda)
+
 = 3.1 =
 Machete 3.1 is a completely new beast. Almost all the code has been rewritten, taking great care no to break existing sites. That is the reason version 3.0 wasn't pushed to the WordPress directory, everything had to be tested thoroughly first.
 
