@@ -27,7 +27,7 @@ You don't need a zillion plugins to perform easy task like inserting a verificat
 = Maintenance mode: =
 The maintenance mode that ships with WordPress is just a basic lockdown that is activated whenever you do a major update. With machete Maintenance Mode you can hide your uncomplete page from visitors and search engines, give your clients a secure temporary access and lock you site without affecting your SEO.
 
-= Post & Page cloner =
+= Post & Page cloner: =
 Adds a "duplicate" link to post, page and most post types lists. Also adds "copy to new draft" function to the post editor.
 
 == Installation ==
@@ -50,6 +50,15 @@ Yes, but Machete does it well enough and probably is much lighter.
 3. This is not your typical tracking script...
 
 == Changelog ==
+
+= 3.1 =
+Machete 3.1 is a completely new beast. Almost all the code has been rewritten, taking great care no to break existing sites. That is the reason version 3.0 wasn't pushed to the WordPress directory, everything had to be tested thoroughly first.
+
+= 3.0.5 =
+* Added Contact Form 7 tracking to the Analytics & Code module
+* Updated machete PowerTools
+* Added option to Machete PowerTools to disable RSS feeds
+* Refactor of Optimization module. Code is now lighter and faster.
 
 = 3.0.4 =
 * Added native WordPress code editor to the custom code module
