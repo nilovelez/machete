@@ -51,6 +51,11 @@ Yes, but Machete does it well enough and probably is much lighter.
 
 == Changelog ==
 
+= 3.1.2 = 
+* Added option to reduce Thumbnail JPEG quality 
+* Fix to allow HTML in the cookie warning text
+* Powertools fix
+
 = 3.1.1 =
 * Fixed a stupid PHP 5.4 bug (props @cheteronda)
 
