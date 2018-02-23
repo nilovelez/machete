@@ -24,7 +24,7 @@ define('MACHETE_DATA_PATH', $machete_get_upload_dir['basedir'].'/machete/');
 define('MACHETE_RELATIVE_DATA_PATH', substr(MACHETE_DATA_PATH, strlen(ABSPATH)-1));
 define('MACHETE_DATA_URL',  $machete_get_upload_dir['baseurl'].'/machete/');
 
-define('MACHETE_VERSION', '3.0.5');
+define('MACHETE_VERSION', '3.1.2');
 
 register_activation_hook( __FILE__, function(){
 	add_option( 'machete_activation_welcome', 'pending');
