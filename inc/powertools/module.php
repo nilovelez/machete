@@ -99,12 +99,12 @@ class machete_powertools_module extends machete_module {
 			}
 		}
 		
+		$this->all_powertools_checked = (count(array_intersect(array_keys($this->powertools_array), $this->settings)) == count($this->powertools_array)) ? true : false;
 
 		if( count( $this->settings ) > 0 ) { 
 			require($this->path . 'powertools.php' );
 		}
 
-		$this->all_powertools_checked = (count(array_intersect(array_keys($this->powertools_array), $this->settings)) == count($this->powertools_array)) ? true : false;
 
 		add_action( 'admin_menu', array(&$this, 'register_sub_menu') );
 	}
