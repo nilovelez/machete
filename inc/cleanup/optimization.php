@@ -32,6 +32,7 @@ xmlrpc
 jquery-migrate
 oembed_scripts
 wpcf7_refill
+jpeg_quality
 
 */
 
@@ -271,3 +272,8 @@ if (in_array('wpcf7_refill',$this->settings) && !is_admin() ) {
     ));
   }, 10);
 }
+if (in_array('jpeg_quality',$this->settings) ) {
+  add_filter('jpeg_quality', function($arg){
+    return 72;
+  });
+}   

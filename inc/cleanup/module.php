@@ -124,6 +124,10 @@ class machete_cleanup_module extends machete_module {
 		    'title' => __('Remove CF7 refill','machete'),
 		    'description' => __('Disables the Contact Form 7 refill script. Saves one hit to wp-ajax.php per pageview on cached sites','machete') .  ' <br><span style="color: red">'.__('Activate only if you are not using the reCAPTCHA Contact Form 7 field','machete').'</span>' 
 		  ),
+		  'jpeg_quality' => array(
+		    'title' => __('Reduce JPEG quality','machete'),
+		    'description' => __('When WordPress generates a JPEG thumbnail it compress the image to 82% quality. Check this this to reduce the default quality to 72%. (It doesn\'t affect original image quality).','machete')
+		  ),
 
 
 		  
