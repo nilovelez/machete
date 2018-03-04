@@ -47,7 +47,7 @@ require MACHETE_BASE_PATH . 'inc/class-machete.php';
 require MACHETE_BASE_PATH . 'inc/class-machete-module.php';
 
 // Include Machete modules.
-$machete = new machete();
+$machete = new MACHETE();
 require MACHETE_BASE_PATH . 'inc/about/module.php';
 require MACHETE_BASE_PATH . 'inc/cleanup/module.php';
 require MACHETE_BASE_PATH . 'inc/cookies/module.php';
