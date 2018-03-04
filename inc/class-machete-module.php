@@ -57,7 +57,6 @@ abstract class machete_module {
 	public function submenu_page_callback(){
 		global $machete;
   		require($this->path.'admin_content.php');
-  		add_filter('admin_footer_text', 'machete_footer_text');
 	}
 
 	public function frontend() {
