@@ -3,7 +3,7 @@
  * Machete code only usable in the WordPress admin
 
  * @package WordPress
- * @subpackage Quevedo
+ * @subpackage Machete
  */
 
 if ( ! defined( 'MACHETE_ADMIN_INIT' ) ) {
