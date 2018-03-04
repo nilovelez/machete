@@ -2,7 +2,7 @@
 if ( ! defined( 'ABSPATH' ) ) exit;
 
 
-class machete_importexport_module extends machete_module {
+class MACHETE_IMPORTEXPORT_MODULE extends MACHETE_MODULE {
 	
 	function __construct(){
 		$this->init( array(

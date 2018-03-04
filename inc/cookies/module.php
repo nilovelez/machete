@@ -1,7 +1,7 @@
 <?php
 if ( ! defined( 'ABSPATH' ) ) exit;
 
-class machete_cookies_module extends machete_module {
+class MACHETE_COOKIES_MODULE extends MACHETE_MODULE {
 
 	function __construct(){
 		$this->init( array(
@@ -223,4 +223,4 @@ class machete_cookies_module extends machete_module {
 	</script><?php 
 	}
 }
-$machete->modules['cookies'] = new machete_cookies_module();
+$machete->modules['cookies'] = new MACHETE_COOKIES_MODULE();

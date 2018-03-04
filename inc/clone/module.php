@@ -2,7 +2,7 @@
 if ( ! defined( 'ABSPATH' ) ) exit;
 
 
-class machete_clone_module extends machete_module {
+class MACHETE_CLONE_MODULE extends MACHETE_MODULE {
 	
 	function __construct(){
 		$this->init( array(
@@ -21,4 +21,4 @@ class machete_clone_module extends machete_module {
 		return;
 	}
 }
-$machete->modules['clone'] = new machete_clone_module();
+$machete->modules['clone'] = new MACHETE_CLONE_MODULE();

@@ -2,7 +2,7 @@
 if ( ! defined( 'ABSPATH' ) ) exit;
 
 
-class machete_powertools_module extends machete_module {
+class MACHETE_POWERTOOLS_MODULE extends MACHETE_MODULE {
 
 	function __construct(){
 		$this->init( array(
@@ -225,4 +225,4 @@ class machete_powertools_module extends machete_module {
 
 
 }
-$machete->modules['powertools'] = new machete_powertools_module;
+$machete->modules['powertools'] = new MACHETE_POWERTOOLS_MODULE();

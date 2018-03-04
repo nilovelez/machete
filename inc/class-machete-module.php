@@ -1,111 +1,193 @@
 <?php
-if ( ! defined( 'ABSPATH' ) ) exit;
+/**
+ * Machete module abstract class, used as parent class for all Machete modules
 
-abstract class machete_module {
+ * @package WordPress
+ * @subpackage Machete
+ */
+
+if ( ! defined( 'ABSPATH' ) ) {
+	exit;
+}
+
+/**
+ * Machete module abstract class
+ */
+abstract class MACHETE_MODULE {
+	/**
+	 * Default module properties, can be overridden by child modules.
+	 *
+	 * @var array
+	 */
 	public $params = array(
-		'slug' => '',
-		'title' => '',
-		'full_title' => '',
-		'description' => '',
-		'is_external' => false,
-		'is_active' => true,
-		'has_config' => true,
+		'slug'            => '',
+		'title'           => '',
+		'full_title'      => '',
+		'description'     => '',
+		'is_external'     => false,
+		'is_active'       => true,
+		'has_config'      => true,
 		'can_be_disabled' => true,
-		'role' => 'manage_options'
+		'role'            => 'manage_options',
 	);
+	/**
+	 * Temporal container for the module's database-stored settings
+	 *
+	 * @var array
+	 */
 	protected $settings = array();
+	/**
+	 * Default module settings, default settings for unconfigured modules.
+	 * Can be overriden by child modules.
+	 *
+	 * @var array
+	 */
 	protected $default_settings = array();
-
-	protected function init( $params = array() ){
-		$this->params = array_merge($this->params, $params);
-		if ( ! array_key_exists('path', $this->params)){
-			$this->path = MACHETE_BASE_PATH.'inc/'.$this->params['slug'].'/';
-		}else{
+	/**
+	 * Initialises the module.
+	 *
+	 * @param array $params params array with the immutable module properties.
+	 */
+	protected function init( $params = array() ) {
+		$this->params = array_merge( $this->params, $params );
+		if ( array_key_exists( 'path', $this->params ) ) {
 			$this->path = $this->params['path'];
+		} else {
+			$this->path = MACHETE_BASE_PATH . 'inc/' . $this->params['slug'] . '/';
 		}
 	}
-
-	protected function read_settings(){
-		if(!$this->settings = get_option('machete_'.$this->params['slug'].'_settings')){
-			$this->settings = $this->default_settings;
-		}else{
-			$this->settings = array_merge($this->default_settings, $this->settings);
-		}
+	/**
+	 * Reads the modules settings to the settings proerty,
+	 * also returns them in an array.
+	 *
+	 * @return array module settings array
+	 */
+	protected function read_settings() {
+		$this->settings = get_option(
+			'machete_' . $this->params['slug'] . '_settings',
+			array_merge( $this->default_settings, $this->settings )
+		);
 		return $this->settings;
 	}
-
-	public function admin(){
-		if ($this->params['has_config']){
+	/**
+	 * Executes code related to the WordPress admin.
+	 */
+	public function admin() {
+		if ( $this->params['has_config'] ) {
 			$this->read_settings();
 		}
-		require($this->path.'admin_functions.php');
-		if ($this->params['has_config']){
-			add_action( 'admin_menu', array(&$this, 'register_sub_menu') );
+		require $this->path . 'admin_functions.php';
+		if ( $this->params['has_config'] ) {
+			add_action( 'admin_menu', array( $this, 'register_sub_menu' ) );
 		}
 	}
-
+	/**
+	 * Adds the modules configuration link to the dashboard menu.
+	 */
 	public function register_sub_menu() {
 		add_submenu_page(
-		  	'machete',
-		    $this->params['full_title'],
-		    $this->params['title'],
-		    $this->params['role'],    
-		    'machete-'.$this->params['slug'],
-		    array(&$this, 'submenu_page_callback')
-		  );
+			'machete',
+			$this->params['full_title'],
+			$this->params['title'],
+			$this->params['role'],
+			'machete-' . $this->params['slug'],
+			array( $this, 'submenu_page_callback' )
+		);
 	}
-	public function submenu_page_callback(){
+	/**
+	 * Callback for the module's configuration page content.
+	 */
+	public function submenu_page_callback() {
 		global $machete;
-  		require($this->path.'admin_content.php');
+		require $this->path . 'admin_content.php';
 	}
-
+	/**
+	 * Executes code related to the front-end.
+	 */
 	public function frontend() {
-		if ($this->params['has_config']){
+		if ( $this->params['has_config'] ) {
 			$this->read_settings();
 		}
-		require($this->path.'frontend_functions.php');
+		require $this->path . 'frontend_functions.php';
 	}
-
+	/**
+	 * Function model to serve options to database
+	 * real function must be defined in each module
+	 *
+	 * @param array $settings options array, normally $_POST.
+	 * @param bool  $silent prevent the function from generating admin notices.
+	 */
 	protected function save_settings( $settings = array(), $silent = false ) {
 		return true;
 	}
 
-	protected function export(){
+	/**
+	 * Returns a module settings array to use for backups.
+	 *
+	 * @return array modules settings array.
+	 */
+	protected function export() {
 		return $this->read_settings();
 	}
 
-	protected function import( $settings = array() ){
-		if ( $this->save_settings($settings, true) ){
-			return __('Settings succesfully restored from backup', 'machete') . "\n";
-		}else{
-			return __('Error restoring settings backup', 'machete') . "\n";
+	/**
+	 * Restores module settings from a backup
+	 *
+	 * @param array $settings modules settings array.
+	 * @return string success/error message.
+	 */
+	protected function import( $settings = array() ) {
+		if ( $this->save_settings( $settings, true ) ) {
+			return __( 'Settings succesfully restored from backup', 'machete' ) . "\n";
+		} else {
+			return __( 'Error restoring settings backup', 'machete' ) . "\n";
 		}
 	}
+	/* Dashboard notices */
 
-	public function notice( $message, $level = 'info', $dismissible = true) {
+	/**
+	 * Displays standard WordPress dashboard notice.
+	 *
+	 * @param string $message Message to display.
+	 * @param string $level Can be error, warning, info or success.
+	 * @param bool   $dismissible determines if the notice can be dismissed via javascript.
+	 */
+	public function notice( $message, $level = 'info', $dismissible = true ) {
 		global $machete;
-		$machete->notice( $message, $level, $dismissible);
+		$machete->notice( $message, $level, $dismissible );
 	}
 
-	protected function save_success_notice(){
-		$this->notice(__( 'Options saved!', 'machete' ), 'success');
+	/**
+	 * Displays a generic 'Options saved!' success notice
+	 */
+	protected function save_success_notice() {
+		$this->notice( __( 'Options saved!', 'machete' ), 'success' );
 	}
-	protected function save_error_notice(){
-		$this->notice(__( 'Error saving configuration to database.', 'machete' ), 'error');
+	/**
+	 * Displays a generic save error notice
+	 */
+	protected function save_error_notice() {
+		$this->notice( __( 'Error saving configuration to database.', 'machete' ), 'error' );
 	}
-	protected function save_no_changes_notice(){
-		$this->notice(__( 'No changes were needed.', 'machete' ), 'info');
+	/**
+	 * Displays a generic 'No changes were needed.' info notice
+	 */
+	protected function save_no_changes_notice() {
+		$this->notice( __( 'No changes were needed.', 'machete' ), 'info' );
 	}
-
-	
 
 	/* utils */
-	public function is_equal_array($a, $b) {
-	    return (
-	         is_array($a) && is_array($b) && 
-	         count($a) == count($b) &&
-	         array_diff($a, $b) === array_diff($b, $a)
-	    );
+	/**
+	 * Checks if two arrays are exactly equal
+	 *
+	 * @param array $a first array to compare.
+	 * @param array $b second array to compare.
+	 */
+	public function is_equal_array( $a, $b ) {
+		return (
+			is_array( $a ) && is_array( $b ) &&
+			count( $a ) === count( $b ) &&
+			array_diff( $a, $b ) === array_diff( $b, $a )
+		);
 	}
-				
 }
