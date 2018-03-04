@@ -22,10 +22,8 @@ class machete_powertools_module extends machete_module {
 				'title' => __('Shortcodes in Widgets','machete'),
 				'description' => __('Enables the use of shortcodes in text/html widgets. It may slightly impact performance','machete')
 			),
-			'widget_oembed' => array(
-				'title' => __('OEmbed in Widgets','machete'),
-				'description' => __('Enables OEMbed in text/html widgets.','machete')
-			),
+			
+
 			'rss_thumbnails' => array(
 				'title' => __('Thumbnails in RSS','machete'),
 				'description' => __('Add the featured image or the first attached image as the thumbnail of each post in the RSS feed','machete')
@@ -49,7 +47,15 @@ class machete_powertools_module extends machete_module {
 			'disable_feeds' => array(
 				'title' => __('Disable all feeds','machete'),
 				'description' => __('RSS, RDF, Atom... disables all of them and makes life a little less easy for leechers.','machete')
-			),	
+			),
+			'enable_svg' => array(
+				'title' => __('Enable SVG images','machete'),
+				'description' => sprintf(__('Enables the upload of SVG images to the media library. This <a href="%s" target="_blank" rel="noopener noreferrer">has been proven to be dangerous</a>, so be careful.','machete'), 'https://bjornjohansen.no/svg-in-wordpress')
+			),
+			'widget_oembed' => array(
+				'title' => __('OEmbed in Widgets','machete'),
+				'description' => __('Enables OEMbed in text/html widgets.','machete') .' <br><span style="color: red">'.__('Deprecated. This feature is natively enabled since WordPress 4.8.1','machete').'</span>'
+			),
 		);
 	}
 

@@ -11,6 +11,7 @@ save_with_keyboard
 move_scripts_footer
 defer_all_scripts
 disable_feeds
+enable_svg
 */
 
 // enable shortcodes in widgets
@@ -93,4 +94,13 @@ if (in_array('disable_feeds',$this->settings) && !is_admin() ) {
 	add_action('do_feed_rss', 'machete_disable_feed', 1);
 	add_action('do_feed_rss2', 'machete_disable_feed', 1);
 	add_action('do_feed_atom', 'machete_disable_feed', 1);
+}
+
+// enable SVG
+if (in_array('enable_svg',$this->settings)) {
+  add_filter('upload_mimes', function($upload_mimes){
+    $upload_mimes['svg'] = 'image/svg+xml';
+    $upload_mimes['svgz'] = 'image/svg+xml';
+    return $upload_mimes;
+  }, 10, 1);
 }

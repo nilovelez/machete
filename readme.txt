@@ -51,9 +51,13 @@ Yes, but Machete does it well enough and probably is much lighter.
 
 == Changelog ==
 
+= 3.1.3 = 
+* Added option to PowerTools to enable upload of SVG images
+
 = 3.1.2 = 
 * Added option to reduce Thumbnail JPEG quality 
 * Fix to allow HTML in the cookie warning text
+* Added option to PowerTools to disable RSS feeds
 * Powertools fix
 
 = 3.1.1 =
