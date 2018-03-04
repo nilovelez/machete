@@ -35,33 +35,32 @@ if ( ! defined( 'MACHETE_ADMIN_INIT' ) ) {
 			if ( in_array( $slug, array( 'about', 'powertools' ), true ) || $args['is_external'] ) {
 				continue;
 			}
-			include( 'templates/machete_module.php' );
-
-		} ?>
+			include plugin_dir_path( __FILE__ ) . 'templates/machete-module.php';
+		}
+		?>
 		</div>
 
-		<h2><?php _e('External Modules','machete') ?></h2>
+		<h2><?php esc_html_e( 'External Modules', 'machete' ); ?></h2>
 
 		<div class="machete-module-list">
-		<?php 
-		foreach ($machete->modules as $module) {
+		<?php
+		foreach ( $machete->modules as $module ) {
 			$args = $module->params;
 			$slug = $args['slug'];
 
-			if ( 'about' == $slug ) continue;
-			if ( ( $slug != 'powertools' ) && ( ! $args['is_external'] ) ) continue;
-			
-			include( 'templates/machete_module.php' );
-
-		} ?>
+			if ( 'about' === $slug ) {
+				continue;
+			}
+			if ( ( 'powertools' !== $slug ) && ( ! $args['is_external'] ) ) {
+				continue;
+			}
+			include plugin_dir_path( __FILE__ ) . 'templates/machete-module.php';
+		}
+		?>
 		</div>
 
 
 
 	</div>	
-			
-
-
 	<!--<p class="description"></p>-->
-	
 </div>

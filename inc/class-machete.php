@@ -44,11 +44,18 @@ class MACHETE {
 				continue;
 			}
 			$slug = 'machete-' . $params['slug'];
+
+			$allowed_title_tags = array(
+				'span' => array(
+					'style' => array(),
+				),
+			);
+
 			if ( $slug === $current ) {
-				echo '<a href="#" class="nav-tab-active nav-tab ' . esc_attr( $slug ) . '-tab">' . $params['title'] . '</a>';
+				echo '<a href="#" class="nav-tab-active nav-tab ' . esc_attr( $slug ) . '-tab">' . wp_kses( $params['title'], $allowed_title_tags ) . '</a>';
 			} else {
 				$tab_link = add_query_arg( array( 'page' => $slug ), admin_url( 'admin.php' ) );
-				echo '<a href="' . esc_url( $tab_link ) . '" class="nav-tab ' . esc_attr( $slug ) . '-tab">' . esc_html( $params['title'] ) . '</a>';
+				echo '<a href="' . esc_url( $tab_link ) . '" class="nav-tab ' . esc_attr( $slug ) . '-tab">' . wp_kses( $params['title'], $allowed_title_tags ) . '</a>';
 			}
 		}
 		echo '</h2>';
