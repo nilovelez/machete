@@ -1,6 +1,17 @@
 <?php
-	$args['tab_url'] = add_query_arg( 'page', 'machete-' . $slug, admin_url( 'admin.php' ) );
-	$args['img_url'] = MACHETE_BASE_URL . 'inc/' . $slug . '/banner.svg';
+/**
+ * Machete module card template for the "About Machete" page.
+
+ * @package WordPress
+ * @subpackage Machete
+ */
+
+if ( ! defined( 'ABSPATH' ) ) {
+	exit;
+}
+
+$args['tab_url'] = add_query_arg( 'page', 'machete-' . $slug, admin_url( 'admin.php' ) );
+$args['img_url'] = MACHETE_BASE_URL . 'inc/' . $slug . '/banner.svg';
 ?>
 <div class="machete-module-wrap"><div class="machete-module <?php echo esc_attr( $slug . '-module' ); ?> module-is-<?php echo $args['is_active'] ? 'active' : 'inactive'; ?>">
 
