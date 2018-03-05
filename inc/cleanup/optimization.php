@@ -78,7 +78,7 @@ if ( in_array( 'shortlink', $this->settings, true ) && ! is_admin() ) {
 	remove_action( 'template_redirect', 'wp_shortlink_header', 11, 0 );
 }
 
-// remove wordpress generator version,
+// remove WordPress generator version.
 if ( in_array( 'wp_generator', $this->settings, true ) && ! is_admin() ) {
 	remove_action( 'wp_head', 'wp_generator' );
 }
@@ -143,14 +143,14 @@ if ( in_array( 'pdf_thumbnails', $this->settings, true ) && is_admin() ) {
 }
 
 if ( in_array( 'limit_revisions', $this->settings, true ) && is_admin() ) {
-	if ( defined( 'WP_POST_REVISIONS' ) && ( WP_POST_REVISIONS != false ) ) {
+	if ( defined( 'WP_POST_REVISIONS' ) && ( WP_POST_REVISIONS !== false ) ) {
 		add_filter( 'wp_revisions_to_keep', function( $num, $post ) {
 			return 5;
 		}, 10, 2 );
 	}
 }
 
-//Slow default heartbeat
+// Slow default heartbeat.
 if ( in_array( 'slow_heartbeat', $this->settings, true ) && is_admin() ) {
 	add_filter( 'heartbeat_settings', function ( $settings ) {
 		$settings['interval'] = 60;
@@ -159,9 +159,9 @@ if ( in_array( 'slow_heartbeat', $this->settings, true ) && is_admin() ) {
 }
 
 if ( in_array( 'comments_reply_feature', $this->settings, true ) && ! is_admin() ) {
-	//Only load the comment-reply.js when needed  
+	// Only load the comment-reply.js when needed.
 	add_action('wp_print_scripts', function() {
-		if ( is_singular() && ( get_option( 'thread_comments' ) == 1 ) && comments_open() && have_comments() ) {
+		if ( is_singular() && ( get_option( 'thread_comments' ) === 1 ) && comments_open() && have_comments() ) {
 			wp_enqueue_script( 'comment-reply' );
 		} else {
 			wp_dequeue_script( 'comment-reply' );
@@ -169,14 +169,14 @@ if ( in_array( 'comments_reply_feature', $this->settings, true ) && ! is_admin()
 	}, 100);
 }
 
-//Empty trash sooner
+// Empty trash sooner.
 if ( in_array( 'empty_trash_soon', $this->settings, true ) ) {
 	if ( ! defined( 'EMPTY_TRASH_DAYS' ) ) {
 		define( 'EMPTY_TRASH_DAYS', 7 );
 	}
 }
 
-// remove the capital_P_dangit filter
+// remove the capital_P_dangit filter.
 if ( in_array( 'capital_P_dangit', $this->settings, true ) ) {
 	foreach ( array( 'the_content', 'the_title', 'wp_title', 'comment_text' ) as $filter ) {
 		$priority = has_filter( $filter, 'capital_P_dangit' );
@@ -225,7 +225,7 @@ if ( in_array( 'json_api', $this->settings, true ) ) {
 	add_filter( 'json_enabled', '__return_false' );
 	add_filter( 'json_jsonp_enabled', '__return_false' );
 	// Notice: rest_enabled is deprecated since version 4.7.0! Use rest_authentication_errors instead. The REST API can no longer be completely disabled, the rest_authentication_errors can be used to restrict access to the API
-	//add_filter( 'rest_enabled', '__return_false' );
+	// add_filter( 'rest_enabled', '__return_false' );.
 	add_filter( 'rest_jsonp_enabled', '__return_false' );
 
 	add_filter( 'rest_authentication_errors', function( $access ) {
@@ -259,34 +259,33 @@ if ( in_array( 'xmlrpc', $this->settings, true ) ) {
 }
 
 if ( in_array( 'jquery-migrate', $this->settings, true ) ) {
-
 	global $wp_scripts;
-
 	if ( ! empty( $wp_scripts->registered['jquery'] ) ) {
-    $wp_scripts->registered['jquery']->deps = array_diff(
-        $wp_scripts->registered['jquery']->deps,
-        array( 'jquery-migrate' )
-    );
-  }
+		$wp_scripts->registered['jquery']->deps = array_diff(
+			$wp_scripts->registered['jquery']->deps,
+			array( 'jquery-migrate' )
+		);
+	}
 }
 
-if ( in_array( 'oembed_scripts',$this->settings, true ) && ! is_admin() ) {
-  //Remove oEmbed Scripts
-  //Since WordPress 4.4, oEmbed is installed and available by default. WordPress assumes you’ll want to easily embed media like tweets and YouTube videos so includes the scripts as standard. If you don’t need oEmbed, you can remove it
+// Remove oEmbed Scripts.
+if ( in_array( 'oembed_scripts', $this->settings, true ) && ! is_admin() ) {
+	// Since WordPress 4.4, oEmbed is installed and available by default. WordPress assumes you’ll want to easily embed media like tweets and YouTube videos so includes the scripts as standard. If you don’t need oEmbed, you can remove it.
 	wp_deregister_script( 'wp-embed' );
 }
 
-if ( in_array( 'wpcf7_refill',$this->settings, true ) && ! is_admin() ) {
-  add_action( 'wp_enqueue_scripts', function(){
-    wp_localize_script( 'contact-form-7', 'wpcf7', array(
-      'apiSettings' => array(
-        'root' => esc_url_raw( rest_url( 'contact-form-7/v1' ) ),
-        'namespace' => 'contact-form-7/v1',
-      ),
-      'jqueryUi' => 1
-    ));
-  }, 10);
+if ( in_array( 'wpcf7_refill', $this->settings, true ) && ! is_admin() ) {
+	add_action( 'wp_enqueue_scripts', function() {
+		wp_localize_script( 'contact-form-7', 'wpcf7', array(
+			'apiSettings' => array(
+				'root'      => esc_url_raw( rest_url( 'contact-form-7/v1' ) ),
+				'namespace' => 'contact-form-7/v1',
+			),
+			'jqueryUi'    => 1,
+		) );
+	}, 10);
 }
+
 if ( in_array( 'jpeg_quality', $this->settings, true ) ) {
 	add_filter( 'jpeg_quality', function( $arg ) {
 		return 72;
