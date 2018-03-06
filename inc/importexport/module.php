@@ -20,8 +20,8 @@ class MACHETE_IMPORTEXPORT_MODULE extends MACHETE_MODULE {
 
 	}
 
-	protected $checked_modules = array();
-	protected $exportable_modules = array();
+	protected $checked_modules      = array();
+	protected $exportable_modules   = array();
 	protected $uploaded_backup_data = array();
 
 	protected $import_log = '';
@@ -31,11 +31,10 @@ class MACHETE_IMPORTEXPORT_MODULE extends MACHETE_MODULE {
 		return;
 	}
 
-	public function admin(){
+	public function admin() {
 		global $machete;
-		
 
-		foreach ($machete->modules as $module) {
+		foreach ( $machete->modules as $module ) {
 
 			$params = $module->params;
 			if ( 'importexport' == $params['slug'] ) continue;
@@ -117,51 +116,47 @@ class MACHETE_IMPORTEXPORT_MODULE extends MACHETE_MODULE {
   			return false;
   		}
 
-  		if ( 
-  			( ! $this->uploaded_backup_data = json_decode($backup_data, true) ) ||
-  			( !is_array( $this->uploaded_backup_data ) )
-  		){
-  			$this->notice(__('You haven\'t uploaded a valid Machete backup file'), 'warning');
-  			return false;
-  		}
-  		
- 
-  		foreach ($this->uploaded_backup_data as $module => $module_data){
-  			
-  			if (!array_key_exists($module, $machete->modules)){
-  				$this->import_log .= __('Ignored uknown module:').' '.$module."\n\n";
-  				continue;
-  			}
-  			$this->import_log .= __('Importing module: ').' '.$module."\n";
-  			$this->import_log .= "===============================\n";
+		if (
+			( ! $this->uploaded_backup_data = json_decode($backup_data, true) ) ||
+			( !is_array( $this->uploaded_backup_data ) )
+		) {
+			$this->notice(__('You haven\'t uploaded a valid Machete backup file'), 'warning');
+			return false;
+		}
 
-  			
-  			// manage module activation/deactivation
-  			if (array_key_exists('is_active', $module_data) && is_bool($module_data['is_active']) && ($module != 'powertools') ){
-  				if ($module_data['is_active']){
-  					if ( $machete->manage_modules($module, 'activate', true) ){
-  						$this->import_log .= __('Module activated succesfully')."\n";
-  					}
-  				}else{
-  					if ( $machete->manage_modules($module, 'deactivate', true) ){
-  						$this->import_log .= __('Module deactivated succesfully')."\n";
-  					}
-  				}
-  			}
-  			
-  			if ( array_key_exists('settings', $module_data) &&
-  				( count( $module_data['settings'] > 0 ) ) &&
-  				$machete->modules[$module]->params['has_config']
-  				){
-  				
-  				$this->import_log .= var_export( $module_data['settings'] , true) . "\n";
-  				
-  				$this->import_log .= $machete->modules[$module]->import( $module_data['settings'] );
-  			}
-  			$this->import_log .= "\n";
-		
+		foreach ($this->uploaded_backup_data as $module => $module_data){
 
-  			
+			if (!array_key_exists($module, $machete->modules)){
+				$this->import_log .= __('Ignored uknown module:').' '.$module."\n\n";
+				continue;
+			}
+			$this->import_log .= __('Importing module: ').' '.$module."\n";
+			$this->import_log .= "===============================\n";
+
+			// manage module activation/deactivation
+			if (array_key_exists('is_active', $module_data) && is_bool($module_data['is_active']) && ($module != 'powertools') ){
+				if ($module_data['is_active']){
+					if ( $machete->manage_modules($module, 'activate', true) ){
+						$this->import_log .= __('Module activated succesfully')."\n";
+					}
+				}else{
+					if ( $machete->manage_modules($module, 'deactivate', true) ){
+						$this->import_log .= __('Module deactivated succesfully')."\n";
+					}
+				}
+			}
+
+			if ( array_key_exists('settings', $module_data) &&
+				( count( $module_data['settings'] > 0 ) ) &&
+				$machete->modules[$module]->params['has_config']
+				){
+
+				$this->import_log .= var_export( $module_data['settings'] , true) . "\n";
+
+				$this->import_log .= $machete->modules[$module]->import( $module_data['settings'] );
+			}
+			$this->import_log .= "\n";
+
   		}
   		
   		

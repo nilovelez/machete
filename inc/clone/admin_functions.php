@@ -9,7 +9,7 @@ function machete_content_clone(){
 	/*
 	 * id do Artigo/Página original
 	 */
-	$post_id = (isset($_GET['post']) ? $_GET['post'] : $_POST['post']);
+	$post_id = ( isset( $_GET['post'] ) ? $_GET['post'] : $_POST['post'] );
 
 	check_admin_referer( 'machete_clone_' . $post_id );
 
