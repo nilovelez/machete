@@ -27,9 +27,9 @@ class MACHETE_MAINTENANCE_MODULE extends MACHETE_MODULE {
 	public function frontend(){
 		$this->read_settings();
 		if( count( $this->settings ) > 0 ) { 
-			require($this->path . 'frontend_functions.php' );
+			require($this->path . 'frontend-functions.php' );
 			if(is_admin_bar_showing()){
-        		require_once($this->path . 'admin_bar.php');
+        		require_once($this->path . 'admin-bar.php');
     		}
     		$machete_maintenance = new machete_maintenance_page($this->settings);
 		}
@@ -67,7 +67,7 @@ class MACHETE_MAINTENANCE_MODULE extends MACHETE_MODULE {
 		add_action( 'admin_menu', array(&$this, 'register_sub_menu') );
 
 		if(is_admin_bar_showing()){
-			require_once($this->path . 'admin_bar.php');
+			require_once($this->path . 'admin-bar.php');
 		}
 	}
 

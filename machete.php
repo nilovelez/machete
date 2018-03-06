@@ -77,9 +77,9 @@ add_action( 'init', function() {
 
 	if ( ! is_admin() ) {
 		define( 'MACHETE_FRONT_INIT', true );
-		require_once 'machete_frontend.php';
+		require_once 'machete-frontend.php';
 	} else {
 		define( 'MACHETE_ADMIN_INIT', true );
-		require_once 'machete_admin.php';
+		require_once 'machete-admin.php';
 	}
 });
