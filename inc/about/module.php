@@ -21,7 +21,7 @@ class MACHETE_ABOUT_MODULE extends MACHETE_MODULE {
 			'slug'            => 'about',
 			'title'           => __( 'About Machete', 'machete' ),
 			'full_title'      => __( 'About Machete', 'machete' ),
-			// 'is_active'    => true,
+			'is_active'       => true,
 			'has_config'      => false,
 			'can_be_disabled' => false,
 			'role'            => 'publish_posts', // targeting Author role.
@@ -34,10 +34,14 @@ class MACHETE_ABOUT_MODULE extends MACHETE_MODULE {
 		global $machete;
 		// if this is called after the admin_menu hook, the modules you disable
 		// are still shown in the side menu until you reload.
-		if ( isset( $_GET['machete-action'] ) ) {
-			check_admin_referer( 'machete_action_' . $_GET['module'] );
-			$machete->manage_modules( $_GET['module'], $_GET['machete-action'] );
+		$machete_action = filter_input( INPUT_GET, 'machete-action' );
+		$module         = filter_input( INPUT_GET, 'module' );
+
+		if ( ( ! is_null( $machete_action ) ) && ( ! is_null( $module ) ) ) {
+			check_admin_referer( 'machete_action_' . $module );
+			$machete->manage_modules( $module, $machete_action );
 		}
+
 		add_action( 'admin_menu', array( $this, 'register_sub_menu' ) );
 	}
 	/**

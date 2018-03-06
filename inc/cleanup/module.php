@@ -18,14 +18,14 @@ class MACHETE_CLEANUP_MODULE extends MACHETE_MODULE {
 	 */
 	public function __construct() {
 		$this->init( array(
-			'slug'        => 'cleanup',
-			'title'       => __( 'Optimization', 'machete' ),
-			'full_title'  => __( 'WordPress Optimization', 'machete' ),
-			'description' => __( 'Reduces much of the legacy code bloat in WordPress page headers. It also has some tweaks to make you site faster and safer.', 'machete' ),
-			// 'is_active'       => true,
-			// 'has_config'      => true,
-			// 'can_be_disabled' => true,
-			// 'role'            => 'manage_options'
+			'slug'            => 'cleanup',
+			'title'           => __( 'Optimization', 'machete' ),
+			'full_title'      => __( 'WordPress Optimization', 'machete' ),
+			'description'     => __( 'Reduces much of the legacy code bloat in WordPress page headers. It also has some tweaks to make you site faster and safer.', 'machete' ),
+			'is_active'       => true,
+			'has_config'      => true,
+			'can_be_disabled' => true,
+			'role'            => 'manage_options',
 		));
 
 		$this->cleanup_array = array(
@@ -137,24 +137,26 @@ class MACHETE_CLEANUP_MODULE extends MACHETE_MODULE {
 			),
 		);
 	}
-
+	/**
+	 * Executes code related to the front-end.
+	 * Loads optimization code if there is any option active.
+	 */
 	public function frontend() {
 		$this->read_settings();
 		if ( count( $this->settings ) > 0 ) {
 			require $this->path . 'optimization.php';
 		}
 	}
-
+	/**
+	 * Executes code related to the WordPress admin.
+	 */
 	public function admin() {
 		$this->read_settings();
 
-		if ( isset( $_POST['machete-cleanup-saved'] ) ) {
-			check_admin_referer( 'machete_save_cleanup' );
-			if ( isset( $_POST['optionEnabled'] ) ) {
-				$this->save_settings( $_POST['optionEnabled'] );
-			} else {
-				$this->save_settings();
-			}
+		if ( filter_input( INPUT_POST, 'machete-cleanup-saved' ) !== null ) {
+			$this->save_settings(
+				filter_input( INPUT_POST, 'optionEnabled', FILTER_DEFAULT, FILTER_FORCE_ARRAY )
+			);
 		}
 
 		if ( count( $this->settings ) > 0 ) {
@@ -169,48 +171,67 @@ class MACHETE_CLEANUP_MODULE extends MACHETE_MODULE {
 
 		add_action( 'admin_menu', array( $this, 'register_sub_menu' ) );
 	}
-
+	/**
+	 * Saves options to database
+	 *
+	 * @param array $options options array, normally $_POST.
+	 * @param bool  $silent prevent the function from generating admin notices.
+	 */
 	protected function save_settings( $options = array(), $silent = false ) {
+		if ( null === $options ) {
+			$options = array();
+		}
+
 		$this->read_settings();
 		$valid_options = array_merge(
 			array_keys( $this->cleanup_array ),
-			array_merge(
-				array_keys( $this->optimize_array ),
-				array_keys( $this->tweaks_array )
-			)
+			array_keys( $this->optimize_array ),
+			array_keys( $this->tweaks_array )
 		);
 		$options       = array_intersect( $options, $valid_options );
 
 		if ( count( $options ) > 0 ) {
-
-			for ( $i = 0; $i < count( $options ); $i++ ) {
+			$num_options = count( $options );
+			for ( $i = 0; $i < $n; $i++ ) {
 				$options[ $i ] = sanitize_text_field( $options[ $i ] );
 			}
 			if ( $this->is_equal_array( $this->settings, $options ) ) {
-				if ( ! $silent ) $this->save_no_changes_notice();
+				if ( ! $silent ) {
+					$this->save_no_changes_notice();
+				}
 				return true;
 			}
 
 			if ( update_option( 'machete_cleanup_settings', $options ) ) {
 				$this->settings = $options;
-				if ( ! $silent ) $this->save_success_notice();
+				if ( ! $silent ) {
+					$this->save_success_notice();
+				}
 				return true;
 			} else {
-				if ( ! $silent ) $this->save_error_notice();
+				if ( ! $silent ) {
+					$this->save_error_notice();
+				}
 				return false;
 			}
 		} elseif ( count( $this->settings ) > 0 ) {
 			if ( delete_option( 'machete_cleanup_settings' ) ) {
 				$this->settings = array();
-				if ( ! $silent ) $this->save_success_notice();
+				if ( ! $silent ) {
+					$this->save_success_notice();
+				}
 				return true;
 			} else {
-				if ( ! $silent ) $this->save_error_notice();
+				if ( ! $silent ) {
+					$this->save_error_notice();
+				}
 				return false;
 			}
 		}
 
-		if ( ! $silent ) $this->save_no_changes_notice();
+		if ( ! $silent ) {
+			$this->save_no_changes_notice();
+		}
 		return true;
 	}
 }

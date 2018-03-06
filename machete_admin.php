@@ -19,7 +19,7 @@ add_action( 'admin_init', function() {
 		delete_option( 'machete_activation_welcome' );
 
 		// Bail if activating from network, or bulk.
-		if ( is_network_admin() || isset( $_GET['activate-multi'] ) ) {
+		if ( is_network_admin() || ( filter_input( INPUT_GET, 'activate-multi' ) !== null ) ) {
 			return;
 		}
 		// Redirect to about page.
