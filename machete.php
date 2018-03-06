@@ -48,8 +48,8 @@ require MACHETE_BASE_PATH . 'inc/class-machete-module.php';
 
 // Include Machete modules.
 $machete = new MACHETE();
-require MACHETE_BASE_PATH . 'inc/about/module.php';
-require MACHETE_BASE_PATH . 'inc/cleanup/module.php';
+require MACHETE_BASE_PATH . 'inc/about/class-machete-about-module.php';
+require MACHETE_BASE_PATH . 'inc/cleanup/class-machete-cleanup-module.php';
 require MACHETE_BASE_PATH . 'inc/cookies/module.php';
 require MACHETE_BASE_PATH . 'inc/utils/module.php';
 require MACHETE_BASE_PATH . 'inc/maintenance/module.php';

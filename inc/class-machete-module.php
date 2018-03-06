@@ -76,7 +76,7 @@ abstract class MACHETE_MODULE {
 		if ( $this->params['has_config'] ) {
 			$this->read_settings();
 		}
-		require $this->path . 'admin_functions.php';
+		require $this->path . 'admin-functions.php';
 		if ( $this->params['has_config'] ) {
 			add_action( 'admin_menu', array( $this, 'register_sub_menu' ) );
 		}
@@ -99,7 +99,7 @@ abstract class MACHETE_MODULE {
 	 */
 	public function submenu_page_callback() {
 		global $machete;
-		require $this->path . 'admin_content.php';
+		require $this->path . 'admin-content.php';
 	}
 	/**
 	 * Executes code related to the front-end.
@@ -108,7 +108,7 @@ abstract class MACHETE_MODULE {
 		if ( $this->params['has_config'] ) {
 			$this->read_settings();
 		}
-		require $this->path . 'frontend_functions.php';
+		require $this->path . 'frontend-functions.php';
 	}
 	/**
 	 * Function model to serve options to database

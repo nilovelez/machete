@@ -22,3 +22,12 @@ Adds a "duplicate" link to post, page and most post types lists. Also adds "copy
 1. Upload the plugin files to the `/wp-content/plugins/machete` directory, or install the plugin through the WordPress plugins screen directly.
 2. Activate the plugin through the 'Plugins' screen in WordPress
 3. Configure each tool using the corresponding link on the **Machete** side menu
+
+## PHPCS PHP CodeSniffer
+WordPress Code Standards:
+phpcs -q --standard=WordPress --report=summary --parallel=4 .
+
+## commits summary
+git diff --shortstat "@{1 month}"
+git diff --shortstat "@{4 days ago}"
+
