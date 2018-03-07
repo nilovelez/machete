@@ -59,7 +59,7 @@ add_action( 'widgets_init', function() {
  * @param array $avatar_defaults The default avatar array
  */
 add_filter( 'avatar_defaults', function ( $avatar_defaults ) {
-	$myavatar = 'http://example.com/wp-content/uploads/2017/01/wpb-default-gravatar.png';
+	$myavatar                     = 'http://example.com/wp-content/uploads/2017/01/wpb-default-gravatar.png';
 	$avatar_defaults[ $myavatar ] = 'Default Gravatar';
 	return $avatar_defaults;
-}
+});
