@@ -1,180 +1,207 @@
 <?php
-if ( ! defined( 'ABSPATH' ) ) exit;
+/**
+ * Machete PowerTools Module class
 
+ * @package WordPress
+ * @subpackage Machete
+ */
 
+if ( ! defined( 'ABSPATH' ) ) {
+	exit;
+}
+/**
+ * Machete PowerTools Module class
+ */
 class MACHETE_POWERTOOLS_MODULE extends MACHETE_MODULE {
-
-	function __construct(){
+	/**
+	 * Module constructor, init method overrides parent module default params
+	 */
+	public function __construct() {
 		$this->init( array(
-			'slug' => 'powertools',
-			'title' => '<span style="color: #ff9900">'.__('PowerTools','machete').'</span>',
-			'full_title' => __('Machete PowerTools','machete'),
-			'description' => __('Machete PowerTools is an free upgrade module targeted at WordPress developers and power users.','machete'),
-			'is_active' => false,
-			//'has_config' => true,
+			'slug'            => 'powertools',
+			'title'           => '<span style="color: #ff9900">' . __( 'PowerTools', 'machete' ) . '</span>',
+			'full_title'      => __( 'Machete PowerTools', 'machete' ),
+			'description'     => __( 'Machete PowerTools is an free upgrade module targeted at WordPress developers and power users.', 'machete' ),
+			'is_active'       => false,
 			'can_be_disabled' => false,
-			// 'role' => 'manage_options'
-			)
-		);
+		) );
 
 		$this->powertools_array = array(
-			'widget_shortcodes' => array(
-				'title' => __('Shortcodes in Widgets','machete'),
-				'description' => __('Enables the use of shortcodes in text/html widgets. It may slightly impact performance','machete')
+			'widget_shortcodes'   => array(
+				'title'       => __( 'Shortcodes in Widgets', 'machete' ),
+				'description' => __( 'Enables the use of shortcodes in text/html widgets. It may slightly impact performance', 'machete' ),
 			),
-			
 
-			'rss_thumbnails' => array(
-				'title' => __('Thumbnails in RSS','machete'),
-				'description' => __('Add the featured image or the first attached image as the thumbnail of each post in the RSS feed','machete')
+			'rss_thumbnails'      => array(
+				'title'       => __( 'Thumbnails in RSS', 'machete' ),
+				'description' => __( 'Add the featured image or the first attached image as the thumbnail of each post in the RSS feed', 'machete' ),
 			),
-			'page_excerpts' => array(
-				'title' => __('Excerpts in Pages','machete'),
-				'description' => __('Enables excerpts in pages. Useless for most people but awesome qhen combined with a page builder like Visual Composer','machete')
+			'page_excerpts'       => array(
+				'title'       => __( 'Excerpts in Pages', 'machete' ),
+				'description' => __( 'Enables excerpts in pages. Useless for most people but awesome qhen combined with a page builder like Visual Composer', 'machete' ),
 			),
-			'save_with_keyboard' => array(
-				'title' => __('Save with keyboard','machete'),
-				'description' => __('Lets you save your posts, pages, theme and plugin files in the most natural way: pressing Ctrl+S (or Cmd+S on Mac). It saves as draft unpublished posts/pages and updates the ones that are already public','machete')
+			'save_with_keyboard'  => array(
+				'title'       => __( 'Save with keyboard', 'machete' ),
+				'description' => __( 'Lets you save your posts, pages, theme and plugin files in the most natural way: pressing Ctrl+S (or Cmd+S on Mac). It saves as draft unpublished posts/pages and updates the ones that are already public', 'machete' ),
 			),
 			'move_scripts_footer' => array(
-				'title' => __('Move scripts to footer','machete'),
-				'description' => __('Move all JS queued scripts from header to footer. Machete will de-register the call for the JavaScript to load in the HEAD section of the site and re-register it to the FOOTER.','machete')
-			),	
-			'defer_all_scripts' => array(
-				'title' => __('Defer your JavaScript','machete'),
-				'description' => __('The defer attribute also downloads the JS file during HTML parsing, but it only executes it after the parsing has completed. Executed in order of appearance on the page','machete')
+				'title'       => __( 'Move scripts to footer', 'machete' ),
+				'description' => __( 'Move all JS queued scripts from header to footer. Machete will de-register the call for the JavaScript to load in the HEAD section of the site and re-register it to the FOOTER.', 'machete' ),
 			),
-			'disable_feeds' => array(
-				'title' => __('Disable all feeds','machete'),
-				'description' => __('RSS, RDF, Atom... disables all of them and makes life a little less easy for leechers.','machete')
+			'defer_all_scripts'   => array(
+				'title'       => __( 'Defer your JavaScript', 'machete' ),
+				'description' => __( 'The defer attribute also downloads the JS file during HTML parsing, but it only executes it after the parsing has completed. Executed in order of appearance on the page', 'machete' ),
 			),
-			'enable_svg' => array(
-				'title' => __('Enable SVG images','machete'),
-				'description' => sprintf(__('Enables the upload of SVG images to the media library. This <a href="%s" target="_blank" rel="noopener noreferrer">has been proven to be dangerous</a>, so be careful.','machete'), 'https://bjornjohansen.no/svg-in-wordpress')
+			'disable_feeds'       => array(
+				'title'       => __( 'Disable all feeds', 'machete' ),
+				'description' => __( 'RSS, RDF, Atom... disables all of them and makes life a little less easy for leechers.', 'machete' ),
 			),
-			'widget_oembed' => array(
-				'title' => __('OEmbed in Widgets','machete'),
-				'description' => __('Enables OEMbed in text/html widgets.','machete') .' <br><span style="color: red">'.__('Deprecated. This feature is natively enabled since WordPress 4.8.1','machete').'</span>'
+			'enable_svg'          => array(
+				'title'       => __( 'Enable SVG images', 'machete' ),
+				// translators: Link the post "SVG uploads in WordPress (the Inconvenient Truth)".
+				'description' => sprintf( __( 'Enables the upload of SVG images to the media library. This <a href="%s" target="_blank" rel="noopener noreferrer">has been proven to be dangerous</a>, so be careful.', 'machete' ), 'https://bjornjohansen.no/svg-in-wordpress' ),
+			),
+			'widget_oembed'       => array(
+				'title'       => __( 'OEmbed in Widgets', 'machete' ),
+				'description' => __( 'Enables OEMbed in text/html widgets.', 'machete' ) . ' <br><span style="color: red">' . __( 'Deprecated. This feature is natively enabled since WordPress 4.8.1', 'machete' ) . '</span>',
 			),
 		);
 	}
-
-	public function frontend(){
+	/**
+	 * Executes code related to the front-end.
+	 * Loads optimization code if there is any option active.
+	 */
+	public function frontend() {
 		$this->read_settings();
-		if( count( $this->settings ) > 0 ) { 
-			require($this->path . 'powertools.php' );
+		if ( count( $this->settings ) > 0 ) {
+			require $this->path . 'powertools.php';
 		}
 	}
-
-	public function admin(){
+	/**
+	 * Executes code related to the WordPress admin.
+	 * Loads optimization code if there is any option active.
+	 */
+	public function admin() {
 		$this->read_settings();
 
-		if ( isset( $_POST['machete-powertools-saved'] ) ){
-		    check_admin_referer( 'machete_save_powertools' );
-		    if ( isset( $_POST['optionEnabled'] ) ){
-		  		$this->save_settings($_POST['optionEnabled']);
-		    }else{
-		  		$this->save_settings();
-		    }
+		if ( filter_input( INPUT_POST, 'machete-powertools-saved' ) !== null ) {
+			check_admin_referer( 'machete_save_powertools' );
+			$this->save_settings(
+				filter_input( INPUT_POST, 'optionEnabled', FILTER_DEFAULT, FILTER_FORCE_ARRAY )
+			);
 		}
 
-		
-		if (isset($_POST['machete-powertools-action'])){
+		if ( filter_input( INPUT_POST, 'machete-powertools-action' ) !== null ) {
 			check_admin_referer( 'machete_powertools_action' );
-			
-			switch ($_POST['action']){
-				case __('Purge Transients','machete') :
+
+			switch ( $_POST['action'] ) {
+				case __( 'Purge Transients', 'machete' ):
 					$this->purge_transients();
 					break;
-				case __('Purge Post Revisions','machete') :
+				case __( 'Purge Post Revisions', 'machete' ):
 					$this->purge_post_revisions();
 					break;
-				case __('Flush Rewrite Rules','machete') :
+				case __( 'Flush Rewrite Rules', 'machete' ):
 					$this->flush_rewrite_rules();
 					break;
-				case __('Flush Opcache','machete') :
+				case __( 'Flush Opcache', 'machete' ):
 					$this->flush_opcache();
 					break;
-				case __('Flush Object Cache','machete') :
+				case __( 'Flush Object Cache', 'machete' ):
 					$this->flush_wpcache();
 					break;
 				default:
-					$this->notice(__( 'Unknown action requested', 'machete' ), 'error');
+					$this->notice( __( 'Unknown action requested', 'machete' ), 'error' );
 					return false;
 
 			}
 		}
-		
-		$this->all_powertools_checked = (count(array_intersect(array_keys($this->powertools_array), $this->settings)) == count($this->powertools_array)) ? true : false;
 
-		if( count( $this->settings ) > 0 ) { 
-			require($this->path . 'powertools.php' );
+		$this->all_powertools_checked = ( count( array_intersect( array_keys( $this->powertools_array ), $this->settings ) ) === count( $this->powertools_array ) ) ? true : false;
+
+		if ( count( $this->settings ) > 0 ) {
+			require $this->path . 'powertools.php';
 		}
 
-
-		add_action( 'admin_menu', array(&$this, 'register_sub_menu') );
+		add_action( 'admin_menu', array( $this, 'register_sub_menu' ) );
 	}
-
+	/**
+	 * Saves options to database
+	 *
+	 * @param array $options options array, normally $_POST.
+	 * @param bool  $silent prevent the function from generating admin notices.
+	 */
 	protected function save_settings( $options = array(), $silent = false ) {
+		if ( null === $options ) {
+			$options = array();
+		}
+
 		$this->read_settings();
-		$options = array_intersect($options, array_keys($this->powertools_array) );
-		
-		if ( count($options) > 0 ){
+		$options = array_intersect( $options, array_keys( $this->powertools_array ) );
 
-			for($i = 0; $i < count($options); $i++){
-				$options[$i] = sanitize_text_field($options[$i]);
+		if ( count( $options ) > 0 ) {
+			$num_options = count( $options );
+			for ( $i = 0; $i < $n; $i++ ) {
+				$options[ $i ] = sanitize_text_field( $options[ $i ] );
 			}
-			
-			if ($this->is_equal_array($this->settings, $options)){
-				if (!$silent) $this->save_no_changes_notice();
-				return true;
-			}			
 
-			if (update_option('machete_powertools_settings',$options)){
-				$this->settings = $options;
-				if (!$silent) $this->save_success_notice();
+			if ( $this->is_equal_array( $this->settings, $options ) ) {
+				if ( ! $silent ) {
+					$this->save_no_changes_notice();
+				}
 				return true;
-			}else{
-				if (!$silent) $this->save_error_notice();
+			}
+
+			if ( update_option( 'machete_powertools_settings', $options ) ) {
+				$this->settings = $options;
+				if ( ! $silent ) {
+					$this->save_success_notice();
+				}
+				return true;
+			} else {
+				if ( ! $silent ) {
+					$this->save_error_notice();
+				}
 				return false;
 			}
-
-		}elseif (count($this->settings) > 0 ){
-			if ( delete_option('machete_powertools_settings')){
+		} elseif ( count( $this->settings ) > 0 ) {
+			if ( delete_option( 'machete_powertools_settings' ) ) {
 				$this->settings = array();
-				if (!$silent) $this->save_success_notice();
+				if ( ! $silent ) {
+					$this->save_success_notice();
+				}
 				return true;
-			}else{
-				if (!$silent) $this->save_error_notice();
+			} else {
+				if ( ! $silent ) {
+					$this->save_error_notice();
+				}
 				return false;
 			}
 		}
 
-		if (!$silent) $this->save_no_changes_notice();		
+		if ( ! $silent ) {
+			$this->save_no_changes_notice();
+		}
 		return true;
 	}
-
-	
-	private function purge_transients(){
-		//echo '<h1 style="text-align: right">'.__('Purge Transients','machete').'</h1>';
-		
+	/**
+	 * Deletes all expired transients. The multi-table delete syntax is used.
+	 * to delete the transient record from table a, and the corresponding.
+	 * transient_timeout record from table b.
+	 *
+	 * Based on code inside core's upgrade_network() function.
+	 */
+	private function purge_transients() {
 		global $wpdb;
 
-		/*
-		 * Deletes all expired transients. The multi-table delete syntax is used.
-		 * to delete the transient record from table a, and the corresponding.
-		 * transient_timeout record from table b.
-		 *
-		 * Based on code inside core's upgrade_network() function.
-		 */
-		$sql = "DELETE a, b FROM $wpdb->options a, $wpdb->options b
+		$sql  = "DELETE a, b FROM $wpdb->options a, $wpdb->options b
 			WHERE a.option_name LIKE %s
 			AND a.option_name NOT LIKE %s
 			AND b.option_name = CONCAT( '_transient_timeout_', SUBSTRING( a.option_name, 12 ) )
 			AND b.option_value < %d";
 		$rows = $wpdb->query( $wpdb->prepare( $sql, $wpdb->esc_like( '_transient_' ) . '%', $wpdb->esc_like( '_transient_timeout_' ) . '%', time() ) );
 
-		$sql = "DELETE a, b FROM $wpdb->options a, $wpdb->options b
+		$sql   = "DELETE a, b FROM $wpdb->options a, $wpdb->options b
 			WHERE a.option_name LIKE %s
 			AND a.option_name NOT LIKE %s
 			AND b.option_name = CONCAT( '_site_transient_timeout_', SUBSTRING( a.option_name, 17 ) )
@@ -185,44 +212,46 @@ class MACHETE_POWERTOOLS_MODULE extends MACHETE_MODULE {
 		return true;
 	}
 
-	private function purge_post_revisions(){
-		//echo '<h1 style="text-align: right">'.__('Purge Post Revisions','machete').'</h1>';
-		
+	/**
+	 * Deletes all unused post revisions.
+	 */
+	private function purge_post_revisions() {
 		global $wpdb;
 
-		// DELETE ALL UNUSED POST REVISIONS
-		$sql = "
+		$sql  = "
 		DELETE a,b,c
 			FROM wp_posts a
 			WHERE a.post_type = 'revision'
 			LEFT JOIN wp_term_relationships b
 			ON (a.ID = b.object_id)
 			LEFT JOIN wp_postmeta c ON (a.ID = c.post_id);";
-		$rows = $wpdb->query($sql);
-		//echo '<div class="updated inline"><p>' . sprintf( __( '%d Post revisions deleted', 'woocommerce' ), $rows) . '</p></div>';
-		
+		$rows = $wpdb->query( $sql );
 		$this->notice( sprintf( _n( 'Success! %s Post revision deleted.', 'Success! %s Post revisions deleted.', $rows, 'machete' ), $rows ), 'success' );
 		return true;
 	}
-
-	private function flush_rewrite_rules(){
+	/**
+	 * Flushes rewrite rules.
+	 */
+	private function flush_rewrite_rules() {
 		flush_rewrite_rules();
-		$this->notice(__('Rewrite rules flushed', 'machete' ), 'success');
+		$this->notice( __( 'Rewrite rules flushed', 'machete' ), 'success' );
 		return true;
 	}
-
-	private function flush_wpcache(){
+	/**
+	 * Flushes WordPress object cache.
+	 */
+	private function flush_wpcache() {
 		wp_cache_flush();
-		$this->notice(__('Object cache flushed', 'machete' ), 'success');
+		$this->notice( __( 'Object cache flushed', 'machete' ), 'success' );
 		return true;
 	}
-
-	private function flush_opcache(){
+	/**
+	 * Flushes Opcache.
+	 */
+	private function flush_opcache() {
 		opcache_reset();
-		$this->notice(__('Opcache flushed', 'machete' ), 'success');
+		$this->notice( __( 'Opcache flushed', 'machete' ), 'success' );
 		return true;
 	}
-
-
 }
 $machete->modules['powertools'] = new MACHETE_POWERTOOLS_MODULE();

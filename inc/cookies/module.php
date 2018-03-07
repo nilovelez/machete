@@ -1,17 +1,27 @@
 <?php
-if ( ! defined( 'ABSPATH' ) ) exit;
+/**
+ * Machete Cookies Module class
 
+ * @package WordPress
+ * @subpackage Machete
+ */
+
+if ( ! defined( 'ABSPATH' ) ) {
+	exit;
+}
+/**
+ * Machete Cookies Module class
+ */
 class MACHETE_COOKIES_MODULE extends MACHETE_MODULE {
-
-	function __construct() {
+	/**
+	 * Module constructor, init method overrides parent module default params
+	 */
+	public function __construct() {
 		$this->init( array(
 			'slug'        => 'cookies',
 			'title'       => __( 'Cookie Law', 'machete' ),
 			'full_title'  => __( 'Cookie Law Warning', 'machete' ),
 			'description' => __( 'Light and responsive cookie law warning bar that won\'t affect your PageSpeed score and plays well with static cache plugins.', 'machete' ),
-			// 'is_active' => true,
-			// 'has_config' => true,
-			// 'can_be_disabled' => true,
 			'role'        => 'publish_posts', // targeting Author role.
 		) );
 		$this->default_settings = array(
@@ -45,23 +55,33 @@ class MACHETE_COOKIES_MODULE extends MACHETE_MODULE {
 			),
 		);
 	}
-
+	/**
+	 * Executes code related to the WordPress admin.
+	 */
 	public function admin() {
 		$this->read_settings();
-
-		if ( isset( $_POST['machete-cookies-saved'] ) ) {
+		if ( filter_input( INPUT_POST, 'machete-cookies-saved' ) !== null ) {
 			check_admin_referer( 'machete_save_cookies' );
-			$this->save_settings( $_POST );
+			$this->save_settings( filter_input_array( INPUT_POST ) );
 		}
-
 		add_action( 'admin_menu', array( $this, 'register_sub_menu' ) );
 	}
-
+	/**
+	 * Executes code related to the front-end.
+	 *
+	 * @todo Hook render_cookie_bar function only if bar is active.
+	 */
 	public function frontend() {
 		$this->read_settings();
 		add_action( 'wp_footer', array( $this, 'render_cookie_bar' ) );
 	}
 
+	/**
+	 * Saves options to database
+	 *
+	 * @param array $options options array, normally $_POST.
+	 * @param bool  $silent prevent the function from generating admin notices.
+	 */
 	protected function save_settings( $options = array(), $silent = false ) {
 
 		/**
@@ -77,8 +97,9 @@ class MACHETE_COOKIES_MODULE extends MACHETE_MODULE {
 		$html_replaces = array();
 
 		if ( ! is_dir( MACHETE_DATA_PATH ) ) {
-			if( ! @mkdir( MACHETE_DATA_PATH ) ) {
+			if ( ! wp_mkdir_p( MACHETE_DATA_PATH ) ) {
 				if ( ! $silent ) {
+					// translators: %s path of data dir.
 					$this->notice( sprintf( __( 'Error creating data dir %s please check file permissions', 'machete' ), MACHETE_RELATIVE_DATA_PATH ), 'error' );
 				}
 				return false;
@@ -87,6 +108,7 @@ class MACHETE_COOKIES_MODULE extends MACHETE_MODULE {
 
 		if ( ! $cookies_bar_js = @file_get_contents( $this->path . 'templates/cookies_bar_js.min.js' ) ) {
 			if ( ! $silent ) {
+				// translators: %s path to template file.
 				$this->notice( sprintf( __( 'Error reading cookie bar template %s', 'machete' ), $this->path . 'templates/cookies_bar_js.js' ), 'error' );
 			}
 			return false;
@@ -98,6 +120,7 @@ class MACHETE_COOKIES_MODULE extends MACHETE_MODULE {
 
 		if ( ! $cookies_bar_html = @file_get_contents( $this->themes[ $options['bar_theme'] ]['template'] ) ) {
 			if ( ! $silent ) {
+				// translators: %s path to template file.
 				$this->notice( sprintf( __( 'Error reading cookie bar template %s', 'machete' ), $cookies_bar_themes[ $options['bar_theme'] ]['template'] ), 'error' );
 			}
 			return false;
@@ -141,7 +164,7 @@ class MACHETE_COOKIES_MODULE extends MACHETE_MODULE {
 			$cookies_bar_html
 		) . "\n" . $cookies_bar_js;
 
-		// cheap and dirty pseudo-random filename generation
+		// cheap and dirty pseudo-random filename generation.
 		$settings['cookie_filename'] = 'cookies_' . strtolower( substr( MD5( time() ), 0, 8 ) ) . '.js';
 
 		if ( 'enabled' === $settings['bar_status'] ) {
@@ -153,7 +176,7 @@ class MACHETE_COOKIES_MODULE extends MACHETE_MODULE {
 			}
 		}
 
-		// delete old .js file and generate a new one to prevent caching
+		// delete old .js file and generate a new one to prevent caching.
 		if ( ! empty( $this->settings['cookie_filename'] ) && file_exists( MACHETE_DATA_PATH . $this->settings['cookie_filename'] ) ) {
 			if ( ! unlink( MACHETE_DATA_PATH . $this->settings['cookie_filename'] ) ) {
 				if ( ! $silent ) {
@@ -163,7 +186,7 @@ class MACHETE_COOKIES_MODULE extends MACHETE_MODULE {
 			}
 		}
 
-		// option saved WITH autoload
+		// Option saved WITH autoload.
 		if ( update_option( 'machete_cookies_settings', $settings, 'yes' ) ) {
 			$this->settings = $settings;
 			if ( ! $silent ) {
@@ -204,7 +227,7 @@ class MACHETE_COOKIES_MODULE extends MACHETE_MODULE {
 
 	}
 
-	public function render_cookie_bar(){ 
+	public function render_cookie_bar() {
 
 		if ( ! isset( $this->settings['bar_status'] ) || ( 'enabled' !== $this->settings['bar_status'] ) ) {
 				return false;

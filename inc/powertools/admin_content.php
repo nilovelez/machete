@@ -48,10 +48,6 @@
 	<p class="description" id="tracking_id_description" style="display: none;"><?php _e('Format:','machete') ?></p></td>
 	</tr>
 
-
-	
-
-
 	</tbody></table>	
 </form>
 
@@ -62,7 +58,7 @@
 	<?php wp_nonce_field( 'machete_save_powertools' ); ?>
 
 	<input type="hidden" name="machete-powertools-saved" value="true">
-	<h3><?php _e('Machete Toolbox','machete') ?></h3>
+	<h3><?php esc_html_e( 'Machete Toolbox', 'machete' ); ?></h3>
 
 
 	<table class="wp-list-table widefat fixed striped posts machete-options-table machete-powertools-table">
@@ -98,27 +94,26 @@
 
 (function($){
 	$('#machete-powertools-options .machete-powertools-table :checkbox').change(function() {
-	    // this will contain a reference to the checkbox
-	    console.log(this.id); 
-	    var checkBoxes = $("#machete-powertools-options .machete-powertools-table input[name=optionEnabled\\[\\]]");
+		// this will contain a reference to the checkbox
+		console.log(this.id); 
+		var checkBoxes = $("#machete-powertools-options .machete-powertools-table input[name=optionEnabled\\[\\]]");
 
-	    if (this.id == 'machete_powertools_checkall_fld'){
+		if (this.id == 'machete_powertools_checkall_fld'){
 			if (this.checked) {
 				checkBoxes.prop("checked", true);
 			} else {
 				checkBoxes.prop("checked", false);
 				// the checkbox is now no longer checked
 			}
-	    }else{
-	    	var checkBoxes_checked = $("#machete-powertools-options .machete-powertools-table input[name=optionEnabled\\[\\]]:checked");
-	    	if(checkBoxes_checked.length == checkBoxes.length){
-	    		$('#machete_powertools_checkall_fld').prop("checked", true);
-	    	}else{
-	    		$('#machete_powertools_checkall_fld').prop("checked", false);
-	    	}
-	    }
+		} else {
+			var checkBoxes_checked = $("#machete-powertools-options .machete-powertools-table input[name=optionEnabled\\[\\]]:checked");
+			if(checkBoxes_checked.length == checkBoxes.length){
+				$('#machete_powertools_checkall_fld').prop("checked", true);
+			} else {
+				$('#machete_powertools_checkall_fld').prop("checked", false);
+			}
+		}
 	});
 })(jQuery);
-
 
 </script>

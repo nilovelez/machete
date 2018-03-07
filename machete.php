@@ -53,7 +53,7 @@ require MACHETE_BASE_PATH . 'inc/cleanup/class-machete-cleanup-module.php';
 require MACHETE_BASE_PATH . 'inc/cookies/module.php';
 require MACHETE_BASE_PATH . 'inc/utils/module.php';
 require MACHETE_BASE_PATH . 'inc/maintenance/module.php';
-require MACHETE_BASE_PATH . 'inc/clone/module.php';
+require MACHETE_BASE_PATH . 'inc/clone/class-machete-clone-module.php';
 require MACHETE_BASE_PATH . 'inc/importexport/module.php';
 require MACHETE_BASE_PATH . 'inc/powertools/module.php';
 

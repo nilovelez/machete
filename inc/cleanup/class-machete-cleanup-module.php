@@ -14,7 +14,7 @@ if ( ! defined( 'ABSPATH' ) ) {
  */
 class MACHETE_CLEANUP_MODULE extends MACHETE_MODULE {
 	/**
-	 * Module constructor, inite method overrides parent module default params
+	 * Module constructor, init method overrides parent module default params
 	 */
 	public function __construct() {
 		$this->init( array(
@@ -149,11 +149,13 @@ class MACHETE_CLEANUP_MODULE extends MACHETE_MODULE {
 	}
 	/**
 	 * Executes code related to the WordPress admin.
+	 * Loads optimization code if there is any option active.
 	 */
 	public function admin() {
 		$this->read_settings();
 
 		if ( filter_input( INPUT_POST, 'machete-cleanup-saved' ) !== null ) {
+			check_admin_referer( 'machete_save_cleanup' );
 			$this->save_settings(
 				filter_input( INPUT_POST, 'optionEnabled', FILTER_DEFAULT, FILTER_FORCE_ARRAY )
 			);
