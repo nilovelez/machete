@@ -5,33 +5,30 @@ class machete_maintenance_page {
 
 	private $settings;
 
-	function __construct($settings){
+	function __construct( $settings ) {
 
 		$this->settings = $settings;
-		extract($this->settings);
+		extract( $this->settings );
 
 		if (
 			(
-				(!empty($site_status) && $site_status === 'maintenance') ||
-				(!empty($site_status) && $site_status === 'coming_soon')
+				( ! empty( $site_status ) && $site_status === 'maintenance' ) ||
+				( ! empty( $site_status ) && $site_status === 'coming_soon' )
 			) || (
-				isset($_GET['mct_preview']) &&
-				wp_verify_nonce($_GET['mct_preview'],'maintenance_preview_nonce')
+				isset( $_GET['mct_preview'] ) &&
+				wp_verify_nonce( $_GET['mct_preview'], 'maintenance_preview_nonce' )
 			)
-		){
-			if(function_exists('bp_is_active')){
-				add_action( 'template_redirect', array(&$this,'render_comingsoon_page'),9);
-			}else{
-				add_action( 'template_redirect', array(&$this,'render_comingsoon_page'));
+		) {
+			if( function_exists( 'bp_is_active' ) ) {
+				add_action( 'template_redirect', array( $this, 'render_comingsoon_page' ), 9 );
+			} else {
+				add_action( 'template_redirect', array( $this, 'render_comingsoon_page' ) );
 			}
-		}       
+		}
 	}
-
-   
 	function render_comingsoon_page() {
 
 		extract($this->settings);
-
 
 		// Check if Preview
 		$is_preview = false;
@@ -39,13 +36,12 @@ class machete_maintenance_page {
 			$is_preview = true; 
 		} 
 
-
 		if($is_preview === false){
 			// Exit if a custom login page
 			if(preg_match("/login|admin|dashboard|account/i",$_SERVER['REQUEST_URI']) > 0){
 				return false;
 			}
-		
+	
 			// Check if user is logged in.
 			if( is_user_logged_in() && current_user_can('publish_posts') ){
 				return false;
@@ -63,7 +59,7 @@ class machete_maintenance_page {
 		if((isset($_SESSION['mct_token']) && $_SESSION['mct_token'] === $token)){
 			return false;
 		}
-		
+
 		if ((isset($_GET['mct_token']) && $_GET['mct_token'] === $token)) {
 			$_SESSION['mct_token'] = $_GET['mct_token'];
 			return false;
@@ -85,8 +81,6 @@ class machete_maintenance_page {
 			);
 		}
 
-
-		
 		if (isset($_GET['mct_page_id']) && (intval($_GET['mct_page_id']) > 0)){
 			$page_id = intval($_GET['mct_page_id']);
 		}else if($is_preview){
@@ -99,15 +93,13 @@ class machete_maintenance_page {
 				'body'  => str_replace(']]>', ']]&gt;', apply_filters('the_content', $page->post_content)),
 				'content_class' => 'custom'
 				);
-		}      
-	   
-
-		if($site_status == 'maintenance'){
-			header('HTTP/1.1 503 Service Temporarily Unavailable');
-			header('Status: 503 Service Temporarily Unavailable');
-			header('Retry-After: 86400'); // retry in a day
 		}
 
+		if ( $site_status == 'maintenance' ) {
+			header( 'HTTP/1.1 503 Service Temporarily Unavailable' );
+			header( 'Status: 503 Service Temporarily Unavailable' );
+			header( 'Retry-After: 86400' ); // retry in a day
+		}
 
 		?><!DOCTYPE html>
 <html><head>
