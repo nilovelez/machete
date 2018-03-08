@@ -59,11 +59,7 @@ class MACHETE_ABOUT_MODULE extends MACHETE_MODULE {
 			$this->params['full_title'],
 			$this->params['title'],
 			$this->params['role'],
-			'machete',
-			function() {
-				global $machete;
-				require MACHETE_BASE_PATH . 'inc/about/admin-content.php';
-			}
+			'machete'
 		);
 	}
 }

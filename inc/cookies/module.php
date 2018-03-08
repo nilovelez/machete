@@ -34,22 +34,27 @@ class MACHETE_COOKIES_MODULE extends MACHETE_MODULE {
 
 		$this->themes = array(
 			'light'     => array(
+				'name'      => __( 'Classic Light', 'machete' ),
 				'template'  => $this->path . 'templates/light.html',
 				'extra_css' => '',
 			),
 			'dark'      => array(
+				'name'      => __( 'Classic Dark', 'machete' ),
 				'template'  => $this->path . 'templates/dark.html',
 				'extra_css' => '',
 			),
 			'new_light' => array(
+				'name'      => __( 'Modern Light', 'machete' ),
 				'template'  => $this->path . 'templates/new_light.html',
 				'extra_css' => '',
 			),
 			'new_dark'  => array(
+				'name'      => __( 'Modern Dark', 'machete' ),
 				'template'  => $this->path . 'templates/new_dark.html',
 				'extra_css' => '',
 			),
 			'cookie'    => array(
+				'name'      => __( 'Cookie!', 'machete' ),
 				'template'  => $this->path . 'templates/cookie.html',
 				'extra_css' => '#machete_cookie_bar {background-image: url(' . MACHETE_BASE_URL . 'img/cookie_monster.svg);}',
 			),
@@ -249,7 +254,7 @@ class MACHETE_COOKIES_MODULE extends MACHETE_MODULE {
 		var body = document.getElementsByTagName('body')[0];
 		body.appendChild(s);
 	})()}
-	</script><?php 
+	</script><?php
 	}
 }
 $machete->modules['cookies'] = new MACHETE_COOKIES_MODULE();
