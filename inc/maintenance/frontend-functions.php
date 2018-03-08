@@ -32,52 +32,52 @@ class machete_maintenance_page {
 
 		// Check if Preview
 		$is_preview = false;
-		if (isset($_GET['mct_preview'])){
-			$is_preview = true; 
-		} 
+		if ( isset( $_GET['mct_preview'] ) ) {
+			$is_preview = true;
+		}
 
-		if($is_preview === false){
+		if( $is_preview === false ) {
 			// Exit if a custom login page
-			if(preg_match("/login|admin|dashboard|account/i",$_SERVER['REQUEST_URI']) > 0){
+			if ( preg_match( "/login|admin|dashboard|account/i", $_SERVER['REQUEST_URI'] ) > 0){
 				return false;
 			}
-	
+
 			// Check if user is logged in.
-			if( is_user_logged_in() && current_user_can('publish_posts') ){
+			if ( is_user_logged_in() && current_user_can( 'publish_posts' ) ) {
 				return false;
 			}
 		}
 
 		// check magic link
 		session_start();
-		if ((isset($_GET['mct_token']) && $_GET['mct_token'] == 'logout')) {
-			if (isset($_SESSION['mct_token'])){
+		if ( ( isset( $_GET['mct_token'] ) && $_GET['mct_token'] == 'logout' ) ) {
+			if ( isset( $_SESSION['mct_token'] ) ) {
 				$_SESSION['mct_token'] = '';
 			}
 		}
 
-		if((isset($_SESSION['mct_token']) && $_SESSION['mct_token'] === $token)){
+		if ( ( isset( $_SESSION['mct_token']) && $_SESSION['mct_token'] === $token ) ) {
 			return false;
 		}
 
-		if ((isset($_GET['mct_token']) && $_GET['mct_token'] === $token)) {
+		if ( ( isset( $_GET['mct_token'] ) && $_GET['mct_token'] === $token ) ) {
 			$_SESSION['mct_token'] = $_GET['mct_token'];
 			return false;
 		}
 
-		if($site_status == 'coming_soon'){
+		if( $site_status == 'coming_soon' ) {
 			// coming soon default content
 			$html_content = array(
-				'title' => __('Coming soon','machete'),
-				'body'  => __('<h1>Under construction</h1><h3>New content is coming soon...</h3>','machete'),
-				'content_class' => 'default'
-			); 
-		}else{
+				'title'         => __( 'Coming soon', 'machete' ),
+				'body'          => __( '<h1>Under construction</h1><h3>New content is coming soon...</h3>', 'machete' ),
+				'content_class' => 'default',
+			);
+		} else {
 			// maintenance default content
 			$html_content = array(
-				'title' => __('Maintenance','machete'),
-				'body'  => __('<h1>Under maintenance</h1><h3>We will be back shortly</h3>','machete'),
-				'content_class' => 'default'
+				'title'         => __( 'Maintenance', 'machete' ),
+				'body'          => __( '<h1>Under maintenance</h1><h3>We will be back shortly</h3>', 'machete' ),
+				'content_class' => 'default',
 			);
 		}
 

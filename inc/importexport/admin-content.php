@@ -1,4 +1,14 @@
-<?php if ( ! defined( 'MACHETE_ADMIN_INIT' ) ) exit; ?>
+<?php
+/**
+ * Content of the "Import/Export" page.
+
+ * @package WordPress
+ * @subpackage Machete
+ */
+
+if ( ! defined( 'MACHETE_ADMIN_INIT' ) ) {
+	exit;
+} ?>
 
 <div class="wrap machete-wrap machete-section-wrap">
 	<h1><?php esc_html_e( 'Import/Export Options', 'machete' ); ?></h1>
