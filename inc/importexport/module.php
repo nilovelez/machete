@@ -158,4 +158,4 @@ class MACHETE_IMPORTEXPORT_MODULE extends MACHETE_MODULE {
 		//$this->notice(__('An error occurred while uploading the backup file'), 'error');
 	}
 }
-$machete->modules['importexport'] = new machete_importexport_module;
+$machete->modules['importexport'] = new MACHETE_IMPORTEXPORT_MODULE();
