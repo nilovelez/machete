@@ -208,7 +208,7 @@ class MACHETE_COOKIES_MODULE extends MACHETE_MODULE {
 
 	protected function export() {
 		$export = $this->read_settings();
-		if ( ! empty( stripslashes( $export['warning_text'] ) ) ) {
+		if ( ! empty( $export['warning_text'] ) ) {
 			$export['warning_text'] = stripslashes( $export['warning_text'] );
 		}
 		return $export;

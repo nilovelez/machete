@@ -50,12 +50,12 @@ require MACHETE_BASE_PATH . 'inc/class-machete-module.php';
 $machete = new MACHETE();
 require MACHETE_BASE_PATH . 'inc/about/class-machete-about-module.php';
 require MACHETE_BASE_PATH . 'inc/cleanup/class-machete-cleanup-module.php';
-require MACHETE_BASE_PATH . 'inc/cookies/module.php';
-require MACHETE_BASE_PATH . 'inc/utils/module.php';
-require MACHETE_BASE_PATH . 'inc/maintenance/module.php';
+require MACHETE_BASE_PATH . 'inc/cookies/class-machete-cookies-module.php.php';
+require MACHETE_BASE_PATH . 'inc/utils/class-machete-utils-module.php.php';
+require MACHETE_BASE_PATH . 'inc/maintenance/class-machete-maintenance-module.php.php';
 require MACHETE_BASE_PATH . 'inc/clone/class-machete-clone-module.php';
-require MACHETE_BASE_PATH . 'inc/importexport/module.php';
-require MACHETE_BASE_PATH . 'inc/powertools/module.php';
+require MACHETE_BASE_PATH . 'inc/importexport/class-machete-importexport-module.php.php';
+require MACHETE_BASE_PATH . 'inc/powertools/class-machete-powertools-module.php.php';
 
 // Management of disabled modules.
 $machete_disabled_modules = get_option( 'machete_disabled_modules', array() );
@@ -82,4 +82,4 @@ add_action( 'init', function() {
 		define( 'MACHETE_ADMIN_INIT', true );
 		require_once 'machete-admin.php';
 	}
-});
+} );
