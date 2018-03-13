@@ -1,7 +1,7 @@
 <?php
 /**
  * Machete Cleanup Module class
-
+ *
  * @package WordPress
  * @subpackage Machete
  */

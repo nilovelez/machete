@@ -1,7 +1,7 @@
 <?php
 /**
  * Content of the "Import/Export" page.
-
+ *
  * @package WordPress
  * @subpackage Machete
  */
@@ -28,14 +28,14 @@ if ( ! defined( 'MACHETE_ADMIN_INIT' ) ) {
 		<table class="wp-list-table widefat fixed striped posts machete-options-table machete-optimize-table">
 		<thead>
 			<tr>
-				<td class="manage-column column-cb check-column " ><input type="checkbox" name="check_all" id="machete_cleanup_checkall_fld" <?php if ($this->all_exportable_modules_checked) echo 'checked' ?>></td>
+				<td class="manage-column column-cb check-column " ><input type="checkbox" name="check_all" id="machete_cleanup_checkall_fld" <?php checked( true, $this->all_exportable_modules_checked, true ); ?>></td>
 				<th class="column-title manage-column column-primary"><?php esc_html_e( 'Modules to export', 'machete' ); ?></th>
 			</tr>
 		</thead>
 		<tbody>
 		<?php foreach ( $this->exportable_modules as $machete_module => $args ) { ?>
 			<tr>
-				<th scope="row" class="check-column"><input type="checkbox" name="moduleChecked[]" value="<?php echo esc_attr( $machete_module ); ?>" id="<?php echo esc_attr( $machete_module . '_fld' ); ?>" <?php if ($args['checked']) echo 'checked' ?>></th>
+				<th scope="row" class="check-column"><input type="checkbox" name="moduleChecked[]" value="<?php echo esc_attr( $machete_module ); ?>" id="<?php echo esc_attr( $machete_module . '_fld' ); ?>" <?php checked( true, $args['checked'], true ); ?>></th>
 				<td class="column-title column-primary"><strong><?php echo esc_html( $args['full_title'] ); ?></strong>
 				<button type="button" class="toggle-row"><span class="screen-reader-text"><?php esc_html_e( 'Show more details', 'machete' ); ?></span></button>
 				</td>

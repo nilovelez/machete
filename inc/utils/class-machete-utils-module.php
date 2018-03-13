@@ -1,9 +1,21 @@
 <?php
-if ( ! defined( 'ABSPATH' ) ) exit;
+/**
+ * Machete Analytics&Code Module class
 
+ * @package WordPress
+ * @subpackage Machete
+ */
 
+if ( ! defined( 'ABSPATH' ) ) {
+	exit;
+}
+/**
+ * Machete Analytics&Code Module class
+ */
 class MACHETE_UTILS_MODULE extends MACHETE_MODULE {
-
+	/**
+	 * Module constructor, init method overrides parent module default params
+	 */
 	public function __construct() {
 		$this->init( array(
 			'slug'        => 'utils',
@@ -19,7 +31,9 @@ class MACHETE_UTILS_MODULE extends MACHETE_MODULE {
 			'alfonso_content_injection_method' => 'manual',
 		);
 	}
-
+	/**
+	 * Executes code related to the WordPress admin.
+	 */
 	public function admin() {
 		$this->read_settings();
 		if ( isset( $_POST['machete-utils-saved'] ) ) {
@@ -28,7 +42,13 @@ class MACHETE_UTILS_MODULE extends MACHETE_MODULE {
 		}
 		add_action( 'admin_menu', array( $this, 'register_sub_menu' ) );
 	}
-
+	/**
+	 * Function model to serve options to database
+	 * real function must be defined in each module
+	 *
+	 * @param array $options options array, normally $_POST.
+	 * @param bool  $silent prevent the function from generating admin notices.
+	 */
 	protected function save_settings( $options = array(), $silent = false ) {
 
 		/*
@@ -37,57 +57,63 @@ class MACHETE_UTILS_MODULE extends MACHETE_MODULE {
 		header_content
 		footer_content
 		*/
-		$settings = $this->read_settings();
+		$settings       = $this->read_settings();
 		$header_content = '';
-		
-		if (!is_dir(MACHETE_DATA_PATH)){
-			if(!@mkdir(MACHETE_DATA_PATH)){
-				if (!$silent) $this->notice( sprintf( __( 'Error creating data dir %s please check file permissions', 'machete' ), MACHETE_DATA_PATH), 'error');
+
+		if ( ! is_dir( MACHETE_DATA_PATH ) ) {
+			if ( ! wp_mkdir_p( MACHETE_DATA_PATH ) ) {
+				if ( ! $silent ) {
+					// translators: %s path of data dir.
+					$this->notice( sprintf( __( 'Error creating data dir %s please check file permissions', 'machete' ), MACHETE_RELATIVE_DATA_PATH ), 'error' );
+				}
 				return false;
 			}
 		}
 
-		if(!empty($options['tracking_id'])){
+		if ( ! empty( $options['tracking_id'] ) ) {
 
-			if(!preg_match('/^ua-\d{4,9}-\d{1,4}$/i', strval( $options['tracking_id'] ))){
+			if ( ! preg_match( '/^ua-\d{4,9}-\d{1,4}$/i', strval( $options['tracking_id'] ) ) ) {
 				// invalid Analytics Tracking ID
 				// http://code.google.com/apis/analytics/docs/concepts/gaConceptsAccounts.html#webProperty
-				if (!$silent) $this->notice( __( 'That doesn\'t look like a valid Google Analytics tracking ID', 'machete' ), 'warning');
+				if ( ! $silent ) {
+					$this->notice( __( 'That doesn\'t look like a valid Google Analytics tracking ID', 'machete' ), 'warning' );
+				}
 				return false;
 			}
 			$settings['tracking_id'] = $options['tracking_id'];
 
-			if( !in_array( $options['tracking_format'], array('standard','machete','none') )){
-				// I don't know that tracking format
-				if (!$silent) $this->notice( __( 'Something went wrong. Unknown tracking code format requested.', 'machete' ), 'warning');
+			if ( ! in_array( $options['tracking_format'], array( 'standard', 'machete', 'none' ), true ) ) {
+				if ( ! $silent ) {
+					$this->notice( __( 'Something went wrong. Unknown tracking code format requested.', 'machete' ), 'warning' );
+				}
 				return false;
 			}
 			$settings['tracking_format'] = $options['tracking_format'];
 
-			if ( isset( $options['tacking_anonymize'] )){
+			if ( isset( $options['tacking_anonymize'] ) ) {
 				$anonymizeIp = ',{anonymizeIp: true}';
 				$settings['tacking_anonymize'] = 1;
-			}else{
+			} else {
 				$anonymizeIp = '';
 				$settings['tacking_anonymize'] = 0;
 			}
 
-			if ( isset( $options['track_wpcf7'] )){
+			if ( isset( $options['track_wpcf7'] ) ) {
 				$settings['track_wpcf7'] = 1;
-			}else{
+			} else {
 				$settings['track_wpcf7'] = 0;
 			}
 
-			// let's generate the Google Analytics tracking code
-			if($settings['tracking_format'] == 'machete'){
-				$header_content .= 'if (!navigator.userAgent || ('."\n";
-				$header_content .= '  (navigator.userAgent.indexOf("Speed Insights") == -1) &&'."\n";
-				$header_content .= '  (navigator.userAgent.indexOf("Googlebot") == -1)'."\n";
-				$header_content .= ')) {'."\n";
+			// let's generate the Google Analytics tracking code.
+			if ( 'machete' === $settings['tracking_format'] ) {
+				$header_content .= 'if (!navigator.userAgent || (' . "\n";
+				$header_content .= '  (navigator.userAgent.indexOf("Speed Insights") == -1) &&' . "\n";
+				$header_content .= '  (navigator.userAgent.indexOf("Googlebot") == -1)' . "\n";
+				$header_content .= ')) {' . "\n";
 			}
-			if( $settings['tracking_format'] != 'none' ) {
+			if ( 'none' !== $settings['tracking_format'] ) {
 
-				$js_replaces = array(
+				$js_replaces     = array(
 					'{{anonymizeIp}}' => $anonymizeIp,
 					'{{tracking_id}}' => $options['tracking_id'],
 				);
@@ -97,10 +123,10 @@ class MACHETE_UTILS_MODULE extends MACHETE_MODULE {
 					@file_get_contents( $this->path . 'templates/analytics.tpl.js' )
 				);
 			}
-			if($settings['tracking_format'] == 'machete' ) {
-				$header_content .= '}'."\n";
+			if ( 'machete' === $settings['tracking_format'] ) {
+				$header_content .= '}' . "\n";
 			}
-			if($settings['tracking_format'] != 'none' ) {
+			if ( 'none' !== $settings['tracking_format'] ) {
 				$header_content = "<script>\n" . $header_content . "</script>\n<!-- Machete Header -->\n";
 			}
 		} else {
@@ -154,7 +180,7 @@ class MACHETE_UTILS_MODULE extends MACHETE_MODULE {
 			return true;
 		}
 
-		// option saved WITHOUT autoload
+		// option saved WITHOUT autoload.
 		if ( update_option( 'machete_utils_settings', $settings, 'no' ) ) {
 			$this->settings = $settings;
 			if ( ! $silent ) {
@@ -175,12 +201,12 @@ class MACHETE_UTILS_MODULE extends MACHETE_MODULE {
 		$encoded_fields = array( 'header_content', 'alfonso_content', 'footer_content' );
 
 		foreach ( $encoded_fields as $encoded_field ) {
-			if (array_key_exists( $encoded_field, $settings ) && ! empty( $settings[ $encoded_field ] ) ) {
+			if ( array_key_exists( $encoded_field, $settings ) && ! empty( $settings[ $encoded_field ] ) ) {
 				$settings[ $encoded_field ] = base64_decode( $settings[ $encoded_field ] );
 			}
 		}
 
-		if ( $this->save_settings($settings, true) ) {
+		if ( $this->save_settings( $settings, true ) ) {
 			return __( 'Settings succesfully restored from backup', 'machete' ) . "\n";
 		} else {
 			return __( 'Error restoring settings backup', 'machete' ) . "\n";
@@ -191,10 +217,10 @@ class MACHETE_UTILS_MODULE extends MACHETE_MODULE {
 
 		$export = $this->settings;
 
-		if($machete_header_content = @file_get_contents(MACHETE_DATA_PATH.'header.html')){
+		if( $machete_header_content = @file_get_contents( MACHETE_DATA_PATH . 'header.html' ) ) {
 
-			$machete_header_content = explode('<!-- Machete Header -->', $machete_header_content);
-			switch(count($machete_header_content)){
+			$machete_header_content = explode( '<!-- Machete Header -->', $machete_header_content );
+			switch ( count( $machete_header_content ) ) {
 				case 1:
 					$machete_header_content = $machete_header_content[0];
 					break;
@@ -202,16 +228,16 @@ class MACHETE_UTILS_MODULE extends MACHETE_MODULE {
 					$machete_header_content = $machete_header_content[1];
 					break;
 				default:
-					$machete_header_content = implode('',array_slice($machete_header_content, 1));
+					$machete_header_content = implode( '', array_slice( $machete_header_content, 1 ) );
 			}
-			$export['header_content'] = base64_encode($machete_header_content);
+			$export['header_content'] = base64_encode( $machete_header_content );
 		}
-		if (file_exists(MACHETE_DATA_PATH.'body.html')){
-			$export['alfonso_content'] = base64_encode(file_get_contents(MACHETE_DATA_PATH.'body.html'));
+		if ( file_exists( MACHETE_DATA_PATH . 'body.html' ) ) {
+			$export['alfonso_content'] = base64_encode( file_get_contents( MACHETE_DATA_PATH . 'body.html' ) );
 		}
 
-		if (file_exists(MACHETE_DATA_PATH.'footer.html')){
-			$export['footer_content'] = base64_encode(file_get_contents(MACHETE_DATA_PATH.'footer.html'));
+		if ( file_exists( MACHETE_DATA_PATH . 'footer.html' ) ) {
+			$export['footer_content'] = base64_encode( file_get_contents( MACHETE_DATA_PATH . 'footer.html' ) );
 		}
 
 		return $export;

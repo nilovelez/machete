@@ -1,5 +1,14 @@
 <?php
-if ( ! defined( 'ABSPATH' ) ) exit;
+/**
+ * Machete Analytics&Code Module actions especific to the front-end
+ *
+ * @package WordPress
+ * @subpackage Machete
+ */
+
+if ( ! defined( 'ABSPATH' ) ) {
+	exit;
+}
 
 if ( file_exists( MACHETE_DATA_PATH . 'header.html' ) ) {
 	add_action( 'wp_head', function() {
@@ -43,29 +52,37 @@ if ( file_exists( MACHETE_DATA_PATH . 'footer.html' ) ) {
 if ( file_exists( MACHETE_DATA_PATH . 'body.html' ) ) {
 	if (
 		! empty( $this->settings['alfonso_content_injection_method'] ) &&
-		( $this->settings['alfonso_content_injection_method'] === 'auto' )
+		( 'auto' === $this->settings['alfonso_content_injection_method'] )
 	) {
-		// automatic body injection
-		add_filter( 'body_class', 'machete_inject_body_content', 10001 );
-		function machete_inject_body_content( $classes ){
+		/**
+		 * Automatic body injection.
+		 * Uses a work-around to add code just after the opening body tag
+		 */
+		add_filter( 'body_class', function( $classes ) {
 			$alfonso_content = file_get_contents( MACHETE_DATA_PATH . 'body.html' );
-			$classes[] = '">' . $alfonso_content . '<br style="display: none';
+			$classes[]       = '">' . $alfonso_content . '<br style="display: none';
 			return $classes;
-		}
+		}, 10001 );
 
-		// disable manual body injection
+		/**
+		 * Disables manual body injection to prevent duplicate insertion.
+		 */
 		function machete_custom_body_content() {
 			echo '';
 		}
 	} else {
 
-		// manual body injection
+		/**
+		 * Manual body injection
+		 */
 		function machete_custom_body_content() {
 			readfile( MACHETE_DATA_PATH . 'body.html' );
 		}
 	}
 } else {
-	// disable manual body injection
+	/**
+	 * Disables manual body injection if custom body content is empty.
+	 */
 	function machete_custom_body_content() {
 		echo '';
 	}

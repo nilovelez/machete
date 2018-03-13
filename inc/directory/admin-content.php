@@ -1,7 +1,7 @@
 <?php
 /**
  * Content of the "Resource directory" page.
-
+ *
  * @package WordPress
  * @subpackage Machete
  */

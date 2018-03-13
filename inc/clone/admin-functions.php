@@ -1,5 +1,14 @@
 <?php
-if ( ! defined( 'MACHETE_ADMIN_INIT' ) ) exit;
+/**
+ * Functions machete clone module functions only used in the front-end
+ *
+ * @package WordPress
+ * @subpackage Machete
+ */
+
+if ( ! defined( 'MACHETE_ADMIN_INIT' ) ) {
+	exit;
+}
 
 function machete_content_clone(){
 	global $wpdb;
@@ -36,21 +45,21 @@ function machete_content_clone(){
 			'post_title'     => $post->post_title . __( '-copy', 'machete' ),
 			'post_type'      => $post->post_type,
 			'to_ping'        => $post->to_ping,
-			'menu_order'     => $post->menu_order
+			'menu_order'     => $post->menu_order,
 		);
 
-		// inserts the new post via wp_insert_post()
+		// Inserts the new post via wp_insert_post().
 		$new_post_id = wp_insert_post( wp_slash( $args ) );
 
-		// gets the taxonomies from the post to clone
-		$taxonomies = get_object_taxonomies( $post->post_type ); // retorna um array das taxonomias
+		// Gets the taxonomies from the post to clone.
+		$taxonomies = get_object_taxonomies( $post->post_type ); // Returns a taxonomy array.
 		foreach ( $taxonomies as $taxonomy ) {
 			$post_terms = wp_get_object_terms( $post_id, $taxonomy, array( 'fields' => 'slugs' ) );
 			wp_set_object_terms( $new_post_id, $post_terms, $taxonomy, false );
 		}
 
 		$post_meta_infos = $wpdb->get_results( "SELECT meta_key, meta_value FROM $wpdb->postmeta WHERE post_id=$post_id" );
-		if ( count( $post_meta_infos ) != 0 ) {
+		if ( count( $post_meta_infos ) > 0 ) {
 			$sql_query = "INSERT INTO $wpdb->postmeta (post_id, meta_key, meta_value) ";
 			foreach ( $post_meta_infos as $meta_info ) {
 				$meta_key        = $meta_info->meta_key;
@@ -70,7 +79,12 @@ function machete_content_clone(){
 }
 add_action( 'admin_action_machete_clone', 'machete_content_clone' );
 
-// Adds the "clone" link to the post and page lists.
+/**
+ * Adds the "clone" link to the post and page lists.
+ *
+ * @param array  $actions post/page actions array.
+ * @param object $post reference to the current row post.
+ */
 function content_clone_link( $actions, $post ) {
 	$notify_url = wp_nonce_url( admin_url( 'admin.php?action=machete_clone&amp;post=' . absint( $post->ID ) ), 'machete_clone_' . $post->ID );
 
@@ -78,6 +92,9 @@ function content_clone_link( $actions, $post ) {
 	return $actions;
 }
 
+/**
+ * Adds the "copy to a new draft" button to the post/page editor actions
+ */
 function machete_clone_custom_button() {
 	global $post;
 
@@ -91,14 +108,31 @@ function machete_clone_custom_button() {
 
 		//$notify_url = 'admin.php?action=machete_clone&amp;post=' . $post->ID;
 		?>
-		<div id="duplicate-action"><a class="submitduplicate duplication" href="<?php echo esc_url( $notify_url ); ?>"><?php esch_html_e( 'Copy to a new draft', 'machete' ); ?></a></div>
+		<div id="duplicate-action"><a class="submitduplicate duplication" href="<?php echo esc_url( $notify_url ); ?>"><?php esc_html_e( 'Copy to a new draft', 'machete' ); ?></a></div>
 		<?php
 	}
 
 }
+
+
+// Admin bar
+function machete_clone_admin_bar_link() {
+	if ( ! is_admin_bar_showing() ) {
+		return;
+	}
+	global $wp_admin_bar;
+
+	$wp_admin_bar->add_menu( array(
+		'id'    => 'new_draft',
+		'title' => esc_attr__( 'Copy to a new draft', 'machete' ),
+		'href'  => '#',
+	) );
+}
+
+
 if ( current_user_can( 'edit_posts' ) ) {
-	add_filter( 'post_row_actions', 'content_clone_link', 10, 2 ); // Posts
-	add_filter( 'page_row_actions', 'content_clone_link', 10, 2 ); // Pages
+	add_filter( 'post_row_actions', 'content_clone_link', 10, 2 ); // Posts.
+	add_filter( 'page_row_actions', 'content_clone_link', 10, 2 ); // Pages.
 	add_action( 'post_submitbox_start', 'machete_clone_custom_button' );
-	// add_action( 'wp_before_admin_bar_render', 'duplicate_page_admin_bar_link');
+	//add_action( 'wp_before_admin_bar_render', 'machete_clone_admin_bar_link');
 }

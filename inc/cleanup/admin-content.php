@@ -1,7 +1,7 @@
 <?php
 /**
  * Content of the "WordPress Optimization" page.
-
+ *
  * @package WordPress
  * @subpackage Machete
  */

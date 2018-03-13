@@ -1,7 +1,7 @@
 <?php
 /**
  * Machete Clone Module class
-
+ *
  * @package WordPress
  * @subpackage Machete
  */

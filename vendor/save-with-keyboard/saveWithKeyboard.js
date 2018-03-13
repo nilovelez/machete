@@ -3,9 +3,9 @@
  * Self invoking function for 'Save with keyboard' plugin.
  * @version: 2.1
  */
-(function($,undefined){
+( function( $, undefined ) {
 	'use strict';
-	var $Document = $(document)
+	var $Document = $( document )
 		,$Button
 		,$PreviewButton
 	;
@@ -19,23 +19,23 @@
 	 *  - profile-php: body.profile-php -> #submit
 	 *  - etc...
 	 */
-	$(function(){
-		var $Body = $(document.body)
+	$( function() {
+		var $Body    = $(document.body)
 			,$Status = $('#original_post_status')
 			,sStatus = $Status.val()
 		;
-		if ($Status.length) {
-			setButton(sStatus==='publish'?'#publish':'#save-post');
-		} else if ($Body.hasClass('link-php')||$Body.hasClass('link-add-php')) {
+		if ( $Status.length ) {
+			setButton( ( 'publish' === sStatus ) ? '#publish' : '#save-post' );
+		} else if ( $Body.hasClass( 'link-php' ) || $Body.hasClass( 'link-add-php' ) ) {
 			setButton('#publish');
-		} else if ($Body.hasClass('comment-php')||$Body.hasClass('wp-customizer')) {
-			setButton('#save');
-		} else if ($Body.hasClass('widgets-php')) {
-			$Body.on('click',handleWidgetFocus);
-		} else if (!setButton('#submit')) {
-			setButton('input[name=submit]');
+		} else if ( $Body.hasClass( 'comment-php' ) || $Body.hasClass( 'wp-customizer' ) ) {
+			setButton( '#save' );
+		} else if ( $Body.hasClass( 'widgets-php' ) ) {
+			$Body.on( 'click', handleWidgetFocus );
+		} else if ( ! setButton( '#submit' ) ) {
+			setButton( 'input[name=submit]' );
 		}
-		setPreviewButton('.preview.button');
+		setPreviewButton( '.preview.button' );
 	});
 
 	/**
@@ -99,10 +99,6 @@
 		}
 	}
 
-
-
-
-
 	/**
 	 * Checks if the focused element is a widget form input and tries to set the save-button.
 	 */
@@ -110,4 +106,4 @@
 		var $Focus = $(document.activeElement);
 		setButton($Focus.is(':input')?$Focus.parents('form:first').find(':submit'):undefined);
 	}
-})(jQuery);
+})( jQuery );

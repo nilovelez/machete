@@ -9,6 +9,14 @@
 if ( ! defined( 'MACHETE_ADMIN_INIT' ) ) {
 	exit;
 }
+
+$allowed_description_tags = array(
+	'br'   => array(),
+	'span' => array(
+		'style' => array(),
+	),
+);
+
 ?>
 <div class="wrap machete-wrap machete-section-wrap">
 	<h1><?php esc_html_e( 'Machete PowerTools', 'machete' ); ?></h1>
@@ -74,7 +82,7 @@ if ( ! defined( 'MACHETE_ADMIN_INIT' ) ) {
 	<table class="wp-list-table widefat fixed striped posts machete-options-table machete-powertools-table">
 	<thead>
 		<tr>
-			<td class="manage-column column-cb check-column " ><input type="checkbox" name="check_all" id="machete_cleanup_checkall_fld" <?php if ( $this->all_powertools_checked ){ echo 'checked'; } ?>></td>
+			<td class="manage-column column-cb check-column " ><input type="checkbox" name="check_all" id="machete_cleanup_checkall_fld" <?php checked( true, $this->all_powertools_checked, true ); ?>></td>
 			<th class="column-title manage-column column-primary"><?php esc_html_e( 'Remove', 'machete' ); ?></th>
 			<th><?php esc_html_e( 'Explanation', 'machete' ); ?></th>
 		</tr>
@@ -82,11 +90,11 @@ if ( ! defined( 'MACHETE_ADMIN_INIT' ) ) {
 	<tbody>
 	<?php foreach ( $this->powertools_array as $option_slug => $option ) { ?>
 		<tr>
-			<th scope="row" class="check-column"><input type="checkbox" name="optionEnabled[]" value="<?php echo $option_slug ?>" id="<?php echo $option_slug ?>_fld" <?php if (in_array($option_slug, $this->settings)) echo 'checked' ?>></th>
-			<td class="column-title column-primary"><strong><?php echo $option['title'] ?></strong>
+			<th scope="row" class="check-column"><input type="checkbox" name="optionEnabled[]" value="<?php echo esc_attr( $option_slug ); ?>" id="<?php echo esc_attr( $option_slug . '_fld' ); ?>" <?php checked( true, in_array( $option_slug, $this->settings, true ), true ); ?>></th>
+			<td class="column-title column-primary"><strong><?php echo esc_html( $option['title'] ); ?></strong>
 			<button type="button" class="toggle-row"><span class="screen-reader-text"><?php esc_html_e( 'Show more details', 'machete' ); ?></span></button>
 			</td>
-			<td data-colname="<?php esc_html_e( 'Explanation', 'machete' ); ?>"><?php echo $option['description'] ?></td>
+			<td data-colname="<?php esc_html_e( 'Explanation', 'machete' ); ?>"><?php echo wp_kses( $option['description'], $allowed_description_tags ); ?></td>
 		</tr>
 
 	<?php } ?>

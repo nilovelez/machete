@@ -1,7 +1,7 @@
 <?php
 /**
  * Machete Cookies Module class
-
+ *
  * @package WordPress
  * @subpackage Machete
  */
@@ -175,6 +175,7 @@ class MACHETE_COOKIES_MODULE extends MACHETE_MODULE {
 		if ( 'enabled' === $settings['bar_status'] ) {
 			if ( ! @file_put_contents( MACHETE_DATA_PATH . $settings['cookie_filename'], $cookies_bar_js ) ) {
 				if ( ! $silent ) {
+					// translators: %s path to machete data dir.
 					$this->notice( sprintf( __( 'Error writing static javascript file to %s please check file permissions. Aborting to prevent inconsistent state.', 'machete' ), MACHETE_RELATIVE_DATA_PATH ), 'error' );
 				}
 				return false;
@@ -185,6 +186,7 @@ class MACHETE_COOKIES_MODULE extends MACHETE_MODULE {
 		if ( ! empty( $this->settings['cookie_filename'] ) && file_exists( MACHETE_DATA_PATH . $this->settings['cookie_filename'] ) ) {
 			if ( ! unlink( MACHETE_DATA_PATH . $this->settings['cookie_filename'] ) ) {
 				if ( ! $silent ) {
+					// translators: %s path to machete data dir.
 					$this->notice( sprintf( __( 'Could not delete old javascript file from %s please check file permissions . Aborting to prevent inconsistent state.', 'machete' ), MACHETE_RELATIVE_DATA_PATH ), 'warning' );
 				}
 				return false;
@@ -206,6 +208,11 @@ class MACHETE_COOKIES_MODULE extends MACHETE_MODULE {
 		}
 	}
 
+	/**
+	 * Returns a module settings array to use for backups.
+	 *
+	 * @return array modules settings array.
+	 */
 	protected function export() {
 		$export = $this->read_settings();
 		if ( ! empty( $export['warning_text'] ) ) {
@@ -213,7 +220,9 @@ class MACHETE_COOKIES_MODULE extends MACHETE_MODULE {
 		}
 		return $export;
 	}
-
+	/**
+	 * Echoes a cookie bar preview for the Machete cookie module config page.
+	 */
 	protected function preview_cookie_bar() {
 
 		if ( ! isset( $this->settings['bar_status'] ) || ( 'enabled' !== $this->settings['bar_status'] ) ) {
@@ -231,7 +240,9 @@ class MACHETE_COOKIES_MODULE extends MACHETE_MODULE {
 		echo '</script>';
 
 	}
-
+	/**
+	 * Echoes the cookie bar for use in the front-end.
+	 */
 	public function render_cookie_bar() {
 
 		if ( ! isset( $this->settings['bar_status'] ) || ( 'enabled' !== $this->settings['bar_status'] ) ) {

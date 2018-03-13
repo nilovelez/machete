@@ -1,11 +1,22 @@
 <?php
+/**
+ * Machete Maintenance Module class
+ *
+ * @package WordPress
+ * @subpackage Machete
+ */
+
 if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
-
+/**
+ * Machete Maintenance Module class
+ */
 class MACHETE_MAINTENANCE_MODULE extends MACHETE_MODULE {
-
-	function __construct() {
+	/**
+	 * Module constructor, init method overrides parent module default params
+	 */
+	public function __construct() {
 		$this->init( array(
 			'slug'        => 'maintenance',
 			'title'       => __( 'Maintenance Mode', 'machete' ),
@@ -19,25 +30,31 @@ class MACHETE_MAINTENANCE_MODULE extends MACHETE_MODULE {
 			'token'       => strtoupper( substr( MD5( rand() ), 0, 12 ) ),
 		);
 	}
-
+	/**
+	 * Executes code related to the front-end.
+	 * Adds a maintenance status button to the admin bar
+	 */
 	public function frontend() {
 		$this->read_settings();
 		if ( count( $this->settings ) > 0 ) {
-			require $this->path . 'frontend-functions.php';
 			if ( is_admin_bar_showing() ) {
 				require_once $this->path . 'admin-bar.php';
 			}
-			$machete_maintenance = new machete_maintenance_page( $this->settings );
+			require $this->path . 'class-machete-maintenance-page.php';
+			$machete_maintenance = new MACHETE_MAINTENANCE_PAGE( $this->settings );
 		}
 	}
-
+	/**
+	 * Executes code related to the WordPress admin.
+	 * Adds a maintenance status button to the admin bar
+	 */
 	public function admin() {
 
 		$this->read_settings();
-		// the maintenance token should be saved as soon as possible
-		//to keep it from changing on every page load
+		// The maintenance token should be saved as soon as possible.
+		// To keep it from changing on every page load.
 		if ( ! get_option( 'machete_' . $this->params['slug'] . '_settings' ) ) {
-			// default option values saved WITHOUT autoload
+			// default option values saved WITHOUT autoload.
 			update_option( 'machete_' . $this->params['slug'] . '_settings', $this->default_settings, 'no' );
 		}
 

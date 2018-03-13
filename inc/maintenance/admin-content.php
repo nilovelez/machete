@@ -1,5 +1,14 @@
-<?php if ( ! defined( 'MACHETE_ADMIN_INIT' ) ) exit; ?>
+<?php
+/**
+ * Content of the "Maintenance Mode" page.
+ *
+ * @package WordPress
+ * @subpackage Machete
+ */
 
+if ( ! defined( 'MACHETE_ADMIN_INIT' ) ) {
+	exit;
+} ?>
 
 <div class="wrap machete-wrap machete-section-wrap">
 	<h1><?php esc_html_e( 'Coming Soon & Maintenance Mode', 'machete' ); ?></h1>
@@ -39,28 +48,30 @@
 
 		<tr valign="top"><th scope="row"><?php esc_html_e( 'Magic Link', 'machete' ); ?></th>
 			<td>
-				<input type="hidden" name="token" id="token_fld" value="<?php echo $this->settings['token']; ?>">
-				<a href="<?php echo $this->magic_url; ?>" id="machete_magic_link"><?php echo $this->magic_url; ?></a>
+				<input type="hidden" name="token" id="token_fld" value="<?php echo esc_attr( $this->settings['token'] ); ?>">
+				<a href="<?php echo esc_url( $this->magic_url ); ?>" id="machete_magic_link"><?php echo esc_url( $this->magic_url ); ?></a>
 				<button name="change_token" id="change_token_btn" class="button action"><?php esc_html_e( 'change secret token', 'machete' ); ?></button>
 		<p class="description"><?php esc_html_e( 'You can use this link to grant anyone access to the website when it is in maintenance mode.', 'machete' ); ?></p>
 
 			</td>
 		</tr>
 
-		<tr valign="top"><th scope="row"><?php esc_html_e('Choose a page for the content', 'machete' ); ?></th>
+		<tr valign="top"><th scope="row"><?php esc_html_e( 'Choose a page for the content', 'machete' ); ?></th>
 			<td>
 				<select name="page_id" id="page_id_fld">
-					<option value=""><?php _e('Use default content', 'machete' ); ?></option>
+					<option value=""><?php esc_html_e( 'Use default content', 'machete' ); ?></option>
 					<?php
-					if( $pages = get_pages() ) {
-						foreach ( $pages as $page ) {
-							echo '<option value="' . $page->ID . '" ' . selected( $page->ID, $this->settings['page_id'] ) . '>' . $page->post_title . '</option>';
-						}
+					$pages = get_pages();
+					foreach ( $pages as $page ) {
+						echo '<option value="' . esc_attr( $page->ID ) . '" ' .
+							selected( $page->ID, $this->settings['page_id'] ) . '>' .
+							esc_html( $page->post_title ) .
+							'</option>';
 					}
 					?>
 				</select>
 
-				<a href="<?php echo $this->preview_url ?>" target="machete_preview" id="preview_maintenance_btn" class="button action"><?php _e('Preview', 'machete' ); ?></a>
+				<a href="<?php echo esc_url( $this->preview_url ); ?>" target="machete_preview" id="preview_maintenance_btn" class="button action"><?php esc_html_e( 'Preview', 'machete' ); ?></a>
 			</td>
 		</tr>
 	   
@@ -73,23 +84,22 @@
 
 <div class="postbox machete-helpbox" data-collapsed="false">
 <button type="button" class="handlediv button-link"><span class="toggle-indicator" aria-hidden="true"><span class="dashicons dashicons-arrow-up"></span></span></button>
-	<h3 class="hndle"><span><span class="dashicons dashicons-sos"></span> <?php echo _e('How do I customize the maintenance page?', 'machete' ); ?></span></h2>
+	<h3 class="hndle"><span><span class="dashicons dashicons-sos"></span> <?php esc_html_e( 'How do I customize the maintenance page?', 'machete' ); ?></span></h2>
 	<div class="inside">
 		<table class="form-table"><tbody><tr valign="top"><th scope="row"></th><td>
-
-			<p class="description"><?php sprintf( __(' You can customize the maintenance page CSS using the %sAnalytics & Code tab', 'machete' ),
-			'<a href="'. admin_url( 'admin.php?page=machete-utils' ).'">'); ?></a></p>
-			<p class="description"><?php _e('For your reference, this is the HTML used to render the Maintenance page:', 'machete' ); ?></p>
+			<?php // translators: %s: Analytics & code tab link. ?>
+			<p class="description"><?php sprintf( esc_html( __( 'You can customize the maintenance page CSS using the %sAnalytics & Code tab', 'machete' ) ), '<a href="' . admin_url( 'admin.php?page=machete-utils' ) . '">' ); ?></a></p>
+			<p class="description"><?php esc_html_e( 'For your reference, this is the HTML used to render the Maintenance page:', 'machete' ); ?></p>
 			<pre style="color: #00f; font-weight: bold;">&lt;html&gt;
-  &lt;head&gt;
-	&lt;title&gt;<span style="color: #000;">[<?php _e('title of the selected page', 'machete' ); ?>]</span>&lt;/title&gt;
-	<span style="color: #000;">[&hellip;]</span>
-  &lt;/head&gt;
-  &lt;body <span style="color: #c00;">id</span>=<span style="color: #f0f;">"maintenance_page"</span>&gt;
-	&lt;div <span style="color: #c00;">id</span>=<span style="color: #f0f;">"content"</span>&gt;
-	  <span style="color: #000;">[<?php _e('content of the selected page', 'machete' ); ?>]</span>
-	&lt;/div&gt;
-  &lt;/body&gt;
+&nbsp;&nbsp;&lt;head&gt;
+&nbsp;&nbsp;&nbsp;&nbsp;&lt;title&gt;<span style="color: #000;">[<?php esc_html_e( 'title of the selected page', 'machete' ); ?>]</span>&lt;/title&gt;
+&nbsp;&nbsp;&nbsp;&nbsp;<span style="color: #000;">[&hellip;]</span>
+&nbsp;&nbsp;&lt;/head&gt;
+&nbsp;&nbsp;&lt;body <span style="color: #c00;">id</span>=<span style="color: #f0f;">"maintenance_page"</span>&gt;
+&nbsp;&nbsp;&nbsp;&nbsp;&lt;div <span style="color: #c00;">id</span>=<span style="color: #f0f;">"content"</span>&gt;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color: #000;">[<?php esc_html_e( 'content of the selected page', 'machete' ); ?>]</span>
+&nbsp;&nbsp;&nbsp;&nbsp;&lt;/div&gt;
+&nbsp;&nbsp;&lt;/body&gt;
 &lt;/html&gt;</pre>
 		</td></tr></tbody></table> 
 	</div>
@@ -103,8 +113,8 @@
 
 (function($){
 
-	var machete_preview_base_url = '<?php echo $this->preview_base_url ?>';
-	var machete_magic_base_url   = '<?php echo $this->magic_base_url ?>';
+	var machete_preview_base_url = '<?php echo esc_url( $this->preview_base_url ); ?>';
+	var machete_magic_base_url   = '<?php echo esc_url( $this->magic_base_url ); ?>';
 
 	var random_token = function(){
 		var chrs = '0123456789ABCDEF';
@@ -117,7 +127,7 @@
 
 	$('#change_token_btn').click(function(e){
 
-		if (confirm('<?php _e('Are you sure you want to change the secret token?\nThis will invalidate previously-shared links.', 'machete' ); ?>')){
+		if (confirm('<?php esc_html_e( 'Are you sure you want to change the secret token?\nThis will invalidate previously-shared links.', 'machete' ); ?>')){
 			var new_token = random_token();
 			var new_magic_url = machete_magic_base_url + new_token;
 

@@ -1,18 +1,34 @@
 <?php
-if ( ! defined( 'MACHETE_ADMIN_INIT' ) ) exit;
+/**
+ * Machete Directory Module class
+ *
+ * @package WordPress
+ * @subpackage Machete
+ */
 
-function machete_directory_page() {
-  add_submenu_page(
-    'machete',
-    __('Resource Directory','machete'),
-    __('Resource Directory','machete'),
-    'manage_options',
-    'machete-directory',
-    'machete_directory_page_content'
-  );
+if ( ! defined( 'ABSPATH' ) ) {
+	exit;
 }
-add_action('admin_menu', 'machete_directory_page');
-
-function machete_directory_page_content() {
-	require('admin_content.php');
+/**
+ * Machete Directory Module class
+ */
+class MACHETE_DIRECTORY_MODULE extends MACHETE_MODULE {
+	/**
+	 * Module constructor, init method overrides parent module default params
+	 */
+	public function __construct() {
+		$this->init( array(
+			'slug'        => 'machete',
+			'title'       => __( 'Resource Directory', 'machete' ),
+			'full_title'  => __( 'Resource Directory', 'machete' ),
+			'description' => __( 'Resource Directory', 'machete' ),
+			'has_config'  => false,
+			'role'        => 'publish_posts', // targeting Author role.
+		) );
+	}
+	/**
+	 * This module doesn't have front-end functionality.
+	 */
+	public function frontend() {}
 }
+$machete->modules['clone'] = new MACHETE_DIRECTORY_MODULE();

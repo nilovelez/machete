@@ -1,7 +1,7 @@
 <?php
 /**
  * Content of the "Cookie Law" page.
-
+ *
  * @package WordPress
  * @subpackage Machete
  */

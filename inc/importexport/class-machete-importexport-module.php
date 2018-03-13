@@ -1,18 +1,29 @@
 <?php
-if ( ! defined( 'ABSPATH' ) ) exit;
+/**
+ * Machete import/export Module class
+ *
+ * @package WordPress
+ * @subpackage Machete
+ */
 
-
+if ( ! defined( 'ABSPATH' ) ) {
+	exit;
+}
+/**
+ * Machete import/export Module class
+ */
 class MACHETE_IMPORTEXPORT_MODULE extends MACHETE_MODULE {
-
+	/**
+	 * Module constructor, init method overrides parent module default params
+	 */
 	public function __construct() {
 		$this->init( array(
 			'slug'            => 'importexport',
 			'title'           => __( 'Import/Export', 'machete' ),
-			'full_title'      => __( 'Import/Export Options','machete' ),
+			'full_title'      => __( 'Import/Export Options', 'machete' ),
 			'description'     => __( 'You can use this section to backup and restore your Machete configuration. You can also take a backup from one site and restore to another.', 'machete' ),
 			'can_be_disabled' => false,
-		));
-
+		) );
 	}
 
 	protected $checked_modules      = array();
@@ -21,9 +32,14 @@ class MACHETE_IMPORTEXPORT_MODULE extends MACHETE_MODULE {
 
 	protected $import_log = '';
 
-
+	/**
+	 * Executes code related to the front-end.
+	 */
 	public function frontend() {}
 
+	/**
+	 * Executes code related to the WordPress admin.
+	 */
 	public function admin() {
 		global $machete;
 
@@ -73,7 +89,11 @@ class MACHETE_IMPORTEXPORT_MODULE extends MACHETE_MODULE {
 		add_action( 'admin_menu', array( $this, 'register_sub_menu' ) );
 	}
 
-
+	/**
+	 * Returns a module settings array to use for backups.
+	 *
+	 * @return array modules settings array.
+	 */
 	protected function export() {
 		global $machete;
 
@@ -98,6 +118,12 @@ class MACHETE_IMPORTEXPORT_MODULE extends MACHETE_MODULE {
 
 	}
 
+	/**
+	 * Restores module settings from a backup
+	 *
+	 * @param array $settings modules settings array.
+	 * @return string success/error message.
+	 */
 	protected function import( $settings = array() ) {
 		global $machete;
 

@@ -1,7 +1,7 @@
 <?php
 /**
  * Content of the "About Machete" page.
-
+ *
  * @package WordPress
  * @subpackage Machete
  */
