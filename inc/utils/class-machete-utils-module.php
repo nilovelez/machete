@@ -91,10 +91,10 @@ class MACHETE_UTILS_MODULE extends MACHETE_MODULE {
 			$settings['tracking_format'] = $options['tracking_format'];
 
 			if ( isset( $options['tacking_anonymize'] ) ) {
-				$anonymizeIp = ',{anonymizeIp: true}';
+				$anonymizeIp                   = ',{anonymizeIp: true}';
 				$settings['tacking_anonymize'] = 1;
 			} else {
-				$anonymizeIp = '';
+				$anonymizeIp                   = '';
 				$settings['tacking_anonymize'] = 0;
 			}
 

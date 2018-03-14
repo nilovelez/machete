@@ -1,12 +1,23 @@
 <?php
+/**
+ * Shows the maintenance status in the WordPress admin bar.
+ *
+ * @package WordPress
+ * @subpackage Machete
+ */
+
 if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 
-if ( $machete_maintenance_settings = get_option( 'machete_maintenance_settings' ) ) {
+$machete_maintenance_settings = get_option( 'machete_maintenance_settings' );
+if ( $machete_maintenance_settings ) {
 	if ( ! empty( $machete_maintenance_settings['site_status'] ) &&
 		( 'online' !== $machete_maintenance_settings['site_status'] ) ) {
 
+		/**
+		 * Enqeues Maintenance status admin bar styles
+		 */
 		function machete_admin_bar_scripts() {
 			wp_register_style(
 				'machete-maintenance-styles',
@@ -18,6 +29,9 @@ if ( $machete_maintenance_settings = get_option( 'machete_maintenance_settings' 
 		add_action( 'wp_enqueue_scripts', 'machete_admin_bar_scripts' );
 		add_action( 'admin_enqueue_scripts', 'machete_admin_bar_scripts' );
 
+		/**
+		 * Admin bar code especific to the coming_soon status.
+		 */
 		function machete_coming_soon_admin_bar() {
 			global $wp_admin_bar;
 
@@ -27,7 +41,7 @@ if ( $machete_maintenance_settings = get_option( 'machete_maintenance_settings' 
 				$href = admin_url( 'index.php' );
 			}
 
-			//Add the main siteadmin menu item
+			// Adds the main admin menu item.
 			$wp_admin_bar->add_menu( array(
 				'id'     => 'machete-maintenance-notice',
 				'href'   => $href,
@@ -36,6 +50,9 @@ if ( $machete_maintenance_settings = get_option( 'machete_maintenance_settings' 
 				'meta'   => array( 'class' => 'machete-coming-soon-active' ),
 			) );
 		}
+		/**
+		 * Admin bar code especific to the maintenance status.
+		 */
 		function machete_maintenance_admin_bar() {
 			global $wp_admin_bar;
 
@@ -45,7 +62,7 @@ if ( $machete_maintenance_settings = get_option( 'machete_maintenance_settings' 
 				$href = admin_url( 'index.php' );
 			}
 
-			//Add the main siteadmin menu item
+			// Adds the main admin menu item.
 			$wp_admin_bar->add_menu( array(
 				'id'     => 'machete-maintenance-notice',
 				'href'   => $href,

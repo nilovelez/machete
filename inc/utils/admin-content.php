@@ -98,8 +98,8 @@ if ( false !== $settings ) {
 <td><fieldset><legend class="screen-reader-text"><span><?php esc_html_e( 'Custom header content', 'machete' ); ?></span></legend>
 
 
-<p><label for="header_content"><?php printf( __( 'This code is included before the closing <code>&lt;/head&gt;</code> label.<br>Content is saved to <code>%s</code> and served using PHP\'s <code>readfile()</code> function, so no PHP or shortcodes here.', 'machete' ), MACHETE_RELATIVE_DATA_PATH . 'header.html' ); ?></label></p>
-<p><textarea name="header_content" rows="8" cols="50" id="header_content" class="large-text code"><?php if (!empty($machete_header_content)) echo esc_textarea( $machete_header_content ) ?></textarea></p>
+<p><label for="header_content"><?php printf( __( 'This code is included before the closing <code>&lt;/head&gt;</code> label.<br>Content is saved to <code>%s</code> and served using PHP\'s <code>readfile()</code> function, so no PHP or shortcodes here.', 'machete' ), esc_html( MACHETE_RELATIVE_DATA_PATH . 'header.html' ) ); ?></label></p>
+<p><textarea name="header_content" rows="8" cols="50" id="header_content" class="large-text code"><?php echo esc_textarea( $machete_header_content ); ?></textarea></p>
 </fieldset></td>
 </tr>
 <tr>
@@ -109,23 +109,23 @@ if ( false !== $settings ) {
 
 
 <fieldset style="margin: 1em 0;"><legend class="screen-reader-text"><span><?php esc_html_e( 'Custom body content injection method', 'machete' ); ?></span></legend>
-	<label><input name="alfonso_content_injection_method" value="auto" type="radio" <?php if ($this->settings['alfonso_content_injection_method'] =='auto') echo 'checked="checked"'; ?>> <?php printf(__('Try to inject the code automatically using <a href="%s" target="_blank" rel="nofollow">Yaniv Friedensohn\'s method</a>','machete'), 'http://www.affectivia.com/blog/placing-the-google-tag-manager-in-wordpress-after-the-body-tag/') ?></label><br>
-	<label><input name="alfonso_content_injection_method" value="manual" type="radio" <?php if ($this->settings['alfonso_content_injection_method'] =='manual') echo 'checked="checked"'; ?>> <?php _e( 'Edit your theme\'s <code>header.php</code> template manually and include this function:', 'machete' ) ?> <code>&lt;?php machete_custom_body_content() ?&gt;</code></label>
+	<label><input name="alfonso_content_injection_method" value="auto" type="radio" <?php if ( $this->settings['alfonso_content_injection_method'] === 'auto' ) echo 'checked="checked"'; ?>> <?php printf( __( 'Try to inject the code automatically using <a href="%s" target="_blank" rel="nofollow">Yaniv Friedensohn\'s method</a>', 'machete' ), 'http://www.affectivia.com/blog/placing-the-google-tag-manager-in-wordpress-after-the-body-tag/') ?></label><br>
+	<label><input name="alfonso_content_injection_method" value="manual" type="radio" <?php if ( $this->settings['alfonso_content_injection_method'] === 'manual' ) echo 'checked="checked"'; ?>> <?php _e( 'Edit your theme\'s <code>header.php</code> template manually and include this function:', 'machete' ) ?> <code>&lt;?php machete_custom_body_content() ?&gt;</code></label>
 </fieldset>
 
 <fieldset><legend class="screen-reader-text"><span><?php esc_html_e( 'Custom body content', 'machete' ); ?></span></legend>
-<p><?php printf( __( 'Content is saved to <code>%s</code> and served using PHP.  Inclusion method varies, so no PHP code or shortcodes here.', 'machete' ), MACHETE_RELATIVE_DATA_PATH . 'body.html' ); ?></p>
+<p><?php printf( __( 'Content is saved to <code>%s</code> and served using PHP.  Inclusion method varies, so no PHP code or shortcodes here.', 'machete' ), esc_html( MACHETE_RELATIVE_DATA_PATH . 'body.html' ) ); ?></p>
 <p>
-<textarea name="alfonso_content" rows="8" cols="50" id="alfonso_content" class="large-text code"><?php if ( ! empty($machete_alfonso_content ) ) { echo esc_textarea( $machete_alfonso_content ); }  ?></textarea>
+<textarea name="alfonso_content" rows="8" cols="50" id="alfonso_content" class="large-text code"><?php echo esc_textarea( $machete_alfonso_content ); ?></textarea>
 </p>
 </fieldset></td>
 </tr>
 <tr>
 <th scope="row"><?php esc_html_e( 'Custom footer content', 'machete' ); ?></th>
 <td><fieldset><legend class="screen-reader-text"><span><?php esc_html_e( 'Custom footer content', 'machete' ); ?></span></legend>
-<p><label for="footer_content"><?php printf( __( 'This code is included when the <code>wp_footer</code> action is called, normally just before the closing <code>&lt;/body&gt;</code> label.<br>Content is saved to <code>%s</code> and served using PHP\'s <code>readfile()</code> function, so no PHP or shortcodes here.', 'machete' ), MACHETE_RELATIVE_DATA_PATH . 'header.html' ); ?></label></p>
+<p><label for="footer_content"><?php printf( __( 'This code is included when the <code>wp_footer</code> action is called, normally just before the closing <code>&lt;/body&gt;</code> label.<br>Content is saved to <code>%s</code> and served using PHP\'s <code>readfile()</code> function, so no PHP or shortcodes here.', 'machete' ), esc_html( MACHETE_RELATIVE_DATA_PATH . 'header.html' ) ); ?></label></p>
 <p>
-<textarea name="footer_content" rows="8" cols="50" id="footer_content" class="large-text code"><?php if (!empty($machete_footer_content)) echo esc_textarea($machete_footer_content)  ?></textarea>
+<textarea name="footer_content" rows="8" cols="50" id="footer_content" class="large-text code"><?php echo esc_textarea( $machete_footer_content );  ?></textarea>
 </p>
 </fieldset></td>
 </tr>

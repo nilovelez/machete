@@ -261,7 +261,7 @@ class MACHETE_COOKIES_MODULE extends MACHETE_MODULE {
 		(navigator.userAgent.indexOf("Googlebot") == -1)
 	)) {(function(){
 		var s = document.createElement('script'); s.type = 'text/javascript';
-		s.async = true; s.src = '<?php echo MACHETE_DATA_URL . $this->settings['cookie_filename']; ?>';
+		s.async = true; s.src = '<?php echo esc_url( MACHETE_DATA_URL . $this->settings['cookie_filename'] ); ?>';
 		var body = document.getElementsByTagName('body')[0];
 		body.appendChild(s);
 	})()}

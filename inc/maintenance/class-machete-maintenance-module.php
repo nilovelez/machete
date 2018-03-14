@@ -58,9 +58,13 @@ class MACHETE_MAINTENANCE_MODULE extends MACHETE_MODULE {
 			update_option( 'machete_' . $this->params['slug'] . '_settings', $this->default_settings, 'no' );
 		}
 
-		if ( isset( $_POST['machete-maintenance-saved'] ) ) {
+		if ( filter_input( INPUT_POST, 'machete-maintenance-saved' ) !== null ) {
 			check_admin_referer( 'machete_save_maintenance' );
-			$this->save_settings( $_POST );
+			$this->save_settings( filter_input_array( INPUT_POST, array(
+				'page_id'     => FILTER_VALIDATE_INT,
+				'page_status' => FILTER_DEFAULT,
+				'page_token'  => FILTER_DEFAULT,
+			) ) );
 		}
 
 		$this->preview_base_url = home_url( '/?mct_preview=' . wp_create_nonce( 'maintenance_preview_nonce' ) );
@@ -81,24 +85,25 @@ class MACHETE_MAINTENANCE_MODULE extends MACHETE_MODULE {
 		}
 	}
 
+	/**
+	 * Saves options to database
+	 *
+	 * @param array $options options array, normally $_POST.
+	 * @param bool  $silent prevent the function from generating admin notices.
+	 */
 	protected function save_settings( $options = array(), $silent = false ) {
 
-		/*
-		page_id: int
-		site_status: online | coming_soon | maintenance
-		token: string
-		*/
 		$settings = $this->read_settings();
 
-		if ( ! empty( $options['site_status'] ) && ( in_array( $options['site_status'], array( 'online', 'coming_soon', 'maintenance' ), true ) ) ) {
+		if ( in_array( $options['site_status'], array( 'online', 'coming_soon', 'maintenance' ), true ) ) {
 			$settings['site_status'] = $options ['site_status'];
 		}
 
-		if ( ! empty( $options['token'] ) ) {
+		if ( null !== $options['token'] ) {
 			$settings['token'] = sanitize_text_field( $options['token'] );
 		}
 
-		if ( ! empty( $options['page_id'] ) ) {
+		if ( null !== $options['page_id'] ) {
 			$settings['page_id'] = (int) sanitize_text_field( $options['page_id'] );
 			if ( empty( $options['page_id'] ) ) {
 				if ( ! $silent ) {
@@ -115,7 +120,7 @@ class MACHETE_MAINTENANCE_MODULE extends MACHETE_MODULE {
 			return true;
 		}
 
-		// option saved WITH autoload
+		// Option saved WITH autoload.
 		if ( update_option( 'machete_maintenance_settings', $settings, 'yes' ) ) {
 			$this->settings = $settings;
 			if ( ! $silent ) {

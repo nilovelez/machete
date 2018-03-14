@@ -79,6 +79,7 @@ if ( ! defined( 'MACHETE_ADMIN_INIT' ) ) {
 
 
 <script>
+(function($){
 
 	var cookie_bar_templates = [];
 	<?php
@@ -102,23 +103,9 @@ if ( ! defined( 'MACHETE_ADMIN_INIT' ) ) {
 
 	<?php } ?>
 
-(function($){
-
 	$(".bar-theme-radio").change( function(){
-		if( $(this).is(':checked') ){
-			//alert( $(this).val() );
-			render_bar_preview($(this).val());
-		}
+		render_bar_preview($(this).val());
 	});
-
-	$( "#warning_text" ).on( 'input', function() {
-		//console.log('change');
-		document.getElementById( 'machete_cookie_preview_warning' ).innerHTML = $( '#warning_text' ).val();
-	});
-	$( "#accept_text" ).on( 'input', function() {
-		document.getElementById( 'machete_cookie_preview_accept' ).innerHTML = $( '#accept_text' ).val();
-	});
-
 
 	var render_bar_preview = function( theme ) {
 		if ( ! theme ) return;
@@ -130,6 +117,10 @@ if ( ! defined( 'MACHETE_ADMIN_INIT' ) ) {
 		$( '#machete_cookie_preview_warning' ).html( $( '#warning_text' ).val() );
 		$( '#machete_cookie_preview_accept' ).html( $( '#accept_text' ).val() );
 	}
+
+	$( "#warning_text" ).on( 'input', function() { update_preview_text(); });
+	$( "#accept_text" ).on( 'input', function() { update_preview_text(); });
+
 
 	var container       = document.createElement( 'div' );
 	container.id        = 'machete_cookie_container';

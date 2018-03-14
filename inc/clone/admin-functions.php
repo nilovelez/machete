@@ -1,6 +1,6 @@
 <?php
 /**
- * Functions machete clone module functions only used in the front-end
+ * Functions machete clone module functions only used in the backend
  *
  * @package WordPress
  * @subpackage Machete
@@ -10,13 +10,13 @@ if ( ! defined( 'MACHETE_ADMIN_INIT' ) ) {
 	exit;
 }
 
-function machete_content_clone(){
+function machete_content_clone() {
 	global $wpdb;
-	if (! ( isset( $_GET['post']) || isset( $_POST['post'])  || ( isset($_REQUEST['action']) && 'machete_clone' == $_REQUEST['action'] ) ) ) {
-		wp_die('No post to duplicate has been supplied!');
+	if ( ! ( isset( $_GET['post']) || isset( $_POST['post'])  || ( isset($_REQUEST['action']) && 'machete_clone' == $_REQUEST['action'] ) ) ) {
+		wp_die( 'No post to duplicate has been supplied!' );
 	}
-	/*
-	 * id do Artigo/Página original
+	/**
+	 * Gets id do Artigo/Página original
 	 */
 	$post_id = ( isset( $_GET['post'] ) ? $_GET['post'] : $_POST['post'] );
 
@@ -104,7 +104,7 @@ function machete_clone_custom_button() {
 
 	if ( isset( $_GET['post'] ) ) {
 
-		$notify_url = wp_nonce_url( admin_url( "admin.php?action=machete_clone&amp;post=" . absint( $_GET['post'] ) ), 'machete_clone_' . $_GET['post'] );
+		$notify_url = wp_nonce_url( admin_url( 'admin.php?action=machete_clone&amp;post=' . absint( $_GET['post'] ) ), 'machete_clone_' . $_GET['post'] );
 
 		//$notify_url = 'admin.php?action=machete_clone&amp;post=' . $post->ID;
 		?>
