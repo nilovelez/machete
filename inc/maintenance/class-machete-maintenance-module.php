@@ -102,8 +102,10 @@ class MACHETE_MAINTENANCE_MODULE extends MACHETE_MODULE {
 		if ( null !== $options['token'] ) {
 			$settings['token'] = sanitize_text_field( $options['token'] );
 		}
-
-		if ( null !== $options['page_id'] ) {
+		if ( false === $options['page_id'] ) {
+			// Selected "use default content".
+			$settings['page_id'] = '';
+		} elseif ( null !== $options['page_id'] ) {
 			$settings['page_id'] = (int) sanitize_text_field( $options['page_id'] );
 			if ( empty( $options['page_id'] ) ) {
 				if ( ! $silent ) {

@@ -87,21 +87,21 @@ if ( false !== $settings ) {
 <tr>
 <th scope="row"><?php esc_html_e( 'Tracking Code', 'machete' ); ?></th>
 <td><fieldset><legend class="screen-reader-text"><span><?php esc_html_e( 'Tracking Code', 'machete' ); ?></span></legend>
-	<label><input name="tracking_format" value="standard" type="radio" <?php check( 'standard', $this->settings['tracking_format'], true ); ?>> <?php esc_html_e( 'Standard Google Analytics tracking code', 'machete' ); ?></label><br>
-	<label><input name="tracking_format" value="machete" type="radio" <?php check( 'machete', $this->settings['tracking_format'], true ); ?>> <acronym title="<?php esc_attr_e( 'Uses JavaScript to hide the tracking code from PageSpeed and GoogleBot', 'machete' ); ?>"><?php esc_html_e( 'PageSpeed-optimized tracking code', 'machete' ); ?><acronym></label><br>
-	<label><input name="tracking_format" value="none" type="radio" <?php check( 'none', $this->settings['tracking_format'], true ); ?>> <?php esc_html_e( 'No tracking code', 'machete' ); ?></label><br>
+	<label><input name="tracking_format" value="standard" type="radio" <?php checked( 'standard', $this->settings['tracking_format'], true ); ?>> <?php esc_html_e( 'Standard Google Analytics tracking code', 'machete' ); ?></label><br>
+	<label><input name="tracking_format" value="machete" type="radio" <?php checked( 'machete', $this->settings['tracking_format'], true ); ?>> <acronym title="<?php esc_attr_e( 'Uses JavaScript to hide the tracking code from PageSpeed and GoogleBot', 'machete' ); ?>"><?php esc_html_e( 'PageSpeed-optimized tracking code', 'machete' ); ?><acronym></label><br>
+	<label><input name="tracking_format" value="none" type="radio" <?php checked( 'none', $this->settings['tracking_format'], true ); ?>> <?php esc_html_e( 'No tracking code', 'machete' ); ?></label><br>
 </fieldset></td>
 </tr>
 <th scope="row"><?php esc_html_e( 'Track Contact Form 7', 'machete' ); ?></th>
 <td><fieldset><legend class="screen-reader-text"><span><?php esc_html_e( 'Anonymize user IPs', 'machete' ); ?></span></legend>
 	<?php // translators: %s: link to the plugin's directory page. ?>
-	<label><input name="track_wpcf7" value="1" type="checkbox" <?php check( '1', $this->settings['track_wpcf7'], true ); ?>> <?php sprintf( wp_kses( __( 'Launch a Google Analytics event whenever a visitor submits a <a href="%s">Contact Form 7</a> form.', 'machete' ), $allowed_description_tags ), 'https://wordpress.org/plugins/contact-form-7/' ); ?></label><br>
+	<label><input name="track_wpcf7" value="1" type="checkbox" <?php checked( '1', $this->settings['track_wpcf7'], true ); ?>> <?php printf( wp_kses( __( 'Launch a Google Analytics event whenever a visitor submits a <a href="%s">Contact Form 7</a> form.', 'machete' ), $allowed_description_tags ), 'https://wordpress.org/plugins/contact-form-7/' ); ?></label><br>
 </fieldset></td>
 </tr>
 <tr>
 <th scope="row"><?php esc_html_e( 'Anonymize user IPs', 'machete' ); ?></th>
 <td><fieldset><legend class="screen-reader-text"><span><?php esc_html_e( 'Anonymize user IPs', 'machete' ); ?></span></legend>
-	<label><input name="tacking_anonymize" value="1" type="checkbox" <?php check( '1', $this->settings['tacking_anonymize'], true ); ?>> <?php esc_html_e( 'Check to anonymize visitor IPs. Required in some countries.', 'machete' ); ?></label><br>
+	<label><input name="tacking_anonymize" value="1" type="checkbox" <?php checked( '1', $this->settings['tacking_anonymize'], true ); ?>> <?php esc_html_e( 'Check to anonymize visitor IPs. Required in some countries.', 'machete' ); ?></label><br>
 </fieldset></td>
 </tr>
 
