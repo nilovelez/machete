@@ -16,7 +16,7 @@ if ( $machete_maintenance_settings ) {
 		( 'online' !== $machete_maintenance_settings['site_status'] ) ) {
 
 		/**
-		 * Enqeues Maintenance status admin bar styles
+		 * Enqueues Maintenance status admin bar styles
 		 */
 		function machete_admin_bar_scripts() {
 			wp_register_style(
