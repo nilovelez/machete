@@ -190,4 +190,83 @@ abstract class MACHETE_MODULE {
 			array_diff( $a, $b ) === array_diff( $b, $a )
 		);
 	}
+
+	/* filesystem */
+
+	/**
+	 * Initialises wp_filesystem and gets access credentials.
+	 *
+	 * @return bool false if not correctly initialised
+	 */
+	protected function init_filesystem() {
+		global $machete;
+		$access_type = get_filesystem_method();
+		if ( 'direct' !== $access_type ) {
+			$machete->notice( __( 'This function needs direct access to the filesystem.', 'machete' ), 'error' );
+			return false;
+		} else {
+			$creds = request_filesystem_credentials( site_url() . '/wp-admin/', '', false, false, array() );
+			if ( ! WP_Filesystem( $creds ) ) {
+				/* any problems and we exit */
+				$machete->notice( __( 'There was a problem accessing the filesystem. Check your permissions.', 'machete' ), 'error' );
+				return false;
+			}
+			return true;
+		}
+	}
+	/**
+	 * Abstraction layer over $wp_filesystem->put-contents() function.
+	 *
+	 * @param string $file     Remote path to the file where to write the data.
+	 * @param string $contents The data to write.
+	 * @return bool False on failure.
+	 */
+	protected function put_contents( $file, $contents ) {
+		if ( ! $this->init_filesystem() ) {
+			return false;
+		}
+		global $wp_filesystem;
+		return $wp_filesystem->put_contents( $file, $contents );
+	}
+	/**
+	 * Read entire file into a string.
+	 *
+	 * @since 2.5.0
+	 * @abstract
+	 *
+	 * @param string $file Name of the file to read.
+	 * @return mixed|bool Returns the read data or false on failure.
+	 */
+	protected function get_contents( $file ) {
+		if ( ! $this->init_filesystem() ) {
+			return false;
+		}
+		global $wp_filesystem;
+		return $wp_filesystem->get_contents( $file );
+	}
+	/**
+	 * Delete a file.
+	 *
+	 * @param string $file      Path to the file.
+	 * @return bool True if the file was deleted, false on failure.
+	 */
+	public function delete( $file ) {
+		if ( ! $this->init_filesystem() ) {
+			return false;
+		}
+		global $wp_filesystem;
+		return $wp_filesystem->delete( $file );
+	}
+	/**
+	 * File pass-through
+	 *
+	 * @param string $file      Path to the file.
+	 * @return bool false on failure.
+	 */
+	private function readfile( $file ) {
+		if ( ! file_exists( $file ) ) {
+			return false;
+		}
+		readfile( $file );
+	}
 }
