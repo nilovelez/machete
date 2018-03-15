@@ -9,73 +9,79 @@
 if ( ! defined( 'MACHETE_ADMIN_INIT' ) ) {
 	exit;
 }
-
+/**
+ * Main post/page clone function
+ */
 function machete_content_clone() {
 	global $wpdb;
-	if ( ! ( isset( $_GET['post']) || isset( $_POST['post'])  || ( isset($_REQUEST['action']) && 'machete_clone' == $_REQUEST['action'] ) ) ) {
-		wp_die( 'No post to duplicate has been supplied!' );
+
+	// Gets original post id.
+	$post_id = filter_input( INPUT_GET, 'post' );
+	if ( null === $post_id ) {
+		$post_id = filter_input( INPUT_POST, 'post' );
+		if ( null === $post_id ) {
+			wp_die( 'No post to duplicate has been supplied!' );
+		}
 	}
-	/**
-	 * Gets id do Artigo/Página original
-	 */
-	$post_id = ( isset( $_GET['post'] ) ? $_GET['post'] : $_POST['post'] );
 
 	check_admin_referer( 'machete_clone_' . $post_id );
 
-	// gets original post
+	// Gets original post.
 	$post = get_post( $post_id );
+	if ( null === $post ) {
+		wp_die( 'Couldn\'t find any post/page with this id: ' . esc_html( $post_id ) );
+	}
 
-	// sets current user as the author of the cloned post
+	// Sets current user as the author of the cloned post.
 	$current_user    = wp_get_current_user();
 	$new_post_author = $current_user->ID;
 
-	// copy the contents from the post
-	if ( isset( $post ) && $post != null ) {
+	// Copies the contents from the post.
+	$args = array(
+		'comment_status' => $post->comment_status,
+		'ping_status'    => $post->ping_status,
+		'post_author'    => $new_post_author,
+		'post_content'   => $post->post_content,
+		'post_excerpt'   => $post->post_excerpt,
+		'post_name'      => $post->post_name,
+		'post_parent'    => $post->post_parent,
+		'post_password'  => $post->post_password,
+		'post_status'    => 'draft',
+		'post_title'     => $post->post_title . __( '-copy', 'machete' ),
+		'post_type'      => $post->post_type,
+		'to_ping'        => $post->to_ping,
+		'menu_order'     => $post->menu_order,
+	);
 
-		$args = array(
-			'comment_status' => $post->comment_status,
-			'ping_status'    => $post->ping_status,
-			'post_author'    => $new_post_author,
-			'post_content'   => $post->post_content,
-			'post_excerpt'   => $post->post_excerpt,
-			'post_name'      => $post->post_name,
-			'post_parent'    => $post->post_parent,
-			'post_password'  => $post->post_password,
-			'post_status'    => 'draft',
-			'post_title'     => $post->post_title . __( '-copy', 'machete' ),
-			'post_type'      => $post->post_type,
-			'to_ping'        => $post->to_ping,
-			'menu_order'     => $post->menu_order,
-		);
+	// Inserts the new post via wp_insert_post().
+	$new_post_id = wp_insert_post( wp_slash( $args ) );
 
-		// Inserts the new post via wp_insert_post().
-		$new_post_id = wp_insert_post( wp_slash( $args ) );
-
-		// Gets the taxonomies from the post to clone.
-		$taxonomies = get_object_taxonomies( $post->post_type ); // Returns a taxonomy array.
-		foreach ( $taxonomies as $taxonomy ) {
-			$post_terms = wp_get_object_terms( $post_id, $taxonomy, array( 'fields' => 'slugs' ) );
-			wp_set_object_terms( $new_post_id, $post_terms, $taxonomy, false );
-		}
-
-		$post_meta_infos = $wpdb->get_results( "SELECT meta_key, meta_value FROM $wpdb->postmeta WHERE post_id=$post_id" );
-		if ( count( $post_meta_infos ) > 0 ) {
-			$sql_query = "INSERT INTO $wpdb->postmeta (post_id, meta_key, meta_value) ";
-			foreach ( $post_meta_infos as $meta_info ) {
-				$meta_key        = $meta_info->meta_key;
-				$meta_value      = addslashes( $meta_info->meta_value );
-				$sql_query_sel[] = "SELECT $new_post_id, '$meta_key', '$meta_value'";
-			}
-			$sql_query .= implode( ' UNION ALL ', $sql_query_sel );
-			$wpdb->query( $sql_query );
-		}
-
-		// redirect to the post editor.
-		wp_redirect( admin_url( 'post.php?action=edit&post=' . $new_post_id ) );
-		exit;
-	} else {
-		wp_die( 'Couldn\'t find any post/page with this id: ' . $post_id );
+	// Gets the taxonomies from the post to clone.
+	$taxonomies = get_object_taxonomies( $post->post_type ); // Returns a taxonomy array.
+	foreach ( $taxonomies as $taxonomy ) {
+		$post_terms = wp_get_object_terms( $post_id, $taxonomy, array( 'fields' => 'slugs' ) );
+		wp_set_object_terms( $new_post_id, $post_terms, $taxonomy, false );
 	}
+
+	// Gets the post metas from the old post and adds them to the new.
+	$post_metas = get_post_meta( $post_id );
+	foreach ( $post_metas as $post_meta => $data ) {
+		// Ignore edit flag metas.
+		if ( in_array( $post_meta, array( '_edit_lock', '_edit_last' ), true ) ) {
+			continue;
+		}
+		// Ignore oembed cache time metas.
+		if ( '_oembed_time_' === substr( $post_meta, 0, 13 ) ) {
+			continue;
+		}
+
+		add_post_meta( $new_post_id, $post_meta, $data );
+	}
+
+	// redirect to the post editor.
+	wp_safe_redirect( admin_url( 'post.php?action=edit&post=' . $new_post_id ) );
+	exit;
+
 }
 add_action( 'admin_action_machete_clone', 'machete_content_clone' );
 
@@ -102,11 +108,12 @@ function machete_clone_custom_button() {
 		return;
 	}
 
-	if ( isset( $_GET['post'] ) ) {
+	$post_id = filter_input( INPUT_GET, 'post' );
 
-		$notify_url = wp_nonce_url( admin_url( 'admin.php?action=machete_clone&amp;post=' . absint( $_GET['post'] ) ), 'machete_clone_' . $_GET['post'] );
+	if ( null !== $post_id ) {
 
-		//$notify_url = 'admin.php?action=machete_clone&amp;post=' . $post->ID;
+		$notify_url = wp_nonce_url( admin_url( 'admin.php?action=machete_clone&amp;post=' . absint( $post_id ) ), 'machete_clone_' . $post_id );
+
 		?>
 		<div id="duplicate-action"><a class="submitduplicate duplication" href="<?php echo esc_url( $notify_url ); ?>"><?php esc_html_e( 'Copy to a new draft', 'machete' ); ?></a></div>
 		<?php
@@ -114,25 +121,8 @@ function machete_clone_custom_button() {
 
 }
 
-
-// Admin bar
-function machete_clone_admin_bar_link() {
-	if ( ! is_admin_bar_showing() ) {
-		return;
-	}
-	global $wp_admin_bar;
-
-	$wp_admin_bar->add_menu( array(
-		'id'    => 'new_draft',
-		'title' => esc_attr__( 'Copy to a new draft', 'machete' ),
-		'href'  => '#',
-	) );
-}
-
-
 if ( current_user_can( 'edit_posts' ) ) {
 	add_filter( 'post_row_actions', 'content_clone_link', 10, 2 ); // Posts.
 	add_filter( 'page_row_actions', 'content_clone_link', 10, 2 ); // Pages.
 	add_action( 'post_submitbox_start', 'machete_clone_custom_button' );
-	//add_action( 'wp_before_admin_bar_render', 'machete_clone_admin_bar_link');
 }
