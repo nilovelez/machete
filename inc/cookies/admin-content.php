@@ -89,7 +89,7 @@ if ( ! defined( 'MACHETE_ADMIN_INIT' ) ) {
 	);
 
 	foreach ( $this->themes as $slug => $params ) {
-		$params['html'] = file_get_contents( $params['template'] );
+		$params['html'] = $this->get_contents( $params['template'] );
 
 		$machete_cookie_replaces['{{extra_css}}'] = $this->themes[ $slug ]['extra_css'];
 

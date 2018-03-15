@@ -31,9 +31,11 @@ define( 'MACHETE_DATA_PATH', $machete_get_upload_dir['basedir'] . '/machete/' );
 define( 'MACHETE_RELATIVE_DATA_PATH', substr( MACHETE_DATA_PATH, strlen( ABSPATH ) - 1 ) );
 define( 'MACHETE_DATA_URL', $machete_get_upload_dir['baseurl'] . '/machete/' );
 
-register_activation_hook( __FILE__, function() {
-	add_option( 'machete_activation_welcome', 'pending' );
-});
+register_activation_hook(
+	__FILE__, function() {
+		add_option( 'machete_activation_welcome', 'pending' );
+	}
+);
 
 /**
  * Function to load the plugin's textdomain
@@ -72,14 +74,16 @@ if ( defined( 'MACHETE_POWERTOOLS_INIT' ) ) {
 }
 
 // Main init.
-add_action( 'init', function() {
-	global $machete;
+add_action(
+	'init', function() {
+		global $machete;
 
-	if ( ! is_admin() ) {
-		define( 'MACHETE_FRONT_INIT', true );
-		require_once 'machete-frontend.php';
-	} else {
-		define( 'MACHETE_ADMIN_INIT', true );
-		require_once 'machete-admin.php';
+		if ( ! is_admin() ) {
+			define( 'MACHETE_FRONT_INIT', true );
+			require_once 'machete-frontend.php';
+		} else {
+			define( 'MACHETE_ADMIN_INIT', true );
+			require_once 'machete-admin.php';
+		}
 	}
-} );
+);

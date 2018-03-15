@@ -65,10 +65,12 @@ class MACHETE_COOKIES_MODULE extends MACHETE_MODULE {
 	 */
 	public function admin() {
 		$this->read_settings();
-		if ( filter_input( INPUT_POST, 'machete-cookies-saved' ) !== null ) {
-			check_admin_referer( 'machete_save_cookies' );
-			$this->save_settings( filter_input_array( INPUT_POST ) );
-		}
+		add_action('admin_init', function() {
+			if ( filter_input( INPUT_POST, 'machete-cookies-saved' ) !== null ) {
+				check_admin_referer( 'machete_save_cookies' );
+				$this->save_settings( filter_input_array( INPUT_POST ) );
+			}
+		});
 		add_action( 'admin_menu', array( $this, 'register_sub_menu' ) );
 	}
 	/**
@@ -89,15 +91,8 @@ class MACHETE_COOKIES_MODULE extends MACHETE_MODULE {
 	 */
 	protected function save_settings( $options = array(), $silent = false ) {
 
-		/**
-		bar_status: disabled | enabled
-		warning_text
-		accept_text
-		bar_theme: light | dark
-
 		// $options : values from _POST or import script
 		// $settings : values to save
-		*/
 		$settings      = $this->read_settings();
 		$html_replaces = array();
 
@@ -111,7 +106,8 @@ class MACHETE_COOKIES_MODULE extends MACHETE_MODULE {
 			}
 		}
 
-		if ( ! $cookies_bar_js = @file_get_contents( $this->path . 'templates/cookies_bar_js.min.js' ) ) {
+		$cookies_bar_js = $this->get_contents( $this->path . 'templates/cookies_bar_js.min.js' );
+		if ( false === $cookies_bar_js ) {
 			if ( ! $silent ) {
 				// translators: %s path to template file.
 				$this->notice( sprintf( __( 'Error reading cookie bar template %s', 'machete' ), $this->path . 'templates/cookies_bar_js.js' ), 'error' );
@@ -123,7 +119,8 @@ class MACHETE_COOKIES_MODULE extends MACHETE_MODULE {
 			$settings['bar_theme'] = $options['bar_theme'];
 		}
 
-		if ( ! $cookies_bar_html = @file_get_contents( $this->themes[ $options['bar_theme'] ]['template'] ) ) {
+		$cookies_bar_html = $this->get_contents( $this->themes[ $options['bar_theme'] ]['template'] );
+		if ( false === $cookies_bar_html ) {
 			if ( ! $silent ) {
 				// translators: %s path to template file.
 				$this->notice( sprintf( __( 'Error reading cookie bar template %s', 'machete' ), $cookies_bar_themes[ $options['bar_theme'] ]['template'] ), 'error' );
@@ -173,7 +170,7 @@ class MACHETE_COOKIES_MODULE extends MACHETE_MODULE {
 		$settings['cookie_filename'] = 'cookies_' . strtolower( substr( MD5( time() ), 0, 8 ) ) . '.js';
 
 		if ( 'enabled' === $settings['bar_status'] ) {
-			if ( ! @file_put_contents( MACHETE_DATA_PATH . $settings['cookie_filename'], $cookies_bar_js ) ) {
+			if ( ! $this->put_contents( MACHETE_DATA_PATH . $settings['cookie_filename'], $cookies_bar_js ) ) {
 				if ( ! $silent ) {
 					// translators: %s path to machete data dir.
 					$this->notice( sprintf( __( 'Error writing static javascript file to %s please check file permissions. Aborting to prevent inconsistent state.', 'machete' ), MACHETE_RELATIVE_DATA_PATH ), 'error' );
@@ -184,7 +181,7 @@ class MACHETE_COOKIES_MODULE extends MACHETE_MODULE {
 
 		// delete old .js file and generate a new one to prevent caching.
 		if ( ! empty( $this->settings['cookie_filename'] ) && file_exists( MACHETE_DATA_PATH . $this->settings['cookie_filename'] ) ) {
-			if ( ! unlink( MACHETE_DATA_PATH . $this->settings['cookie_filename'] ) ) {
+			if ( ! $this->delete( MACHETE_DATA_PATH . $this->settings['cookie_filename'] ) ) {
 				if ( ! $silent ) {
 					// translators: %s path to machete data dir.
 					$this->notice( sprintf( __( 'Could not delete old javascript file from %s please check file permissions . Aborting to prevent inconsistent state.', 'machete' ), MACHETE_RELATIVE_DATA_PATH ), 'warning' );
@@ -236,7 +233,7 @@ class MACHETE_COOKIES_MODULE extends MACHETE_MODULE {
 		}
 
 		echo '<script>';
-		readfile( MACHETE_DATA_URL . $this->settings['cookie_filename'] );
+		require MACHETE_DATA_URL . $this->settings['cookie_filename'];
 		echo '</script>';
 
 	}
@@ -265,7 +262,8 @@ class MACHETE_COOKIES_MODULE extends MACHETE_MODULE {
 		var body = document.getElementsByTagName('body')[0];
 		body.appendChild(s);
 	})()}
-	</script><?php
+	</script>
+	<?php
 	}
 }
 $machete->modules['cookies'] = new MACHETE_COOKIES_MODULE();

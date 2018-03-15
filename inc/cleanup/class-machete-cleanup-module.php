@@ -194,7 +194,7 @@ class MACHETE_CLEANUP_MODULE extends MACHETE_MODULE {
 
 		if ( count( $options ) > 0 ) {
 			$num_options = count( $options );
-			for ( $i = 0; $i < $n; $i++ ) {
+			for ( $i = 0; $i < $num_options; $i++ ) {
 				$options[ $i ] = sanitize_text_field( $options[ $i ] );
 			}
 			if ( $this->is_equal_array( $this->settings, $options ) ) {

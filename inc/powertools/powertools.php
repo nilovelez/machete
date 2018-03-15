@@ -32,11 +32,16 @@ if ( in_array( 'widget_shortcodes', $this->settings, true ) && ! is_admin() ) {
 if ( in_array( 'widget_oembed', $this->settings, true ) ) {
 	global $wp_embed;
 	add_filter( 'widget_text', array( $wp_embed, 'run_shortcode' ), 8 );
-	add_filter( 'widget_text', array( $wp_embed, 'autoembed'), 8 );
+	add_filter( 'widget_text', array( $wp_embed, 'autoembed' ), 8 );
 }
 
 // enable rss thumbnails.
 if ( in_array( 'rss_thumbnails', $this->settings, true ) && ! is_admin() ) {
+	/**
+	 * Adds the featured image before the content.
+	 *
+	 * @param string $content post content.
+	 */
 	function machete_add_rss_thumbnail( $content ) {
 		global $post;
 		if ( has_post_thumbnail( $post->ID ) ) {
@@ -80,7 +85,7 @@ if ( in_array( 'move_scripts_footer', $this->settings, true ) ) {
 	} );
 }
 
-//Defer all JS.
+// Defer all JS.
 if ( in_array( 'defer_all_scripts', $this->settings, true ) ) {
 	add_filter( 'script_loader_tag', function( $tag ) {
 		return str_replace( ' src', ' defer="defer" src', $tag );
@@ -89,9 +94,17 @@ if ( in_array( 'defer_all_scripts', $this->settings, true ) ) {
 
 // disable RSS feeds.
 if ( in_array( 'disable_feeds', $this->settings, true ) && ! is_admin() ) {
+	/**
+	 * Kills the execution with a informative error
+	 */
 	function machete_disable_feed() {
+		$link_only = array(
+			'a' => array(
+				'href' => array(),
+			),
+		);
 		// translators: %s: homepage URL.
-		wp_die( sprintf( __( 'No feed available, please visit our <a href="%s">homepage</a>!', 'machete' ), esc_url( get_bloginfo( 'url' ) ) ) );
+		wp_die( sprintf( wp_kses( __( 'No feed available, please visit our <a href="%s">homepage</a>!', 'machete' ), $link_only ), esc_url( get_bloginfo( 'url' ) ) ) );
 	}
 
 	add_action( 'do_feed', 'machete_disable_feed', 1 );

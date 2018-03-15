@@ -27,8 +27,7 @@ class MACHETE_MAINTENANCE_PAGE {
 	public function __construct( $settings ) {
 
 		$this->settings = $settings;
-		//extract( $this->settings );
-
+		
 		$mct_preview = filter_input( INPUT_GET, 'mct_preview' );
 
 		if (
@@ -51,8 +50,6 @@ class MACHETE_MAINTENANCE_PAGE {
 	 * Used to do the actual rendering of the maintenance page.
 	 */
 	public function render_comingsoon_page() {
-
-		//extract($this->settings);
 
 		// Check if Preview.
 		$is_preview = false;

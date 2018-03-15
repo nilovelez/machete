@@ -139,9 +139,13 @@ class MACHETE {
 			if ( update_option( 'machete_disabled_modules', $disabled_modules ) ) {
 				$this->modules[ $module ]->params['is_active'] = false;
 				if ( ! $silent ) {
-					/* Translators: module title */
-					$this->notice( sprintf( __( 'Module %s disabled succesfully', 'machete' ),
-					$this->modules[ $module ]->params['title'] ), 'success' );
+					$this->notice(
+						sprintf(
+							/* Translators: module title */
+							__( 'Module %s disabled succesfully', 'machete' ),
+							$this->modules[ $module ]->params['title']
+						), 'success'
+					);
 				}
 				return true;
 			} else {
@@ -171,9 +175,13 @@ class MACHETE {
 			if ( update_option( 'machete_disabled_modules', $disabled_modules ) ) {
 				$this->modules[ $module ]->params['is_active'] = true;
 				if ( ! $silent ) {
-					/* Translators: module title */
-					$this->notice(sprintf( __( 'Module %s enabled succesfully', 'machete' ),
-					$this->modules[ $module ]->params['title'] ), 'success');
+					$this->notice(
+						sprintf(
+							/* Translators: module title */
+							__( 'Module %s enabled succesfully', 'machete' ),
+							$this->modules[ $module ]->params['title']
+						), 'success'
+					);
 				}
 				return true;
 
