@@ -62,8 +62,8 @@ class MACHETE_MAINTENANCE_MODULE extends MACHETE_MODULE {
 			check_admin_referer( 'machete_save_maintenance' );
 			$this->save_settings( filter_input_array( INPUT_POST, array(
 				'page_id'     => FILTER_VALIDATE_INT,
-				'page_status' => FILTER_DEFAULT,
-				'page_token'  => FILTER_DEFAULT,
+				'site_status' => FILTER_DEFAULT,
+				'token'  => FILTER_DEFAULT,
 			) ) );
 		}
 

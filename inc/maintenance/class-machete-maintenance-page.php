@@ -27,7 +27,7 @@ class MACHETE_MAINTENANCE_PAGE {
 	public function __construct( $settings ) {
 
 		$this->settings = $settings;
-		
+
 		$mct_preview = filter_input( INPUT_GET, 'mct_preview' );
 
 		if (
@@ -73,7 +73,7 @@ class MACHETE_MAINTENANCE_PAGE {
 		}
 
 		$mct_token  = filter_input( INPUT_GET, 'mct_token' );
-		$mct_cookie = filter_input( INPUT_COOKIE, 'mct_token' );
+		$mct_cookie = filter_input( INPUT_COOKIE, 'mct_cookie' );
 
 		if ( ( 'logout' === $mct_token ) && ( null !== $mct_cookie ) ) {
 			$mct_cookie = null;
@@ -107,7 +107,13 @@ class MACHETE_MAINTENANCE_PAGE {
 			);
 		}
 
-		$page_id = filter_input( INPUT_GET, 'mct_page_id', FILTER_VALIDATE_INT );
+		$page_id = $this->settings['page_id'];
+		if ( $is_preview ) {
+			$preview_page_id = filter_input( INPUT_GET, 'mct_page_id', FILTER_VALIDATE_INT );
+			if ( null !== $preview_page_id ) {
+				$page_id = $preview_page_id;
+			}
+		}
 
 		if ( null !== $page_id ) {
 			$page = get_post( $page_id );
