@@ -58,12 +58,12 @@ class MACHETE_MAINTENANCE_MODULE extends MACHETE_MODULE {
 			update_option( 'machete_' . $this->params['slug'] . '_settings', $this->default_settings, 'no' );
 		}
 
-		if ( filter_input( INPUT_POST, 'machete-maintenance-saved' ) !== null ) {
+		if ( null !== filter_input( INPUT_POST, 'machete-maintenance-saved' ) ) {
 			check_admin_referer( 'machete_save_maintenance' );
 			$this->save_settings( filter_input_array( INPUT_POST, array(
 				'page_id'     => FILTER_VALIDATE_INT,
 				'site_status' => FILTER_DEFAULT,
-				'token'  => FILTER_DEFAULT,
+				'token'       => FILTER_DEFAULT,
 			) ) );
 		}
 

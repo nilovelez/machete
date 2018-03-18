@@ -113,7 +113,7 @@ class MACHETE_CLEANUP_MODULE extends MACHETE_MODULE {
 		$this->tweaks_array = array(
 			'json_api'       => array(
 				'title'       => __( 'JSON API', 'machete' ),
-				'description' => __( 'Disable Json API and remove link from header. Use with care.', 'machete' ) . ' <br><span style="color: red">' . __( 'The video widget added in WordPress 4.8 needs the JSON API to work', 'machete' ) . '</span>',
+				'description' => __( 'Disable Json API and remove link from header. Use with care.', 'machete' ) . ' <br><span style="color: #d94f4f">' . __( 'The video widget added in WordPress 4.8 needs the JSON API to work', 'machete' ) . '</span>',
 			),
 			'xmlrpc'         => array(
 				'title'       => __( 'XML-RPC', 'machete' ),
@@ -121,7 +121,7 @@ class MACHETE_CLEANUP_MODULE extends MACHETE_MODULE {
 			),
 			'jquery-migrate' => array(
 				'title'       => __( 'remove jQuery-migrate', 'machete' ),
-				'description' => __( 'jQuery-migrate provides diagnostics that can simplify upgrading to new versions of jQuery, you can safely disable it.', 'machete' ) . ' <br><span style="color: red">' . __( 'May break some themes and plugins that depend on legacy code.', 'machete' ) . '</span>',
+				'description' => __( 'jQuery-migrate provides diagnostics that can simplify upgrading to new versions of jQuery, you can safely disable it.', 'machete' ) . ' <br><span style="color: #d94f4f">' . __( 'May break some themes and plugins that depend on legacy code.', 'machete' ) . '</span>',
 			),
 			'oembed_scripts' => array( // @fpuente addons
 				'title'       => __( 'Remove oEmbed Scripts', 'machete' ),
@@ -129,7 +129,7 @@ class MACHETE_CLEANUP_MODULE extends MACHETE_MODULE {
 			),
 			'wpcf7_refill'   => array(
 				'title'       => __( 'Remove CF7 refill', 'machete' ),
-				'description' => __( 'Disables the Contact Form 7 refill script. Saves one hit to wp-ajax.php per pageview on cached sites', 'machete' ) . ' <br><span style="color: red">' . __( 'Activate only if you are not using the reCAPTCHA Contact Form 7 field', 'machete' ) . '</span>',
+				'description' => __( 'Disables the Contact Form 7 refill script. Saves one hit to wp-ajax.php per pageview on cached sites', 'machete' ) . ' <br><span style="color: #d94f4f">' . __( 'Activate only if you are not using the reCAPTCHA Contact Form 7 field', 'machete' ) . '</span>',
 			),
 			'jpeg_quality'   => array(
 				'title'       => __( 'Reduce JPEG quality', 'machete' ),

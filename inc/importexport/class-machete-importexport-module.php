@@ -26,14 +26,8 @@ class MACHETE_IMPORTEXPORT_MODULE extends MACHETE_MODULE {
 		) );
 	}
 
-	protected $checked_modules      = array();
-	protected $exportable_modules   = array();
-	protected $uploaded_backup_data = array();
-
-	protected $import_log = '';
-
 	/**
-	 * Executes code related to the front-end.
+	 * This modules has no front-end functions
 	 */
 	public function frontend() {}
 
@@ -59,27 +53,29 @@ class MACHETE_IMPORTEXPORT_MODULE extends MACHETE_MODULE {
 			);
 
 		}
-		if ( filter_input( INPUT_POST, 'machete-importexport-export' ) !== null ) {
+		add_action('admin_init', function() {
+			if ( filter_input( INPUT_POST, 'machete-importexport-export' ) !== null ) {
 
-			check_admin_referer( 'machete_importexport_export' );
+				check_admin_referer( 'machete_importexport_export' );
 
-			$this->checked_modules = filter_input( INPUT_POST, 'moduleChecked', FILTER_DEFAULT, FILTER_FORCE_ARRAY );
+				$this->checked_modules = filter_input( INPUT_POST, 'moduleChecked', FILTER_DEFAULT, FILTER_FORCE_ARRAY );
 
-			if ( count( $this->checked_modules ) > 0 ) {
-				$export_file     = $this->export();
-				$export_filename = 'machete_backup_' . strtolower( date( 'jMY' ) ) . '.json';
+				if ( count( $this->checked_modules ) > 0 ) {
+					$export_file     = $this->export();
+					$export_filename = 'machete_backup_' . strtolower( date( 'jMY' ) ) . '.json';
 
-				header( 'Content-disposition: attachment; filename=' . $export_filename );
-				header( 'Content-Type: application/json' );
-				header( 'Pragma: no-cache' );
-				echo $export_file;
-				exit();
+					header( 'Content-disposition: attachment; filename=' . $export_filename );
+					header( 'Content-Type: application/json' );
+					header( 'Pragma: no-cache' );
+					echo $export_file;
+					exit();
+				}
 			}
-		}
-		if ( filter_input( INPUT_POST, 'machete-importexport-import' ) !== null ) {
-			check_admin_referer( 'machete_importexport_import' );
-			$this->import();
-		}
+			if ( filter_input( INPUT_POST, 'machete-importexport-import' ) !== null ) {
+				check_admin_referer( 'machete_importexport_import' );
+				$this->import();
+			}
+		});
 
 		// ToDo: check $this->checked_modules for actual status.
 		$this->all_exportable_modules_checked = true;
@@ -144,6 +140,7 @@ class MACHETE_IMPORTEXPORT_MODULE extends MACHETE_MODULE {
 			return false;
 		}
 
+		$this->import_log = '';
 		foreach ( $this->uploaded_backup_data as $module => $module_data ) {
 
 			if ( ! array_key_exists( $module, $machete->modules ) ) {
@@ -154,7 +151,7 @@ class MACHETE_IMPORTEXPORT_MODULE extends MACHETE_MODULE {
 			$this->import_log .= "===============================\n";
 
 			// manage module activation/deactivation.
-			if ( array_key_exists( 'is_active', $module_data, true ) && is_bool( $module_data['is_active'] ) && ( 'powertools' !== $module ) ) {
+			if ( array_key_exists( 'is_active', $module_data ) && is_bool( $module_data['is_active'] ) && ( 'powertools' !== $module ) ) {
 				if ( $module_data['is_active'] ) {
 					if ( $machete->manage_modules( $module, 'activate', true ) ) {
 						$this->import_log .= __( 'Module activated succesfully' ) . "\n";
@@ -166,9 +163,10 @@ class MACHETE_IMPORTEXPORT_MODULE extends MACHETE_MODULE {
 				}
 			}
 
-			if ( array_key_exists( 'settings', $module_data, true ) &&
-				( count( $module_data['settings'] > 0 ) ) &&
-				$machete->modules[ $module ]->params['has_config']
+			if ( array_key_exists( 'settings', $module_data ) &&
+				is_array( $module_data['settings'] ) &&
+				$machete->modules[ $module ]->params['has_config'] &&
+				( count( $module_data['settings'] ) > 0 )
 				) {
 
 				$this->import_log .= var_export( $module_data['settings'], true ) . "\n";

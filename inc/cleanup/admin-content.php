@@ -113,7 +113,7 @@ $allowed_description_tags = array(
 
 		<p><?php esc_html_e( 'Options in this section have the most impact on WordPress performance, but also the most potential of screwing things up.', 'machete' ); ?></p>
 
-		<table class="wp-list-table widefat fixed striped posts machete-options-table machete-optimize-table">
+		<table class="wp-list-table widefat fixed striped posts machete-options-table machete-tweaks-table">
 		<thead>
 			<tr>
 				<td class="manage-column column-cb check-column " ><input type="checkbox" name="check_all" id="machete_cleanup_checkall_fld" <?php checked( true, $this->all_tweaks_checked, true ); ?>></td>

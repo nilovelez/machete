@@ -238,11 +238,22 @@ abstract class MACHETE_MODULE {
 	 * @return mixed|bool Returns the read data or false on failure.
 	 */
 	protected function get_contents( $file ) {
-		if ( ! $this->init_filesystem() ) {
-			return false;
+		if ( is_admin() ) {
+			// WP_filesystem is only available at the back-end.
+			if ( ! $this->init_filesystem() ) {
+				return false;
+			}
+			global $wp_filesystem;
+			return $wp_filesystem->get_contents( $file );
+		} else {
+			// fallback method for use at the front-end.
+			if ( ! file_exists( $file ) ) {
+				return false;
+			}
+			ob_start();
+			require $file;
+			return ob_get_clean();
 		}
-		global $wp_filesystem;
-		return $wp_filesystem->get_contents( $file );
 	}
 	/**
 	 * Delete a file.

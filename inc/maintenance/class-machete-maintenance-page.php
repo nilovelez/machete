@@ -146,18 +146,18 @@ $this->readfile( MACHETE_BASE_PATH . 'css/maintenance-style.css' );
 echo '</style>';
 
 $this->readfile( MACHETE_DATA_PATH . 'header.html' );
-//wp_head();
+// wp_head not needed.
 ?>
 </head><body id="maintenance_page">
 
 		<?php $this->readfile( MACHETE_DATA_PATH . 'body.html' ); ?>
 		<div id="content" class="<?php echo esc_attr( $html_content['content_class'] ); ?>">
-		<?php echo $html_content['body']; ?>
+		<?php echo wp_kses_post( force_balance_tags( $html_content['body'] ) ); ?>
 		</div>
 
 		<?php $this->readfile( MACHETE_DATA_PATH . 'footer.html' ); ?>
 
-		<?php //wp_footer(); ?>
+		<?php // wp_footer not needed. ?>
 		</body></html>
 		<?php
 		exit();

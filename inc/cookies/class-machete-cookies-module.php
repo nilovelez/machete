@@ -135,14 +135,12 @@ class MACHETE_COOKIES_MODULE extends MACHETE_MODULE {
 			$settings['bar_status'] = 'enabled';
 		}
 
-		$options['warning_text'] = trim( $options['warning_text'] );
+		$options['warning_text'] = wp_kses_post( force_balance_tags( $options['warning_text'] ) );
 		if ( empty( $options['warning_text'] ) ) {
 			if ( ! $silent ) {
 				$this->notice( __( 'Cookie warning text can\'t be blank', 'machete' ), 'warning' );
 			}
 			return false;
-		} else {
-			$options['warning_text'] = wptexturize( $options['warning_text'] );
 		}
 
 		$html_replaces['{{warning_text}}'] = $options['warning_text'];

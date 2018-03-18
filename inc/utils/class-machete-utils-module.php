@@ -36,10 +36,12 @@ class MACHETE_UTILS_MODULE extends MACHETE_MODULE {
 	 */
 	public function admin() {
 		$this->read_settings();
-		if ( isset( $_POST['machete-utils-saved'] ) ) {
-			check_admin_referer( 'machete_save_utils' );
-			$this->save_settings( $_POST );
-		}
+		add_action('admin_init', function() {
+			if ( null !== filter_input( INPUT_POST, 'machete-utils-saved' ) ) {
+				check_admin_referer( 'machete_save_utils' );
+				$this->save_settings( filter_input_array( INPUT_POST ) );
+			}
+		});
 		add_action( 'admin_menu', array( $this, 'register_sub_menu' ) );
 	}
 	/**
@@ -47,16 +49,15 @@ class MACHETE_UTILS_MODULE extends MACHETE_MODULE {
 	 * real function must be defined in each module
 	 *
 	 * @param array $options options array, normally $_POST.
+	 * * tracking id.
+	 * * tracking_format: standard, machete, none.
+	 * * header_content.
+	 * * alfonso_content
+	 * * footer_content.
 	 * @param bool  $silent prevent the function from generating admin notices.
 	 */
 	protected function save_settings( $options = array(), $silent = false ) {
 
-		/*
-		tracking_id
-		tracking_format: standard, machete, none
-		header_content
-		footer_content
-		*/
 		$settings       = $this->read_settings();
 		$header_content = '';
 
@@ -74,7 +75,7 @@ class MACHETE_UTILS_MODULE extends MACHETE_MODULE {
 
 			if ( ! preg_match( '/^ua-\d{4,9}-\d{1,4}$/i', strval( $options['tracking_id'] ) ) ) {
 				// invalid Analytics Tracking ID
-				// http://code.google.com/apis/analytics/docs/concepts/gaConceptsAccounts.html#webProperty
+				// http://code.google.com/apis/analytics/docs/concepts/gaConceptsAccounts.html#webProperty .
 				if ( ! $silent ) {
 					$this->notice( __( 'That doesn\'t look like a valid Google Analytics tracking ID', 'machete' ), 'warning' );
 				}
@@ -91,10 +92,10 @@ class MACHETE_UTILS_MODULE extends MACHETE_MODULE {
 			$settings['tracking_format'] = $options['tracking_format'];
 
 			if ( isset( $options['tacking_anonymize'] ) ) {
-				$anonymizeIp                   = ',{anonymizeIp: true}';
+				$anonymize_ip                  = ',{anonymizeIp: true}';
 				$settings['tacking_anonymize'] = 1;
 			} else {
-				$anonymizeIp                   = '';
+				$anonymize_ip                  = '';
 				$settings['tacking_anonymize'] = 0;
 			}
 
@@ -114,13 +115,13 @@ class MACHETE_UTILS_MODULE extends MACHETE_MODULE {
 			if ( 'none' !== $settings['tracking_format'] ) {
 
 				$js_replaces     = array(
-					'{{anonymizeIp}}' => $anonymizeIp,
+					'{{anonymizeIp}}' => $anonymize_ip,
 					'{{tracking_id}}' => $options['tracking_id'],
 				);
 				$header_content .= str_replace(
 					array_keys( $js_replaces ),
 					array_values( $js_replaces ),
-					@file_get_contents( $this->path . 'templates/analytics.tpl.js' )
+					$this->get_contents( $this->path . 'templates/analytics.tpl.js' )
 				);
 			}
 			if ( 'machete' === $settings['tracking_format'] ) {
@@ -139,11 +140,9 @@ class MACHETE_UTILS_MODULE extends MACHETE_MODULE {
 		}
 
 		if ( ! empty( $header_content ) ) {
-			file_put_contents( MACHETE_DATA_PATH . 'header.html', $header_content, LOCK_EX);
+			$this->put_contents( MACHETE_DATA_PATH . 'header.html', $header_content );
 		} else {
-			if ( file_exists( MACHETE_DATA_PATH . 'header.html' ) ) {
-				unlink( MACHETE_DATA_PATH . 'header.html' );
-			}
+			$this->delete( MACHETE_DATA_PATH . 'header.html' );
 		}
 
 		if (
@@ -157,26 +156,21 @@ class MACHETE_UTILS_MODULE extends MACHETE_MODULE {
 
 		if ( ! empty( $options['alfonso_content'] ) ) {
 			$alfonso_content = stripslashes( wptexturize( $options['alfonso_content'] ) );
-			file_put_contents( MACHETE_DATA_PATH . 'body.html', $alfonso_content, LOCK_EX );
+			$this->put_contents( MACHETE_DATA_PATH . 'body.html', $alfonso_content, LOCK_EX );
 		} else {
-			if ( file_exists( MACHETE_DATA_PATH . 'body.html' ) ) {
-				unlink( MACHETE_DATA_PATH . 'body.html' );
-			}
+			$this->delete( MACHETE_DATA_PATH . 'body.html' );
 		}
 
 		if ( ! empty( $options['footer_content'] ) ) {
 			$footer_content = stripslashes( wptexturize( $options['footer_content'] ) );
-			file_put_contents( MACHETE_DATA_PATH . 'footer.html', $footer_content, LOCK_EX );
+			$this->put_contents( MACHETE_DATA_PATH . 'footer.html', $footer_content, LOCK_EX );
 		} else {
-			if ( file_exists( MACHETE_DATA_PATH . 'footer.html' ) ) {
-				unlink( MACHETE_DATA_PATH . 'footer.html' );
-			}
+			$this->delete( MACHETE_DATA_PATH . 'footer.html' );
 		}
 		if ( $this->is_equal_array( $this->settings, $settings ) ) {
 			// no removes && no adds
-			// ToDo: check for changes in the other sections
-			//       give "no changes" notice only if no changes at all
-			//if (!$silent) $this->save_no_changes_notice();
+			// ToDo: check for changes in the other sections give "no changes" notice only if no changes at all
+			// if (!$silent) $this->save_no_changes_notice(); .
 			return true;
 		}
 
@@ -195,7 +189,12 @@ class MACHETE_UTILS_MODULE extends MACHETE_MODULE {
 		}
 
 	}
-
+	/**
+	 * Restores module settings from a backup
+	 *
+	 * @param array $settings modules settings array.
+	 * @return string success/error message.
+	 */
 	protected function import( $settings = array() ) {
 
 		$encoded_fields = array( 'header_content', 'alfonso_content', 'footer_content' );
@@ -212,12 +211,17 @@ class MACHETE_UTILS_MODULE extends MACHETE_MODULE {
 			return __( 'Error restoring settings backup', 'machete' ) . "\n";
 		}
 	}
-
+	/**
+	 * Returns a module settings array to use for backups.
+	 *
+	 * @return array modules settings array.
+	 */
 	protected function export() {
 
 		$export = $this->settings;
 
-		if( $machete_header_content = @file_get_contents( MACHETE_DATA_PATH . 'header.html' ) ) {
+		$machete_header_content = $this->get_contents( MACHETE_DATA_PATH . 'header.html' );
+		if ( ! empty( $machete_header_content ) ) {
 
 			$machete_header_content = explode( '<!-- Machete Header -->', $machete_header_content );
 			switch ( count( $machete_header_content ) ) {
@@ -233,11 +237,11 @@ class MACHETE_UTILS_MODULE extends MACHETE_MODULE {
 			$export['header_content'] = base64_encode( $machete_header_content );
 		}
 		if ( file_exists( MACHETE_DATA_PATH . 'body.html' ) ) {
-			$export['alfonso_content'] = base64_encode( file_get_contents( MACHETE_DATA_PATH . 'body.html' ) );
+			$export['alfonso_content'] = base64_encode( $this->get_contents( MACHETE_DATA_PATH . 'body.html' ) );
 		}
 
 		if ( file_exists( MACHETE_DATA_PATH . 'footer.html' ) ) {
-			$export['footer_content'] = base64_encode( file_get_contents( MACHETE_DATA_PATH . 'footer.html' ) );
+			$export['footer_content'] = base64_encode( $this->get_contents( MACHETE_DATA_PATH . 'footer.html' ) );
 		}
 
 		return $export;
