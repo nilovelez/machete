@@ -11,7 +11,9 @@ if ( ! defined( 'ABSPATH' ) ) {
 }
 
 $args['tab_url'] = add_query_arg( 'page', 'machete-' . $slug, admin_url( 'admin.php' ) );
-$args['img_url'] = MACHETE_BASE_URL . 'inc/' . $slug . '/banner.svg';
+if ( ! array_key_exists( 'banner', $args ) ) {
+	$args['banner'] = MACHETE_BASE_URL . 'inc/' . $slug . '/banner.svg';
+}
 ?>
 <div class="machete-module-wrap"><div class="machete-module <?php echo esc_attr( $slug . '-module' ); ?> module-is-<?php echo $args['is_active'] ? 'active' : 'inactive'; ?>">
 
@@ -19,11 +21,11 @@ $args['img_url'] = MACHETE_BASE_URL . 'inc/' . $slug . '/banner.svg';
 	<a class="machete-module-image"
 		href="<?php echo esc_url( $args['tab_url'] ); ?>"
 		title="<?php echo esc_attr( __( 'Configure', 'machete' ) . ' ' . $args['full_title'] ); ?>">
-		<img src="<?php echo esc_url( $args['img_url'] ); ?>">
+		<img src="<?php echo esc_url( $args['banner'] ); ?>">
 	</a>
 <?php } else { ?>
 	<span class="machete-module-image" title="<?php echo esc_attr( $args['full_title'] ); ?>">
-		<img src="<?php echo esc_url( $args['img_url'] ); ?>">
+		<img src="<?php echo esc_url( $args['banner'] ); ?>">
 	</span>
 <?php } ?>
 
