@@ -11,7 +11,7 @@ if ( ! defined( 'MACHETE_ADMIN_INIT' ) ) {
 } ?>
 
 <div class="wrap machete-wrap machete-section-wrap">
-	<h1><?php esc_html_e( 'Coming Soon & Maintenance Mode', 'machete' ); ?></h1>
+	<h1><?php $this->icon(); ?> <?php esc_html_e( 'Coming Soon & Maintenance Mode', 'machete' ); ?></h1>
 
 	<p class="tab-description"><?php esc_html_e( 'If you have to close yout website temporarly to the public, the navive WordPress maintenance mode falls short and most coming soon plugins are bulky, incomplete or expensive. Machete maintenance mode is light, simple and versatile.', 'machete' ); ?></p>
 	<?php $machete->admin_tabs( 'machete-maintenance' ); ?>

@@ -11,10 +11,11 @@ if ( ! defined( 'MACHETE_ADMIN_INIT' ) ) {
 } ?>
 
 <div class="wrap machete-wrap machete-section-wrap">
-	<h1><?php esc_html_e( 'Import/Export Options', 'machete' ); ?></h1>
+	<h1><?php $this->icon(); ?> <?php esc_html_e( 'Import/Export Options', 'machete' ); ?></h1>
 
 	<p class="tab-description"><?php esc_html_e( 'You can use this section to backup and restore your Machete configuration. You can also take a backup from one site and restore to another. Be careful, your current configuration will be overwritten when you import a backup file', 'machete' ); ?></p>
 	<?php $machete->admin_tabs( 'machete-importexport' ); ?>
+	<p class="tab-performance"><span><strong><i class="dashicons dashicons-clock"></i> <?php esc_html_e( 'Performance impact:', 'machete' ); ?></strong> <?php esc_html_e( 'This section has no impact on the page load times.', 'machete' ); ?></span></p>		
 
 <form id="mache-importexport-options" action="" method="POST">
 

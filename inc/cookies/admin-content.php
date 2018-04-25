@@ -12,10 +12,10 @@ if ( ! defined( 'MACHETE_ADMIN_INIT' ) ) {
 ?>
 
 <div class="wrap machete-wrap machete-section-wrap">
-	<h1><?php esc_html_e( 'Cookie Law Warning', 'machete' ); ?></h1>
+	<h1><?php $this->icon(); ?> <?php esc_html_e( 'Cookie Law Warning', 'machete' ); ?></h1>
 	<p class="tab-description"><?php esc_html_e( 'We know you hate cookie warning bars. Well, this is the less hateable cookie bar you\'ll find. It is really light, it won\'t affect your PageSpeed score and plays well with static cache plugins.', 'machete' ); ?></p>
-
 	<?php $machete->admin_tabs( 'machete-cookies' ); ?>
+
 
 	<p class="tab-performance"><span><strong><i class="dashicons dashicons-clock"></i> <?php esc_html_e( 'Performance impact:', 'machete' ); ?></strong> <?php echo wp_kses( _e( 'This tool adds 0,4Kb and a single database request request to each page load. The remaining <abbr title="~1.1Kb if GZipped">~2.5Kb</abbr> of code is loaded asynchronously via javascript from a pregenerated static file.', 'machete' ), wp_kses_allowed_html() ); ?></span></p>
 

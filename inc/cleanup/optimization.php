@@ -231,7 +231,7 @@ if ( in_array( 'json_api', $this->settings, true ) ) {
 	add_filter( 'rest_authentication_errors', function( $access ) {
 		return new WP_Error(
 			'rest_disabled',
-			__( 'The REST API an this site has been disabled.' ) . ' Machete don\'t REST',
+			__( 'The REST API on this site has been disabled.' ) . ' Machete don\'t REST',
 			array(
 				'status' => rest_authorization_required_code(),
 			)

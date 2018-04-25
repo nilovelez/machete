@@ -48,6 +48,7 @@ class MACHETE_ABOUT_MODULE extends MACHETE_MODULE {
 	 * This modules has no front-end.
 	 */
 	public function frontend() {}
+
 	/**
 	 * Adds the module's configuration link to the dashboard menu.
 	 * This can't use the default register_sub_menu,

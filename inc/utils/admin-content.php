@@ -54,7 +54,7 @@ if ( false !== $settings ) {
 ?>
 
 <div class="wrap machete-wrap machete-section-wrap">
-	<h1><?php esc_html_e( 'Analytics and Custom Code', 'machete' ); ?></h1>
+	<h1><?php $this->icon(); ?> <?php esc_html_e( 'Analytics and Custom Code', 'machete' ); ?></h1>
 
 	<p class="tab-description"><?php esc_html_e( 'You don\'t need a zillion plugins to perform easy task like inserting a verification meta tag (Google Search Console, Bing, Pinterest), a json-ld snippet or a custom styleseet (Google Fonts, Print Styles, accesibility tweaks...).', 'machete' ); ?></p>
 	<?php $machete->admin_tabs( 'machete-utils' ); ?>

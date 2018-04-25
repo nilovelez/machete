@@ -19,6 +19,12 @@
 	box-shadow: 0 1px 3px rgba(0,0,0,.2);
 }
 
+
+
+.machete-wrap.about-wrap .machete-wrap-divider {
+	height: 15px;
+	}
+
 .machete-wrap .nav-tab {
 	padding: 5px 10px !important;
 	font-size: 14px !important;
@@ -76,8 +82,14 @@
 
 
 .machete-section-wrap h1 {
-	/* font-size: 28px; */
+	font-size: 32px;
 	/*border-bottom: 2px solid #ff9900;*/
+}
+.machete-section-wrap h1 img {
+	width: 96px;
+	height: 96px;
+	float: right;
+	margin-right: 16px;
 }
 
 .machete-section-wrap .tab-description,
@@ -87,8 +99,9 @@
 .machete-section-wrap .tab-performance span {
 	background: #fff;
 	padding: 0.5em 0.7em;
-	border-radius: 4px;
-	display: inline-block;
+	border-radius: 0 0 4px 4px;
+	border-top: 3px solid #f90;
+	display: block;
 }
 .machete-section-wrap .tab-performance strong{
 	color: #FF9900;

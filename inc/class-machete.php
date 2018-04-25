@@ -26,6 +26,10 @@ class MACHETE {
 	 * @param string $current Current (active) tab slug.
 	 */
 	public function admin_tabs( $current = '' ) {
+		echo '<div class="machete-wrap-divider"></div>';
+	}
+
+	public function admin_tabs_old( $current = '' ) {
 
 		$is_admin = current_user_can( 'manage_options' ) ? true : false;
 

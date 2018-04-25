@@ -81,6 +81,13 @@ abstract class MACHETE_MODULE {
 			add_action( 'admin_menu', array( $this, 'register_sub_menu' ) );
 		}
 	}
+
+	public function icon() {
+
+		$icon_url = MACHETE_BASE_URL . 'inc/' . $this->params['slug'] . '/icon.svg';
+
+		echo '<img src="' . esc_attr( $icon_url ) . '">';
+	}
 	/**
 	 * Adds the modules configuration link to the dashboard menu.
 	 */

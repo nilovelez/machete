@@ -119,7 +119,7 @@ class MACHETE_IMPORTEXPORT_MODULE extends MACHETE_MODULE {
 	protected function import( $settings = array() ) {
 		global $machete;
 
-		if ( empty( $_FILES ) || (! isset( $_FILES[ 'machete-backup-file' ] ) ) ) {
+		if ( empty( $_FILES ) || ( ! isset( $_FILES['machete-backup-file'] ) ) ) {
 			return false;
 		}
 		$backup_file = $_FILES['machete-backup-file']['tmp_name'];

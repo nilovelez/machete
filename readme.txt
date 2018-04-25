@@ -52,7 +52,12 @@ Yes, but Machete does it well enough and probably is much lighter.
 == Changelog ==
 
 = 3.1.3 = 
-* Added option to PowerTools to enable upload of SVG images
+* Improved the compliance of the code with the WordPress Coding Standards
+* New: Added option to PowerTools to enable upload of SVG images
+* Fix: Fixed ampersand escaping error in the code editor
+* Fix: Typo in the Disabled REST API notice (props @carloslongarela)
+* Fix: PHP 5.4 empty() syntax error (props @luisrull)
+
 
 = 3.1.2 = 
 * Added option to reduce Thumbnail JPEG quality 

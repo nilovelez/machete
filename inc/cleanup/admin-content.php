@@ -37,13 +37,13 @@ $allowed_description_tags = array(
 
 <div class="wrap machete-wrap machete-section-wrap">
 
-	<h1><?php esc_html_e( 'WordPress Optimization', 'machete' ); ?></h1>
+	<h1><?php $this->icon(); ?> <?php esc_html_e( 'WordPress Optimization', 'machete' ); ?></h1>
 
 	<p class="tab-description"><?php esc_html_e( 'WordPress has a los of code just to keep backward compatiblity or enable optional features. You can disable most of it and save some time from each page request while making your installation safer', 'machete' ); ?></p>
 
 	<?php $machete->admin_tabs( 'machete-cleanup' ); ?>
 
-	<p class="tab-performance"><span><strong><i class="dashicons dashicons-clock"></i> <?php esc_html_e( 'Performance impact:', 'machete' ); ?></strong> <?php esc_html_e( 'This section stores all its settings in a single autoloaded configuration variable.', 'machete' ); ?></span></p>		
+	<p class="tab-performance"><span><strong><i class="dashicons dashicons-clock"></i> <?php esc_html_e( 'Performance impact:', 'machete' ); ?></strong> <?php esc_html_e( 'This section stores all its settings in a single autoloaded configuration variable.', 'machete' ); ?></span></p>
 
 	<div class="feature-section">
 		<form id="machete-cleanup-options" action="" method="POST">

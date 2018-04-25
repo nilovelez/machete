@@ -68,7 +68,8 @@ add_action('admin_menu', function() {
 			global $machete;
 			require MACHETE_BASE_PATH . 'inc/about/admin-content.php';
 		},
-		plugin_dir_url( __FILE__ ) . 'img/machete.svg'
+		plugin_dir_url( __FILE__ ) . 'img/machete.svg',
+		57
 	);
 });
 
