@@ -207,7 +207,7 @@ class MACHETE_POWERTOOLS_MODULE extends MACHETE_MODULE {
 			AND b.option_name = CONCAT( '_site_transient_timeout_', SUBSTRING( a.option_name, 17 ) )
 			AND b.option_value < %d";
 		$rows2 = $wpdb->query( $wpdb->prepare( $sql, $wpdb->esc_like( '_site_transient_' ) . '%', $wpdb->esc_like( '_site_transient_timeout_' ) . '%', time() ) );
-
+		// translators: $d number of deleted translations.
 		$this->notice( sprintf( __( '%d Transients Rows Cleared', 'machete' ), $rows + $rows2 ), 'success' );
 		return true;
 	}
@@ -226,6 +226,7 @@ class MACHETE_POWERTOOLS_MODULE extends MACHETE_MODULE {
 			ON (a.ID = b.object_id)
 			LEFT JOIN wp_postmeta c ON (a.ID = c.post_id);";
 		$rows = $wpdb->query( $sql );
+		// translators: $d number of deleted post revisions.
 		$this->notice( sprintf( _n( 'Success! %s Post revision deleted.', 'Success! %s Post revisions deleted.', $rows, 'machete' ), $rows ), 'success' );
 		return true;
 	}
