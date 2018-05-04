@@ -99,7 +99,7 @@ if ( ! defined( 'MACHETE_ADMIN_INIT' ) ) {
 			$params['html']
 		);
 		?>
-		cookie_bar_templates['<?php echo esc_js( $slug ); ?>'] = '<?php echo wp_slash( $params['html'] ); ?>';
+		cookie_bar_templates['<?php echo esc_js( $slug ); ?>'] = '<?php echo wp_slash( $params['html'] ); // WPCS: XSS ok. ?>';
 
 	<?php } ?>
 
@@ -152,11 +152,11 @@ if ( ! defined( 'MACHETE_ADMIN_INIT' ) ) {
 		}
 	});
 	$( '#restore_cookie_text_btn' ).click( function() {
-		$( '#warning_text' ).val( '<?php echo esc_js( $this->default_settings['warning_text'] ); ?>' );
-		$( '#machete_cookie_preview_warning' ).html( '<?php echo $this->default_settings['warning_text']; ?>' );
+		$( '#warning_text' ).val( '<?php echo $this->default_settings['warning_text']; // WPCS: XSS ok. ?>' );
+		$( '#machete_cookie_preview_warning' ).html( '<?php echo $this->default_settings['warning_text']; // WPCS: XSS ok. ?>' );
 
-		$( '#accept_text' ).val( '<?php echo esc_js( $this->default_settings['accept_text'] ); ?>' );
-		$( '#machete_cookie_preview_accept' ).html( '<?php echo $this->default_settings['accept_text']; ?>' );
+		$( '#accept_text' ).val( '<?php echo $this->default_settings['accept_text']; // WPCS: XSS ok. ?>' );
+		$( '#machete_cookie_preview_accept' ).html( '<?php echo $this->default_settings['accept_text']; // WPCS: XSS ok. ?>' );
 	});
 
 
