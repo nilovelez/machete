@@ -67,7 +67,7 @@ class MACHETE_IMPORTEXPORT_MODULE extends MACHETE_MODULE {
 					header( 'Content-disposition: attachment; filename=' . $export_filename );
 					header( 'Content-Type: application/json' );
 					header( 'Pragma: no-cache' );
-					echo $export_file;
+					echo $export_file; // WPCS: XSS ok.
 					exit();
 				}
 			}
