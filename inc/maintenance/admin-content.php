@@ -88,7 +88,7 @@ if ( ! defined( 'MACHETE_ADMIN_INIT' ) ) {
 	<div class="inside">
 		<table class="form-table"><tbody><tr valign="top"><th scope="row"></th><td>
 			<?php // translators: %s: Analytics & code tab link. ?>
-			<p class="description"><?php sprintf( esc_html( __( 'You can customize the maintenance page CSS using the %sAnalytics & Code tab', 'machete' ) ), '<a href="' . admin_url( 'admin.php?page=machete-utils' ) . '">' ); ?></a></p>
+			<p class="description"><?php echo sprintf( esc_html( __( 'You can customize the maintenance page CSS using the %sAnalytics & Code tab', 'machete' ) ), '<a href="' . esc_url( admin_url( 'admin.php?page=machete-utils' ) ) . '">' ); ?></a></p>
 			<p class="description"><?php esc_html_e( 'For your reference, this is the HTML used to render the Maintenance page:', 'machete' ); ?></p>
 			<pre style="color: #00f; font-weight: bold;">&lt;html&gt;
 &nbsp;&nbsp;&lt;head&gt;
