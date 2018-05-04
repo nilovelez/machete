@@ -21,10 +21,9 @@ $allowed_description_tags = array(
 <div class="wrap machete-wrap machete-section-wrap">
 	<h1><?php $this->icon(); ?> <?php esc_html_e( 'Machete PowerTools', 'machete' ); ?></h1>
 
-	<!--<p class="tab-description"><?php esc_html_e( 'You don\'t need a zillion plugins to perform easy task like inserting a verification meta tag (Google Search Console, Bing, Pinterest), a json-ld snippet or a custom styleseet (Google Fonts, Print Styles, accesibility tweaks...).', 'machete' ); ?></p>-->
+	<p class="tab-description"><?php esc_html_e( 'Machete PowerTools is an upgrade module targeted to WordPress developers and power users. PowerTools add new features and improve some of the Machete modules you already know and love.', 'machete' ); ?></p>
 	<?php $machete->admin_tabs( 'machete-powertools' ); ?>
-	<!--<p class="tab-performance"><span><strong><i class="dashicons dashicons-clock"></i> <?php esc_html_e( 'Performance impact:', 'machete' ); ?></strong> <?php esc_html_e( 'This tool generates up to three static HTML files that are loaded via PHP on each pageview. When enabled, custom body content requires one aditional database request.', 'machete' ); ?></span></p>-->
-
+	<p class="tab-performance"><span><strong><i class="dashicons dashicons-clock"></i> <?php esc_html_e( 'Performance impact:', 'machete' ); ?></strong> <?php esc_html_e( 'This section stores all its settings in a single autoloaded configuration variable.', 'machete' ); ?></span></p>
 
 
 <form id="mache-powertools-actions" action="" method="POST">
