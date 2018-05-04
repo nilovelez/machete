@@ -21,14 +21,18 @@ class MACHETE {
 	public $modules = array();
 
 	/**
-	 * Displays navigation tabs on Machete tabs.
+	 * Placeholder for the old tabs navigation.
 
 	 * @param string $current Current (active) tab slug.
 	 */
 	public function admin_tabs( $current = '' ) {
 		echo '<div class="machete-wrap-divider"></div>';
 	}
+	/**
+	 * Displays navigation tabs on Machete tabs (deactivated)
 
+	 * @param string $current Current (active) tab slug.
+	 */
 	public function admin_tabs_old( $current = '' ) {
 
 		$is_admin = current_user_can( 'manage_options' ) ? true : false;
