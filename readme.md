@@ -26,6 +26,7 @@ Adds a "duplicate" link to post, page and most post types lists. Also adds "copy
 ## PHPCS PHP CodeSniffer
 WordPress Code Standards:
 phpcs -q --standard=WordPress --report=summary --parallel=4 .
+phpcs -q --standard=WordPress --report=summary --parallel=4 --extensions=php --colors .
 
 ## commits summary
 git diff --shortstat "@{1 month}"
