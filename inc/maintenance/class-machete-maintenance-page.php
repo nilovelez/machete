@@ -29,7 +29,6 @@ class MACHETE_MAINTENANCE_PAGE {
 		$this->settings = $settings;
 
 		$mct_preview = filter_input( INPUT_GET, 'mct_preview' );
-
 		if (
 			( 'maintenance' === $this->settings['site_status'] ) ||
 			( 'coming_soon' === $this->settings['site_status'] ) ||
@@ -108,6 +107,7 @@ class MACHETE_MAINTENANCE_PAGE {
 		}
 
 		$page_id = $this->settings['page_id'];
+
 		if ( $is_preview ) {
 			$preview_page_id = filter_input( INPUT_GET, 'mct_page_id', FILTER_VALIDATE_INT );
 			if ( null !== $preview_page_id ) {
@@ -115,7 +115,7 @@ class MACHETE_MAINTENANCE_PAGE {
 			}
 		}
 
-		if ( null !== $page_id ) {
+		if ( ( null !== $page_id ) && is_int( $page_id ) ) {
 			$page = get_post( $page_id );
 			if ( null !== $page ) {
 				$html_content = array(
