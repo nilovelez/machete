@@ -23,6 +23,7 @@ We know you hate cookie warning bars. Well, this is the less hateable cookie bar
 
 = Analytics and custom code: =
 You don't need a zillion plugins to perform easy task like inserting a verification meta tag (Google Search Console, Bing, Pinterest), a json-ld snippet or a custom styleseet (Google Fonts, Print Styles, accesibility tweaks...).
+The Google Analytics tracking code if PageSpeed optimized, GPDR friendly and has the option to track Contact Form 7 events.
 
 = Maintenance mode: =
 The maintenance mode that ships with WordPress is just a basic lockdown that is activated whenever you do a major update. With machete Maintenance Mode you can hide your uncomplete page from visitors and search engines, give your clients a secure temporary access and lock you site without affecting your SEO.
@@ -51,13 +52,15 @@ Yes, but Machete does it well enough and probably is much lighter.
 
 == Changelog ==
 
-= 3.1.3 = 
+= 3.2 = 
 * Improved the compliance of the code with the WordPress Coding Standards
+* Made some interface changes. The redundant tab menu is gone, navigation is now made using the admin sidebar menu.
+* Dropped the use of PHP sessions in the maintenance page. It uses session cookies now.
+* New: New 'Clone item' button on the back-end admin bar to make the admin bar compatible with the Gutenberg interface.
 * New: Added option to PowerTools to enable upload of SVG images
 * Fix: Fixed ampersand escaping error in the code editor
 * Fix: Typo in the Disabled REST API notice (props @carloslongarela)
-* Fix: PHP 5.4 empty() syntax error (props @luisrull)
-
+* Fix: PHP 5.4 empty() syntax error. Dou you realize Machete only supports PHP 5.6+? (props @luisrull and @Selupress)
 
 = 3.1.2 = 
 * Added option to reduce Thumbnail JPEG quality 
