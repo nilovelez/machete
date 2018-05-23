@@ -59,7 +59,7 @@ class MACHETE_MAINTENANCE_PAGE {
 		if ( ! $is_preview ) {
 			// Exit if a custom login page.
 			if ( preg_match(
-				'/login|admin|dashboard|account/i',
+				'/wp\-login\.php|wp\-admin/i',
 				filter_input( INPUT_SERVER, 'REQUEST_URI' )
 			) > 0 ) {
 				return false;
