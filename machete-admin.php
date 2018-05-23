@@ -41,8 +41,7 @@ add_action( 'current_screen', function() {
 
 	// Enqueue admin styles.
 	add_action( 'admin_enqueue_scripts', function() {
-		wp_register_style( 'machete_admin_css', plugin_dir_url( __FILE__ ) . 'css/admin_v4.css', false, '4.0.0' );
-		wp_enqueue_style( 'machete_admin_css' );
+		wp_enqueue_style( 'machete_admin_4', plugin_dir_url( __FILE__ ) . 'css/admin_v4.css', false, '4.0.0' );
 	});
 });
 
