@@ -86,7 +86,7 @@ abstract class MACHETE_MODULE {
 	 */
 	public function icon() {
 		$icon_url = MACHETE_BASE_URL . 'inc/' . $this->params['slug'] . '/icon.svg';
-		echo '<img src="' . esc_attr( $icon_url ) . '">';
+		echo '<img src="' . esc_attr( $icon_url ) . '" style="width: 96px; height: 96px;">';
 	}
 	/**
 	 * Adds the modules configuration link to the dashboard menu.
