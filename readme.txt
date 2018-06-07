@@ -2,7 +2,8 @@
 Contributors: nilovelez
 Tags: cookies, analytics, code, css, javascript, admin
 Requires at least: 4.6
-Tested up to: 4.9.6
+Tested up to: 4.9
+Requires PHP: 5.6
 Stable tag: trunk
 License: WTFPL
 License URI: http://www.wtfpl.net/txt/copying/
@@ -51,6 +52,10 @@ Yes, but Machete does it well enough and probably is much lighter.
 3. This is not your typical tracking script...
 
 == Changelog ==
+
+= 3.2.2 =
+*  Maintenance URL whitelist made more restrictive by request. Only 'wp-login.php' and 'wp-admin' accepted now
+* Changed the admin stylesheet handle to prevent HUGE SVG icons on update
 
 = 3.2.1 =
 * Urgent fix: Fixes typo that prevented the maintenance page to work properly.
