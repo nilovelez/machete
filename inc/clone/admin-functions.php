@@ -32,15 +32,12 @@ function machete_content_clone() {
 		wp_die( 'Couldn\'t find any post/page with this id: ' . esc_html( $post_id ) );
 	}
 
-	// Sets current user as the author of the cloned post.
-	$current_user    = wp_get_current_user();
-	$new_post_author = $current_user->ID;
 
 	// Copies the contents from the post.
 	$args = array(
 		'comment_status' => $post->comment_status,
 		'ping_status'    => $post->ping_status,
-		'post_author'    => $new_post_author,
+		'post_author'    => get_current_user_id(),
 		'post_content'   => $post->post_content,
 		'post_excerpt'   => $post->post_excerpt,
 		'post_name'      => $post->post_name,
@@ -51,11 +48,11 @@ function machete_content_clone() {
 		'post_type'      => $post->post_type,
 		'to_ping'        => $post->to_ping,
 		'menu_order'     => $post->menu_order,
+
 	);
 
 	// Inserts the new post via wp_insert_post().
-	$new_post_id = wp_insert_post( wp_slash( $args ) );
-
+	$new_post_id = wp_insert_post( $args );
 	// Gets the taxonomies from the post to clone.
 	$taxonomies = get_object_taxonomies( $post->post_type ); // Returns a taxonomy array.
 	foreach ( $taxonomies as $taxonomy ) {
@@ -74,8 +71,9 @@ function machete_content_clone() {
 		if ( '_oembed_time_' === substr( $post_meta, 0, 13 ) ) {
 			continue;
 		}
-
-		add_post_meta( $new_post_id, $post_meta, $data );
+		foreach ( $data as $meta_value ) {
+			add_post_meta( $new_post_id, $post_meta, maybe_unserialize( $meta_value ) );
+		}
 	}
 
 	// redirect to the post editor.
