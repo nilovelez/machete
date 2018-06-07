@@ -53,8 +53,13 @@ Yes, but Machete does it well enough and probably is much lighter.
 
 == Changelog ==
 
+= 3.2.3 =
+* Improved Clone Module to make it work better with Gutemberg and complex page builders
+* Fix: In some cases the clone module didn't copy the featured image.
+* Fix: In some cases the clone module could break the post metas.
+
 = 3.2.2 =
-*  Maintenance URL whitelist made more restrictive by request. Only 'wp-login.php' and 'wp-admin' accepted now
+* Maintenance URL whitelist made more restrictive by request. Only 'wp-login.php' and 'wp-admin' accepted now
 * Changed the admin stylesheet handle to prevent HUGE SVG icons on update
 
 = 3.2.1 =
