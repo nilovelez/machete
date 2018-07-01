@@ -32,7 +32,6 @@ function machete_content_clone() {
 		wp_die( 'Couldn\'t find any post/page with this id: ' . esc_html( $post_id ) );
 	}
 
-
 	// Copies the contents from the post.
 	$args = array(
 		'comment_status' => $post->comment_status,
