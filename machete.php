@@ -56,6 +56,7 @@ require MACHETE_BASE_PATH . 'inc/cookies/class-machete-cookies-module.php';
 require MACHETE_BASE_PATH . 'inc/utils/class-machete-utils-module.php';
 require MACHETE_BASE_PATH . 'inc/maintenance/class-machete-maintenance-module.php';
 require MACHETE_BASE_PATH . 'inc/clone/class-machete-clone-module.php';
+require MACHETE_BASE_PATH . 'inc/social/class-machete-social-module.php';
 require MACHETE_BASE_PATH . 'inc/importexport/class-machete-importexport-module.php';
 require MACHETE_BASE_PATH . 'inc/powertools/class-machete-powertools-module.php';
 
