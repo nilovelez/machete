@@ -37,7 +37,8 @@ class MACHETE_SOCIAL_MODULE extends MACHETE_MODULE {
 				'googleplus',
 			),
 			'post_types' => array( 'post' ),
-			'bar_theme'  => 'light',
+			'theme'      => 'color',
+			'responsive' => true,
 		);
 		$this->positions        = array(
 			'above' => __( 'At the beginning of the content', 'machete' ),
@@ -59,23 +60,21 @@ class MACHETE_SOCIAL_MODULE extends MACHETE_MODULE {
 				'label' => _x( 'Share this', 'google+ button label', 'machete' ),
 				'url'   => 'https://plus.google.com/share?url=%s',
 			),
-			'pinterest'  => array(
-				'title' => _x( 'Pinterest', 'network name', 'machete' ),
+			'linkedin'   => array(
+				'title' => _x( 'LinkedIn', 'network name', 'machete' ),
 				'label' => _x( 'Pin this', 'Pinterest button label', 'machete' ),
-				'url'   => 'http://pinterest.com/pin/create/button/?url=%s',
+				'url'   => 'https://www.linkedin.com/shareArticle?mini=true&url=%s',
 			),
 			'whatsapp'   => array(
 				'title' => _x( 'WhatsApp', 'network name', 'machete' ),
 				'label' => _x( 'Pin this', 'Pinterest button label', 'machete' ),
 				'url'   => 'whatsapp://send?text=%s',
 			),
-			'linkedin'   => array(
-				'title' => _x( 'LinkedIn', 'network name', 'machete' ),
+			'pinterest'  => array(
+				'title' => _x( 'Pinterest', 'network name', 'machete' ),
 				'label' => _x( 'Pin this', 'Pinterest button label', 'machete' ),
-				'url'   => 'https://www.linkedin.com/shareArticle?mini=true&url=%s',
+				'url'   => 'http://pinterest.com/pin/create/button/?url=%s',
 			),
-
-			//echo urlencode($item['canonical_url'])
 
 		);
 
@@ -103,7 +102,63 @@ class MACHETE_SOCIAL_MODULE extends MACHETE_MODULE {
 	 */
 	public function frontend() {
 		$this->read_settings();
-		add_action( 'wp_footer', array( $this, 'render_cookie_bar' ) );
+
+		if ( ! is_single() ) {
+
+			wp_enqueue_script(
+				'machete_share',
+				plugins_url( 'js/share.js', __FILE__ ),
+				array(), MACHETE_VERSION, true
+			);
+
+			add_filter('the_content', function( $content ) {
+
+				$post_type_obj = get_post_type_object( get_post_type() );
+
+				$title = str_replace(
+					'%%post_type%%',
+					strtolower( $post_type_obj->labels->singular_name ),
+					$this->settings['title']
+				);
+
+				$share_buttons = $this->share_buttons();
+
+				return $this->top_share_block( $share_buttons ) . $content . $this->bottom_share_block( $share_buttons, $title );
+			} );
+		}
+	}
+
+	private function share_buttons () {
+		$rt = '<ul class="machete-social-share">';
+
+		foreach ( $this->settings['networks'] as $network_slug ) {
+			$network = $this->networks[ $network_slug ];
+
+			$url = sprintf( $network['url'], rawurlencode( get_permalink() ) );
+
+			$rt .= '<li class="mct-ico-' . esc_attr( $network_slug ) . '"><a href="' . esc_url( $url ) . '">' . esc_html( $network['label'] ) . '</a></li>';
+		}
+
+		$rt .= '</ul>';
+		return $rt;
+	}
+
+
+	private function top_share_block( $buttons ) {
+		return '<div id="machete-top-share-buttons">' . $buttons . '</div>';
+	}
+
+	private function bottom_share_block( $buttons, $title = '', $responsive = false ) {
+
+		if ( $this->settings['responsive'] ) {
+			$rt = '<div id="machete-bottom-share-buttons" class="machete-responsive">';
+		} else {
+			$rt = '<div id="machete-bottom-share-buttons">';
+		}
+		if ( ! empty( $title ) ) {
+			$rt .= '<h2>' . esc_html( $title ) . '</h2>';
+		}
+		return $rt . $buttons . '</div>';
 	}
 
 	protected function get_valid_post_types() {
@@ -278,34 +333,6 @@ class MACHETE_SOCIAL_MODULE extends MACHETE_MODULE {
 		require MACHETE_DATA_URL . $this->settings['cookie_filename'];
 		echo '</script>';
 
-	}
-	/**
-	 * Echoes the cookie bar for use in the front-end.
-	 */
-	public function render_cookie_bar() {
-
-		if ( ! isset( $this->settings['bar_status'] ) || ( 'enabled' !== $this->settings['bar_status'] ) ) {
-				return false;
-		}
-		if ( ! isset( $this->settings['cookie_filename'] ) ) {
-			return false;
-		}
-		if ( ! file_exists( MACHETE_DATA_PATH . $this->settings['cookie_filename'] ) ) {
-			return false;
-		}
-
-		?><script>
-	if (!navigator.userAgent || (
-		(navigator.userAgent.indexOf("Speed Insights") == -1) &&
-		(navigator.userAgent.indexOf("Googlebot") == -1)
-	)) {(function(){
-		var s = document.createElement('script'); s.type = 'text/javascript';
-		s.async = true; s.src = '<?php echo esc_url( MACHETE_DATA_URL . $this->settings['cookie_filename'] ); ?>';
-		var body = document.getElementsByTagName('body')[0];
-		body.appendChild(s);
-	})()}
-	</script>
-	<?php
 	}
 }
 $machete->modules['social'] = new MACHETE_SOCIAL_MODULE();
