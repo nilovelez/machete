@@ -103,17 +103,28 @@ class MACHETE_SOCIAL_MODULE extends MACHETE_MODULE {
 	public function frontend() {
 		$this->read_settings();
 
+
+		// ToDo get enabled post types and positions from settings
+
 		if ( ! is_single() ) {
 
+			wp_enqueue_style(
+				'machete_social',
+				plugins_url( 'css/social.css', __FILE__ ),
+				array(), MACHETE_VERSION
+			);
+
 			wp_enqueue_script(
-				'machete_share',
+				'machete_social',
 				plugins_url( 'js/share.js', __FILE__ ),
 				array(), MACHETE_VERSION, true
 			);
 
 			add_filter('the_content', function( $content ) {
 
-				$post_type_obj = get_post_type_object( get_post_type() );
+				global $post;
+
+				$post_type_obj = get_post_type_object( $post->post_type );
 
 				$title = str_replace(
 					'%%post_type%%',
@@ -136,7 +147,7 @@ class MACHETE_SOCIAL_MODULE extends MACHETE_MODULE {
 
 			$url = sprintf( $network['url'], rawurlencode( get_permalink() ) );
 
-			$rt .= '<li class="mct-ico-' . esc_attr( $network_slug ) . '"><a href="' . esc_url( $url ) . '">' . esc_html( $network['label'] ) . '</a></li>';
+			$rt .= '<li class="mct-ico-' . esc_attr( $network_slug ) . '"><a href="' . esc_url( $url ) . '" data-network="' . esc_attr( $network_slug ) . '">' . esc_html( $network['label'] ) . '</a></li>' . "\n";
 		}
 
 		$rt .= '</ul>';
