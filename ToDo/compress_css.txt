@@ -1,0 +1,11 @@
+function minimizeCSS($css){
+    $css = preg_replace('/\/\*((?!\*\/).)*\*\//', '', $css); // negative look ahead to remove comments
+    $css = preg_replace('/\s{2,}/', ' ', $css); // remove extra whitespace
+    $css = preg_replace('/\s*([:;{}])\s*/', '$1', $css); // remove unneeded whitespace
+    $css = preg_replace('/;}/', '}', $css); // remove last semicolon
+    return $css;
+}
+
+WP SEO Structured Data Schema
+The SEO Framework
+
