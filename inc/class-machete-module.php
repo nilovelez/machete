@@ -65,9 +65,9 @@ abstract class MACHETE_MODULE {
 	protected function read_settings() {
 		$this->settings = get_option(
 			'machete_' . $this->params['slug'] . '_settings',
-			array_merge( $this->default_settings, $this->settings )
+			$this->default_settings
 		);
-		return $this->settings;
+		return array_merge( $this->default_settings, $this->settings );
 	}
 	/**
 	 * Executes code related to the WordPress admin.
@@ -194,9 +194,34 @@ abstract class MACHETE_MODULE {
 		return (
 			is_array( $a ) && is_array( $b ) &&
 			count( $a ) === count( $b ) &&
-			array_diff( $a, $b ) === array_diff( $b, $a )
+			$this->array_recursive_diff( $a, $b ) === $this->array_recursive_diff( $b, $a )
 		);
 	}
+	/**
+	 * Custom version of array_diff that works with multidimensional arrays
+	 *
+	 * @param array $a array to substract from.
+	 * @param array $b array to substract from the first array.
+	 */
+	public function array_recursive_diff($a, $b) {
+	  $aReturn = array();
+
+	  foreach ($a as $mKey => $mValue) {
+	    if (array_key_exists($mKey, $b)) {
+	      if (is_array($mValue)) {
+	        $aRecursiveDiff = $this->array_recursive_diff($mValue, $b[$mKey]);
+	        if (count($aRecursiveDiff)) { $aReturn[$mKey] = $aRecursiveDiff; }
+	      } else {
+	        if ($mValue != $b[$mKey]) {
+	          $aReturn[$mKey] = $mValue;
+	        }
+	      }
+	    } else {
+	      $aReturn[$mKey] = $mValue;
+	    }
+	  }
+	  return $aReturn;
+	} 
 
 	/* filesystem */
 
