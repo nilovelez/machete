@@ -311,6 +311,6 @@ abstract class MACHETE_MODULE {
 		if ( ! file_exists( $file ) ) {
 			return false;
 		}
-		readfile( $file );
+		readfile( $file ); // phpcs:ignore
 	}
 }
