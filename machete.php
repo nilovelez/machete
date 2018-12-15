@@ -84,7 +84,9 @@ add_action(
 	function() {
 		global $machete;
 
-		if ( ! is_admin() ) {
+		if ( defined( 'WP_CLI' ) && WP_CLI ) {
+			define( 'MACHETE_CLI_INIT', true );
+		} elseif ( ! is_admin() ) {
 			define( 'MACHETE_FRONT_INIT', true );
 			require_once 'machete-frontend.php';
 		} else {
