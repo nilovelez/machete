@@ -26,7 +26,7 @@ class MACHETE {
 	 * @param string $current Current (active) tab slug.
 	 */
 	public function admin_tabs( $current = '' ) {
-		echo '<div class="machete-wrap-divider"></div>';
+		echo '<div class="machete-wrap-divider" id="' . esc_attr( $current . '-divider' ) . '"></div>';
 	}
 	/**
 	 * Displays navigation tabs on Machete tabs (deactivated)
@@ -95,11 +95,11 @@ class MACHETE {
 	 */
 	public function display_notice() {
 		if ( ! empty( $this->notice_message ) ) {
-		?>
+			?>
 		<div class="<?php echo esc_attr( $this->notice_class ); ?>">
 			<p><?php echo esc_html( $this->notice_message ); ?></p>
 		</div>
-		<?php
+			<?php
 		}
 	}
 
@@ -152,7 +152,8 @@ class MACHETE {
 							/* Translators: module title */
 							__( 'Module %s disabled succesfully', 'machete' ),
 							$this->modules[ $module ]->params['title']
-						), 'success'
+						),
+						'success'
 					);
 				}
 				return true;
@@ -188,7 +189,8 @@ class MACHETE {
 							/* Translators: module title */
 							__( 'Module %s enabled succesfully', 'machete' ),
 							$this->modules[ $module ]->params['title']
-						), 'success'
+						),
+						'success'
 					);
 				}
 				return true;

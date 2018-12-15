@@ -16,9 +16,9 @@ if ( is_user_logged_in() ) {
 }
 
 // Call to frontend() method of all active modules.
-foreach ( $machete->modules as $mct_module ) {
-	if ( ! $mct_module->params['is_active'] ) {
+foreach ( $machete->modules as $machete_module ) {
+	if ( ! $machete_module->params['is_active'] ) {
 		continue;
 	};
-	$mct_module->frontend();
+	$machete_module->frontend();
 }

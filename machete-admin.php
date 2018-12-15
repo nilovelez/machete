@@ -93,9 +93,9 @@ add_action(
 );
 
 // Call to admin() method of all active modules.
-foreach ( $machete->modules as $mct_module ) {
-	if ( ! $mct_module->params['is_active'] ) {
+foreach ( $machete->modules as $machete_module ) {
+	if ( ! $machete_module->params['is_active'] ) {
 		continue;
 	};
-	$mct_module->admin();
+	$machete_module->admin();
 }

@@ -203,25 +203,26 @@ abstract class MACHETE_MODULE {
 	 * @param array $a array to substract from.
 	 * @param array $b array to substract from the first array.
 	 */
-	public function array_recursive_diff($a, $b) {
-	  $aReturn = array();
+	public function array_recursive_diff( $a, $b ) {
+		$return = array();
 
-	  foreach ($a as $mKey => $mValue) {
-	    if (array_key_exists($mKey, $b)) {
-	      if (is_array($mValue)) {
-	        $aRecursiveDiff = $this->array_recursive_diff($mValue, $b[$mKey]);
-	        if (count($aRecursiveDiff)) { $aReturn[$mKey] = $aRecursiveDiff; }
-	      } else {
-	        if ($mValue != $b[$mKey]) {
-	          $aReturn[$mKey] = $mValue;
-	        }
-	      }
-	    } else {
-	      $aReturn[$mKey] = $mValue;
-	    }
-	  }
-	  return $aReturn;
-	} 
+		foreach ( $a as $key => $value ) {
+			if ( array_key_exists( $key, $b ) ) {
+				if ( is_array( $value ) ) {
+					$recursive_diff = $this->array_recursive_diff( $value, $b[ $key ] );
+					if ( count( $recursive_diff ) ) {
+						$return[ $key ] = $recursive_diff; }
+				} else {
+					if ( $value !== $b[ $key ] ) {
+						$return[ $key ] = $value;
+					}
+				}
+			} else {
+				$return[ $key ] = $value;
+			}
+		}
+		return $return;
+	}
 
 	/* filesystem */
 
