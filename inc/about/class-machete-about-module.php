@@ -17,15 +17,17 @@ class MACHETE_ABOUT_MODULE extends MACHETE_MODULE {
 	 * Module constructor, inite method overrides parent module default params
 	 */
 	public function __construct() {
-		$this->init( array(
-			'slug'            => 'about',
-			'title'           => __( 'About Machete', 'machete' ),
-			'full_title'      => __( 'About Machete', 'machete' ),
-			'is_active'       => true,
-			'has_config'      => false,
-			'can_be_disabled' => false,
-			'role'            => 'publish_posts', // targeting Author role.
-		));
+		$this->init(
+			array(
+				'slug'            => 'about',
+				'title'           => __( 'About Machete', 'machete' ),
+				'full_title'      => __( 'About Machete', 'machete' ),
+				'is_active'       => true,
+				'has_config'      => false,
+				'can_be_disabled' => false,
+				'role'            => 'publish_posts', // targeting Author role.
+			)
+		);
 	}
 	/**
 	 * Executes code related to the WordPress admin.
