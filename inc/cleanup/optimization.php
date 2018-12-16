@@ -85,18 +85,26 @@ if ( in_array( 'wp_generator', $this->settings, true ) && ! is_admin() ) {
 
 // remove ver= after style and script links.
 if ( in_array( 'ver', $this->settings, true ) && ! is_admin() ) {
-	add_filter( 'style_loader_src', function ( $src ) {
-		if ( strpos( $src, 'ver=' ) ) {
-			$src = remove_query_arg( 'ver', $src );
-		}
-		return $src;
-	}, 9999 );
-	add_filter( 'script_loader_src', function ( $src ) {
-		if ( strpos( $src, 'ver=' ) ) {
-			$src = remove_query_arg( 'ver', $src );
-		}
-		return $src;
-	}, 9999 );
+	add_filter(
+		'style_loader_src',
+		function ( $src ) {
+			if ( strpos( $src, 'ver=' ) ) {
+				$src = remove_query_arg( 'ver', $src );
+			}
+			return $src;
+		},
+		9999
+	);
+	add_filter(
+		'script_loader_src',
+		function ( $src ) {
+			if ( strpos( $src, 'ver=' ) ) {
+				$src = remove_query_arg( 'ver', $src );
+			}
+			return $src;
+		},
+		9999
+	);
 }
 
 if ( in_array( 'recentcomments', $this->settings, true ) && ! is_admin() ) {
@@ -121,12 +129,15 @@ if ( in_array( 'emojicons', $this->settings, true ) ) {
 		remove_action( 'admin_print_styles', 'print_emoji_styles' );
 		remove_action( 'admin_print_scripts', 'print_emoji_detection_script' );
 		remove_filter( 'wp_mail', 'wp_staticize_emoji_for_email' );
-		add_filter( 'tiny_mce_plugins', function( $plugins ) {
-			if ( is_array( $plugins ) ) {
-				return array_diff( $plugins, array( 'wpemoji' ) );
+		add_filter(
+			'tiny_mce_plugins',
+			function( $plugins ) {
+				if ( is_array( $plugins ) ) {
+					return array_diff( $plugins, array( 'wpemoji' ) );
+				}
+				return array();
 			}
-			return array();
-		});
+		);
 	} else {
 		remove_action( 'wp_head', 'print_emoji_detection_script', 7 );
 		remove_action( 'wp_print_styles', 'print_emoji_styles' );
@@ -137,36 +148,51 @@ if ( in_array( 'emojicons', $this->settings, true ) ) {
 }
 
 if ( in_array( 'pdf_thumbnails', $this->settings, true ) && is_admin() ) {
-	add_filter( 'fallback_intermediate_image_sizes', function() {
-		return array();
-	});
+	add_filter(
+		'fallback_intermediate_image_sizes',
+		function() {
+			return array();
+		}
+	);
 }
 
 if ( in_array( 'limit_revisions', $this->settings, true ) && is_admin() ) {
 	if ( defined( 'WP_POST_REVISIONS' ) && ( WP_POST_REVISIONS !== false ) ) {
-		add_filter( 'wp_revisions_to_keep', function( $num, $post ) {
-			return 5;
-		}, 10, 2 );
+		add_filter(
+			'wp_revisions_to_keep',
+			function( $num, $post ) {
+				return 5;
+			},
+			10,
+			2
+		);
 	}
 }
 
 // Slow default heartbeat.
 if ( in_array( 'slow_heartbeat', $this->settings, true ) && is_admin() ) {
-	add_filter( 'heartbeat_settings', function ( $settings ) {
-		$settings['interval'] = 60;
-		return $settings;
-	});
+	add_filter(
+		'heartbeat_settings',
+		function ( $settings ) {
+			$settings['interval'] = 60;
+			return $settings;
+		}
+	);
 }
 
 if ( in_array( 'comments_reply_feature', $this->settings, true ) && ! is_admin() ) {
 	// Only load the comment-reply.js when needed.
-	add_action('wp_print_scripts', function() {
-		if ( is_singular() && ( get_option( 'thread_comments' ) === 1 ) && comments_open() && have_comments() ) {
-			wp_enqueue_script( 'comment-reply' );
-		} else {
-			wp_dequeue_script( 'comment-reply' );
-		}
-	}, 100);
+	add_action(
+		'wp_print_scripts',
+		function() {
+			if ( is_singular() && ( get_option( 'thread_comments' ) === 1 ) && comments_open() && have_comments() ) {
+				wp_enqueue_script( 'comment-reply' );
+			} else {
+				wp_dequeue_script( 'comment-reply' );
+			}
+		},
+		100
+	);
 }
 
 // Empty trash sooner.
@@ -178,17 +204,17 @@ if ( in_array( 'empty_trash_soon', $this->settings, true ) ) {
 
 // remove the capital_P_dangit filter.
 if ( in_array( 'capital_P_dangit', $this->settings, true ) ) {
-	foreach ( array( 'the_content', 'the_title', 'wp_title', 'comment_text' ) as $filter ) {
-		$priority = has_filter( $filter, 'capital_P_dangit' );
-		if ( false !== $priority ) {
-			remove_filter( $filter, 'capital_P_dangit', $priority );
+	foreach ( array( 'the_content', 'the_title', 'wp_title', 'comment_text' ) as $machete_filter ) {
+		$machete_priority = has_filter( $machete_filter, 'capital_P_dangit' );
+		if ( false !== $machete_priority ) {
+			remove_filter( $machete_filter, 'capital_P_dangit', $machete_priority );
 		}
 	}
 }
 
 if ( in_array( 'disable_editor', $this->settings, true ) ) {
 	if ( ! defined( 'DISALLOW_FILE_EDIT' ) ) {
-		define( 'DISALLOW_FILE_EDIT', true );
+		define( 'DISALLOW_FILE_EDIT', true ); // phpcs:ignore	
 	}
 }
 
@@ -214,30 +240,37 @@ if ( in_array( 'json_api', $this->settings, true ) ) {
 		remove_action( 'wp_head', 'wp_oembed_add_host_js' );
 		remove_action( 'wp_head', 'rest_output_link_wp_head', 10 );
 	}
+	if ( ! is_user_logged_in() ) {
+		remove_action( 'rest_api_init', 'wp_oembed_register_route' );
+		add_filter( 'embed_oembed_discover', '__return_false' );
+		remove_filter( 'oembed_dataparse', 'wp_filter_oembed_result', 10 );
+		remove_action( 'template_redirect', 'rest_output_link_header', 11, 0 );
 
-	remove_action( 'rest_api_init', 'wp_oembed_register_route' );
-	add_filter( 'embed_oembed_discover', '__return_false' );
-	remove_filter( 'oembed_dataparse', 'wp_filter_oembed_result', 10 );
-	remove_action( 'template_redirect', 'rest_output_link_header', 11, 0 );
+		// disable json_api.
+		add_filter( 'json_enabled', '__return_false' );
+		add_filter( 'json_jsonp_enabled', '__return_false' );
+	};
 
-
-	// disable json_api.
-	add_filter( 'json_enabled', '__return_false' );
-	add_filter( 'json_jsonp_enabled', '__return_false' );
-	// Notice: rest_enabled is deprecated since version 4.7.0! Use rest_authentication_errors instead. The REST API can no longer be completely disabled, the rest_authentication_errors can be used to restrict access to the API
-	// add_filter( 'rest_enabled', '__return_false' );.
-	add_filter( 'rest_jsonp_enabled', '__return_false' );
-
-	add_filter( 'rest_authentication_errors', function( $access ) {
-		return new WP_Error(
-			'rest_disabled',
-			__( 'The REST API on this site has been disabled.' ) . ' Machete don\'t REST',
-			array(
-				'status' => rest_authorization_required_code(),
-			)
-		);
-	});
-
+	// Require Authentication for All Reque​sts.
+	// https://developer.wordpress.org/rest-api/using-the-rest-api/frequently-asked-questions/#require-authentication-for-all-requests .
+	add_filter(
+		'rest_authentication_errors',
+		function( $result ) {
+			if ( ! empty( $result ) ) {
+				return $result;
+			}
+			if ( ! is_user_logged_in() ) {
+				return new WP_Error(
+					'rest_disabled',
+					__( 'The REST API on this site has been disabled.', 'machete' ) . ' Machete don\'t REST',
+					array(
+						'status' => rest_authorization_required_code(),
+					)
+				);
+			}
+			return $result;
+		}
+	);
 }
 
 if ( in_array( 'xmlrpc', $this->settings, true ) ) {
@@ -245,17 +278,23 @@ if ( in_array( 'xmlrpc', $this->settings, true ) ) {
 	add_filter( 'xmlrpc_enabled', '__return_false' );
 
 	// Hide xmlrpc.php in HTTP response headers.
-	add_filter( 'wp_headers', function( $headers ) {
-		unset( $headers['X-Pingback'] );
-		return $headers;
-	});
+	add_filter(
+		'wp_headers',
+		function( $headers ) {
+			unset( $headers['X-Pingback'] );
+			return $headers;
+		}
+	);
 
 	remove_action( 'xmlrpc_rsd_apis', 'rest_output_rsd' );
 	add_filter( 'xmlrpc_enabled', '__return_false' );
-	add_filter( 'xmlrpc_methods', function( $methods ) {
-		unset( $methods['pingback.ping'] );
-		return $methods;
-	});
+	add_filter(
+		'xmlrpc_methods',
+		function( $methods ) {
+			unset( $methods['pingback.ping'] );
+			return $methods;
+		}
+	);
 }
 
 if ( in_array( 'jquery-migrate', $this->settings, true ) ) {
@@ -275,19 +314,30 @@ if ( in_array( 'oembed_scripts', $this->settings, true ) && ! is_admin() ) {
 }
 
 if ( in_array( 'wpcf7_refill', $this->settings, true ) && ! is_admin() ) {
-	add_action( 'wp_enqueue_scripts', function() {
-		wp_localize_script( 'contact-form-7', 'wpcf7', array(
-			'apiSettings' => array(
-				'root'      => esc_url_raw( rest_url( 'contact-form-7/v1' ) ),
-				'namespace' => 'contact-form-7/v1',
-			),
-			'jqueryUi'    => 1,
-		) );
-	}, 10);
+	add_action(
+		'wp_enqueue_scripts',
+		function() {
+			wp_localize_script(
+				'contact-form-7',
+				'wpcf7',
+				array(
+					'apiSettings' => array(
+						'root'      => esc_url_raw( rest_url( 'contact-form-7/v1' ) ),
+						'namespace' => 'contact-form-7/v1',
+					),
+					'jqueryUi'    => 1,
+				)
+			);
+		},
+		10
+	);
 }
 
 if ( in_array( 'jpeg_quality', $this->settings, true ) ) {
-	add_filter( 'jpeg_quality', function( $arg ) {
-		return 72;
-	});
+	add_filter(
+		'jpeg_quality',
+		function( $arg ) {
+			return 72;
+		}
+	);
 }

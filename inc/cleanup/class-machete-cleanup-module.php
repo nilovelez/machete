@@ -17,16 +17,18 @@ class MACHETE_CLEANUP_MODULE extends MACHETE_MODULE {
 	 * Module constructor, init method overrides parent module default params
 	 */
 	public function __construct() {
-		$this->init( array(
-			'slug'            => 'cleanup',
-			'title'           => __( 'Optimization', 'machete' ),
-			'full_title'      => __( 'WordPress Optimization', 'machete' ),
-			'description'     => __( 'Reduces much of the legacy code bloat in WordPress page headers. It also has some tweaks to make you site faster and safer.', 'machete' ),
-			'is_active'       => true,
-			'has_config'      => true,
-			'can_be_disabled' => true,
-			'role'            => 'manage_options',
-		));
+		$this->init(
+			array(
+				'slug'            => 'cleanup',
+				'title'           => __( 'Optimization', 'machete' ),
+				'full_title'      => __( 'WordPress Optimization', 'machete' ),
+				'description'     => __( 'Reduces much of the legacy code bloat in WordPress page headers. It also has some tweaks to make you site faster and safer.', 'machete' ),
+				'is_active'       => true,
+				'has_config'      => true,
+				'can_be_disabled' => true,
+				'role'            => 'manage_options',
+			)
+		);
 
 		$this->cleanup_array = array(
 			'rsd_link'          => array(
@@ -113,7 +115,7 @@ class MACHETE_CLEANUP_MODULE extends MACHETE_MODULE {
 		$this->tweaks_array = array(
 			'json_api'       => array(
 				'title'       => __( 'JSON API', 'machete' ),
-				'description' => __( 'Disable Json API and remove link from header. Use with care.', 'machete' ) . ' <br><span style="color: #d94f4f">' . __( 'The video widget added in WordPress 4.8 needs the JSON API to work', 'machete' ) . '</span>',
+				'description' => __( 'Remove the JSON-API links from page headers. Also require that API consumers be authenticated.', 'machete' ) . ' <br><span style="color: #d94f4f">' . __( 'Might break external appplications if they no access yours sites API anonymously.', 'machete' ) . '</span>',
 			),
 			'xmlrpc'         => array(
 				'title'       => __( 'XML-RPC', 'machete' ),

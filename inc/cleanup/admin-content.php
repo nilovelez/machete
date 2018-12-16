@@ -10,7 +10,7 @@ if ( ! defined( 'MACHETE_ADMIN_INIT' ) ) {
 	exit;
 }
 
-$allowed_description_tags = array(
+$machete_allowed_description_tags = array(
 	'br'   => array(),
 	'span' => array(
 		'style' => array(),
@@ -65,13 +65,13 @@ $allowed_description_tags = array(
 			</tr>
 		</thead>
 		<tbody>
-		<?php foreach ( $this->cleanup_array as $option_slug => $option ) { ?>
+		<?php foreach ( $this->cleanup_array as $machete_option_slug => $machete_option ) { ?>
 			<tr>
-				<th scope="row" class="check-column"><input type="checkbox" name="optionEnabled[]" value="<?php echo esc_attr( $option_slug ); ?>" id="<?php echo esc_attr( $option_slug . '_fld' ); ?>" <?php checked( true, in_array( $option_slug, $this->settings, true ), true ); ?>></th>
-				<td class="column-title column-primary"><strong><?php echo esc_html( $option['title'] ); ?></strong>
+				<th scope="row" class="check-column"><input type="checkbox" name="optionEnabled[]" value="<?php echo esc_attr( $machete_option_slug ); ?>" id="<?php echo esc_attr( $machete_option_slug . '_fld' ); ?>" <?php checked( true, in_array( $machete_option_slug, $this->settings, true ), true ); ?>></th>
+				<td class="column-title column-primary"><strong><?php echo esc_html( $machete_option['title'] ); ?></strong>
 				<button type="button" class="toggle-row"><span class="screen-reader-text"><?php esc_html_e( 'Show more details', 'machete' ); ?></span></button>
 				</td>
-				<td data-colname="<?php echo esc_attr( _e( 'Explanation', 'machete' ) ); ?>"><?php echo wp_kses( $option['description'], $allowed_description_tags ); ?></td>
+				<td data-colname="<?php echo esc_attr( _e( 'Explanation', 'machete' ) ); ?>"><?php echo wp_kses( $machete_option['description'], $machete_allowed_description_tags ); ?></td>
 			</tr>
 
 		<?php } ?>
@@ -93,13 +93,13 @@ $allowed_description_tags = array(
 			</tr>
 		</thead>
 		<tbody>
-		<?php foreach ( $this->optimize_array as $option_slug => $option ) { ?>
+		<?php foreach ( $this->optimize_array as $machete_option_slug => $machete_option ) { ?>
 			<tr>
-				<th scope="row" class="check-column"><input type="checkbox" name="optionEnabled[]" value="<?php echo esc_attr( $option_slug ); ?>" id="<?php echo esc_attr( $option_slug . '_fld' ); ?>" <?php checked( true, in_array( $option_slug, $this->settings, true ), true ); ?>></th>
-				<td class="column-title column-primary"><strong><?php echo esc_html( $option['title'] ); ?></strong>
+				<th scope="row" class="check-column"><input type="checkbox" name="optionEnabled[]" value="<?php echo esc_attr( $machete_option_slug ); ?>" id="<?php echo esc_attr( $machete_option_slug . '_fld' ); ?>" <?php checked( true, in_array( $machete_option_slug, $this->settings, true ), true ); ?>></th>
+				<td class="column-title column-primary"><strong><?php echo esc_html( $machete_option['title'] ); ?></strong>
 				<button type="button" class="toggle-row"><span class="screen-reader-text"><?php esc_html_e( 'Show more details', 'machete' ); ?></span></button>
 				</td>
-				<td data-colname="<?php echo esc_attr( _e( 'Explanation', 'machete' ) ); ?>"><?php echo wp_kses( $option['description'], $allowed_description_tags ); ?></td>
+				<td data-colname="<?php echo esc_attr( _e( 'Explanation', 'machete' ) ); ?>"><?php echo wp_kses( $machete_option['description'], $machete_allowed_description_tags ); ?></td>
 			</tr>
 
 		<?php } ?>
@@ -122,13 +122,13 @@ $allowed_description_tags = array(
 			</tr>
 		</thead>
 		<tbody>
-		<?php foreach ( $this->tweaks_array as $option_slug => $option ) { ?>
+		<?php foreach ( $this->tweaks_array as $machete_option_slug => $machete_option ) { ?>
 			<tr>
-				<th scope="row" class="check-column"><input type="checkbox" name="optionEnabled[]" value="<?php echo esc_attr( $option_slug ); ?>" id="<?php echo esc_attr( $option_slug . '_fld' ); ?>" <?php checked( true, in_array( $option_slug, $this->settings, true ), true ); ?>></th>
-				<td class="column-title column-primary"><strong><?php echo esc_html( $option['title'] ); ?></strong>
+				<th scope="row" class="check-column"><input type="checkbox" name="optionEnabled[]" value="<?php echo esc_attr( $machete_option_slug ); ?>" id="<?php echo esc_attr( $machete_option_slug . '_fld' ); ?>" <?php checked( true, in_array( $machete_option_slug, $this->settings, true ), true ); ?>></th>
+				<td class="column-title column-primary"><strong><?php echo esc_html( $machete_option['title'] ); ?></strong>
 				<button type="button" class="toggle-row"><span class="screen-reader-text"><?php esc_html_e( 'Show more details', 'machete' ); ?></span></button>
 				</td>
-				<td data-colname="<?php echo esc_attr( _e( 'Explanation', 'machete' ) ); ?>"><?php echo wp_kses( $option['description'], $allowed_description_tags ); ?></td>
+				<td data-colname="<?php echo esc_attr( _e( 'Explanation', 'machete' ) ); ?>"><?php echo wp_kses( $machete_option['description'], $machete_allowed_description_tags ); ?></td>
 			</tr>
 
 		<?php } ?>
