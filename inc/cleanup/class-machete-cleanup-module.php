@@ -115,7 +115,7 @@ class MACHETE_CLEANUP_MODULE extends MACHETE_MODULE {
 		$this->tweaks_array = array(
 			'json_api'       => array(
 				'title'       => __( 'JSON API', 'machete' ),
-				'description' => __( 'Remove the JSON-API links from page headers. Also require that API consumers be authenticated.', 'machete' ) . ' <br><span style="color: #d94f4f">' . __( 'Might break external appplications if they no access yours sites API anonymously.', 'machete' ) . '</span>',
+				'description' => __( 'Remove the JSON-API links from page headers. Also require that API consumers be authenticated.', 'machete' ) . ' <br><span style="color: #d94f4f">' . __( 'Might break external appplications if they need to access your site\'s API anonymously.', 'machete' ) . '</span>',
 			),
 			'xmlrpc'         => array(
 				'title'       => __( 'XML-RPC', 'machete' ),
