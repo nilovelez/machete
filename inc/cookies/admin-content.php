@@ -44,8 +44,8 @@ if ( ! defined( 'MACHETE_ADMIN_INIT' ) ) {
 	<th scope="row"><?php esc_html_e( 'Cookie bar theme', 'machete' ); ?></th>
 	<td><fieldset><legend class="screen-reader-text"><span><?php esc_html_e( 'Cookie bar theme', 'machete' ); ?></span></legend>
 
-	<?php foreach ( $this->themes as $bar_theme_slug => $bar_theme ) { ?>
-		<label><input type="radio" name="bar_theme" class="bar-theme-radio" value="<?php echo esc_attr( $bar_theme_slug ); ?>" <?php checked( $bar_theme_slug, $this->settings['bar_theme'], true ); ?>> <?php echo esc_html( $bar_theme['name'] ); ?></label><br>
+	<?php foreach ( $this->themes as $machete_bar_theme_slug => $machete_bar_theme ) { ?>
+		<label><input type="radio" name="bar_theme" class="bar-theme-radio" value="<?php echo esc_attr( $machete_bar_theme_slug ); ?>" <?php checked( $machete_bar_theme_slug, $this->settings['bar_theme'], true ); ?>> <?php echo esc_html( $machete_bar_theme['name'] ); ?></label><br>
 	<?php } ?>
 	</fieldset></td>
 </tr>
@@ -88,18 +88,18 @@ if ( ! defined( 'MACHETE_ADMIN_INIT' ) ) {
 		'{{warning_text}}' => '<span id="machete_cookie_preview_warning"></span>',
 	);
 
-	foreach ( $this->themes as $slug => $params ) {
-		$params['html'] = $this->get_contents( $params['template'] );
+	foreach ( $this->themes as $machete_theme_slug => $machete_params ) {
+		$machete_params['html'] = $this->get_contents( $machete_params['template'] );
 
-		$machete_cookie_replaces['{{extra_css}}'] = $this->themes[ $slug ]['extra_css'];
+		$machete_cookie_replaces['{{extra_css}}'] = $this->themes[ $machete_theme_slug ]['extra_css'];
 
-		$params['html'] = str_replace(
+		$machete_params['html'] = str_replace(
 			array_keys( $machete_cookie_replaces ),
 			array_values( $machete_cookie_replaces ),
-			$params['html']
+			$machete_params['html']
 		);
 		?>
-		cookie_bar_templates['<?php echo esc_js( $slug ); ?>'] = '<?php echo wp_slash( $params['html'] ); // WPCS: XSS ok. ?>';
+		cookie_bar_templates['<?php echo esc_js( $machete_theme_slug ); ?>'] = '<?php echo wp_slash( $machete_params['html'] ); // WPCS: XSS ok. ?>';
 
 	<?php } ?>
 

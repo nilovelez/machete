@@ -17,13 +17,15 @@ class MACHETE_COOKIES_MODULE extends MACHETE_MODULE {
 	 * Module constructor, init method overrides parent module default params
 	 */
 	public function __construct() {
-		$this->init( array(
-			'slug'        => 'cookies',
-			'title'       => __( 'Cookie Law', 'machete' ),
-			'full_title'  => __( 'Cookie Law Warning', 'machete' ),
-			'description' => __( 'Light and responsive cookie law warning bar that won\'t affect your PageSpeed score and plays well with static cache plugins.', 'machete' ),
-			'role'        => 'publish_posts', // targeting Author role.
-		) );
+		$this->init(
+			array(
+				'slug'        => 'cookies',
+				'title'       => __( 'Cookie Law', 'machete' ),
+				'full_title'  => __( 'Cookie Law Warning', 'machete' ),
+				'description' => __( 'Light and responsive cookie law warning bar that won\'t affect your PageSpeed score and plays well with static cache plugins.', 'machete' ),
+				'role'        => 'publish_posts', // targeting Author role.
+			)
+		);
 		$this->default_settings = array(
 			'bar_status'      => 'disabled',
 			'warning_text'    => __( 'By continuing to browse the site, you are agreeing to our use of cookies as described in our <a href="/cookies/" style="color: #007FFF">cookie policy</a>.', 'machete' ),
@@ -65,12 +67,15 @@ class MACHETE_COOKIES_MODULE extends MACHETE_MODULE {
 	 */
 	public function admin() {
 		$this->read_settings();
-		add_action('admin_init', function() {
-			if ( filter_input( INPUT_POST, 'machete-cookies-saved' ) !== null ) {
-				check_admin_referer( 'machete_save_cookies' );
-				$this->save_settings( filter_input_array( INPUT_POST ) );
+		add_action(
+			'admin_init',
+			function() {
+				if ( filter_input( INPUT_POST, 'machete-cookies-saved' ) !== null ) {
+					check_admin_referer( 'machete_save_cookies' );
+					$this->save_settings( filter_input_array( INPUT_POST ) );
+				}
 			}
-		});
+		);
 		add_action( 'admin_menu', array( $this, 'register_sub_menu' ) );
 	}
 	/**
@@ -261,7 +266,7 @@ class MACHETE_COOKIES_MODULE extends MACHETE_MODULE {
 		body.appendChild(s);
 	})()}
 	</script>
-	<?php
+		<?php
 	}
 }
 $machete->modules['cookies'] = new MACHETE_COOKIES_MODULE();

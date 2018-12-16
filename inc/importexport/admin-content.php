@@ -34,10 +34,10 @@ if ( ! defined( 'MACHETE_ADMIN_INIT' ) ) {
 			</tr>
 		</thead>
 		<tbody>
-		<?php foreach ( $this->exportable_modules as $machete_module => $args ) { ?>
+		<?php foreach ( $this->exportable_modules as $machete_module => $machete_args ) { ?>
 			<tr>
-				<th scope="row" class="check-column"><input type="checkbox" name="moduleChecked[]" value="<?php echo esc_attr( $machete_module ); ?>" id="<?php echo esc_attr( $machete_module . '_fld' ); ?>" <?php checked( true, $args['checked'], true ); ?>></th>
-				<td class="column-title column-primary"><strong><?php echo esc_html( $args['full_title'] ); ?></strong>
+				<th scope="row" class="check-column"><input type="checkbox" name="moduleChecked[]" value="<?php echo esc_attr( $machete_module ); ?>" id="<?php echo esc_attr( $machete_module . '_fld' ); ?>" <?php checked( true, $machete_args['checked'], true ); ?>></th>
+				<td class="column-title column-primary"><strong><?php echo esc_html( $machete_args['full_title'] ); ?></strong>
 				<button type="button" class="toggle-row"><span class="screen-reader-text"><?php esc_html_e( 'Show more details', 'machete' ); ?></span></button>
 				</td>
 			</tr>

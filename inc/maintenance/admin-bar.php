@@ -22,7 +22,8 @@ if ( $machete_maintenance_settings ) {
 			wp_register_style(
 				'machete-maintenance-styles',
 				MACHETE_BASE_URL . 'css/maintenance-admin-bar.css',
-				false
+				array(),
+				MACHETE_VERSION
 			);
 			wp_enqueue_style( 'machete-maintenance-styles' );
 		}
@@ -42,13 +43,15 @@ if ( $machete_maintenance_settings ) {
 			}
 
 			// Adds the main admin menu item.
-			$wp_admin_bar->add_menu( array(
-				'id'     => 'machete-maintenance-notice',
-				'href'   => $href,
-				'parent' => 'top-secondary',
-				'title'  => __( 'Coming Soon', 'machete' ),
-				'meta'   => array( 'class' => 'machete-coming-soon-active' ),
-			) );
+			$wp_admin_bar->add_menu(
+				array(
+					'id'     => 'machete-maintenance-notice',
+					'href'   => $href,
+					'parent' => 'top-secondary',
+					'title'  => __( 'Coming Soon', 'machete' ),
+					'meta'   => array( 'class' => 'machete-coming-soon-active' ),
+				)
+			);
 		}
 		/**
 		 * Admin bar code especific to the maintenance status.
@@ -63,13 +66,15 @@ if ( $machete_maintenance_settings ) {
 			}
 
 			// Adds the main admin menu item.
-			$wp_admin_bar->add_menu( array(
-				'id'     => 'machete-maintenance-notice',
-				'href'   => $href,
-				'parent' => 'top-secondary',
-				'title'  => __( 'Maintenance', 'machete' ),
-				'meta'   => array( 'class' => 'machete-maintenance-active' ),
-			) );
+			$wp_admin_bar->add_menu(
+				array(
+					'id'     => 'machete-maintenance-notice',
+					'href'   => $href,
+					'parent' => 'top-secondary',
+					'title'  => __( 'Maintenance', 'machete' ),
+					'meta'   => array( 'class' => 'machete-maintenance-active' ),
+				)
+			);
 		}
 
 		if ( 'maintenance' === $machete_maintenance_settings['site_status'] ) {

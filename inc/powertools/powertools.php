@@ -60,36 +60,51 @@ if ( in_array( 'page_excerpts', $this->settings, true ) ) {
 
 // save with keyboard.
 if ( in_array( 'save_with_keyboard', $this->settings, true ) && is_admin() ) {
-	add_action('admin_enqueue_scripts', function() {
-		wp_register_script( 'machete_save_with_keyboard', MACHETE_BASE_URL . 'vendor/save-with-keyboard/saveWithKeyboard.js', array( 'jquery' ) );
-		$translation_array = array(
-			'save_button_tooltip'    => __( 'Ctrl+S or Cmd+S to click', 'machete' ),
-			'preview_button_tooltip' => __( 'Ctrl+P or Cmd+P to preview', 'machete' ),
-		);
-		wp_localize_script( 'machete_save_with_keyboard', 'l10n_strings', $translation_array );
-		wp_enqueue_script( 'machete_save_with_keyboard' );
-
-	});
+	add_action(
+		'admin_enqueue_scripts',
+		function() {
+			wp_register_script(
+				'machete_save_with_keyboard',
+				MACHETE_BASE_URL . 'vendor/save-with-keyboard/saveWithKeyboard.js',
+				array( 'jquery' ),
+				MACHETE_VERSION,
+				false
+			);
+			$translation_array = array(
+				'save_button_tooltip'    => __( 'Ctrl+S or Cmd+S to click', 'machete' ),
+				'preview_button_tooltip' => __( 'Ctrl+P or Cmd+P to preview', 'machete' ),
+			);
+			wp_localize_script( 'machete_save_with_keyboard', 'l10n_strings', $translation_array );
+			wp_enqueue_script( 'machete_save_with_keyboard' );
+		}
+	);
 }
 
 // Script to Move JavaScript from the Head to the Footer.
 if ( in_array( 'move_scripts_footer', $this->settings, true ) ) {
-	add_action( 'wp_enqueue_scripts', function() {
-		remove_action( 'wp_head', 'wp_print_scripts' );
-		remove_action( 'wp_head', 'wp_print_head_scripts', 9 );
-		remove_action( 'wp_head', 'wp_enqueue_scripts', 1 );
+	add_action(
+		'wp_enqueue_scripts',
+		function() {
+			remove_action( 'wp_head', 'wp_print_scripts' );
+			remove_action( 'wp_head', 'wp_print_head_scripts', 9 );
+			remove_action( 'wp_head', 'wp_enqueue_scripts', 1 );
 
-		add_action( 'wp_footer', 'wp_print_scripts', 5 );
-		add_action( 'wp_footer', 'wp_enqueue_scripts', 5 );
-		add_action( 'wp_footer', 'wp_print_head_scripts', 5 );
-	} );
+			add_action( 'wp_footer', 'wp_print_scripts', 5 );
+			add_action( 'wp_footer', 'wp_enqueue_scripts', 5 );
+			add_action( 'wp_footer', 'wp_print_head_scripts', 5 );
+		}
+	);
 }
 
 // Defer all JS.
 if ( in_array( 'defer_all_scripts', $this->settings, true ) ) {
-	add_filter( 'script_loader_tag', function( $tag ) {
-		return str_replace( ' src', ' defer="defer" src', $tag );
-	}, 10 );
+	add_filter(
+		'script_loader_tag',
+		function( $tag ) {
+			return str_replace( ' src', ' defer="defer" src', $tag );
+		},
+		10
+	);
 }
 
 // disable RSS feeds.
@@ -116,9 +131,14 @@ if ( in_array( 'disable_feeds', $this->settings, true ) && ! is_admin() ) {
 
 // enable SVG.
 if ( in_array( 'enable_svg', $this->settings, true ) ) {
-	add_filter('upload_mimes', function( $upload_mimes ) {
-		$upload_mimes['svg']  = 'image/svg+xml';
-		$upload_mimes['svgz'] = 'image/svg+xml';
-		return $upload_mimes;
-	}, 10, 1);
+	add_filter(
+		'upload_mimes',
+		function( $upload_mimes ) {
+			$upload_mimes['svg']  = 'image/svg+xml';
+			$upload_mimes['svgz'] = 'image/svg+xml';
+			return $upload_mimes;
+		},
+		10,
+		1
+	);
 }

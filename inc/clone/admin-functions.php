@@ -88,7 +88,7 @@ add_action( 'admin_action_machete_clone', 'machete_content_clone' );
  * @param array  $actions post/page actions array.
  * @param object $post reference to the current row post.
  */
-function content_clone_link( $actions, $post ) {
+function machete_content_clone_link( $actions, $post ) {
 	$notify_url = wp_nonce_url( admin_url( 'admin.php?action=machete_clone&amp;post=' . absint( $post->ID ) ), 'machete_clone_' . $post->ID );
 
 	$actions['duplicate'] = '<a href="' . $notify_url . '" title="' . __( 'Clone this!', 'machete' ) . '" rel="permalink">' . __( 'Duplicate', 'machete' ) . '</a>';
@@ -119,7 +119,7 @@ function machete_clone_custom_button() {
 }
 
 if ( current_user_can( 'edit_posts' ) ) {
-	add_filter( 'post_row_actions', 'content_clone_link', 10, 2 ); // Posts.
-	add_filter( 'page_row_actions', 'content_clone_link', 10, 2 ); // Pages.
+	add_filter( 'post_row_actions', 'machete_content_clone_link', 10, 2 ); // Posts.
+	add_filter( 'page_row_actions', 'machete_content_clone_link', 10, 2 ); // Pages.
 	add_action( 'post_submitbox_start', 'machete_clone_custom_button' );
 }

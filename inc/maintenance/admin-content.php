@@ -61,12 +61,12 @@ if ( ! defined( 'MACHETE_ADMIN_INIT' ) ) {
 				<select name="page_id" id="page_id_fld">
 					<option value=""><?php esc_html_e( 'Use default content', 'machete' ); ?></option>
 					<?php
-					$pages = get_pages();
-					foreach ( $pages as $page ) {
-						echo '<option value="' . esc_attr( $page->ID ) . '" ' .
-							selected( $page->ID, $this->settings['page_id'] ) . '>' .
-							esc_html( $page->post_title ) .
-							'</option>';
+					$machete_pages = get_pages();
+					foreach ( $machete_pages as $machete_page ) {
+						echo '<option value="' . esc_attr( $machete_page->ID ) . '" ' .
+						selected( $machete_page->ID, $this->settings['page_id'] ) . '>' .
+						esc_html( $machete_page->post_title ) .
+						'</option>';
 					}
 					?>
 				</select>

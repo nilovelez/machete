@@ -17,17 +17,19 @@ class MACHETE_MAINTENANCE_MODULE extends MACHETE_MODULE {
 	 * Module constructor, init method overrides parent module default params
 	 */
 	public function __construct() {
-		$this->init( array(
-			'slug'        => 'maintenance',
-			'title'       => __( 'Maintenance Mode', 'machete' ),
-			'full_title'  => __( 'Maintenance Mode', 'machete' ),
-			'description' => __( 'Customizable maintenance page to close your site during updates or development. It has a "magic link" to grant temporary access.', 'machete' ),
-			'role'        => 'publish_posts', // targeting Author role.
-		));
+		$this->init(
+			array(
+				'slug'        => 'maintenance',
+				'title'       => __( 'Maintenance Mode', 'machete' ),
+				'full_title'  => __( 'Maintenance Mode', 'machete' ),
+				'description' => __( 'Customizable maintenance page to close your site during updates or development. It has a "magic link" to grant temporary access.', 'machete' ),
+				'role'        => 'publish_posts', // targeting Author role.
+			)
+		);
 		$this->default_settings = array(
 			'page_id'     => '',
 			'site_status' => 'online',
-			'token'       => strtoupper( substr( MD5( rand() ), 0, 12 ) ),
+			'token'       => strtoupper( substr( MD5( rand() ), 0, 12 ) ), // phpcs:ignore
 		);
 	}
 	/**
@@ -41,7 +43,7 @@ class MACHETE_MAINTENANCE_MODULE extends MACHETE_MODULE {
 				require_once $this->path . 'admin-bar.php';
 			}
 			require $this->path . 'class-machete-maintenance-page.php';
-			$machete_maintenance = new MACHETE_MAINTENANCE_PAGE( $this->settings );
+			$machete_maintenance = new MACHETE_MAINTENANCE_PAGE( $this->settings, $this->path );
 		}
 	}
 	/**
@@ -60,11 +62,16 @@ class MACHETE_MAINTENANCE_MODULE extends MACHETE_MODULE {
 
 		if ( null !== filter_input( INPUT_POST, 'machete-maintenance-saved' ) ) {
 			check_admin_referer( 'machete_save_maintenance' );
-			$this->save_settings( filter_input_array( INPUT_POST, array(
-				'page_id'     => FILTER_VALIDATE_INT,
-				'site_status' => FILTER_DEFAULT,
-				'token'       => FILTER_DEFAULT,
-			) ) );
+			$this->save_settings(
+				filter_input_array(
+					INPUT_POST,
+					array(
+						'page_id'     => FILTER_VALIDATE_INT,
+						'site_status' => FILTER_DEFAULT,
+						'token'       => FILTER_DEFAULT,
+					)
+				)
+			);
 		}
 
 		$this->preview_base_url = home_url( '/?mct_preview=' . wp_create_nonce( 'maintenance_preview_nonce' ) );

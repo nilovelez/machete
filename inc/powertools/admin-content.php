@@ -10,7 +10,7 @@ if ( ! defined( 'MACHETE_ADMIN_INIT' ) ) {
 	exit;
 }
 
-$allowed_description_tags = array(
+$machete_allowed_description_tags = array(
 	'br'   => array(),
 	'span' => array(
 		'style' => array(),
@@ -29,39 +29,38 @@ $allowed_description_tags = array(
 <form id="mache-powertools-actions" action="" method="POST">
 
 	<?php wp_nonce_field( 'machete_powertools_action' ); ?>
-	<input type="hidden" name="machete-powertools-action" value="true">
 
 	<table class="form-table">
 	<tbody><tr>
 
 	<th scope="row"><label for="tracking_id"><?php esc_html_e( 'Delete Expired Transients', 'machete' ); ?></label></th>
-	<td><input type="submit" name="action" value="<?php echo esc_attr( 'Purge Transients', 'machete' ); ?>" class="button button-primary">
+	<td><input type="submit" name="machete-powertools-action" value="purge_transients" class="button button-primary">
 	<p class="description" id="tracking_id_description" style="display: none;"><?php esc_html_e( 'Format:', 'machete' ); ?></p></td>
 	</tr>
 	<!--
 	<tr>
 	<th scope="row"><label for="tracking_id"><?php esc_html_e( 'Delete Unused Post Revisions', 'machete' ); ?></label></th>
-	<td><input type="submit" name="action" value="<?php esc_html_e( 'Purge Post Revisions', 'machete' ); ?>" class="button button-primary">
+	<td><input type="submit" name="machete-powertools-action" value="purge_revisions" class="button button-primary">
 	<p class="description" id="tracking_id_description" style="display: none;"><?php esc_html_e( 'Format:', 'machete' ); ?></p></td>
 	</tr>
 	-->
 	<tr>
 	<th scope="row"><label for="tracking_id"><?php esc_html_e( 'Delete Permalink Cache', 'machete' ); ?></label></th>
-	<td><input type="submit" name="action" value="<?php echo esc_attr( 'Flush Rewrite Rules', 'machete' ); ?>" class="button button-primary">
+	<td><input type="submit" name="machete-powertools-action" value="flush_rewrites" class="button button-primary">
 	<p class="description" id="tracking_id_description" style="display: none;"><?php esc_html_e( 'Format:', 'machete' ); ?></p></td>
 	</tr>
 
 	<?php if ( function_exists( 'opcache_reset' ) ) { ?>
 	<tr>
 	<th scope="row"><label for="tracking_id"><?php esc_html_e( 'Delete Opcache contents', 'machete' ); ?></label></th>
-	<td><input type="submit" name="action" value="<?php echo esc_attr( 'Flush Opcache', 'machete' ); ?>" class="button button-primary">
+	<td><input type="submit" name="machete-powertools-action" value="flush_opcache" class="button button-primary">
 	<p class="description" id="tracking_id_description" style="display: none;"><?php esc_html_e( 'Format:', 'machete' ); ?></p></td>
 	</tr>
 	<?php } ?>
 
 	<tr>
 	<th scope="row"><label for="tracking_id"><?php esc_html_e( 'Delete WordPress object cache contents', 'machete' ); ?></label></th>
-	<td><input type="submit" name="action" value="<?php esc_html_e( 'Flush Object Cache', 'machete' ); ?>" class="button button-primary">
+	<td><input type="submit" name="machete-powertools-action" value="flush_wpcache" class="button button-primary">
 	<p class="description" id="tracking_id_description" style="display: none;"><?php esc_html_e( 'Format:', 'machete' ); ?></p></td>
 	</tr>
 
@@ -87,13 +86,13 @@ $allowed_description_tags = array(
 		</tr>
 	</thead>
 	<tbody>
-	<?php foreach ( $this->powertools_array as $option_slug => $option ) { ?>
+	<?php foreach ( $this->powertools_array as $machete_option_slug => $machete_option ) { ?>
 		<tr>
-			<th scope="row" class="check-column"><input type="checkbox" name="optionEnabled[]" value="<?php echo esc_attr( $option_slug ); ?>" id="<?php echo esc_attr( $option_slug . '_fld' ); ?>" <?php checked( true, in_array( $option_slug, $this->settings, true ), true ); ?>></th>
-			<td class="column-title column-primary"><strong><?php echo esc_html( $option['title'] ); ?></strong>
+			<th scope="row" class="check-column"><input type="checkbox" name="optionEnabled[]" value="<?php echo esc_attr( $machete_option_slug ); ?>" id="<?php echo esc_attr( $machete_option_slug . '_fld' ); ?>" <?php checked( true, in_array( $machete_option_slug, $this->settings, true ), true ); ?>></th>
+			<td class="column-title column-primary"><strong><?php echo esc_html( $machete_option['title'] ); ?></strong>
 			<button type="button" class="toggle-row"><span class="screen-reader-text"><?php esc_html_e( 'Show more details', 'machete' ); ?></span></button>
 			</td>
-			<td data-colname="<?php esc_html_e( 'Explanation', 'machete' ); ?>"><?php echo wp_kses( $option['description'], $allowed_description_tags ); ?></td>
+			<td data-colname="<?php esc_html_e( 'Explanation', 'machete' ); ?>"><?php echo wp_kses( $machete_option['description'], $machete_allowed_description_tags ); ?></td>
 		</tr>
 
 	<?php } ?>

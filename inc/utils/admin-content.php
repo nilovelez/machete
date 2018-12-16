@@ -37,16 +37,16 @@ if ( ! $machete_alfonso_content ) {
 	$machete_alfonso_content = '';
 }
 
-$settings = wp_enqueue_code_editor( array( 'type' => 'text/html' ) );
+$machete_settings = wp_enqueue_code_editor( array( 'type' => 'text/html' ) );
 
-if ( false !== $settings ) {
+if ( false !== $machete_settings ) {
 
-	$json_settings = wp_json_encode( $settings );
+	$machete_json_settings = wp_json_encode( $machete_settings );
 
 	$machete_code_editor  = 'jQuery( function() { ' . "\n";
-	$machete_code_editor .= sprintf( ' wp.codeEditor.initialize( "header_content", %s );', $json_settings ) . "\n";
-	$machete_code_editor .= sprintf( ' wp.codeEditor.initialize( "alfonso_content", %s );', $json_settings ) . "\n";
-	$machete_code_editor .= sprintf( ' wp.codeEditor.initialize( "footer_content", %s );', $json_settings ) . "\n";
+	$machete_code_editor .= sprintf( ' wp.codeEditor.initialize( "header_content", %s );', $machete_json_settings ) . "\n";
+	$machete_code_editor .= sprintf( ' wp.codeEditor.initialize( "alfonso_content", %s );', $machete_json_settings ) . "\n";
+	$machete_code_editor .= sprintf( ' wp.codeEditor.initialize( "footer_content", %s );', $machete_json_settings ) . "\n";
 	$machete_code_editor .= ' } );' . "\n";
 
 	wp_add_inline_script( 'code-editor', $machete_code_editor );

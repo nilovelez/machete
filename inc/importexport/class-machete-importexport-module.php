@@ -17,13 +17,15 @@ class MACHETE_IMPORTEXPORT_MODULE extends MACHETE_MODULE {
 	 * Module constructor, init method overrides parent module default params
 	 */
 	public function __construct() {
-		$this->init( array(
-			'slug'            => 'importexport',
-			'title'           => __( 'Import/Export', 'machete' ),
-			'full_title'      => __( 'Import/Export Options', 'machete' ),
-			'description'     => __( 'You can use this section to backup and restore your Machete configuration. You can also take a backup from one site and restore to another.', 'machete' ),
-			'can_be_disabled' => false,
-		) );
+		$this->init(
+			array(
+				'slug'            => 'importexport',
+				'title'           => __( 'Import/Export', 'machete' ),
+				'full_title'      => __( 'Import/Export Options', 'machete' ),
+				'description'     => __( 'You can use this section to backup and restore your Machete configuration. You can also take a backup from one site and restore to another.', 'machete' ),
+				'can_be_disabled' => false,
+			)
+		);
 	}
 
 	/**
@@ -53,29 +55,32 @@ class MACHETE_IMPORTEXPORT_MODULE extends MACHETE_MODULE {
 			);
 
 		}
-		add_action('admin_init', function() {
-			if ( filter_input( INPUT_POST, 'machete-importexport-export' ) !== null ) {
+		add_action(
+			'admin_init',
+			function() {
+				if ( filter_input( INPUT_POST, 'machete-importexport-export' ) !== null ) {
 
-				check_admin_referer( 'machete_importexport_export' );
+					check_admin_referer( 'machete_importexport_export' );
 
-				$this->checked_modules = filter_input( INPUT_POST, 'moduleChecked', FILTER_DEFAULT, FILTER_FORCE_ARRAY );
+					$this->checked_modules = filter_input( INPUT_POST, 'moduleChecked', FILTER_DEFAULT, FILTER_FORCE_ARRAY );
 
-				if ( count( $this->checked_modules ) > 0 ) {
-					$export_file     = $this->export();
-					$export_filename = 'machete_backup_' . strtolower( date( 'jMY' ) ) . '.json';
+					if ( count( $this->checked_modules ) > 0 ) {
+						$export_file     = $this->export();
+						$export_filename = 'machete_backup_' . strtolower( date( 'jMY' ) ) . '.json';
 
-					header( 'Content-disposition: attachment; filename=' . $export_filename );
-					header( 'Content-Type: application/json' );
-					header( 'Pragma: no-cache' );
-					echo $export_file; // WPCS: XSS ok.
-					exit();
+						header( 'Content-disposition: attachment; filename=' . $export_filename );
+						header( 'Content-Type: application/json' );
+						header( 'Pragma: no-cache' );
+						echo $export_file; // WPCS: XSS ok.
+						exit();
+					}
+				}
+				if ( filter_input( INPUT_POST, 'machete-importexport-import' ) !== null ) {
+					check_admin_referer( 'machete_importexport_import' );
+					$this->import();
 				}
 			}
-			if ( filter_input( INPUT_POST, 'machete-importexport-import' ) !== null ) {
-				check_admin_referer( 'machete_importexport_import' );
-				$this->import();
-			}
-		});
+		);
 
 		// ToDo: check $this->checked_modules for actual status.
 		$this->all_exportable_modules_checked = true;
@@ -127,7 +132,7 @@ class MACHETE_IMPORTEXPORT_MODULE extends MACHETE_MODULE {
 		if ( $backup_data = @file_get_contents( $backup_file ) ) {
 			@unlink( $backup_file );
 		} else {
-			$this->notice( __( 'You haven\'t uploaded a backup file' ), 'warning' );
+			$this->notice( __( 'You haven\'t uploaded a backup file', 'machete' ), 'warning' );
 			return false;
 		}
 
@@ -136,7 +141,7 @@ class MACHETE_IMPORTEXPORT_MODULE extends MACHETE_MODULE {
 			( null === $this->uploaded_backup_data ) ||
 			( ! is_array( $this->uploaded_backup_data ) )
 		) {
-			$this->notice( __( 'You haven\'t uploaded a valid Machete backup file' ), 'warning' );
+			$this->notice( __( 'You haven\'t uploaded a valid Machete backup file', 'machete' ), 'warning' );
 			return false;
 		}
 
@@ -144,21 +149,21 @@ class MACHETE_IMPORTEXPORT_MODULE extends MACHETE_MODULE {
 		foreach ( $this->uploaded_backup_data as $module => $module_data ) {
 
 			if ( ! array_key_exists( $module, $machete->modules ) ) {
-				$this->import_log .= __( 'Ignored uknown module:' ) . ' ' . $module . "\n\n";
+				$this->import_log .= __( 'Ignored uknown module:', 'machete' ) . ' ' . $module . "\n\n";
 				continue;
 			}
-			$this->import_log .= __( 'Importing module: ' ) . ' ' . $module . "\n";
+			$this->import_log .= __( 'Importing module: ', 'machete' ) . ' ' . $module . "\n";
 			$this->import_log .= "===============================\n";
 
 			// manage module activation/deactivation.
 			if ( array_key_exists( 'is_active', $module_data ) && is_bool( $module_data['is_active'] ) && ( 'powertools' !== $module ) ) {
 				if ( $module_data['is_active'] ) {
 					if ( $machete->manage_modules( $module, 'activate', true ) ) {
-						$this->import_log .= __( 'Module activated succesfully' ) . "\n";
+						$this->import_log .= __( 'Module activated succesfully', 'machete' ) . "\n";
 					}
 				} else {
 					if ( $machete->manage_modules( $module, 'deactivate', true ) ) {
-						$this->import_log .= __( 'Module deactivated succesfully' ) . "\n";
+						$this->import_log .= __( 'Module deactivated succesfully', 'machete' ) . "\n";
 					}
 				}
 			}

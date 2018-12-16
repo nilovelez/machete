@@ -1,8 +1,8 @@
 <?php
 /**
- * Machete Cookies Module class
+ * Machete Social Sharing class
  *
- * @package WordPress
+ * @package    WordPress
  * @subpackage Machete
  */
 
@@ -17,25 +17,24 @@ class MACHETE_SOCIAL_MODULE extends MACHETE_MODULE {
 	 * Module constructor, init method overrides parent module default params
 	 */
 	public function __construct() {
-		$this->init( array(
-			'slug'        => 'social',
-			'title'       => __( 'Social Sharing', 'machete' ),
-			'full_title'  => __( 'Social Sharing Buttons', 'machete' ),
-			'description' => __( 'Social sharing icons as simple as can be. No bloat, no extra JS, no APIs', 'machete' ),
-			'role'        => 'publish_posts', // targeting Author role.
-		) );
+		$this->init(
+			array(
+				'slug'        => 'social',
+				'title'       => __( 'Social Sharing', 'machete' ),
+				'full_title'  => __( 'Social Sharing Buttons', 'machete' ),
+				'description' => __( 'Social sharing icons as simple as can be. No bloat, no extra JS, no APIs', 'machete' ),
+				'role'        => 'publish_posts', // translatorsgeting Author role.
+			)
+		);
 		$this->default_settings = array(
 			'status'     => 'disabled',
 			/* translators: %%post_type%% is a placeholder, keep it as is. */
 			'title'      => __( 'Share this %%post_type%%', 'machete' ),
-			'positions'  => array(
-				'below',
-			),
 			'networks'   => array(
 				'facebook',
 				'twitter',
-				'googleplus',
 			),
+			'positions'  => array( 'below' ),
 			'post_types' => array( 'post' ),
 			'theme'      => 'color',
 			'responsive' => true,
@@ -45,32 +44,27 @@ class MACHETE_SOCIAL_MODULE extends MACHETE_MODULE {
 			'below' => __( 'At the end of the content', 'machete' ),
 		);
 		$this->networks         = array(
-			'facebook'   => array(
+			'facebook'  => array(
 				'title' => _x( 'Facebook', 'network name', 'machete' ),
 				'label' => _x( 'Share this', 'Facebook button label', 'machete' ),
 				'url'   => 'https://facebook.com/sharer/sharer.php?u=%s',
 			),
-			'twitter'    => array(
+			'twitter'   => array(
 				'title' => _x( 'Twitter', 'network name', 'machete' ),
 				'label' => _x( 'Tweet this', 'Twitter button label', 'machete' ),
 				'url'   => 'http://twitter.com/intent/tweet?url=%s',
 			),
-			'googleplus' => array(
-				'title' => _x( 'Google+', 'network name', 'machete' ),
-				'label' => _x( 'Share this', 'google+ button label', 'machete' ),
-				'url'   => 'https://plus.google.com/share?url=%s',
-			),
-			'linkedin'   => array(
+			'linkedin'  => array(
 				'title' => _x( 'LinkedIn', 'network name', 'machete' ),
-				'label' => _x( 'Pin this', 'Pinterest button label', 'machete' ),
+				'label' => _x( 'Share this', 'LinkeIn button label', 'machete' ),
 				'url'   => 'https://www.linkedin.com/shareArticle?mini=true&url=%s',
 			),
-			'whatsapp'   => array(
+			'whatsapp'  => array(
 				'title' => _x( 'WhatsApp', 'network name', 'machete' ),
-				'label' => _x( 'Pin this', 'Pinterest button label', 'machete' ),
+				'label' => _x( 'Share this', 'WhatsApp button label', 'machete' ),
 				'url'   => 'whatsapp://send?text=%s',
 			),
-			'pinterest'  => array(
+			'pinterest' => array(
 				'title' => _x( 'Pinterest', 'network name', 'machete' ),
 				'label' => _x( 'Pin this', 'Pinterest button label', 'machete' ),
 				'url'   => 'http://pinterest.com/pin/create/button/?url=%s',
@@ -87,59 +81,134 @@ class MACHETE_SOCIAL_MODULE extends MACHETE_MODULE {
 
 		$this->valid_post_types = $this->get_valid_post_types();
 
-		add_action('admin_init', function() {
-			if ( filter_input( INPUT_POST, 'machete-social-saved' ) !== null ) {
-				check_admin_referer( 'machete_save_social' );
-				$this->save_settings( filter_input_array( INPUT_POST ) );
+		add_action(
+			'admin_init',
+			function() {
+				if ( filter_input( INPUT_POST, 'machete-social-saved' ) !== null ) {
+					check_admin_referer( 'machete_save_social' );
+					$this->save_settings( filter_input_array( INPUT_POST ) );
+				}
 			}
-		});
+		);
 		add_action( 'admin_menu', array( $this, 'register_sub_menu' ) );
 	}
 	/**
 	 * Executes code related to the front-end.
-	 *
-	 * @todo Hook render_cookie_bar function only if bar is active.
 	 */
 	public function frontend() {
+
 		$this->read_settings();
 
+		// bail if main switch is set to inactive.
+		if ( 'enabled' !== $this->settings['status'] ) {
+			return;
+		}
 
-		// ToDo get enabled post types and positions from settings
+		// bail if no active positions or no active networks.
+		if (
+			( 0 === count( $this->settings['positions'] ) ) ||
+			( 0 === count( $this->settings['networks'] ) )
+		) {
+			return;
+		}
 
-		if ( ! is_single() ) {
-
-			wp_enqueue_style(
-				'machete_social',
-				plugins_url( 'css/social.css', __FILE__ ),
-				array(), MACHETE_VERSION
-			);
-
-			wp_enqueue_script(
-				'machete_social',
-				plugins_url( 'js/share.js', __FILE__ ),
-				array(), MACHETE_VERSION, true
-			);
-
-			add_filter('the_content', function( $content ) {
+		add_action(
+			'wp_enqueue_scripts',
+			function() {
 
 				global $post;
+				if (
+					! is_single() ||
+					( ! in_array( $post->post_type, $this->settings['post_types'], true ) )
+				) {
+					return;
+				}
 
-				$post_type_obj = get_post_type_object( $post->post_type );
-
-				$title = str_replace(
-					'%%post_type%%',
-					strtolower( $post_type_obj->labels->singular_name ),
-					$this->settings['title']
+				wp_enqueue_style(
+					'machete_social',
+					plugins_url( 'css/social.css', __FILE__ ),
+					array(),
+					MACHETE_VERSION
 				);
+
+				wp_enqueue_script(
+					'machete_social',
+					plugins_url( 'js/share.js', __FILE__ ),
+					array(),
+					MACHETE_VERSION,
+					true
+				);
+			}
+		);
+
+		add_filter(
+			'the_content',
+			function( $content ) {
+				global $post;
+				if (
+					! is_single() ||
+					! in_the_loop() ||
+					! is_main_query() ||
+					// check if current post type is active.
+					( ! in_array( $post->post_type, $this->settings['post_types'], true ) )
+				) {
+					return $content;
+				}
 
 				$share_buttons = $this->share_buttons();
 
-				return $this->top_share_block( $share_buttons ) . $content . $this->bottom_share_block( $share_buttons, $title );
-			} );
-		}
+				if ( in_array( 'above', $this->settings['positions'], true ) ) {
+					$content = $this->top_share_block( $share_buttons ) . $content;
+				}
+
+				if ( in_array( 'below', $this->settings['positions'], true ) ) {
+
+					if (
+						! empty( $this->settings['title'] ) &&
+						( false !== strpos( $this->settings['title'], '%%post_type%%' ) )
+					) {
+
+						// saves one DB query for standard post types.
+						switch ( $post->post_type ) {
+							case 'page':
+								$post_type_name = _x( 'page', 'Page post type singular label', 'machete' );
+								break;
+							case 'post':
+								$post_type_name = _x( 'post', 'Page post type singular label', 'machete' );
+								break;
+							case 'product':
+								$post_type_name = _x( 'product', 'Product post type singular label', 'machete' );
+								break;
+							default:
+								$post_type      = get_post_type_object( $post->post_type );
+								$post_type_name = mb_strtolower( $post_type->labels->singular_name );
+
+						}
+
+						// replaces the %%post_type%% placholder.
+						$title = str_replace(
+							'%%post_type%%',
+							$post_type_name,
+							$this->settings['title']
+						);
+
+					} else {
+						$title = null;
+					}
+
+					$content .= $this->bottom_share_block( $share_buttons, $title );
+				} // end if below.
+
+				return $content;
+
+			}
+		);
 	}
 
-	private function share_buttons () {
+	/**
+	 * Pregenerates the HTML code for the buttons.
+	 */
+	private function share_buttons() {
 		$rt = '<ul class="machete-social-share">';
 
 		foreach ( $this->settings['networks'] as $network_slug ) {
@@ -154,12 +223,22 @@ class MACHETE_SOCIAL_MODULE extends MACHETE_MODULE {
 		return $rt;
 	}
 
-
+	/**
+	 * Composes top sharing blocks div
+	 *
+	 * @param string $buttons HTML code for the buttons, pregenerated by share_buttons().
+	 */
 	private function top_share_block( $buttons ) {
 		return '<div id="machete-top-share-buttons">' . $buttons . '</div>';
 	}
 
-	private function bottom_share_block( $buttons, $title = '', $responsive = false ) {
+	/**
+	 * Composes bottom sharing blocks div
+	 *
+	 * @param string $buttons HTML code for the buttons, pregenerated by share_buttons().
+	 * @param string $title   heading text for the bootm buttons area.
+	 */
+	private function bottom_share_block( $buttons, $title = '' ) {
 
 		if ( $this->settings['responsive'] ) {
 			$rt = '<div id="machete-bottom-share-buttons" class="machete-responsive">';
@@ -172,6 +251,9 @@ class MACHETE_SOCIAL_MODULE extends MACHETE_MODULE {
 		return $rt . $buttons . '</div>';
 	}
 
+	/**
+	 * Gets the list of post types where sharing buttons can be shown
+	 */
 	protected function get_valid_post_types() {
 		$post_types = get_post_types(
 			array(
@@ -203,103 +285,60 @@ class MACHETE_SOCIAL_MODULE extends MACHETE_MODULE {
 
 		// $options : values from _POST or import script
 		// $settings : values to save
-		$settings      = $this->read_settings();
-		$html_replaces = array();
+		$settings = $this->read_settings();
 
-		if ( ! is_dir( MACHETE_DATA_PATH ) ) {
-			if ( ! wp_mkdir_p( MACHETE_DATA_PATH ) ) {
-				if ( ! $silent ) {
-					// translators: %s path of data dir.
-					$this->notice( sprintf( __( 'Error creating data dir %s please check file permissions', 'machete' ), MACHETE_RELATIVE_DATA_PATH ), 'error' );
-				}
-				return false;
-			}
-		}
-
-		$cookies_bar_js = $this->get_contents( $this->path . 'templates/cookies_bar_js.min.js' );
-		if ( false === $cookies_bar_js ) {
-			if ( ! $silent ) {
-				// translators: %s path to template file.
-				$this->notice( sprintf( __( 'Error reading cookie bar template %s', 'machete' ), $this->path . 'templates/cookies_bar_js.js' ), 'error' );
-			}
-			return false;
-		}
-
-		if ( ! empty( $options['bar_theme'] ) && ( array_key_exists( $options['bar_theme'], $this->themes ) ) ) {
-			$settings['bar_theme'] = $options['bar_theme'];
-		}
-
-		$cookies_bar_html = $this->get_contents( $this->themes[ $options['bar_theme'] ]['template'] );
-		if ( false === $cookies_bar_html ) {
-			if ( ! $silent ) {
-				// translators: %s path to template file.
-				$this->notice( sprintf( __( 'Error reading cookie bar template %s', 'machete' ), $cookies_bar_themes[ $options['bar_theme'] ]['template'] ), 'error' );
-			}
-			return false;
-		}
-		$cookies_bar_html = "var machete_cookies_bar_html = '" . addslashes( $cookies_bar_html ) . "'; \n";
-
-		if ( empty( $options['bar_status'] ) || ( 'disabled' === $options['bar_status'] ) ) {
-			$settings['bar_status'] = 'disabled';
+		if ( empty( $options['social_status'] ) || ( 'disabled' === $options['social_status'] ) ) {
+			$settings['status'] = 'disabled';
 		} else {
-			$settings['bar_status'] = 'enabled';
+			$settings['status'] = 'enabled';
 		}
 
-		$options['warning_text'] = wp_kses_post( force_balance_tags( $options['warning_text'] ) );
-		if ( empty( $options['warning_text'] ) ) {
+		if (
+			array_key_exists( 'social_title', $options ) &&
+			( ! empty( $options['social_title'] ) )
+		) {
+			$options['title']  = esc_html( trim( $options['social_title'] ) );
+			$settings['title'] = $options['title'];
+		} else {
+			$settings['title'] = '';
+		}
+
+		if (
+			array_key_exists( 'networkEnabled', $options ) &&
+			( count( $options['networkEnabled'] ) > 0 )
+		) {
+			$settings['networks'] = $options['networkEnabled'];
+		} else {
+			$settings['networks'] = array();
+		}
+
+		if (
+			array_key_exists( 'positionEnabled', $options ) &&
+			( count( $options['positionEnabled'] ) > 0 )
+		) {
+			$settings['positions'] = $options['positionEnabled'];
+		} else {
+			$settings['positions'] = array();
+		}
+
+		if (
+			array_key_exists( 'postTypeEnabled', $options ) &&
+			( count( $options['postTypeEnabled'] ) > 0 )
+		) {
+			$settings['post_types'] = $options['postTypeEnabled'];
+		} else {
+			$settings['post_types'] = array();
+		}
+
+		if ( $this->is_equal_array( $this->settings, $settings ) ) {
 			if ( ! $silent ) {
-				$this->notice( __( 'Cookie warning text can\'t be blank', 'machete' ), 'warning' );
+				$this->save_no_changes_notice();
 			}
-			return false;
+			return true;
 		}
 
-		$html_replaces['{{warning_text}}'] = $options['warning_text'];
-		$settings['warning_text']          = $options['warning_text'];
-
-		$options['accept_text'] = sanitize_text_field( $options['accept_text'] );
-		if ( empty( $options['accept_text'] ) ) {
-			if ( ! $silent ) {
-				$this->notice( __( 'Accept button text can\'t be blank', 'machete' ), 'warning' );
-			}
-			return false;
-		}
-		$html_replaces['{{accept_text}}'] = $options['accept_text'];
-		$settings['accept_text']          = $options['accept_text'];
-
-		$html_replaces['{{extra_css}}'] = $this->themes[ $options['bar_theme'] ]['extra_css'];
-
-		$cookies_bar_js = str_replace(
-			array_keys( $html_replaces ),
-			array_values( $html_replaces ),
-			$cookies_bar_html
-		) . "\n" . $cookies_bar_js;
-
-		// cheap and dirty pseudo-random filename generation.
-		$settings['cookie_filename'] = 'cookies_' . strtolower( substr( MD5( time() ), 0, 8 ) ) . '.js';
-
-		if ( 'enabled' === $settings['bar_status'] ) {
-			if ( ! $this->put_contents( MACHETE_DATA_PATH . $settings['cookie_filename'], $cookies_bar_js ) ) {
-				if ( ! $silent ) {
-					// translators: %s path to machete data dir.
-					$this->notice( sprintf( __( 'Error writing static javascript file to %s please check file permissions. Aborting to prevent inconsistent state.', 'machete' ), MACHETE_RELATIVE_DATA_PATH ), 'error' );
-				}
-				return false;
-			}
-		}
-
-		// delete old .js file and generate a new one to prevent caching.
-		if ( ! empty( $this->settings['cookie_filename'] ) && file_exists( MACHETE_DATA_PATH . $this->settings['cookie_filename'] ) ) {
-			if ( ! $this->delete( MACHETE_DATA_PATH . $this->settings['cookie_filename'] ) ) {
-				if ( ! $silent ) {
-					// translators: %s path to machete data dir.
-					$this->notice( sprintf( __( 'Could not delete old javascript file from %s please check file permissions . Aborting to prevent inconsistent state.', 'machete' ), MACHETE_RELATIVE_DATA_PATH ), 'warning' );
-				}
-				return false;
-			}
-		}
-
-		// Option saved WITH autoload.
-		if ( update_option( 'machete_cookies_settings', $settings, 'yes' ) ) {
+		// Option saved WITHOUT autoload.
+		if ( update_option( 'machete_social_settings', $settings, 'no' ) ) {
 			$this->settings = $settings;
 			if ( ! $silent ) {
 				$this->save_success_notice();
@@ -313,37 +352,5 @@ class MACHETE_SOCIAL_MODULE extends MACHETE_MODULE {
 		}
 	}
 
-	/**
-	 * Returns a module settings array to use for backups.
-	 *
-	 * @return array modules settings array.
-	 */
-	protected function export() {
-		$export = $this->read_settings();
-		if ( ! empty( $export['warning_text'] ) ) {
-			$export['warning_text'] = stripslashes( $export['warning_text'] );
-		}
-		return $export;
-	}
-	/**
-	 * Echoes a cookie bar preview for the Machete cookie module config page.
-	 */
-	protected function preview_cookie_bar() {
-
-		if ( ! isset( $this->settings['bar_status'] ) || ( 'enabled' !== $this->settings['bar_status'] ) ) {
-				return false;
-		}
-		if ( ! isset( $this->settings['cookie_filename'] ) ) {
-			return false;
-		}
-		if ( ! file_exists( MACHETE_DATA_PATH . $this->settings['cookie_filename'] ) ) {
-			return false;
-		}
-
-		echo '<script>';
-		require MACHETE_DATA_URL . $this->settings['cookie_filename'];
-		echo '</script>';
-
-	}
 }
 $machete->modules['social'] = new MACHETE_SOCIAL_MODULE();

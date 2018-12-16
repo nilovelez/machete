@@ -17,14 +17,16 @@ class MACHETE_POWERTOOLS_MODULE extends MACHETE_MODULE {
 	 * Module constructor, init method overrides parent module default params
 	 */
 	public function __construct() {
-		$this->init( array(
-			'slug'            => 'powertools',
-			'title'           => '<span style="color: #ff9900">' . __( 'PowerTools', 'machete' ) . '</span>',
-			'full_title'      => __( 'Machete PowerTools', 'machete' ),
-			'description'     => __( 'Machete PowerTools is an free upgrade module targeted at WordPress developers and power users.', 'machete' ),
-			'is_active'       => false,
-			'can_be_disabled' => false,
-		) );
+		$this->init(
+			array(
+				'slug'            => 'powertools',
+				'title'           => '<span style="color: #ff9900">' . __( 'PowerTools', 'machete' ) . '</span>',
+				'full_title'      => __( 'Machete PowerTools', 'machete' ),
+				'description'     => __( 'Machete PowerTools is an free upgrade module targeted at WordPress developers and power users.', 'machete' ),
+				'is_active'       => false,
+				'can_be_disabled' => false,
+			)
+		);
 
 		$this->powertools_array = array(
 			'widget_shortcodes'   => array(
@@ -90,30 +92,27 @@ class MACHETE_POWERTOOLS_MODULE extends MACHETE_MODULE {
 				filter_input( INPUT_POST, 'optionEnabled', FILTER_DEFAULT, FILTER_FORCE_ARRAY )
 			);
 		}
-
 		if ( filter_input( INPUT_POST, 'machete-powertools-action' ) !== null ) {
 			check_admin_referer( 'machete_powertools_action' );
 
-			switch ( $_POST['action'] ) {
-				case __( 'Purge Transients', 'machete' ):
+			switch ( filter_input( INPUT_POST, 'machete-powertools-action' ) ) {
+				case 'purge_transients':
 					$this->purge_transients();
 					break;
-				case __( 'Purge Post Revisions', 'machete' ):
+				case 'purge_revisions':
 					$this->purge_post_revisions();
 					break;
-				case __( 'Flush Rewrite Rules', 'machete' ):
+				case 'flush_rewrites':
 					$this->flush_rewrite_rules();
 					break;
-				case __( 'Flush Opcache', 'machete' ):
+				case 'flush_opcache':
 					$this->flush_opcache();
 					break;
-				case __( 'Flush Object Cache', 'machete' ):
+				case 'flush_wpcache':
 					$this->flush_wpcache();
 					break;
 				default:
 					$this->notice( __( 'Unknown action requested', 'machete' ), 'error' );
-					return false;
-
 			}
 		}
 
@@ -141,7 +140,7 @@ class MACHETE_POWERTOOLS_MODULE extends MACHETE_MODULE {
 
 		if ( count( $options ) > 0 ) {
 			$num_options = count( $options );
-			for ( $i = 0; $i < $n; $i++ ) {
+			for ( $i = 0; $i < $num_options; $i++ ) {
 				$options[ $i ] = sanitize_text_field( $options[ $i ] );
 			}
 

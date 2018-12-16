@@ -22,11 +22,13 @@ class MACHETE_MAINTENANCE_PAGE {
 	/**
 	 * Module constructor, detemines if the maintenance page must be shown
 	 *
-	 * @param array $settings settings passed from the maintenance module class.
+	 * @param array  $settings settings passed from the maintenance module class.
+	 * @param string $path     path property passed from the maintenance module class.
 	 */
-	public function __construct( $settings ) {
+	public function __construct( $settings, $path ) {
 
 		$this->settings = $settings;
+		$this->path     = $path;
 
 		$mct_preview = filter_input( INPUT_GET, 'mct_preview' );
 		if (
@@ -119,47 +121,26 @@ class MACHETE_MAINTENANCE_PAGE {
 			$page = get_post( $page_id );
 			if ( null !== $page ) {
 				$html_content = array(
-					'title'         => str_replace( ']]>', ']]&gt;', apply_filters( 'the_title', $page->post_title ) ),
-					'body'          => str_replace( ']]>', ']]&gt;', apply_filters( 'the_content', $page->post_content ) ),
+					// phpcs:ignore
+					'title'         => str_replace(
+						']]>',
+						']]&gt;',
+						// phpcs:ignore WordPress.NamingConventions.PrefixAllGlobals
+						apply_filters( 'the_title', $page->post_title )
+					),
+					// phpcs:ignore
+					'body'          => str_replace(
+						']]>',
+						']]&gt;',
+						// phpcs:ignore WordPress.NamingConventions.PrefixAllGlobals
+						apply_filters( 'the_content', $page->post_content )
+					),
 					'content_class' => 'custom',
 				);
 			}
 		}
 
-		if ( 'maintenance' === $this->settings['site_status'] ) {
-			header( 'HTTP/1.1 503 Service Temporarily Unavailable' );
-			header( 'Status: 503 Service Temporarily Unavailable' );
-			header( 'Retry-After: 86400' ); // Retry in a day.
-		}
-
-		?><!DOCTYPE html>
-<html><head>
-<title><?php echo esc_html( $html_content['title'] ); ?></title>
-<meta charset="UTF-8">
-<?php
-if ( 'coming_soon' === $this->settings['site_status'] ) {
-	echo '<meta name="robots" content="noindex,follow" />';
-}
-
-echo '<style>';
-$this->readfile( MACHETE_BASE_PATH . 'css/maintenance-style.css' );
-echo '</style>';
-
-$this->readfile( MACHETE_DATA_PATH . 'header.html' );
-// wp_head not needed.
-?>
-</head><body id="maintenance_page">
-
-		<?php $this->readfile( MACHETE_DATA_PATH . 'body.html' ); ?>
-		<div id="content" class="<?php echo esc_attr( $html_content['content_class'] ); ?>">
-		<?php echo wp_kses_post( force_balance_tags( $html_content['body'] ) ); ?>
-		</div>
-
-		<?php $this->readfile( MACHETE_DATA_PATH . 'footer.html' ); ?>
-
-		<?php // wp_footer not needed. ?>
-		</body></html>
-		<?php
+		require $this->path . 'frontend-content.php';
 		exit();
 	}
 	/**
@@ -172,6 +153,6 @@ $this->readfile( MACHETE_DATA_PATH . 'header.html' );
 		if ( ! file_exists( $file ) ) {
 			return false;
 		}
-		readfile( $file );
+		readfile( $file ); // phpcs:ignore
 	}
 }

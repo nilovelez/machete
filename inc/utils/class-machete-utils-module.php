@@ -17,12 +17,14 @@ class MACHETE_UTILS_MODULE extends MACHETE_MODULE {
 	 * Module constructor, init method overrides parent module default params
 	 */
 	public function __construct() {
-		$this->init( array(
-			'slug'        => 'utils',
-			'title'       => __( 'Analytics & Code', 'machete' ),
-			'full_title'  => __( 'Analytics and Custom Code', 'machete' ),
-			'description' => __( 'Google Analytics tracking code manager and a simple editor to insert HTML, CSS and JS snippets or site verification tags.', 'machete' ),
-		) );
+		$this->init(
+			array(
+				'slug'        => 'utils',
+				'title'       => __( 'Analytics & Code', 'machete' ),
+				'full_title'  => __( 'Analytics and Custom Code', 'machete' ),
+				'description' => __( 'Google Analytics tracking code manager and a simple editor to insert HTML, CSS and JS snippets or site verification tags.', 'machete' ),
+			)
+		);
 		$this->default_settings = array(
 			'tracking_id'                      => '',
 			'tracking_format'                  => 'none',
@@ -36,12 +38,15 @@ class MACHETE_UTILS_MODULE extends MACHETE_MODULE {
 	 */
 	public function admin() {
 		$this->read_settings();
-		add_action('admin_init', function() {
-			if ( null !== filter_input( INPUT_POST, 'machete-utils-saved' ) ) {
-				check_admin_referer( 'machete_save_utils' );
-				$this->save_settings( filter_input_array( INPUT_POST ) );
+		add_action(
+			'admin_init',
+			function() {
+				if ( null !== filter_input( INPUT_POST, 'machete-utils-saved' ) ) {
+					check_admin_referer( 'machete_save_utils' );
+					$this->save_settings( filter_input_array( INPUT_POST ) );
+				}
 			}
-		});
+		);
 		add_action( 'admin_menu', array( $this, 'register_sub_menu' ) );
 	}
 	/**
@@ -201,6 +206,7 @@ class MACHETE_UTILS_MODULE extends MACHETE_MODULE {
 
 		foreach ( $encoded_fields as $encoded_field ) {
 			if ( array_key_exists( $encoded_field, $settings ) && ! empty( $settings[ $encoded_field ] ) ) {
+				// phpcs:ignore WordPress.PHP.DiscouragedPHPFunctions.obfuscation_base64_decode
 				$settings[ $encoded_field ] = base64_decode( $settings[ $encoded_field ] );
 			}
 		}
@@ -234,13 +240,16 @@ class MACHETE_UTILS_MODULE extends MACHETE_MODULE {
 				default:
 					$machete_header_content = implode( '', array_slice( $machete_header_content, 1 ) );
 			}
+			// phpcs:ignore WordPress.PHP.DiscouragedPHPFunctions.obfuscation_base64_encode
 			$export['header_content'] = base64_encode( $machete_header_content );
 		}
 		if ( file_exists( MACHETE_DATA_PATH . 'body.html' ) ) {
+			// phpcs:ignore WordPress.PHP.DiscouragedPHPFunctions.obfuscation_base64_encode
 			$export['alfonso_content'] = base64_encode( $this->get_contents( MACHETE_DATA_PATH . 'body.html' ) );
 		}
 
 		if ( file_exists( MACHETE_DATA_PATH . 'footer.html' ) ) {
+			// phpcs:ignore WordPress.PHP.DiscouragedPHPFunctions.obfuscation_base64_encode
 			$export['footer_content'] = base64_encode( $this->get_contents( MACHETE_DATA_PATH . 'footer.html' ) );
 		}
 
