@@ -14,7 +14,11 @@ if ( ! defined( 'ABSPATH' ) ) {
  * Adds link to admin bar
  */
 function machete_clone_admin_bar_link() {
-	if ( ! is_single() && ( null === filter_input( INPUT_GET, 'post' ) ) ) {
+	if (
+		( ! is_single() ) &&
+		( ! is_page() ) &&
+		( null === filter_input( INPUT_GET, 'post' ) )
+	) {
 		return;
 	}
 
@@ -53,7 +57,8 @@ function machete_clone_admin_bar_scripts() {
 	wp_register_style(
 		'machete-clone-styles',
 		MACHETE_BASE_URL . 'css/clone-admin-bar.css',
-		false
+		array(),
+		MACHETE_VERSION
 	);
 	wp_enqueue_style( 'machete-clone-styles' );
 }
