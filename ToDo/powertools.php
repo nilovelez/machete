@@ -6,6 +6,7 @@
  * @subpackage Machete
  */
 
+// phpcs:disable
 /**
  * Change default WordPress editor.
  *
