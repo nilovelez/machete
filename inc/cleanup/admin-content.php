@@ -36,7 +36,7 @@ $machete_allowed_description_tags = array(
 </style>
 
 <div class="wrap machete-wrap machete-section-wrap">
-
+	<div class="wp-header-end"></div><!-- admin notices go after .wp-header-end or .wrap>h2:first-child -->
 	<h1><?php $this->icon(); ?> <?php esc_html_e( 'WordPress Optimization', 'machete' ); ?></h1>
 
 	<p class="tab-description"><?php esc_html_e( 'WordPress has a los of code just to keep backward compatiblity or enable optional features. You can disable most of it and save some time from each page request while making your installation safer', 'machete' ); ?></p>

@@ -19,6 +19,7 @@ $machete_allowed_description_tags = array(
 
 ?>
 <div class="wrap machete-wrap machete-section-wrap">
+	<div class="wp-header-end"></div><!-- admin notices go after .wp-header-end or .wrap>h2:first-child -->
 	<h1><?php $this->icon(); ?> <?php esc_html_e( 'Machete PowerTools', 'machete' ); ?></h1>
 
 	<p class="tab-description"><?php esc_html_e( 'Machete PowerTools is an upgrade module targeted to WordPress developers and power users. PowerTools add new features and improve some of the Machete modules you already know and love.', 'machete' ); ?></p>

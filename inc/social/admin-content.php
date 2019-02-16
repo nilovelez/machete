@@ -12,6 +12,7 @@ if ( ! defined( 'MACHETE_ADMIN_INIT' ) ) {
 ?>
 
 <div class="wrap machete-wrap machete-section-wrap">
+	<div class="wp-header-end"></div><!-- admin notices go after .wp-header-end or .wrap>h2:first-child -->
 	<h1><?php $this->icon(); ?> <?php esc_html_e( 'Social Sharing Buttons', 'machete' ); ?></h1>
 	<p class="tab-description"><?php esc_html_e( 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque aliquet placerat ultrices. Sed et euismod leo, nec vestibulum ex. Quisque aliquet fermentum volutpat. Ut felis lorem, rhoncus a erat id, luctus lobortis ipsum.', 'machete' ); ?></p>
 	<?php $machete->admin_tabs( 'machete-social' ); ?>

@@ -11,6 +11,7 @@ if ( ! defined( 'MACHETE_ADMIN_INIT' ) ) {
 } ?>
 
 <div class="wrap about-wrap machete-wrap full-width-layout">
+		<div class="wp-header-end"></div><!-- admin notices go after .wp-header-end or .wrap>h2:first-child -->
 		<h1><?php esc_html_e( 'Welcome to Machete!', 'machete' ); ?></h1>
 
 		<div class="about-text"><?php esc_html_e( 'Machete is now installed and ready to use. Machete solves common WordPress problems using as little resources as posible. Machete lets you use less plugins. Machete optimizes.', 'machete' ); ?></div>

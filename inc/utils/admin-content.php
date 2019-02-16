@@ -54,8 +54,8 @@ if ( false !== $machete_settings ) {
 ?>
 
 <div class="wrap machete-wrap machete-section-wrap">
+	<div class="wp-header-end"></div><!-- admin notices go after .wp-header-end or .wrap>h2:first-child -->
 	<h1><?php $this->icon(); ?> <?php esc_html_e( 'Analytics and Custom Code', 'machete' ); ?></h1>
-
 	<p class="tab-description"><?php esc_html_e( 'You don\'t need a zillion plugins to perform easy task like inserting a verification meta tag (Google Search Console, Bing, Pinterest), a json-ld snippet or a custom styleseet (Google Fonts, Print Styles, accesibility tweaks...).', 'machete' ); ?></p>
 	<?php $machete->admin_tabs( 'machete-utils' ); ?>
 	<p class="tab-performance"><span><strong><i class="dashicons dashicons-clock"></i> <?php esc_html_e( 'Performance impact:', 'machete' ); ?></strong> <?php esc_html_e( 'This tool generates up to three static HTML files that are loaded via PHP on each pageview. When enabled, custom body content requires one aditional database request.', 'machete' ); ?></span></p>
