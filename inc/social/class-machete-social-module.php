@@ -22,7 +22,7 @@ class MACHETE_SOCIAL_MODULE extends MACHETE_MODULE {
 				'slug'        => 'social',
 				'title'       => __( 'Social Sharing', 'machete' ),
 				'full_title'  => __( 'Social Sharing Buttons', 'machete' ),
-				'description' => __( 'Social sharing icons as simple as can be. No bloat, no extra JS, no APIs', 'machete' ),
+				'description' => __( 'Social sharing buttons as simple as they can be. No bloat, no extra JS libraries, no APIs', 'machete' ),
 				'role'        => 'publish_posts', // translatorsgeting Author role.
 			)
 		);
