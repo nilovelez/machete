@@ -26,3 +26,6 @@ delete_option( 'machete_cookies_settings' );
 
 // machete maintenance mode options.
 delete_option( 'machete_maintenance_settings' );
+
+// machete social sharing options.
+delete_option( 'machete_social_settings' );
