@@ -22,7 +22,7 @@ class MACHETE_SOCIAL_MODULE extends MACHETE_MODULE {
 				'slug'        => 'social',
 				'title'       => __( 'Social Sharing', 'machete' ),
 				'full_title'  => __( 'Social Sharing Buttons', 'machete' ),
-				'description' => __( 'Social sharing buttons as simple as they can be. No bloat, no extra JS libraries, no APIs', 'machete' ),
+				'description' => __( 'Social sharing buttons as simple as they can be. No bloat, no extra JS libraries, no API calls.', 'machete' ),
 				'role'        => 'publish_posts', // translatorsgeting Author role.
 			)
 		);
@@ -126,14 +126,14 @@ class MACHETE_SOCIAL_MODULE extends MACHETE_MODULE {
 
 				wp_enqueue_style(
 					'machete_social',
-					plugins_url( 'css/social.css', __FILE__ ),
+					plugins_url( 'css/social.min.css', __FILE__ ),
 					array(),
 					MACHETE_VERSION
 				);
 
 				wp_enqueue_script(
 					'machete_social',
-					plugins_url( 'js/share.js', __FILE__ ),
+					plugins_url( 'js/share.min.js', __FILE__ ),
 					array(),
 					MACHETE_VERSION,
 					true
@@ -174,7 +174,7 @@ class MACHETE_SOCIAL_MODULE extends MACHETE_MODULE {
 								$post_type_name = _x( 'page', 'Page post type singular label', 'machete' );
 								break;
 							case 'post':
-								$post_type_name = _x( 'post', 'Page post type singular label', 'machete' );
+								$post_type_name = _x( 'post', 'Post post type singular label', 'machete' );
 								break;
 							case 'product':
 								$post_type_name = _x( 'product', 'Product post type singular label', 'machete' );
@@ -214,7 +214,7 @@ class MACHETE_SOCIAL_MODULE extends MACHETE_MODULE {
 		foreach ( $this->settings['networks'] as $network_slug ) {
 			$network = $this->networks[ $network_slug ];
 
-			$url = sprintf( $network['url'], rawurlencode( get_permalink() ) );
+			$url = sprintf( $network['url'], rawurlencode( wp_get_canonical_url() ) );
 
 			$rt .= '<li class="mct-ico-' . esc_attr( $network_slug ) . '"><a href="' . esc_url( $url ) . '" data-network="' . esc_attr( $network_slug ) . '">' . esc_html( $network['label'] ) . '</a></li>' . "\n";
 		}

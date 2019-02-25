@@ -71,22 +71,6 @@
 .mct-ico-pinterest { background: #DE220A; }
 .mct-ico-pinterest a:before { content: "\ead1"; font-size: 20px;  }
 
-	
-
-/*
-.mct-ico-googleplus   { border-color: #DC4937; background: #fff; }
-.mct-ico-googleplus a { color: #DC4937; }
-.mct-ico-facebook     { border-color: #3B579D; background: #fff; }
-.mct-ico-facebook a   { color: #3B579D; }
-.mct-ico-whatsapp     { border-color: #25D366; background: #fff; }
-.mct-ico-whatsapp a   { color: #25D366; }
-.mct-ico-twitter      { border-color: #67ADD1; background: #fff; }
-.mct-ico-twitter a    { color: #67ADD1; }
-.mct-ico-linkedin     { border-color: #0075B2; background: #fff; }
-.mct-ico-linkedin a   { color: #0075B2; }
-.mct-ico-pinterest    { border-color: #DE220A; background: #fff; }
-.mct-ico-pinterest a  { color: #DE220A; }
-*/
 
 @media  (max-width: 768px) {
 	#machete-top-share-buttons,
