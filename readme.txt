@@ -2,7 +2,7 @@
 Contributors: nilovelez
 Tags: cookies, analytics, code, css, javascript, admin
 Requires at least: 4.6
-Tested up to: 4.9
+Tested up to: 5.1
 Requires PHP: 5.6
 Stable tag: trunk
 License: WTFPL
