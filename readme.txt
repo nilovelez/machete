@@ -53,6 +53,14 @@ Yes, but Machete does it well enough and probably is much lighter.
 
 == Changelog ==
 
+= 3.3 =
+* New Social Sharing Buttons module
+* Lots of tiny changes to adhere to WordPress Coding standards
+* Minor Gutenberg compatibility fixes
+* Fixed the position of the admin notices on Machete admin pages
+* Fixed WP-Cli Warnings (finally). Props to @angelfplaza and @oterox
+
+
 = 3.2.3 =
 * Improved Clone Module to make it work better with Gutemberg and complex page builders
 * Fix: In some cases the clone module didn't copy the featured image.
