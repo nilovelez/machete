@@ -23,7 +23,7 @@ class MACHETE_SOCIAL_MODULE extends MACHETE_MODULE {
 				'title'       => __( 'Social Sharing', 'machete' ),
 				'full_title'  => __( 'Social Sharing Buttons', 'machete' ),
 				'description' => __( 'Social sharing buttons as simple as they can be. No bloat, no extra JS libraries, no API calls.', 'machete' ),
-				'role'        => 'publish_posts', // translatorsgeting Author role.
+				'role'        => 'publish_posts', // targeting Author role.
 			)
 		);
 		$this->default_settings = array(
