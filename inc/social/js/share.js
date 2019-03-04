@@ -1,6 +1,6 @@
 (function($) {	
 	"use strict";
-	$('.machete-social-share a').on('click', function( e ){
+	$('.mct-share-buttons a').on('click', function( e ){
 		e.preventDefault();
 		window.open(
 			$( this ).attr('href'),
