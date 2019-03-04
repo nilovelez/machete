@@ -60,7 +60,7 @@ class MACHETE_SOCIAL_MODULE extends MACHETE_MODULE {
 				'url'   => 'https://www.linkedin.com/shareArticle?mini=true&url=%s',
 			),
 			'whatsapp'  => array(
-				'title' => _x( 'WhatsApp', 'network name', 'machete' ),
+				'title' => _x( 'WhatsApp (only on mobile devices)', 'network name', 'machete' ),
 				'label' => _x( 'Share this', 'WhatsApp button label', 'machete' ),
 				'url'   => 'whatsapp://send?text=%s',
 			),

@@ -18,8 +18,12 @@
 	padding: 0;
 	display: inline-block;
 	border-radius: 4px;
-
 }
+#mct-top-share li.mct-ico-whatsapp,
+#mct-bottom-share li.mct-ico-whatsapp {
+	display: none;
+}
+
 #mct-top-share a,
 #mct-top-share a:hover,
 #mct-bottom-share a,
@@ -100,6 +104,9 @@
 		flex-grow: 1;
 		border-radius: 0;
 		margin: 0;
+	}
+	#mct-bottom-share li.mct-ico-whatsapp {
+		display: inline-block;
 	}
 	#mct-bottom-share a,
 	#mct-bottom-share a:hover {
