@@ -4,13 +4,15 @@
 	font-weight: normal;
 	font-style: normal;
 }
-.machete-social-share {
+#mct-top-share .mct-share-buttons,
+#mct-bottom-share .mct-share-buttons {
 	margin: 0;
 	padding: 0;
 	display: block;
 	font-size: 0;
 }
-.machete-social-share li{
+#mct-top-share li,
+#mct-bottom-share li {
 	margin: 0 4px 4px 0;
 	border-width: 0;	
 	padding: 0;
@@ -18,8 +20,10 @@
 	border-radius: 4px;
 
 }
-.machete-social-share a,
-.machete-social-share a:hover {
+#mct-top-share a,
+#mct-top-share a:hover,
+#mct-bottom-share a,
+#mct-bottom-share a:hover {
 	display: block;
 	color: #fff;
 	text-decoration: none;
@@ -34,10 +38,12 @@
 	background: transparent;
 	transition: background 0.5s;
 }
-.machete-social-share a:hover {
+#mct-top-share a:hover,
+#mct-bottom-share a:hover {
 	background-color: rgba(0,0,0,0.2);
 }
-.machete-social-share a:before {
+#mct-top-share a:before,
+#mct-bottom-share a:before {
 	vertical-align: bottom;
 
 	font-size: 16px;
@@ -73,35 +79,39 @@
 
 
 @media  (max-width: 768px) {
-	#machete-top-share-buttons,
-	#machete-bottom-share-buttons,
-	#machete-bottom-share-buttons h2 {
+	#mct-top-share,
+	#mct-bottom-share,
+	#mct-bottom-share h2 {
 		display: none;
 	}
-	#machete-bottom-share-buttons.machete-responsive {
+	#mct-bottom-share.machete-responsive {
 		display: block;
 		position: fixed;
+		z-index: 9999;
 		width: 100%;
 		bottom: 0;
 		left: 0;
 	}
-	.machete-social-share {
+	#mct-bottom-share .mct-share-buttons {
 		display: flex;
 		width: 100%;
 	}
-	.machete-social-share li {
+	#mct-bottom-share li {
 		flex-grow: 1;
 		border-radius: 0;
+		margin: 0;
 	}
-	.machete-social-share li a {
+	#mct-bottom-share a,
+	#mct-bottom-share a:hover {
+		border-radius: 0;
 		overflow: hidden;
-		height: 24px;
-		padding: 16px 0;
+		height: 48px;
+		padding: 0;
 		text-align: center;
 	}
-	.machete-social-share li a:before {
+	#mct-bottom-share a:before {
 		display: block;
-		font-size: 32px;
+		zoom: 2;
 		padding-bottom: 16px;
 		padding-right: 0;
 		text-align: center;
