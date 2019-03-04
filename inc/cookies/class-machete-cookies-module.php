@@ -30,21 +30,11 @@ class MACHETE_COOKIES_MODULE extends MACHETE_MODULE {
 			'bar_status'      => 'disabled',
 			'warning_text'    => __( 'By continuing to browse the site, you are agreeing to our use of cookies as described in our <a href="/cookies/" style="color: #007FFF">cookie policy</a>.', 'machete' ),
 			'accept_text'     => __( 'Accept cookies', 'machete' ),
-			'bar_theme'       => 'light',
+			'bar_theme'       => 'new_light',
 			'cookie_filename' => '',
 		);
 
 		$this->themes = array(
-			'light'     => array(
-				'name'      => __( 'Classic Light', 'machete' ),
-				'template'  => $this->path . 'templates/light.html',
-				'extra_css' => '',
-			),
-			'dark'      => array(
-				'name'      => __( 'Classic Dark', 'machete' ),
-				'template'  => $this->path . 'templates/dark.html',
-				'extra_css' => '',
-			),
 			'new_light' => array(
 				'name'      => __( 'Modern Light', 'machete' ),
 				'template'  => $this->path . 'templates/new_light.html',
@@ -53,6 +43,16 @@ class MACHETE_COOKIES_MODULE extends MACHETE_MODULE {
 			'new_dark'  => array(
 				'name'      => __( 'Modern Dark', 'machete' ),
 				'template'  => $this->path . 'templates/new_dark.html',
+				'extra_css' => '',
+			),
+			'light'     => array(
+				'name'      => __( 'Classic Light', 'machete' ),
+				'template'  => $this->path . 'templates/light.html',
+				'extra_css' => '',
+			),
+			'dark'      => array(
+				'name'      => __( 'Classic Dark', 'machete' ),
+				'template'  => $this->path . 'templates/dark.html',
 				'extra_css' => '',
 			),
 			'cookie'    => array(

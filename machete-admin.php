@@ -51,7 +51,12 @@ add_action(
 		add_action(
 			'admin_enqueue_scripts',
 			function() {
-				wp_enqueue_style( 'machete_admin_4', plugin_dir_url( __FILE__ ) . 'css/admin_v4.css', false, '4.0.0' );
+				wp_enqueue_style(
+					'machete_admin_4',
+					plugin_dir_url( __FILE__ ) . 'css/admin.css',
+					array(),
+					MACHETE_VERSION
+				);
 			}
 		);
 	}

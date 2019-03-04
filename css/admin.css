@@ -1,6 +1,6 @@
 .machete-wrap {
 	position: relative;
-	margin: 25px 40px 0 20px;
+	/* margin: 25px 40px 0 20px; */
 	max-width: 1050px;
 }
 
@@ -10,9 +10,7 @@
 
 .machete-wrap .machete-logo {
 	border: none;
-	position: absolute;
-	top: 0;
-	right: 0;
+	float: right;
 	width: 150px;
 	height: 150px;
 	-webkit-box-shadow: 0 1px 3px rgba(0,0,0,.2);
@@ -31,6 +29,7 @@
 }
 
 .machete-important-notice {
+	clear: right;
 	padding: 20px;
 	margin: 0px 0px 30px;
 	background: #fff;
@@ -264,14 +263,6 @@
 		border-top: 1px solid #f90;
 		background-color: #fff5e5;
 	}
-
-	.machete-module-list .machete-module.module-is-inactive.powertools-module .machete-module-bottom {
-		/*
-		border-top: 1px solid #ccc;
-		background-color: #e8e8e8;
-		*/
-	}
-
 
 	.machete-module-list .machete-module .machete-module-toggle-active {
 		display: inline-block;
