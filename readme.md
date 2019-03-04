@@ -1,6 +1,8 @@
 # Machete
 Machete is a simple suite of tools that solve common WordPress annoyances using as few resources as posible. Machete doesn't cover every single user case, but there is a huge amount of sites that would require less plugins if they used Machete.
 
+All Machete tools have two things in common: they solve a problems faced by many web developers and they do it using as few server resources as possible.
+
 So far, Machete includes the following tools:
 
 ### Header cleanup:
@@ -17,6 +19,10 @@ The maintenance mode that ships with WordPress is just a basic lockdown that is 
 
 ### Post & Page cloner 
 Adds a "duplicate" link to post, page and most post types lists. Also adds "copy to new draft" function to the post editor.
+
+### Social Sharing Buttons
+
+Social sharing made the Machete way. The icons are made as a custom webfont embedded in a CSS minified file that only weights 5.6Kb. The sharing actions are made uning each platform's native share URLs.
 
 ## Installation
 1. Upload the plugin files to the `/wp-content/plugins/machete` directory, or install the plugin through the WordPress plugins screen directly.

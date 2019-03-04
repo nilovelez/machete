@@ -14,6 +14,8 @@ Machete is a lean and simple suite of tools that solve common WordPress annoyanc
 
 Machete is a simple suite of tools that solve common WordPress annoyances using as few resources as posible. Machete doesn't cover every single user case, but there is a huge amount of sites that would require less plugins if they used Machete.
 
+All Machete tools have two things in common: they solve a problems faced by many web developers and they do it using as few server resources as possible.
+
 So far, Machete includes the following tools:
 
 = Header cleanup: =
@@ -32,18 +34,32 @@ The maintenance mode that ships with WordPress is just a basic lockdown that is 
 = Post & Page cloner: =
 Adds a "duplicate" link to post, page and most post types lists. Also adds "copy to new draft" function to the post editor.
 
+= Social Sharing Buttons: =
+Social sharing made the Machete way. The icons are made as a custom webfont embedded in a CSS minified file that only weights 5.6Kb. The sharing actions are made uning each platform\'s native share URLs.
+
 == Installation ==
 
 1. Upload the plugin files to the `/wp-content/plugins/machete` directory, or install the plugin through the WordPress plugins screen directly.
 2. Activate the plugin through the 'Plugins' screen in WordPress
 3. Configure each tool using the corresponding link on the **Machete** side menu
 
-
 == Frequently Asked Questions ==
 
 = Doesn't plugin X does that better? =
 
 Yes, but Machete does it well enough and probably is much lighter.
+
+= Is there any set-it-and-forget it alternative to Machete? =
+
+Machete is meant to be used as a development suite. If you are looking for a simpler solution to cut out WordPress bloat, you should have a look at WordPress WPO Tweaks & Optimizations by fernando Tellado (https://wordpress.org/plugins/wpo-tweaks/)
+
+= Why does Wordfence show a warning when I save my options? =
+
+Machete caches some of its options to files located in `wp-content\uploads\machete\` lo speed up loading. This is completely safe, but it's not a normal WordPress behaviour and it might make plugins like WordFence raise a warning. Just whilelist the action, save again and you'll be fine.
+
+= Why doesn't Machete have an option to disable Gutenberg? =
+
+Like it or not, the WordPress Block Editor (codenamed Gutenberg) is here to stay. Instead of disabling Gutenberg, you should be focusing on updating you workflow to use it. If you need to disable gutenberg during the transion, you should use the official Classic Editor plugin (https://wordpress.org/plugins/classic-editor/)
 
 == Screenshots ==
 
