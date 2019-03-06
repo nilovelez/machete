@@ -1,5 +1,6 @@
 === Machete ===
 Contributors: nilovelez
+Donate link: https://machetewp.com/product/donation/
 Tags: cookies, analytics, code, css, javascript, admin
 Requires at least: 4.6
 Tested up to: 5.1
