@@ -35,7 +35,7 @@ The maintenance mode that ships with WordPress is just a basic lockdown that is 
 Adds a "duplicate" link to post, page and most post types lists. Also adds "copy to new draft" function to the post editor.
 
 = Social Sharing Buttons: =
-Social sharing made the Machete way. The icons are made as a custom webfont embedded in a CSS minified file that only weights 5.6Kb. The sharing actions are made uning each platform\'s native share URLs.
+Social sharing made the Machete way. The icons are made as a custom webfont embedded in a CSS minified file that only weights 5.8Kb. The sharing actions are made uning each platform\'s native share URLs.
 
 == Installation ==
 
@@ -51,7 +51,7 @@ Yes, but Machete does it well enough and probably is much lighter.
 
 = Is there any set-it-and-forget it alternative to Machete? =
 
-Machete is meant to be used as a development suite. If you are looking for a simpler solution to cut out WordPress bloat, you should have a look at WordPress WPO Tweaks & Optimizations by fernando Tellado (https://wordpress.org/plugins/wpo-tweaks/)
+Machete is meant to be used as a development suite. If you are looking for a simpler solution to cut out WordPress bloat, you should have a look at WordPress [WPO Tweaks & Optimizations by fernando Tellado](https://wordpress.org/plugins/wpo-tweaks/ "WPO Tweaks & Optimizations")
 
 = Why does Wordfence show a warning when I save my options? =
 
@@ -59,7 +59,7 @@ Machete caches some of its options to files located in `wp-content\uploads\mache
 
 = Why doesn't Machete have an option to disable Gutenberg? =
 
-Like it or not, the WordPress Block Editor (codenamed Gutenberg) is here to stay. Instead of disabling Gutenberg, you should be focusing on updating you workflow to use it. If you need to disable gutenberg during the transion, you should use the official Classic Editor plugin (https://wordpress.org/plugins/classic-editor/)
+Like it or not, the WordPress Block Editor (codenamed Gutenberg) is here to stay. Instead of disabling Gutenberg, you should be focusing on updating you workflow to use it. If you need to disable gutenberg during the transion, you should use the official [Classic Editor plugin](https://wordpress.org/plugins/classic-editor/)
 
 == Screenshots ==
 

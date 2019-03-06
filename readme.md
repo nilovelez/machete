@@ -22,7 +22,7 @@ Adds a "duplicate" link to post, page and most post types lists. Also adds "copy
 
 ### Social Sharing Buttons
 
-Social sharing made the Machete way. The icons are made as a custom webfont embedded in a CSS minified file that only weights 5.6Kb. The sharing actions are made uning each platform's native share URLs.
+Social sharing made the Machete way. The icons are made as a custom webfont embedded in a CSS minified file that only weights 5.8Kb. The sharing actions are made uning each platform's native share URLs.
 
 ## Installation
 1. Upload the plugin files to the `/wp-content/plugins/machete` directory, or install the plugin through the WordPress plugins screen directly.
