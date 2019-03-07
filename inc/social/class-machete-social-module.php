@@ -162,36 +162,34 @@ class MACHETE_SOCIAL_MODULE extends MACHETE_MODULE {
 				}
 
 				if ( in_array( 'below', $this->settings['positions'], true ) ) {
+					if ( ! empty( $this->settings['title'] ) ) {
+						// replace the %%post_type%% placholder only if present.
+						if ( false !== strpos( $this->settings['title'], '%%post_type%%' ) ) {
 
-					if (
-						! empty( $this->settings['title'] ) &&
-						( false !== strpos( $this->settings['title'], '%%post_type%%' ) )
-					) {
+							// saves one DB query for standard post types.
+							switch ( $post->post_type ) {
+								case 'page':
+									$post_type_name = _x( 'page', 'Page post type singular label', 'machete' );
+									break;
+								case 'post':
+									$post_type_name = _x( 'post', 'Post post type singular label', 'machete' );
+									break;
+								case 'product':
+									$post_type_name = _x( 'product', 'Product post type singular label', 'machete' );
+									break;
+								default:
+									$post_type      = get_post_type_object( $post->post_type );
+									$post_type_name = mb_strtolower( $post_type->labels->singular_name );
 
-						// saves one DB query for standard post types.
-						switch ( $post->post_type ) {
-							case 'page':
-								$post_type_name = _x( 'page', 'Page post type singular label', 'machete' );
-								break;
-							case 'post':
-								$post_type_name = _x( 'post', 'Post post type singular label', 'machete' );
-								break;
-							case 'product':
-								$post_type_name = _x( 'product', 'Product post type singular label', 'machete' );
-								break;
-							default:
-								$post_type      = get_post_type_object( $post->post_type );
-								$post_type_name = mb_strtolower( $post_type->labels->singular_name );
+							}
 
+							// replaces the %%post_type%% placholder.
+							$title = str_replace(
+								'%%post_type%%',
+								$post_type_name,
+								$this->settings['title']
+							);
 						}
-
-						// replaces the %%post_type%% placholder.
-						$title = str_replace(
-							'%%post_type%%',
-							$post_type_name,
-							$this->settings['title']
-						);
-
 					} else {
 						$title = null;
 					}
