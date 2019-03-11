@@ -70,6 +70,11 @@ Like it or not, the WordPress Block Editor (codenamed Gutenberg) is here to stay
 
 == Changelog ==
 
+= 3.3.1 =
+* New: remove generator tag from RSS feeds
+* Fixed social share title that dissapears if no placeholder
+* Updated description wp_generator also removes woocommerce generator tag
+
 = 3.3 =
 * New Social Sharing Buttons module
 * Lots of tiny changes to adhere to WordPress Coding standards

@@ -15,6 +15,7 @@ HEADER CLEANUP
 rsd_link
 wlwmanifest
 feed_links
+feed_generator
 next_prev
 shortlink
 wp_generator
@@ -64,6 +65,17 @@ if ( in_array( 'wlwmanifest', $this->settings, true ) && ! is_admin() ) {
 if ( in_array( 'feed_links', $this->settings, true ) && ! is_admin() ) {
 	remove_action( 'wp_head', 'feed_links', 2 );
 	remove_action( 'wp_head', 'feed_links_extra', 3 );
+}
+// Remove generator tag from RSS feeds
+if ( in_array( 'feed_generator', $this->settings, true ) && ! is_admin() ) {
+    remove_action( 'atom_head', 'the_generator' );
+	remove_action( 'comments_atom_head', 'the_generator' );
+    remove_action( 'rss_head',  'the_generator' );
+	remove_action( 'rss2_head', 'the_generator' );
+	remove_action( 'commentsrss2_head', 'the_generator' );
+	remove_action( 'rdf_header', 'the_generator' );
+	remove_action( 'opml_head', 'the_generator' );
+	remove_action( 'app_head',  'the_generator' );
 }
 
 // remove the next and previous post links.
