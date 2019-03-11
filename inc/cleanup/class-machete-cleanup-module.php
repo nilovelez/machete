@@ -53,7 +53,7 @@ class MACHETE_CLEANUP_MODULE extends MACHETE_MODULE {
 			),
 			'wp_generator'      => array(
 				'title'       => __( 'wp_generator', 'machete' ),
-				'description' => __( 'Remove WordPress meta generator tag. Used by atackers to detect the WordPress version.', 'machete' ),
+				'description' => __( 'Remove WordPress and WooCommerce meta generator tags. Used by atackers to detect the WordPress version.', 'machete' ),
 			),
 			'ver'               => array(
 				'title'       => __( 'version', 'machete' ),
