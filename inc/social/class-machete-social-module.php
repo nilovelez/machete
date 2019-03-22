@@ -52,7 +52,7 @@ class MACHETE_SOCIAL_MODULE extends MACHETE_MODULE {
 			'twitter'   => array(
 				'title' => _x( 'Twitter', 'network name', 'machete' ),
 				'label' => _x( 'Tweet this', 'Twitter button label', 'machete' ),
-				'url'   => 'http://twitter.com/intent/tweet?url=%s',
+				'url'   => 'https://twitter.com/intent/tweet?url=%s',
 			),
 			'linkedin'  => array(
 				'title' => _x( 'LinkedIn', 'network name', 'machete' ),
@@ -62,12 +62,12 @@ class MACHETE_SOCIAL_MODULE extends MACHETE_MODULE {
 			'whatsapp'  => array(
 				'title' => _x( 'WhatsApp (only on mobile devices)', 'network name', 'machete' ),
 				'label' => _x( 'Share this', 'WhatsApp button label', 'machete' ),
-				'url'   => 'whatsapp://send?text=%s',
+				'url'   => 'https://wa.me/?text=%s',
 			),
 			'pinterest' => array(
 				'title' => _x( 'Pinterest', 'network name', 'machete' ),
 				'label' => _x( 'Pin this', 'Pinterest button label', 'machete' ),
-				'url'   => 'http://pinterest.com/pin/create/button/?url=%s',
+				'url'   => 'https://pinterest.com/pin/create/button/?url=%s',
 			),
 
 		);
