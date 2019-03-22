@@ -70,6 +70,9 @@ Like it or not, the WordPress Block Editor (codenamed Gutenberg) is here to stay
 
 == Changelog ==
 
+= 3.3.2 =
+* Minor CSS fix
+
 = 3.3.1 =
 * New: remove generator tag from RSS feeds
 * Fixed social share title that dissapears if no placeholder
