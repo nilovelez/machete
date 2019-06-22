@@ -5,14 +5,16 @@
 	font-style: normal;
 }
 #mct-top-share .mct-share-buttons,
-#mct-bottom-share .mct-share-buttons {
+#mct-bottom-share .mct-share-buttons,
+.mct-shortcode-share .mct-share-buttons {
 	margin: 0;
 	padding: 0;
 	display: block;
 	font-size: 0;
 }
 #mct-top-share li,
-#mct-bottom-share li {
+#mct-bottom-share li,
+.mct-shortcode-share li {
 	margin: 0 4px 4px 0;
 	border-width: 0;	
 	padding: 0;
@@ -20,14 +22,20 @@
 	border-radius: 4px;
 }
 #mct-top-share li.mct-ico-whatsapp,
-#mct-bottom-share li.mct-ico-whatsapp {
+#mct-bottom-share li.mct-ico-whatsapp,
+.mct-shortcode-share li.mct-ico-whatsapp {
 	display: none;
 }
 
 #mct-top-share a,
 #mct-top-share a:hover,
+#mct-top-share a:active,
 #mct-bottom-share a,
-#mct-bottom-share a:hover {
+#mct-bottom-share a:hover,
+#mct-bottom-share a:active,
+.mct-shortcode-share a,
+.mct-shortcode-share a:hover,
+.mct-shortcode-share a:active {
 	display: block;
 	color: #fff;
 	text-decoration: none;
@@ -43,11 +51,13 @@
 	transition: background 0.5s;
 }
 #mct-top-share a:hover,
-#mct-bottom-share a:hover {
+#mct-bottom-share a:hover,
+.mct-shortcode-share a:hover {
 	background-color: rgba(0,0,0,0.2);
 }
 #mct-top-share a:before,
-#mct-bottom-share a:before {
+#mct-bottom-share a:before,
+.mct-shortcode-share a:before {
 	vertical-align: bottom;
 
 	font-size: 16px;

@@ -99,14 +99,12 @@ class MACHETE_SOCIAL_MODULE extends MACHETE_MODULE {
 
 		$this->read_settings();
 
-		// bail if main switch is set to inactive.
-		if ( 'enabled' !== $this->settings['status'] ) {
-			return;
-		}
+		// shortcode returns empty string if it cannot be rendered.
+		add_shortcode( 'mct-social-share', '__return_empty_string' );
 
-		// bail if no active positions or no active networks.
+		// bail if main switch is set to inactive or no active networks.
 		if (
-			( 0 === count( $this->settings['positions'] ) ) ||
+			( 'enabled' !== $this->settings['status'] ) ||
 			( 0 === count( $this->settings['networks'] ) )
 		) {
 			return;
@@ -118,10 +116,13 @@ class MACHETE_SOCIAL_MODULE extends MACHETE_MODULE {
 
 				global $post;
 				if (
-					! is_single() ||
+					( 0 === count( $this->settings['positions'] ) ) ||
 					( ! in_array( $post->post_type, $this->settings['post_types'], true ) )
 				) {
-					return;
+					// bail if (no active positions OR no active networks) AND no shortcode is present.
+					if ( ! has_shortcode( $post->post_content, 'mct-social-share' ) ) {
+						return;
+					}
 				}
 
 				wp_enqueue_style(
@@ -138,12 +139,33 @@ class MACHETE_SOCIAL_MODULE extends MACHETE_MODULE {
 					MACHETE_VERSION,
 					true
 				);
+
+				/**
+				 * Redefines the mct-social-share shortcode for manually displaying the buttons
+				 * [mct-social-share]
+				 */
+				remove_shortcode( 'mct-social-share' );
+				add_shortcode(
+					'mct-social-share',
+					function() {
+						$out  = '<div class="mct-shortcode-share">';
+						$out .= $this->share_buttons();
+						$out .= '</div>';
+						return $out;
+					}
+				);
 			}
 		);
 
 		add_filter(
 			'the_content',
 			function( $content ) {
+
+				// bail if no active positions.
+				if ( 0 === count( $this->settings['positions'] ) ) {
+					return;
+				}
+
 				global $post;
 				if (
 					! is_single() ||
@@ -189,6 +211,8 @@ class MACHETE_SOCIAL_MODULE extends MACHETE_MODULE {
 								$post_type_name,
 								$this->settings['title']
 							);
+						} else {
+							$title = $this->settings['title'];
 						}
 					} else {
 						$title = null;
@@ -253,6 +277,10 @@ class MACHETE_SOCIAL_MODULE extends MACHETE_MODULE {
 		}
 		return $rt . $buttons . '</div>';
 	}
+
+
+
+
 
 	/**
 	 * Gets the list of post types where sharing buttons can be shown

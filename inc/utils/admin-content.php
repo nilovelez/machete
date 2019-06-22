@@ -45,7 +45,10 @@ if ( false !== $machete_settings ) {
 
 	$machete_code_editor  = 'jQuery( function() { ' . "\n";
 	$machete_code_editor .= sprintf( ' wp.codeEditor.initialize( "header_content", %s );', $machete_json_settings ) . "\n";
-	$machete_code_editor .= sprintf( ' wp.codeEditor.initialize( "alfonso_content", %s );', $machete_json_settings ) . "\n";
+
+	if ( ! empty( $machete_alfonso_content ) ) {
+		$machete_code_editor .= sprintf( ' wp.codeEditor.initialize( "alfonso_content", %s );', $machete_json_settings ) . "\n";
+	}
 	$machete_code_editor .= sprintf( ' wp.codeEditor.initialize( "footer_content", %s );', $machete_json_settings ) . "\n";
 	$machete_code_editor .= ' } );' . "\n";
 
@@ -78,7 +81,7 @@ if ( false !== $machete_settings ) {
 <th scope="row"><?php esc_html_e( 'Tracking Code', 'machete' ); ?></th>
 <td><fieldset><legend class="screen-reader-text"><span><?php esc_html_e( 'Tracking Code', 'machete' ); ?></span></legend>
 	<label><input name="tracking_format" value="standard" type="radio" <?php checked( 'standard', $this->settings['tracking_format'], true ); ?>> <?php esc_html_e( 'Standard Google Analytics tracking code', 'machete' ); ?></label><br>
-	<label><input name="tracking_format" value="machete" type="radio" <?php checked( 'machete', $this->settings['tracking_format'], true ); ?>> <acronym title="<?php esc_attr_e( 'Uses JavaScript to hide the tracking code from PageSpeed and GoogleBot', 'machete' ); ?>"><?php esc_html_e( 'PageSpeed-optimized tracking code', 'machete' ); ?><acronym></label><br>
+	<label><input name="tracking_format" value="machete" type="radio" <?php checked( 'machete', $this->settings['tracking_format'], true ); ?>> <acronym title="<?php esc_attr_e( 'Uses JavaScript to hide the tracking code from PageSpeed and GoogleBot', 'machete' ); ?>"><?php esc_html_e( 'PageSpeed-optimized tracking code', 'machete' ); ?><acronym> <span class="machete_deprecated_badge"><?php esc_html_e( 'Deprecated', 'machete' ); ?></span></label><br>
 	<label><input name="tracking_format" value="none" type="radio" <?php checked( 'none', $this->settings['tracking_format'], true ); ?>> <?php esc_html_e( 'No tracking code', 'machete' ); ?></label><br>
 </fieldset></td>
 </tr>
@@ -95,9 +98,6 @@ if ( false !== $machete_settings ) {
 </fieldset></td>
 </tr>
 
-
-
-
 <tr>
 <th scope="row"><?php esc_html_e( 'Custom header content', 'machete' ); ?></th>
 <td><fieldset><legend class="screen-reader-text"><span><?php esc_html_e( 'Custom header content', 'machete' ); ?></span></legend>
@@ -107,6 +107,9 @@ if ( false !== $machete_settings ) {
 <p><textarea name="header_content" rows="8" cols="50" id="header_content" class="large-text code"><?php echo esc_textarea( $machete_header_content ); ?></textarea></p>
 </fieldset></td>
 </tr>
+
+<?php if ( ! empty( $machete_alfonso_content ) ) { ?>
+
 <tr>
 <th scope="row"><?php esc_html_e( 'Custom body content', 'machete' ); ?></th>
 <td>
@@ -127,6 +130,10 @@ if ( false !== $machete_settings ) {
 </p>
 </fieldset></td>
 </tr>
+
+<?php } // end if empty body content. ?>
+
+
 <tr>
 <th scope="row"><?php esc_html_e( 'Custom footer content', 'machete' ); ?></th>
 <td><fieldset><legend class="screen-reader-text"><span><?php esc_html_e( 'Custom footer content', 'machete' ); ?></span></legend>

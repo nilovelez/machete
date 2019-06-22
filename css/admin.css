@@ -267,3 +267,14 @@
 	.machete-module-list .machete-module .machete-module-toggle-active {
 		display: inline-block;
 	}
+
+	.machete_deprecated_badge {
+		padding: 2px 5px;
+		display: inline-block;
+		font-weight: normal;
+		font-size: 14px;
+		border-radius: 4px;
+		color: #fff;
+		background-color: #f0b849;
+		margin-left: 10px;
+	}

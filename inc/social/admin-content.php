@@ -74,6 +74,13 @@ if ( ! defined( 'MACHETE_ADMIN_INIT' ) ) {
 </tr>
 
 
+<tr>
+	<th scope="row"><?php esc_html_e( 'Use with shortcode', 'machete' ); ?></th>
+	<td><code>[mct-social-share]</code>
+	<p class="description"><?php esc_html_e( 'You can use this shortcode in the content of any post, page or custom post type. It won\'t work on archive pages, sidebars...', 'machete' ); ?></p>
+	</td>
+</tr>
+
 </tbody></table>
 
 <?php submit_button(); ?>
