@@ -232,6 +232,25 @@ if ( in_array( 'disable_editor', $this->settings, true ) ) {
 
 if ( in_array( 'medium_large_size', $this->settings, true ) ) {
 	add_image_size( 'medium_large', 0, 0 );
+
+	add_filter(
+		'intermediate_image_sizes',
+		function( $sizes ) {
+			return array_diff( $sizes, [ 'medium_large' ] );
+		},
+		100
+	);
+
+	add_filter(
+		'intermediate_image_sizes_advanced',
+		function( $sizes ) {
+			return array_diff( $sizes, [ 'medium_large' ] );
+		},
+		100
+	);
+
+	add_filter( 'pre_option_medium_large_size_w', '__return_zero' );
+	add_filter( 'pre_option_medium_large_size_h', '__return_zero' );
 }
 
 if ( in_array( 'comment_autolinks', $this->settings, true ) && ! is_admin() ) {
