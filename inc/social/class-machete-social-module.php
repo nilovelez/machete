@@ -62,7 +62,7 @@ class MACHETE_SOCIAL_MODULE extends MACHETE_MODULE {
 			'whatsapp'  => array(
 				'title' => _x( 'WhatsApp (only on mobile devices)', 'network name', 'machete' ),
 				'label' => _x( 'Share this', 'WhatsApp button label', 'machete' ),
-				'url'   => 'https://wa.me/?text=%s',
+				'url'   => 'https://api.whatsapp.com/send?text=%s',
 			),
 			'pinterest' => array(
 				'title' => _x( 'Pinterest', 'network name', 'machete' ),
