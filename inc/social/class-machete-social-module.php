@@ -115,14 +115,16 @@ class MACHETE_SOCIAL_MODULE extends MACHETE_MODULE {
 			function() {
 
 				global $post;
+				// bail if (no active positions OR no active post types ) AND no shortcode is present.
 				if (
-					( 0 === count( $this->settings['positions'] ) ) ||
-					( ! in_array( $post->post_type, $this->settings['post_types'], true ) )
+					(
+						( 0 === count( $this->settings['positions'] ) ) ||
+						( ! in_array( $post->post_type, $this->settings['post_types'], true ) )
+					) && (
+						! has_shortcode( $post->post_content, 'mct-social-share' )
+					)
 				) {
-					// bail if (no active positions OR no active networks) AND no shortcode is present.
-					if ( ! has_shortcode( $post->post_content, 'mct-social-share' ) ) {
-						return;
-					}
+					return;
 				}
 
 				wp_enqueue_style(
