@@ -4,38 +4,26 @@
 	font-weight: normal;
 	font-style: normal;
 }
-#mct-top-share .mct-share-buttons,
-#mct-bottom-share .mct-share-buttons,
-.mct-shortcode-share .mct-share-buttons {
+.mct-social-share .mct-share-buttons {
 	margin: 0;
 	padding: 0;
 	display: block;
 	font-size: 0;
 }
-#mct-top-share li,
-#mct-bottom-share li,
-.mct-shortcode-share li {
+.mct-social-share li {
 	margin: 0 4px 4px 0;
 	border-width: 0;	
 	padding: 0;
 	display: inline-block;
 	border-radius: 4px;
 }
-#mct-top-share li.mct-ico-whatsapp,
-#mct-bottom-share li.mct-ico-whatsapp,
-.mct-shortcode-share li.mct-ico-whatsapp {
+.mct-social-share li.mct-ico-whatsapp {
 	display: none;
 }
 
-#mct-top-share a,
-#mct-top-share a:hover,
-#mct-top-share a:active,
-#mct-bottom-share a,
-#mct-bottom-share a:hover,
-#mct-bottom-share a:active,
-.mct-shortcode-share a,
-.mct-shortcode-share a:hover,
-.mct-shortcode-share a:active {
+.mct-social-share a,
+.mct-social-share a:hover,
+.mct-social-share a:active {
 	display: block;
 	color: #fff;
 	text-decoration: none;
@@ -50,14 +38,10 @@
 	background: transparent;
 	transition: background 0.5s;
 }
-#mct-top-share a:hover,
-#mct-bottom-share a:hover,
-.mct-shortcode-share a:hover {
+.mct-social-share a:hover {
 	background-color: rgba(0,0,0,0.2);
 }
-#mct-top-share a:before,
-#mct-bottom-share a:before,
-.mct-shortcode-share a:before {
+.mct-social-share a:before {
 	vertical-align: bottom;
 
 	font-size: 16px;
@@ -72,11 +56,10 @@
 	font-variant: normal;
 	text-transform: none;
 
-	/* Better Font Rendering =========== */
+	/* Better Font Rendering */
 	-webkit-font-smoothing: antialiased;
 	-moz-osx-font-smoothing: grayscale;
 }
-
 
 .mct-ico-googleplus { background: #DC4937; }
 .mct-ico-googleplus a:before { content: "\ea8b"; font-size: 24px; }
@@ -91,20 +74,25 @@
 .mct-ico-pinterest { background: #DE220A; }
 .mct-ico-pinterest a:before { content: "\ead1"; font-size: 20px;  }
 
+#mct-bottom-share.machete-hide-desktop {
+	display: none;
+}
 
 @media  (max-width: 768px) {
-	#mct-top-share,
-	#mct-bottom-share,
-	#mct-bottom-share h2 {
+	.mct-social-share h2 {
 		display: none;
 	}
-	#mct-bottom-share.machete-responsive {
+	#mct-bottom-share {
 		display: block;
 		position: fixed;
 		z-index: 9999;
 		width: 100%;
+		max-width: 100%;
 		bottom: 0;
 		left: 0;
+	}
+	#mct-bottom-share.machete-hide-mobile {
+		display: none;
 	}
 	#mct-bottom-share .mct-share-buttons {
 		display: flex;
@@ -125,12 +113,11 @@
 		overflow: hidden;
 		height: 48px;
 		padding: 0;
-		text-align: center;
 	}
 	#mct-bottom-share a:before {
 		display: block;
-		zoom: 2;
-		padding-bottom: 16px;
+		line-height: 48px;
+		font-size: 32px;
 		padding-right: 0;
 		text-align: center;
 	}

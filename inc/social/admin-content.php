@@ -59,9 +59,7 @@ if ( ! defined( 'MACHETE_ADMIN_INIT' ) ) {
 	<?php foreach ( $this->positions as $machete_position_slug => $machete_position ) { ?>
 		<label><input type="checkbox" name="positionEnabled[]" value="<?php echo esc_attr( $machete_position_slug ); ?>" id="position_<?php echo esc_attr( $machete_network_slug . '_fld' ); ?>" <?php checked( true, in_array( $machete_position_slug, $this->settings['positions'], true ), true ); ?>> <?php echo esc_html( $machete_position ); ?></label><br>
 	<?php } ?>
-	</fieldset>
-	<p class="description"><?php esc_html_e( 'The bottom share buttons are also visible on mobile devices', 'machete' ); ?></p>
-	</td>
+	</fieldset></td>
 </tr>
 
 <tr>
