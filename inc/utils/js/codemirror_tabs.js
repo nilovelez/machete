@@ -2,7 +2,18 @@
 
 (function($, wp){
 
+	var existing_tabs = [];
+	$('#machete-tabs a').each(function(){
+		existing_tabs.push( $(this).attr('data-tab') )
+	});
+	console.log(existing_tabs);
+
 	current_tab = window.current_tab || 'machete-tabs-tracking';
+	
+	if ( window.location.hash && ( existing_tabs.indexOf( window.location.hash.substr(1) ) > -1 ) ) {
+		current_tab = window.location.hash.substr(1);
+	}
+
 	var machete_editor;
 
 	updateTabs = function() {
@@ -43,7 +54,7 @@
 		$('html, body').animate({
 			scrollTop: $('#machete-tabs').offset().top - 120
 		}, 500 );
-		
+
 		//console.log( current_tab );
 		updateTabs();
 	});
