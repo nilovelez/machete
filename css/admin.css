@@ -4,9 +4,6 @@
 	max-width: 1050px;
 }
 
-.wrap.machete-wrap .nav-tab-wrapper {
-	margin-bottom: 30px;
-}
 
 .machete-wrap .machete-logo {
 	border: none;
@@ -118,6 +115,18 @@
 	line-height: 1.4;
 	cursor: pointer !important;
 }
+
+/* utils module tabs */
+#machete-tabs {
+
+}
+
+.machete-tabs-content {
+
+}
+
+
+
 
 .machete-wrap.about-wrap .notice,
 .machete-wrap.about-wrap div.error,
