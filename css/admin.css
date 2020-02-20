@@ -116,7 +116,39 @@
 	cursor: pointer !important;
 }
 
-/* utils module tabs */
+/* utils module */
+/*
+#mache-utils-options .nav-tab::before {
+	content: '';
+	display: inline-block;
+	width: 12px;
+	height: 12px;
+	box-sizing: border-box;
+	border-radius: 6px;
+	border: 1px solid #ccc;
+	background: #ddd;
+	margin: 0 8px 0 0;
+	position: relative;
+	top: 2px;
+}
+#mache-utils-options .nav-tabnav-tab-active-has-content::before {
+	border-width: 0;
+	background: #ff9900;
+}
+
+#mache-utils-options .nav-tab.nav-tab-changed::before {
+	border-width: 0;
+	background: #4ab866;
+}
+*/
+
+#mache-utils-options .CodeMirror {
+    border: 1px solid #7e8993;
+    border-radius: 4px;
+}
+
+
+
 #machete-tabs {
 
 }
