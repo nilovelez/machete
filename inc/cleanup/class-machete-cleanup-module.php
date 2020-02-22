@@ -43,7 +43,7 @@ class MACHETE_CLEANUP_MODULE extends MACHETE_MODULE {
 				'title'       => __( 'feed_links', 'machete' ),
 				'description' => __( 'Remove Automatics RSS links. RSS will still work, but you will need to provide your own links.', 'machete' ),
 			),
-			'feed_generator'        => array(
+			'feed_generator'    => array(
 				'title'       => __( 'feed_generator', 'machete' ),
 				'description' => __( 'Remove generator tag from RSS feeds.', 'machete' ),
 			),
