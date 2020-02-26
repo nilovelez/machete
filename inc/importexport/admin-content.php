@@ -70,7 +70,7 @@ if ( ! defined( 'MACHETE_ADMIN_INIT' ) ) {
 
 <?php
 if ( ! empty( $this->import_log ) ) {
-	echo '<div style="background-color: #ffe; border: 1px solid #ddd; padding: 15px; overflow-x: auto;"><pre>';
+	echo '<div style="background-color: #ffe; border: 1px solid #ddd; padding: 15px; overflow-x: auto;"><pre style="white-space: pre-wrap;">';
 	echo esc_html( $this->import_log );
 	echo '</pre></div>';
 }

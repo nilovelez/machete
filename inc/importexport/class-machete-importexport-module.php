@@ -66,12 +66,12 @@ class MACHETE_IMPORTEXPORT_MODULE extends MACHETE_MODULE {
 
 					if ( count( $this->checked_modules ) > 0 ) {
 						$export_file     = $this->export();
-						$export_filename = 'machete_backup_' . strtolower( date( 'jMY' ) ) . '.json';
+						$export_filename = 'machete_backup_' . strtolower( gmdate( 'jMY' ) ) . '.txt';
 
 						header( 'Content-disposition: attachment; filename=' . $export_filename );
 						header( 'Content-Type: application/json' );
 						header( 'Pragma: no-cache' );
-						echo $export_file; // WPCS: XSS ok.
+						echo $export_file; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
 						exit();
 					}
 				}
@@ -124,13 +124,50 @@ class MACHETE_IMPORTEXPORT_MODULE extends MACHETE_MODULE {
 	protected function import( $settings = array() ) {
 		global $machete;
 
-		if ( empty( $_FILES ) || ( ! isset( $_FILES['machete-backup-file'] ) ) ) {
+		// Verify the current user can upload files.
+		if ( ! current_user_can( 'upload_files' ) ) {
+			$this->notice( __( 'You do not have permission to upload files.', 'machete' ), 'warning' );
 			return false;
 		}
-		$backup_file = $_FILES['machete-backup-file']['tmp_name'];
 
-		if ( $backup_data = @file_get_contents( $backup_file ) ) {
-			@unlink( $backup_file );
+		if ( isset( $_FILES['machete-backup-file']['name'] ) ) {
+
+			$file_name     = $_FILES['machete-backup-file']['name'];
+			$allowed_mimes = array(
+				'txt' => 'text/plain',
+			);
+			$file_info     = wp_check_filetype( basename( $file_name ) );
+		} else {
+			$this->notice( __( 'You haven\'t uploaded a backup file', 'machete' ), 'warning' );
+			return false;
+		}
+
+		if ( empty( $file_info['type'] ) ) {
+			$this->notice( __( 'Only plain .txt files accepted', 'machete' ), 'warning' );
+			return false;
+		}
+
+		$upload_info = wp_handle_upload(
+			$_FILES['machete-backup-file'],
+			array(
+				'test_form' => false,
+				'mimes'     => $allowed_mimes,
+			)
+		);
+
+		if ( ! $upload_info ) {
+			$this->notice( __( 'An error happened while trying to upload your file', 'machete' ), 'warning' );
+			return false;
+		}
+
+		if ( isset( $upload_info['error'] ) ) {
+			$this->notice( __( 'An error happened: ', 'machete' ) . $upload_info['error'], 'warning' );
+			return false;
+		}
+
+		$backup_data = file_get_contents( $upload_info['file'] );
+		if ( $backup_data ) {
+			wp_delete_file( $upload_info['file'] );
 		} else {
 			$this->notice( __( 'You haven\'t uploaded a backup file', 'machete' ), 'warning' );
 			return false;
@@ -174,14 +211,17 @@ class MACHETE_IMPORTEXPORT_MODULE extends MACHETE_MODULE {
 				( count( $module_data['settings'] ) > 0 )
 				) {
 
-				$this->import_log .= var_export( $module_data['settings'], true ) . "\n";
+				$this->import_log .= wp_json_encode(
+					$module_data['settings'],
+					JSON_PRETTY_PRINT | JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES
+				);
+				$this->import_log .= "\n";
 
 				$this->import_log .= $machete->modules[ $module ]->import( $module_data['settings'] );
 			}
 			$this->import_log .= "\n";
 
 		}
-		// $this->notice(__('An error occurred while uploading the backup file'), 'error');
 	}
 }
 $machete->modules['importexport'] = new MACHETE_IMPORTEXPORT_MODULE();
