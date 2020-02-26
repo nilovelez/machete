@@ -16,7 +16,13 @@ if ( is_admin() && ! function_exists( 'save_with_keyboard_enqueue' ) ) {
 	 * Read entire file into a string.
 	 */
 	function save_with_keyboard_enqueue() {
-		wp_enqueue_script( 'swk_js', plugin_dir_url( __FILE__ ) . 'saveWithKeyboard' . ( WP_DEBUG ? '' : '.min' ) . '.js', array( 'jquery' ) );
+		wp_enqueue_script(
+			'swk_js',
+			plugin_dir_url( __FILE__ ) . 'saveWithKeyboard' . ( WP_DEBUG ? '' : '.min' ) . '.js',
+			array( 'jquery' ),
+			'2.1',
+			true
+		);
 	}
 	add_action( 'admin_enqueue_scripts', 'save_with_keyboard_enqueue' );
 }
