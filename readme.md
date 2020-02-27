@@ -33,6 +33,7 @@ Social sharing made the Machete way. The icons are made as a custom webfont embe
 WordPress Code Standards:
 phpcs -q --standard=WordPress --report=summary --parallel=4 .
 phpcs -q --standard=WordPress --report=summary --parallel=4 --extensions=php --colors .
+phpcs -q --parallel=4 --extensions=php --colors .
 
 ## commits summary
 git diff --shortstat "@{1 month}"

@@ -44,7 +44,7 @@
 
 	<!-- Add in some extra rules from other standards. -->
 	<rule ref="Generic.CodeAnalysis.UnusedFunctionParameter"/>
-	<rule ref="Generic.Commenting.Todo"/>
+	<!-- <rule ref="Generic.Commenting.Todo"/> -->
 
 	<!-- Check for PHP cross-version compatibility. -->
 	<!--
@@ -53,10 +53,10 @@
 	See the readme for installation instructions:
 	https://github.com/wimg/PHPCompatibility
 	-->
-	<!--
-	<config name="testVersion" value="5.2-99.0"/>
+	
+	<config name="testVersion" value="7.3"/>
 	<rule ref="PHPCompatibility"/>
-	-->
+	
 
 	<!--
 	To get the optimal benefits of using WPCS, we should add a couple of
