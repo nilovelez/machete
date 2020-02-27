@@ -132,28 +132,20 @@ class MACHETE_IMPORTEXPORT_MODULE extends MACHETE_MODULE {
 
 		if ( isset( $_FILES['machete-backup-file']['name'] ) ) {
 
-			$file_name     = $_FILES['machete-backup-file']['name'];
 			$allowed_mimes = array(
 				'txt' => 'text/plain',
 			);
-			$file_info     = wp_check_filetype( basename( $file_name ) );
+			$upload_info   = wp_handle_upload(
+				$_FILES['machete-backup-file'], //phpcs:ignore WordPress.Security.ValidatedSanitizedInput.MissingUnslash
+				array(
+					'test_form' => false,
+					'mimes'     => $allowed_mimes,
+				)
+			);
 		} else {
 			$this->notice( __( 'You haven\'t uploaded a backup file', 'machete' ), 'warning' );
 			return false;
 		}
-
-		if ( empty( $file_info['type'] ) ) {
-			$this->notice( __( 'Only plain .txt files accepted', 'machete' ), 'warning' );
-			return false;
-		}
-
-		$upload_info = wp_handle_upload(
-			$_FILES['machete-backup-file'],
-			array(
-				'test_form' => false,
-				'mimes'     => $allowed_mimes,
-			)
-		);
 
 		if ( ! $upload_info ) {
 			$this->notice( __( 'An error happened while trying to upload your file', 'machete' ), 'warning' );
