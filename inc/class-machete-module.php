@@ -307,10 +307,10 @@ abstract class MACHETE_MODULE {
 	 * @param string $file      Path to the file.
 	 * @return bool false on failure.
 	 */
-	private function readfile( $file ) {
+	protected function readfile( $file ) {
 		if ( ! file_exists( $file ) ) {
 			return false;
 		}
-		readfile( $file ); // phpcs:ignore
+		return readfile( $file ); // phpcs:ignore
 	}
 }
