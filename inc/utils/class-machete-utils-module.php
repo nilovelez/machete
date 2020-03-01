@@ -152,7 +152,7 @@ class MACHETE_UTILS_MODULE extends MACHETE_MODULE {
 
 		if (
 			isset( $options['alfonso_content_injection_method'] ) &&
-			in_array( $options['alfonso_content_injection_method'], array( 'auto', 'manual' ), true )
+			in_array( $options['alfonso_content_injection_method'], array( 'auto', 'manual', 'wp_body_open' ), true )
 		) {
 			$settings['alfonso_content_injection_method'] = $options['alfonso_content_injection_method'];
 		} else {
@@ -192,8 +192,38 @@ class MACHETE_UTILS_MODULE extends MACHETE_MODULE {
 			}
 			return false;
 		}
-
 	}
+	/**
+	 * Called from frontend-functions.php via add_action .
+	 */
+	public function read_header_html() {
+		return $this->readfile( MACHETE_DATA_PATH . 'header.html' );
+	}
+	/**
+	 * Called from frontend-functions.php via add_action .
+	 */
+	public function read_body_html() {
+		return $this->readfile( MACHETE_DATA_PATH . 'body.html' );
+	}
+	/**
+	 * Called from frontend-functions.php via add_filter
+	 *
+	 * @param array $classes <body> tag classes.
+	 */
+	public function inject_body_html( $classes ) {
+		$alfonso_content = $this->get_contents( MACHETE_DATA_PATH . 'body.html' );
+		if ( $alfonso_content ) {
+			$classes[] = '">' . $alfonso_content . '<br style="display: none';
+		}
+		return $classes;
+	}
+	/**
+	 * Called from frontend-functions.php via add_action .
+	 */
+	public function read_footer_html() {
+		return $this->readfile( MACHETE_DATA_PATH . 'footer.html' );
+	}
+
 	/**
 	 * Restores module settings from a backup
 	 *
