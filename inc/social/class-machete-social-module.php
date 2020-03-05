@@ -87,14 +87,14 @@ class MACHETE_SOCIAL_MODULE extends MACHETE_MODULE {
 			$this->default_settings
 		);
 
-		$below_pos = array_search( 'below', $this->settings, true );
+		$below_pos = array_search( 'below', $this->settings['positions'], true );
 
 		if ( false !== $below_pos ) {
 			// Old positions were 'above' and 'below'.
 			// 'below' is converted to 'after' + 'footer'.
-			unset( $this->settings, $below_pos );
-			$this->settings[] = 'after';
-			$this->settings[] = 'footer';
+			unset( $this->settings['positions'], $below_pos );
+			$this->settings['positions'][] = 'after';
+			$this->settings['positions'][] = 'footer';
 		}
 
 		return array_merge( $this->default_settings, $this->settings );
