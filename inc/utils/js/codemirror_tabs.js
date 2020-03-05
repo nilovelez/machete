@@ -39,16 +39,11 @@
 		}
 	}
 	updateTabs();
-
 	$('.machete-tabs-content h2').hide();
-
 	$('#machete-tabs').show().find('a').click( function ( e ) {
-		//e.preventDefault();
+		e.preventDefault();
 		machete_utils.current_tab = $(this).attr('data-tab');
-
-		$('html, body').animate({
-			scrollTop: $('#machete-tabs').offset().top - 120
-		}, 500 );
+		window.location.hash = machete_utils.current_tab;
 		//console.log( current_tab );
 		updateTabs();
 	});

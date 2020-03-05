@@ -11,12 +11,11 @@ if ( ! defined( 'ABSPATH' ) ) {
 }
 
 
-
-
 if ( file_exists( MACHETE_DATA_PATH . 'header.html' ) ) {
 	add_action(
 		'wp_head',
-		array( $this, 'read_header_html' )
+		array( $this, 'read_header_html' ),
+		10001
 	);
 
 	if ( $this->settings['track_wpcf7'] ) {
@@ -63,7 +62,8 @@ if ( file_exists( MACHETE_DATA_PATH . 'custom.css' ) ) {
 if ( file_exists( MACHETE_DATA_PATH . 'footer.html' ) ) {
 	add_action(
 		'wp_footer',
-		array( $this, 'read_footer_html' )
+		array( $this, 'read_footer_html' ),
+		10001
 	);
 }
 
@@ -79,13 +79,6 @@ if ( file_exists( MACHETE_DATA_PATH . 'body.html' ) ) {
 			array( $this, 'inject_body_html' ),
 			10001
 		);
-
-		/**
-		 * Disables manual body injection to prevent duplicate insertion.
-		 */
-		function machete_custom_body_content() {
-			echo '';
-		}
 	} elseif ( 'wp_body_open' === $this->settings['alfonso_content_injection_method'] ) {
 		/**
 		 * Body injection using wp_body hook
@@ -96,18 +89,19 @@ if ( file_exists( MACHETE_DATA_PATH . 'body.html' ) ) {
 			1
 		);
 	} else {
-
 		/**
 		 * Manual body injection
 		 */
 		function machete_custom_body_content() {
 			global $machete;
-			$machete->modules['utils']->read_footer_html();
+			$machete->modules['utils']->read_body_html();
 		}
 	}
-} else {
+}
+
+if ( ! function_exists( 'machete_custom_body_content' ) ) {
 	/**
-	 * Disables manual body injection if custom body content is empty.
+	 * Defines an empty function as fallback to prevent errors
 	 */
 	function machete_custom_body_content() {
 		echo '';
