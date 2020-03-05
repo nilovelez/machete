@@ -3,7 +3,7 @@ Contributors: nilovelez
 Donate link: https://machetewp.com/product/donation/
 Tags: cookies, analytics, code, css, javascript, admin
 Requires at least: 4.6
-Tested up to: 5.1
+Tested up to: 5.3.2
 Requires PHP: 5.6
 Stable tag: trunk
 License: WTFPL
@@ -69,6 +69,16 @@ Like it or not, the WordPress Block Editor (codenamed Gutenberg) is here to stay
 3. This is not your typical tracking script...
 
 == Changelog ==
+
+= 3.4 =
+* Complete rework of the social share module
+* Added shortcode for the social share buttons
+* Updated WhatsApp share URL
+* Updated the option to remove the medium_large thumbnail size
+* New share js without jQuery
+* New custom code editor interface (With tabs!)
+* Refactored the import/export module
+* Minor WordPress Coding standards fixes
 
 = 3.3.3 =
 * Fixed social share title that dissapears if no placeholder
@@ -144,126 +154,10 @@ Machete 3.1 is a completely new beast. Almost all the code has been rewritten, t
 * Fix module management issues in about tab
 * Fixed false ‘error saving to database’ notice
 
-= 2.1 = 
-* Optimization functions are now divided in header cleanup, feature cleanup and optimization tweaks.
-* Added options to remove medium_large thumbnail size
-* Added option to disable plugin and theme editor
-* Added option to remove comment autolinks
-
-= 2.0.2 =
-* Added an option to remove the capital_P_dangit filter
-* Fixed the mobile styles of the admin tabs
-* Switched the welcome check from a transient to an option saving 3 queries from each admin pageload
-
-= 2.0.1 =
-* renamed the admin.css file to admin_v2.css to prevent display problems to users who have the old stylesheet cached
-
-= 2.0 = 
-* Huge internal refactor. Machete modules can now be disabled individually.
-* New Post & Page Cloner module
-* redefined user role system. Authors can now access some function and backend actions are executed with all user levels
-* Shiny new Icons!
-
-= 1.7.2 =
-* Rollback to re-enable the option to remove oEmbed Scripts. WordPress 4.8 doesn't need the oembed script but the JSON API
-
-= 1.7.1 =
-* Disabled Remove oEmbed Scripts as it interferes with WordPress 4.8 video widget
-
-= 1.7 =
-Added new actios to the optimization module:
-
-* Remove oEmbed Scripts
-* Slow Heartbeat
-* JS Comment reply
-* Empty trash every week
-
-Thank you, @fpuente
-
-* Added 'Anonymize user IPs' option to analytics code 
-
-= 1.6.2 = 
-* Fixed magic link session reported in some servers
-* Fixed the jQuery-migrate remover. It shout play better with complex themes now
-
-= 1.6.1 =
-* Fixed some language strings
-
-= 1.6 = 
-* Some mayor internal changes
-* "Header cleanup" is now "WordPress Optimization"
-* Added option to disable PDF thumbnails
-* Added option to limit post revisions
-* Added option toremove jQuery-migrate
-* Updated language strings
-
-= 1.5.3 =
-* Fixed an error that caused an error 500 in some environments (thanks cheteronda)
-* Some minor usability fixed on the maintenance settings page
-
-= 1.5.2 =
-* Fixed a typo that prevented the use of custom content in the maintenance page
-* Updated language strings
-
-= 1.5.1 =
-* Fixed a weird unexpected bug when calling get_post()
-
-= 1.5 =
-* New maintenance and coming soon module!
-* Huge code cleanup
-* Added cursor:pointer to 'accept cookies' button (thanks frantorres)
-* Added 'Restore default warning text' link to cookie page'
-* Finished WordPress 4.7 testing
-* Updated language strings
-
-= 1.4.6 = 
-* (hopefully) the last modification to the cookie bar styles
-
-= 1.4.5 =
-* Redesign of cookie bar. Now it looks better on small-screen devices.
-* By popular request, default cookiebar warning text is now shorter
-* minor javascript fixes
-
-= 1.4.4 =
-* fixed TinyMCE error when activating emoji cleanup (thanks soyrafaramos)
-
-= 1.4.3 =
-* fixed cookie bar save error on some systems (thanks carlos.herrera)
-
-= 1.4.2 =
-* some minor debugging
-* saved some database writes
-
-= 1.4.1 = 
-* Updated language strings
-* some minor error fixes
-
-= 1.4 =
-* huge internal cleanup
-* security improvements
-* Updated language strings
-* fixed slashes bug in cookie toolbar
-
-= 1.3 =
-* improved error control
-* Updated language strings
-* added .pot file
-* some minor debugging
-
-= 1.2 =
-* Some tweaks and assets added for the WordPress repository
-
-= 1.1 =
-* Some minor cosmetical changes
-* Updated language strings
-
-= 1.0 =
-* First publicly available version
-
 == Upgrade Notice ==
 
-= 1.5.3 =
-Fixes an error that causes an error 500 in some environments
+= 3.4 =
+Some fixes and lots or refinements. Enjoy!
 
 = 1.5.2 =
 Fixes maintenance module content issue.
