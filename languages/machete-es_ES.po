@@ -2,580 +2,70 @@
 # This file is distributed under the same license as the Plugins - Machete - Development (trunk) package.
 msgid ""
 msgstr ""
-"PO-Revision-Date: 2019-03-07 00:12:33+0000\n"
+"Project-Id-Version: Plugins - Machete - Development (trunk)\n"
+"POT-Creation-Date: 2020-03-05 23:39+0100\n"
+"PO-Revision-Date: 2020-03-05 23:40+0100\n"
+"Last-Translator: Nilo Velez <nilovelez@gmail.com>\n"
+"Language-Team: \n"
+"Language: es\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: GlotPress/2.4.0-alpha\n"
-"Language: es\n"
-"Project-Id-Version: Plugins - Machete - Development (trunk)\n"
-
-#: inc/cleanup/class-machete-cleanup-module.php:118
-msgid "Might break external appplications if they need to access your site's API anonymously."
-msgstr "Puede dar problemas con aplicaciones externas que tengan que acceder a la API de tu sitio de forma anónima."
-
-#: inc/cleanup/class-machete-cleanup-module.php:118
-msgid "Remove the JSON-API links from page headers. Also require that API consumers be authenticated."
-msgstr "Elimina de las cabeceras de página los enlaces a la JSON-API. También requiere identificarse para consumir la API."
-
-#: inc/social/admin-content.php:68 inc/social/admin-content.php:69
-msgid "Show in these post types"
-msgstr "Mostrar en estos tipos de contenido"
-
-#: inc/social/admin-content.php:63
-msgid "The bottom share buttons are also visible on mobile devices"
-msgstr "Los botones de compartir inferiores también se ven en dispositivos móviles"
-
-#: inc/social/admin-content.php:57 inc/social/admin-content.php:58
-msgid "Sharing buttons position"
-msgstr "Posición de botones de compartir"
-
-#: inc/social/admin-content.php:48 inc/social/admin-content.php:49
-msgid "Active share buttons"
-msgstr "Botones de compartir activos"
-
-#: inc/social/admin-content.php:44
-msgid "Leave blank to remove. The %%post_type%% placeholder is replaced by the post type name. ie: post, page"
-msgstr "Déjalo en blanco para eliminarlo. El texto %%post_type%% se reemplaza por el nombre del tipo de contenido. Ej: entrada, página"
-
-#: inc/social/admin-content.php:42
-msgid "Bottom buttons title"
-msgstr "Título de los botones inferiores"
-
-#: inc/social/admin-content.php:34
-msgctxt "plural"
-msgid "Disabled"
-msgstr "Desactivados"
-
-#: inc/social/admin-content.php:33
-msgctxt "plural"
-msgid "Enabled"
-msgstr "Activados"
-
-#: inc/social/admin-content.php:31 inc/social/admin-content.php:32
-msgid "Sharing buttons status"
-msgstr "Estado de los botones de compartir"
-
-#: inc/social/admin-content.php:21
-msgid "This tool adds 6.1Kb and a single database request request to each page load."
-msgstr "Esta herramienta añade 6.1Kb y una sola llamada a base de datos a cada carga de página."
-
-#: inc/social/admin-content.php:17
-msgid "Social sharing made the Machete way. The icons are made as a custom webfont embedded in a CSS minified file that only weights 5.8Kb. The sharing actions are made uning each platform's native share URLs."
-msgstr "Compartir en redes sociales a lo Machete. Los iconos son una webfont personalizada embebida en un archivo CSS minimizado que sólo pesa 5.8 Kb. Las acciones de compartir se realizan usando la URL para compartir nativa de cada plataforma."
-
-#: inc/social/class-machete-social-module.php:180
-msgctxt "Product post type singular label"
-msgid "product"
-msgstr "producto"
-
-#: inc/social/class-machete-social-module.php:177
-msgctxt "Post post type singular label"
-msgid "post"
-msgstr "entrada"
-
-#: inc/social/class-machete-social-module.php:174
-msgctxt "Page post type singular label"
-msgid "page"
-msgstr "página"
-
-#: inc/social/class-machete-social-module.php:69
-msgctxt "Pinterest button label"
-msgid "Pin this"
-msgstr "Guárdalo"
-
-#: inc/social/class-machete-social-module.php:68
-msgctxt "network name"
-msgid "Pinterest"
-msgstr "Pinterest"
-
-#: inc/social/class-machete-social-module.php:64
-msgctxt "WhatsApp button label"
-msgid "Share this"
-msgstr "Compártelo"
-
-#: inc/social/class-machete-social-module.php:63
-msgctxt "network name"
-msgid "WhatsApp (only on mobile devices)"
-msgstr "WhatsApp (solo en dispositivos móviles)"
-
-#: inc/social/class-machete-social-module.php:59
-msgctxt "LinkeIn button label"
-msgid "Share this"
-msgstr "Compártelo"
-
-#: inc/social/class-machete-social-module.php:58
-msgctxt "network name"
-msgid "LinkedIn"
-msgstr "LinkedIn"
-
-#: inc/social/class-machete-social-module.php:54
-msgctxt "Twitter button label"
-msgid "Tweet this"
-msgstr "Tuitéalo"
-
-#: inc/social/class-machete-social-module.php:53
-msgctxt "network name"
-msgid "Twitter"
-msgstr "Twitter"
-
-#: inc/social/class-machete-social-module.php:49
-msgctxt "Facebook button label"
-msgid "Share this"
-msgstr "Compártelo"
-
-#: inc/social/class-machete-social-module.php:48
-msgctxt "network name"
-msgid "Facebook"
-msgstr "Facebook"
-
-#: inc/social/class-machete-social-module.php:44
-msgid "At the end of the content"
-msgstr "Al final del contenido"
-
-#: inc/social/class-machete-social-module.php:43
-msgid "At the beginning of the content"
-msgstr "Al principio del contenido"
-
-#. translators: %%post_type%% is a placeholder, keep it as is.
-#: inc/social/class-machete-social-module.php:32
-msgid "Share this %%post_type%%"
-msgstr "Comparte este/a %%post_type%%"
-
-#: inc/social/class-machete-social-module.php:25
-msgid "Social sharing buttons as simple as they can be. No bloat, no extra JS libraries, no API calls."
-msgstr "Botones de compartir en redes sociales tan sencillos como es posible. Sin morralla, sin librerías JS y sin llamadas a API."
-
-#: inc/social/class-machete-social-module.php:24
-#: inc/social/admin-content.php:16
-msgid "Social Sharing Buttons"
-msgstr "Compartir en redes sociales"
-
-#: inc/social/class-machete-social-module.php:23
-msgid "Social Sharing"
-msgstr "Compartir en redes"
-
-#: inc/powertools/class-machete-powertools-module.php:68
-msgid "Deprecated. This feature is natively enabled since WordPress 4.8.1"
-msgstr "Obsoleto. Esta función viene activada de forma nativa desde WordPress 4.8.1"
-
-#. translators: Link the post "SVG uploads in WordPress (the Inconvenient
-#. Truth)".
-#: inc/powertools/class-machete-powertools-module.php:64
-msgid "Enables the upload of SVG images to the media library. This <a href=\"%s\" target=\"_blank\" rel=\"noopener noreferrer\">has been proven to be dangerous</a>, so be careful."
-msgstr "Permite la subida de imágenes SVG a la biblioteca de medioa. Está <a href=\"%s\" target=\"_blank\" rel=\"noopener noreferrer\">demostrado que esto es peligroso</a>, así que ten cuidado."
-
-#: inc/powertools/class-machete-powertools-module.php:62
-msgid "Enable SVG images"
-msgstr "Permitir imágenes SVG"
-
-#: inc/powertools/admin-content.php:25
-msgid "Machete PowerTools is an upgrade module targeted to WordPress developers and power users. PowerTools add new features and improve some of the Machete modules you already know and love."
-msgstr "Machete PowerTools es un módulo de mejora dirigido a desarrolladores y usuarios avanzados de WordPress. PowerTools añade funcionalidades nuevas y mejora algunos de los módulos de Machete que ya conoces y usas."
-
-#: inc/importexport/admin-content.php:19
-msgid "This section has no impact on the page load times."
-msgstr "Esta sección no tiene ningún impacto en los tiempos de carga de página."
-
-#. translators: %s: singular post type name.
-#: inc/clone/admin-bar.php:44
-msgid "Copy this %s to a new draft"
-msgstr "Copiar %s a un nuevo borrador"
-
-#. translators: %s: singular post type name.
-#: inc/clone/admin-bar.php:40
-msgid "Clone %s"
-msgstr "Clonar %s"
-
-#: inc/class-machete-module.php:244
-msgid "There was a problem accessing the filesystem. Check your permissions."
-msgstr "Se producido un problema al acceder al sistema de ficheros. Comprueba tus permisos."
-
-#: inc/class-machete-module.php:238
-msgid "This function needs direct access to the filesystem."
-msgstr "Esta función necesita acceso directo al sistema de ficheros."
-
-#: inc/cleanup/class-machete-cleanup-module.php:138
-msgid "When WordPress generates a JPEG thumbnail it compress the image to 82% quality. Check this this to reduce the default quality to 72%. (It doesn't affect original image quality)."
-msgstr "Cuando WordPress genera una miniatura JPEG, comprime la imagen con una calidad del 82%. Marca esto para reducir la calidad por defecto al 72%. (No afecta a la calidad de la imagen original)."
-
-#: inc/cleanup/class-machete-cleanup-module.php:137
-msgid "Reduce JPEG quality"
-msgstr "Reducir la calidad JPEG"
-
-#. Description of the plugin
-msgid "Machete is a lean and simple suite of tools that makes WordPress development easier: cookie bar, tracking codes, custom code editor, header cleanup, post and page cloner"
-msgstr "Machete es un conjunto de herramientas ligeras y sencillas que facilitan el desarrollo con WordPress: barra de cookies, códigos de seguimiento, editor de código personalizado, limpieza de cabecera, duplicar entradas y páginas"
-
-#: inc/utils/admin-content.php:94
-msgid "Check to anonymize visitor IPs. Required in some countries."
-msgstr "Márcalo para anonimizar las IPs de los visitantes. Obligatorio en algunos países."
-
-#. translators: %s: link to the plugin's directory page.
-#: inc/utils/admin-content.php:88
-msgid "Launch a Google Analytics event whenever a visitor submits a <a href=\"%s\">Contact Form 7</a> form."
-msgstr "Lanza un evento de Google Analytics cada vez que un visitante envía un formulario de <a href=\"%s\">Contact Form 7</a> ."
-
-#: inc/utils/admin-content.php:85
-msgid "Track Contact Form 7"
-msgstr "Seguimiento de Contact Form 7"
-
-#: inc/utils/admin-content.php:81
-msgid "Uses JavaScript to hide the tracking code from PageSpeed and GoogleBot"
-msgstr "Utiliza JavaScript para ocultar el código de seguimiento a PageSpeed y GoogleBot"
-
-#. translators: %s: homepage URL.
-#: inc/powertools/powertools.php:122
-msgid "No feed available, please visit our <a href=\"%s\">homepage</a>!"
-msgstr "¡Feed no disponible, visita nuestra <a href=\"%s\">portada</a>!"
-
-#: inc/powertools/class-machete-powertools-module.php:253
-msgid "Opcache flushed"
-msgstr "Opcache vaciado"
-
-#: inc/powertools/class-machete-powertools-module.php:245
-msgid "Object cache flushed"
-msgstr "Caché de objetos vaciada"
-
-#: inc/powertools/class-machete-powertools-module.php:59
-msgid "RSS, RDF, Atom... disables all of them and makes life a little less easy for leechers."
-msgstr "RSS, RDF, Atom... los deshabilita todos y la hace la vida un poco más complicada a los gorrones."
-
-#: inc/powertools/class-machete-powertools-module.php:58
-msgid "Disable all feeds"
-msgstr "Desactivar todos los feeds"
-
-#: inc/powertools/admin-content.php:63
-msgid "Delete WordPress object cache contents"
-msgstr "Borra los contenidos de la caché de objetos de WordPress"
-
-#: inc/powertools/admin-content.php:56
-msgid "Delete Opcache contents"
-msgstr "Borrar el contenido de la Opcache"
-
-#: inc/importexport/class-machete-importexport-module.php:166
-msgid "Module deactivated succesfully"
-msgstr "Módulo desactivado con éxito"
-
-#: inc/importexport/class-machete-importexport-module.php:162
-msgid "Module activated succesfully"
-msgstr "Módulo activado con éxito"
-
-#: inc/importexport/class-machete-importexport-module.php:155
-msgid "Importing module: "
-msgstr "Importando módulo:"
-
-#: inc/importexport/class-machete-importexport-module.php:152
-msgid "Ignored uknown module:"
-msgstr "Módulo desconocido ignorado:"
-
-#: inc/importexport/class-machete-importexport-module.php:144
-msgid "You haven't uploaded a valid Machete backup file"
-msgstr "No has subido un fichero de copia de seguridad de Machete válido"
-
-#: inc/importexport/class-machete-importexport-module.php:135
-msgid "You haven't uploaded a backup file"
-msgstr "No has subido un fichero de copia de seguridad"
-
-#: inc/importexport/class-machete-importexport-module.php:25
-msgid "You can use this section to backup and restore your Machete configuration. You can also take a backup from one site and restore to another."
-msgstr "Puedes utilizar esta sección para guardar y restaurar tu configuración de Machete. También puedes hacer una copia de un sitio y restaurarla en otro."
-
-#: inc/importexport/class-machete-importexport-module.php:23
-msgid "Import/Export"
-msgstr "Importar/Exportar"
-
-#: inc/importexport/admin-content.php:67
-msgid "Upload config backup"
-msgstr "Subir copia de seguridad"
-
-#: inc/importexport/admin-content.php:64
-msgid "Machete backup file to restore"
-msgstr "Copia de seguridad de Machete que restaurar"
-
-#: inc/importexport/admin-content.php:62
-msgid "Select a Machete backup file and click the \"upload config backup\" to import it. Please keep in mind that the module settings included in the backup file will overwrite your current setting for those modules."
-msgstr "Elige un fichero de copia de seguridad de Machete y pulsa en \"subir copia de seguridad\" para importarlo. Ten en cuenta que los ajustes de módulos incluidos en el fichero sobreescribirán tu ajustes de esos módulos."
-
-#: inc/importexport/admin-content.php:60
-msgid "Import Machete Options"
-msgstr "Importar opciones de Machete"
-
-#: inc/importexport/admin-content.php:51
-msgid "Download config backup"
-msgstr "Descargar copia de seguridad"
-
-#: inc/importexport/admin-content.php:34
-msgid "Modules to export"
-msgstr "Módulos que exportar"
-
-#: inc/importexport/admin-content.php:28
-msgid "Select the modules from which you want to export the settings and click \"download config backup\" to get a .json file with the backup."
-msgstr "Elige los módulos de los que quieres exportar la configuración y pulsa en \"descargar copia de seguridad\" para obtener un fichero .json con la copia."
-
-#: inc/importexport/admin-content.php:26
-msgid "Export Machete Options"
-msgstr "Exportar opciones de Machete"
-
-#: inc/importexport/admin-content.php:17
-msgid "You can use this section to backup and restore your Machete configuration. You can also take a backup from one site and restore to another. Be careful, your current configuration will be overwritten when you import a backup file"
-msgstr "Puedes utilizar esta sección para guardar y restaurar tu configuración de Machete. También puedes hacer una copia de un sitio y restaurarla en otro. Ten cuidado, to configuración actual se sobreescribe cuando importas un fichero de copia de seguridad."
-
-#: inc/importexport/class-machete-importexport-module.php:24
-#: inc/importexport/admin-content.php:15
-msgid "Import/Export Options"
-msgstr "Importar/Exportar Opciones"
-
-#: inc/cookies/admin-content.php:66
-msgid "For your reference, this is the HTML used to render the cookie bar:"
-msgstr "Para tu referencia, este es el HTML utilizado para mostrar la barra de cookies:"
-
-#. Translators: $s: a href part of a link
-#: inc/cookies/admin-content.php:65
-msgid "You can customize the cookie bar CSS using the %sAnalytics & Code tab"
-msgstr "Puedes personalizar el CSS de la barra de cookies utilizando la pestaña %sAnalytics y código"
-
-#: inc/cookies/admin-content.php:61
-msgid "How do I customize the cookie bar?"
-msgstr "¿Cómo personalizo la barra de cookies?"
-
-#: inc/cookies/class-machete-cookies-module.php:59
-msgid "Cookie!"
-msgstr "¡Galleta!"
-
-#: inc/cookies/class-machete-cookies-module.php:44
-msgid "Modern Dark"
-msgstr "Moderno oscuro"
-
-#: inc/cookies/class-machete-cookies-module.php:39
-msgid "Modern Light"
-msgstr "Moderno claro"
-
-#: inc/cookies/class-machete-cookies-module.php:54
-msgid "Classic Dark"
-msgstr "Clásico oscuro"
-
-#: inc/cookies/class-machete-cookies-module.php:49
-msgid "Classic Light"
-msgstr "Clásico claro"
-
-#: inc/cleanup/optimization.php:265
-msgid "The REST API on this site has been disabled."
-msgstr "La REST API de este sitio ha sido desactivada."
-
-#: inc/cleanup/class-machete-cleanup-module.php:134
-msgid "Activate only if you are not using the reCAPTCHA Contact Form 7 field"
-msgstr "Actívalo sólo si no estás utilizando el campo reCAPTCHA de Contact Form 7"
-
-#: inc/cleanup/class-machete-cleanup-module.php:134
-msgid "Disables the Contact Form 7 refill script. Saves one hit to wp-ajax.php per pageview on cached sites"
-msgstr "Desactiva el script refill de Contact Form 7. Ahorra una petición a wp-ajax.php por vista de página en los sitios con caché."
-
-#: inc/cleanup/class-machete-cleanup-module.php:133
-msgid "Remove CF7 refill"
-msgstr "Quitar el refill de CF7"
-
-#: inc/cleanup/class-machete-cleanup-module.php:126
-msgid "May break some themes and plugins that depend on legacy code."
-msgstr "Puede romper algunos temas y plugins que dependen de código obsoleto."
-
-#: inc/cleanup/class-machete-cleanup-module.php:122
-msgid "Disable the XML-RPC interface. "
-msgstr "Desactiva la interfaz XML-RPC."
-
-#: inc/cleanup/class-machete-cleanup-module.php:121
-msgid "XML-RPC"
-msgstr "XML-RPC"
-
-#. Translators: module title
-#: inc/class-machete.php:190
-msgid "Module %s enabled succesfully"
-msgstr "Módulo %s activado con éxito"
-
-#. Translators: module title
-#: inc/class-machete.php:153
-msgid "Module %s disabled succesfully"
-msgstr "Módulo %s desactivado con éxito"
-
-#: inc/class-machete-module.php:150
-#: inc/utils/class-machete-utils-module.php:217
-msgid "Error restoring settings backup"
-msgstr "Error restaurando la copia de seguridad"
-
-#: inc/class-machete-module.php:148
-#: inc/utils/class-machete-utils-module.php:215
-msgid "Settings succesfully restored from backup"
-msgstr "Ajustes restaurados con éxito desde la copia de seguridad"
+"X-Generator: Poedit 2.3\n"
+
+#: inc/about/admin-content.php:16
+msgid "Welcome to Machete!"
+msgstr "¡Bienvenido a Machete!"
+
+#: inc/about/admin-content.php:18
+msgid ""
+"Machete is now installed and ready to use. Machete solves common WordPress "
+"problems using as little resources as posible. Machete lets you use less "
+"plugins. Machete optimizes."
+msgstr ""
+"Machete ya está instalado y listo para usarse. Machete resuelve problemas "
+"comunes de WordPress usando tan pocos recursos como sea posible. Machete "
+"hace que puedas usar menos plugins. Machete optimiza."
+
+#: inc/about/admin-content.php:24
+msgid ""
+"Machete is not meant to be safe. Machete is a suite of tools that can break "
+"things if not handled with care. As a rule of thumb, don't use any option "
+"you don't understand."
+msgstr ""
+"Machete no está hecho para ser seguro. Las herramientas de Machete, como "
+"cualquier herramienta, pueden romper cosas si no se usan con cuidado. No "
+"uses ninguna opción que no entiendas."
 
 #: inc/about/admin-content.php:47
 msgid "External Modules"
 msgstr "Módulos Externos"
 
-#: inc/cleanup/admin-content.php:114
-msgid "Options in this section have the most impact on WordPress performance, but also the most potential of screwing things up."
-msgstr "Las opciones de esta sección son las que mayor impacto tienen en el rendimiento de WordPress, pero también son las que tienen mayor potencial para liarla parda."
+#: inc/about/class-machete-about-module.php:23
+#: inc/about/class-machete-about-module.php:24
+msgid "About Machete"
+msgstr "Acerca de Machete"
 
-#: inc/cleanup/admin-content.php:112
-msgid "Handle with care"
-msgstr "Utilizar con precaución"
-
-#: inc/cleanup/admin-content.php:83
-msgid "Mostly safe"
-msgstr "Bastante seguro"
-
-#: inc/cleanup/admin-content.php:83
-msgid "Feature Cleanup"
-msgstr "Limpieza de funcionalidades"
-
-#: inc/cleanup/admin-content.php:55
-msgid "Completely safe"
-msgstr "Completamente seguro"
-
-#: inc/cleanup/class-machete-cleanup-module.php:111
-msgid "URLs in comments are converted to links by default. This feature is often exploited by spammers."
-msgstr "Por defecto, las URLs de los comentarios se convierte automáticamente en enlaces. Los spammers se aprovechan a menudo de ello."
-
-#: inc/cleanup/class-machete-cleanup-module.php:110
-msgid "No comment autolinks"
-msgstr "Comentarios sin autolinks"
-
-#: inc/cleanup/class-machete-cleanup-module.php:107
-msgid "Prevents WordPress from generating the medium_large 768px thumbnail size of image uploads."
-msgstr "Evita que WordPress genere el tamaño de miniatura medium_large de 768px"
-
-#: inc/cleanup/class-machete-cleanup-module.php:106
-msgid "medium_large thumbnail"
-msgstr "miniatura medium_large"
-
-#: inc/cleanup/class-machete-cleanup-module.php:103
-msgid "Disables the plugins and theme editor. A mostly useless tool that can be very dangerous in the wrong hands."
-msgstr "Desactiva el editor de plugins y temas. Una herramienta de dudosa utilidad que puede ser muy peligrosa en la manos equivocadas."
-
-#: inc/cleanup/class-machete-cleanup-module.php:102
-msgid "Plugin and theme editor"
-msgstr "Editor de plugins y temas"
-
-#: inc/importexport/admin-content.php:42 inc/powertools/admin-content.php:94
-#: inc/cleanup/admin-content.php:72 inc/cleanup/admin-content.php:100
-#: inc/cleanup/admin-content.php:129
-msgid "Show more details"
-msgstr "Mostrar detalles"
-
-#: inc/cleanup/class-machete-cleanup-module.php:99
-msgid "Removes the filter that converts Wordpress to WordPress in every dang title, content or comment text."
-msgstr "Quita el filtro que convierte Wordpress en WordPress en el contenido de cada título, contenido o comentario."
-
-#: inc/cleanup/class-machete-cleanup-module.php:98
-msgid "capital_P_dangit"
-msgstr "capital_P_dangit"
-
-#: machete.php:78
-msgid "Machete PowerTools are now active! Enjoy your new toy!"
-msgstr "¡Machete PowerTools esta activo! ¡Disfruta tu nuevo juguete!"
-
-#: inc/powertools/class-machete-powertools-module.php:25
-msgid "Machete PowerTools is an free upgrade module targeted at WordPress developers and power users."
-msgstr "Machete PowerTools es un módulo de ampliación gratuito dirigido a desarrolladores y usuarios avanzados de WordPress."
-
-#: inc/clone/class-machete-clone-module.php:25
-msgid "Adds a \"duplicate\" link to post, page and most post types lists. Also adds \"copy to new draft\" function to the post editor."
-msgstr "Añade un enlace \"duplicar\" a las listas de páginas entradas y muchos post types. También añade un \"copiar a nuevo borrador\" en el editor."
-
-#: inc/clone/class-machete-clone-module.php:23
-#: inc/clone/class-machete-clone-module.php:24
-msgid "Post & Page Cloner"
-msgstr "Clonar entradas y páginas"
-
-#: inc/maintenance/class-machete-maintenance-module.php:25
-msgid "Customizable maintenance page to close your site during updates or development. It has a \"magic link\" to grant temporary access."
-msgstr "Página de mantenimiento personalizable para cerrar tu sitio durante actualizaciones o desarrollo. Tiene un \"enlace mágico\" para conceder acceso temporal."
-
-#: inc/utils/class-machete-utils-module.php:25
-msgid "Google Analytics tracking code manager and a simple editor to insert HTML, CSS and JS snippets or site verification tags."
-msgstr "Gestor de código de Google Analytics y un editor sencillo para insertar frangentos HTML, CSS o JS o etiquetas de verificación."
-
-#: inc/cookies/class-machete-cookies-module.php:25
-msgid "Light and responsive cookie law warning bar that won't affect your PageSpeed score and plays well with static cache plugins."
-msgstr "Barra aviso de ley de cookies ligera y adaptable que no afecta a tu puntuación de PageSpeed y que se lleva bien con los plugins de caché."
-
-#: inc/cleanup/class-machete-cleanup-module.php:25
-msgid "Reduces much of the legacy code bloat in WordPress page headers. It also has some tweaks to make you site faster and safer."
-msgstr "Reduce mucha de la morralla heredada en las cabeceras de página de Wordpress. Incluye trucos para acelerar y fortificar tu sitio."
-
-#: inc/clone/admin-functions.php:115
-msgid "Copy to a new draft"
-msgstr "Copiar a un nuevo borrador"
-
-#: inc/clone/admin-functions.php:94
-msgid "Duplicate"
-msgstr "Duplicar"
-
-#: inc/clone/admin-functions.php:94
-msgid "Clone this!"
-msgstr "¡Clonar esto!"
-
-#: inc/clone/admin-functions.php:46
-msgid "-copy"
-msgstr "-copia"
-
-#. translators: %s: five stars
-#: machete-admin.php:46
-msgid "If you like <strong>Machete</strong>, please %1$sleave us a rating of %2$s. Thank you!"
-msgstr "Si te gusta <strong>Machete</strong>, %1$sdéjame una reseña de %2$s. ¡Muchas gracias!"
-
-#: inc/powertools/class-machete-powertools-module.php:115
-msgid "Unknown action requested"
-msgstr "Se ha solicitado una acción desconocida"
-
-#: inc/powertools/class-machete-powertools-module.php:237
-msgid "Rewrite rules flushed"
-msgstr "Se han renovado las reglas de reescritura"
-
-#: inc/class-machete.php:177
-msgid "Sorry, you can't enable that module"
-msgstr "Lo siento, no puedes habilitar ese módulo"
-
-#: inc/class-machete.php:171
-msgid "Nothing to do. The module was already active."
-msgstr "No había nada que hacer. El módulo ya estaba activo."
-
-#: inc/class-machete.php:140
-msgid "Sorry, you can't disable that module"
-msgstr "Lo siento, no puedes desactivar ese módulo"
-
-#: inc/class-machete.php:134
-msgid "Nothing to do. The module was already disabled."
-msgstr "No había nada que hacer. El módulo ya estaba desactivado."
-
-#: inc/class-machete.php:124
-msgid "Uknown module:"
-msgstr "Módulo desconocido:"
-
-#: inc/class-machete.php:117
-msgid "Bad request"
-msgstr "Petición incorrecta"
-
-#: inc/about/templates/machete-module.php:122
-msgid "Activate"
-msgstr "Activar"
-
-#: inc/about/templates/machete-module.php:112
-msgid "Deactivate"
-msgstr "Desactivar"
+#: inc/about/templates/machete-module.php:23
+#: inc/about/templates/machete-module.php:35
+#: inc/about/templates/machete-module.php:83
+#: inc/about/templates/machete-module.php:117
+msgid "Configure"
+msgstr "Configurar"
 
 #: inc/about/templates/machete-module.php:43
 msgid "Active"
 msgstr "Activo"
 
+#: inc/about/templates/machete-module.php:80
+msgid "Deactivate Plugin"
+msgstr "Desactivar el plugin"
+
 #: inc/about/templates/machete-module.php:83
 #: inc/about/templates/machete-module.php:117
 msgid "Settings"
 msgstr "Ajustes"
-
-#: inc/about/templates/machete-module.php:80
-msgid "Deactivate Plugin"
-msgstr "Desactivar el plugin"
 
 #: inc/about/templates/machete-module.php:100
 msgid "Activate Plugin"
@@ -585,681 +75,1633 @@ msgstr "Activar el plugin"
 msgid "Download Machete PowerTools"
 msgstr "Descargar Machete PowerTools"
 
-#: inc/cleanup/class-machete-cleanup-module.php:117
-msgid "JSON API"
-msgstr "JSON API"
-
-#. Plugin URI of the plugin
-msgid "https://machetewp.com"
-msgstr "https://machetewp.com"
-
-#: inc/powertools/powertools.php:75
-msgid "Ctrl+P or Cmd+P to preview"
-msgstr "Ctrl+P or Cmd+P para previsualizar"
-
-#: inc/powertools/powertools.php:74
-msgid "Ctrl+S or Cmd+S to click"
-msgstr "Ctrl+S or Cmd+S para hacer clic"
-
-#: inc/utils/admin-content.php:86 inc/utils/admin-content.php:92
-#: inc/utils/admin-content.php:93
-msgid "Anonymize user IPs"
-msgstr "Anonimizar IPs"
-
-#. translators: $d number of deleted post revisions.
-#: inc/powertools/class-machete-powertools-module.php:229
-msgid "Success! %s Post revision deleted."
-msgid_plural "Success! %s Post revisions deleted."
-msgstr[0] "¡Éxito! Borrada %s revisión de entrada"
-msgstr[1] "¡Éxito! Borradas %s revisiones de entradas"
-
-#. translators: $d number of deleted translations.
-#: inc/powertools/class-machete-powertools-module.php:210
-msgid "%d Transients Rows Cleared"
-msgstr "%d Filas de transitorios borradas"
-
-#: inc/powertools/admin-content.php:78
-msgid "Machete Toolbox"
-msgstr "Machete Toolbox"
-
-#: inc/powertools/class-machete-powertools-module.php:55
-msgid "The defer attribute also downloads the JS file during HTML parsing, but it only executes it after the parsing has completed. Executed in order of appearance on the page"
-msgstr "Con el atributo \"defer\" los ficheros JS se descargan durante el parseo del HTML, pero sólo se ejecutan una vez que el parseo a terminado. Se ejecutan en el orden en el que aparecen en la página."
-
-#: inc/powertools/class-machete-powertools-module.php:54
-msgid "Defer your JavaScript"
-msgstr "Aplazar el JavaScript"
-
-#: inc/powertools/class-machete-powertools-module.php:51
-msgid "Move all JS queued scripts from header to footer. Machete will de-register the call for the JavaScript to load in the HEAD section of the site and re-register it to the FOOTER."
-msgstr "Mueve todos los scripts JS encolados de la cabecera al pie. Machete quita el registro de cada script de la sección HEAD y lo registra en el FOOTER"
-
-#: inc/powertools/class-machete-powertools-module.php:50
-msgid "Move scripts to footer"
-msgstr "Mover scripts al footer"
-
-#: inc/powertools/class-machete-powertools-module.php:47
-msgid "Lets you save your posts, pages, theme and plugin files in the most natural way: pressing Ctrl+S (or Cmd+S on Mac). It saves as draft unpublished posts/pages and updates the ones that are already public"
-msgstr "Te permite guardar tus entradas, páginas, archivos de tema o de plugin... de la forma más natural: pulsando Ctrl+S (o Cmd+S en Mac). Guarda como borrador las entradas o páginas que aún no han sido publicadas y actualiza las que ya son públicas."
-
-#: inc/powertools/class-machete-powertools-module.php:46
-msgid "Save with keyboard"
-msgstr "Guardar con el teclado"
-
-#: inc/powertools/class-machete-powertools-module.php:43
-msgid "Enables excerpts in pages. Useless for most people but awesome qhen combined with a page builder like Visual Composer"
-msgstr "Habilita los extractos en la páginas. Inútil para casi todo el mundo, pero alucinante cuando lo combinas con un constructor como Visual Composer."
-
-#: inc/powertools/class-machete-powertools-module.php:42
-msgid "Excerpts in Pages"
-msgstr "Páginas con extracto"
-
-#: inc/powertools/class-machete-powertools-module.php:39
-msgid "Add the featured image or the first attached image as the thumbnail of each post in the RSS feed"
-msgstr "Añade la imagen destacada o la primera imagen adjunta como el thumbnail de cada entrada en el feed RSS"
-
-#: inc/powertools/class-machete-powertools-module.php:38
-msgid "Thumbnails in RSS"
-msgstr "Miniaturas en RSS"
-
-#: inc/powertools/class-machete-powertools-module.php:68
-msgid "Enables OEMbed in text/html widgets."
-msgstr "Habilita OEmbed en widgets de texto/html"
-
-#: inc/powertools/class-machete-powertools-module.php:67
-msgid "OEmbed in Widgets"
-msgstr "OEmbed en Widgets"
-
-#: inc/powertools/class-machete-powertools-module.php:34
-msgid "Enables the use of shortcodes in text/html widgets. It may slightly impact performance"
-msgstr "Habilita el uso de shortcodes en widgets de texto/html. Puede afectar ligeramente al rendimiento."
-
-#: inc/powertools/class-machete-powertools-module.php:33
-msgid "Shortcodes in Widgets"
-msgstr "Shortcodes en Widgets"
-
-#: inc/powertools/admin-content.php:49
-msgid "Delete Permalink Cache"
-msgstr "Borrar la caché de enlaces permanentes"
-
-#: inc/powertools/admin-content.php:43
-msgid "Delete Unused Post Revisions"
-msgstr "Borrar revisiones de entrada sin uso"
-
-#: inc/powertools/admin-content.php:37
-msgid "Delete Expired Transients"
-msgstr "Borrar transitorios caducados"
-
-#: inc/cleanup/class-machete-cleanup-module.php:95
-msgid "You can shorten the time posts are kept in the trash, which is 30 days by default, to 1 week."
-msgstr "Puedes acortar el tiempo que se mantienen las entradas en la papelera de los 30 días predeterminados a una semana."
-
-#: inc/cleanup/class-machete-cleanup-module.php:94
-msgid "Empty trash every week"
-msgstr "Vaciar la papelera cada semana"
-
-#: inc/cleanup/class-machete-cleanup-module.php:91
-msgid "Load the comment-reply JS file only when needed."
-msgstr "Carga el JS de las respuestas a comentarios sólo cuando hace falta."
-
-#: inc/cleanup/class-machete-cleanup-module.php:90
-msgid "JS Comment reply"
-msgstr "JS de respuestas de comentarios"
-
-#: inc/cleanup/class-machete-cleanup-module.php:87
-msgid "By default, heartbeat makes a post call every 15 seconds on post edit pages. Change to 60 seconds (less CPU usage)."
-msgstr "Por defecto, heartbeat hace una llamada POST cada 15 segundos en las páginas de edición. Esto lo cambia a 60 segundos."
-
-#: inc/cleanup/class-machete-cleanup-module.php:86
-msgid "Slow Heartbeat"
-msgstr "Ralentizar Heartbeat"
-
-#: inc/cleanup/class-machete-cleanup-module.php:130
-msgid "Since WordPress 4.4, oEmbed is installed and available by default. If you don’t need oEmbed, you can remove it."
-msgstr "Desde WordPress 4.4, oEmbed está instalado y habilitado por defecto. Puedes desactivarlo si no lo necesitas."
-
-#: inc/cleanup/class-machete-cleanup-module.php:129
-msgid "Remove oEmbed Scripts"
-msgstr "Quitar los scripts de oEmbed"
-
-#: inc/powertools/class-machete-powertools-module.php:24
-#: inc/powertools/admin-content.php:23
-msgid "Machete PowerTools"
-msgstr "Machete PowerTools"
-
-#: inc/powertools/class-machete-powertools-module.php:23
-msgid "PowerTools"
-msgstr "PowerTools"
-
-#: inc/directory/admin-content.php:45
-msgid "Description"
-msgstr "Descripción"
-
-#: inc/directory/admin-content.php:44
-msgid "Location"
-msgstr "Origen"
-
-#: inc/directory/admin-content.php:43
-msgid "Resource"
-msgstr "Recurso"
-
-#: inc/directory/admin-content.php:32
-msgid "Adds Open Graph metadata to your posts and pages so that they look great when shared on sites like Facebook and Google+."
-msgstr "Añade metadatos de OpenGraph a tus entradas y páginas para que tengan un aspecto estupendo cuando se compartan en sitio como Facebook o Google+."
-
-#: inc/directory/admin-content.php:26
-msgid "BlackBox is a plugin for plugin and theme developers. It collects and displays useful debug information (errors, executed queries, globals, profiler)."
-msgstr "BlackBox es un plugin para desarrolladores de plugins y temas. Recopila y muestra información útil de depuración (errores, consultas ejecutadas, globales, profiler)."
-
-#: inc/directory/admin-content.php:25 inc/directory/admin-content.php:31
-msgid "WordPress.org Plugin Directory"
-msgstr "Directorio de plugins de WordPress.org"
-
-#: inc/directory/admin-content.php:24 inc/directory/admin-content.php:30
-msgid "https://www.wordpress.org/plugins/"
-msgstr "https://es.wordpress.org/plugins/"
-
-#: inc/directory/class-machete-directory-module.php:22
-#: inc/directory/class-machete-directory-module.php:23
-#: inc/directory/class-machete-directory-module.php:24
-#: inc/directory/admin-content.php:15
-msgid "Resource Directory"
-msgstr "Directorio de Recursos"
-
-#: inc/cleanup/class-machete-cleanup-module.php:23
-msgid "Optimization"
-msgstr "Optimización"
-
-#: inc/cleanup/admin-content.php:85
-msgid "This section goes futher disabling optional features. All options can be safely activated, but keep an eye on potiential plugin compatibility issues."
-msgstr "Esta sección va más allá deshabilitando funciones opcionales. Es seguro activar todas las opciones, pero vigila los posibles conflictos con otros plugins."
-
-#: inc/cleanup/admin-content.php:112
-msgid "Optimization Tweaks"
-msgstr "Artimañas de optimización"
-
-#: inc/cleanup/admin-content.php:57
-msgid "This section removes code from the &lt;head&gt; tag. This makes your site faster and reduces the amount of information revealed to a potential attacker."
-msgstr "Esta sección quita código de la etiqueta &lt;head&gt;. Esto hace que su sitio sea más rápido y reduce la información revelada a un potencial atacante,"
-
-#: inc/cleanup/class-machete-cleanup-module.php:126
-msgid "jQuery-migrate provides diagnostics that can simplify upgrading to new versions of jQuery, you can safely disable it."
-msgstr "jQuery-migrate es una herramienta de diagnóstico para ayuda a cambiar entre versiones de jQuery, es seguro deshabilitarlo."
-
-#: inc/cleanup/class-machete-cleanup-module.php:125
-msgid "remove jQuery-migrate"
-msgstr "quitar jQuery-migrate"
-
-#: inc/cleanup/class-machete-cleanup-module.php:83
-msgid "Limits the number of stored revisions to 5 only WP_POST_REVISIONS constant has been defined."
-msgstr "Limita el número de revisiones almacenadas a 5, sólo si se ha definido la constante WP_POST_REVISIONS"
-
-#: inc/cleanup/class-machete-cleanup-module.php:82
-msgid "Limit Post Revisions"
-msgstr "Limitar Post Revisions"
-
-#: inc/cleanup/class-machete-cleanup-module.php:79
-msgid "Starting with 4.7, WordPress tries to make thumbnails from each PDF you upload, potentially crashing your server if GhostScript and Imagemagick aren't properly configured. This option disables PDF thumbnails."
-msgstr "A partir de la versión 4.7, WordPress intenta sacar miniaturas de cada PDF que subes, pudiendo hacer que tu servidor se cuelgue si no tienes GhostScript e Imagemagick bien configurados. Esta opción deshabilita las miniaturas de los PDF."
-
-#: inc/cleanup/class-machete-cleanup-module.php:78
-msgid "PDF Thumbnails"
-msgstr "Miniaturas de PDF"
-
-#: inc/cleanup/class-machete-cleanup-module.php:24
-#: inc/cleanup/admin-content.php:40
-msgid "WordPress Optimization"
-msgstr "Optimización de WordPress"
-
-#: inc/maintenance/class-machete-maintenance-page.php:106
-msgid "<h1>Under maintenance</h1><h3>We will be back shortly</h3>"
-msgstr "<h1>En mantenimiento</h1><h3>¡Enseguida volvemos!</h3>"
-
-#: inc/maintenance/class-machete-maintenance-page.php:99
-msgid "<h1>Under construction</h1><h3>New content is coming soon...</h3>"
-msgstr "<h1>En construcción</h1><h3>Hay contenido nuevo de camino...</h3>"
-
-#: inc/maintenance/class-machete-maintenance-module.php:119
-msgid "Content page id is not a valid page id"
-msgstr "El id de la página de contenido no es un id de página válido."
-
-#: inc/maintenance/admin-content.php:131
-msgid "Are you sure you want to change the secret token?\\nThis will invalidate previously-shared links."
-msgstr "¿estás seguro de que quieres cambiar el token secreto?\\nEsto invalidará los enlaces que hayas compartido anteriormente."
-
-#: inc/maintenance/admin-content.php:101
-msgid "content of the selected page"
-msgstr "contenido de la página elegida"
-
-#: inc/maintenance/admin-content.php:96
-msgid "title of the selected page"
-msgstr "título de la página elegida"
-
-#: inc/maintenance/admin-content.php:93
-msgid "For your reference, this is the HTML used to render the Maintenance page:"
-msgstr "Como referencia, aquí tienes el HTML que se usa para mostrar la página de mantenimiento:"
-
-#. translators: %s: Analytics & code tab link.
-#: inc/maintenance/admin-content.php:92
-msgid "You can customize the maintenance page CSS using the %sAnalytics & Code tab"
-msgstr "Puedes personalizar el CSS de la página de mantenimiento usando la %spestaña de Analytics y código"
-
-#: inc/maintenance/admin-content.php:88
-msgid "How do I customize the maintenance page?"
-msgstr "¿Cómo personalizo la página de mantenimiento?"
-
-#: inc/maintenance/admin-content.php:75
-msgid "Preview"
-msgstr "Previsualizar"
-
-#: inc/maintenance/admin-content.php:63
-msgid "Use default content"
-msgstr "Usar el contenido predeterminado"
-
-#: inc/maintenance/admin-content.php:60
-msgid "Choose a page for the content"
-msgstr "Elige una página para el contenido"
-
-#: inc/maintenance/admin-content.php:55
-msgid "You can use this link to grant anyone access to the website when it is in maintenance mode."
-msgstr "Puedes usar este enlace para permitirle a cualquiera que entre a tu sitio mientras que está en modo mantenimiento."
-
-#: inc/maintenance/admin-content.php:54
-msgid "change secret token"
-msgstr "cambiar el token secreto"
-
-#: inc/maintenance/admin-content.php:50
-msgid "Magic Link"
-msgstr "Enlace mágico"
-
-#: inc/maintenance/admin-content.php:45
-msgid "Site closed. All pages return 503 Service unavailable"
-msgstr "Sitio cerrado. Todas las páginas devuelven 503 Service unavailable"
-
-#: inc/maintenance/admin-content.php:40
-msgid "Site closed. All pages have a meta robots noindex, nofollow"
-msgstr "Sitio cerrado. Todas las páginas devuelven un meta robots noindex, nofollow"
-
-#: inc/maintenance/admin-content.php:40
-#: inc/maintenance/class-machete-maintenance-page.php:98
-msgid "Coming soon"
-msgstr "En desarrollo"
-
-#: inc/maintenance/admin-content.php:34
-msgid "WordPress works as usual"
-msgstr "WordPress funciona normalmente"
-
-#: inc/maintenance/admin-content.php:34
-msgid "Online"
-msgstr "Online"
-
-#: inc/maintenance/admin-content.php:29
-msgid "Set site status"
-msgstr "Estado del sitio"
-
-#: inc/maintenance/admin-content.php:15
-msgid "Coming Soon & Maintenance Mode"
-msgstr "Modo mantenimiento y desarrollo"
-
-#: inc/cookies/admin-content.php:39
-msgid "Restore default warning text"
-msgstr "Restaurar el aviso predeterminado"
-
-#: inc/maintenance/admin-content.php:45 inc/maintenance/admin-bar.php:74
-#: inc/maintenance/class-machete-maintenance-page.php:105
-msgid "Maintenance"
-msgstr "Mantenimiento"
-
-#: inc/maintenance/admin-bar.php:51
-msgid "Coming Soon"
-msgstr "Desarrollo"
-
-#: inc/maintenance/class-machete-maintenance-module.php:23
-#: inc/maintenance/class-machete-maintenance-module.php:24
-msgid "Maintenance Mode"
-msgstr "Modo mantenimiento"
-
-#: inc/maintenance/admin-content.php:17
-msgid "If you have to close yout website temporarly to the public, the navive WordPress maintenance mode falls short and most coming soon plugins are bulky, incomplete or expensive. Machete maintenance mode is light, simple and versatile."
-msgstr "Si tienes que cerrar tu sitio al público temporalmente, el modo mantenimiento nativo de WordPress se queda corto y casi todos los plugins de \"coming soon\" son aparatosos, incompletos o caros. El modo mantenimiento de Machete es ligero, sencillo y versátil."
-
-#: inc/cookies/class-machete-cookies-module.php:31
-msgid "By continuing to browse the site, you are agreeing to our use of cookies as described in our <a href=\"/cookies/\" style=\"color: #007FFF\">cookie policy</a>."
-msgstr "Si continúas navegando por esta web, entendemos que aceptas <a href=\"/cookies/\" style=\"color: #007FFF\">las cookies que usamos</a> para mejorar nuestros servicios."
-
-#. Author of the plugin
-msgid "Nilo Velez"
-msgstr "Nilo Vélez"
-
-#. Author URI of the plugin
-msgid "https://www.nilovelez.com"
-msgstr "https://www.nilovelez.com"
-
-#. Plugin Name of the plugin
-msgid "Machete"
-msgstr "Machete"
+#: inc/about/templates/machete-module.php:112
+msgid "Deactivate"
+msgstr "Desactivar"
+
+#: inc/about/templates/machete-module.php:122
+msgid "Activate"
+msgstr "Activar"
+
+#: inc/class-machete-module.php:148
+#: inc/utils/class-machete-utils-module.php:245
+msgid "Settings succesfully restored from backup"
+msgstr "Ajustes restaurados con éxito desde la copia de seguridad"
+
+#: inc/class-machete-module.php:150
+#: inc/utils/class-machete-utils-module.php:247
+msgid "Error restoring settings backup"
+msgstr "Error restaurando la copia de seguridad"
 
 #: inc/class-machete-module.php:171
 msgid "Options saved!"
 msgstr "¡Ajustes guardados!"
-
-#: inc/about/class-machete-about-module.php:23
-#: inc/about/class-machete-about-module.php:24
-msgid "About Machete"
-msgstr "Acerca de Machete"
-
-#: inc/utils/class-machete-utils-module.php:23
-msgid "Analytics & Code"
-msgstr "Analytics y código"
-
-#: inc/cookies/class-machete-cookies-module.php:23
-msgid "Cookie Law"
-msgstr "Ley de cookies"
-
-#. translators: %s: url of plugin settings page
-#: machete-admin.php:72
-msgid "<a href=\"%s\">Settings</a>"
-msgstr "<a href=\"%s\">Ajustes</a>"
-
-#: inc/utils/class-machete-utils-module.php:93
-msgid "Something went wrong. Unknown tracking code format requested."
-msgstr "Se ha producido un error. Has solicitado un formato de código desconocido."
-
-#: inc/utils/class-machete-utils-module.php:85 inc/utils/admin-content.php:174
-msgid "That doesn't look like a valid Google Analytics tracking ID"
-msgstr "Eso no parece que eso sea un ID de seguimiento de Google Analytics válido"
-
-#. translators: $s: file path.
-#: inc/utils/admin-content.php:134
-msgid "This code is included when the <code>wp_footer</code> action is called, normally just before the closing <code>&lt;/body&gt;</code> label.<br>Content is saved to <code>%s</code> and served using PHP's <code>readfile()</code> function, so no PHP or shortcodes here."
-msgstr "Este código se incuye cuando se ejecuta la acción <code>wp_footer</code>, normalmente justo antes del cierre de la etiqueta <code>&lt;/body&gt;</code>.<br>El contenido se guarda en <code>%s</code> y se sirve usando la función <code>readfile()</code> de PHP, así que nada de código PHP o shortcodes aquí."
-
-#: inc/utils/admin-content.php:131 inc/utils/admin-content.php:132
-msgid "Custom footer content"
-msgstr "Contenido para el pie"
-
-#. translators: $s: file path.
-#: inc/utils/admin-content.php:124
-msgid "Content is saved to <code>%s</code> and served using PHP.  Inclusion method varies, so no PHP code or shortcodes here."
-msgstr "El contenido se guarda en el fichero <code>%s</code> y se sirve usando PHP.  Como puede insertarse de distintas formas, no uses código PHP ni shortcodes aquí."
-
-#: inc/utils/admin-content.php:119
-msgid "Edit your theme's <code>header.php</code> template manually and include this function:"
-msgstr "Editar manualmente la plantilla <code>header.php</code> de tu tema y añadir esta función:"
-
-#. translators: %s url of article with explanation.
-#: inc/utils/admin-content.php:118
-msgid "Try to inject the code automatically using <a href=\"%s\" target=\"_blank\" rel=\"nofollow\">Yaniv Friedensohn's method</a>"
-msgstr "Intentar inyectar automáticamente el código usando el <a href=\"%s\" target=\"_blank\" rel=\"nofollow\">método de Yaniv Friedensohn</a>"
-
-#: inc/utils/admin-content.php:116
-msgid "Custom body content injection method"
-msgstr "Método para inyectar el código personalizado para el body"
-
-#: inc/utils/admin-content.php:113
-msgid "This block is meant to be included just after the begining of the <code>&lt;body&gt;</code> label, and it's mainly used for conversion tracking codes. There isn't any standard hook here, which leave you with two options:"
-msgstr "Este bloque está pensado para ser incluido justo al principio de la etiqueta <code>&lt;body&gt;</code> y se suele usar para insertar códigos de seguimiento de conversiones. Como no hay ningún hook estándar aquí, tienes dos opciones:"
-
-#: inc/utils/admin-content.php:111 inc/utils/admin-content.php:122
-msgid "Custom body content"
-msgstr "Contenido para el &lt;body&gt;"
-
-#. translators: $s: file path.
-#: inc/utils/admin-content.php:106
-msgid "This code is included before the closing <code>&lt;/head&gt;</code> label.<br>Content is saved to <code>%s</code> and served using PHP's <code>readfile()</code> function, so no PHP or shortcodes here."
-msgstr "Este código se incluye antes de la etiqueta de cierre <code>&lt;/head&gt;</code>.<br>El contenido se guarda en <code>%s</code> y se sirve usando la función <code>readfile()</code> de PHP, así que nada de PHP o shortcodes aquí."
-
-#: inc/utils/admin-content.php:102 inc/utils/admin-content.php:103
-msgid "Custom header content"
-msgstr "Contenido para la cabecera"
-
-#: inc/utils/admin-content.php:82
-msgid "No tracking code"
-msgstr "Sin código de seguimiento"
-
-#: inc/utils/admin-content.php:81
-msgid "PageSpeed-optimized tracking code"
-msgstr "Código de seguimiento optimizado para PageSpeed"
-
-#: inc/utils/admin-content.php:80
-msgid "Standard Google Analytics tracking code"
-msgstr "Código de seguimiento estándar de Google Analytics"
-
-#: inc/utils/admin-content.php:78 inc/utils/admin-content.php:79
-msgid "Tracking Code"
-msgstr "Código de seguimiento"
-
-#: inc/utils/admin-content.php:74 inc/powertools/admin-content.php:39
-#: inc/powertools/admin-content.php:45 inc/powertools/admin-content.php:51
-#: inc/powertools/admin-content.php:58 inc/powertools/admin-content.php:65
-msgid "Format:"
-msgstr "Formato:"
-
-#: inc/utils/admin-content.php:72
-msgid "Tracking ID"
-msgstr "ID de seguimiento"
-
-#: inc/utils/admin-content.php:61
-msgid "This tool generates up to three static HTML files that are loaded via PHP on each pageview. When enabled, custom body content requires one aditional database request."
-msgstr "Esta herramienta genera dos ficheros de HTML estático que se cargan mediante PHP en cada vista de página. Cuando está habilitado, el contenido para el &lt;body&gt; requiere una llamada adicional a base de datos."
-
-#. translators: %s path to machete data dir.
-#: inc/cookies/class-machete-cookies-module.php:190
-msgid "Could not delete old javascript file from %s please check file permissions . Aborting to prevent inconsistent state."
-msgstr "Error al borrar el fichero estático antiguo de %s , comprueba los permisos. Cancelando para evitar un estado inconsistente."
-
-#. translators: %s path to machete data dir.
-#: inc/cookies/class-machete-cookies-module.php:179
-msgid "Error writing static javascript file to %s please check file permissions. Aborting to prevent inconsistent state."
-msgstr "Error al guardar el fichero estático de JavaScript a %s , comprueba los permisos. Cancelando para evitar un estado inconsistente."
-
-#. translators: %s path to template file.
-#: inc/cookies/class-machete-cookies-module.php:118
-#: inc/cookies/class-machete-cookies-module.php:131
-msgid "Error reading cookie bar template %s"
-msgstr "Error al leer la plantilla de la barra de cookies %s"
-
-#. translators: %s path of data dir.
-#: inc/utils/class-machete-utils-module.php:73
-#: inc/cookies/class-machete-cookies-module.php:108
-msgid "Error creating data dir %s please check file permissions"
-msgstr "Error al crear el directorio %s comprueba los permisos de archivo, por favor"
-
-#: inc/cookies/class-machete-cookies-module.php:157
-#: inc/cookies/admin-content.php:150
-msgid "Accept button text can't be blank"
-msgstr "El texto del botón de aceptar no puede estar en blanco"
-
-#: inc/cookies/class-machete-cookies-module.php:146
-#: inc/cookies/admin-content.php:145
-msgid "Cookie warning text can't be blank"
-msgstr "El texto del aviso de cookies no puede estar en blanco"
-
-#: inc/cookies/admin-content.php:45 inc/cookies/admin-content.php:46
-msgid "Cookie bar theme"
-msgstr "Tema de la barra de cookies"
-
-#: inc/cookies/admin-content.php:42 inc/cookies/admin-content.php:70
-msgid "Accept button text"
-msgstr "Texto del botón de aceptación"
-
-#: inc/cookies/admin-content.php:37 inc/cookies/admin-content.php:72
-msgid "Cookie warning text"
-msgstr "Texto del aviso de cookies"
-
-#: inc/cookies/admin-content.php:34
-msgid "Disabled"
-msgstr "Deshabilitado"
-
-#: inc/cookies/admin-content.php:33
-msgid "Enabled"
-msgstr "Habilitado"
-
-#: inc/cookies/admin-content.php:31 inc/cookies/admin-content.php:32
-msgid "Cookie alert status"
-msgstr "Estado del aviso de cookies"
-
-#: inc/cookies/admin-content.php:21
-msgid "This tool adds 0,4Kb and a single database request request to each page load. The remaining <abbr title=\"~1.1Kb if GZipped\">~2.5Kb</abbr> of code is loaded asynchronously via javascript from a pregenerated static file."
-msgstr "Esta herramienta añade 0,4Kb y una sola petición a base de datos a cada carga de página. Los demás <abbr title=\"~1.1Kb comprimidos con  GZip\">~2.5Kb</abbr> de código se cargan de forma asíncrona mediante javascript desde un fichero estático pregenerado."
-
-#: inc/cookies/class-machete-cookies-module.php:32
-msgid "Accept cookies"
-msgstr "Aceptar cookies"
-
-#: inc/class-machete-module.php:183
-msgid "No changes were needed."
-msgstr "No había nada que guardar"
 
 #: inc/class-machete-module.php:177 inc/class-machete.php:162
 #: inc/class-machete.php:200
 msgid "Error saving configuration to database."
 msgstr "Error al guardar la configuración a base de datos."
 
-#: inc/powertools/admin-content.php:86 inc/powertools/admin-content.php:96
-#: inc/cleanup/admin-content.php:64 inc/cleanup/admin-content.php:74
-#: inc/cleanup/admin-content.php:92 inc/cleanup/admin-content.php:102
-#: inc/cleanup/admin-content.php:121 inc/cleanup/admin-content.php:131
-msgid "Explanation"
-msgstr "Explicación"
+#: inc/class-machete-module.php:183
+msgid "No changes were needed."
+msgstr "No había nada que guardar."
 
-#: inc/powertools/admin-content.php:85 inc/cleanup/admin-content.php:63
-#: inc/cleanup/admin-content.php:91 inc/cleanup/admin-content.php:120
-msgid "Remove"
-msgstr "Quitar"
+#: inc/class-machete-module.php:238
+msgid "This function needs direct access to the filesystem."
+msgstr "Esta función necesita acceso directo al sistema de ficheros."
 
-#: inc/cleanup/class-machete-cleanup-module.php:68
-msgid "Removes dns-prefetch links from the header"
-msgstr "Quitar de la cabecera los enlaces dns-prefetch"
+#: inc/class-machete-module.php:244
+msgid "There was a problem accessing the filesystem. Check your permissions."
+msgstr ""
+"Se producido un problema al acceder al sistema de ficheros. Comprueba tus "
+"permisos."
 
-#: inc/cleanup/class-machete-cleanup-module.php:67
-msgid "dns-prefetch"
-msgstr "dns-prefetch"
+#: inc/class-machete.php:117
+msgid "Bad request"
+msgstr "Petición incorrecta"
 
-#: inc/cleanup/class-machete-cleanup-module.php:64
-msgid "Removes a block of inline CSS used by old themes from the header"
-msgstr "Quitar de la cabecera un bloque de CSS que usaban los temas antiguos."
+#: inc/class-machete.php:124
+msgid "Uknown module:"
+msgstr "Módulo desconocido:"
 
-#: inc/cleanup/class-machete-cleanup-module.php:63
-msgid "recent_comments_style"
-msgstr "recent_comments_style"
+#: inc/class-machete.php:134
+msgid "Nothing to do. The module was already disabled."
+msgstr "No había nada que hacer. El módulo ya estaba desactivado."
 
-#: inc/cleanup/class-machete-cleanup-module.php:75
-msgid "Remove lots of emoji styles and scripts from the header, RSS, mail function, tinyMCE editor..."
-msgstr "Quitar un montón de scripts y hojas de estilo para los emoij de la cabecera, los feeds RSS, la función mail,  tinyMCE editor..."
+#: inc/class-machete.php:140
+msgid "Sorry, you can't disable that module"
+msgstr "Lo siento, no puedes desactivar ese módulo"
 
-#: inc/cleanup/class-machete-cleanup-module.php:74
-msgid "Emojicons"
-msgstr "Emojicons"
+#: inc/class-machete.php:153
+#, php-format
+msgid "Module %s disabled succesfully"
+msgstr "Módulo %s desactivado con éxito"
 
-#: inc/cleanup/class-machete-cleanup-module.php:60
-msgid "Remove WordPress version var (?ver=) after styles and scripts. Used by atackers to detect the WordPress version."
-msgstr "Quitar la variable de versión de WordPress (?ver=) de los estilos y los scripts. La usan los hackers para detectar la versión de WordPress."
+#: inc/class-machete.php:171
+msgid "Nothing to do. The module was already active."
+msgstr "No había nada que hacer. El módulo ya estaba activo."
 
-#: inc/cleanup/class-machete-cleanup-module.php:59
-msgid "version"
-msgstr "version"
+#: inc/class-machete.php:177
+msgid "Sorry, you can't enable that module"
+msgstr "Lo siento, no puedes habilitar ese módulo"
 
-#: inc/cleanup/class-machete-cleanup-module.php:56
-msgid "Remove WordPress meta generator tag. Used by atackers to detect the WordPress version."
-msgstr "Quitar la metaetiqueta \"generator\" de WordPress. La usan los hackers para detectar la versión de WordPress."
+#: inc/class-machete.php:190
+#, php-format
+msgid "Module %s enabled succesfully"
+msgstr "Módulo %s activado con éxito"
 
-#: inc/cleanup/class-machete-cleanup-module.php:55
-msgid "wp_generator"
-msgstr "wp_generator"
+#: inc/cleanup/admin-content.php:40
+#: inc/cleanup/class-machete-cleanup-module.php:24
+msgid "WordPress Optimization"
+msgstr "Optimización de WordPress"
 
-#: inc/cleanup/class-machete-cleanup-module.php:52
-msgid "Remove the shortlink url from header"
-msgstr "Quitar la url del shortlink de la cabecera"
+#: inc/cleanup/admin-content.php:42
+msgid ""
+"WordPress has a los of code just to keep backward compatiblity or enable "
+"optional features. You can disable most of it and save some time from each "
+"page request while making your installation safer"
+msgstr ""
+"WordPress tiene un montón de código sólo para mantener la compatibilidad con "
+"versiones anteriores o habilitar funciones opcionales. Puedes deshabilitar "
+"la mayoría y ganar algo de tiempo de cada carga de página al mismo tiempo "
+"que haces tu instalación más segura."
 
-#: inc/cleanup/class-machete-cleanup-module.php:51
-msgid "shortlink"
-msgstr "shortlink"
-
-#: inc/cleanup/class-machete-cleanup-module.php:48
-msgid "Remove the next and previous post links from the header"
-msgstr "Quitar de la cabecera los enlaces a la entradas anterior y siguiente"
-
-#: inc/cleanup/class-machete-cleanup-module.php:47
-msgid "adjacent_posts"
-msgstr "adjacent_posts"
-
-#: inc/cleanup/class-machete-cleanup-module.php:44
-msgid "Remove Automatics RSS links. RSS will still work, but you will need to provide your own links."
-msgstr "Quitar los enlaces RSS automáticos. Los feeds RSS seguirán funcionando, pero tendrás que enlazarlos tú manualmente."
-
-#: inc/cleanup/class-machete-cleanup-module.php:43
-msgid "feed_links"
-msgstr "feed_links"
-
-#: inc/cleanup/class-machete-cleanup-module.php:40
-msgid "Remove the link to wlwmanifest.xml. It is needed to support Windows Live Writer. Yes, seriously."
-msgstr "Quitar el enlace a wlwmanifest.xml. Es necesario para trabajar con Windows Live Writer. Sí, en serio."
-
-#: inc/cleanup/class-machete-cleanup-module.php:39
-msgid "WLW"
-msgstr "WLW"
-
-#: inc/cleanup/class-machete-cleanup-module.php:36
-msgid "Remove Really Simple Discovery(RSD) links. They are used for automatic pingbacks."
-msgstr "Quitar los enlaces  Really Simple Discovery(RSD). Se usan para los pingback automáticos."
-
-#: inc/cleanup/class-machete-cleanup-module.php:35
-msgid "RSD"
-msgstr "RSD"
-
-#: inc/powertools/admin-content.php:27 inc/maintenance/admin-content.php:19
-#: inc/cleanup/admin-content.php:46
-msgid "This section stores all its settings in a single autoloaded configuration variable."
-msgstr "Esta sección almacena todos sus ajustes en una sola variable de configuración."
-
-#: inc/utils/admin-content.php:61 inc/importexport/admin-content.php:19
-#: inc/powertools/admin-content.php:27 inc/cookies/admin-content.php:21
-#: inc/maintenance/admin-content.php:19 inc/social/admin-content.php:21
-#: inc/cleanup/admin-content.php:46
+#: inc/cleanup/admin-content.php:46 inc/cookies/admin-content.php:21
+#: inc/importexport/admin-content.php:19 inc/maintenance/admin-content.php:19
+#: inc/powertools/admin-content.php:27 inc/social/admin-content.php:21
+#: inc/utils/admin-content.php:59
 msgid "Performance impact:"
 msgstr "Impacto en el rendimiento:"
 
-#: inc/utils/class-machete-utils-module.php:24 inc/utils/admin-content.php:58
-msgid "Analytics and Custom Code"
-msgstr "Analytics y Código personalizado"
-
-#: inc/utils/admin-content.php:59
-msgid "You don't need a zillion plugins to perform easy task like inserting a verification meta tag (Google Search Console, Bing, Pinterest), a json-ld snippet or a custom styleseet (Google Fonts, Print Styles, accesibility tweaks...)."
-msgstr "No hacen falta chorrocientos plugins para realizar tareas sencillas como instertar una metaetiqueta de verificación (Google Search Console, Bing, Pinterest), un fragmento de json-ld snippet o una hoja de estilos personalizada (Google Fonts, estilos de impresión, ajustes de accesibilidad...)."
-
-#: inc/cookies/class-machete-cookies-module.php:24
-#: inc/cookies/admin-content.php:16
-msgid "Cookie Law Warning"
-msgstr "Aviso de Ley de Cookies"
-
-#: inc/cookies/admin-content.php:17
-msgid "We know you hate cookie warning bars. Well, this is the less hateable cookie bar you'll find. It is really light, it won't affect your PageSpeed score and plays well with static cache plugins."
-msgstr "Sabemos que odias las barras de aviso de cookies. Bueno, pues esta es la barra de cookies menos odiable que vas a encontrar. Es muy ligera, no afecta a tu puntuación de PageSpeed y funciona bien con los plugins de caché estática."
-
-#: inc/about/templates/machete-module.php:23
-#: inc/about/templates/machete-module.php:35
-#: inc/about/templates/machete-module.php:83
-#: inc/about/templates/machete-module.php:117
-msgid "Configure"
-msgstr "Configurar"
+#: inc/cleanup/admin-content.php:46 inc/maintenance/admin-content.php:19
+#: inc/powertools/admin-content.php:27
+msgid ""
+"This section stores all its settings in a single autoloaded configuration "
+"variable."
+msgstr ""
+"Esta sección almacena todos sus ajustes en una sola variable de "
+"configuración."
 
 #: inc/cleanup/admin-content.php:55
 msgid "Header Cleanup"
 msgstr "Limpieza de cabecera"
 
-#: inc/cleanup/admin-content.php:42 inc/directory/admin-content.php:16
-msgid "WordPress has a los of code just to keep backward compatiblity or enable optional features. You can disable most of it and save some time from each page request while making your installation safer"
-msgstr "WordPress tiene un montón de código sólo para mantener la compatibilidad con versiones anteriores o habilitar funciones opcionales. Puedes deshabilitar la mayoría y ganar algo de tiempo de cada carga de página al mismo tiempo que haces tu instalación más segura."
+#: inc/cleanup/admin-content.php:55
+msgid "Completely safe"
+msgstr "Completamente seguro"
 
-#: inc/about/admin-content.php:24
-msgid "Machete is not meant to be safe. Machete is a suite of tools that can break things if not handled with care. As a rule of thumb, don't use any option you don't understand."
-msgstr "Machete no está hecho para ser seguro. Las herramientas de Machete, como cualquier herramienta, pueden romper cosas si no se usan con cuidado. No uses ninguna opción que no entiendas."
+#: inc/cleanup/admin-content.php:57
+msgid ""
+"This section removes code from the &lt;head&gt; tag. This makes your site "
+"faster and reduces the amount of information revealed to a potential "
+"attacker."
+msgstr ""
+"Esta sección quita código de la etiqueta &lt;head&gt;. Esto hace que su "
+"sitio sea más rápido y reduce la información revelada a un potencial "
+"atacante,"
 
-#: inc/about/admin-content.php:18
-msgid "Machete is now installed and ready to use. Machete solves common WordPress problems using as little resources as posible. Machete lets you use less plugins. Machete optimizes."
-msgstr "Machete ya está instalado y listo para usarse. Machete resuelve problemas comunes de WordPress usando tan pocos recursos como sea posible. Machete hace que puedas usar menos plugins. Machete optimiza."
+#: inc/cleanup/admin-content.php:63 inc/cleanup/admin-content.php:91
+#: inc/cleanup/admin-content.php:120 inc/powertools/admin-content.php:85
+msgid "Remove"
+msgstr "Quitar"
 
-#: inc/about/admin-content.php:16
-msgid "Welcome to Machete!"
-msgstr "¡Bienvenido a Machete!"
+#: inc/cleanup/admin-content.php:64 inc/cleanup/admin-content.php:74
+#: inc/cleanup/admin-content.php:92 inc/cleanup/admin-content.php:102
+#: inc/cleanup/admin-content.php:121 inc/cleanup/admin-content.php:131
+#: inc/powertools/admin-content.php:86 inc/powertools/admin-content.php:96
+msgid "Explanation"
+msgstr "Explicación"
+
+#: inc/cleanup/admin-content.php:72 inc/cleanup/admin-content.php:100
+#: inc/cleanup/admin-content.php:129 inc/importexport/admin-content.php:42
+#: inc/powertools/admin-content.php:94
+msgid "Show more details"
+msgstr "Mostrar detalles"
+
+#: inc/cleanup/admin-content.php:83
+msgid "Feature Cleanup"
+msgstr "Limpieza de funcionalidades"
+
+#: inc/cleanup/admin-content.php:83
+msgid "Mostly safe"
+msgstr "Bastante seguro"
+
+#: inc/cleanup/admin-content.php:85
+msgid ""
+"This section goes futher disabling optional features. All options can be "
+"safely activated, but keep an eye on potiential plugin compatibility issues."
+msgstr ""
+"Esta sección va más allá deshabilitando funciones opcionales. Es seguro "
+"activar todas las opciones, pero vigila los posibles conflictos con otros "
+"plugins."
+
+#: inc/cleanup/admin-content.php:112
+msgid "Optimization Tweaks"
+msgstr "Artimañas de optimización"
+
+#: inc/cleanup/admin-content.php:112
+msgid "Handle with care"
+msgstr "Utilizar con precaución"
+
+#: inc/cleanup/admin-content.php:114
+msgid ""
+"Options in this section have the most impact on WordPress performance, but "
+"also the most potential of screwing things up."
+msgstr ""
+"Las opciones de esta sección son las que mayor impacto tienen en el "
+"rendimiento de WordPress, pero también son las que tienen mayor potencial "
+"para liarla parda."
+
+#: inc/cleanup/class-machete-cleanup-module.php:23
+msgid "Optimization"
+msgstr "Optimización"
+
+#: inc/cleanup/class-machete-cleanup-module.php:25
+msgid ""
+"Reduces much of the legacy code bloat in WordPress page headers. It also has "
+"some tweaks to make you site faster and safer."
+msgstr ""
+"Reduce mucha de la morralla heredada en las cabeceras de página de "
+"WordPress. Incluye trucos para acelerar y fortificar tu sitio."
+
+#: inc/cleanup/class-machete-cleanup-module.php:35
+msgid "RSD"
+msgstr "RSD"
+
+#: inc/cleanup/class-machete-cleanup-module.php:36
+msgid ""
+"Remove Really Simple Discovery(RSD) links. They are used for automatic "
+"pingbacks."
+msgstr ""
+"Quitar los enlaces  Really Simple Discovery(RSD). Se usan para los pingback "
+"automáticos."
+
+#: inc/cleanup/class-machete-cleanup-module.php:39
+msgid "WLW"
+msgstr "WLW"
+
+#: inc/cleanup/class-machete-cleanup-module.php:40
+msgid ""
+"Remove the link to wlwmanifest.xml. It is needed to support Windows Live "
+"Writer. Yes, seriously."
+msgstr ""
+"Quitar el enlace a wlwmanifest.xml. Es necesario para trabajar con Windows "
+"Live Writer. Sí, en serio."
+
+#: inc/cleanup/class-machete-cleanup-module.php:43
+msgid "feed_links"
+msgstr "feed_links"
+
+#: inc/cleanup/class-machete-cleanup-module.php:44
+msgid ""
+"Remove Automatics RSS links. RSS will still work, but you will need to "
+"provide your own links."
+msgstr ""
+"Quitar los enlaces RSS automáticos. Los feeds RSS seguirán funcionando, pero "
+"tendrás que enlazarlos tú manualmente."
+
+#: inc/cleanup/class-machete-cleanup-module.php:47
+msgid "feed_generator"
+msgstr "feed_generator"
+
+#: inc/cleanup/class-machete-cleanup-module.php:48
+msgid "Remove generator tag from RSS feeds."
+msgstr "Quitar la etiqueta generator de los feeds RSS."
+
+#: inc/cleanup/class-machete-cleanup-module.php:51
+msgid "adjacent_posts"
+msgstr "adjacent_posts"
+
+#: inc/cleanup/class-machete-cleanup-module.php:52
+msgid "Remove the next and previous post links from the header"
+msgstr "Quitar de la cabecera los enlaces a la entradas anterior y siguiente"
+
+#: inc/cleanup/class-machete-cleanup-module.php:55
+msgid "shortlink"
+msgstr "shortlink"
+
+#: inc/cleanup/class-machete-cleanup-module.php:56
+msgid "Remove the shortlink url from header"
+msgstr "Quitar la url del shortlink de la cabecera"
+
+#: inc/cleanup/class-machete-cleanup-module.php:59
+msgid "wp_generator"
+msgstr "wp_generator"
+
+#: inc/cleanup/class-machete-cleanup-module.php:60
+msgid ""
+"Remove WordPress and WooCommerce meta generator tags. Used by atackers to "
+"detect the WordPress version."
+msgstr ""
+"Quitar la metaetiqueta «generator» de WordPress. La usan los hackers para "
+"detectar la versión de WordPress."
+
+#: inc/cleanup/class-machete-cleanup-module.php:63
+msgid "version"
+msgstr "version"
+
+#: inc/cleanup/class-machete-cleanup-module.php:64
+msgid ""
+"Remove WordPress version var (?ver=) after styles and scripts. Used by "
+"atackers to detect the WordPress version."
+msgstr ""
+"Quitar la variable de versión de WordPress (?ver=) de los estilos y los "
+"scripts. La usan los hackers para detectar la versión de WordPress."
+
+#: inc/cleanup/class-machete-cleanup-module.php:67
+msgid "recent_comments_style"
+msgstr "recent_comments_style"
+
+#: inc/cleanup/class-machete-cleanup-module.php:68
+msgid "Removes a block of inline CSS used by old themes from the header"
+msgstr "Quitar de la cabecera un bloque de CSS que usaban los temas antiguos."
+
+#: inc/cleanup/class-machete-cleanup-module.php:71
+msgid "dns-prefetch"
+msgstr "dns-prefetch"
+
+#: inc/cleanup/class-machete-cleanup-module.php:72
+msgid "Removes dns-prefetch links from the header"
+msgstr "Quitar de la cabecera los enlaces dns-prefetch"
+
+#: inc/cleanup/class-machete-cleanup-module.php:78
+msgid "Emojicons"
+msgstr "Emojicons"
+
+#: inc/cleanup/class-machete-cleanup-module.php:79
+msgid ""
+"Remove lots of emoji styles and scripts from the header, RSS, mail function, "
+"tinyMCE editor..."
+msgstr ""
+"Quitar un montón de scripts y hojas de estilo para los emoij de la cabecera, "
+"los feeds RSS, la función mail,  tinyMCE editor..."
+
+#: inc/cleanup/class-machete-cleanup-module.php:82
+msgid "PDF Thumbnails"
+msgstr "Miniaturas de PDF"
+
+#: inc/cleanup/class-machete-cleanup-module.php:83
+msgid ""
+"Starting with 4.7, WordPress tries to make thumbnails from each PDF you "
+"upload, potentially crashing your server if GhostScript and Imagemagick "
+"aren't properly configured. This option disables PDF thumbnails."
+msgstr ""
+"A partir de la versión 4.7, WordPress intenta sacar miniaturas de cada PDF "
+"que subes, pudiendo hacer que tu servidor se cuelgue si no tienes "
+"GhostScript e Imagemagick bien configurados. Esta opción deshabilita las "
+"miniaturas de los PDF."
+
+#: inc/cleanup/class-machete-cleanup-module.php:86
+msgid "Limit Post Revisions"
+msgstr "Limitar Post Revisions"
+
+#: inc/cleanup/class-machete-cleanup-module.php:87
+msgid ""
+"Limits the number of stored revisions to 5 only WP_POST_REVISIONS constant "
+"has been defined."
+msgstr ""
+"Limita el número de revisiones almacenadas a 5, sólo si se ha definido la "
+"constante WP_POST_REVISIONS"
+
+#: inc/cleanup/class-machete-cleanup-module.php:90
+msgid "Slow Heartbeat"
+msgstr "Ralentizar Heartbeat"
+
+#: inc/cleanup/class-machete-cleanup-module.php:91
+msgid ""
+"By default, heartbeat makes a post call every 15 seconds on post edit pages. "
+"Change to 60 seconds (less CPU usage)."
+msgstr ""
+"Por defecto, heartbeat hace una llamada POST cada 15 segundos en las páginas "
+"de edición. Esto lo cambia a 60 segundos."
+
+#: inc/cleanup/class-machete-cleanup-module.php:94
+msgid "JS Comment reply"
+msgstr "JS de respuestas de comentarios"
+
+#: inc/cleanup/class-machete-cleanup-module.php:95
+msgid "Load the comment-reply JS file only when needed."
+msgstr "Carga el JS de las respuestas a comentarios sólo cuando hace falta."
+
+#: inc/cleanup/class-machete-cleanup-module.php:98
+msgid "Empty trash every week"
+msgstr "Vaciar la papelera cada semana"
+
+#: inc/cleanup/class-machete-cleanup-module.php:99
+msgid ""
+"You can shorten the time posts are kept in the trash, which is 30 days by "
+"default, to 1 week."
+msgstr ""
+"Puedes acortar el tiempo que se mantienen las entradas en la papelera de los "
+"30 días predeterminados a una semana."
+
+#: inc/cleanup/class-machete-cleanup-module.php:102
+msgid "capital_P_dangit"
+msgstr "capital_P_dangit"
+
+#: inc/cleanup/class-machete-cleanup-module.php:103
+msgid ""
+"Removes the filter that converts Wordpress to WordPress in every dang title, "
+"content or comment text."
+msgstr ""
+"Quita el filtro que convierte Wordpress en WordPress en el contenido de cada "
+"título, contenido o comentario."
+
+#: inc/cleanup/class-machete-cleanup-module.php:106
+msgid "Plugin and theme editor"
+msgstr "Editor de plugins y temas"
+
+#: inc/cleanup/class-machete-cleanup-module.php:107
+msgid ""
+"Disables the plugins and theme editor. A mostly useless tool that can be "
+"very dangerous in the wrong hands."
+msgstr ""
+"Desactiva el editor de plugins y temas. Una herramienta de dudosa utilidad "
+"que puede ser muy peligrosa en la manos equivocadas."
+
+#: inc/cleanup/class-machete-cleanup-module.php:110
+msgid "medium_large thumbnail"
+msgstr "miniatura medium_large"
+
+#: inc/cleanup/class-machete-cleanup-module.php:111
+msgid ""
+"Prevents WordPress from generating the medium_large 768px thumbnail size of "
+"image uploads."
+msgstr ""
+"Evita que WordPress genere el tamaño de miniatura medium_large de 768px"
+
+#: inc/cleanup/class-machete-cleanup-module.php:114
+msgid "No comment autolinks"
+msgstr "Comentarios sin autolinks"
+
+#: inc/cleanup/class-machete-cleanup-module.php:115
+msgid ""
+"URLs in comments are converted to links by default. This feature is often "
+"exploited by spammers."
+msgstr ""
+"Por defecto, las URLs de los comentarios se convierte automáticamente en "
+"enlaces. Los spammers se aprovechan a menudo de ello."
+
+#: inc/cleanup/class-machete-cleanup-module.php:121
+msgid "JSON API"
+msgstr "JSON API"
+
+#: inc/cleanup/class-machete-cleanup-module.php:122
+msgid ""
+"Remove the JSON-API links from page headers. Also require that API consumers "
+"be authenticated."
+msgstr ""
+"Elimina de las cabeceras de página los enlaces a la JSON-API. También "
+"requiere identificarse para consumir la API."
+
+#: inc/cleanup/class-machete-cleanup-module.php:122
+msgid ""
+"Be careful. Breaks the block editor and many plugins that use the REST API."
+msgstr ""
+"Ten cuidado. Rompe el editor de bloques y muchos plugins que usan la REST "
+"API."
+
+#: inc/cleanup/class-machete-cleanup-module.php:125
+msgid "XML-RPC"
+msgstr "XML-RPC"
+
+#: inc/cleanup/class-machete-cleanup-module.php:126
+msgid "Disable the XML-RPC interface. "
+msgstr "Desactiva la interfaz XML-RPC."
+
+#: inc/cleanup/class-machete-cleanup-module.php:129
+msgid "remove jQuery-migrate"
+msgstr "quitar jQuery-migrate"
+
+#: inc/cleanup/class-machete-cleanup-module.php:130
+msgid ""
+"jQuery-migrate provides diagnostics that can simplify upgrading to new "
+"versions of jQuery, you can safely disable it."
+msgstr ""
+"jQuery-migrate es una herramienta de diagnóstico para ayuda a cambiar entre "
+"versiones de jQuery, es seguro deshabilitarlo."
+
+#: inc/cleanup/class-machete-cleanup-module.php:130
+msgid "May break some themes and plugins that depend on legacy code."
+msgstr "Puede romper algunos temas y plugins que dependen de código obsoleto."
+
+#: inc/cleanup/class-machete-cleanup-module.php:133
+msgid "Remove oEmbed Scripts"
+msgstr "Quitar los scripts de oEmbed"
+
+#: inc/cleanup/class-machete-cleanup-module.php:134
+msgid ""
+"Since WordPress 4.4, oEmbed is installed and available by default. If you "
+"don’t need oEmbed, you can remove it."
+msgstr ""
+"Desde WordPress 4.4, oEmbed está instalado y habilitado por defecto. Puedes "
+"desactivarlo si no lo necesitas."
+
+#: inc/cleanup/class-machete-cleanup-module.php:137
+msgid "Remove CF7 refill"
+msgstr "Quitar el refill de CF7"
+
+#: inc/cleanup/class-machete-cleanup-module.php:138
+msgid ""
+"Disables the Contact Form 7 refill script. Saves one hit to wp-ajax.php per "
+"pageview on cached sites"
+msgstr ""
+"Desactiva el script refill de Contact Form 7. Ahorra una petición a wp-ajax."
+"php por vista de página en los sitios con caché."
+
+#: inc/cleanup/class-machete-cleanup-module.php:138
+msgid "Activate only if you are not using the reCAPTCHA Contact Form 7 field"
+msgstr ""
+"Actívalo sólo si no estás utilizando el campo reCAPTCHA de Contact Form 7"
+
+#: inc/cleanup/class-machete-cleanup-module.php:141
+msgid "Reduce JPEG quality"
+msgstr "Reducir la calidad JPEG"
+
+#: inc/cleanup/class-machete-cleanup-module.php:142
+msgid ""
+"When WordPress generates a JPEG thumbnail it compress the image to 82% "
+"quality. Check this this to reduce the default quality to 72%. (It doesn't "
+"affect original image quality)."
+msgstr ""
+"Cuando WordPress genera una miniatura JPEG, comprime la imagen con una "
+"calidad del 82%. Marca esto para reducir la calidad por defecto al 72%. (No "
+"afecta a la calidad de la imagen original)."
+
+#: inc/cleanup/optimization.php:296
+msgid "The REST API on this site has been disabled."
+msgstr "La REST API de este sitio ha sido desactivada."
+
+#: inc/clone/admin-bar.php:40
+#, php-format
+msgid "Clone %s"
+msgstr "Clonar %s"
+
+#: inc/clone/admin-bar.php:44
+#, php-format
+msgid "Copy this %s to a new draft"
+msgstr "Copiar %s a un nuevo borrador"
+
+#: inc/clone/admin-functions.php:46
+msgid "-copy"
+msgstr "-copia"
+
+#: inc/clone/admin-functions.php:94
+msgid "Clone this!"
+msgstr "¡Clonar esto!"
+
+#: inc/clone/admin-functions.php:94
+msgid "Duplicate"
+msgstr "Duplicar"
+
+#: inc/clone/admin-functions.php:115
+msgid "Copy to a new draft"
+msgstr "Copiar a un nuevo borrador"
+
+#: inc/clone/class-machete-clone-module.php:23
+#: inc/clone/class-machete-clone-module.php:24
+msgid "Post & Page Cloner"
+msgstr "Clonar entradas y páginas"
+
+#: inc/clone/class-machete-clone-module.php:25
+msgid ""
+"Adds a \"duplicate\" link to post, page and most post types lists. Also adds "
+"\"copy to new draft\" function to the post editor."
+msgstr ""
+"Añade un enlace «duplicar» a las listas de páginas entradas y muchos post "
+"types. También añade un «copiar a nuevo borrador» en el editor clásico."
+
+#: inc/cookies/admin-content.php:16
+#: inc/cookies/class-machete-cookies-module.php:24
+msgid "Cookie Law Warning"
+msgstr "Aviso de Ley de Cookies"
+
+#: inc/cookies/admin-content.php:17
+msgid ""
+"We know you hate cookie warning bars. Well, this is the less hateable cookie "
+"bar you'll find. It is really light, it won't affect your PageSpeed score "
+"and plays well with static cache plugins."
+msgstr ""
+"Sabemos que odias las barras de aviso de cookies. Bueno, pues esta es la "
+"barra de cookies menos odiable que vas a encontrar. Es muy ligera, no afecta "
+"a tu puntuación de PageSpeed y funciona bien con los plugins de caché "
+"estática."
+
+#: inc/cookies/admin-content.php:21
+msgid ""
+"This tool adds 0,4Kb and a single database request request to each page "
+"load. The remaining <abbr title=\"~1.1Kb if GZipped\">~2.5Kb</abbr> of code "
+"is loaded asynchronously via javascript from a pregenerated static file."
+msgstr ""
+"Esta herramienta añade 0,4Kb y una sola petición a base de datos a cada "
+"carga de página. Los demás <abbr title=\"~1.1Kb comprimidos con  GZip"
+"\">~2.5Kb</abbr> de código se cargan de forma asíncrona mediante javascript "
+"desde un fichero estático pregenerado."
+
+#: inc/cookies/admin-content.php:31 inc/cookies/admin-content.php:32
+msgid "Cookie alert status"
+msgstr "Estado del aviso de cookies"
+
+#: inc/cookies/admin-content.php:33
+msgid "Enabled"
+msgstr "Habilitado"
+
+#: inc/cookies/admin-content.php:34
+msgid "Disabled"
+msgstr "Deshabilitado"
+
+#: inc/cookies/admin-content.php:37 inc/cookies/admin-content.php:72
+msgid "Cookie warning text"
+msgstr "Texto del aviso de cookies"
+
+#: inc/cookies/admin-content.php:39
+msgid "Restore default warning text"
+msgstr "Restaurar el aviso predeterminado"
+
+#: inc/cookies/admin-content.php:42 inc/cookies/admin-content.php:70
+msgid "Accept button text"
+msgstr "Texto del botón de aceptación"
+
+#: inc/cookies/admin-content.php:45 inc/cookies/admin-content.php:46
+msgid "Cookie bar theme"
+msgstr "Tema de la barra de cookies"
+
+#: inc/cookies/admin-content.php:61
+msgid "How do I customize the cookie bar?"
+msgstr "¿Cómo personalizo la barra de cookies?"
+
+#: inc/cookies/admin-content.php:65
+#, php-format
+msgid "You can customize the cookie bar CSS using the %sAnalytics & Code tab"
+msgstr ""
+"Puedes personalizar el CSS de la barra de cookies utilizando la pestaña "
+"%sAnalytics y código"
+
+#: inc/cookies/admin-content.php:66
+msgid "For your reference, this is the HTML used to render the cookie bar:"
+msgstr ""
+"Para tu referencia, este es el HTML utilizado para mostrar la barra de "
+"cookies:"
+
+#: inc/cookies/admin-content.php:145
+#: inc/cookies/class-machete-cookies-module.php:146
+msgid "Cookie warning text can't be blank"
+msgstr "El texto del aviso de cookies no puede estar en blanco"
+
+#: inc/cookies/admin-content.php:150
+#: inc/cookies/class-machete-cookies-module.php:157
+msgid "Accept button text can't be blank"
+msgstr "El texto del botón de aceptar no puede estar en blanco"
+
+#: inc/cookies/class-machete-cookies-module.php:23
+msgid "Cookie Law"
+msgstr "Ley de cookies"
+
+#: inc/cookies/class-machete-cookies-module.php:25
+msgid ""
+"Light and responsive cookie law warning bar that won't affect your PageSpeed "
+"score and plays well with static cache plugins."
+msgstr ""
+"Barra aviso de ley de cookies ligera y adaptable que no afecta a tu "
+"puntuación de PageSpeed y que se lleva bien con los plugins de caché."
+
+#: inc/cookies/class-machete-cookies-module.php:31
+msgid ""
+"By continuing to browse the site, you are agreeing to our use of cookies as "
+"described in our <a href=\"/cookies/\" style=\"color: #007FFF\">cookie "
+"policy</a>."
+msgstr ""
+"Si continúas navegando por esta web, entendemos que aceptas <a href=\"/"
+"cookies/\" style=\"color: #007FFF\">las cookies que usamos</a> para mejorar "
+"nuestros servicios."
+
+#: inc/cookies/class-machete-cookies-module.php:32
+msgid "Accept cookies"
+msgstr "Aceptar cookies"
+
+#: inc/cookies/class-machete-cookies-module.php:39
+msgid "Modern Light"
+msgstr "Moderno claro"
+
+#: inc/cookies/class-machete-cookies-module.php:44
+msgid "Modern Dark"
+msgstr "Moderno oscuro"
+
+#: inc/cookies/class-machete-cookies-module.php:49
+msgid "Classic Light"
+msgstr "Clásico claro"
+
+#: inc/cookies/class-machete-cookies-module.php:54
+msgid "Classic Dark"
+msgstr "Clásico oscuro"
+
+#: inc/cookies/class-machete-cookies-module.php:59
+msgid "Cookie!"
+msgstr "¡Galleta!"
+
+#: inc/cookies/class-machete-cookies-module.php:108
+#: inc/utils/class-machete-utils-module.php:73
+#, php-format
+msgid "Error creating data dir %s please check file permissions"
+msgstr ""
+"Error al crear el directorio %s comprueba los permisos de archivo, por favor"
+
+#: inc/cookies/class-machete-cookies-module.php:118
+#: inc/cookies/class-machete-cookies-module.php:131
+#, php-format
+msgid "Error reading cookie bar template %s"
+msgstr "Error al leer la plantilla de la barra de cookies %s"
+
+#: inc/cookies/class-machete-cookies-module.php:179
+#, php-format
+msgid ""
+"Error writing static javascript file to %s please check file permissions. "
+"Aborting to prevent inconsistent state."
+msgstr ""
+"Error al guardar el fichero estático de JavaScript a %s , comprueba los "
+"permisos. Cancelando para evitar un estado inconsistente."
+
+#: inc/cookies/class-machete-cookies-module.php:190
+#, php-format
+msgid ""
+"Could not delete old javascript file from %s please check file permissions . "
+"Aborting to prevent inconsistent state."
+msgstr ""
+"Error al borrar el fichero estático antiguo de %s , comprueba los permisos. "
+"Cancelando para evitar un estado inconsistente."
+
+#: inc/importexport/admin-content.php:15
+#: inc/importexport/class-machete-importexport-module.php:24
+msgid "Import/Export Options"
+msgstr "Importar/Exportar Opciones"
+
+#: inc/importexport/admin-content.php:17
+msgid ""
+"You can use this section to backup and restore your Machete configuration. "
+"You can also take a backup from one site and restore to another. Be careful, "
+"your current configuration will be overwritten when you import a backup file"
+msgstr ""
+"Puedes utilizar esta sección para guardar y restaurar tu configuración de "
+"Machete. También puedes hacer una copia de un sitio y restaurarla en otro. "
+"Ten cuidado, to configuración actual se sobreescribe cuando importas un "
+"fichero de copia de seguridad."
+
+#: inc/importexport/admin-content.php:19
+msgid "This section has no impact on the page load times."
+msgstr ""
+"Esta sección no tiene ningún impacto en los tiempos de carga de página."
+
+#: inc/importexport/admin-content.php:26
+msgid "Export Machete Options"
+msgstr "Exportar opciones de Machete"
+
+#: inc/importexport/admin-content.php:28
+msgid ""
+"Select the modules from which you want to export the settings and click "
+"\"download config backup\" to get a .json file with the backup."
+msgstr ""
+"Elige los módulos de los que quieres exportar la configuración y pulsa en "
+"«descargar copia de seguridad» para obtener un fichero .json con la copia."
+
+#: inc/importexport/admin-content.php:34
+msgid "Modules to export"
+msgstr "Módulos que exportar"
+
+#: inc/importexport/admin-content.php:51
+msgid "Download config backup"
+msgstr "Descargar copia de seguridad"
+
+#: inc/importexport/admin-content.php:60
+msgid "Import Machete Options"
+msgstr "Importar opciones de Machete"
+
+#: inc/importexport/admin-content.php:62
+msgid ""
+"Select a Machete backup file and click the \"upload config backup\" to "
+"import it. Please keep in mind that the module settings included in the "
+"backup file will overwrite your current setting for those modules."
+msgstr ""
+"Elige un fichero de copia de seguridad de Machete y pulsa en «subir copia de "
+"seguridad» para importarlo. Ten en cuenta que los ajustes de módulos "
+"incluidos en el fichero sobreescribirán tu ajustes de esos módulos."
+
+#: inc/importexport/admin-content.php:64
+msgid "Machete backup file to restore"
+msgstr "Copia de seguridad de Machete que restaurar"
+
+#: inc/importexport/admin-content.php:67
+msgid "Upload config backup"
+msgstr "Subir copia de seguridad"
+
+#: inc/importexport/class-machete-importexport-module.php:23
+msgid "Import/Export"
+msgstr "Importar/Exportar"
+
+#: inc/importexport/class-machete-importexport-module.php:25
+msgid ""
+"You can use this section to backup and restore your Machete configuration. "
+"You can also take a backup from one site and restore to another."
+msgstr ""
+"Puedes utilizar esta sección para guardar y restaurar tu configuración de "
+"Machete. También puedes hacer una copia de un sitio y restaurarla en otro."
+
+#: inc/importexport/class-machete-importexport-module.php:129
+msgid "You do not have permission to upload files."
+msgstr "No tienes permiso para subir archivos."
+
+#: inc/importexport/class-machete-importexport-module.php:146
+#: inc/importexport/class-machete-importexport-module.php:164
+msgid "You haven't uploaded a backup file"
+msgstr "No has subido un fichero de copia de seguridad"
+
+#: inc/importexport/class-machete-importexport-module.php:151
+msgid "An error happened while trying to upload your file"
+msgstr "Se ha producido un error al intentar subir tu fichero"
+
+#: inc/importexport/class-machete-importexport-module.php:156
+msgid "An error happened: "
+msgstr "Se ha producido un error: "
+
+#: inc/importexport/class-machete-importexport-module.php:173
+msgid "You haven't uploaded a valid Machete backup file"
+msgstr "No has subido un fichero de copia de seguridad de Machete válido"
+
+#: inc/importexport/class-machete-importexport-module.php:181
+msgid "Ignored uknown module:"
+msgstr "Módulo desconocido ignorado:"
+
+#: inc/importexport/class-machete-importexport-module.php:184
+msgid "Importing module: "
+msgstr "Importando módulo:"
+
+#: inc/importexport/class-machete-importexport-module.php:191
+msgid "Module activated succesfully"
+msgstr "Módulo activado con éxito"
+
+#: inc/importexport/class-machete-importexport-module.php:195
+msgid "Module deactivated succesfully"
+msgstr "Módulo desactivado con éxito"
+
+#: inc/maintenance/admin-bar.php:51
+msgid "Coming Soon"
+msgstr "Desarrollo"
+
+#: inc/maintenance/admin-bar.php:74 inc/maintenance/admin-content.php:45
+#: inc/maintenance/class-machete-maintenance-page.php:105
+msgid "Maintenance"
+msgstr "Mantenimiento"
+
+#: inc/maintenance/admin-content.php:15
+msgid "Coming Soon & Maintenance Mode"
+msgstr "Modo mantenimiento y desarrollo"
+
+#: inc/maintenance/admin-content.php:17
+msgid ""
+"If you have to close yout website temporarly to the public, the navive "
+"WordPress maintenance mode falls short and most coming soon plugins are "
+"bulky, incomplete or expensive. Machete maintenance mode is light, simple "
+"and versatile."
+msgstr ""
+"Si tienes que cerrar tu sitio al público temporalmente, el modo "
+"mantenimiento nativo de WordPress se queda corto y casi todos los plugins de "
+"«coming soon» son aparatosos, incompletos o caros. El modo mantenimiento de "
+"Machete es ligero, sencillo y versátil."
+
+#: inc/maintenance/admin-content.php:29
+msgid "Set site status"
+msgstr "Estado del sitio"
+
+#: inc/maintenance/admin-content.php:34
+msgid "Online"
+msgstr "Online"
+
+#: inc/maintenance/admin-content.php:34
+msgid "WordPress works as usual"
+msgstr "WordPress funciona normalmente"
+
+#: inc/maintenance/admin-content.php:40
+#: inc/maintenance/class-machete-maintenance-page.php:98
+msgid "Coming soon"
+msgstr "En desarrollo"
+
+#: inc/maintenance/admin-content.php:40
+msgid "Site closed. All pages have a meta robots noindex, nofollow"
+msgstr ""
+"Sitio cerrado. Todas las páginas devuelven un meta robots noindex, nofollow"
+
+#: inc/maintenance/admin-content.php:45
+msgid "Site closed. All pages return 503 Service unavailable"
+msgstr "Sitio cerrado. Todas las páginas devuelven 503 Service unavailable"
+
+#: inc/maintenance/admin-content.php:50
+msgid "Magic Link"
+msgstr "Enlace mágico"
+
+#: inc/maintenance/admin-content.php:54
+msgid "change secret token"
+msgstr "cambiar el token secreto"
+
+#: inc/maintenance/admin-content.php:55
+msgid ""
+"You can use this link to grant anyone access to the website when it is in "
+"maintenance mode."
+msgstr ""
+"Puedes usar este enlace para permitirle a cualquiera que entre a tu sitio "
+"mientras que está en modo mantenimiento."
+
+#: inc/maintenance/admin-content.php:60
+msgid "Choose a page for the content"
+msgstr "Elige una página para el contenido"
+
+#: inc/maintenance/admin-content.php:63
+msgid "Use default content"
+msgstr "Usar el contenido predeterminado"
+
+#: inc/maintenance/admin-content.php:75
+msgid "Preview"
+msgstr "Previsualizar"
+
+#: inc/maintenance/admin-content.php:88
+msgid "How do I customize the maintenance page?"
+msgstr "¿Cómo personalizo la página de mantenimiento?"
+
+#: inc/maintenance/admin-content.php:92
+#, php-format
+msgid ""
+"You can customize the maintenance page CSS using the %sAnalytics & Code tab"
+msgstr ""
+"Puedes personalizar el CSS de la página de mantenimiento usando la %spestaña "
+"de Analytics y código"
+
+#: inc/maintenance/admin-content.php:93
+msgid ""
+"For your reference, this is the HTML used to render the Maintenance page:"
+msgstr ""
+"Como referencia, aquí tienes el HTML que se usa para mostrar la página de "
+"mantenimiento:"
+
+#: inc/maintenance/admin-content.php:96
+msgid "title of the selected page"
+msgstr "título de la página elegida"
+
+#: inc/maintenance/admin-content.php:101
+msgid "content of the selected page"
+msgstr "contenido de la página elegida"
+
+#: inc/maintenance/admin-content.php:131
+msgid ""
+"Are you sure you want to change the secret token?\\nThis will invalidate "
+"previously-shared links."
+msgstr ""
+"¿estás seguro de que quieres cambiar el token secreto?\\nEsto invalidará los "
+"enlaces que hayas compartido anteriormente."
+
+#: inc/maintenance/class-machete-maintenance-module.php:23
+#: inc/maintenance/class-machete-maintenance-module.php:24
+msgid "Maintenance Mode"
+msgstr "Modo mantenimiento"
+
+#: inc/maintenance/class-machete-maintenance-module.php:25
+msgid ""
+"Customizable maintenance page to close your site during updates or "
+"development. It has a \"magic link\" to grant temporary access."
+msgstr ""
+"Página de mantenimiento personalizable para cerrar tu sitio durante "
+"actualizaciones o desarrollo. Tiene un «enlace mágico» para conceder acceso "
+"temporal."
+
+#: inc/maintenance/class-machete-maintenance-module.php:119
+msgid "Content page id is not a valid page id"
+msgstr "El id de la página de contenido no es un id de página válido."
+
+#: inc/maintenance/class-machete-maintenance-page.php:99
+msgid "<h1>Under construction</h1><h3>New content is coming soon...</h3>"
+msgstr "<h1>En construcción</h1><h3>Hay contenido nuevo de camino...</h3>"
+
+#: inc/maintenance/class-machete-maintenance-page.php:106
+msgid "<h1>Under maintenance</h1><h3>We will be back shortly</h3>"
+msgstr "<h1>En mantenimiento</h1><h3>¡Enseguida volvemos!</h3>"
+
+#: inc/powertools/admin-content.php:23
+#: inc/powertools/class-machete-powertools-module.php:24
+msgid "Machete PowerTools"
+msgstr "Machete PowerTools"
+
+#: inc/powertools/admin-content.php:25
+msgid ""
+"Machete PowerTools is an upgrade module targeted to WordPress developers and "
+"power users. PowerTools add new features and improve some of the Machete "
+"modules you already know and love."
+msgstr ""
+"Machete PowerTools es un módulo de mejora dirigido a desarrolladores y "
+"usuarios avanzados de WordPress. PowerTools añade funcionalidades nuevas y "
+"mejora algunos de los módulos de Machete que ya conoces y usas."
+
+#: inc/powertools/admin-content.php:37
+msgid "Delete Expired Transients"
+msgstr "Borrar transitorios caducados"
+
+#: inc/powertools/admin-content.php:39 inc/powertools/admin-content.php:45
+#: inc/powertools/admin-content.php:51 inc/powertools/admin-content.php:58
+#: inc/powertools/admin-content.php:65 inc/utils/admin-content.php:96
+msgid "Format:"
+msgstr "Formato:"
+
+#: inc/powertools/admin-content.php:43
+msgid "Delete Unused Post Revisions"
+msgstr "Borrar revisiones de entrada sin uso"
+
+#: inc/powertools/admin-content.php:49
+msgid "Delete Permalink Cache"
+msgstr "Borrar la caché de enlaces permanentes"
+
+#: inc/powertools/admin-content.php:56
+msgid "Delete Opcache contents"
+msgstr "Borrar el contenido de la Opcache"
+
+#: inc/powertools/admin-content.php:63
+msgid "Delete WordPress object cache contents"
+msgstr "Borra los contenidos de la caché de objetos de WordPress"
+
+#: inc/powertools/admin-content.php:78
+msgid "Machete Toolbox"
+msgstr "Machete Toolbox"
+
+#: inc/powertools/class-machete-powertools-module.php:23
+msgid "PowerTools"
+msgstr "PowerTools"
+
+#: inc/powertools/class-machete-powertools-module.php:25
+msgid ""
+"Machete PowerTools is an free upgrade module targeted at WordPress "
+"developers and power users."
+msgstr ""
+"Machete PowerTools es un módulo de ampliación gratuito dirigido a "
+"desarrolladores y usuarios avanzados de WordPress."
+
+#: inc/powertools/class-machete-powertools-module.php:33
+msgid "Shortcodes in Widgets"
+msgstr "Shortcodes en Widgets"
+
+#: inc/powertools/class-machete-powertools-module.php:34
+msgid ""
+"Enables the use of shortcodes in text/html widgets. It may slightly impact "
+"performance"
+msgstr ""
+"Habilita el uso de shortcodes en widgets de texto/html. Puede afectar "
+"ligeramente al rendimiento."
+
+#: inc/powertools/class-machete-powertools-module.php:38
+msgid "Thumbnails in RSS"
+msgstr "Miniaturas en RSS"
+
+#: inc/powertools/class-machete-powertools-module.php:39
+msgid ""
+"Add the featured image or the first attached image as the thumbnail of each "
+"post in the RSS feed"
+msgstr ""
+"Añade la imagen destacada o la primera imagen adjunta como el thumbnail de "
+"cada entrada en el feed RSS"
+
+#: inc/powertools/class-machete-powertools-module.php:42
+msgid "Excerpts in Pages"
+msgstr "Páginas con extracto"
+
+#: inc/powertools/class-machete-powertools-module.php:43
+msgid ""
+"Enables excerpts in pages. Useless for most people but awesome qhen combined "
+"with a page builder like Visual Composer"
+msgstr ""
+"Habilita los extractos en la páginas. Inútil para casi todo el mundo, pero "
+"alucinante cuando lo combinas con un constructor como Visual Composer."
+
+#: inc/powertools/class-machete-powertools-module.php:46
+msgid "Save with keyboard"
+msgstr "Guardar con el teclado"
+
+#: inc/powertools/class-machete-powertools-module.php:47
+msgid ""
+"Lets you save your posts, pages, theme and plugin files in the most natural "
+"way: pressing Ctrl+S (or Cmd+S on Mac). It saves as draft unpublished posts/"
+"pages and updates the ones that are already public"
+msgstr ""
+"Te permite guardar tus entradas, páginas, archivos de tema o de plugin... de "
+"la forma más natural: pulsando Ctrl+S (o Cmd+S en Mac). Guarda como borrador "
+"las entradas o páginas que aún no han sido publicadas y actualiza las que ya "
+"son públicas."
+
+#: inc/powertools/class-machete-powertools-module.php:50
+msgid "Move scripts to footer"
+msgstr "Mover scripts al footer"
+
+#: inc/powertools/class-machete-powertools-module.php:51
+msgid ""
+"Move all JS queued scripts from header to footer. Machete will de-register "
+"the call for the JavaScript to load in the HEAD section of the site and re-"
+"register it to the FOOTER."
+msgstr ""
+"Mueve todos los scripts JS encolados de la cabecera al pie. Machete quita el "
+"registro de cada script de la sección HEAD y lo registra en el FOOTER"
+
+#: inc/powertools/class-machete-powertools-module.php:54
+msgid "Defer your JavaScript"
+msgstr "Aplazar el JavaScript"
+
+#: inc/powertools/class-machete-powertools-module.php:55
+msgid ""
+"The defer attribute also downloads the JS file during HTML parsing, but it "
+"only executes it after the parsing has completed. Executed in order of "
+"appearance on the page"
+msgstr ""
+"Con el atributo «defer» los ficheros JS se descargan durante el parseo del "
+"HTML, pero sólo se ejecutan una vez que el parseo a terminado. Se ejecutan "
+"en el orden en el que aparecen en la página"
+
+#: inc/powertools/class-machete-powertools-module.php:58
+msgid "Disable all feeds"
+msgstr "Desactivar todos los feeds"
+
+#: inc/powertools/class-machete-powertools-module.php:59
+msgid ""
+"RSS, RDF, Atom... disables all of them and makes life a little less easy for "
+"leechers."
+msgstr ""
+"RSS, RDF, Atom... los deshabilita todos y la hace la vida un poco más "
+"complicada a los gorrones."
+
+#: inc/powertools/class-machete-powertools-module.php:62
+msgid "Enable SVG images"
+msgstr "Permitir imágenes SVG"
+
+#: inc/powertools/class-machete-powertools-module.php:64
+#, php-format
+msgid ""
+"Enables the upload of SVG images to the media library. This <a href=\"%s\" "
+"target=\"_blank\" rel=\"noopener noreferrer\">has been proven to be "
+"dangerous</a>, so be careful."
+msgstr ""
+"Permite la subida de imágenes SVG a la biblioteca de medioa. Está <a href="
+"\"%s\" target=\"_blank\" rel=\"noopener noreferrer\">demostrado que esto es "
+"peligroso</a>, así que ten cuidado."
+
+#: inc/powertools/class-machete-powertools-module.php:67
+msgid "OEmbed in Widgets"
+msgstr "OEmbed en Widgets"
+
+#: inc/powertools/class-machete-powertools-module.php:68
+msgid "Enables OEMbed in text/html widgets."
+msgstr "Habilita OEmbed en widgets de texto/html"
+
+#: inc/powertools/class-machete-powertools-module.php:68
+msgid "Deprecated. This feature is natively enabled since WordPress 4.8.1"
+msgstr ""
+"Obsoleto. Esta función viene activada de forma nativa desde WordPress 4.8.1"
+
+#: inc/powertools/class-machete-powertools-module.php:115
+msgid "Unknown action requested"
+msgstr "Se ha solicitado una acción desconocida"
+
+#: inc/powertools/class-machete-powertools-module.php:222
+#, php-format
+msgid "%d Transients Rows Cleared"
+msgstr "%d Filas de transitorios borradas"
+
+#: inc/powertools/class-machete-powertools-module.php:241
+#, php-format
+msgid "Success! %s Post revision deleted."
+msgid_plural "Success! %s Post revisions deleted."
+msgstr[0] "¡Éxito! Borrada %s revisión de entrada."
+msgstr[1] "¡Éxito! Borradas %s revisiones de entradas."
+
+#: inc/powertools/class-machete-powertools-module.php:249
+msgid "Rewrite rules flushed"
+msgstr "Se han renovado las reglas de reescritura"
+
+#: inc/powertools/class-machete-powertools-module.php:257
+msgid "Object cache flushed"
+msgstr "Caché de objetos vaciada"
+
+#: inc/powertools/class-machete-powertools-module.php:265
+msgid "Opcache flushed"
+msgstr "Opcache vaciado"
+
+#: inc/powertools/powertools.php:74
+msgid "Ctrl+S or Cmd+S to click"
+msgstr "Ctrl+S or Cmd+S para hacer clic"
+
+#: inc/powertools/powertools.php:75
+msgid "Ctrl+P or Cmd+P to preview"
+msgstr "Ctrl+P or Cmd+P para previsualizar"
+
+#: inc/powertools/powertools.php:122
+#, php-format
+msgid "No feed available, please visit our <a href=\"%s\">homepage</a>!"
+msgstr "¡Feed no disponible, visita nuestra <a href=\"%s\">portada</a>!"
+
+#: inc/social/admin-content.php:16
+#: inc/social/class-machete-social-module.php:24
+msgid "Social Sharing Buttons"
+msgstr "Compartir en redes sociales"
+
+#: inc/social/admin-content.php:17
+msgid ""
+"Social sharing made the Machete way. The icons are made as a custom webfont "
+"embedded in a CSS minified file that only weights 5.8Kb. The sharing actions "
+"are made uning each platform's native share URLs."
+msgstr ""
+"Compartir en redes sociales a lo Machete. Los iconos son una webfont "
+"personalizada embebida en un archivo CSS minimizado que sólo pesa 5.8 Kb. "
+"Las acciones de compartir se realizan usando la URL para compartir nativa de "
+"cada plataforma."
+
+#: inc/social/admin-content.php:21
+msgid ""
+"This tool adds 6.1Kb and a single database request request to each page load."
+msgstr ""
+"Esta herramienta añade 6.1Kb y una sola llamada a base de datos a cada carga "
+"de página."
+
+#: inc/social/admin-content.php:31 inc/social/admin-content.php:32
+msgid "Sharing buttons status"
+msgstr "Estado de los botones de compartir"
+
+#: inc/social/admin-content.php:33
+msgctxt "plural"
+msgid "Enabled"
+msgstr "Activados"
+
+#: inc/social/admin-content.php:34
+msgctxt "plural"
+msgid "Disabled"
+msgstr "Desactivados"
+
+#: inc/social/admin-content.php:42
+msgid "Bottom buttons title"
+msgstr "Título de los botones inferiores"
+
+#: inc/social/admin-content.php:44
+#, php-format
+msgid ""
+"Leave blank to remove. The %%post_type%% placeholder is replaced by the post "
+"type name. ie: post, page"
+msgstr ""
+"Déjalo en blanco para eliminarlo. El texto %%post_type%% se reemplaza por el "
+"nombre del tipo de contenido. Ej: entrada, página"
+
+#: inc/social/admin-content.php:48 inc/social/admin-content.php:49
+msgid "Active share buttons"
+msgstr "Botones de compartir activos"
+
+#: inc/social/admin-content.php:57 inc/social/admin-content.php:58
+msgid "Sharing buttons position"
+msgstr "Posición de botones de compartir"
+
+#: inc/social/admin-content.php:66 inc/social/admin-content.php:67
+msgid "Show in these post types"
+msgstr "Mostrar en estos tipos de contenido"
+
+#: inc/social/admin-content.php:76
+msgid "Use with shortcode"
+msgstr "Usar con shortcode"
+
+#: inc/social/admin-content.php:78
+msgid ""
+"You can use this shortcode in the content of any post, page or custom post "
+"type. It won't work on archive pages, sidebars..."
+msgstr ""
+"Puedes utilizar este shortcode en el contenido de cualquier entrada, página "
+"o tipo de contenido personalizado. No funcionará en páginas de archivo, "
+"áreas de widgets..."
+
+#: inc/social/class-machete-social-module.php:23
+msgid "Social Sharing"
+msgstr "Compartir en redes"
+
+#: inc/social/class-machete-social-module.php:25
+msgid ""
+"Social sharing buttons as simple as they can be. No bloat, no extra JS "
+"libraries, no API calls."
+msgstr ""
+"Botones de compartir en redes sociales tan sencillos como es posible. Sin "
+"morralla, sin librerías JS y sin llamadas a API."
+
+#: inc/social/class-machete-social-module.php:32
+#, php-format
+msgid "Share this %%post_type%%"
+msgstr "Comparte este/a %%post_type%%"
+
+#: inc/social/class-machete-social-module.php:43
+msgid "At the beginning of the content"
+msgstr "Al principio del contenido"
+
+#: inc/social/class-machete-social-module.php:44
+msgid "At the end of the content (hidden on mobile)"
+msgstr "Al final del contenido (oculto en móviles)"
+
+#: inc/social/class-machete-social-module.php:45
+msgid "Floating footer (mobile only)"
+msgstr "Pie de página flotante (sólo móviles)"
+
+#: inc/social/class-machete-social-module.php:49
+msgctxt "network name"
+msgid "Facebook"
+msgstr "Facebook"
+
+#: inc/social/class-machete-social-module.php:50
+msgctxt "Facebook button label"
+msgid "Share this"
+msgstr "Compártelo"
+
+#: inc/social/class-machete-social-module.php:54
+msgctxt "network name"
+msgid "Twitter"
+msgstr "Twitter"
+
+#: inc/social/class-machete-social-module.php:55
+msgctxt "Twitter button label"
+msgid "Tweet this"
+msgstr "Tuitéalo"
+
+#: inc/social/class-machete-social-module.php:59
+msgctxt "network name"
+msgid "LinkedIn"
+msgstr "LinkedIn"
+
+#: inc/social/class-machete-social-module.php:60
+msgctxt "LinkeIn button label"
+msgid "Share this"
+msgstr "Compártelo"
+
+#: inc/social/class-machete-social-module.php:64
+msgctxt "network name"
+msgid "WhatsApp (only on mobile devices)"
+msgstr "WhatsApp (solo en dispositivos móviles)"
+
+#: inc/social/class-machete-social-module.php:65
+msgctxt "WhatsApp button label"
+msgid "Share this"
+msgstr "Compártelo"
+
+#: inc/social/class-machete-social-module.php:69
+msgctxt "network name"
+msgid "Pinterest"
+msgstr "Pinterest"
+
+#: inc/social/class-machete-social-module.php:70
+msgctxt "Pinterest button label"
+msgid "Pin this"
+msgstr "Guárdalo"
+
+#: inc/social/class-machete-social-module.php:226
+msgctxt "Page post type singular label"
+msgid "page"
+msgstr "página"
+
+#: inc/social/class-machete-social-module.php:229
+msgctxt "Post post type singular label"
+msgid "post"
+msgstr "entrada"
+
+#: inc/social/class-machete-social-module.php:232
+msgctxt "Product post type singular label"
+msgid "product"
+msgstr "producto"
+
+#: inc/utils/admin-content.php:56 inc/utils/class-machete-utils-module.php:24
+msgid "Analytics and Custom Code"
+msgstr "Analytics y Código personalizado"
+
+#: inc/utils/admin-content.php:57
+msgid ""
+"You don't need a zillion plugins to perform easy task like inserting a "
+"verification meta tag (Google Search Console, Bing, Pinterest), a json-ld "
+"snippet or a custom styleseet (Google Fonts, Print Styles, accesibility "
+"tweaks...)."
+msgstr ""
+"No hacen falta chorrocientos plugins para realizar tareas sencillas como "
+"instertar una metaetiqueta de verificación (Google Search Console, Bing, "
+"Pinterest), un fragmento de json-ld snippet o una hoja de estilos "
+"personalizada (Google Fonts, estilos de impresión, ajustes de "
+"accesibilidad...)."
+
+#: inc/utils/admin-content.php:59
+msgid ""
+"This tool generates up to three static HTML files that are loaded via PHP on "
+"each pageview. When enabled, custom body content requires one aditional "
+"database request."
+msgstr ""
+"Esta herramienta genera dos ficheros de HTML estático que se cargan mediante "
+"PHP en cada vista de página. Cuando está habilitado, el contenido para el "
+"&lt;body&gt; requiere una llamada adicional a base de datos."
+
+#: inc/utils/admin-content.php:71
+msgid "Tracking settings"
+msgstr "Ajustes de seguimiento"
+
+#: inc/utils/admin-content.php:72
+msgid "<head> code"
+msgstr "código del <head>"
+
+#: inc/utils/admin-content.php:73
+msgid "<body> code"
+msgstr "código del <body>"
+
+#: inc/utils/admin-content.php:74
+msgid "Footer code"
+msgstr "Código del pie"
+
+#: inc/utils/admin-content.php:85 inc/utils/admin-content.php:86
+msgid "Tracking Code"
+msgstr "Código de seguimiento"
+
+#: inc/utils/admin-content.php:87
+msgid "Standard Google Analytics tracking code"
+msgstr "Código de seguimiento estándar de Google Analytics"
+
+#: inc/utils/admin-content.php:88
+msgid "Uses JavaScript to hide the tracking code from PageSpeed and GoogleBot"
+msgstr ""
+"Utiliza JavaScript para ocultar el código de seguimiento a PageSpeed y "
+"GoogleBot"
+
+#: inc/utils/admin-content.php:88
+msgid "PageSpeed-optimized tracking code"
+msgstr "Código de seguimiento optimizado para PageSpeed"
+
+#: inc/utils/admin-content.php:88
+msgid "Deprecated"
+msgstr "Obsoleto"
+
+#: inc/utils/admin-content.php:89
+msgid "No tracking code"
+msgstr "Sin código de seguimiento"
+
+#: inc/utils/admin-content.php:94
+msgid "Tracking ID"
+msgstr "ID de seguimiento"
+
+#: inc/utils/admin-content.php:99
+msgid "CF7 Tracking"
+msgstr "Seguimiento de CF7"
+
+#: inc/utils/admin-content.php:100 inc/utils/admin-content.php:106
+#: inc/utils/admin-content.php:107
+msgid "Anonymize user IPs"
+msgstr "Anonimizar IPs"
+
+#: inc/utils/admin-content.php:102
+#, php-format
+msgid ""
+"Launch a Google Analytics event whenever a visitor submits a <a href=\"%s"
+"\">Contact Form 7</a> form."
+msgstr ""
+"Lanza un evento de Google Analytics cada vez que un visitante envía un "
+"formulario de <a href=\"%s\">Contact Form 7</a> ."
+
+#: inc/utils/admin-content.php:108
+msgid "Check to anonymize visitor IPs. Required in some countries."
+msgstr ""
+"Márcalo para anonimizar las IPs de los visitantes. Obligatorio en algunos "
+"países."
+
+#: inc/utils/admin-content.php:119 inc/utils/admin-content.php:121
+msgid "Custom header content"
+msgstr "Contenido para la cabecera"
+
+#: inc/utils/admin-content.php:124
+#, php-format
+msgid ""
+"This code is included before the closing <code>&lt;/head&gt;</code> label."
+"<br>Content is saved to <code>%s</code> and served using PHP's "
+"<code>readfile()</code> function, so no PHP or shortcodes here."
+msgstr ""
+"Este código se incluye antes de la etiqueta de cierre <code>&lt;/head&gt;</"
+"code>.<br>El contenido se guarda en <code>%s</code> y se sirve usando la "
+"función <code>readfile()</code> de PHP, así que nada de PHP o shortcodes "
+"aquí."
+
+#: inc/utils/admin-content.php:135 inc/utils/admin-content.php:137
+msgid "Custom body content"
+msgstr "Contenido para el &lt;body&gt;"
+
+#: inc/utils/admin-content.php:138
+msgid ""
+"This block is meant to be included just after the begining of the <code>&lt;"
+"body&gt;</code> label, and it's mainly used for conversion tracking codes."
+msgstr ""
+"Este bloque está pensado para ser incluido justo al principio de la etiqueta "
+"<code>&lt;body&gt;</code> y se suele usar para insertar códigos de "
+"seguimiento de conversiones."
+
+#: inc/utils/admin-content.php:140
+#, php-format
+msgid ""
+"Content is saved to <code>%s</code> and served using PHP.  No PHP code or "
+"shortcodes here."
+msgstr ""
+"El contenido se guarda en el fichero <code>%s</code> y se sirve usando PHP.  "
+"No uses código PHP ni shortcodes aquí."
+
+#: inc/utils/admin-content.php:151
+msgid "Code injection method"
+msgstr "Método para inyectar el código"
+
+#: inc/utils/admin-content.php:154
+msgid "Custom body content injection method:"
+msgstr "Método para inyectar el código personalizado del body:"
+
+#: inc/utils/admin-content.php:156
+msgid ""
+"Include the code using the native <code>wp_body_open</code> hook (not "
+"supported by all themes)."
+msgstr ""
+"Incluir el código usando el gancho nativo <code>wp_body_open</code> (no "
+"todos los temas lo tienen)"
+
+#: inc/utils/admin-content.php:159
+#, php-format
+msgid ""
+"Try to inject the code automatically using <a href=\"%s\" target=\"_blank\" "
+"rel=\"nofollow\">Yaniv Friedensohn's method</a>"
+msgstr ""
+"Intentar inyectar automáticamente el código usando el <a href=\"%s\" target="
+"\"_blank\" rel=\"nofollow\">método de Yaniv Friedensohn</a>"
+
+#: inc/utils/admin-content.php:161
+msgid ""
+"Edit your theme's <code>header.php</code> template manually and include this "
+"function:"
+msgstr ""
+"Editar manualmente la plantilla <code>header.php</code> de tu tema y añadir "
+"esta función:"
+
+#: inc/utils/admin-content.php:178 inc/utils/admin-content.php:180
+msgid "Custom footer content"
+msgstr "Contenido para el pie"
+
+#: inc/utils/admin-content.php:182
+#, php-format
+msgid ""
+"This code is included when the <code>wp_footer</code> action is called, "
+"normally just before the closing <code>&lt;/body&gt;</code> label."
+"<br>Content is saved to <code>%s</code> and served using PHP's "
+"<code>readfile()</code> function, so no PHP or shortcodes here."
+msgstr ""
+"Este código se incuye cuando se ejecuta la acción <code>wp_footer</code>, "
+"normalmente justo antes del cierre de la etiqueta <code>&lt;/body&gt;</code>."
+"<br>El contenido se guarda en <code>%s</code> y se sirve usando la función "
+"<code>readfile()</code> de PHP, así que nada de código PHP o shortcodes aquí."
+
+#: inc/utils/admin-content.php:222 inc/utils/class-machete-utils-module.php:85
+msgid "That doesn't look like a valid Google Analytics tracking ID"
+msgstr ""
+"Eso no parece que eso sea un ID de seguimiento de Google Analytics válido"
+
+#: inc/utils/class-machete-utils-module.php:23
+msgid "Analytics & Code"
+msgstr "Analytics y código"
+
+#: inc/utils/class-machete-utils-module.php:25
+msgid ""
+"Google Analytics tracking code manager and a simple editor to insert HTML, "
+"CSS and JS snippets or site verification tags."
+msgstr ""
+"Gestor de código de Google Analytics y un editor sencillo para insertar "
+"frangentos HTML, CSS o JS o etiquetas de verificación."
+
+#: inc/utils/class-machete-utils-module.php:93
+msgid "Something went wrong. Unknown tracking code format requested."
+msgstr ""
+"Se ha producido un error. Has solicitado un formato de código desconocido."
+
+#: machete-admin.php:46
+#, php-format
+msgid ""
+"If you like <strong>Machete</strong>, please %1$sleave us a rating of %2$s. "
+"Thank you!"
+msgstr ""
+"Si te gusta <strong>Machete</strong>, %1$sdéjame una reseña de %2$s. ¡Muchas "
+"gracias!"
+
+#: machete-admin.php:72
+#, php-format
+msgid "<a href=\"%s\">Settings</a>"
+msgstr "<a href=\"%s\">Ajustes</a>"
+
+#: machete.php:78
+msgid "Machete PowerTools are now active! Enjoy your new toy!"
+msgstr "¡Machete PowerTools esta activo! ¡Disfruta tu nuevo juguete!"
+
+#. Plugin Name of the plugin/theme
+msgid "Machete"
+msgstr "Machete"
+
+#. Plugin URI of the plugin/theme
+msgid "https://machetewp.com"
+msgstr "https://machetewp.com"
+
+#. Description of the plugin/theme
+msgid ""
+"Machete is a lean and simple suite of tools that makes WordPress development "
+"easier: cookie bar, tracking codes, custom code editor, header cleanup, post "
+"and page cloner"
+msgstr ""
+"Machete es un conjunto de herramientas ligeras y sencillas que facilitan el "
+"desarrollo con WordPress: barra de cookies, códigos de seguimiento, editor "
+"de código personalizado, limpieza de cabecera, duplicar entradas y páginas"
+
+#. Author of the plugin/theme
+msgid "Nilo Velez"
+msgstr "Nilo Vélez"
+
+#. Author URI of the plugin/theme
+msgid "https://www.nilovelez.com"
+msgstr "https://www.nilovelez.com"
+
+#~ msgid ""
+#~ "Might break external appplications if they need to access your site's API "
+#~ "anonymously."
+#~ msgstr ""
+#~ "Puede dar problemas con aplicaciones externas que tengan que acceder a la "
+#~ "API de tu sitio de forma anónima."
+
+#~ msgid "The bottom share buttons are also visible on mobile devices"
+#~ msgstr ""
+#~ "Los botones de compartir inferiores también se ven en dispositivos móviles"
+
+#~ msgid "Track Contact Form 7"
+#~ msgstr "Seguimiento de Contact Form 7"
+
+#~ msgid "Description"
+#~ msgstr "Descripción"
+
+#~ msgid "Location"
+#~ msgstr "Origen"
+
+#~ msgid "Resource"
+#~ msgstr "Recurso"
+
+#~ msgid ""
+#~ "Adds Open Graph metadata to your posts and pages so that they look great "
+#~ "when shared on sites like Facebook and Google+."
+#~ msgstr ""
+#~ "Añade metadatos de OpenGraph a tus entradas y páginas para que tengan un "
+#~ "aspecto estupendo cuando se compartan en sitio como Facebook o Google+."
+
+#~ msgid ""
+#~ "BlackBox is a plugin for plugin and theme developers. It collects and "
+#~ "displays useful debug information (errors, executed queries, globals, "
+#~ "profiler)."
+#~ msgstr ""
+#~ "BlackBox es un plugin para desarrolladores de plugins y temas. Recopila y "
+#~ "muestra información útil de depuración (errores, consultas ejecutadas, "
+#~ "globales, profiler)."
+
+#~ msgid "WordPress.org Plugin Directory"
+#~ msgstr "Directorio de plugins de WordPress.org"
+
+#~ msgid "https://www.wordpress.org/plugins/"
+#~ msgstr "https://es.wordpress.org/plugins/"
+
+#~ msgid "Resource Directory"
+#~ msgstr "Directorio de Recursos"
