@@ -70,6 +70,11 @@ Like it or not, the WordPress Block Editor (codenamed Gutenberg) is here to stay
 
 == Changelog ==
 
+= 3.4.2 =
+* Fixed: social share links didn't work on pages (kudos @davizoco for the heads up)
+* Fixed: content of the individual post was returned empty if the social share module was active but no position was selected
+* Fixed: Bundled translations were not been loaded
+
 = 3.4.1 = 
 * Version push to include a file left out in the 3.4 commit (sorry)
 
