@@ -32,7 +32,7 @@ if ( 'maintenance' === $this->settings['site_status'] ) {
 $this->readfile( MACHETE_DATA_PATH . 'header.html' );
 // wp_head not needed.
 ?>
-</head><body id="maintenance_page">
+</head><body id="maintenance_page" class="<?php echo esc_attr( $html_content['body_class'] ); ?>">
 
 	<?php $this->readfile( MACHETE_DATA_PATH . 'body.html' ); ?>
 	<div id="content" class="<?php echo esc_attr( $html_content['content_class'] ); ?>">

@@ -107,6 +107,9 @@ class MACHETE_MAINTENANCE_PAGE {
 				'content_class' => 'default',
 			);
 		}
+		if ( is_rtl() ) {
+			$html_content['body_class'] = 'rtl';
+		}
 
 		$page_id = $this->settings['page_id'];
 
