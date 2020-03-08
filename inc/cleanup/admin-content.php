@@ -28,7 +28,7 @@ $machete_allowed_description_tags = array(
 		border-radius: 4px;
 		color: #fff;
 		background-color: #999;
-		margin-left: 10px;
+		margin: 0 10px;
 	}
 	.machete_safe_badge {background-color: #4ab866;}
 	.machete_warning_badge {background-color: #f0b849;}
