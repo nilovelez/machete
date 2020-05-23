@@ -3,7 +3,7 @@
  * Plugin Name: Machete
  * Plugin URI: https://machetewp.com
  * Description: Machete is a lean and simple suite of tools that makes WordPress development easier: cookie bar, tracking codes, custom code editor, header cleanup, post and page cloner
- * Version: 3.4
+ * Version: 3.4.2
  * Author: Nilo Velez
  * Author URI: https://www.nilovelez.com
  * License: WTFPL
@@ -20,7 +20,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 
-define( 'MACHETE_VERSION', '3.4' );
+define( 'MACHETE_VERSION', '3.4.2' );
 
 $machete_get_upload_dir = wp_upload_dir();
 define( 'MACHETE_BASE_PATH', plugin_dir_path( __FILE__ ) );
@@ -37,13 +37,6 @@ register_activation_hook(
 		add_option( 'machete_activation_welcome', 'pending' );
 	}
 );
-
-/**
- * Function to load the plugin's textdomain
- */
-function machete_load_plugin_textdomain() {
-	load_plugin_textdomain( 'machete', false, basename( dirname( __FILE__ ) ) . '/languages/' );
-}
 
 // Include main Machete classes.
 require MACHETE_BASE_PATH . 'inc/class-machete.php';
@@ -83,6 +76,8 @@ add_action(
 	'init',
 	function() {
 		global $machete;
+
+		load_plugin_textdomain( 'machete', false, dirname( plugin_basename( __FILE__ ) ) . '/languages/' );
 
 		if ( defined( 'WP_CLI' ) && WP_CLI ) {
 			define( 'MACHETE_CLI_INIT', true );

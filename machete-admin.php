@@ -10,8 +10,6 @@ if ( ! defined( 'MACHETE_ADMIN_INIT' ) ) {
 	exit;
 };
 
-add_action( 'plugins_loaded', 'machete_load_plugin_textdomain' );
-
 // Manages welcome redirect to About page.
 add_action(
 	'admin_init',

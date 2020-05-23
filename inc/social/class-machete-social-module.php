@@ -192,12 +192,12 @@ class MACHETE_SOCIAL_MODULE extends MACHETE_MODULE {
 
 				// bail if no active positions.
 				if ( 0 === count( $this->settings['positions'] ) ) {
-					return;
+					return $content;
 				}
 
 				global $post;
 				if (
-					! is_single() ||
+					! ( is_single() || is_singular() ) ||
 					! in_the_loop() ||
 					! is_main_query() ||
 					// check if current post type is active.
