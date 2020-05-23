@@ -3,8 +3,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Plugins - Machete - Development (trunk)\n"
-"POT-Creation-Date: 2020-03-06 17:48+0100\n"
-"PO-Revision-Date: 2020-03-06 17:49+0100\n"
+"POT-Creation-Date: 2020-05-23 20:09+0200\n"
+"PO-Revision-Date: 2020-05-23 20:11+0200\n"
 "Last-Translator: Nilo Velez <nilovelez@gmail.com>\n"
 "Language-Team: \n"
 "Language: es\n"
@@ -12,7 +12,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Poedit 2.3\n"
+"X-Generator: Poedit 2.3.1\n"
 
 #: inc/about/admin-content.php:16
 msgid "Welcome to Machete!"
@@ -164,7 +164,7 @@ msgstr ""
 "WordPress tiene un montón de código sólo para mantener la compatibilidad con "
 "versiones anteriores o habilitar funciones opcionales. Puedes deshabilitar "
 "la mayoría y ganar algo de tiempo de cada carga de página al mismo tiempo "
-"que haces tu instalación más segura."
+"que haces tu instalación más segura"
 
 #: inc/cleanup/admin-content.php:46 inc/cookies/admin-content.php:21
 #: inc/importexport/admin-content.php:19 inc/maintenance/admin-content.php:19
@@ -198,7 +198,7 @@ msgid ""
 msgstr ""
 "Esta sección quita código de la etiqueta &lt;head&gt;. Esto hace que su "
 "sitio sea más rápido y reduce la información revelada a un potencial "
-"atacante,"
+"atacante."
 
 #: inc/cleanup/admin-content.php:63 inc/cleanup/admin-content.php:91
 #: inc/cleanup/admin-content.php:120 inc/powertools/admin-content.php:85
@@ -396,9 +396,13 @@ msgid "Limit Post Revisions"
 msgstr "Limitar Post Revisions"
 
 #: inc/cleanup/class-machete-cleanup-module.php:87
+#, fuzzy
+#| msgid ""
+#| "Limits the number of stored revisions to 5 only WP_POST_REVISIONS "
+#| "constant has been defined."
 msgid ""
-"Limits the number of stored revisions to 5 only WP_POST_REVISIONS constant "
-"has been defined."
+"Limits the number of stored revisions to 5 only if WP_POST_REVISIONS "
+"constant has not been defined."
 msgstr ""
 "Limita el número de revisiones almacenadas a 5, sólo si se ha definido la "
 "constante WP_POST_REVISIONS"
@@ -507,7 +511,7 @@ msgstr "XML-RPC"
 
 #: inc/cleanup/class-machete-cleanup-module.php:126
 msgid "Disable the XML-RPC interface. "
-msgstr "Desactiva la interfaz XML-RPC."
+msgstr "Desactiva la interfaz XML-RPC. "
 
 #: inc/cleanup/class-machete-cleanup-module.php:129
 msgid "remove jQuery-migrate"
@@ -561,12 +565,28 @@ msgstr "Reducir la calidad JPEG"
 #: inc/cleanup/class-machete-cleanup-module.php:142
 msgid ""
 "When WordPress generates a JPEG thumbnail it compresses the image to 82% "
-"quality. Check this to reduce the default quality to 72%. (It doesn't "
-"affect original image quality)."
+"quality. Check this to reduce the default quality to 72%. (It doesn't affect "
+"original image quality)."
 msgstr ""
 "Cuando WordPress genera una miniatura JPEG, comprime la imagen con una "
 "calidad del 82%. Marca esto para reducir la calidad por defecto al 72%. (No "
 "afecta a la calidad de la imagen original)."
+
+#: inc/cleanup/class-machete-cleanup-module.php:145
+msgid "Remove block editor CSS"
+msgstr ""
+
+#: inc/cleanup/class-machete-cleanup-module.php:146
+msgid "Dequeues Gutenberg CSS stylesheets from the from the frontend."
+msgstr ""
+
+#: inc/cleanup/class-machete-cleanup-module.php:146
+#, fuzzy
+#| msgid ""
+#| "Activate only if you are not using the reCAPTCHA Contact Form 7 field"
+msgid "Check this only if you are not using the block editor."
+msgstr ""
+"Actívalo sólo si no estás utilizando el campo reCAPTCHA de Contact Form 7"
 
 #: inc/cleanup/optimization.php:296
 msgid "The REST API on this site has been disabled."
@@ -618,9 +638,9 @@ msgstr "Aviso de Ley de Cookies"
 
 #: inc/cookies/admin-content.php:17
 msgid ""
-"We know you hate cookie warning bars. Well, this is the least hateable cookie "
-"bar you'll find. It is really light, doesn't affect your PageSpeed score "
-"and plays well with static cache plugins."
+"We know you hate cookie warning bars. Well, this is the least hateable "
+"cookie bar you'll find. It is really light, doesn't affect your PageSpeed "
+"score and plays well with static cache plugins."
 msgstr ""
 "Sabemos que odias las barras de aviso de cookies. Bueno, pues esta es la "
 "barra de cookies menos odiable que vas a encontrar. Es muy ligera, no afecta "
@@ -629,9 +649,9 @@ msgstr ""
 
 #: inc/cookies/admin-content.php:21
 msgid ""
-"This tool adds 0,4KB and a single database request to each page "
-"load. The remaining <abbr title=\"~1.1KB if GZipped\">~2.5KB</abbr> of code "
-"is loaded asynchronously via javascript from a pre-generated static file."
+"This tool adds 0,4KB and a single database request to each page load. The "
+"remaining <abbr title=\"~1.1KB if GZipped\">~2.5KB</abbr> of code is loaded "
+"asynchronously via javascript from a pre-generated static file."
 msgstr ""
 "Esta herramienta añade 0,4KB y una sola petición a base de datos a cada "
 "carga de página. Los demás <abbr title=\"~1.1KB comprimidos con  GZip"
@@ -778,8 +798,9 @@ msgstr "Importar/Exportar Opciones"
 #: inc/importexport/admin-content.php:17
 msgid ""
 "You can use this section to backup and restore your Machete configuration. "
-"You can also take a backup from one site and restore it to another. Be careful, "
-"your current configuration will be overwritten when you import a backup file"
+"You can also take a backup from one site and restore it to another. Be "
+"careful, your current configuration will be overwritten when you import a "
+"backup file"
 msgstr ""
 "Puedes utilizar esta sección para guardar y restaurar tu configuración de "
 "Machete. También puedes hacer una copia de un sitio y restaurarla en otro. "
@@ -817,9 +838,9 @@ msgstr "Importar opciones de Machete"
 
 #: inc/importexport/admin-content.php:62
 msgid ""
-"Select a Machete backup file and click \"Upload config backup\" to "
-"import it. Please keep in mind that the module settings included in the "
-"backup file will overwrite your current setting for those modules."
+"Select a Machete backup file and click \"Upload config backup\" to import "
+"it. Please keep in mind that the module settings included in the backup file "
+"will overwrite your current setting for those modules."
 msgstr ""
 "Elige un fichero de copia de seguridad de Machete y pulsa en «Subir copia de "
 "seguridad» para importarlo. Ten en cuenta que los ajustes de módulos "
@@ -1073,8 +1094,8 @@ msgstr "PowerTools"
 
 #: inc/powertools/class-machete-powertools-module.php:25
 msgid ""
-"Machete PowerTools is a free upgrade module targeted at WordPress "
-"developers and power users."
+"Machete PowerTools is a free upgrade module targeted at WordPress developers "
+"and power users."
 msgstr ""
 "Machete PowerTools es un módulo de ampliación gratuito dirigido a "
 "desarrolladores y usuarios avanzados de WordPress."
@@ -1122,8 +1143,8 @@ msgstr "Guardar con el teclado"
 #: inc/powertools/class-machete-powertools-module.php:47
 msgid ""
 "Lets you save your posts, pages, theme and plugin files in the most natural "
-"way: pressing Ctrl+S (or Cmd+S on Mac). It saves unpublished posts/"
-"pages as drafts and updates the ones that are already public"
+"way: pressing Ctrl+S (or Cmd+S on Mac). It saves unpublished posts/pages as "
+"drafts and updates the ones that are already public"
 msgstr ""
 "Te permite guardar tus entradas, páginas, archivos de tema o de plugin... de "
 "la forma más natural: pulsando Ctrl+S (o Cmd+S en Mac). Guarda como borrador "
@@ -1136,9 +1157,9 @@ msgstr "Mover scripts al footer"
 
 #: inc/powertools/class-machete-powertools-module.php:51
 msgid ""
-"Move all enqueued JS scripts from the header to the footer. Machete will de-register "
-"the call for the JavaScript to load in the HEAD section of the site and re-"
-"register it to the FOOTER."
+"Move all enqueued JS scripts from the header to the footer. Machete will de-"
+"register the call for the JavaScript to load in the HEAD section of the site "
+"and re-register it to the FOOTER."
 msgstr ""
 "Mueve todos los scripts JS encolados de la cabecera al pie. Machete quita el "
 "registro de cada script de la sección HEAD y lo registra en el FOOTER"
@@ -1255,8 +1276,7 @@ msgstr ""
 "cada plataforma."
 
 #: inc/social/admin-content.php:21
-msgid ""
-"This tool adds 6.1KB and a single database request to each page load."
+msgid "This tool adds 6.1KB and a single database request to each page load."
 msgstr ""
 "Esta herramienta añade 6.1KB y una sola llamada a base de datos a cada carga "
 "de página."
@@ -1583,9 +1603,9 @@ msgstr "Contenido para el pie"
 #, php-format
 msgid ""
 "This code is included when the <code>wp_footer</code> action is called, "
-"normally just before the closing <code>&lt;/body&gt;</code> tag."
-"<br>Content is saved to <code>%s</code> and served using PHP's "
-"<code>readfile()</code> function, so no PHP or shortcodes here."
+"normally just before the closing <code>&lt;/body&gt;</code> tag.<br>Content "
+"is saved to <code>%s</code> and served using PHP's <code>readfile()</code> "
+"function, so no PHP or shortcodes here."
 msgstr ""
 "Este código se incuye cuando se ejecuta la acción <code>wp_footer</code>, "
 "normalmente justo antes del cierre de la etiqueta <code>&lt;/body&gt;</code>."
@@ -1614,7 +1634,7 @@ msgid "Something went wrong. Unknown tracking code format requested."
 msgstr ""
 "Se ha producido un error. Has solicitado un formato de código desconocido."
 
-#: machete-admin.php:46
+#: machete-admin.php:44
 #, php-format
 msgid ""
 "If you like <strong>Machete</strong>, please %1$sleave us a rating of %2$s. "
@@ -1623,12 +1643,12 @@ msgstr ""
 "Si te gusta <strong>Machete</strong>, %1$sdéjame una reseña de %2$s. ¡Muchas "
 "gracias!"
 
-#: machete-admin.php:72
+#: machete-admin.php:70
 #, php-format
 msgid "<a href=\"%s\">Settings</a>"
 msgstr "<a href=\"%s\">Ajustes</a>"
 
-#: machete.php:78
+#: machete.php:71
 msgid "Machete PowerTools are now active! Enjoy your new toy!"
 msgstr "¡Machete PowerTools esta activo! ¡Disfruta tu nuevo juguete!"
 
