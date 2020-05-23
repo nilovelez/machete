@@ -141,6 +141,10 @@ class MACHETE_CLEANUP_MODULE extends MACHETE_MODULE {
 				'title'       => __( 'Reduce JPEG quality', 'machete' ),
 				'description' => __( 'When WordPress generates a JPEG thumbnail it compress the image to 82% quality. Check this this to reduce the default quality to 72%. (It doesn\'t affect original image quality).', 'machete' ),
 			),
+			'gutenberg_css'  => array(
+				'title'       => __( 'Remove block editor CSS', 'machete' ),
+				'description' => __( 'Dequeues Gutenberg CSS stylesheets from the from the frontend.', 'machete' ) . ' <br><span style="color: #d94f4f">' . __( 'Check this only if you are not using the block editor.', 'machete' ) . '</span>',
+			),
 		);
 	}
 	/**
