@@ -69,8 +69,10 @@ if ( false !== $machete_settings ) {
 <div id="machete-tabs" class="nav-tab-wrapper" style="display: none;">
 
 	<a href="#machete-tabs-tracking" data-tab="machete-tabs-tracking" class="nav-tab machete-tabs-tracking"><?php esc_html_e( 'Tracking settings', 'machete' ); ?></a>
-	<a href="#machete-tabs-header" data-tab="machete-tabs-header" class="nav-tab machete-tabs-header"><?php esc_html_e( '<head> code', 'machete' ); ?></a>
-	<a href="#machete-tabs-alfonso" data-tab="machete-tabs-alfonso" class="nav-tab machete-tabs-alfonso"><?php esc_html_e( '<body> code', 'machete' ); ?></a>
+	<?php // Translators: <head>. ?>
+	<a href="#machete-tabs-header" data-tab="machete-tabs-header" class="nav-tab machete-tabs-header"><?php echo esc_html( sprintf( __( '%s code', 'machete' ), '&#x200E;<head>&#x200E;' ) ); ?></a>
+	<?php // Translators: <body>. ?>
+	<a href="#machete-tabs-alfonso" data-tab="machete-tabs-alfonso" class="nav-tab machete-tabs-alfonso"><?php echo esc_html( sprintf( __( '%s code', 'machete' ), '&#x200E;<body>&#x200E;' ) ); ?></a>
 	<a href="#machete-tabs-footer" data-tab="machete-tabs-footer" class="nav-tab machete-tabs-footer"><?php esc_html_e( 'Footer code', 'machete' ); ?></a>
 
 </div>

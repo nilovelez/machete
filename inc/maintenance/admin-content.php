@@ -31,18 +31,18 @@ if ( ! defined( 'MACHETE_ADMIN_INIT' ) ) {
 			<label>
 				<input name="site_status" value="online" type="radio"
 				<?php checked( $this->settings['site_status'], 'online', true ); ?>>
-				<strong><?php esc_html_e( 'Online', 'machete' ); ?></strong> - <?php esc_html_e( 'WordPress works as usual', 'machete' ); ?>
+				<?php echo wp_kses( __( '<strong>Online</strong> — WordPress works as usual', 'machete' ), array( 'strong' => array() ) ); ?>
 			</label><br>
 
 			<label>
 				<input name="site_status" value="coming_soon" type="radio"
 				<?php checked( $this->settings['site_status'], 'coming_soon' ); ?>>
-				<strong><?php esc_html_e( 'Coming soon', 'machete' ); ?></strong> - <?php esc_html_e( 'Site closed. All pages have a meta robots noindex, nofollow', 'machete' ); ?>
+				<?php echo wp_kses( __( '<strong>Coming soon</strong> — Site closed. All pages have a meta robots noindex, nofollow', 'machete' ), array( 'strong' => array() ) ); ?>
 			</label><br>
 			<label>
 				<input name="site_status" value="maintenance" type="radio"
 				<?php checked( $this->settings['site_status'], 'maintenance' ); ?>>
-				<strong><?php esc_html_e( 'Maintenance', 'machete' ); ?></strong> - <?php esc_html_e( 'Site closed. All pages return 503 Service unavailable', 'machete' ); ?>
+				<?php echo wp_kses( __( '<strong>Maintenance</strong> — Site closed. All pages return 503 Service unavailable', 'machete' ), array( 'strong' => array() ) ); ?>
 			</label><br>
 		</fieldset></td>
 		</tr>
