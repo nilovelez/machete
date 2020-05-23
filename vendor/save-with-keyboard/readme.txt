@@ -17,7 +17,7 @@ After coding this up, I've found in the plugin directory two plugins that did th
 
 This plugin loads a small Javascript file (minified if not WP_DEBUG). The Javascript checks the contents of any admin page for save buttons.
 
-It is also *so* smart that saves as draft unpublished posts/pages and updates the ones that are already public.
+It is also *so* smart that it saves unpublished posts/pages as drafts and updates the ones that are already public.
 
 Also adds a little tooltip on the buttons that can be "clicked" with Ctrl+S or Cmd+S.
 

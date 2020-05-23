@@ -15,7 +15,7 @@ if ( ! defined( 'MACHETE_ADMIN_INIT' ) ) {
 		<div class="machete-logo"><img src="<?php echo esc_url( MACHETE_BASE_URL . 'img/logo_machete.png' ); ?>"></div>
 		<h1><?php esc_html_e( 'Welcome to Machete!', 'machete' ); ?></h1>
 
-		<div class="about-text"><?php esc_html_e( 'Machete is now installed and ready to use. Machete solves common WordPress problems using as little resources as posible. Machete lets you use less plugins. Machete optimizes.', 'machete' ); ?></div>
+		<div class="about-text"><?php esc_html_e( 'Machete is now installed and ready to use. Machete solves common WordPress problems using as little resources as possible. Machete lets you use less plugins. Machete optimizes.', 'machete' ); ?></div>
 
 		<?php $machete->admin_tabs(); ?>
 
@@ -65,6 +65,6 @@ if ( ! defined( 'MACHETE_ADMIN_INIT' ) ) {
 
 
 
-	</div>	
+	</div>
 	<!--<p class="description"></p>-->
 </div>
