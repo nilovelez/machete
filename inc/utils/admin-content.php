@@ -123,7 +123,7 @@ if ( false !== $machete_settings ) {
 	<?php // translators: $s: file path. ?>
 	<label for="header_content"><p><?php printf( wp_kses_post( __( 'This code is included before the closing <code>&lt;/head&gt;</code> tag.<br>Content is saved to <code>%s</code> and served using PHP\'s <code>readfile()</code> function, so no PHP or shortcodes here.', 'machete' ) ), esc_html( MACHETE_RELATIVE_DATA_PATH . 'header.html' ) ); ?></p></label>
 
-	<textarea name="header_content" rows="8" cols="50" id="header_content" class="large-text code"><?php echo esc_textarea( $machete_header_content ); ?></textarea>
+	<textarea name="header_content" rows="8" cols="50" id="header_content" class="large-text code" data-lpignore="true"><?php echo esc_textarea( $machete_header_content ); ?></textarea>
 	</fieldset>
 
 </div>
@@ -140,7 +140,7 @@ if ( false !== $machete_settings ) {
 		<?php printf( wp_kses_post( __( 'Content is saved to <code>%s</code> and served using PHP. No PHP code or shortcodes here.', 'machete' ) ), esc_html( MACHETE_RELATIVE_DATA_PATH . 'body.html' ) ); ?>
 	</p></label>
 
-	<textarea name="alfonso_content" rows="8" cols="50" id="alfonso_content" class="large-text code"><?php echo esc_textarea( $machete_alfonso_content ); ?></textarea>
+	<textarea name="alfonso_content" rows="8" cols="50" id="alfonso_content" class="large-text code" data-lpignore="true"><?php echo esc_textarea( $machete_alfonso_content ); ?></textarea>
 	</fieldset>
 
 
@@ -181,7 +181,7 @@ if ( false !== $machete_settings ) {
 	<?php // translators: $s: file path. ?>
 	<label for="footer_content"><p><?php printf( wp_kses_post( __( 'This code is included when the <code>wp_footer</code> action is called, normally just before the closing <code>&lt;/body&gt;</code> tag.<br>Content is saved to <code>%s</code> and served using PHP\'s <code>readfile()</code> function, so no PHP or shortcodes here.', 'machete' ) ), esc_html( MACHETE_RELATIVE_DATA_PATH . 'footer.html' ) ); ?></p></label>
 
-	<textarea name="footer_content" rows="8" cols="50" id="footer_content" class="large-text code"><?php echo esc_textarea( $machete_footer_content ); ?></textarea>
+	<textarea name="footer_content" rows="8" cols="50" id="footer_content" class="large-text code" data-lpignore="true"><?php echo esc_textarea( $machete_footer_content ); ?></textarea>
 	</fieldset>
 
 </div>
