@@ -3,8 +3,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Plugins - Machete - Development (trunk)\n"
-"POT-Creation-Date: 2020-05-23 20:09+0200\n"
-"PO-Revision-Date: 2020-05-23 20:11+0200\n"
+"POT-Creation-Date: 2020-05-23 23:22+0200\n"
+"PO-Revision-Date: 2020-05-23 23:28+0200\n"
 "Last-Translator: Nilo Velez <nilovelez@gmail.com>\n"
 "Language-Team: \n"
 "Language: es\n"
@@ -40,7 +40,7 @@ msgstr ""
 
 #: inc/about/admin-content.php:47
 msgid "External Modules"
-msgstr "Módulos Externos"
+msgstr "Módulos externos"
 
 #: inc/about/class-machete-about-module.php:23
 #: inc/about/class-machete-about-module.php:24
@@ -237,7 +237,7 @@ msgstr ""
 
 #: inc/cleanup/admin-content.php:112
 msgid "Optimization Tweaks"
-msgstr "Artimañas de optimización"
+msgstr "Trucos de optimización"
 
 #: inc/cleanup/admin-content.php:112
 msgid "Handle with care"
@@ -354,7 +354,7 @@ msgstr "recent_comments_style"
 
 #: inc/cleanup/class-machete-cleanup-module.php:68
 msgid "Removes a block of inline CSS used by old themes from the header"
-msgstr "Quitar de la cabecera un bloque de CSS que usaban los temas antiguos."
+msgstr "Quitar de la cabecera un bloque de CSS que usaban los temas antiguos"
 
 #: inc/cleanup/class-machete-cleanup-module.php:71
 msgid "dns-prefetch"
@@ -396,16 +396,12 @@ msgid "Limit Post Revisions"
 msgstr "Limitar Post Revisions"
 
 #: inc/cleanup/class-machete-cleanup-module.php:87
-#, fuzzy
-#| msgid ""
-#| "Limits the number of stored revisions to 5 only WP_POST_REVISIONS "
-#| "constant has been defined."
 msgid ""
 "Limits the number of stored revisions to 5 only if WP_POST_REVISIONS "
 "constant has not been defined."
 msgstr ""
-"Limita el número de revisiones almacenadas a 5, sólo si se ha definido la "
-"constante WP_POST_REVISIONS"
+"Limita el número de revisiones almacenadas a 5, sólo si no se ha definido la "
+"constante WP_POST_REVISIONS."
 
 #: inc/cleanup/class-machete-cleanup-module.php:90
 msgid "Slow Heartbeat"
@@ -472,7 +468,7 @@ msgid ""
 "Prevents WordPress from generating the medium_large 768px thumbnail size of "
 "image uploads."
 msgstr ""
-"Evita que WordPress genere el tamaño de miniatura medium_large de 768px"
+"Evita que WordPress genere el tamaño de miniatura medium_large de 768px."
 
 #: inc/cleanup/class-machete-cleanup-module.php:114
 msgid "No comment autolinks"
@@ -551,7 +547,7 @@ msgid ""
 "pageview on cached sites"
 msgstr ""
 "Desactiva el script refill de Contact Form 7. Ahorra una petición a wp-ajax."
-"php por vista de página en los sitios con caché."
+"php por vista de página en los sitios con caché"
 
 #: inc/cleanup/class-machete-cleanup-module.php:138
 msgid "Activate only if you are not using the reCAPTCHA Contact Form 7 field"
@@ -574,19 +570,18 @@ msgstr ""
 
 #: inc/cleanup/class-machete-cleanup-module.php:145
 msgid "Remove block editor CSS"
-msgstr ""
+msgstr "Quitar CSS del editor de boques"
 
 #: inc/cleanup/class-machete-cleanup-module.php:146
 msgid "Dequeues Gutenberg CSS stylesheets from the from the frontend."
 msgstr ""
+"Desencola las hojas de estilos CSS de Gutenberg de la parte pública de la "
+"web."
 
 #: inc/cleanup/class-machete-cleanup-module.php:146
-#, fuzzy
-#| msgid ""
-#| "Activate only if you are not using the reCAPTCHA Contact Form 7 field"
 msgid "Check this only if you are not using the block editor."
 msgstr ""
-"Actívalo sólo si no estás utilizando el campo reCAPTCHA de Contact Form 7"
+"Actívalo sólo si no estás utilizando el campo reCAPTCHA de Contact Form 7."
 
 #: inc/cleanup/optimization.php:296
 msgid "The REST API on this site has been disabled."
@@ -805,7 +800,7 @@ msgstr ""
 "Puedes utilizar esta sección para guardar y restaurar tu configuración de "
 "Machete. También puedes hacer una copia de un sitio y restaurarla en otro. "
 "Ten cuidado, to configuración actual se sobreescribe cuando importas un "
-"fichero de copia de seguridad."
+"fichero de copia de seguridad"
 
 #: inc/importexport/admin-content.php:19
 msgid "This section has no impact on the page load times."
@@ -893,7 +888,7 @@ msgstr "Módulo desconocido ignorado:"
 
 #: inc/importexport/class-machete-importexport-module.php:184
 msgid "Importing module: "
-msgstr "Importando módulo:"
+msgstr "Importando módulo: "
 
 #: inc/importexport/class-machete-importexport-module.php:191
 msgid "Module activated successfully"
@@ -907,7 +902,7 @@ msgstr "Módulo desactivado con éxito"
 msgid "Coming Soon"
 msgstr "Desarrollo"
 
-#: inc/maintenance/admin-bar.php:74 inc/maintenance/admin-content.php:45
+#: inc/maintenance/admin-bar.php:74
 #: inc/maintenance/class-machete-maintenance-page.php:105
 msgid "Maintenance"
 msgstr "Mantenimiento"
@@ -933,26 +928,24 @@ msgid "Set site status"
 msgstr "Estado del sitio"
 
 #: inc/maintenance/admin-content.php:34
-msgid "Online"
-msgstr "Online"
-
-#: inc/maintenance/admin-content.php:34
-msgid "WordPress works as usual"
-msgstr "WordPress funciona normalmente"
+msgid "<strong>Online</strong> — WordPress works as usual"
+msgstr "<strong>Online</strong> — WordPress funciona normalmente"
 
 #: inc/maintenance/admin-content.php:40
-#: inc/maintenance/class-machete-maintenance-page.php:98
-msgid "Coming soon"
-msgstr "En desarrollo"
-
-#: inc/maintenance/admin-content.php:40
-msgid "Site closed. All pages have a meta robots noindex, nofollow"
+msgid ""
+"<strong>Coming soon</strong> — Site closed. All pages have a meta robots "
+"noindex, nofollow"
 msgstr ""
-"Sitio cerrado. Todas las páginas devuelven un meta robots noindex, nofollow"
+"<strong>En desarrollo</strong> — Sitio cerrado. Todas las páginas devuelven "
+"un meta robots noindex, nofollow"
 
 #: inc/maintenance/admin-content.php:45
-msgid "Site closed. All pages return 503 Service unavailable"
-msgstr "Sitio cerrado. Todas las páginas devuelven 503 Service unavailable"
+msgid ""
+"<strong>Maintenance</strong> — Site closed. All pages return 503 Service "
+"unavailable"
+msgstr ""
+"<strong>Mantenimiento</strong> — Sitio cerrado. Todas las páginas devuelven "
+"503 Service unavailable"
 
 #: inc/maintenance/admin-content.php:50
 msgid "Magic Link"
@@ -1033,7 +1026,11 @@ msgstr ""
 
 #: inc/maintenance/class-machete-maintenance-module.php:119
 msgid "Content page id is not a valid page id"
-msgstr "El id de la página de contenido no es un id de página válido."
+msgstr "El id de la página de contenido no es un id de página válido"
+
+#: inc/maintenance/class-machete-maintenance-page.php:98
+msgid "Coming soon"
+msgstr "En desarrollo"
 
 #: inc/maintenance/class-machete-maintenance-page.php:99
 msgid "<h1>Under construction</h1><h3>New content is coming soon...</h3>"
@@ -1064,7 +1061,7 @@ msgstr "Borrar transitorios caducados"
 
 #: inc/powertools/admin-content.php:39 inc/powertools/admin-content.php:45
 #: inc/powertools/admin-content.php:51 inc/powertools/admin-content.php:58
-#: inc/powertools/admin-content.php:65 inc/utils/admin-content.php:96
+#: inc/powertools/admin-content.php:65 inc/utils/admin-content.php:98
 msgid "Format:"
 msgstr "Formato:"
 
@@ -1110,7 +1107,7 @@ msgid ""
 "performance"
 msgstr ""
 "Habilita el uso de shortcodes en widgets de texto/html. Puede afectar "
-"ligeramente al rendimiento."
+"ligeramente al rendimiento"
 
 #: inc/powertools/class-machete-powertools-module.php:38
 msgid "Thumbnails in RSS"
@@ -1134,7 +1131,7 @@ msgid ""
 "with a page builder like Visual Composer"
 msgstr ""
 "Habilita los extractos en la páginas. Inútil para casi todo el mundo, pero "
-"alucinante cuando lo combinas con un constructor como Visual Composer."
+"alucinante cuando lo combinas con un constructor como Visual Composer"
 
 #: inc/powertools/class-machete-powertools-module.php:46
 msgid "Save with keyboard"
@@ -1149,7 +1146,7 @@ msgstr ""
 "Te permite guardar tus entradas, páginas, archivos de tema o de plugin... de "
 "la forma más natural: pulsando Ctrl+S (o Cmd+S en Mac). Guarda como borrador "
 "las entradas o páginas que aún no han sido publicadas y actualiza las que ya "
-"son públicas."
+"son públicas"
 
 #: inc/powertools/class-machete-powertools-module.php:50
 msgid "Move scripts to footer"
@@ -1162,7 +1159,7 @@ msgid ""
 "and re-register it to the FOOTER."
 msgstr ""
 "Mueve todos los scripts JS encolados de la cabecera al pie. Machete quita el "
-"registro de cada script de la sección HEAD y lo registra en el FOOTER"
+"registro de cada script de la sección HEAD y lo registra en el FOOTER."
 
 #: inc/powertools/class-machete-powertools-module.php:54
 msgid "Defer your JavaScript"
@@ -1211,7 +1208,7 @@ msgstr "OEmbed en Widgets"
 
 #: inc/powertools/class-machete-powertools-module.php:68
 msgid "Enables OEmbed in text/html widgets."
-msgstr "Habilita OEmbed en widgets de texto/html"
+msgstr "Habilita OEmbed en widgets de texto/html."
 
 #: inc/powertools/class-machete-powertools-module.php:68
 msgid "Deprecated. This feature is natively enabled since WordPress 4.8.1"
@@ -1458,58 +1455,55 @@ msgstr ""
 msgid "Tracking settings"
 msgstr "Ajustes de seguimiento"
 
-#: inc/utils/admin-content.php:72
-msgid "<head> code"
-msgstr "código del <head>"
+#: inc/utils/admin-content.php:73 inc/utils/admin-content.php:75
+#, php-format
+msgid "%s code"
+msgstr "Código del %s"
 
-#: inc/utils/admin-content.php:73
-msgid "<body> code"
-msgstr "código del <body>"
-
-#: inc/utils/admin-content.php:74
+#: inc/utils/admin-content.php:76
 msgid "Footer code"
 msgstr "Código del pie"
 
-#: inc/utils/admin-content.php:85 inc/utils/admin-content.php:86
+#: inc/utils/admin-content.php:87 inc/utils/admin-content.php:88
 msgid "Tracking Code"
 msgstr "Código de seguimiento"
 
-#: inc/utils/admin-content.php:87
+#: inc/utils/admin-content.php:89
 msgid "Standard Google Analytics tracking code"
 msgstr "Código de seguimiento estándar de Google Analytics"
 
-#: inc/utils/admin-content.php:88
+#: inc/utils/admin-content.php:90
 msgid "Uses JavaScript to hide the tracking code from PageSpeed and GoogleBot"
 msgstr ""
 "Utiliza JavaScript para ocultar el código de seguimiento a PageSpeed y "
 "GoogleBot"
 
-#: inc/utils/admin-content.php:88
+#: inc/utils/admin-content.php:90
 msgid "PageSpeed-optimized tracking code"
 msgstr "Código de seguimiento optimizado para PageSpeed"
 
-#: inc/utils/admin-content.php:88
+#: inc/utils/admin-content.php:90
 msgid "Deprecated"
 msgstr "Obsoleto"
 
-#: inc/utils/admin-content.php:89
+#: inc/utils/admin-content.php:91
 msgid "No tracking code"
 msgstr "Sin código de seguimiento"
 
-#: inc/utils/admin-content.php:94
+#: inc/utils/admin-content.php:96
 msgid "Tracking ID"
 msgstr "ID de seguimiento"
 
-#: inc/utils/admin-content.php:99
+#: inc/utils/admin-content.php:101
 msgid "CF7 Tracking"
 msgstr "Seguimiento de CF7"
 
-#: inc/utils/admin-content.php:100 inc/utils/admin-content.php:106
-#: inc/utils/admin-content.php:107
+#: inc/utils/admin-content.php:102 inc/utils/admin-content.php:108
+#: inc/utils/admin-content.php:109
 msgid "Anonymize user IPs"
 msgstr "Anonimizar IPs"
 
-#: inc/utils/admin-content.php:102
+#: inc/utils/admin-content.php:104
 #, php-format
 msgid ""
 "Launch a Google Analytics event whenever a visitor submits a <a href=\"%s"
@@ -1518,17 +1512,17 @@ msgstr ""
 "Lanza un evento de Google Analytics cada vez que un visitante envía un "
 "formulario de <a href=\"%s\">Contact Form 7</a> ."
 
-#: inc/utils/admin-content.php:108
+#: inc/utils/admin-content.php:110
 msgid "Check to anonymize visitor IPs. Required in some countries."
 msgstr ""
 "Márcalo para anonimizar las IPs de los visitantes. Obligatorio en algunos "
 "países."
 
-#: inc/utils/admin-content.php:119 inc/utils/admin-content.php:121
+#: inc/utils/admin-content.php:121 inc/utils/admin-content.php:123
 msgid "Custom header content"
 msgstr "Contenido para la cabecera"
 
-#: inc/utils/admin-content.php:124
+#: inc/utils/admin-content.php:126
 #, php-format
 msgid ""
 "This code is included before the closing <code>&lt;/head&gt;</code> tag."
@@ -1540,11 +1534,11 @@ msgstr ""
 "función <code>readfile()</code> de PHP, así que nada de PHP o shortcodes "
 "aquí."
 
-#: inc/utils/admin-content.php:135 inc/utils/admin-content.php:137
+#: inc/utils/admin-content.php:137 inc/utils/admin-content.php:139
 msgid "Custom body content"
-msgstr "Contenido para el &lt;body&gt;"
+msgstr "Contenido para el body"
 
-#: inc/utils/admin-content.php:138
+#: inc/utils/admin-content.php:140
 msgid ""
 "This block is meant to be included just after the beginning of the <code>&lt;"
 "body&gt;</code> tag, and it's mainly used for conversion tracking codes."
@@ -1553,7 +1547,7 @@ msgstr ""
 "<code>&lt;body&gt;</code> y se suele usar para insertar códigos de "
 "seguimiento de conversiones."
 
-#: inc/utils/admin-content.php:140
+#: inc/utils/admin-content.php:142
 #, php-format
 msgid ""
 "Content is saved to <code>%s</code> and served using PHP. No PHP code or "
@@ -1562,15 +1556,15 @@ msgstr ""
 "El contenido se guarda en el fichero <code>%s</code> y se sirve usando PHP.  "
 "No uses código PHP ni shortcodes aquí."
 
-#: inc/utils/admin-content.php:151
+#: inc/utils/admin-content.php:153
 msgid "Code injection method"
 msgstr "Método para inyectar el código"
 
-#: inc/utils/admin-content.php:154
+#: inc/utils/admin-content.php:156
 msgid "Custom body content injection method:"
 msgstr "Método para inyectar el código personalizado del body:"
 
-#: inc/utils/admin-content.php:156
+#: inc/utils/admin-content.php:158
 msgid ""
 "Include the code using the native <code>wp_body_open</code> hook (not "
 "supported by all themes)."
@@ -1578,7 +1572,7 @@ msgstr ""
 "Incluir el código usando el gancho nativo <code>wp_body_open</code> (no "
 "todos los temas lo tienen)"
 
-#: inc/utils/admin-content.php:159
+#: inc/utils/admin-content.php:161
 #, php-format
 msgid ""
 "Try to inject the code automatically using <a href=\"%s\" target=\"_blank\" "
@@ -1587,7 +1581,7 @@ msgstr ""
 "Intentar inyectar automáticamente el código usando el <a href=\"%s\" target="
 "\"_blank\" rel=\"nofollow\">método de Yaniv Friedensohn</a>"
 
-#: inc/utils/admin-content.php:161
+#: inc/utils/admin-content.php:163
 msgid ""
 "Edit your theme's <code>header.php</code> template manually and include this "
 "function:"
@@ -1595,11 +1589,11 @@ msgstr ""
 "Editar manualmente la plantilla <code>header.php</code> de tu tema y añadir "
 "esta función:"
 
-#: inc/utils/admin-content.php:178 inc/utils/admin-content.php:180
+#: inc/utils/admin-content.php:180 inc/utils/admin-content.php:182
 msgid "Custom footer content"
 msgstr "Contenido para el pie"
 
-#: inc/utils/admin-content.php:182
+#: inc/utils/admin-content.php:184
 #, php-format
 msgid ""
 "This code is included when the <code>wp_footer</code> action is called, "
@@ -1612,7 +1606,7 @@ msgstr ""
 "<br>El contenido se guarda en <code>%s</code> y se sirve usando la función "
 "<code>readfile()</code> de PHP, así que nada de código PHP o shortcodes aquí."
 
-#: inc/utils/admin-content.php:222 inc/utils/class-machete-utils-module.php:85
+#: inc/utils/admin-content.php:224 inc/utils/class-machete-utils-module.php:85
 msgid "That doesn't look like a valid Google Analytics tracking ID"
 msgstr ""
 "Eso no parece que eso sea un ID de seguimiento de Google Analytics válido"
@@ -1677,6 +1671,15 @@ msgstr "Nilo Vélez"
 #. Author URI of the plugin/theme
 msgid "https://www.nilovelez.com"
 msgstr "https://www.nilovelez.com"
+
+#~ msgid "Online"
+#~ msgstr "Online"
+
+#~ msgid "<head> code"
+#~ msgstr "código del <head>"
+
+#~ msgid "<body> code"
+#~ msgstr "código del <body>"
 
 #~ msgid ""
 #~ "Might break external appplications if they need to access your site's API "

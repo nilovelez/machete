@@ -3,7 +3,7 @@ msgid ""
 msgstr ""
 "Plural-Forms: nplurals=INTEGER; plural=EXPRESSION;\n"
 "Project-Id-Version: Machete\n"
-"POT-Creation-Date: 2020-05-23 20:09+0200\n"
+"POT-Creation-Date: 2020-05-23 23:22+0200\n"
 "PO-Revision-Date: 2016-11-03 19:23+0100\n"
 "Last-Translator: \n"
 "Language-Team: \n"
@@ -785,7 +785,7 @@ msgstr ""
 msgid "Coming Soon"
 msgstr ""
 
-#: inc/maintenance/admin-bar.php:74 inc/maintenance/admin-content.php:45
+#: inc/maintenance/admin-bar.php:74
 #: inc/maintenance/class-machete-maintenance-page.php:105
 msgid "Maintenance"
 msgstr ""
@@ -806,24 +806,18 @@ msgid "Set site status"
 msgstr ""
 
 #: inc/maintenance/admin-content.php:34
-msgid "Online"
-msgstr ""
-
-#: inc/maintenance/admin-content.php:34
-msgid "WordPress works as usual"
+msgid "<strong>Online</strong> — WordPress works as usual"
 msgstr ""
 
 #: inc/maintenance/admin-content.php:40
-#: inc/maintenance/class-machete-maintenance-page.php:98
-msgid "Coming soon"
-msgstr ""
-
-#: inc/maintenance/admin-content.php:40
-msgid "Site closed. All pages have a meta robots noindex, nofollow"
+msgid ""
+"<strong>Coming soon</strong> — Site closed. All pages have a meta robots noindex, "
+"nofollow"
 msgstr ""
 
 #: inc/maintenance/admin-content.php:45
-msgid "Site closed. All pages return 503 Service unavailable"
+msgid ""
+"<strong>Maintenance</strong> — Site closed. All pages return 503 Service unavailable"
 msgstr ""
 
 #: inc/maintenance/admin-content.php:50
@@ -894,6 +888,10 @@ msgstr ""
 msgid "Content page id is not a valid page id"
 msgstr ""
 
+#: inc/maintenance/class-machete-maintenance-page.php:98
+msgid "Coming soon"
+msgstr ""
+
 #: inc/maintenance/class-machete-maintenance-page.php:99
 msgid "<h1>Under construction</h1><h3>New content is coming soon...</h3>"
 msgstr ""
@@ -920,7 +918,7 @@ msgstr ""
 
 #: inc/powertools/admin-content.php:39 inc/powertools/admin-content.php:45
 #: inc/powertools/admin-content.php:51 inc/powertools/admin-content.php:58
-#: inc/powertools/admin-content.php:65 inc/utils/admin-content.php:96
+#: inc/powertools/admin-content.php:65 inc/utils/admin-content.php:98
 msgid "Format:"
 msgstr ""
 
@@ -1267,71 +1265,68 @@ msgstr ""
 msgid "Tracking settings"
 msgstr ""
 
-#: inc/utils/admin-content.php:72
-msgid "<head> code"
+#: inc/utils/admin-content.php:73 inc/utils/admin-content.php:75
+#, php-format
+msgid "%s code"
 msgstr ""
 
-#: inc/utils/admin-content.php:73
-msgid "<body> code"
-msgstr ""
-
-#: inc/utils/admin-content.php:74
+#: inc/utils/admin-content.php:76
 msgid "Footer code"
 msgstr ""
 
-#: inc/utils/admin-content.php:85 inc/utils/admin-content.php:86
+#: inc/utils/admin-content.php:87 inc/utils/admin-content.php:88
 msgid "Tracking Code"
 msgstr ""
 
-#: inc/utils/admin-content.php:87
+#: inc/utils/admin-content.php:89
 msgid "Standard Google Analytics tracking code"
 msgstr ""
 
-#: inc/utils/admin-content.php:88
+#: inc/utils/admin-content.php:90
 msgid "Uses JavaScript to hide the tracking code from PageSpeed and GoogleBot"
 msgstr ""
 
-#: inc/utils/admin-content.php:88
+#: inc/utils/admin-content.php:90
 msgid "PageSpeed-optimized tracking code"
 msgstr ""
 
-#: inc/utils/admin-content.php:88
+#: inc/utils/admin-content.php:90
 msgid "Deprecated"
 msgstr ""
 
-#: inc/utils/admin-content.php:89
+#: inc/utils/admin-content.php:91
 msgid "No tracking code"
 msgstr ""
 
-#: inc/utils/admin-content.php:94
+#: inc/utils/admin-content.php:96
 msgid "Tracking ID"
 msgstr ""
 
-#: inc/utils/admin-content.php:99
+#: inc/utils/admin-content.php:101
 msgid "CF7 Tracking"
 msgstr ""
 
-#: inc/utils/admin-content.php:100 inc/utils/admin-content.php:106
-#: inc/utils/admin-content.php:107
+#: inc/utils/admin-content.php:102 inc/utils/admin-content.php:108
+#: inc/utils/admin-content.php:109
 msgid "Anonymize user IPs"
 msgstr ""
 
-#: inc/utils/admin-content.php:102
+#: inc/utils/admin-content.php:104
 #, php-format
 msgid ""
 "Launch a Google Analytics event whenever a visitor submits a <a href=\"%s\">Contact "
 "Form 7</a> form."
 msgstr ""
 
-#: inc/utils/admin-content.php:108
+#: inc/utils/admin-content.php:110
 msgid "Check to anonymize visitor IPs. Required in some countries."
 msgstr ""
 
-#: inc/utils/admin-content.php:119 inc/utils/admin-content.php:121
+#: inc/utils/admin-content.php:121 inc/utils/admin-content.php:123
 msgid "Custom header content"
 msgstr ""
 
-#: inc/utils/admin-content.php:124
+#: inc/utils/admin-content.php:126
 #, php-format
 msgid ""
 "This code is included before the closing <code>&lt;/head&gt;</code> tag.<br>Content "
@@ -1339,55 +1334,55 @@ msgid ""
 "so no PHP or shortcodes here."
 msgstr ""
 
-#: inc/utils/admin-content.php:135 inc/utils/admin-content.php:137
+#: inc/utils/admin-content.php:137 inc/utils/admin-content.php:139
 msgid "Custom body content"
 msgstr ""
 
-#: inc/utils/admin-content.php:138
+#: inc/utils/admin-content.php:140
 msgid ""
 "This block is meant to be included just after the beginning of the <code>&lt;body&gt;"
 "</code> tag, and it's mainly used for conversion tracking codes."
 msgstr ""
 
-#: inc/utils/admin-content.php:140
+#: inc/utils/admin-content.php:142
 #, php-format
 msgid ""
 "Content is saved to <code>%s</code> and served using PHP. No PHP code or shortcodes "
 "here."
 msgstr ""
 
-#: inc/utils/admin-content.php:151
+#: inc/utils/admin-content.php:153
 msgid "Code injection method"
 msgstr ""
 
-#: inc/utils/admin-content.php:154
+#: inc/utils/admin-content.php:156
 msgid "Custom body content injection method:"
 msgstr ""
 
-#: inc/utils/admin-content.php:156
+#: inc/utils/admin-content.php:158
 msgid ""
 "Include the code using the native <code>wp_body_open</code> hook (not supported by "
 "all themes)."
 msgstr ""
 
-#: inc/utils/admin-content.php:159
+#: inc/utils/admin-content.php:161
 #, php-format
 msgid ""
 "Try to inject the code automatically using <a href=\"%s\" target=\"_blank\" rel="
 "\"nofollow\">Yaniv Friedensohn's method</a>"
 msgstr ""
 
-#: inc/utils/admin-content.php:161
+#: inc/utils/admin-content.php:163
 msgid ""
 "Edit your theme's <code>header.php</code> template manually and include this "
 "function:"
 msgstr ""
 
-#: inc/utils/admin-content.php:178 inc/utils/admin-content.php:180
+#: inc/utils/admin-content.php:180 inc/utils/admin-content.php:182
 msgid "Custom footer content"
 msgstr ""
 
-#: inc/utils/admin-content.php:182
+#: inc/utils/admin-content.php:184
 #, php-format
 msgid ""
 "This code is included when the <code>wp_footer</code> action is called, normally "
@@ -1396,7 +1391,7 @@ msgid ""
 "shortcodes here."
 msgstr ""
 
-#: inc/utils/admin-content.php:222 inc/utils/class-machete-utils-module.php:85
+#: inc/utils/admin-content.php:224 inc/utils/class-machete-utils-module.php:85
 msgid "That doesn't look like a valid Google Analytics tracking ID"
 msgstr ""
 
