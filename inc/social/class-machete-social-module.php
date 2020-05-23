@@ -348,7 +348,7 @@ class MACHETE_SOCIAL_MODULE extends MACHETE_MODULE {
 	 * Saves options to database
 	 *
 	 * @param array $options options array, normally $_POST.
-	 * @param bool  $silent prevent the function from generating admin notices.
+	 * @param bool  $silent  prevent the function from generating admin notices.
 	 */
 	protected function save_settings( $options = array(), $silent = false ) {
 

@@ -86,7 +86,7 @@ add_action( 'admin_action_machete_clone', 'machete_content_clone' );
  * Adds the "clone" link to the post and page lists.
  *
  * @param array  $actions post/page actions array.
- * @param object $post reference to the current row post.
+ * @param object $post    reference to the current row post.
  */
 function machete_content_clone_link( $actions, $post ) {
 	$notify_url = wp_nonce_url( admin_url( 'admin.php?action=machete_clone&amp;post=' . absint( $post->ID ) ), 'machete_clone_' . $post->ID );

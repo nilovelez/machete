@@ -8,7 +8,7 @@
 
 if ( ! defined( 'MACHETE_ADMIN_INIT' ) ) {
 	exit;
-};
+}
 
 // Manages welcome redirect to About page.
 add_action(
@@ -99,6 +99,6 @@ add_action(
 foreach ( $machete->modules as $machete_module ) {
 	if ( ! $machete_module->params['is_active'] ) {
 		continue;
-	};
+	}
 	$machete_module->admin();
 }

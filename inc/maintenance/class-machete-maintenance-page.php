@@ -149,7 +149,7 @@ class MACHETE_MAINTENANCE_PAGE {
 	/**
 	 * File pass-through
 	 *
-	 * @param string $file      Path to the file.
+	 * @param string $file Path to the file.
 	 * @return bool false on failure.
 	 */
 	private function readfile( $file ) {

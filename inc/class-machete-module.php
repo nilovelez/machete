@@ -122,7 +122,7 @@ abstract class MACHETE_MODULE {
 	 * real function must be defined in each module
 	 *
 	 * @param array $settings options array, normally $_POST.
-	 * @param bool  $silent prevent the function from generating admin notices.
+	 * @param bool  $silent   prevent the function from generating admin notices.
 	 */
 	protected function save_settings( $settings = array(), $silent = false ) {
 		return true;
@@ -155,8 +155,8 @@ abstract class MACHETE_MODULE {
 	/**
 	 * Displays standard WordPress dashboard notice.
 	 *
-	 * @param string $message Message to display.
-	 * @param string $level Can be error, warning, info or success.
+	 * @param string $message     Message to display.
+	 * @param string $level       Can be error, warning, info or success.
 	 * @param bool   $dismissible determines if the notice can be dismissed via javascript.
 	 */
 	public function notice( $message, $level = 'info', $dismissible = true ) {
@@ -211,7 +211,8 @@ abstract class MACHETE_MODULE {
 				if ( is_array( $value ) ) {
 					$recursive_diff = $this->array_recursive_diff( $value, $b[ $key ] );
 					if ( count( $recursive_diff ) ) {
-						$return[ $key ] = $recursive_diff; }
+						$return[ $key ] = $recursive_diff;
+					}
 				} else {
 					if ( $value !== $b[ $key ] ) {
 						$return[ $key ] = $value;
@@ -291,7 +292,7 @@ abstract class MACHETE_MODULE {
 	/**
 	 * Delete a file.
 	 *
-	 * @param string $file      Path to the file.
+	 * @param string $file Path to the file.
 	 * @return bool True if the file was deleted, false on failure.
 	 */
 	public function delete( $file ) {
@@ -304,7 +305,7 @@ abstract class MACHETE_MODULE {
 	/**
 	 * File pass-through
 	 *
-	 * @param string $file      Path to the file.
+	 * @param string $file Path to the file.
 	 * @return bool false on failure.
 	 */
 	protected function readfile( $file ) {
