@@ -3,7 +3,7 @@
 	var machete_utils = {
 		editor: {},
 		tabs: [],
-		current_tab: 'machete-tabs-tracking'
+		current_tab: '#machete-tabs-tracking'
 	};
 
 	$('#machete-tabs a').each(function(){
@@ -15,6 +15,7 @@
 	}
 
 	updateTabs = function() {
+		//console.log(machete_utils.current_tab);
 		window.location.hash = machete_utils.current_tab;
 		$('#machete-tabs a').removeClass('nav-tab-active');
 		$('.nav-tab[href="'+machete_utils.current_tab+'"]').addClass('nav-tab-active');
@@ -24,7 +25,7 @@
 		$(machete_utils.current_tab + '.machete-tabs-content').show();
 		// machete-tabs-header > header_content
 		textarea_id = machete_utils.current_tab.replace('#machete-tabs-','') + '_content';
-		//console.log( textarea_id );
+		//console.log('textarea_id: ' + textarea_id );
 		if ( machete_utils.editor && machete_utils.editor.codemirror ){
 			machete_utils.editor.codemirror.toTextArea();
 		}
@@ -44,5 +45,4 @@
 		updateTabs();
 	});
 	updateTabs();
-
 })( window.jQuery, window.wp );
