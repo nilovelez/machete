@@ -22,7 +22,7 @@ $machete_allowed_description_tags = array(
 	<div class="wp-header-end"></div><!-- admin notices go after .wp-header-end or .wrap>h2:first-child -->
 	<h1><?php $this->icon(); ?> <?php esc_html_e( 'Machete PowerTools', 'machete' ); ?></h1>
 
-	<p class="tab-description"><?php esc_html_e( 'Machete PowerTools is an upgrade module targeted to WordPress developers and power users. PowerTools add new features and improve some of the Machete modules you already know and love.', 'machete' ); ?></p>
+	<p class="tab-description"><?php esc_html_e( 'Machete PowerTools is an upgrade module targeted at WordPress developers and power users. PowerTools adds new features and improves some of the Machete modules you already know and love.', 'machete' ); ?></p>
 	<?php $machete->admin_tabs( 'machete-powertools' ); ?>
 	<p class="tab-performance"><span><strong><i class="dashicons dashicons-clock"></i> <?php esc_html_e( 'Performance impact:', 'machete' ); ?></strong> <?php esc_html_e( 'This section stores all its settings in a single autoloaded configuration variable.', 'machete' ); ?></span></p>
 
@@ -65,7 +65,7 @@ $machete_allowed_description_tags = array(
 	<p class="description" id="tracking_id_description" style="display: none;"><?php esc_html_e( 'Format:', 'machete' ); ?></p></td>
 	</tr>
 
-	</tbody></table>	
+	</tbody></table>
 </form>
 
 
@@ -112,7 +112,7 @@ $machete_allowed_description_tags = array(
 ( function( $ ) {
 	$('#machete-powertools-options .machete-powertools-table :checkbox').change(function() {
 		// this will contain a reference to the checkbox
-		console.log(this.id); 
+		console.log(this.id);
 		var checkBoxes = $("#machete-powertools-options .machete-powertools-table input[name=optionEnabled\\[\\]]");
 
 		if ( this.id == 'machete_powertools_checkall_fld' ){

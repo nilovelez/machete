@@ -22,7 +22,7 @@ class MACHETE_CLEANUP_MODULE extends MACHETE_MODULE {
 				'slug'            => 'cleanup',
 				'title'           => __( 'Optimization', 'machete' ),
 				'full_title'      => __( 'WordPress Optimization', 'machete' ),
-				'description'     => __( 'Reduces much of the legacy code bloat in WordPress page headers. It also has some tweaks to make you site faster and safer.', 'machete' ),
+				'description'     => __( 'Reduces much of the legacy code bloat in WordPress page headers. It also has some tweaks to make your site faster and safer.', 'machete' ),
 				'is_active'       => true,
 				'has_config'      => true,
 				'can_be_disabled' => true,
@@ -33,7 +33,7 @@ class MACHETE_CLEANUP_MODULE extends MACHETE_MODULE {
 		$this->cleanup_array = array(
 			'rsd_link'          => array(
 				'title'       => __( 'RSD', 'machete' ),
-				'description' => __( 'Remove Really Simple Discovery(RSD) links. They are used for automatic pingbacks.', 'machete' ),
+				'description' => __( 'Remove Really Simple Discovery (RSD) links. They are used for automatic pingbacks.', 'machete' ),
 			),
 			'wlwmanifest'       => array(
 				'title'       => __( 'WLW', 'machete' ),
@@ -57,11 +57,11 @@ class MACHETE_CLEANUP_MODULE extends MACHETE_MODULE {
 			),
 			'wp_generator'      => array(
 				'title'       => __( 'wp_generator', 'machete' ),
-				'description' => __( 'Remove WordPress and WooCommerce meta generator tags. Used by atackers to detect the WordPress version.', 'machete' ),
+				'description' => __( 'Remove WordPress and WooCommerce meta generator tags. Used by attackers to detect the WordPress version.', 'machete' ),
 			),
 			'ver'               => array(
 				'title'       => __( 'version', 'machete' ),
-				'description' => __( 'Remove WordPress version var (?ver=) after styles and scripts. Used by atackers to detect the WordPress version.', 'machete' ),
+				'description' => __( 'Remove WordPress version var (?ver=) after styles and scripts. Used by attackers to detect the WordPress version.', 'machete' ),
 			),
 			'recentcomments'    => array(
 				'title'       => __( 'recent_comments_style', 'machete' ),
@@ -80,7 +80,7 @@ class MACHETE_CLEANUP_MODULE extends MACHETE_MODULE {
 			),
 			'pdf_thumbnails'         => array(
 				'title'       => __( 'PDF Thumbnails', 'machete' ),
-				'description' => __( 'Starting with 4.7, WordPress tries to make thumbnails from each PDF you upload, potentially crashing your server if GhostScript and Imagemagick aren\'t properly configured. This option disables PDF thumbnails.', 'machete' ),
+				'description' => __( 'Starting with 4.7, WordPress tries to make thumbnails from each PDF you upload, potentially crashing your server if GhostScript and ImageMagick aren\'t properly configured. This option disables PDF thumbnails.', 'machete' ),
 			),
 			'limit_revisions'        => array(
 				'title'       => __( 'Limit Post Revisions', 'machete' ),
@@ -139,7 +139,7 @@ class MACHETE_CLEANUP_MODULE extends MACHETE_MODULE {
 			),
 			'jpeg_quality'   => array(
 				'title'       => __( 'Reduce JPEG quality', 'machete' ),
-				'description' => __( 'When WordPress generates a JPEG thumbnail it compress the image to 82% quality. Check this this to reduce the default quality to 72%. (It doesn\'t affect original image quality).', 'machete' ),
+				'description' => __( 'When WordPress generates a JPEG thumbnail it compresses the image to 82% quality. Check this to reduce the default quality to 72%. (It doesn\'t affect original image quality).', 'machete' ),
 			),
 		);
 	}

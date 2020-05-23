@@ -39,7 +39,7 @@ $machete_allowed_description_tags = array(
 	<div class="wp-header-end"></div><!-- admin notices go after .wp-header-end or .wrap>h2:first-child -->
 	<h1><?php $this->icon(); ?> <?php esc_html_e( 'WordPress Optimization', 'machete' ); ?></h1>
 
-	<p class="tab-description"><?php esc_html_e( 'WordPress has a los of code just to keep backward compatiblity or enable optional features. You can disable most of it and save some time from each page request while making your installation safer', 'machete' ); ?></p>
+	<p class="tab-description"><?php esc_html_e( 'WordPress has a lot of code just to keep backward compatibility or to enable optional features. You can disable most of it and save some time from each page request while making your installation safer', 'machete' ); ?></p>
 
 	<?php $machete->admin_tabs( 'machete-cleanup' ); ?>
 
@@ -82,7 +82,7 @@ $machete_allowed_description_tags = array(
 
 		<h3><?php esc_html_e( 'Feature Cleanup', 'machete' ); ?> <span class="machete_security_badge machete_warning_badge"><?php esc_html_e( 'Mostly safe', 'machete' ); ?></span></h3>
 
-		<p><?php esc_html_e( 'This section goes futher disabling optional features. All options can be safely activated, but keep an eye on potiential plugin compatibility issues.', 'machete' ); ?></p>
+		<p><?php esc_html_e( 'This section goes further disabling optional features. All options can be safely activated, but keep an eye on potential plugin compatibility issues.', 'machete' ); ?></p>
 
 		<table class="wp-list-table widefat fixed striped posts machete-options-table machete-optimize-table">
 		<thead>
@@ -146,7 +146,7 @@ $machete_allowed_description_tags = array(
 (function($){
 	$('#machete-cleanup-options .machete-cleanup-table :checkbox').change(function() {
 		// this will contain a reference to the checkbox
-		console.log(this.id); 
+		console.log(this.id);
 		var checkBoxes = $("#machete-cleanup-options .machete-cleanup-table input[name=optionEnabled\\[\\]]");
 
 		if (this.id == 'machete_cleanup_checkall_fld'){
@@ -169,7 +169,7 @@ $machete_allowed_description_tags = array(
 
 	$('#machete-cleanup-options .machete-optimize-table :checkbox').change(function() {
 		// this will contain a reference to the checkbox
-		console.log(this.id); 
+		console.log(this.id);
 		var checkBoxes = $("#machete-cleanup-options .machete-optimize-table input[name=optionEnabled\\[\\]]");
 
 		if (this.id == 'machete_optimize_checkall_fld'){

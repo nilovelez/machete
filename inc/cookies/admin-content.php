@@ -14,11 +14,11 @@ if ( ! defined( 'MACHETE_ADMIN_INIT' ) ) {
 <div class="wrap machete-wrap machete-section-wrap">
 	<div class="wp-header-end"></div><!-- admin notices go after .wp-header-end or .wrap>h2:first-child -->
 	<h1><?php $this->icon(); ?> <?php esc_html_e( 'Cookie Law Warning', 'machete' ); ?></h1>
-	<p class="tab-description"><?php esc_html_e( 'We know you hate cookie warning bars. Well, this is the less hateable cookie bar you\'ll find. It is really light, it won\'t affect your PageSpeed score and plays well with static cache plugins.', 'machete' ); ?></p>
+	<p class="tab-description"><?php esc_html_e( 'We know you hate cookie warning bars. Well, this is the least hateable cookie bar you\'ll find. It is really light, doesn\'t affect your PageSpeed score and plays well with static cache plugins.', 'machete' ); ?></p>
 	<?php $machete->admin_tabs( 'machete-cookies' ); ?>
 
 
-	<p class="tab-performance"><span><strong><i class="dashicons dashicons-clock"></i> <?php esc_html_e( 'Performance impact:', 'machete' ); ?></strong> <?php echo wp_kses( _e( 'This tool adds 0,4Kb and a single database request request to each page load. The remaining <abbr title="~1.1Kb if GZipped">~2.5Kb</abbr> of code is loaded asynchronously via javascript from a pregenerated static file.', 'machete' ), wp_kses_allowed_html() ); ?></span></p>
+	<p class="tab-performance"><span><strong><i class="dashicons dashicons-clock"></i> <?php esc_html_e( 'Performance impact:', 'machete' ); ?></strong> <?php echo wp_kses( _e( 'This tool adds 0,4KB and a single database request to each page load. The remaining <abbr title="~1.1KB if GZipped">~2.5KB</abbr> of code is loaded asynchronously via javascript from a pre-generated static file.', 'machete' ), wp_kses_allowed_html() ); ?></span></p>
 
 <form id="mache-cookies-options" action="" method="POST">
 
@@ -72,7 +72,7 @@ if ( ! defined( 'MACHETE_ADMIN_INIT' ) ) {
 &nbsp;&nbsp;&nbsp;&nbsp;<span style="color: #000;">[<?php esc_html_e( 'Cookie warning text', 'machete' ); ?>]</span>
 &nbsp;&nbsp;&lt;/div&gt;
 &lt;/div&gt;</pre>
-		</td></tr></tbody></table> 
+		</td></tr></tbody></table>
 	</div>
 </div>
 
