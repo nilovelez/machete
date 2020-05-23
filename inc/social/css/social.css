@@ -12,7 +12,7 @@
 }
 .mct-social-share li {
 	margin: 0 4px 4px 0;
-	border-width: 0;	
+	border-width: 0;
 	padding: 0;
 	display: inline-block;
 	border-radius: 4px;
@@ -29,24 +29,24 @@
 	text-decoration: none;
 	box-shadow: none;
 	text-shadow: none;
-	border-width: 0;	
+	border-width: 0;
 	line-height: 24px;
 	padding: 8px 12px;
 	font-size: 16px;
 	border-radius: 4px;
-	font-family: -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Oxygen-Sans,Ubuntu,Cantarell,"Helvetica Neue",sans-serif;
+	font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue", sans-serif;
 	background: transparent;
 	transition: background 0.5s;
 }
 .mct-social-share a:hover {
-	background-color: rgba(0,0,0,0.2);
+	background-color: rgba(0, 0, 0, 0.2);
 }
 .mct-social-share a:before {
 	vertical-align: bottom;
 
 	font-size: 16px;
-    line-height: 24px;
-    padding-right: 8px;
+	line-height: 24px;
+	padding-right: 8px;
 
 	/* use !important to prevent issues with browser extensions that change fonts */
 	font-family: 'Machete-Social' !important;
@@ -78,7 +78,7 @@
 	display: none;
 }
 
-@media  (max-width: 768px) {
+@media (max-width: 768px) {
 	.mct-social-share h2 {
 		display: none;
 	}
