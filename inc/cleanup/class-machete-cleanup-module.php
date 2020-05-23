@@ -84,7 +84,7 @@ class MACHETE_CLEANUP_MODULE extends MACHETE_MODULE {
 			),
 			'limit_revisions'        => array(
 				'title'       => __( 'Limit Post Revisions', 'machete' ),
-				'description' => __( 'Limits the number of stored revisions to 5 only WP_POST_REVISIONS constant has been defined.', 'machete' ),
+				'description' => __( 'Limits the number of stored revisions to 5 only if WP_POST_REVISIONS constant has not been defined.', 'machete' ),
 			),
 			'slow_heartbeat'         => array( // @fpuente addons
 				'title'       => __( 'Slow Heartbeat', 'machete' ),
