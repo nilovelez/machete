@@ -121,7 +121,7 @@ class MACHETE {
 
 		if ( ! array_key_exists( $module, $this->modules ) ) {
 			if ( ! $silent ) {
-				$this->notice( __( 'Uknown module:', 'machete' ) . ' ' . $module, 'error' );
+				$this->notice( __( 'Unknown module:', 'machete' ) . ' ' . $module, 'error' );
 			}
 			return false;
 		}
@@ -150,7 +150,7 @@ class MACHETE {
 					$this->notice(
 						sprintf(
 							/* Translators: module title */
-							__( 'Module %s disabled succesfully', 'machete' ),
+							__( 'Module %s disabled successfully', 'machete' ),
 							$this->modules[ $module ]->params['title']
 						),
 						'success'
@@ -187,7 +187,7 @@ class MACHETE {
 					$this->notice(
 						sprintf(
 							/* Translators: module title */
-							__( 'Module %s enabled succesfully', 'machete' ),
+							__( 'Module %s enabled successfully', 'machete' ),
 							$this->modules[ $module ]->params['title']
 						),
 						'success'

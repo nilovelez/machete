@@ -14,7 +14,7 @@ if ( ! defined( 'MACHETE_ADMIN_INIT' ) ) {
 	<div class="wp-header-end"></div><!-- admin notices go after .wp-header-end or .wrap>h2:first-child -->
 	<h1><?php $this->icon(); ?> <?php esc_html_e( 'Coming Soon & Maintenance Mode', 'machete' ); ?></h1>
 
-	<p class="tab-description"><?php esc_html_e( 'If you have to close yout website temporarly to the public, the navive WordPress maintenance mode falls short and most coming soon plugins are bulky, incomplete or expensive. Machete maintenance mode is light, simple and versatile.', 'machete' ); ?></p>
+	<p class="tab-description"><?php esc_html_e( 'If you have to close your website temporarily to the public, the native WordPress maintenance mode falls short and most coming soon plugins are bulky, incomplete or expensive. Machete maintenance mode is light, simple and versatile.', 'machete' ); ?></p>
 	<?php $machete->admin_tabs( 'machete-maintenance' ); ?>
 	<p class="tab-performance"><span><strong><i class="dashicons dashicons-clock"></i> <?php esc_html_e( 'Performance impact:', 'machete' ); ?></strong> <?php esc_html_e( 'This section stores all its settings in a single autoloaded configuration variable.', 'machete' ); ?></span></p>
 
@@ -40,7 +40,7 @@ if ( ! defined( 'MACHETE_ADMIN_INIT' ) ) {
 				<strong><?php esc_html_e( 'Coming soon', 'machete' ); ?></strong> - <?php esc_html_e( 'Site closed. All pages have a meta robots noindex, nofollow', 'machete' ); ?>
 			</label><br>
 			<label>
-				<input name="site_status" value="maintenance" type="radio" 
+				<input name="site_status" value="maintenance" type="radio"
 				<?php checked( $this->settings['site_status'], 'maintenance' ); ?>>
 				<strong><?php esc_html_e( 'Maintenance', 'machete' ); ?></strong> - <?php esc_html_e( 'Site closed. All pages return 503 Service unavailable', 'machete' ); ?>
 			</label><br>
@@ -75,9 +75,9 @@ if ( ! defined( 'MACHETE_ADMIN_INIT' ) ) {
 				<a href="<?php echo esc_url( $this->preview_url ); ?>" target="machete_preview" id="preview_maintenance_btn" class="button action"><?php esc_html_e( 'Preview', 'machete' ); ?></a>
 			</td>
 		</tr>
-	   
+
 	</table>
-   
+
 <?php submit_button(); ?>
 
 </form>
@@ -102,7 +102,7 @@ if ( ! defined( 'MACHETE_ADMIN_INIT' ) ) {
 &nbsp;&nbsp;&nbsp;&nbsp;&lt;/div&gt;
 &nbsp;&nbsp;&lt;/body&gt;
 &lt;/html&gt;</pre>
-		</td></tr></tbody></table> 
+		</td></tr></tbody></table>
 	</div>
 </div>
 

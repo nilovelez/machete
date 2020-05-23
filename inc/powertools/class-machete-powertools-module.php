@@ -22,7 +22,7 @@ class MACHETE_POWERTOOLS_MODULE extends MACHETE_MODULE {
 				'slug'            => 'powertools',
 				'title'           => '<span style="color: #ff9900">' . __( 'PowerTools', 'machete' ) . '</span>',
 				'full_title'      => __( 'Machete PowerTools', 'machete' ),
-				'description'     => __( 'Machete PowerTools is an free upgrade module targeted at WordPress developers and power users.', 'machete' ),
+				'description'     => __( 'Machete PowerTools is a free upgrade module targeted at WordPress developers and power users.', 'machete' ),
 				'is_active'       => false,
 				'can_be_disabled' => false,
 			)
@@ -40,15 +40,15 @@ class MACHETE_POWERTOOLS_MODULE extends MACHETE_MODULE {
 			),
 			'page_excerpts'       => array(
 				'title'       => __( 'Excerpts in Pages', 'machete' ),
-				'description' => __( 'Enables excerpts in pages. Useless for most people but awesome qhen combined with a page builder like Visual Composer', 'machete' ),
+				'description' => __( 'Enables excerpts in pages. Useless for most people but awesome when combined with a page builder like Visual Composer', 'machete' ),
 			),
 			'save_with_keyboard'  => array(
 				'title'       => __( 'Save with keyboard', 'machete' ),
-				'description' => __( 'Lets you save your posts, pages, theme and plugin files in the most natural way: pressing Ctrl+S (or Cmd+S on Mac). It saves as draft unpublished posts/pages and updates the ones that are already public', 'machete' ),
+				'description' => __( 'Lets you save your posts, pages, theme and plugin files in the most natural way: pressing Ctrl+S (or Cmd+S on Mac). It saves unpublished posts/pages as drafts and updates the ones that are already public', 'machete' ),
 			),
 			'move_scripts_footer' => array(
 				'title'       => __( 'Move scripts to footer', 'machete' ),
-				'description' => __( 'Move all JS queued scripts from header to footer. Machete will de-register the call for the JavaScript to load in the HEAD section of the site and re-register it to the FOOTER.', 'machete' ),
+				'description' => __( 'Move all enqueued JS scripts from the header to the footer. Machete will de-register the call for the JavaScript to load in the HEAD section of the site and re-register it to the FOOTER.', 'machete' ),
 			),
 			'defer_all_scripts'   => array(
 				'title'       => __( 'Defer your JavaScript', 'machete' ),
@@ -65,7 +65,7 @@ class MACHETE_POWERTOOLS_MODULE extends MACHETE_MODULE {
 			),
 			'widget_oembed'       => array(
 				'title'       => __( 'OEmbed in Widgets', 'machete' ),
-				'description' => __( 'Enables OEMbed in text/html widgets.', 'machete' ) . ' <br><span style="color: red">' . __( 'Deprecated. This feature is natively enabled since WordPress 4.8.1', 'machete' ) . '</span>',
+				'description' => __( 'Enables OEmbed in text/html widgets.', 'machete' ) . ' <br><span style="color: red">' . __( 'Deprecated. This feature is natively enabled since WordPress 4.8.1', 'machete' ) . '</span>',
 			),
 		);
 	}

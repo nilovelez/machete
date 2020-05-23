@@ -145,7 +145,7 @@ abstract class MACHETE_MODULE {
 	 */
 	protected function import( $settings = array() ) {
 		if ( $this->save_settings( $settings, true ) ) {
-			return __( 'Settings succesfully restored from backup', 'machete' ) . "\n";
+			return __( 'Settings successfully restored from backup', 'machete' ) . "\n";
 		} else {
 			return __( 'Error restoring settings backup', 'machete' ) . "\n";
 		}

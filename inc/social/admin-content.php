@@ -14,11 +14,11 @@ if ( ! defined( 'MACHETE_ADMIN_INIT' ) ) {
 <div class="wrap machete-wrap machete-section-wrap">
 	<div class="wp-header-end"></div><!-- admin notices go after .wp-header-end or .wrap>h2:first-child -->
 	<h1><?php $this->icon(); ?> <?php esc_html_e( 'Social Sharing Buttons', 'machete' ); ?></h1>
-	<p class="tab-description"><?php esc_html_e( 'Social sharing made the Machete way. The icons are made as a custom webfont embedded in a CSS minified file that only weights 5.8Kb. The sharing actions are made uning each platform\'s native share URLs.', 'machete' ); ?></p>
+	<p class="tab-description"><?php esc_html_e( 'Social sharing done the Machete way. The icons are made as a custom webfont embedded in a minified CSS file that only weighs 5.8KB. The sharing actions use each platform\'s native share URL.', 'machete' ); ?></p>
 	<?php $machete->admin_tabs( 'machete-social' ); ?>
 
 
-	<p class="tab-performance"><span><strong><i class="dashicons dashicons-clock"></i> <?php esc_html_e( 'Performance impact:', 'machete' ); ?></strong> <?php echo wp_kses( _e( 'This tool adds 6.1Kb and a single database request request to each page load.', 'machete' ), wp_kses_allowed_html() ); ?></span></p>
+	<p class="tab-performance"><span><strong><i class="dashicons dashicons-clock"></i> <?php esc_html_e( 'Performance impact:', 'machete' ); ?></strong> <?php echo wp_kses( _e( 'This tool adds 6.1KB and a single database request to each page load.', 'machete' ), wp_kses_allowed_html() ); ?></span></p>
 
 <form id="mache-social-options" action="" method="POST">
 

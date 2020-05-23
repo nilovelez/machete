@@ -28,7 +28,7 @@ add_action(
 	}
 );
 
-// Content especific to Machete admin pages.
+// Content specific to Machete admin pages.
 add_action(
 	'current_screen',
 	function() {

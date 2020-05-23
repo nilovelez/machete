@@ -14,9 +14,9 @@ if ( ! defined( 'MACHETE_ADMIN_INIT' ) ) {
 	<div class="wp-header-end"></div><!-- admin notices go after .wp-header-end or .wrap>h2:first-child -->
 	<h1><?php $this->icon(); ?> <?php esc_html_e( 'Import/Export Options', 'machete' ); ?></h1>
 
-	<p class="tab-description"><?php esc_html_e( 'You can use this section to backup and restore your Machete configuration. You can also take a backup from one site and restore to another. Be careful, your current configuration will be overwritten when you import a backup file', 'machete' ); ?></p>
+	<p class="tab-description"><?php esc_html_e( 'You can use this section to backup and restore your Machete configuration. You can also take a backup from one site and restore it to another. Be careful, your current configuration will be overwritten when you import a backup file', 'machete' ); ?></p>
 	<?php $machete->admin_tabs( 'machete-importexport' ); ?>
-	<p class="tab-performance"><span><strong><i class="dashicons dashicons-clock"></i> <?php esc_html_e( 'Performance impact:', 'machete' ); ?></strong> <?php esc_html_e( 'This section has no impact on the page load times.', 'machete' ); ?></span></p>		
+	<p class="tab-performance"><span><strong><i class="dashicons dashicons-clock"></i> <?php esc_html_e( 'Performance impact:', 'machete' ); ?></strong> <?php esc_html_e( 'This section has no impact on the page load times.', 'machete' ); ?></span></p>
 
 <form id="mache-importexport-options" action="" method="POST">
 
@@ -25,7 +25,7 @@ if ( ! defined( 'MACHETE_ADMIN_INIT' ) ) {
 
 	<h3><?php esc_html_e( 'Export Machete Options', 'machete' ); ?> </h3>
 
-		<p><?php esc_html_e( 'Select the modules from which you want to export the settings and click "download config backup" to get a .json file with the backup.', 'machete' ); ?></p>
+		<p><?php esc_html_e( 'Select the modules from which you want to export the settings and click "Download config backup" to get a .json file with the backup.', 'machete' ); ?></p>
 
 		<table class="wp-list-table widefat fixed striped posts machete-options-table machete-optimize-table">
 		<thead>
@@ -59,14 +59,14 @@ if ( ! defined( 'MACHETE_ADMIN_INIT' ) ) {
 
 	<h3><?php esc_html_e( 'Import Machete Options', 'machete' ); ?> </h3>
 
-	<p><?php esc_html_e( 'Select a Machete backup file and click the "upload config backup" to import it. Please keep in mind that the module settings included in the backup file will overwrite your current setting for those modules.', 'machete' ); ?></p>
+	<p><?php esc_html_e( 'Select a Machete backup file and click "Upload config backup" to import it. Please keep in mind that the module settings included in the backup file will overwrite your current setting for those modules.', 'machete' ); ?></p>
 
 	<label class="screen-reader-text" for="machete-backup-file"><?php esc_html_e( 'Machete backup file to restore', 'machete' ); ?></label>
 	<input type="file" id="machete-backup-file" name="machete-backup-file">
 
 	<?php submit_button( __( 'Upload config backup', 'machete' ) ); ?>
 
-</form>	
+</form>
 
 <?php
 if ( ! empty( $this->import_log ) ) {

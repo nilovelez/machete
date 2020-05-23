@@ -372,3 +372,15 @@ if ( in_array( 'jpeg_quality', $this->settings, true ) ) {
 		}
 	);
 }
+
+if ( in_array( 'gutenberg_css', $this->settings, true ) ) {
+	add_action(
+		'wp_enqueue_scripts',
+		function() {
+			wp_dequeue_style( 'wp-block-library' );            // WordPress core.
+			wp_dequeue_style( 'wp-block-library-theme' );      // WordPress core.
+			wp_dequeue_style( 'wc-block-style' );              // WooCommerce.
+		},
+		100
+	);
+}

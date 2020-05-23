@@ -187,7 +187,7 @@ class MACHETE_COOKIES_MODULE extends MACHETE_MODULE {
 			if ( ! $this->delete( MACHETE_DATA_PATH . $this->settings['cookie_filename'] ) ) {
 				if ( ! $silent ) {
 					// translators: %s path to machete data dir.
-					$this->notice( sprintf( __( 'Could not delete old javascript file from %s please check file permissions . Aborting to prevent inconsistent state.', 'machete' ), MACHETE_RELATIVE_DATA_PATH ), 'warning' );
+					$this->notice( sprintf( __( 'Could not delete old javascript file from %s please check file permissions. Aborting to prevent inconsistent state.', 'machete' ), MACHETE_RELATIVE_DATA_PATH ), 'warning' );
 				}
 				return false;
 			}
