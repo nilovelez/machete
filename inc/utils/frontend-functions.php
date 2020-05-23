@@ -1,6 +1,6 @@
 <?php
 /**
- * Machete Analytics&Code Module actions especific to the front-end
+ * Machete Analytics&Code Module actions specific to the front-end
  *
  * @package WordPress
  * @subpackage Machete

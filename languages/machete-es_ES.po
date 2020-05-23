@@ -21,7 +21,7 @@ msgstr "¡Bienvenido a Machete!"
 #: inc/about/admin-content.php:18
 msgid ""
 "Machete is now installed and ready to use. Machete solves common WordPress "
-"problems using as little resources as posible. Machete lets you use less "
+"problems using as little resources as possible. Machete lets you use less "
 "plugins. Machete optimizes."
 msgstr ""
 "Machete ya está instalado y listo para usarse. Machete resuelve problemas "
@@ -85,7 +85,7 @@ msgstr "Activar"
 
 #: inc/class-machete-module.php:148
 #: inc/utils/class-machete-utils-module.php:245
-msgid "Settings succesfully restored from backup"
+msgid "Settings successfully restored from backup"
 msgstr "Ajustes restaurados con éxito desde la copia de seguridad"
 
 #: inc/class-machete-module.php:150
@@ -121,7 +121,7 @@ msgid "Bad request"
 msgstr "Petición incorrecta"
 
 #: inc/class-machete.php:124
-msgid "Uknown module:"
+msgid "Unknown module:"
 msgstr "Módulo desconocido:"
 
 #: inc/class-machete.php:134
@@ -134,7 +134,7 @@ msgstr "Lo siento, no puedes desactivar ese módulo"
 
 #: inc/class-machete.php:153
 #, php-format
-msgid "Module %s disabled succesfully"
+msgid "Module %s disabled successfully"
 msgstr "Módulo %s desactivado con éxito"
 
 #: inc/class-machete.php:171
@@ -147,7 +147,7 @@ msgstr "Lo siento, no puedes habilitar ese módulo"
 
 #: inc/class-machete.php:190
 #, php-format
-msgid "Module %s enabled succesfully"
+msgid "Module %s enabled successfully"
 msgstr "Módulo %s activado con éxito"
 
 #: inc/cleanup/admin-content.php:40
@@ -157,7 +157,7 @@ msgstr "Optimización de WordPress"
 
 #: inc/cleanup/admin-content.php:42
 msgid ""
-"WordPress has a los of code just to keep backward compatiblity or enable "
+"WordPress has a lot of code just to keep backward compatibility or to enable "
 "optional features. You can disable most of it and save some time from each "
 "page request while making your installation safer"
 msgstr ""
@@ -228,8 +228,8 @@ msgstr "Bastante seguro"
 
 #: inc/cleanup/admin-content.php:85
 msgid ""
-"This section goes futher disabling optional features. All options can be "
-"safely activated, but keep an eye on potiential plugin compatibility issues."
+"This section goes further disabling optional features. All options can be "
+"safely activated, but keep an eye on potential plugin compatibility issues."
 msgstr ""
 "Esta sección va más allá deshabilitando funciones opcionales. Es seguro "
 "activar todas las opciones, pero vigila los posibles conflictos con otros "
@@ -259,7 +259,7 @@ msgstr "Optimización"
 #: inc/cleanup/class-machete-cleanup-module.php:25
 msgid ""
 "Reduces much of the legacy code bloat in WordPress page headers. It also has "
-"some tweaks to make you site faster and safer."
+"some tweaks to make your site faster and safer."
 msgstr ""
 "Reduce mucha de la morralla heredada en las cabeceras de página de "
 "WordPress. Incluye trucos para acelerar y fortificar tu sitio."
@@ -270,10 +270,10 @@ msgstr "RSD"
 
 #: inc/cleanup/class-machete-cleanup-module.php:36
 msgid ""
-"Remove Really Simple Discovery(RSD) links. They are used for automatic "
+"Remove Really Simple Discovery (RSD) links. They are used for automatic "
 "pingbacks."
 msgstr ""
-"Quitar los enlaces  Really Simple Discovery(RSD). Se usan para los pingback "
+"Quitar los enlaces  Really Simple Discovery (RSD). Se usan para los pingback "
 "automáticos."
 
 #: inc/cleanup/class-machete-cleanup-module.php:39
@@ -330,7 +330,7 @@ msgstr "wp_generator"
 
 #: inc/cleanup/class-machete-cleanup-module.php:60
 msgid ""
-"Remove WordPress and WooCommerce meta generator tags. Used by atackers to "
+"Remove WordPress and WooCommerce meta generator tags. Used by attackers to "
 "detect the WordPress version."
 msgstr ""
 "Quitar la metaetiqueta «generator» de WordPress. La usan los hackers para "
@@ -343,7 +343,7 @@ msgstr "version"
 #: inc/cleanup/class-machete-cleanup-module.php:64
 msgid ""
 "Remove WordPress version var (?ver=) after styles and scripts. Used by "
-"atackers to detect the WordPress version."
+"attackers to detect the WordPress version."
 msgstr ""
 "Quitar la variable de versión de WordPress (?ver=) de los estilos y los "
 "scripts. La usan los hackers para detectar la versión de WordPress."
@@ -383,12 +383,12 @@ msgstr "Miniaturas de PDF"
 #: inc/cleanup/class-machete-cleanup-module.php:83
 msgid ""
 "Starting with 4.7, WordPress tries to make thumbnails from each PDF you "
-"upload, potentially crashing your server if GhostScript and Imagemagick "
+"upload, potentially crashing your server if GhostScript and ImageMagick "
 "aren't properly configured. This option disables PDF thumbnails."
 msgstr ""
 "A partir de la versión 4.7, WordPress intenta sacar miniaturas de cada PDF "
 "que subes, pudiendo hacer que tu servidor se cuelgue si no tienes "
-"GhostScript e Imagemagick bien configurados. Esta opción deshabilita las "
+"GhostScript e ImageMagick bien configurados. Esta opción deshabilita las "
 "miniaturas de los PDF."
 
 #: inc/cleanup/class-machete-cleanup-module.php:86
@@ -560,8 +560,8 @@ msgstr "Reducir la calidad JPEG"
 
 #: inc/cleanup/class-machete-cleanup-module.php:142
 msgid ""
-"When WordPress generates a JPEG thumbnail it compress the image to 82% "
-"quality. Check this this to reduce the default quality to 72%. (It doesn't "
+"When WordPress generates a JPEG thumbnail it compresses the image to 82% "
+"quality. Check this to reduce the default quality to 72%. (It doesn't "
 "affect original image quality)."
 msgstr ""
 "Cuando WordPress genera una miniatura JPEG, comprime la imagen con una "
@@ -618,8 +618,8 @@ msgstr "Aviso de Ley de Cookies"
 
 #: inc/cookies/admin-content.php:17
 msgid ""
-"We know you hate cookie warning bars. Well, this is the less hateable cookie "
-"bar you'll find. It is really light, it won't affect your PageSpeed score "
+"We know you hate cookie warning bars. Well, this is the least hateable cookie "
+"bar you'll find. It is really light, doesn't affect your PageSpeed score "
 "and plays well with static cache plugins."
 msgstr ""
 "Sabemos que odias las barras de aviso de cookies. Bueno, pues esta es la "
@@ -629,13 +629,13 @@ msgstr ""
 
 #: inc/cookies/admin-content.php:21
 msgid ""
-"This tool adds 0,4Kb and a single database request request to each page "
-"load. The remaining <abbr title=\"~1.1Kb if GZipped\">~2.5Kb</abbr> of code "
-"is loaded asynchronously via javascript from a pregenerated static file."
+"This tool adds 0,4KB and a single database request to each page "
+"load. The remaining <abbr title=\"~1.1KB if GZipped\">~2.5KB</abbr> of code "
+"is loaded asynchronously via javascript from a pre-generated static file."
 msgstr ""
-"Esta herramienta añade 0,4Kb y una sola petición a base de datos a cada "
-"carga de página. Los demás <abbr title=\"~1.1Kb comprimidos con  GZip"
-"\">~2.5Kb</abbr> de código se cargan de forma asíncrona mediante javascript "
+"Esta herramienta añade 0,4KB y una sola petición a base de datos a cada "
+"carga de página. Los demás <abbr title=\"~1.1KB comprimidos con  GZip"
+"\">~2.5KB</abbr> de código se cargan de forma asíncrona mediante javascript "
 "desde un fichero estático pregenerado."
 
 #: inc/cookies/admin-content.php:31 inc/cookies/admin-content.php:32
@@ -764,7 +764,7 @@ msgstr ""
 #: inc/cookies/class-machete-cookies-module.php:190
 #, php-format
 msgid ""
-"Could not delete old javascript file from %s please check file permissions . "
+"Could not delete old javascript file from %s please check file permissions. "
 "Aborting to prevent inconsistent state."
 msgstr ""
 "Error al borrar el fichero estático antiguo de %s , comprueba los permisos. "
@@ -778,7 +778,7 @@ msgstr "Importar/Exportar Opciones"
 #: inc/importexport/admin-content.php:17
 msgid ""
 "You can use this section to backup and restore your Machete configuration. "
-"You can also take a backup from one site and restore to another. Be careful, "
+"You can also take a backup from one site and restore it to another. Be careful, "
 "your current configuration will be overwritten when you import a backup file"
 msgstr ""
 "Puedes utilizar esta sección para guardar y restaurar tu configuración de "
@@ -798,10 +798,10 @@ msgstr "Exportar opciones de Machete"
 #: inc/importexport/admin-content.php:28
 msgid ""
 "Select the modules from which you want to export the settings and click "
-"\"download config backup\" to get a .json file with the backup."
+"\"Download config backup\" to get a .json file with the backup."
 msgstr ""
 "Elige los módulos de los que quieres exportar la configuración y pulsa en "
-"«descargar copia de seguridad» para obtener un fichero .json con la copia."
+"«Descargar copia de seguridad» para obtener un fichero .json con la copia."
 
 #: inc/importexport/admin-content.php:34
 msgid "Modules to export"
@@ -817,11 +817,11 @@ msgstr "Importar opciones de Machete"
 
 #: inc/importexport/admin-content.php:62
 msgid ""
-"Select a Machete backup file and click the \"upload config backup\" to "
+"Select a Machete backup file and click \"Upload config backup\" to "
 "import it. Please keep in mind that the module settings included in the "
 "backup file will overwrite your current setting for those modules."
 msgstr ""
-"Elige un fichero de copia de seguridad de Machete y pulsa en «subir copia de "
+"Elige un fichero de copia de seguridad de Machete y pulsa en «Subir copia de "
 "seguridad» para importarlo. Ten en cuenta que los ajustes de módulos "
 "incluidos en el fichero sobreescribirán tu ajustes de esos módulos."
 
@@ -840,7 +840,7 @@ msgstr "Importar/Exportar"
 #: inc/importexport/class-machete-importexport-module.php:25
 msgid ""
 "You can use this section to backup and restore your Machete configuration. "
-"You can also take a backup from one site and restore to another."
+"You can also take a backup from one site and restore it to another."
 msgstr ""
 "Puedes utilizar esta sección para guardar y restaurar tu configuración de "
 "Machete. También puedes hacer una copia de un sitio y restaurarla en otro."
@@ -867,7 +867,7 @@ msgid "You haven't uploaded a valid Machete backup file"
 msgstr "No has subido un fichero de copia de seguridad de Machete válido"
 
 #: inc/importexport/class-machete-importexport-module.php:181
-msgid "Ignored uknown module:"
+msgid "Ignored unknown module:"
 msgstr "Módulo desconocido ignorado:"
 
 #: inc/importexport/class-machete-importexport-module.php:184
@@ -875,11 +875,11 @@ msgid "Importing module: "
 msgstr "Importando módulo:"
 
 #: inc/importexport/class-machete-importexport-module.php:191
-msgid "Module activated succesfully"
+msgid "Module activated successfully"
 msgstr "Módulo activado con éxito"
 
 #: inc/importexport/class-machete-importexport-module.php:195
-msgid "Module deactivated succesfully"
+msgid "Module deactivated successfully"
 msgstr "Módulo desactivado con éxito"
 
 #: inc/maintenance/admin-bar.php:51
@@ -897,7 +897,7 @@ msgstr "Modo mantenimiento y desarrollo"
 
 #: inc/maintenance/admin-content.php:17
 msgid ""
-"If you have to close yout website temporarly to the public, the navive "
+"If you have to close your website temporarily to the public, the native "
 "WordPress maintenance mode falls short and most coming soon plugins are "
 "bulky, incomplete or expensive. Machete maintenance mode is light, simple "
 "and versatile."
@@ -1029,8 +1029,8 @@ msgstr "Machete PowerTools"
 
 #: inc/powertools/admin-content.php:25
 msgid ""
-"Machete PowerTools is an upgrade module targeted to WordPress developers and "
-"power users. PowerTools add new features and improve some of the Machete "
+"Machete PowerTools is an upgrade module targeted at WordPress developers and "
+"power users. PowerTools adds new features and improves some of the Machete "
 "modules you already know and love."
 msgstr ""
 "Machete PowerTools es un módulo de mejora dirigido a desarrolladores y "
@@ -1073,7 +1073,7 @@ msgstr "PowerTools"
 
 #: inc/powertools/class-machete-powertools-module.php:25
 msgid ""
-"Machete PowerTools is an free upgrade module targeted at WordPress "
+"Machete PowerTools is a free upgrade module targeted at WordPress "
 "developers and power users."
 msgstr ""
 "Machete PowerTools es un módulo de ampliación gratuito dirigido a "
@@ -1109,7 +1109,7 @@ msgstr "Páginas con extracto"
 
 #: inc/powertools/class-machete-powertools-module.php:43
 msgid ""
-"Enables excerpts in pages. Useless for most people but awesome qhen combined "
+"Enables excerpts in pages. Useless for most people but awesome when combined "
 "with a page builder like Visual Composer"
 msgstr ""
 "Habilita los extractos en la páginas. Inútil para casi todo el mundo, pero "
@@ -1122,8 +1122,8 @@ msgstr "Guardar con el teclado"
 #: inc/powertools/class-machete-powertools-module.php:47
 msgid ""
 "Lets you save your posts, pages, theme and plugin files in the most natural "
-"way: pressing Ctrl+S (or Cmd+S on Mac). It saves as draft unpublished posts/"
-"pages and updates the ones that are already public"
+"way: pressing Ctrl+S (or Cmd+S on Mac). It saves unpublished posts/"
+"pages as drafts and updates the ones that are already public"
 msgstr ""
 "Te permite guardar tus entradas, páginas, archivos de tema o de plugin... de "
 "la forma más natural: pulsando Ctrl+S (o Cmd+S en Mac). Guarda como borrador "
@@ -1136,7 +1136,7 @@ msgstr "Mover scripts al footer"
 
 #: inc/powertools/class-machete-powertools-module.php:51
 msgid ""
-"Move all JS queued scripts from header to footer. Machete will de-register "
+"Move all enqueued JS scripts from the header to the footer. Machete will de-register "
 "the call for the JavaScript to load in the HEAD section of the site and re-"
 "register it to the FOOTER."
 msgstr ""
@@ -1189,7 +1189,7 @@ msgid "OEmbed in Widgets"
 msgstr "OEmbed en Widgets"
 
 #: inc/powertools/class-machete-powertools-module.php:68
-msgid "Enables OEMbed in text/html widgets."
+msgid "Enables OEmbed in text/html widgets."
 msgstr "Habilita OEmbed en widgets de texto/html"
 
 #: inc/powertools/class-machete-powertools-module.php:68
@@ -1245,20 +1245,20 @@ msgstr "Compartir en redes sociales"
 
 #: inc/social/admin-content.php:17
 msgid ""
-"Social sharing made the Machete way. The icons are made as a custom webfont "
-"embedded in a CSS minified file that only weights 5.8Kb. The sharing actions "
-"are made uning each platform's native share URLs."
+"Social sharing done the Machete way. The icons are made as a custom webfont "
+"embedded in a minified CSS file that only weighs 5.8KB. The sharing actions "
+"use each platform's native share URL."
 msgstr ""
 "Compartir en redes sociales a lo Machete. Los iconos son una webfont "
-"personalizada embebida en un archivo CSS minimizado que sólo pesa 5.8 Kb. "
+"personalizada embebida en un archivo CSS minimizado que sólo pesa 5.8 KB. "
 "Las acciones de compartir se realizan usando la URL para compartir nativa de "
 "cada plataforma."
 
 #: inc/social/admin-content.php:21
 msgid ""
-"This tool adds 6.1Kb and a single database request request to each page load."
+"This tool adds 6.1KB and a single database request to each page load."
 msgstr ""
-"Esta herramienta añade 6.1Kb y una sola llamada a base de datos a cada carga "
+"Esta herramienta añade 6.1KB y una sola llamada a base de datos a cada carga "
 "de página."
 
 #: inc/social/admin-content.php:31 inc/social/admin-content.php:32
@@ -1368,7 +1368,7 @@ msgid "LinkedIn"
 msgstr "LinkedIn"
 
 #: inc/social/class-machete-social-module.php:60
-msgctxt "LinkeIn button label"
+msgctxt "LinkedIn button label"
 msgid "Share this"
 msgstr "Compártelo"
 
@@ -1413,9 +1413,9 @@ msgstr "Analytics y Código personalizado"
 
 #: inc/utils/admin-content.php:57
 msgid ""
-"You don't need a zillion plugins to perform easy task like inserting a "
+"You don't need a zillion plugins to perform easy tasks like inserting a "
 "verification meta tag (Google Search Console, Bing, Pinterest), a json-ld "
-"snippet or a custom styleseet (Google Fonts, Print Styles, accesibility "
+"snippet or a custom stylesheet (Google Fonts, Print Styles, accessibility "
 "tweaks...)."
 msgstr ""
 "No hacen falta chorrocientos plugins para realizar tareas sencillas como "
@@ -1427,7 +1427,7 @@ msgstr ""
 #: inc/utils/admin-content.php:59
 msgid ""
 "This tool generates up to three static HTML files that are loaded via PHP on "
-"each pageview. When enabled, custom body content requires one aditional "
+"each pageview. When enabled, custom body content requires one additional "
 "database request."
 msgstr ""
 "Esta herramienta genera dos ficheros de HTML estático que se cargan mediante "
@@ -1511,7 +1511,7 @@ msgstr "Contenido para la cabecera"
 #: inc/utils/admin-content.php:124
 #, php-format
 msgid ""
-"This code is included before the closing <code>&lt;/head&gt;</code> label."
+"This code is included before the closing <code>&lt;/head&gt;</code> tag."
 "<br>Content is saved to <code>%s</code> and served using PHP's "
 "<code>readfile()</code> function, so no PHP or shortcodes here."
 msgstr ""
@@ -1526,8 +1526,8 @@ msgstr "Contenido para el &lt;body&gt;"
 
 #: inc/utils/admin-content.php:138
 msgid ""
-"This block is meant to be included just after the begining of the <code>&lt;"
-"body&gt;</code> label, and it's mainly used for conversion tracking codes."
+"This block is meant to be included just after the beginning of the <code>&lt;"
+"body&gt;</code> tag, and it's mainly used for conversion tracking codes."
 msgstr ""
 "Este bloque está pensado para ser incluido justo al principio de la etiqueta "
 "<code>&lt;body&gt;</code> y se suele usar para insertar códigos de "
@@ -1536,7 +1536,7 @@ msgstr ""
 #: inc/utils/admin-content.php:140
 #, php-format
 msgid ""
-"Content is saved to <code>%s</code> and served using PHP.  No PHP code or "
+"Content is saved to <code>%s</code> and served using PHP. No PHP code or "
 "shortcodes here."
 msgstr ""
 "El contenido se guarda en el fichero <code>%s</code> y se sirve usando PHP.  "
@@ -1583,7 +1583,7 @@ msgstr "Contenido para el pie"
 #, php-format
 msgid ""
 "This code is included when the <code>wp_footer</code> action is called, "
-"normally just before the closing <code>&lt;/body&gt;</code> label."
+"normally just before the closing <code>&lt;/body&gt;</code> tag."
 "<br>Content is saved to <code>%s</code> and served using PHP's "
 "<code>readfile()</code> function, so no PHP or shortcodes here."
 msgstr ""

@@ -22,7 +22,7 @@ class MACHETE_IMPORTEXPORT_MODULE extends MACHETE_MODULE {
 				'slug'            => 'importexport',
 				'title'           => __( 'Import/Export', 'machete' ),
 				'full_title'      => __( 'Import/Export Options', 'machete' ),
-				'description'     => __( 'You can use this section to backup and restore your Machete configuration. You can also take a backup from one site and restore to another.', 'machete' ),
+				'description'     => __( 'You can use this section to backup and restore your Machete configuration. You can also take a backup from one site and restore it to another.', 'machete' ),
 				'can_be_disabled' => false,
 			)
 		);
@@ -178,7 +178,7 @@ class MACHETE_IMPORTEXPORT_MODULE extends MACHETE_MODULE {
 		foreach ( $this->uploaded_backup_data as $module => $module_data ) {
 
 			if ( ! array_key_exists( $module, $machete->modules ) ) {
-				$this->import_log .= __( 'Ignored uknown module:', 'machete' ) . ' ' . $module . "\n\n";
+				$this->import_log .= __( 'Ignored unknown module:', 'machete' ) . ' ' . $module . "\n\n";
 				continue;
 			}
 			$this->import_log .= __( 'Importing module: ', 'machete' ) . ' ' . $module . "\n";
@@ -188,11 +188,11 @@ class MACHETE_IMPORTEXPORT_MODULE extends MACHETE_MODULE {
 			if ( array_key_exists( 'is_active', $module_data ) && is_bool( $module_data['is_active'] ) && ( 'powertools' !== $module ) ) {
 				if ( $module_data['is_active'] ) {
 					if ( $machete->manage_modules( $module, 'activate', true ) ) {
-						$this->import_log .= __( 'Module activated succesfully', 'machete' ) . "\n";
+						$this->import_log .= __( 'Module activated successfully', 'machete' ) . "\n";
 					}
 				} else {
 					if ( $machete->manage_modules( $module, 'deactivate', true ) ) {
-						$this->import_log .= __( 'Module deactivated succesfully', 'machete' ) . "\n";
+						$this->import_log .= __( 'Module deactivated successfully', 'machete' ) . "\n";
 					}
 				}
 			}

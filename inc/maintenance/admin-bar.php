@@ -31,7 +31,7 @@ if ( $machete_maintenance_settings ) {
 		add_action( 'admin_enqueue_scripts', 'machete_admin_bar_scripts' );
 
 		/**
-		 * Admin bar code especific to the coming_soon status.
+		 * Admin bar code specific to the coming_soon status.
 		 */
 		function machete_coming_soon_admin_bar() {
 			global $wp_admin_bar;
@@ -54,7 +54,7 @@ if ( $machete_maintenance_settings ) {
 			);
 		}
 		/**
-		 * Admin bar code especific to the maintenance status.
+		 * Admin bar code specific to the maintenance status.
 		 */
 		function machete_maintenance_admin_bar() {
 			global $wp_admin_bar;
