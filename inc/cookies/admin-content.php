@@ -36,8 +36,7 @@ if ( ! defined( 'MACHETE_ADMIN_INIT' ) ) {
 </tr><tr>
 	<th scope="row"><label for="warning_text"><?php esc_html_e( 'Cookie warning text', 'machete' ); ?></label></th>
 	<td><textarea name="warning_text" rows="3" cols="50" id="warning_text" class="large-text code"><?php echo esc_textarea( stripslashes( $this->settings['warning_text'] ) ); ?></textarea>
-	<p class="description" style="text-align: right;"><a id="restore_cookie_text_btn"><?php esc_html_e( 'Restore default warning text', 'machete' ); ?></a></p>
-	</fieldset></td>
+	<p class="description" style="text-align: right;"><a id="restore_cookie_text_btn"><?php esc_html_e( 'Restore default warning text', 'machete' ); ?></a></p></td>
 </tr><tr>
 	<th scope="row"><label for="accept_text"><?php esc_html_e( 'Accept button text', 'machete' ); ?></label></th>
 	<td><input name="accept_text" id="accept_text" value="<?php echo esc_html( $this->settings['accept_text'] ); ?>" class="regular-text ltr" type="text"></td>
@@ -58,7 +57,7 @@ if ( ! defined( 'MACHETE_ADMIN_INIT' ) ) {
 
 <div class="postbox machete-helpbox" data-collapsed="false">
 <button type="button" class="handlediv button-link"><span class="toggle-indicator" aria-hidden="true"><span class="dashicons dashicons-arrow-up"></span></span></button>
-	<h3 class="hndle"><span><span class="dashicons dashicons-sos"></span> <?php esc_html_e( 'How do I customize the cookie bar?', 'machete' ); ?></span></h2>
+	<h3 class="hndle"><span><span class="dashicons dashicons-sos"></span> <?php esc_html_e( 'How do I customize the cookie bar?', 'machete' ); ?></span></h3>
 	<div class="inside">
 		<table class="form-table"><tbody><tr valign="top"><th scope="row"></th><td>
 			<?php /* Translators: $s: a href part of a link */ ?>

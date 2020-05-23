@@ -80,8 +80,7 @@ if ( false !== $machete_settings ) {
 <div class="machete-tabs-content" id="machete-tabs-tracking">
 
 	<table class="form-table">
-	<tbody><tr>
-
+	<tbody>
 
 	<tr>
 	<th scope="row"><?php esc_html_e( 'Tracking Code', 'machete' ); ?></th>
@@ -98,6 +97,7 @@ if ( false !== $machete_settings ) {
 	<p class="description" id="tracking_id_description"><?php esc_html_e( 'Format:', 'machete' ); ?> UA-12345678-1</p></td>
 	</tr>
 
+	<tr>
 	<th scope="row"><?php esc_html_e( 'CF7 Tracking', 'machete' ); ?></th>
 	<td><fieldset><legend class="screen-reader-text"><span><?php esc_html_e( 'Anonymize user IPs', 'machete' ); ?></span></legend>
 		<?php // translators: %s: link to the plugin's directory page. ?>
@@ -110,6 +110,7 @@ if ( false !== $machete_settings ) {
 		<label><input name="tacking_anonymize" value="1" type="checkbox" <?php checked( '1', $this->settings['tacking_anonymize'], true ); ?>> <?php esc_html_e( 'Check to anonymize visitor IPs. Required in some countries.', 'machete' ); ?></label><br>
 	</fieldset></td>
 	</tr>
+	</tbody>
 	</table>
 
 
@@ -148,7 +149,7 @@ if ( false !== $machete_settings ) {
 
 
 <table class="form-table">
-	<tbody><tr>
+	<tbody>
 	<tr>
 	<th scope="row"><?php esc_html_e( 'Code injection method', 'machete' ); ?></th>
 	<td><fieldset>
@@ -163,6 +164,7 @@ if ( false !== $machete_settings ) {
 		<label><input name="alfonso_content_injection_method" value="manual" type="radio" <?php checked( 'manual', $this->settings['alfonso_content_injection_method'], true ); ?>> <?php echo wp_kses_data( __( 'Edit your theme\'s <code>header.php</code> template manually and include this function:', 'machete' ) ); ?> <code>&lt;?php machete_custom_body_content() ?&gt;</code></label>
 	</fieldset></td>
 	</tr>
+	</tbody>
 	</table>
 
 
