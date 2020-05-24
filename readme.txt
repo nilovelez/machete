@@ -3,7 +3,7 @@ Contributors: nilovelez
 Donate link: https://machetewp.com/product/donation/
 Tags: cookies, analytics, code, css, javascript, admin
 Requires at least: 4.6
-Tested up to: 5.3.2
+Tested up to: 5.4.1
 Requires PHP: 5.6
 Stable tag: trunk
 License: WTFPL
@@ -69,6 +69,15 @@ Like it or not, the WordPress Block Editor (codenamed Gutenberg) is here to stay
 3. This is not your typical tracking script...
 
 == Changelog ==
+
+= 3.5 =
+* Changed to improve render on RTL languages
+* Typo and grammar fixes, general proofreading of the English language (kudos @noplanman)
+* Updated language files
+* Fixed: minor javascript bug
+* Tweak: prevented LastPass from loading on code fields (kudos @noplanman)
+* Fixed: Fix HTML layout errors (kudos @noplanman)
+* Style changes to adhere to WP Coding Style 
 
 = 3.4.2 =
 * Fixed: social share links didn't work on pages (kudos @davizoco for the heads up)
