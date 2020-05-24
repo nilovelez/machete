@@ -1,7 +1,7 @@
 #wpadminbar .machete-maintenance-active > .ab-item,
-#wpadminbar .machete-coming-soon-active > .ab-item{
-	color:#fff;
-	background-color: rgba(0,0,0,0.5);
+#wpadminbar .machete-coming-soon-active > .ab-item {
+	color: #fff;
+	background-color: rgba(0, 0, 0, 0.5);
 	position: relative;
 }
 #wpadminbar .machete-maintenance-active > .ab-item:before,
@@ -15,7 +15,7 @@
 	background-color: #f90;
 	border-radius: 7px;
 	padding: 0;
-	
+
 	position: relative;
 	top: 50%;
 	-ms-transform: translate(0, -50%); /* IE 9 */

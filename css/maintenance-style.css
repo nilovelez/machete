@@ -1,5 +1,5 @@
 #maintenance_page {
-	font-family: -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Oxygen-Sans,Ubuntu,Cantarell,"Helvetica Neue",sans-serif;
+	font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue", sans-serif;
 	font-size: 14px;
 	line-height: 1.4;
 	background: #eee;
@@ -14,7 +14,7 @@
 }
 
 /* defult content styles */
-#maintenance_page #content.default h1{
+#maintenance_page #content.default h1 {
 	font-size: 48px;
 	font-weight: bold;
 	line-height: 1.25;
@@ -31,7 +31,7 @@
 	line-height: 1.25;
 	font-weight: normal;
 }
-@media (max-width: 480px){
+@media (max-width: 480px) {
 	#maintenance_page #content.default h1 {
 		font-size: 36px;
 	}

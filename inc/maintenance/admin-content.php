@@ -85,7 +85,7 @@ if ( ! defined( 'MACHETE_ADMIN_INIT' ) ) {
 
 <div class="postbox machete-helpbox" data-collapsed="false">
 <button type="button" class="handlediv button-link"><span class="toggle-indicator" aria-hidden="true"><span class="dashicons dashicons-arrow-up"></span></span></button>
-	<h3 class="hndle"><span><span class="dashicons dashicons-sos"></span> <?php esc_html_e( 'How do I customize the maintenance page?', 'machete' ); ?></span></h2>
+	<h3 class="hndle"><span><span class="dashicons dashicons-sos"></span> <?php esc_html_e( 'How do I customize the maintenance page?', 'machete' ); ?></span></h3>
 	<div class="inside">
 		<table class="form-table"><tbody><tr valign="top"><th scope="row"></th><td>
 			<?php // translators: %s: Analytics & code tab link. ?>

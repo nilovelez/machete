@@ -59,7 +59,7 @@ class MACHETE_UTILS_MODULE extends MACHETE_MODULE {
 	 * * header_content.
 	 * * alfonso_content
 	 * * footer_content.
-	 * @param bool  $silent prevent the function from generating admin notices.
+	 * @param bool  $silent  prevent the function from generating admin notices.
 	 */
 	protected function save_settings( $options = array(), $silent = false ) {
 
