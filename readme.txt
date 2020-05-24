@@ -71,7 +71,7 @@ Like it or not, the WordPress Block Editor (codenamed Gutenberg) is here to stay
 == Changelog ==
 
 = 3.5 =
-* Changed to improve render on RTL languages
+* Changes to improve render on RTL languages
 * Typo and grammar fixes, general proofreading of the English language (kudos @noplanman)
 * Updated language files
 * Fixed: minor javascript bug
