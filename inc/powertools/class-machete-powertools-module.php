@@ -29,7 +29,7 @@ class MACHETE_POWERTOOLS_MODULE extends MACHETE_MODULE {
 		);
 
 		$this->powertools_array = array(
-			'widget_shortcodes' => array(
+			'widget_shortcodes'   => array(
 				'title'       => __( 'Shortcodes in Widgets', 'machete' ),
 				'description' => __( 'Enables the use of shortcodes in text/html widgets. It may slightly impact performance', 'machete' ),
 			),
