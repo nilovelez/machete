@@ -3,7 +3,7 @@ Contributors: nilovelez
 Donate link: https://machetewp.com/product/donation/
 Tags: cookies, analytics, code, css, javascript, admin
 Requires at least: 4.6
-Tested up to: 5.4.1
+Tested up to: 5.5
 Requires PHP: 5.6
 Stable tag: trunk
 License: WTFPL
@@ -69,6 +69,9 @@ Like it or not, the WordPress Block Editor (codenamed Gutenberg) is here to stay
 3. This is not your typical tracking script...
 
 == Changelog ==
+
+= 3.5.1 =
+* Checked for compatibility with WordPress 5.5
 
 = 3.5 =
 * Changes to improve render on RTL languages
