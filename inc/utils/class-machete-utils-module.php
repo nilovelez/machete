@@ -78,11 +78,15 @@ class MACHETE_UTILS_MODULE extends MACHETE_MODULE {
 
 		if ( ! empty( $options['tracking_id'] ) ) {
 
-			if ( ! preg_match( '/^ua-\d{4,9}-\d{1,4}$/i', strval( $options['tracking_id'] ) ) ) {
-				// invalid Analytics Tracking ID
-				// http://code.google.com/apis/analytics/docs/concepts/gaConceptsAccounts.html#webProperty .
+			if ( ! preg_match( '/^(ua-\d{4,11}-\d{1,4})|(g(tm)?-[a-z0-9]{4,11})$/i', strval( $options['tracking_id'] ) ) ) {
+				/*
+				Invalid Tracking ID. Accepted formats:
+					UA-1234567-12
+					G-1234ABCD
+					GTM-1234ABCD
+				*/
 				if ( ! $silent ) {
-					$this->notice( __( 'That doesn\'t look like a valid Google Analytics tracking ID', 'machete' ), 'warning' );
+					$this->notice( __( 'That doesn\'t look like a valid Google Tag Managet or Analytics tracking ID', 'machete' ), 'warning' );
 				}
 				return false;
 			}
@@ -97,7 +101,7 @@ class MACHETE_UTILS_MODULE extends MACHETE_MODULE {
 			$settings['tracking_format'] = $options['tracking_format'];
 
 			if ( isset( $options['tacking_anonymize'] ) ) {
-				$anonymize_ip                  = ',{anonymizeIp: true}';
+				$anonymize_ip                  = ',{ \'anonymize_ip\': true }';
 				$settings['tacking_anonymize'] = 1;
 			} else {
 				$anonymize_ip                  = '';
@@ -111,12 +115,6 @@ class MACHETE_UTILS_MODULE extends MACHETE_MODULE {
 			}
 
 			// let's generate the Google Analytics tracking code.
-			if ( 'machete' === $settings['tracking_format'] ) {
-				$header_content .= 'if (!navigator.userAgent || (' . "\n";
-				$header_content .= '  (navigator.userAgent.indexOf("Speed Insights") == -1) &&' . "\n";
-				$header_content .= '  (navigator.userAgent.indexOf("Googlebot") == -1)' . "\n";
-				$header_content .= ')) {' . "\n";
-			}
 			if ( 'none' !== $settings['tracking_format'] ) {
 
 				$js_replaces     = array(
@@ -128,12 +126,7 @@ class MACHETE_UTILS_MODULE extends MACHETE_MODULE {
 					array_values( $js_replaces ),
 					$this->get_contents( $this->path . 'templates/analytics.tpl.js' )
 				);
-			}
-			if ( 'machete' === $settings['tracking_format'] ) {
-				$header_content .= '}' . "\n";
-			}
-			if ( 'none' !== $settings['tracking_format'] ) {
-				$header_content = "<script>\n" . $header_content . "</script>\n<!-- Machete Header -->\n";
+				$header_content .= "\n<!-- Machete Header -->\n";
 			}
 		} else {
 			$settings['tracking_id']     = '';

@@ -37,9 +37,9 @@ if ( ! $machete_alfonso_content ) {
 	$machete_alfonso_content = '';
 }
 
-$machete_settings = wp_enqueue_code_editor( array( 'type' => 'text/html' ) );
+$machete_editor_settings = wp_enqueue_code_editor( array( 'type' => 'text/html' ) );
 
-if ( false !== $machete_settings ) {
+if ( false !== $machete_editor_settings ) {
 
 	wp_enqueue_script(
 		'machete_codemirror_tabs',
@@ -86,7 +86,6 @@ if ( false !== $machete_settings ) {
 	<th scope="row"><?php esc_html_e( 'Tracking Code', 'machete' ); ?></th>
 	<td><fieldset><legend class="screen-reader-text"><span><?php esc_html_e( 'Tracking Code', 'machete' ); ?></span></legend>
 		<label><input name="tracking_format" value="standard" type="radio" <?php checked( 'standard', $this->settings['tracking_format'], true ); ?>> <?php esc_html_e( 'Standard Google Analytics tracking code', 'machete' ); ?></label><br>
-		<label><input name="tracking_format" value="machete" type="radio" <?php checked( 'machete', $this->settings['tracking_format'], true ); ?>> <acronym title="<?php esc_attr_e( 'Uses JavaScript to hide the tracking code from PageSpeed and GoogleBot', 'machete' ); ?>"><?php esc_html_e( 'PageSpeed-optimized tracking code', 'machete' ); ?></acronym> <span class="machete_deprecated_badge"><?php esc_html_e( 'Deprecated', 'machete' ); ?></span></label><br>
 		<label><input name="tracking_format" value="none" type="radio" <?php checked( 'none', $this->settings['tracking_format'], true ); ?>> <?php esc_html_e( 'No tracking code', 'machete' ); ?></label><br>
 	</fieldset></td>
 	</tr>
@@ -94,7 +93,7 @@ if ( false !== $machete_settings ) {
 	<tr>
 	<th scope="row"><label for="tracking_id"><?php esc_html_e( 'Tracking ID', 'machete' ); ?></label></th>
 	<td><input name="tracking_id" id="tracking_id" aria-describedby="tracking_id_description" value="<?php echo esc_attr( $this->settings['tracking_id'] ); ?>" class="regular-text" type="text">
-	<p class="description" id="tracking_id_description"><?php esc_html_e( 'Format:', 'machete' ); ?> UA-12345678-1</p></td>
+	<p class="description" id="tracking_id_description"><?php esc_html_e( 'Valid formats:', 'machete' ); ?> UA-12345678-1, G-123456ABCD, GTM-123456ABCD</p></td>
 	</tr>
 
 	<tr>
@@ -205,8 +204,7 @@ MACHETE.utils = (function($){
 	return {
 		isAnalytics: function(str){
 			if (!str) return false;
-			// http://code.google.com/apis/analytics/docs/concepts/gaConceptsAccounts.html#webProperty
-			return (/^ua-\d{4,9}-\d{1,4}$/i).test(str.toString());
+			return (/^(ua-\d{4,11}-\d{1,4})|(g(tm)?-[a-z0-9]{4,11})$/i).test(str.toString());			
 		}
 	}
 

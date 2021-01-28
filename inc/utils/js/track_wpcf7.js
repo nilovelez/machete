@@ -1,5 +1,5 @@
 document.addEventListener( 'wpcf7mailsent', function( e ) {
-	if (typeof ga != "undefined"){
+	if ( (typeof ga != "undefined") || (typeof gtag != "undefined") ){
         var title = '(not set)';
         if ( e && e.detail && e.detail.inputs ){
             var inputs = e.detail.inputs;
@@ -15,6 +15,15 @@ document.addEventListener( 'wpcf7mailsent', function( e ) {
                 title = e.target.id;
             }
         }
-        ga('send', 'event', 'Contact Form 7', 'submit', title);
+        if (typeof ga != "undefined"){
+            ga('send', 'event', 'Contact Form 7', 'submit', title);
+        }
+        if (typeof gtag != "undefined"){
+            gtag('event', generate_lead, {
+                'event_label': title,
+                'event_category': 'Contact Form 7',
+            });
+        }
+    
 	}
 }, false );

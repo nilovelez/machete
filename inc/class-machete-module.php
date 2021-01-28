@@ -67,6 +67,10 @@ abstract class MACHETE_MODULE {
 			'machete_' . $this->params['slug'] . '_settings',
 			$this->default_settings
 		);
+		// Overwrites old pagespeed optimized code.
+		if ( 'machete' === $this->settings['tracking_format'] ) {
+			$this->settings['tracking_format'] = 'standard';
+		}
 		return array_merge( $this->default_settings, $this->settings );
 	}
 	/**
