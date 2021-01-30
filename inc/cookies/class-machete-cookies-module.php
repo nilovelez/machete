@@ -111,7 +111,7 @@ class MACHETE_COOKIES_MODULE extends MACHETE_MODULE {
 			}
 		}
 
-		$cookies_bar_js = $this->get_contents( $this->path . 'templates/cookies_bar_js.min.js' );
+		$cookies_bar_js = $this->get_contents( $this->path . 'templates/cookies_bar_js.js' );
 		if ( false === $cookies_bar_js ) {
 			if ( ! $silent ) {
 				// translators: %s path to template file.
@@ -133,6 +133,9 @@ class MACHETE_COOKIES_MODULE extends MACHETE_MODULE {
 			return false;
 		}
 		$cookies_bar_html = "var machete_cookies_bar_html = '" . addslashes( $cookies_bar_html ) . "'; \n";
+
+		// translators: button to config cookie settings again.
+		$cookies_bar_html .= "var machete_cookies_configbar_html = '<div id=\"machete_cookie_config_btn\" class=\"machete_cookie_config_btn\">" . __( 'Cookies', 'machete' ) . "</div>'; \n";
 
 		if ( empty( $options['bar_status'] ) || ( 'disabled' === $options['bar_status'] ) ) {
 			$settings['bar_status'] = 'disabled';

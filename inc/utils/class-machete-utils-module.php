@@ -34,6 +34,23 @@ class MACHETE_UTILS_MODULE extends MACHETE_MODULE {
 		);
 	}
 	/**
+	 * Reads the modules settings to the settings proerty,
+	 * also returns them in an array.
+	 *
+	 * @return array module settings array
+	 */
+	protected function read_settings() {
+		$this->settings = get_option(
+			'machete_' . $this->params['slug'] . '_settings',
+			$this->default_settings
+		);
+		// Overwrites old pagespeed optimized code.
+		if ( 'machete' === $this->settings['tracking_format'] ) {
+			$this->settings['tracking_format'] = 'standard';
+		}
+		return array_merge( $this->default_settings, $this->settings );
+	}
+	/**
 	 * Executes code related to the WordPress admin.
 	 */
 	public function admin() {
