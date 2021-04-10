@@ -67,7 +67,8 @@ abstract class MACHETE_MODULE {
 			'machete_' . $this->params['slug'] . '_settings',
 			$this->default_settings
 		);
-		return array_merge( $this->default_settings, $this->settings );
+		$this->settings = array_merge( $this->default_settings, $this->settings );
+		return $this->settings;
 	}
 	/**
 	 * Executes code related to the WordPress admin.
