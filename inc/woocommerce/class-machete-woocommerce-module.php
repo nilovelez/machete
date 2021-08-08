@@ -22,24 +22,27 @@ class MACHETE_WOOCOMMERCE_MODULE extends MACHETE_MODULE {
 				'slug'        => 'woocommerce',
 				'title'       => __( 'WooCommerce', 'machete' ),
 				'full_title'  => __( 'WooCommerce Utils', 'machete' ),
-				'description' => __( 'Utilities and fixes that make your live a little easier when working with WooCommerce', 'machete' ),
+				'description' => __( 'Utilities and fixes that make your life a little easier when working with WooCommerce.', 'machete' ),
 				'role'        => 'publish_posts', // targeting Author role.
+				'is_active'   => true,
 			)
 		);
 		$this->woo_array = array(
-			'free_shipping' => array(
+			'free_shipping'  => array(
 				'title'       => __( 'Fix free shipping', 'machete' ),
-				'description' => __( 'Hides all paid shipping methods from checkout when free shipping is available.', 'machete' ),
+				'description' => __( 'Hides all paid shipping methods from checkout when free shipping is available. Keeps "Free shipping" and "local Pickup".', 'machete' ),
 			),
-			'price_from'    => array(
+			'price_from'     => array(
 				'title'       => __( 'Variable price from', 'machete' ),
 				'description' => __( 'Replaces the prince interval on variable products with a "Price from" label.', 'machete' ),
 			),
+			'trailing_zeros' => array(
+				'title'       => __( 'Hide trailing zeros', 'machete' ),
+				'description' => __( 'Hides trailing zeros on prices. Shows $5.00 as $5', 'machete' ),
+			),
 		);
 
-		$this->default_settings = array(
-			'bar_status' => 'disabled',
-		);
+		$this->default_settings = array();
 
 	}
 	/**

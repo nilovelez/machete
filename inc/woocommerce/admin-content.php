@@ -22,7 +22,7 @@ $machete_allowed_description_tags = array(
 	<div class="wp-header-end"></div><!-- admin notices go after .wp-header-end or .wrap>h2:first-child -->
 	<h1><?php $this->icon(); ?> <?php esc_html_e( 'WooCommerce Utils', 'machete' ); ?></h1>
 
-	<p class="tab-description"><?php esc_html_e( 'WordPress has a lot of code just to keep backward compatibility or to enable optional features. You can disable most of it and save some time from each page request while making your installation safer', 'machete' ); ?></p>
+	<p class="tab-description"><?php esc_html_e( 'WooCommerce was designed to work for every possible use case, but that often leads to unexpected behavior. These simple fixes can improve the WooCommerce user experience by making it behave as clients expect.', 'machete' ); ?></p>
 
 	<?php $machete->admin_tabs( 'machete-cleanup' ); ?>
 
@@ -37,13 +37,11 @@ $machete_allowed_description_tags = array(
 
 		<h3><?php esc_html_e( 'WooCommerce Utils', 'machete' ); ?></h3>
 
-		<p><?php esc_html_e( 'This section removes code from the &lt;head&gt; tag. This makes your site faster and reduces the amount of information revealed to a potential attacker.', 'machete' ); ?></p>
-
 		<table class="wp-list-table widefat fixed striped posts machete-options-table machete-woo-table">
 		<thead>
 			<tr>
 				<td class="manage-column column-cb check-column " ><input type="checkbox" name="check_all" id="machete_woo_checkall_fld" <?php checked( true, $this->all_woo_checked, true ); ?>></td>
-				<th class="column-title manage-column column-primary"><?php esc_html_e( 'Remove', 'machete' ); ?></th>
+				<th class="column-title manage-column column-primary"><?php esc_html_e( 'Option', 'machete' ); ?></th>
 				<th><?php esc_html_e( 'Explanation', 'machete' ); ?></th>
 			</tr>
 		</thead>
@@ -61,8 +59,6 @@ $machete_allowed_description_tags = array(
 
 		</tbody>
 		</table>
-
-
 
 		<?php submit_button(); ?>
 		</form>
@@ -93,7 +89,5 @@ $machete_allowed_description_tags = array(
 			}
 		}
 	});
-
-
 })(jQuery);
 </script>
