@@ -119,12 +119,17 @@
 	color: #FF9900;
 }
 
+.machete-helpbox .handlediv {
+	float: left;
+	text-align: center;
+}
 .machete-helpbox h3.hndle {
 	font-size: 14px;
 	padding: 8px 12px;
 	margin: 0;
 	line-height: 1.4;
 	cursor: pointer !important;
+
 }
 
 #mache-utils-options .CodeMirror {
