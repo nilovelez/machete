@@ -30,7 +30,7 @@ if ( ! array_key_exists( 'banner', $machete_args ) ) {
 <?php } ?>
 
 	<div class="machete-module-text">
-		<?php if ( $machete_args['has_config'] ) { ?>
+		<?php if ( $machete_args['is_active'] && $machete_args['has_config'] ) { ?>
 			<h3><a href="<?php echo esc_url( $machete_args['tab_url'] ); ?>"
 		title="<?php echo esc_attr( __( 'Configure', 'machete' ) . ' ' . $machete_args['full_title'] ); ?>"><?php echo esc_html( $machete_args['full_title'] ); ?></a></h3>
 		<?php } else { ?>
@@ -118,8 +118,11 @@ if ( ! array_key_exists( 'banner', $machete_args ) ) {
 			<?php } ?>
 
 		<?php } else { ?>
-
+			<?php if ( $machete_args['can_be_enabled'] ) { ?>
 			<a href="<?php echo esc_url( add_query_arg( 'machete-action', 'activate', $machete_action_url ) ); ?>" class="button-secondary" data-status="1"><?php esc_html_e( 'Activate', 'machete' ); ?></a>
+			<?php } else {  ?>
+				<span class="button-secondary button-disabled"><?php esc_html_e( 'Activate', 'machete' ); ?></span>
+			<?php } ?>
 
 		<?php } ?>
 		</div>

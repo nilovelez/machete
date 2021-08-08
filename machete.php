@@ -66,12 +66,6 @@ foreach ( $machete_disabled_modules as $machete_module ) {
 	}
 }
 
-// Manage of external modules.
-if ( defined( 'MACHETE_POWERTOOLS_INIT' ) ) {
-	$machete->modules['powertools']->params['is_active']   = true;
-	$machete->modules['powertools']->params['description'] = __( 'Machete PowerTools are now active! Enjoy your new toy!', 'machete' );
-}
-
 // Main init.
 add_action(
 	'init',
@@ -79,6 +73,19 @@ add_action(
 		global $machete;
 
 		load_plugin_textdomain( 'machete', false, dirname( plugin_basename( __FILE__ ) ) . '/languages/' );
+
+		// Manage of external modules.
+		if ( defined( 'MACHETE_POWERTOOLS_INIT' ) ) {
+			$machete->modules['powertools']->params['is_active']   = true;
+			$machete->modules['powertools']->params['description'] = __( 'Machete PowerTools are now active! Enjoy your new toy!', 'machete' );
+		}
+
+		// Disable WooCommerce module if WooCommece is active.
+		if ( ! function_exists( 'is_woocommerce' ) ) {
+			$machete->modules['woocommerce']->params['is_active']       = false;
+			$machete->modules['woocommerce']->params['can_be_enabled']  = false;
+			$machete->modules['woocommerce']->params['description']     .= ' ' . __( 'You have to install and activate WooCommerce to use this module.', 'machete' );
+		}
 
 		if ( defined( 'WP_CLI' ) && WP_CLI ) {
 			define( 'MACHETE_CLI_INIT', true );

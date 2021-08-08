@@ -28,6 +28,7 @@ abstract class MACHETE_MODULE {
 		'is_active'       => true,
 		'has_config'      => true,
 		'can_be_disabled' => true,
+		'can_be_enabled'  => true,
 		'role'            => 'manage_options',
 	);
 	/**
