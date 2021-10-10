@@ -9,6 +9,14 @@
 if ( ! defined( 'MACHETE_ADMIN_INIT' ) ) {
 	exit;
 }
+// Replace old themes with equivalent new ones.
+if ( 'light' === $this->settings['bar_theme'] ) {
+	$this->settings['bar_theme'] = 'new_light';
+}
+if ( 'dark' === $this->settings['bar_theme'] ) {
+	$this->settings['bar_theme'] = 'new_dark';
+}
+
 ?>
 
 <div class="wrap machete-wrap machete-section-wrap">
