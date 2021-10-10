@@ -20,8 +20,8 @@ class MACHETE_ABOUT_MODULE extends MACHETE_MODULE {
 		$this->init(
 			array(
 				'slug'            => 'about',
-				'title'           => __( 'About Machete', 'machete' ),
-				'full_title'      => __( 'About Machete', 'machete' ),
+				'title'           => __( 'Machete Dashboard', 'machete' ),
+				'full_title'      => __( 'Machete Dashboard', 'machete' ),
 				'is_active'       => true,
 				'has_config'      => false,
 				'can_be_disabled' => false,
