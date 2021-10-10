@@ -31,12 +31,20 @@ if ( ! defined( 'MACHETE_ADMIN_INIT' ) ) {
 	<th scope="row"><?php esc_html_e( 'Cookie alert status', 'machete' ); ?></th>
 	<td><fieldset><legend class="screen-reader-text"><span><?php esc_html_e( 'Cookie alert status', 'machete' ); ?></span></legend>
 		<label><input name="bar_status" value="enabled" type="radio" <?php checked( 'enabled', $this->settings['bar_status'], true ); ?>> <?php esc_html_e( 'Enabled', 'machete' ); ?></label><br>
-		<label><input name="bar_status" value="disabled" type="radio" <?php checked( 'disabled', $this->settings['bar_status'], true ); ?>> <?php esc_html_e( 'Disabled', 'machete' ); ?></label><br>
+		<label><input name="bar_status" value="disabled" type="radio" <?php checked( 'disabled', $this->settings['bar_status'], true ); ?>> <?php esc_html_e( 'Disabled', 'machete' ); ?></label>
+	</fieldset></td>
+</tr><tr>
+	<th scope="row"><?php esc_html_e( 'Third party cookies?', 'machete' ); ?></th>
+	<td><fieldset><legend class="screen-reader-text"><span><?php esc_html_e( 'Third party cookies?', 'machete' ); ?></span></legend>
+		<label><input name="bar_status" value="enabled" type="checkbox" <?php checked( 'enabled', $this->settings['third_party'], true ); ?>> <?php esc_html_e( 'Check this if you use third-party cookies that require consent from the user.', 'machete' ); ?></label>
 	</fieldset></td>
 </tr><tr>
 	<th scope="row"><label for="warning_text"><?php esc_html_e( 'Cookie warning text', 'machete' ); ?></label></th>
 	<td><textarea name="warning_text" rows="3" cols="50" id="warning_text" class="large-text code"><?php echo esc_textarea( stripslashes( $this->settings['warning_text'] ) ); ?></textarea>
 	<p class="description" style="text-align: right;"><a id="restore_cookie_text_btn"><?php esc_html_e( 'Restore default warning text', 'machete' ); ?></a></p></td>
+</tr><tr>
+	<th scope="row"><label for="partial_accept_text"><?php esc_html_e( 'Accept required cookies text', 'machete' ); ?></label></th>
+	<td><input name="partial_accept_text" id="partial_accept_text" value="<?php echo esc_html( $this->settings['partial_accept_text'] ); ?>" class="regular-text ltr" type="text"></td>
 </tr><tr>
 	<th scope="row"><label for="accept_text"><?php esc_html_e( 'Accept button text', 'machete' ); ?></label></th>
 	<td><input name="accept_text" id="accept_text" value="<?php echo esc_html( $this->settings['accept_text'] ); ?>" class="regular-text ltr" type="text"></td>
@@ -82,26 +90,29 @@ if ( ! defined( 'MACHETE_ADMIN_INIT' ) ) {
 (function($){
 
 	var cookie_bar_templates = [];
+	var cookie_bar_theme = '<?php echo esc_js( $this->settings['bar_theme'] ); ?>';
+
 	<?php
 	$machete_cookie_replaces = array(
-		'{{accept_text}}'  => '<span id="machete_cookie_preview_accept"></span>',
-		'{{warning_text}}' => '<span id="machete_cookie_preview_warning"></span>',
+		'{{accept_text}}'         => '<span id="machete_cookie_preview_accept"></span>',
+		'{{partial_accept_text}}' => '<span id="machete_cookie_preview_partial_accept"></span>',
+		'{{warning_text}}'        => '<span id="machete_cookie_preview_warning"></span>',
 	);
+
+	// OJO, cookies_bar_innerhtml define el innerHTMl de la barra como var machete_cookies_bar_html.
+	echo str_replace(
+		array_keys( $machete_cookie_replaces ),
+		array_values( $machete_cookie_replaces ),
+		$this->cookies_bar_innerhtml
+	); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped 
+
 
 	foreach ( $this->themes as $machete_theme_slug => $machete_params ) {
 		$machete_params['html'] = $this->get_contents( $machete_params['template'] );
-
-		$machete_cookie_replaces['{{extra_css}}'] = $this->themes[ $machete_theme_slug ]['extra_css'];
-
-		$machete_params['html'] = str_replace(
-			array_keys( $machete_cookie_replaces ),
-			array_values( $machete_cookie_replaces ),
-			$machete_params['html']
-		);
 		?>
 		cookie_bar_templates['<?php echo esc_js( $machete_theme_slug ); ?>'] = '<?php echo wp_slash( $machete_params['html'] ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?>';
-
 	<?php } ?>
+
 
 	$(".bar-theme-radio").change( function(){
 		render_bar_preview($(this).val());
@@ -109,23 +120,39 @@ if ( ! defined( 'MACHETE_ADMIN_INIT' ) ) {
 
 	var render_bar_preview = function( theme ) {
 		if ( ! theme ) return;
-		$( '#machete_cookie_container' ).html( cookie_bar_templates[theme] );
+
+		macheteCookieStyles = document.getElementById( 'macheteCookieStyles' );
+		if (macheteCookieStyles.styleSheet) {
+			macheteCookieStyles.styleSheet.cssText = cookie_bar_templates[theme];
+		} else { 
+			macheteCookieStyles.innerHTML = cookie_bar_templates[theme];
+		}	
 		update_preview_text();
 	}
 
 	var update_preview_text = function(){
 		$( '#machete_cookie_preview_warning' ).html( $( '#warning_text' ).val() );
+		$( '#machete_cookie_preview_partial_accept' ).html( $( '#partial_accept_text' ).val() );
 		$( '#machete_cookie_preview_accept' ).html( $( '#accept_text' ).val() );
 	}
 
 	$( "#warning_text" ).on( 'input', function() { update_preview_text(); });
 	$( "#accept_text" ).on( 'input', function() { update_preview_text(); });
+	$( "#partial_accept_text" ).on( 'input', function() { update_preview_text(); });
 
 
 	var container       = document.createElement( 'div' );
 	container.id        = 'machete_cookie_container';
 	container.className = 'machete_cookie_container';
-	container.innerHTML = cookie_bar_templates['<?php echo esc_js( $this->settings['bar_theme'] ); ?>'];
+	
+	var cookiebar       = document.createElement( 'div' );
+	cookiebar.id        = 'machete_cookie_bar';
+	cookiebar.className = 'machete_cookie_bar';
+	cookiebar.innerHTML = machete_cookies_bar_html;
+
+	container.appendChild( cookiebar );
+
+	/* Append style to the tag name */
 
 	Object.assign( container.style, {
 		position: 'fixed',
@@ -136,6 +163,27 @@ if ( ! defined( 'MACHETE_ADMIN_INIT' ) ) {
 	var body = document.getElementsByTagName('body')[0];
 	body.appendChild(container);
 	update_preview_text();
+
+
+	// creo dinamicamente la hoja de estilo para la demo
+
+	var macheteCookieStyles = document.createElement('style');
+	macheteCookieStyles.type = 'text/css';
+	macheteCookieStyles.id = 'macheteCookieStyles';
+
+	if (macheteCookieStyles.styleSheet) {
+		macheteCookieStyles.styleSheet.cssText = cookie_bar_templates[cookie_bar_theme];
+	} else { 
+		macheteCookieStyles.innerHTML = cookie_bar_templates[cookie_bar_theme];
+	}
+
+
+	var head = document.getElementsByTagName("head")[0];
+	head.appendChild(macheteCookieStyles);
+
+
+
+
 
 
 	$('#mache-cookies-options').submit(function( e ) {
