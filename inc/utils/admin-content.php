@@ -85,15 +85,15 @@ if ( false !== $machete_editor_settings ) {
 	<tr>
 	<th scope="row"><?php esc_html_e( 'Tracking Code', 'machete' ); ?></th>
 	<td><fieldset><legend class="screen-reader-text"><span><?php esc_html_e( 'Tracking Code', 'machete' ); ?></span></legend>
-		<label><input name="tracking_format" value="standard" type="radio" <?php checked( 'standard', $this->settings['tracking_format'], true ); ?>> <?php esc_html_e( 'Standard Google Analytics tracking code', 'machete' ); ?></label><br>
-		<label><input name="tracking_format" value="none" type="radio" <?php checked( 'none', $this->settings['tracking_format'], true ); ?>> <?php esc_html_e( 'No tracking code', 'machete' ); ?></label><br>
+		<label><input name="tracking_format" value="standard" type="radio" <?php checked( 'standard', $this->settings['tracking_format'], true ); ?>> <?php esc_html_e( 'Active', 'machete' ); ?></label><br>
+		<label><input name="tracking_format" value="none" type="radio" <?php checked( 'none', $this->settings['tracking_format'], true ); ?>> <?php esc_html_e( 'Inactive', 'machete' ); ?></label><br>
 	</fieldset></td>
 	</tr>
 
 	<tr>
 	<th scope="row"><label for="tracking_id"><?php esc_html_e( 'Tracking ID', 'machete' ); ?></label></th>
 	<td><input name="tracking_id" id="tracking_id" aria-describedby="tracking_id_description" value="<?php echo esc_attr( $this->settings['tracking_id'] ); ?>" class="regular-text" type="text">
-	<p class="description" id="tracking_id_description"><?php esc_html_e( 'Valid formats:', 'machete' ); ?> UA-12345678-1, G-123456ABCD, GTM-123456ABCD</p></td>
+	<p class="description" id="tracking_id_description"><?php esc_html_e( 'Google Analytics property ID or Tag Manager container ID', 'machete' ); ?><br><?php esc_html_e( 'Valid formats:', 'machete' ); ?> UA-12345678-1, G-123456ABCD, GTM-123456ABCD</p></td>
 	</tr>
 
 	<tr>
@@ -166,13 +166,6 @@ if ( false !== $machete_editor_settings ) {
 	</tbody>
 	</table>
 
-
-
-
-
-
-
-
 </div>
 
 
@@ -210,18 +203,15 @@ MACHETE.utils = (function($){
 
 })(jQuery);
 
-
 (function($){
-
 	$('#mache-utils-options').submit(function( e ) {
-
 		var tracking_id = $('#tracking_id').val();
 		var tracking_format = $('input[name=tracking_format]:checked', '#mache-utils-options').val();
 
 		console.log(tracking_format);
 
 		if (!MACHETE.utils.isAnalytics(tracking_id) && (tracking_format != 'none')){
-			window.alert('<?php echo esc_js( __( 'That doesn\'t look like a valid Google Analytics tracking ID', 'machete' ) ); ?>');
+			window.alert('<?php echo esc_js( __( 'That doesn\'t look like a valid Google Tag Manager container ID or Analytics Property ID', 'machete' ) ); ?>');
 			e.preventDefault();
 			return;
 		}
