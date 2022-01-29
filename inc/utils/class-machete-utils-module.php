@@ -95,7 +95,7 @@ class MACHETE_UTILS_MODULE extends MACHETE_MODULE {
 
 		if ( ! empty( $options['tracking_id'] ) ) {
 
-			if ( ! preg_match( '/^(ua-\d{4,11}-\d{1,4})|(g(tm)?-[a-z0-9]{4,11})$/i', strval( $options['tracking_id'] ) ) ) {
+			if ( ! preg_match( '/^(ua-\d{4,11}-\d{1,4})$|^(g(tm)?-[a-z0-9]{4,11})$/i', strval( $options['tracking_id'] ) ) ) {
 				/*
 				Invalid Tracking ID. Accepted formats:
 					UA-1234567-12

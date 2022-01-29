@@ -204,7 +204,7 @@ MACHETE.utils = (function($){
 	return {
 		isAnalytics: function(str){
 			if (!str) return false;
-			return (/^(ua-\d{4,11}-\d{1,4})|(g(tm)?-[a-z0-9]{4,11})$/i).test(str.toString());			
+			return (/^(ua-\d{4,11}-\d{1,4})$|^(g(tm)?-[a-z0-9]{4,11})$/i).test(str.toString());			
 		}
 	}
 
