@@ -142,6 +142,11 @@ class MACHETE_SOCIAL_MODULE extends MACHETE_MODULE {
 			function() {
 
 				global $post;
+
+				// bail if not on a single.
+				if ( ! is_singular() ) {
+					return;
+				}
 				// bail if (no active positions OR no active post types ) AND no shortcode is present.
 				if (
 					(
@@ -197,7 +202,7 @@ class MACHETE_SOCIAL_MODULE extends MACHETE_MODULE {
 
 				global $post;
 				if (
-					! ( is_single() || is_singular() ) ||
+					! is_singular() ||
 					! in_the_loop() ||
 					! is_main_query() ||
 					// check if current post type is active.
