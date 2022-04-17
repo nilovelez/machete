@@ -15,15 +15,17 @@ document.addEventListener( 'wpcf7mailsent', function( e ) {
                 title = e.target.id;
             }
         }
+        // Universal Analytics ga.js
         if (typeof ga != "undefined"){
             ga('send', 'event', 'Contact Form 7', 'submit', title);
         }
+        // Global site tag gtag.js
         if (typeof gtag != "undefined"){
             gtag('event', generate_lead, {
-                'event_label': title,
                 'event_category': 'Contact Form 7',
+                'event_action': 'submit',
+                'event_label': title
             });
         }
-    
 	}
 }, false );

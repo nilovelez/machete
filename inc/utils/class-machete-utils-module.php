@@ -27,9 +27,12 @@ class MACHETE_UTILS_MODULE extends MACHETE_MODULE {
 		);
 		$this->default_settings = array(
 			'tracking_id'                      => '',
+			'tracking_ga4'                     => '',
+			'tracking_gtm'                     => '',
 			'tracking_format'                  => 'none',
 			'tacking_anonymize'                => 0,
 			'track_wpcf7'                      => 0,
+			'tracking_filename'                => '',
 			'alfonso_content_injection_method' => 'manual',
 		);
 	}
@@ -48,7 +51,8 @@ class MACHETE_UTILS_MODULE extends MACHETE_MODULE {
 		if ( 'machete' === $this->settings['tracking_format'] ) {
 			$this->settings['tracking_format'] = 'standard';
 		}
-		return array_merge( $this->default_settings, $this->settings );
+		$this->settings = array_merge( $this->default_settings, $this->settings );
+		return $this->settings;
 	}
 	/**
 	 * Executes code related to the WordPress admin.
@@ -80,8 +84,8 @@ class MACHETE_UTILS_MODULE extends MACHETE_MODULE {
 	 */
 	protected function save_settings( $options = array(), $silent = false ) {
 
-		$settings       = $this->read_settings();
-		$header_content = '';
+		$settings            = $this->read_settings();
+		$tracking_script_js  = '';
 
 		if ( ! is_dir( MACHETE_DATA_PATH ) ) {
 			if ( ! wp_mkdir_p( MACHETE_DATA_PATH ) ) {
@@ -93,72 +97,173 @@ class MACHETE_UTILS_MODULE extends MACHETE_MODULE {
 			}
 		}
 
-		if ( ! empty( $options['tracking_id'] ) ) {
+		if ( ! in_array( $options['tracking_format'], array( 'standard', 'machete', 'none' ), true ) ) {
+			if ( ! $silent ) {
+				$this->notice( __( 'Something went wrong. Unknown tracking code format requested.', 'machete' ), 'warning' );
+			}
+			return false;
+		}
+		$settings['tracking_format'] = $options['tracking_format'];
 
-			if ( ! preg_match( '/^(ua-\d{4,11}-\d{1,4})|(g(tm)?-[a-z0-9]{4,11})$/i', strval( $options['tracking_id'] ) ) ) {
+		if ( isset( $options['tacking_anonymize'] ) ) {
+			$settings['tacking_anonymize'] = 1;
+		} else {
+			$settings['tacking_anonymize'] = 0;
+		}
+
+		if ( isset( $options['track_wpcf7'] ) ) {
+			$settings['track_wpcf7'] = 1;
+		} else {
+			$settings['track_wpcf7'] = 0;
+		}
+
+		/* Start GTAG (universal &y GA4) */
+		if ( ! empty( $options['tracking_ga4'] ) || ! empty( $options['tracking_id'] ) ) {
+
+			/* Start Universal Analytics */
+			if ( ! empty( $options['tracking_id'] ) ) {
+
+				if ( ! preg_match( '/^(ua-\d{4,11}-\d{1,4})$/i', strval( $options['tracking_id'] ) ) ) {
+					/*
+					Invalid Tracking ID. Accepted format: UA-1234567-12
+					*/
+					if ( ! $silent ) {
+						$this->notice( __( 'That doesn\'t look like a valid Universal Analytics Property ID', 'machete' ), 'warning' );
+					}
+					return false;
+				}
+				$settings['tracking_id'] = $options['tracking_id'];
+
+				// let's generate the tracking code.
+				if ( 'none' !== $settings['tracking_format'] ) {
+
+					$js_replaces         = array(
+						'{{tracking_id}}' => $options['tracking_id'],
+					);
+					$tracking_id_js      = str_replace(
+						array_keys( $js_replaces ),
+						array_values( $js_replaces ),
+						$this->get_contents( $this->path . 'templates/gtag.tpl.html' )
+					);
+					$tracking_script_js .= $tracking_id_js . "\n";
+					$tracking_script_js .= 'gtag("config", "' . $options['tracking_id'] . '"';
+					if ( 1 === $settings['tacking_anonymize'] ) {
+						$tracking_script_js .= ', { \'anonymize_ip\': true }';
+					}
+					$tracking_script_js .= ');' . "\n";
+				}
+			} else {
+				$settings['tracking_id'] = '';
+			}
+			/* End Universal Analytics */
+
+			/* Start Google Analytics 4 */
+			if ( ! empty( $options['tracking_ga4'] ) ) {
+
+				if ( ! preg_match( '/^(g-[a-z0-9]{4,11})$/i', strval( $options['tracking_ga4'] ) ) ) {
+					/*
+					Invalid Tracking ID. Accepted format: G-1234ABCD
+					*/
+					if ( ! $silent ) {
+						$this->notice( __( 'That doesn\'t look like a valid Google Analytics 4 Property ID', 'machete' ), 'warning' );
+					}
+					return false;
+				}
+				$settings['tracking_ga4'] = $options['tracking_ga4'];
+
+				// let's generate the tracking code.
+				if ( 'none' !== $settings['tracking_format'] ) {
+
+					// universal and GA4 share the same script.
+					if ( '' === $tracking_script_js ) {
+						$js_replaces         = array(
+							'{{tracking_id}}' => $options['tracking_ga4'],
+						);
+						$tracking_gtag_js    = str_replace(
+							array_keys( $js_replaces ),
+							array_values( $js_replaces ),
+							$this->get_contents( $this->path . 'templates/gtag.tpl.html' )
+						);
+						$tracking_script_js .= $tracking_gtag_js . "\n";
+					}
+					$tracking_script_js .= 'gtag("config", "' . $options['tracking_ga4'] . '");' . "\n";
+
+				}
+			} else {
+				$settings['tracking_ga4'] = '';
+			}
+			/* End Google Analytics 4 */
+
+		}
+		/* Start GTAG (universal &y GA4) */
+
+		/* Start Google Tag Manager */
+		if ( ! empty( $options['tracking_gtm'] ) ) {
+
+			if ( ! preg_match( '/^(gtm-[a-z0-9]{4,11})$/i', strval( $options['tracking_gtm'] ) ) ) {
 				/*
-				Invalid Tracking ID. Accepted formats:
-					UA-1234567-12
-					G-1234ABCD
-					GTM-1234ABCD
+				Invalid Tracking ID. Accepted format: GTM-1234ABCD
 				*/
 				if ( ! $silent ) {
-					$this->notice( __( 'That doesn\'t look like a valid Google Tag Managet or Analytics tracking ID', 'machete' ), 'warning' );
+					$this->notice( __( 'That doesn\'t look like a valid Google Tag Manager container ID', 'machete' ), 'warning' );
 				}
 				return false;
 			}
-			$settings['tracking_id'] = $options['tracking_id'];
+			$settings['tracking_gtm'] = $options['tracking_gtm'];
 
-			if ( ! in_array( $options['tracking_format'], array( 'standard', 'machete', 'none' ), true ) ) {
-				if ( ! $silent ) {
-					$this->notice( __( 'Something went wrong. Unknown tracking code format requested.', 'machete' ), 'warning' );
-				}
-				return false;
-			}
-			$settings['tracking_format'] = $options['tracking_format'];
-
-			if ( isset( $options['tacking_anonymize'] ) ) {
-				$anonymize_ip                  = ',{ \'anonymize_ip\': true }';
-				$settings['tacking_anonymize'] = 1;
-			} else {
-				$anonymize_ip                  = '';
-				$settings['tacking_anonymize'] = 0;
-			}
-
-			if ( isset( $options['track_wpcf7'] ) ) {
-				$settings['track_wpcf7'] = 1;
-			} else {
-				$settings['track_wpcf7'] = 0;
-			}
-
-			// let's generate the Google Analytics tracking code.
+			// let's generate the tracking code.
 			if ( 'none' !== $settings['tracking_format'] ) {
 
-				$js_replaces     = array(
-					'{{anonymizeIp}}' => $anonymize_ip,
-					'{{tracking_id}}' => $options['tracking_id'],
+				$js_replaces         = array(
+					'{{tracking_id}}' => $options['tracking_gtm'],
 				);
-				$header_content .= str_replace(
+				$tracking_gtm_js     = str_replace(
 					array_keys( $js_replaces ),
 					array_values( $js_replaces ),
-					$this->get_contents( $this->path . 'templates/analytics.tpl.js' )
+					$this->get_contents( $this->path . 'templates/gtm.tpl.html' )
 				);
-				$header_content .= "\n<!-- Machete Header -->\n";
+				$tracking_script_js .= $tracking_gtm_js . "\n";
 			}
 		} else {
-			$settings['tracking_id']     = '';
+			$settings['tracking_gtm'] = '';
+		}
+		/* End Google Tag Manager */
+
+		if ( '' !== $tracking_script_js ) {
+			// cheap and dirty pseudo-random filename generation.
+			$settings['tracking_filename'] = 'tracking_' . strtolower( substr( MD5( time() ), 0, 8 ) ) . '.js';
+
+			if ( ! $this->put_contents( MACHETE_DATA_PATH . $settings['tracking_filename'], $tracking_script_js ) ) {
+				if ( ! $silent ) {
+					// translators: %s path to machete data dir.
+					$this->notice( sprintf( __( 'Error writing static javascript file to %s please check file permissions. Aborting to prevent inconsistent state.', 'machete' ), MACHETE_RELATIVE_DATA_PATH ), 'error' );
+				}
+				return false;
+			}
+		} else {
 			$settings['tracking_format'] = 'none';
 		}
 
-		if ( ! empty( $options['header_content'] ) ) {
-			$header_content .= stripslashes( wptexturize( $options['header_content'] ) );
+		// delete old .js file and generate a new one to prevent caching.
+		if ( ! empty( $this->settings['tracking_filename'] ) && file_exists( MACHETE_DATA_PATH . $this->settings['tracking_filename'] ) ) {
+			if ( ! $this->delete( MACHETE_DATA_PATH . $this->settings['tracking_filename'] ) ) {
+				if ( ! $silent ) {
+					// translators: %s path to machete data dir.
+					$this->notice( sprintf( __( 'Could not delete old javascript file from %s please check file permissions. Aborting to prevent inconsistent state.', 'machete' ), MACHETE_RELATIVE_DATA_PATH ), 'warning' );
+				}
+				return false;
+			}
 		}
 
-		if ( ! empty( $header_content ) ) {
-			$this->put_contents( MACHETE_DATA_PATH . 'header.html', $header_content );
+
+
+		if ( ! empty( $options['header_content'] ) ) {
+			$header_content = stripslashes( wptexturize( $options['header_content'] ) );
+			$this->put_contents( MACHETE_DATA_PATH . 'header.html', $header_content, LOCK_EX );
 		} else {
 			$this->delete( MACHETE_DATA_PATH . 'header.html' );
 		}
+
 
 		if (
 			isset( $options['alfonso_content_injection_method'] ) &&
@@ -208,6 +313,36 @@ class MACHETE_UTILS_MODULE extends MACHETE_MODULE {
 	 */
 	public function read_header_html() {
 		return $this->readfile( MACHETE_DATA_PATH . 'header.html' );
+	}
+	/**
+	 * Called from frontend-functions.php via add_action .
+	 */
+	public function enqueue_tracking_if_no_cookies() {
+		global $machete;
+		if ( false === $machete->modules['cookies']->params['is_active'] ) {
+			$machete_cookie_settings = $machete->modules['cookies']->read_settings();
+			if ( 'enabled' === $machete_cookie_settings['bar_status'] ) {
+				return false;
+			}
+		}
+		add_action(
+			'wp_head',
+			function() {
+				echo '<script>' . "\n";
+				$this->readfile( MACHETE_DATA_PATH . $this->settings['tracking_filename'] );
+				echo '</script>' . "\n";
+			},
+			10002
+		);
+	}
+	/**
+	 * Called from frontend-functions.php via add_action .
+	 */
+	public function read_tracking_js() {
+		if ( empty( $this->settings['tracking_filename'] ) ) {
+			return false;
+		}
+		return $this->readfile( MACHETE_DATA_PATH . $this->settings['tracking_filename'] );
 	}
 	/**
 	 * Called from frontend-functions.php via add_action .

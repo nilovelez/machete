@@ -83,17 +83,35 @@ if ( false !== $machete_editor_settings ) {
 	<tbody>
 
 	<tr>
-	<th scope="row"><?php esc_html_e( 'Tracking Code', 'machete' ); ?></th>
-	<td><fieldset><legend class="screen-reader-text"><span><?php esc_html_e( 'Tracking Code', 'machete' ); ?></span></legend>
+	<th scope="row"><?php esc_html_e( 'Tracking Codes', 'machete' ); ?></th>
+	<td><fieldset><legend class="screen-reader-text"><span><?php esc_html_e( 'Tracking Codes', 'machete' ); ?></span></legend>
 		<label><input name="tracking_format" value="standard" type="radio" <?php checked( 'standard', $this->settings['tracking_format'], true ); ?>> <?php esc_html_e( 'Active', 'machete' ); ?></label><br>
 		<label><input name="tracking_format" value="none" type="radio" <?php checked( 'none', $this->settings['tracking_format'], true ); ?>> <?php esc_html_e( 'Inactive', 'machete' ); ?></label><br>
 	</fieldset></td>
 	</tr>
 
 	<tr>
-	<th scope="row"><label for="tracking_id"><?php esc_html_e( 'Tracking ID', 'machete' ); ?></label></th>
+	<th scope="row"><label for="tracking_ga4"><?php esc_html_e( 'Google Analytics 4', 'machete' ); ?></label></th>
+	<td><input name="tracking_ga4" id="tracking_ga4" aria-describedby="tracking_ga4_description" value="<?php echo esc_attr( $this->settings['tracking_ga4'] ); ?>" class="regular-text" type="text">
+	<p class="description" id="tracking_ga4_description"><?php esc_html_e( 'Google Analytics 4 property ID', 'machete' ); ?><br><?php esc_html_e( 'Valid format:', 'machete' ); ?> G-123456ABCD</p></td>
+	</tr>
+
+	<tr>
+	<th scope="row"><label for="tracking_id"><?php esc_html_e( 'Universal Analytics', 'machete' ); ?></label></th>
 	<td><input name="tracking_id" id="tracking_id" aria-describedby="tracking_id_description" value="<?php echo esc_attr( $this->settings['tracking_id'] ); ?>" class="regular-text" type="text">
-	<p class="description" id="tracking_id_description"><?php esc_html_e( 'Google Analytics property ID or Tag Manager container ID', 'machete' ); ?><br><?php esc_html_e( 'Valid formats:', 'machete' ); ?> UA-12345678-1, G-123456ABCD, GTM-123456ABCD</p></td>
+	<p class="description" id="tracking_id_description"><?php esc_html_e( 'Google Analytics property ID', 'machete' ); ?><br><?php esc_html_e( 'Valid format:', 'machete' ); ?> UA-12345678-1</p></td>
+	</tr>
+	<tr>
+	<th scope="row"><?php esc_html_e( 'Anonymize user IPs', 'machete' ); ?></th>
+	<td><fieldset><legend class="screen-reader-text"><span><?php esc_html_e( 'Anonymize user IPs', 'machete' ); ?></span></legend>
+		<label><input name="tacking_anonymize" value="1" type="checkbox" <?php checked( '1', $this->settings['tacking_anonymize'], true ); ?>> <?php esc_html_e( 'Check to anonymize visitor IPs. Required in some countries.', 'machete' ); ?></label><br>
+	</fieldset></td>
+	</tr>
+
+	<tr>
+	<th scope="row"><label for="tracking_gtm"><?php esc_html_e( 'Google Tag Manager', 'machete' ); ?></label></th>
+	<td><input name="tracking_gtm" id="tracking_gtm" aria-describedby="tracking_gtm_description" value="<?php echo esc_attr( $this->settings['tracking_gtm'] ); ?>" class="regular-text" type="text">
+	<p class="description" id="tracking_gtm_description"><?php esc_html_e( 'Tag Manager container ID', 'machete' ); ?><br><?php esc_html_e( 'Valid format:', 'machete' ); ?> GTM-123456ABCD</p></td>
 	</tr>
 
 	<tr>
@@ -101,12 +119,6 @@ if ( false !== $machete_editor_settings ) {
 	<td><fieldset><legend class="screen-reader-text"><span><?php esc_html_e( 'Anonymize user IPs', 'machete' ); ?></span></legend>
 		<?php // translators: %s: link to the plugin's directory page. ?>
 		<label><input name="track_wpcf7" value="1" type="checkbox" <?php checked( '1', $this->settings['track_wpcf7'], true ); ?>> <?php printf( wp_kses_data( __( 'Launch a Google Analytics event whenever a visitor submits a <a href="%s">Contact Form 7</a> form.', 'machete' ) ), 'https://wordpress.org/plugins/contact-form-7/' ); ?></label><br>
-	</fieldset></td>
-	</tr>
-	<tr>
-	<th scope="row"><?php esc_html_e( 'Anonymize user IPs', 'machete' ); ?></th>
-	<td><fieldset><legend class="screen-reader-text"><span><?php esc_html_e( 'Anonymize user IPs', 'machete' ); ?></span></legend>
-		<label><input name="tacking_anonymize" value="1" type="checkbox" <?php checked( '1', $this->settings['tacking_anonymize'], true ); ?>> <?php esc_html_e( 'Check to anonymize visitor IPs. Required in some countries.', 'machete' ); ?></label><br>
 	</fieldset></td>
 	</tr>
 	</tbody>
@@ -209,12 +221,13 @@ MACHETE.utils = (function($){
 		var tracking_format = $('input[name=tracking_format]:checked', '#mache-utils-options').val();
 
 		console.log(tracking_format);
-
+/*
 		if (!MACHETE.utils.isAnalytics(tracking_id) && (tracking_format != 'none')){
 			window.alert('<?php echo esc_js( __( 'That doesn\'t look like a valid Google Tag Manager container ID or Analytics Property ID', 'machete' ) ); ?>');
 			e.preventDefault();
 			return;
 		}
+*/
 	});
 })(jQuery);
 

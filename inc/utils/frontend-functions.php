@@ -17,6 +17,12 @@ if ( file_exists( MACHETE_DATA_PATH . 'header.html' ) ) {
 		array( $this, 'read_header_html' ),
 		10001
 	);
+}
+
+
+if ( 'none' !== $this->settings['tracking_format'] ) {
+
+	$this->enqueue_tracking_if_no_cookies();
 
 	if ( $this->settings['track_wpcf7'] ) {
 		add_filter(
