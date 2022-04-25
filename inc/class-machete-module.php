@@ -56,6 +56,11 @@ abstract class MACHETE_MODULE {
 		} else {
 			$this->path = MACHETE_BASE_PATH . 'inc/' . $this->params['slug'] . '/';
 		}
+		if ( array_key_exists( 'baseurl', $this->params ) ) {
+			$this->baseurl = $this->params['baseurl'];
+		} else {
+			$this->baseurl = MACHETE_BASE_URL . 'inc/' . $this->params['slug'] . '/';
+		}
 	}
 	/**
 	 * Reads the modules settings to the settings proerty,
