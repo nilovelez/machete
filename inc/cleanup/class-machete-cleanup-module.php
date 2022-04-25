@@ -114,6 +114,10 @@ class MACHETE_CLEANUP_MODULE extends MACHETE_MODULE {
 				'title'       => __( 'No comment autolinks', 'machete' ),
 				'description' => __( 'URLs in comments are converted to links by default. This feature is often exploited by spammers.', 'machete' ),
 			),
+			'no_duotone'      => array(
+				'title'       => __( 'Disable duotone styles', 'machete' ),
+				'description' => __( 'Removes the CSS and SVG injected by Gutenberg duotone filters.', 'machete' ),
+			),
 		);
 
 		$this->tweaks_array = array(

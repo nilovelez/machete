@@ -34,6 +34,7 @@ capital_P_dangit
 disable_editor
 medium_large_size
 comment_autolinks
+no_duotone
 
 OPTIMIZATION TWEAKS
 json_api
@@ -255,6 +256,16 @@ if ( in_array( 'medium_large_size', $this->settings, true ) ) {
 
 if ( in_array( 'comment_autolinks', $this->settings, true ) && ! is_admin() ) {
 	remove_filter( 'comment_text', 'make_clickable', 9 );
+}
+
+if ( in_array( 'no_duotone', $this->settings, true ) && ! is_admin() ) {
+	remove_action( 'wp_body_open', 'wp_global_styles_render_svg_filters' );
+	add_action(
+		'wp_enqueue_scripts',
+		function() {
+			wp_dequeue_style( 'global-styles' );
+		}
+	);
 }
 
 /*
