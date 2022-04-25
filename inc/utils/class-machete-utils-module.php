@@ -319,9 +319,13 @@ class MACHETE_UTILS_MODULE extends MACHETE_MODULE {
 	 */
 	public function enqueue_tracking_if_no_cookies() {
 		global $machete;
-		if ( false === $machete->modules['cookies']->params['is_active'] ) {
+		if ( true === $machete->modules['cookies']->params['is_active'] ) {
 			$machete_cookie_settings = $machete->modules['cookies']->read_settings();
 			if ( 'enabled' === $machete_cookie_settings['bar_status'] ) {
+				add_action(
+					'wp_enqueue_scripts',
+					array( $this, 'enqueue_traking_waiting_cookies' )
+				);
 				return false;
 			}
 		}
@@ -335,6 +339,24 @@ class MACHETE_UTILS_MODULE extends MACHETE_MODULE {
 			10002
 		);
 	}
+	/**
+	 * Called from enqueue_tracking_if_no_cookies() if cookies are active
+	 */
+	public function enqueue_traking_waiting_cookies() {
+		wp_enqueue_script(
+			'machete-load-tracking',
+			MACHETE_BASE_URL . 'js/gdpr_load_tracking.js',
+			array(),
+			MACHETE_VERSION,
+			false
+		);
+		wp_add_inline_script(
+			'machete-load-tracking',
+			'var machete_tracking_script_url = "' . MACHETE_DATA_URL . $this->settings['tracking_filename'] . '";',
+			'before'
+		);
+	}
+
 	/**
 	 * Called from frontend-functions.php via add_action .
 	 */
