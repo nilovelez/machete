@@ -114,9 +114,12 @@ var machete_cookie_bar = (function(){
 			var body = document.getElementsByTagName( 'body' )[0];
 			body.appendChild( container );
 			
-			if ( 'no' === get_status() ) {
+			if ( 'yes' === get_status() ) {
+				window.dispatchEvent(machete_cookie_event);
+				configbar.add()
+			} else if ( 'no' === get_status() ) {
 				cookiebar.add();	
-			} else {
+			} else { //partial
 				configbar.add()
 			}
 		},
@@ -125,6 +128,10 @@ var machete_cookie_bar = (function(){
 			set_cookie( 'machete_accepted_cookies', cookies, 365 );
 			cookiebar.remove();
 			configbar.add();
+			// launches js event
+			if ( 'yes' == cookies ){
+				window.dispatchEvent(machete_cookie_event);
+			}
 		},
 		config: function(){
 			// reopens the cookie bar
@@ -136,4 +143,5 @@ var machete_cookie_bar = (function(){
 		}
 	}
 })();
+const machete_cookie_event = new Event('machete_accepted_cookies');
 machete_cookie_bar.init();
