@@ -34,7 +34,7 @@ class MACHETE_WOOCOMMERCE_MODULE extends MACHETE_MODULE {
 			),
 			'price_from'     => array(
 				'title'       => __( 'Variable price from', 'machete' ),
-				'description' => __( 'Replaces the prince interval on variable products with a "Price from" label.', 'machete' ),
+				'description' => __( 'Replaces the price interval on variable products with a "Price from" label.', 'machete' ),
 			),
 			'trailing_zeros' => array(
 				'title'       => __( 'Hide trailing zeros', 'machete' ),
