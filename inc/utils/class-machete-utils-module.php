@@ -255,15 +255,12 @@ class MACHETE_UTILS_MODULE extends MACHETE_MODULE {
 			}
 		}
 
-
-
 		if ( ! empty( $options['header_content'] ) ) {
 			$header_content = stripslashes( wptexturize( $options['header_content'] ) );
 			$this->put_contents( MACHETE_DATA_PATH . 'header.html', $header_content, LOCK_EX );
 		} else {
 			$this->delete( MACHETE_DATA_PATH . 'header.html' );
 		}
-
 
 		if (
 			isset( $options['alfonso_content_injection_method'] ) &&

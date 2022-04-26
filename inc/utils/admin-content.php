@@ -207,9 +207,17 @@ MACHETE = window.MACHETE || {};
 MACHETE.utils = (function($){
 
 	return {
+		isGA4: function(str){
+			if (!str) return false;
+			return (/^(g-[a-z0-9]{4,11})$/i).test(str.toString());			
+		},
 		isAnalytics: function(str){
 			if (!str) return false;
-			return (/^(ua-\d{4,11}-\d{1,4})|(g(tm)?-[a-z0-9]{4,11})$/i).test(str.toString());			
+			return (/^(ua-\d{4,11}-\d{1,4})$/i).test(str.toString());			
+		},
+		isGTM: function(str){
+			if (!str) return false;
+			return (/^(gtm-[a-z0-9]{4,11})$/i).test(str.toString());			
 		}
 	}
 
@@ -217,17 +225,34 @@ MACHETE.utils = (function($){
 
 (function($){
 	$('#mache-utils-options').submit(function( e ) {
-		var tracking_id = $('#tracking_id').val();
 		var tracking_format = $('input[name=tracking_format]:checked', '#mache-utils-options').val();
 
 		console.log(tracking_format);
-/*
-		if (!MACHETE.utils.isAnalytics(tracking_id) && (tracking_format != 'none')){
-			window.alert('<?php echo esc_js( __( 'That doesn\'t look like a valid Google Tag Manager container ID or Analytics Property ID', 'machete' ) ); ?>');
-			e.preventDefault();
-			return;
+
+		if (tracking_format != 'none') {
+			var tracking_ga4 = $('#tracking_ga4').val();
+			if ( (!! tracking_ga4) && (!MACHETE.utils.isGA4(tracking_ga4)) ) {
+				window.alert('<?php echo esc_js( __( 'That doesn\'t look like a valid Google Analytics 4 Property ID', 'machete' ) ); ?>');
+				e.preventDefault();
+				return;
+			}
+
+			var tracking_id = $('#tracking_id').val();
+			if ( (!! tracking_id) && (!MACHETE.utils.isAnalytics(tracking_id)) ) {
+				window.alert('<?php echo esc_js( __( 'That doesn\'t look like a valid Universal Analytics Property ID', 'machete' ) ); ?>');
+				e.preventDefault();
+				return;
+			}
+
+			var tracking_gtm = $('#tracking_gtm').val();
+			if ( (!! tracking_gtm) && (!MACHETE.utils.isGTM(tracking_gtm)) ) {
+				window.alert('<?php echo esc_js( __( 'That doesn\'t look like a valid Google Tag Manager container ID', 'machete' ) ); ?>');
+				e.preventDefault();
+				return;
+			}
+
 		}
-*/
+
 	});
 })(jQuery);
 
