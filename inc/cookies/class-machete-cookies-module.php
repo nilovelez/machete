@@ -27,33 +27,33 @@ class MACHETE_COOKIES_MODULE extends MACHETE_MODULE {
 			)
 		);
 		$this->default_settings = array(
-			'bar_status'      => 'disabled',
-			//'warning_text'    => __( 'By continuing to browse the site, you are agreeing to our use of cookies as described in our <a href="/cookies/" style="color: #007FFF">cookie policy</a>.', 'machete' ),
-			'warning_text'    => __( 'This website uses both technical cookies, essential for you to browse the website and use its features, and third-party cookies we use for marketing and data analytics porposes, as explained in our <a href="/cookies/" style="color: #007FFF">cookie policy</a>.', 'machete' ),
-			'accept_text'     => __( 'Accept cookies', 'machete' ),
-			'partial_accept_text'     => __( 'Accept only essential', 'machete' ),
-			'bar_theme'       => 'new_light',
-			'cookie_filename' => '',
+			'bar_status'          => 'disabled',
+			'warning_text'        => __( 'This website uses both technical cookies, essential for you to browse the website and use its features, and third-party cookies we use for marketing and data analytics porposes, as explained in our <a href="/cookies/" style="color: #007FFF">cookie policy</a>.', 'machete' ),
+			'accept_text'         => __( 'Accept cookies', 'machete' ),
+			'partial_accept_text' => __( 'Accept only essential', 'machete' ),
+			'bar_theme'           => 'new_light',
+			'cookie_filename'     => '',
 		);
 
 		$this->themes = array(
 			'new_light' => array(
-				'name'      => __( 'Modern Light', 'machete' ),
-				'template'  => $this->path . 'templates/new_light.css',
+				'name'       => __( 'Modern Light', 'machete' ),
+				'stylesheet' => $this->baseurl . 'templates/new_light.css',
 			),
 			'new_dark'  => array(
-				'name'      => __( 'Modern Dark', 'machete' ),
-				'template'  => $this->path . 'templates/new_dark.css',
+				'name'       => __( 'Modern Dark', 'machete' ),
+				'stylesheet' => $this->baseurl . 'templates/new_dark.css',
 			),
 			'cookie'    => array(
-				'name'      => __( 'Cookie!', 'machete' ),
-				'template'  => $this->path . 'templates/cookie.css',
+				'name'       => __( 'Cookie!', 'machete' ),
+				'stylesheet' => $this->baseurl . 'templates/cookie.css',
 			),
 		);
-		$this->cookies_bar_innerhtml = 'var machete_cookies_bar_html = \'<a id="machete_accept_cookie_btn" class="machete_accept_cookie_btn">{{accept_text}}</a> <a id="machete_accept_cookie_btn_partial" class="machete_accept_cookie_btn partial">{{partial_accept_text}}</a> {{warning_text}}\';' . "\n";
+
+		$this->cookies_bar_innerhtml = 'var machete_cookies_bar_html = \'<span id="machete_cookie_warning_text" class="machete_cookie_warning_text">{{warning_text}}</span> <button id="machete_accept_cookie_btn_partial" class="machete_accept_cookie_btn partial">{{partial_accept_text}}</button> <button id="machete_accept_cookie_btn" class="machete_accept_cookie_btn">{{accept_text}}</button>\';' . "\n";
 
 		// translators: button to config cookie settings again.
-		$this->cookies_bar_innerhtml .= "var machete_cookies_configbar_html = '<div id=\"machete_cookie_config_btn\" class=\"machete_cookie_config_btn\">" . __( 'Cookies', 'machete' ) . "</div>';\n";
+		$this->cookies_bar_innerhtml .= 'var machete_cookies_configbar_html = \'<div id="machete_cookie_config_btn\" class=\"machete_cookie_config_btn\">' . __( 'Cookies', 'machete' ) . '</div>\';' . "\n";
 	}
 	/**
 	 * Executes code related to the WordPress admin.
@@ -78,6 +78,25 @@ class MACHETE_COOKIES_MODULE extends MACHETE_MODULE {
 	 */
 	public function frontend() {
 		$this->read_settings();
+
+		if ( ! isset( $this->settings['bar_status'] ) || ( 'enabled' !== $this->settings['bar_status'] ) ) {
+			return false;
+		}
+
+		// Stylesheet enqueued after 'wp_enqueue_scripts' so it gets printed via print_late_styles() in the footer.
+		add_action(
+			'get_footer',
+			function() {
+				wp_enqueue_style(
+					'machete-cookies-' . $this->settings['bar_theme'],
+					$this->themes[ $this->settings['bar_theme'] ]['stylesheet'],
+					array(),
+					MACHETE_VERSION
+				);
+			},
+			10
+		);
+
 		add_action( 'wp_footer', array( $this, 'render_cookie_bar' ) );
 	}
 
@@ -104,29 +123,9 @@ class MACHETE_COOKIES_MODULE extends MACHETE_MODULE {
 			}
 		}
 
-		$cookies_bar_js = $this->get_contents( $this->path . 'templates/cookies_bar_js.js' );
-		if ( false === $cookies_bar_js ) {
-			if ( ! $silent ) {
-				// translators: %s path to template file.
-				$this->notice( sprintf( __( 'Error reading cookie bar template %s', 'machete' ), $this->path . 'templates/cookies_bar_js.js' ), 'error' );
-			}
-			return false;
-		}
-
 		if ( ! empty( $options['bar_theme'] ) && ( array_key_exists( $options['bar_theme'], $this->themes ) ) ) {
 			$settings['bar_theme'] = $options['bar_theme'];
 		}
-
-		$cookies_bar_html = $this->get_contents( $this->themes[ $options['bar_theme'] ]['template'] );
-		if ( false === $cookies_bar_html ) {
-			if ( ! $silent ) {
-				// translators: %s path to template file.
-				$this->notice( sprintf( __( 'Error reading cookie bar template %s', 'machete' ), $cookies_bar_themes[ $options['bar_theme'] ]['template'] ), 'error' );
-			}
-			return false;
-		}
-
-
 
 		if ( empty( $options['bar_status'] ) || ( 'disabled' === $options['bar_status'] ) ) {
 			$settings['bar_status'] = 'disabled';
@@ -155,7 +154,6 @@ class MACHETE_COOKIES_MODULE extends MACHETE_MODULE {
 		$html_replaces['{{accept_text}}'] = $options['accept_text'];
 		$settings['accept_text']          = $options['accept_text'];
 
-
 		$options['partial_accept_text'] = sanitize_text_field( $options['partial_accept_text'] );
 		if ( empty( $options['partial_accept_text'] ) ) {
 			if ( ! $silent ) {
@@ -170,7 +168,7 @@ class MACHETE_COOKIES_MODULE extends MACHETE_MODULE {
 			array_keys( $html_replaces ),
 			array_values( $html_replaces ),
 			$this->cookies_bar_innerhtml
-		) . "\n" . $cookies_bar_js;
+		);
 
 		// cheap and dirty pseudo-random filename generation.
 		$settings['cookie_filename'] = 'cookies_' . strtolower( substr( MD5( time() ), 0, 8 ) ) . '.js';
@@ -239,6 +237,7 @@ class MACHETE_COOKIES_MODULE extends MACHETE_MODULE {
 		}
 
 		echo '<script>';
+		require $this->path . 'templates/cookies_bar_js.js';
 		require MACHETE_DATA_URL . $this->settings['cookie_filename'];
 		echo '</script>';
 
@@ -248,9 +247,6 @@ class MACHETE_COOKIES_MODULE extends MACHETE_MODULE {
 	 */
 	public function render_cookie_bar() {
 
-		if ( ! isset( $this->settings['bar_status'] ) || ( 'enabled' !== $this->settings['bar_status'] ) ) {
-			return false;
-		}
 		if ( ! isset( $this->settings['cookie_filename'] ) ) {
 			return false;
 		}
@@ -259,18 +255,15 @@ class MACHETE_COOKIES_MODULE extends MACHETE_MODULE {
 		}
 
 		?>
-		<style>
-			/* ToDo: añadirlo encolándolo */
-			<?php echo $this->get_contents( $this->themes[ $this->settings['bar_theme'] ]['template'] ); ?>
-		</style>
-		<script>
-	(function(){
-		var s = document.createElement('script'); s.type = 'text/javascript';
-		s.async = true; s.src = '<?php echo esc_url( MACHETE_DATA_URL . $this->settings['cookie_filename'] ); ?>';
-		var body = document.getElementsByTagName('body')[0];
-		body.appendChild(s);
-	})();
-	</script>
+<script>
+<?php $this->readfile( MACHETE_DATA_PATH . $this->settings['cookie_filename'] ); ?>
+(function(){
+	var s = document.createElement('script'); s.type = 'text/javascript';
+	s.async = true; s.src = '<?php echo esc_url( $this->baseurl . 'js/cookies_bar_js.js' ); ?>';
+	var body = document.getElementsByTagName('body')[0];
+	body.appendChild(s);
+})();
+</script>
 		<?php
 	}
 }
