@@ -83,9 +83,8 @@ class MACHETE_COOKIES_MODULE extends MACHETE_MODULE {
 			return false;
 		}
 
-		// Stylesheet enqueued after 'wp_enqueue_scripts' so it gets printed via print_late_styles() in the footer.
 		add_action(
-			'get_footer',
+			'wp_enqueue_scripts',
 			function() {
 				wp_enqueue_style(
 					'machete-cookies-' . $this->settings['bar_theme'],
