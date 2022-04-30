@@ -114,40 +114,40 @@ class MACHETE_CLEANUP_MODULE extends MACHETE_MODULE {
 				'title'       => __( 'No comment autolinks', 'machete' ),
 				'description' => __( 'URLs in comments are converted to links by default. This feature is often exploited by spammers.', 'machete' ),
 			),
-			'no_duotone'      => array(
-				'title'       => __( 'Disable duotone styles', 'machete' ),
-				'description' => __( 'Removes the CSS and SVG injected by Gutenberg duotone filters.', 'machete' ),
-			),
 		);
 
 		$this->tweaks_array = array(
-			'json_api'       => array(
+			'json_api'           => array(
 				'title'       => __( 'JSON API', 'machete' ),
 				'description' => __( 'Remove the JSON-API links from page headers. Also require that API consumers be authenticated.', 'machete' ) . ' <br><span style="color: #d94f4f">' . __( 'Be careful. Breaks the block editor and many plugins that use the REST API.', 'machete' ) . '</span>',
 			),
-			'xmlrpc'         => array(
+			'xmlrpc'             => array(
 				'title'       => __( 'XML-RPC', 'machete' ),
 				'description' => __( 'Disable the XML-RPC interface. ', 'machete' ),
 			),
-			'jquery-migrate' => array(
+			'jquery-migrate'     => array(
 				'title'       => __( 'remove jQuery-migrate', 'machete' ),
 				'description' => __( 'jQuery-migrate provides diagnostics that can simplify upgrading to new versions of jQuery, you can safely disable it.', 'machete' ) . ' <br><span style="color: #d94f4f">' . __( 'May break some themes and plugins that depend on legacy code.', 'machete' ) . '</span>',
 			),
-			'oembed_scripts' => array( // @fpuente addons
+			'oembed_scripts'     => array( // @fpuente addons
 				'title'       => __( 'Remove oEmbed Scripts', 'machete' ),
 				'description' => __( 'Since WordPress 4.4, oEmbed is installed and available by default. If you don’t need oEmbed, you can remove it.', 'machete' ),
 			),
-			'wpcf7_refill'   => array(
+			'wpcf7_refill'       => array(
 				'title'       => __( 'Remove CF7 refill', 'machete' ),
 				'description' => __( 'Disables the Contact Form 7 refill script. Saves one hit to wp-ajax.php per pageview on cached sites', 'machete' ) . ' <br><span style="color: #d94f4f">' . __( 'Activate only if you are not using the reCAPTCHA Contact Form 7 field', 'machete' ) . '</span>',
 			),
-			'jpeg_quality'   => array(
+			'jpeg_quality'       => array(
 				'title'       => __( 'Reduce JPEG quality', 'machete' ),
 				'description' => __( 'When WordPress generates a JPEG thumbnail it compresses the image to 82% quality. Check this to reduce the default quality to 72%. (It doesn\'t affect original image quality).', 'machete' ),
 			),
-			'gutenberg_css'  => array(
+			'gutenberg_css'      => array(
 				'title'       => __( 'Remove block editor CSS', 'machete' ),
 				'description' => __( 'Dequeues Gutenberg CSS stylesheets from the from the frontend.', 'machete' ) . ' <br><span style="color: #d94f4f">' . __( 'Check this only if you are not using the block editor.', 'machete' ) . '</span>',
+			),
+			'disable_global_css' => array(
+				'title'       => __( 'Disable Global CSS', 'machete' ),
+				'description' => __( 'Removes the huge inline CSS and SVG elements that the block editor adds by default.', 'machete' ),
 			),
 		);
 	}

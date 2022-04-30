@@ -34,7 +34,6 @@ capital_P_dangit
 disable_editor
 medium_large_size
 comment_autolinks
-no_duotone
 
 OPTIMIZATION TWEAKS
 json_api
@@ -43,7 +42,7 @@ jquery-migrate
 oembed_scripts
 wpcf7_refill
 jpeg_quality
-
+disable_global_css
 */
 
 
@@ -258,16 +257,6 @@ if ( in_array( 'comment_autolinks', $this->settings, true ) && ! is_admin() ) {
 	remove_filter( 'comment_text', 'make_clickable', 9 );
 }
 
-if ( in_array( 'no_duotone', $this->settings, true ) && ! is_admin() ) {
-	remove_action( 'wp_body_open', 'wp_global_styles_render_svg_filters' );
-	add_action(
-		'wp_enqueue_scripts',
-		function() {
-			wp_dequeue_style( 'global-styles' );
-		}
-	);
-}
-
 /*
 ******** OPTIMIZATION TWEAKS **********
 */
@@ -393,5 +382,15 @@ if ( in_array( 'gutenberg_css', $this->settings, true ) ) {
 			wp_dequeue_style( 'wc-block-style' );              // WooCommerce.
 		},
 		100
+	);
+}
+
+if ( in_array( 'disable_global_css', $this->settings, true ) && ! is_admin() ) {
+	remove_action( 'wp_body_open', 'wp_global_styles_render_svg_filters' );
+	add_action(
+		'wp_enqueue_scripts',
+		function() {
+			wp_dequeue_style( 'global-styles' );
+		}
 	);
 }
