@@ -114,6 +114,10 @@ class MACHETE_CLEANUP_MODULE extends MACHETE_MODULE {
 				'title'       => __( 'No comment autolinks', 'machete' ),
 				'description' => __( 'URLs in comments are converted to links by default. This feature is often exploited by spammers.', 'machete' ),
 			),
+			'disable_login_langs'    => array(
+				'title'       => __( 'Disable login languages', 'machete' ),
+				'description' => __( 'WordPress shows a language switcher at the bottom of the login screen. It\'s not need if you only use one language.', 'machete' ),
+			),
 		);
 
 		$this->tweaks_array = array(

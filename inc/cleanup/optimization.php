@@ -34,6 +34,7 @@ capital_P_dangit
 disable_editor
 medium_large_size
 comment_autolinks
+disable_login_langs
 
 OPTIMIZATION TWEAKS
 json_api
@@ -130,6 +131,12 @@ if ( in_array( 'recentcomments', $this->settings, true ) && ! is_admin() ) {
 if ( in_array( 'wp_resource_hints', $this->settings, true ) && ! is_admin() ) {
 	remove_action( 'wp_head', 'wp_resource_hints', 2 );
 }
+
+// Disable login languages.
+if ( in_array( 'disable_login_langs', $this->settings, true ) && ! is_admin() ) {
+	add_filter( 'login_display_language_dropdown', '__return_false' );
+}
+
 
 /*
 ******** FEATURE CLEANUP **********
