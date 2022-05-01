@@ -54,6 +54,8 @@ class MACHETE_COOKIES_MODULE extends MACHETE_MODULE {
 
 		// translators: button to config cookie settings again.
 		$this->cookies_bar_innerhtml .= 'var machete_cookies_configbar_html = \'<div id="machete_cookie_config_btn\" class=\"machete_cookie_config_btn\">' . __( 'Cookies', 'machete' ) . '</div>\';' . "\n";
+
+		$this->cookies_bar_innerhtml .= 'var machete_cookies_bar_stylesheet = \'{{theme_stylesheet}}\';' . "\n";
 	}
 	/**
 	 * Executes code related to the WordPress admin.
@@ -82,19 +84,6 @@ class MACHETE_COOKIES_MODULE extends MACHETE_MODULE {
 		if ( ! isset( $this->settings['bar_status'] ) || ( 'enabled' !== $this->settings['bar_status'] ) ) {
 			return false;
 		}
-
-		add_action(
-			'wp_enqueue_scripts',
-			function() {
-				wp_enqueue_style(
-					'machete-cookies-' . $this->settings['bar_theme'],
-					$this->themes[ $this->settings['bar_theme'] ]['stylesheet'],
-					array(),
-					MACHETE_VERSION
-				);
-			},
-			10
-		);
 
 		add_action( 'wp_footer', array( $this, 'render_cookie_bar' ) );
 	}
@@ -125,6 +114,7 @@ class MACHETE_COOKIES_MODULE extends MACHETE_MODULE {
 		if ( ! empty( $options['bar_theme'] ) && ( array_key_exists( $options['bar_theme'], $this->themes ) ) ) {
 			$settings['bar_theme'] = $options['bar_theme'];
 		}
+		$html_replaces['{{theme_stylesheet}}'] = $this->themes[ $options['bar_theme'] ]['stylesheet'];
 
 		if ( empty( $options['bar_status'] ) || ( 'disabled' === $options['bar_status'] ) ) {
 			$settings['bar_status'] = 'disabled';
@@ -258,7 +248,7 @@ class MACHETE_COOKIES_MODULE extends MACHETE_MODULE {
 <?php $this->readfile( MACHETE_DATA_PATH . $this->settings['cookie_filename'] ); ?>
 (function(){
 	var s = document.createElement('script'); s.type = 'text/javascript';
-	s.async = true; s.src = '<?php echo esc_url( $this->baseurl . 'js/cookies_bar_js.js' ); ?>';
+	s.defer = true; s.src = '<?php echo esc_url( $this->baseurl . 'js/cookies_bar_js.js' ); ?>';
 	var body = document.getElementsByTagName('body')[0];
 	body.appendChild(s);
 })();

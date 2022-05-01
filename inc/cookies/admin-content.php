@@ -91,12 +91,12 @@ if ( 'dark' === $this->settings['bar_theme'] ) {
 <?php
 foreach ( $this->themes as $machete_theme_slug => $machete_params ) {
 	if ( $machete_theme_slug === $this->settings['bar_theme'] ) {
-		$disabled = '';
+		$machete_css_disabled = '';
 	} else {
-		$disabled = 'disabled';
+		$machete_css_disabled = 'disabled';
 	}
 
-	echo '<link rel="stylesheet" id="machete_theme_' . $machete_theme_slug . '" href="' . $machete_params['stylesheet'] . '" ' . $disabled . '>' . PHP_EOL;
+	echo '<link rel="stylesheet" id="' . esc_attr( 'machete_theme_' . $machete_theme_slug ) . '" href="' . esc_url( $machete_params['stylesheet'] ) . '" ' . esc_attr( $machete_css_disabled ) . '>' . PHP_EOL;
 }
 ?>
 

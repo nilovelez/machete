@@ -1,3 +1,16 @@
+@keyframes slide-up {
+  0% {
+    transform: translateY(110vh);
+  }
+  100% {
+    transform: translateY(0vh);
+  }
+}
+body:not(.wp-admin) .machete_cookie_container {
+  /* transform: translateY(110vh); */
+  animation: slide-up 1s forwards;
+}
+
 .machete_cookie_container:before {
 	content: "";
 	position: absolute;
@@ -53,6 +66,7 @@
 	padding: 15px 15px 10px 40px;
 	cursor: pointer;
 	font-weight: bold;
+	font-size: 16px;
 	color: #111;
 	position: relative;
 }
@@ -77,7 +91,7 @@
 	text-decoration: none;
 	font-weight: bold;
 	text-transform: none;
-	font-size: 100%;
+	font-size: 13px;
 	display: block;
 	padding: 5px 10px;
 	white-space: nowrap;
@@ -88,11 +102,13 @@
 }
 
 .machete_accept_cookie_btn:hover,
-.machete_accept_cookie_btn:focus{
+.machete_accept_cookie_btn:focus,
+.machete_accept_cookie_btn:focus-visible{
 	color: #fff;
 	background-color: #135e96;
 	border-color: #135e96;
 	text-decoration: none;
+	outline: none !important;
 }
 .machete_accept_cookie_btn:focus {
 	box-shadow: 0 0 0 2px #fff, 0 0 0 4px #135e96;
@@ -104,7 +120,7 @@
 
 .machete_accept_cookie_btn.partial:hover,
 .machete_accept_cookie_btn.partial:focus{
-	color: #135e96
+	color: #135e96;
 }
 
 @media (min-width:1024px) {

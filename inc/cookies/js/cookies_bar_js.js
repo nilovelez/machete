@@ -100,19 +100,21 @@ var machete_cookie_bar = (function(){
 				position: 'fixed',
 				zIndex: 99999,
 				bottom: 0,
-				width: '100%'
+				width: '100%',
+				transform: 'translateY(110vh)'
 			});
-			/*
-			var cookies_css = my_createElement(
-				'style',
-				null,
-				null,
-				machete_cookies_css
-			);
-			container.appendChild( cookies_css );
-			*/
+
 			var body = document.getElementsByTagName( 'body' )[0];
 			body.appendChild( container );
+
+			var link = document.createElement( "link" );
+			Object.assign(link,{
+				rel: 'stylesheet',
+				id: 'machete-cookies-theme-css',
+				href: machete_cookies_bar_stylesheet,
+				media: 'all'
+			})
+			document.getElementsByTagName( "head" )[0].appendChild( link );
 			
 			if ( 'yes' === get_status() ) {
 				window.dispatchEvent(machete_cookie_event);
