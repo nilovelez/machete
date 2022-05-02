@@ -38,15 +38,15 @@ class MACHETE_COOKIES_MODULE extends MACHETE_MODULE {
 		$this->themes = array(
 			'new_light' => array(
 				'name'       => __( 'Modern Light', 'machete' ),
-				'stylesheet' => $this->baseurl . 'templates/new_light.css',
+				'stylesheet' => $this->baseurl . 'css/new_light.css',
 			),
 			'new_dark'  => array(
 				'name'       => __( 'Modern Dark', 'machete' ),
-				'stylesheet' => $this->baseurl . 'templates/new_dark.css',
+				'stylesheet' => $this->baseurl . 'css/new_dark.css',
 			),
 			'cookie'    => array(
 				'name'       => __( 'Cookie!', 'machete' ),
-				'stylesheet' => $this->baseurl . 'templates/cookie.css',
+				'stylesheet' => $this->baseurl . 'css/cookie.css',
 			),
 		);
 
@@ -209,27 +209,6 @@ class MACHETE_COOKIES_MODULE extends MACHETE_MODULE {
 			$export['warning_text'] = stripslashes( $export['warning_text'] );
 		}
 		return $export;
-	}
-	/**
-	 * Echoes a cookie bar preview for the Machete cookie module config page.
-	 */
-	protected function preview_cookie_bar() {
-
-		if ( ! isset( $this->settings['bar_status'] ) || ( 'enabled' !== $this->settings['bar_status'] ) ) {
-			return false;
-		}
-		if ( ! isset( $this->settings['cookie_filename'] ) ) {
-			return false;
-		}
-		if ( ! file_exists( MACHETE_DATA_PATH . $this->settings['cookie_filename'] ) ) {
-			return false;
-		}
-
-		echo '<script>';
-		require $this->path . 'templates/cookies_bar_js.js';
-		require MACHETE_DATA_URL . $this->settings['cookie_filename'];
-		echo '</script>';
-
 	}
 	/**
 	 * Echoes the cookie bar for use in the front-end.
