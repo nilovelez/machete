@@ -1,16 +1,16 @@
 #, fuzzy
 msgid ""
 msgstr ""
-"Plural-Forms: nplurals=INTEGER; plural=EXPRESSION;\n"
 "Project-Id-Version: Machete\n"
-"POT-Creation-Date: 2020-05-23 23:22+0200\n"
+"POT-Creation-Date: 2022-05-04 11:57+0200\n"
 "PO-Revision-Date: 2016-11-03 19:23+0100\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Poedit 2.3.1\n"
+"Plural-Forms: nplurals=INTEGER; plural=EXPRESSION;\n"
+"X-Generator: Poedit 3.0.1\n"
 "X-Poedit-Basepath: ..\n"
 "X-Poedit-WPHeader: machete.php\n"
 "X-Poedit-SourceCharset: UTF-8\n"
@@ -44,7 +44,7 @@ msgstr ""
 
 #: inc/about/class-machete-about-module.php:23
 #: inc/about/class-machete-about-module.php:24
-msgid "About Machete"
+msgid "Machete Dashboard"
 msgstr ""
 
 #: inc/about/templates/machete-module.php:23 inc/about/templates/machete-module.php:35
@@ -52,7 +52,7 @@ msgstr ""
 msgid "Configure"
 msgstr ""
 
-#: inc/about/templates/machete-module.php:43
+#: inc/about/templates/machete-module.php:43 inc/utils/admin-content.php:88
 msgid "Active"
 msgstr ""
 
@@ -77,34 +77,35 @@ msgid "Deactivate"
 msgstr ""
 
 #: inc/about/templates/machete-module.php:122
+#: inc/about/templates/machete-module.php:124
 msgid "Activate"
 msgstr ""
 
-#: inc/class-machete-module.php:148 inc/utils/class-machete-utils-module.php:245
+#: inc/class-machete-module.php:155 inc/utils/class-machete-utils-module.php:409
 msgid "Settings successfully restored from backup"
 msgstr ""
 
-#: inc/class-machete-module.php:150 inc/utils/class-machete-utils-module.php:247
+#: inc/class-machete-module.php:157 inc/utils/class-machete-utils-module.php:411
 msgid "Error restoring settings backup"
 msgstr ""
 
-#: inc/class-machete-module.php:171
+#: inc/class-machete-module.php:178
 msgid "Options saved!"
 msgstr ""
 
-#: inc/class-machete-module.php:177 inc/class-machete.php:162 inc/class-machete.php:200
+#: inc/class-machete-module.php:184 inc/class-machete.php:162 inc/class-machete.php:200
 msgid "Error saving configuration to database."
 msgstr ""
 
-#: inc/class-machete-module.php:183
+#: inc/class-machete-module.php:190
 msgid "No changes were needed."
 msgstr ""
 
-#: inc/class-machete-module.php:238
+#: inc/class-machete-module.php:246
 msgid "This function needs direct access to the filesystem."
 msgstr ""
 
-#: inc/class-machete-module.php:244
+#: inc/class-machete-module.php:252
 msgid "There was a problem accessing the filesystem. Check your permissions."
 msgstr ""
 
@@ -153,15 +154,15 @@ msgid ""
 "request while making your installation safer"
 msgstr ""
 
-#: inc/cleanup/admin-content.php:46 inc/cookies/admin-content.php:21
-#: inc/importexport/admin-content.php:19 inc/maintenance/admin-content.php:19
-#: inc/powertools/admin-content.php:27 inc/social/admin-content.php:21
-#: inc/utils/admin-content.php:59
+#: inc/cleanup/admin-content.php:46 inc/cookies/admin-content.php:29
+#: inc/maintenance/admin-content.php:19 inc/powertools/admin-content.php:27
+#: inc/social/admin-content.php:21 inc/utils/admin-content.php:59
+#: inc/woocommerce/admin-content.php:29
 msgid "Performance impact:"
 msgstr ""
 
 #: inc/cleanup/admin-content.php:46 inc/maintenance/admin-content.php:19
-#: inc/powertools/admin-content.php:27
+#: inc/powertools/admin-content.php:27 inc/woocommerce/admin-content.php:29
 msgid ""
 "This section stores all its settings in a single autoloaded configuration variable."
 msgstr ""
@@ -189,12 +190,13 @@ msgstr ""
 #: inc/cleanup/admin-content.php:92 inc/cleanup/admin-content.php:102
 #: inc/cleanup/admin-content.php:121 inc/cleanup/admin-content.php:131
 #: inc/powertools/admin-content.php:86 inc/powertools/admin-content.php:96
+#: inc/woocommerce/admin-content.php:45 inc/woocommerce/admin-content.php:55
 msgid "Explanation"
 msgstr ""
 
 #: inc/cleanup/admin-content.php:72 inc/cleanup/admin-content.php:100
-#: inc/cleanup/admin-content.php:129 inc/importexport/admin-content.php:42
-#: inc/powertools/admin-content.php:94
+#: inc/cleanup/admin-content.php:129 inc/powertools/admin-content.php:94
+#: inc/woocommerce/admin-content.php:53
 msgid "Show more details"
 msgstr ""
 
@@ -424,90 +426,109 @@ msgid ""
 "by spammers."
 msgstr ""
 
-#: inc/cleanup/class-machete-cleanup-module.php:121
+#: inc/cleanup/class-machete-cleanup-module.php:118
+msgid "Disable login languages"
+msgstr ""
+
+#: inc/cleanup/class-machete-cleanup-module.php:119
+msgid ""
+"WordPress shows a language switcher at the bottom of the login screen. It's not need "
+"if you only use one language."
+msgstr ""
+
+#: inc/cleanup/class-machete-cleanup-module.php:125
 msgid "JSON API"
 msgstr ""
 
-#: inc/cleanup/class-machete-cleanup-module.php:122
+#: inc/cleanup/class-machete-cleanup-module.php:126
 msgid ""
 "Remove the JSON-API links from page headers. Also require that API consumers be "
 "authenticated."
 msgstr ""
 
-#: inc/cleanup/class-machete-cleanup-module.php:122
+#: inc/cleanup/class-machete-cleanup-module.php:126
 msgid "Be careful. Breaks the block editor and many plugins that use the REST API."
 msgstr ""
 
-#: inc/cleanup/class-machete-cleanup-module.php:125
+#: inc/cleanup/class-machete-cleanup-module.php:129
 msgid "XML-RPC"
 msgstr ""
 
-#: inc/cleanup/class-machete-cleanup-module.php:126
+#: inc/cleanup/class-machete-cleanup-module.php:130
 msgid "Disable the XML-RPC interface. "
 msgstr ""
 
-#: inc/cleanup/class-machete-cleanup-module.php:129
+#: inc/cleanup/class-machete-cleanup-module.php:133
 msgid "remove jQuery-migrate"
 msgstr ""
 
-#: inc/cleanup/class-machete-cleanup-module.php:130
+#: inc/cleanup/class-machete-cleanup-module.php:134
 msgid ""
 "jQuery-migrate provides diagnostics that can simplify upgrading to new versions of "
 "jQuery, you can safely disable it."
 msgstr ""
 
-#: inc/cleanup/class-machete-cleanup-module.php:130
+#: inc/cleanup/class-machete-cleanup-module.php:134
 msgid "May break some themes and plugins that depend on legacy code."
 msgstr ""
 
-#: inc/cleanup/class-machete-cleanup-module.php:133
+#: inc/cleanup/class-machete-cleanup-module.php:137
 msgid "Remove oEmbed Scripts"
 msgstr ""
 
-#: inc/cleanup/class-machete-cleanup-module.php:134
+#: inc/cleanup/class-machete-cleanup-module.php:138
 msgid ""
 "Since WordPress 4.4, oEmbed is installed and available by default. If you don’t need "
 "oEmbed, you can remove it."
 msgstr ""
 
-#: inc/cleanup/class-machete-cleanup-module.php:137
+#: inc/cleanup/class-machete-cleanup-module.php:141
 msgid "Remove CF7 refill"
 msgstr ""
 
-#: inc/cleanup/class-machete-cleanup-module.php:138
+#: inc/cleanup/class-machete-cleanup-module.php:142
 msgid ""
 "Disables the Contact Form 7 refill script. Saves one hit to wp-ajax.php per pageview "
 "on cached sites"
 msgstr ""
 
-#: inc/cleanup/class-machete-cleanup-module.php:138
+#: inc/cleanup/class-machete-cleanup-module.php:142
 msgid "Activate only if you are not using the reCAPTCHA Contact Form 7 field"
 msgstr ""
 
-#: inc/cleanup/class-machete-cleanup-module.php:141
+#: inc/cleanup/class-machete-cleanup-module.php:145
 msgid "Reduce JPEG quality"
 msgstr ""
 
-#: inc/cleanup/class-machete-cleanup-module.php:142
+#: inc/cleanup/class-machete-cleanup-module.php:146
 msgid ""
 "When WordPress generates a JPEG thumbnail it compresses the image to 82% quality. "
 "Check this to reduce the default quality to 72%. (It doesn't affect original image "
 "quality)."
 msgstr ""
 
-#: inc/cleanup/class-machete-cleanup-module.php:145
+#: inc/cleanup/class-machete-cleanup-module.php:149
 msgid "Remove block editor CSS"
 msgstr ""
 
-#: inc/cleanup/class-machete-cleanup-module.php:146
+#: inc/cleanup/class-machete-cleanup-module.php:150
 msgid "Dequeues Gutenberg CSS stylesheets from the from the frontend."
 msgstr ""
 
-#: inc/cleanup/class-machete-cleanup-module.php:146
+#: inc/cleanup/class-machete-cleanup-module.php:150
 msgid "Check this only if you are not using the block editor."
 msgstr ""
 
-#: inc/cleanup/optimization.php:296
+#: inc/cleanup/class-machete-cleanup-module.php:153
+msgid "Disable Global CSS"
+msgstr ""
+
+#: inc/cleanup/class-machete-cleanup-module.php:154
+msgid ""
+"Removes the huge inline CSS and SVG elements that the block editor adds by default."
+msgstr ""
+
+#: inc/cleanup/optimization.php:303
 msgid "The REST API on this site has been disabled."
 msgstr ""
 
@@ -548,71 +569,79 @@ msgid ""
 "to new draft\" function to the post editor."
 msgstr ""
 
-#: inc/cookies/admin-content.php:16 inc/cookies/class-machete-cookies-module.php:24
+#: inc/cookies/admin-content.php:24 inc/cookies/class-machete-cookies-module.php:24
 msgid "Cookie Law Warning"
 msgstr ""
 
-#: inc/cookies/admin-content.php:17
+#: inc/cookies/admin-content.php:25
 msgid ""
 "We know you hate cookie warning bars. Well, this is the least hateable cookie bar "
 "you'll find. It is really light, doesn't affect your PageSpeed score and plays well "
 "with static cache plugins."
 msgstr ""
 
-#: inc/cookies/admin-content.php:21
+#: inc/cookies/admin-content.php:29
 msgid ""
 "This tool adds 0,4KB and a single database request to each page load. The remaining "
 "<abbr title=\"~1.1KB if GZipped\">~2.5KB</abbr> of code is loaded asynchronously via "
 "javascript from a pre-generated static file."
 msgstr ""
 
-#: inc/cookies/admin-content.php:31 inc/cookies/admin-content.php:32
+#: inc/cookies/admin-content.php:39 inc/cookies/admin-content.php:40
 msgid "Cookie alert status"
 msgstr ""
 
-#: inc/cookies/admin-content.php:33
+#: inc/cookies/admin-content.php:41
 msgid "Enabled"
 msgstr ""
 
-#: inc/cookies/admin-content.php:34
+#: inc/cookies/admin-content.php:42
 msgid "Disabled"
 msgstr ""
 
-#: inc/cookies/admin-content.php:37 inc/cookies/admin-content.php:72
+#: inc/cookies/admin-content.php:45 inc/cookies/admin-content.php:82
 msgid "Cookie warning text"
 msgstr ""
 
-#: inc/cookies/admin-content.php:39
+#: inc/cookies/admin-content.php:47
 msgid "Restore default warning text"
 msgstr ""
 
-#: inc/cookies/admin-content.php:42 inc/cookies/admin-content.php:70
+#: inc/cookies/admin-content.php:49
+msgid "Accept required cookies text"
+msgstr ""
+
+#: inc/cookies/admin-content.php:52 inc/cookies/admin-content.php:80
 msgid "Accept button text"
 msgstr ""
 
-#: inc/cookies/admin-content.php:45 inc/cookies/admin-content.php:46
+#: inc/cookies/admin-content.php:55 inc/cookies/admin-content.php:56
 msgid "Cookie bar theme"
 msgstr ""
 
-#: inc/cookies/admin-content.php:61
+#: inc/cookies/admin-content.php:71
 msgid "How do I customize the cookie bar?"
 msgstr ""
 
-#: inc/cookies/admin-content.php:65
+#: inc/cookies/admin-content.php:75
 #, php-format
 msgid "You can customize the cookie bar CSS using the %sAnalytics & Code tab"
 msgstr ""
 
-#: inc/cookies/admin-content.php:66
+#: inc/cookies/admin-content.php:76
 msgid "For your reference, this is the HTML used to render the cookie bar:"
 msgstr ""
 
-#: inc/cookies/admin-content.php:145 inc/cookies/class-machete-cookies-module.php:146
+#: inc/cookies/admin-content.php:181 inc/cookies/class-machete-cookies-module.php:128
 msgid "Cookie warning text can't be blank"
 msgstr ""
 
-#: inc/cookies/admin-content.php:150 inc/cookies/class-machete-cookies-module.php:157
+#: inc/cookies/admin-content.php:186 inc/cookies/class-machete-cookies-module.php:139
 msgid "Accept button text can't be blank"
+msgstr ""
+
+#: inc/cookies/admin-content.php:191 inc/cookies/class-machete-cookies-module.php:149
+msgid "Accept required cookies button text can't be blank"
 msgstr ""
 
 #: inc/cookies/class-machete-cookies-module.php:23
@@ -627,15 +656,21 @@ msgstr ""
 
 #: inc/cookies/class-machete-cookies-module.php:31
 msgid ""
-"By continuing to browse the site, you are agreeing to our use of cookies as "
-"described in our <a href=\"/cookies/\" style=\"color: #007FFF\">cookie policy</a>."
+"This website uses both technical cookies, essential for you to browse the website "
+"and use its features, and third-party cookies we use for marketing and data "
+"analytics porposes, as explained in our <a href=\"/cookies/\" style=\"color: #007FFF"
+"\">cookie policy</a>."
 msgstr ""
 
 #: inc/cookies/class-machete-cookies-module.php:32
 msgid "Accept cookies"
 msgstr ""
 
-#: inc/cookies/class-machete-cookies-module.php:39
+#: inc/cookies/class-machete-cookies-module.php:33
+msgid "Accept only essential"
+msgstr ""
+
+#: inc/cookies/class-machete-cookies-module.php:40
 msgid "Modern Light"
 msgstr ""
 
@@ -643,142 +678,34 @@ msgstr ""
 msgid "Modern Dark"
 msgstr ""
 
-#: inc/cookies/class-machete-cookies-module.php:49
-msgid "Classic Light"
-msgstr ""
-
-#: inc/cookies/class-machete-cookies-module.php:54
-msgid "Classic Dark"
-msgstr ""
-
-#: inc/cookies/class-machete-cookies-module.php:59
+#: inc/cookies/class-machete-cookies-module.php:48
 msgid "Cookie!"
 msgstr ""
 
+#: inc/cookies/class-machete-cookies-module.php:56
+msgid "Cookies"
+msgstr ""
+
 #: inc/cookies/class-machete-cookies-module.php:108
-#: inc/utils/class-machete-utils-module.php:73
+#: inc/utils/class-machete-utils-module.php:94
 #, php-format
 msgid "Error creating data dir %s please check file permissions"
 msgstr ""
 
-#: inc/cookies/class-machete-cookies-module.php:118
-#: inc/cookies/class-machete-cookies-module.php:131
-#, php-format
-msgid "Error reading cookie bar template %s"
-msgstr ""
-
-#: inc/cookies/class-machete-cookies-module.php:179
+#: inc/cookies/class-machete-cookies-module.php:169
+#: inc/utils/class-machete-utils-module.php:239
 #, php-format
 msgid ""
 "Error writing static javascript file to %s please check file permissions. Aborting "
 "to prevent inconsistent state."
 msgstr ""
 
-#: inc/cookies/class-machete-cookies-module.php:190
+#: inc/cookies/class-machete-cookies-module.php:180
+#: inc/utils/class-machete-utils-module.php:252
 #, php-format
 msgid ""
 "Could not delete old javascript file from %s please check file permissions. Aborting "
 "to prevent inconsistent state."
-msgstr ""
-
-#: inc/importexport/admin-content.php:15
-#: inc/importexport/class-machete-importexport-module.php:24
-msgid "Import/Export Options"
-msgstr ""
-
-#: inc/importexport/admin-content.php:17
-msgid ""
-"You can use this section to backup and restore your Machete configuration. You can "
-"also take a backup from one site and restore it to another. Be careful, your current "
-"configuration will be overwritten when you import a backup file"
-msgstr ""
-
-#: inc/importexport/admin-content.php:19
-msgid "This section has no impact on the page load times."
-msgstr ""
-
-#: inc/importexport/admin-content.php:26
-msgid "Export Machete Options"
-msgstr ""
-
-#: inc/importexport/admin-content.php:28
-msgid ""
-"Select the modules from which you want to export the settings and click \"Download "
-"config backup\" to get a .json file with the backup."
-msgstr ""
-
-#: inc/importexport/admin-content.php:34
-msgid "Modules to export"
-msgstr ""
-
-#: inc/importexport/admin-content.php:51
-msgid "Download config backup"
-msgstr ""
-
-#: inc/importexport/admin-content.php:60
-msgid "Import Machete Options"
-msgstr ""
-
-#: inc/importexport/admin-content.php:62
-msgid ""
-"Select a Machete backup file and click \"Upload config backup\" to import it. Please "
-"keep in mind that the module settings included in the backup file will overwrite "
-"your current setting for those modules."
-msgstr ""
-
-#: inc/importexport/admin-content.php:64
-msgid "Machete backup file to restore"
-msgstr ""
-
-#: inc/importexport/admin-content.php:67
-msgid "Upload config backup"
-msgstr ""
-
-#: inc/importexport/class-machete-importexport-module.php:23
-msgid "Import/Export"
-msgstr ""
-
-#: inc/importexport/class-machete-importexport-module.php:25
-msgid ""
-"You can use this section to backup and restore your Machete configuration. You can "
-"also take a backup from one site and restore it to another."
-msgstr ""
-
-#: inc/importexport/class-machete-importexport-module.php:129
-msgid "You do not have permission to upload files."
-msgstr ""
-
-#: inc/importexport/class-machete-importexport-module.php:146
-#: inc/importexport/class-machete-importexport-module.php:164
-msgid "You haven't uploaded a backup file"
-msgstr ""
-
-#: inc/importexport/class-machete-importexport-module.php:151
-msgid "An error happened while trying to upload your file"
-msgstr ""
-
-#: inc/importexport/class-machete-importexport-module.php:156
-msgid "An error happened: "
-msgstr ""
-
-#: inc/importexport/class-machete-importexport-module.php:173
-msgid "You haven't uploaded a valid Machete backup file"
-msgstr ""
-
-#: inc/importexport/class-machete-importexport-module.php:181
-msgid "Ignored unknown module:"
-msgstr ""
-
-#: inc/importexport/class-machete-importexport-module.php:184
-msgid "Importing module: "
-msgstr ""
-
-#: inc/importexport/class-machete-importexport-module.php:191
-msgid "Module activated successfully"
-msgstr ""
-
-#: inc/importexport/class-machete-importexport-module.php:195
-msgid "Module deactivated successfully"
 msgstr ""
 
 #: inc/maintenance/admin-bar.php:51
@@ -918,7 +845,7 @@ msgstr ""
 
 #: inc/powertools/admin-content.php:39 inc/powertools/admin-content.php:45
 #: inc/powertools/admin-content.php:51 inc/powertools/admin-content.php:58
-#: inc/powertools/admin-content.php:65 inc/utils/admin-content.php:98
+#: inc/powertools/admin-content.php:65
 msgid "Format:"
 msgstr ""
 
@@ -1229,17 +1156,17 @@ msgctxt "Pinterest button label"
 msgid "Pin this"
 msgstr ""
 
-#: inc/social/class-machete-social-module.php:226
+#: inc/social/class-machete-social-module.php:231
 msgctxt "Page post type singular label"
 msgid "page"
 msgstr ""
 
-#: inc/social/class-machete-social-module.php:229
+#: inc/social/class-machete-social-module.php:234
 msgctxt "Post post type singular label"
 msgid "post"
 msgstr ""
 
-#: inc/social/class-machete-social-module.php:232
+#: inc/social/class-machete-social-module.php:237
 msgctxt "Product post type singular label"
 msgid "product"
 msgstr ""
@@ -1274,59 +1201,68 @@ msgstr ""
 msgid "Footer code"
 msgstr ""
 
-#: inc/utils/admin-content.php:87 inc/utils/admin-content.php:88
-msgid "Tracking Code"
+#: inc/utils/admin-content.php:86 inc/utils/admin-content.php:87
+msgid "Tracking Codes"
 msgstr ""
 
 #: inc/utils/admin-content.php:89
-msgid "Standard Google Analytics tracking code"
+msgid "Inactive"
 msgstr ""
 
-#: inc/utils/admin-content.php:90
-msgid "Uses JavaScript to hide the tracking code from PageSpeed and GoogleBot"
-msgstr ""
-
-#: inc/utils/admin-content.php:90
-msgid "PageSpeed-optimized tracking code"
-msgstr ""
-
-#: inc/utils/admin-content.php:90
-msgid "Deprecated"
-msgstr ""
-
-#: inc/utils/admin-content.php:91
-msgid "No tracking code"
+#: inc/utils/admin-content.php:94
+msgid "Google Analytics 4"
 msgstr ""
 
 #: inc/utils/admin-content.php:96
-msgid "Tracking ID"
+msgid "Google Analytics 4 property ID"
 msgstr ""
 
-#: inc/utils/admin-content.php:101
-msgid "CF7 Tracking"
+#: inc/utils/admin-content.php:96 inc/utils/admin-content.php:102
+#: inc/utils/admin-content.php:114
+msgid "Valid format:"
 msgstr ""
 
-#: inc/utils/admin-content.php:102 inc/utils/admin-content.php:108
-#: inc/utils/admin-content.php:109
+#: inc/utils/admin-content.php:100
+msgid "Universal Analytics"
+msgstr ""
+
+#: inc/utils/admin-content.php:102
+msgid "Google Analytics property ID"
+msgstr ""
+
+#: inc/utils/admin-content.php:105 inc/utils/admin-content.php:106
+#: inc/utils/admin-content.php:119
 msgid "Anonymize user IPs"
 msgstr ""
 
-#: inc/utils/admin-content.php:104
+#: inc/utils/admin-content.php:107
+msgid "Check to anonymize visitor IPs. Required in some countries."
+msgstr ""
+
+#: inc/utils/admin-content.php:112
+msgid "Google Tag Manager"
+msgstr ""
+
+#: inc/utils/admin-content.php:114
+msgid "Tag Manager container ID"
+msgstr ""
+
+#: inc/utils/admin-content.php:118
+msgid "CF7 Tracking"
+msgstr ""
+
+#: inc/utils/admin-content.php:121
 #, php-format
 msgid ""
 "Launch a Google Analytics event whenever a visitor submits a <a href=\"%s\">Contact "
 "Form 7</a> form."
 msgstr ""
 
-#: inc/utils/admin-content.php:110
-msgid "Check to anonymize visitor IPs. Required in some countries."
-msgstr ""
-
-#: inc/utils/admin-content.php:121 inc/utils/admin-content.php:123
+#: inc/utils/admin-content.php:133 inc/utils/admin-content.php:135
 msgid "Custom header content"
 msgstr ""
 
-#: inc/utils/admin-content.php:126
+#: inc/utils/admin-content.php:138
 #, php-format
 msgid ""
 "This code is included before the closing <code>&lt;/head&gt;</code> tag.<br>Content "
@@ -1334,55 +1270,55 @@ msgid ""
 "so no PHP or shortcodes here."
 msgstr ""
 
-#: inc/utils/admin-content.php:137 inc/utils/admin-content.php:139
+#: inc/utils/admin-content.php:149 inc/utils/admin-content.php:151
 msgid "Custom body content"
 msgstr ""
 
-#: inc/utils/admin-content.php:140
+#: inc/utils/admin-content.php:152
 msgid ""
 "This block is meant to be included just after the beginning of the <code>&lt;body&gt;"
 "</code> tag, and it's mainly used for conversion tracking codes."
 msgstr ""
 
-#: inc/utils/admin-content.php:142
+#: inc/utils/admin-content.php:154
 #, php-format
 msgid ""
 "Content is saved to <code>%s</code> and served using PHP. No PHP code or shortcodes "
 "here."
 msgstr ""
 
-#: inc/utils/admin-content.php:153
+#: inc/utils/admin-content.php:165
 msgid "Code injection method"
 msgstr ""
 
-#: inc/utils/admin-content.php:156
+#: inc/utils/admin-content.php:168
 msgid "Custom body content injection method:"
 msgstr ""
 
-#: inc/utils/admin-content.php:158
+#: inc/utils/admin-content.php:170
 msgid ""
 "Include the code using the native <code>wp_body_open</code> hook (not supported by "
 "all themes)."
 msgstr ""
 
-#: inc/utils/admin-content.php:161
+#: inc/utils/admin-content.php:173
 #, php-format
 msgid ""
 "Try to inject the code automatically using <a href=\"%s\" target=\"_blank\" rel="
 "\"nofollow\">Yaniv Friedensohn's method</a>"
 msgstr ""
 
-#: inc/utils/admin-content.php:163
+#: inc/utils/admin-content.php:175
 msgid ""
 "Edit your theme's <code>header.php</code> template manually and include this "
 "function:"
 msgstr ""
 
-#: inc/utils/admin-content.php:180 inc/utils/admin-content.php:182
+#: inc/utils/admin-content.php:186 inc/utils/admin-content.php:188
 msgid "Custom footer content"
 msgstr ""
 
-#: inc/utils/admin-content.php:184
+#: inc/utils/admin-content.php:190
 #, php-format
 msgid ""
 "This code is included when the <code>wp_footer</code> action is called, normally "
@@ -1391,8 +1327,16 @@ msgid ""
 "shortcodes here."
 msgstr ""
 
-#: inc/utils/admin-content.php:224 inc/utils/class-machete-utils-module.php:85
-msgid "That doesn't look like a valid Google Analytics tracking ID"
+#: inc/utils/admin-content.php:235 inc/utils/class-machete-utils-module.php:168
+msgid "That doesn't look like a valid Google Analytics 4 Property ID"
+msgstr ""
+
+#: inc/utils/admin-content.php:242 inc/utils/class-machete-utils-module.php:131
+msgid "That doesn't look like a valid Universal Analytics Property ID"
+msgstr ""
+
+#: inc/utils/admin-content.php:249 inc/utils/class-machete-utils-module.php:208
+msgid "That doesn't look like a valid Google Tag Manager container ID"
 msgstr ""
 
 #: inc/utils/class-machete-utils-module.php:23
@@ -1405,8 +1349,65 @@ msgid ""
 "JS snippets or site verification tags."
 msgstr ""
 
-#: inc/utils/class-machete-utils-module.php:93
+#: inc/utils/class-machete-utils-module.php:102
 msgid "Something went wrong. Unknown tracking code format requested."
+msgstr ""
+
+#: inc/woocommerce/actions.php:45 inc/woocommerce/actions.php:61
+#, php-format
+msgid "From %1$s"
+msgstr ""
+
+#: inc/woocommerce/admin-content.php:23 inc/woocommerce/admin-content.php:38
+#: inc/woocommerce/class-machete-woocommerce-module.php:24
+msgid "WooCommerce Utils"
+msgstr ""
+
+#: inc/woocommerce/admin-content.php:25
+msgid ""
+"WooCommerce was designed to work for every possible use case, but that often leads "
+"to unexpected behavior. These simple fixes can improve the WooCommerce user "
+"experience by making it behave as clients expect."
+msgstr ""
+
+#: inc/woocommerce/admin-content.php:44
+msgid "Option"
+msgstr ""
+
+#: inc/woocommerce/class-machete-woocommerce-module.php:23
+msgid "WooCommerce"
+msgstr ""
+
+#: inc/woocommerce/class-machete-woocommerce-module.php:25
+msgid ""
+"Utilities and fixes that make your life a little easier when working with "
+"WooCommerce."
+msgstr ""
+
+#: inc/woocommerce/class-machete-woocommerce-module.php:32
+msgid "Fix free shipping"
+msgstr ""
+
+#: inc/woocommerce/class-machete-woocommerce-module.php:33
+msgid ""
+"Hides all paid shipping methods from checkout when free shipping is available. Keeps "
+"\"Free shipping\" and \"local Pickup\"."
+msgstr ""
+
+#: inc/woocommerce/class-machete-woocommerce-module.php:36
+msgid "Variable price from"
+msgstr ""
+
+#: inc/woocommerce/class-machete-woocommerce-module.php:37
+msgid "Replaces the price interval on variable products with a \"Price from\" label."
+msgstr ""
+
+#: inc/woocommerce/class-machete-woocommerce-module.php:40
+msgid "Hide trailing zeros"
+msgstr ""
+
+#: inc/woocommerce/class-machete-woocommerce-module.php:41
+msgid "Hides trailing zeros on prices. Shows $5.00 as $5"
 msgstr ""
 
 #: machete-admin.php:44
@@ -1421,8 +1422,12 @@ msgstr ""
 msgid "<a href=\"%s\">Settings</a>"
 msgstr ""
 
-#: machete.php:71
+#: machete.php:79
 msgid "Machete PowerTools are now active! Enjoy your new toy!"
+msgstr ""
+
+#: machete.php:86
+msgid "You have to install and activate WooCommerce to use this module."
 msgstr ""
 
 #. Plugin Name of the plugin/theme
