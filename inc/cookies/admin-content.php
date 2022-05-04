@@ -119,12 +119,11 @@ foreach ( $this->themes as $machete_theme_slug => $machete_params ) {
 	);
 
 	// OJO, cookies_bar_innerhtml define el innerHTMl de la barra como var machete_cookies_bar_html.
-	echo str_replace(
+	echo str_replace( // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped 
 		array_keys( $machete_cookie_replaces ),
 		array_values( $machete_cookie_replaces ),
 		$this->cookies_bar_innerhtml
-	); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped 
-
+	);
 	?>
 
 
@@ -142,7 +141,6 @@ foreach ( $this->themes as $machete_theme_slug => $machete_params ) {
 				document.getElementById( cookie_bar_themes[key] ).setAttribute('disabled', 'disabled');
 			}
 		}
-
 		update_preview_text();
 	}
 
@@ -155,7 +153,6 @@ foreach ( $this->themes as $machete_theme_slug => $machete_params ) {
 	$( "#warning_text" ).on( 'input', function() { update_preview_text(); });
 	$( "#accept_text" ).on( 'input', function() { update_preview_text(); });
 	$( "#partial_accept_text" ).on( 'input', function() { update_preview_text(); });
-
 
 	var container       = document.createElement( 'div' );
 	container.id        = 'machete_cookie_container';
@@ -177,7 +174,6 @@ foreach ( $this->themes as $machete_theme_slug => $machete_params ) {
 	var body = document.getElementsByTagName('body')[0];
 	body.appendChild(container);
 	update_preview_text();
-
 
 	$('#mache-cookies-options').submit(function( e ) {
 
@@ -206,9 +202,6 @@ foreach ( $this->themes as $machete_theme_slug => $machete_params ) {
 
 		update_preview_text();
 	});
-
-
-
 
 	$( 'button.handlediv' ).click( function( e ) {
 		$( this ).parent().find( '.hndle' ).click();
