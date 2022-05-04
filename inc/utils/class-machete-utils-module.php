@@ -31,7 +31,6 @@ class MACHETE_UTILS_MODULE extends MACHETE_MODULE {
 			'tracking_gtm'                     => '',
 			'tracking_format'                  => 'none',
 			'tacking_anonymize'                => 0,
-			'track_wpcf7'                      => 0,
 			'tracking_filename'                => '',
 			'alfonso_content_injection_method' => 'manual',
 		);
@@ -109,12 +108,6 @@ class MACHETE_UTILS_MODULE extends MACHETE_MODULE {
 			$settings['tacking_anonymize'] = 1;
 		} else {
 			$settings['tacking_anonymize'] = 0;
-		}
-
-		if ( isset( $options['track_wpcf7'] ) ) {
-			$settings['track_wpcf7'] = 1;
-		} else {
-			$settings['track_wpcf7'] = 0;
 		}
 
 		/* Start GTAG (universal &y GA4) */

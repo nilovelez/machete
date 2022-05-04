@@ -114,13 +114,6 @@ if ( false !== $machete_editor_settings ) {
 	<p class="description" id="tracking_gtm_description"><?php esc_html_e( 'Tag Manager container ID', 'machete' ); ?><br><?php esc_html_e( 'Valid format:', 'machete' ); ?> GTM-123456ABCD</p></td>
 	</tr>
 
-	<tr>
-	<th scope="row"><?php esc_html_e( 'CF7 Tracking', 'machete' ); ?></th>
-	<td><fieldset><legend class="screen-reader-text"><span><?php esc_html_e( 'Anonymize user IPs', 'machete' ); ?></span></legend>
-		<?php // translators: %s: link to the plugin's directory page. ?>
-		<label><input name="track_wpcf7" value="1" type="checkbox" <?php checked( '1', $this->settings['track_wpcf7'], true ); ?>> <?php printf( wp_kses_data( __( 'Launch a Google Analytics event whenever a visitor submits a <a href="%s">Contact Form 7</a> form.', 'machete' ) ), 'https://wordpress.org/plugins/contact-form-7/' ); ?></label><br>
-	</fieldset></td>
-	</tr>
 	</tbody>
 	</table>
 
