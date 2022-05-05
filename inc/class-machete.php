@@ -21,6 +21,13 @@ class MACHETE {
 	public $modules = array();
 
 	/**
+	 * Container for admin notices
+	 *
+	 * @var Array $modules
+	 **/
+	public $notices = array();
+
+	/**
 	 * Placeholder for the old tabs navigation.
 	 *
 	 * @param string $current Current (active) tab slug.
@@ -79,27 +86,34 @@ class MACHETE {
 	 * @param bool   $dismissible determines if the notice can be dismissed via javascript.
 	 */
 	public function notice( $message, $level = 'info', $dismissible = true ) {
-		$this->notice_message = $message;
+
+		$notice_obj = new \stdClass();
+
+		$notice_obj->notice_message = $message;
 
 		if ( ! in_array( $level, array( 'error', 'warning', 'info', 'success' ), true ) ) {
 			$level = 'info';
 		}
-		$this->notice_class = 'notice notice-' . $level;
+		$notice_obj->notice_class = 'notice notice-' . $level;
 		if ( $dismissible ) {
-			$this->notice_class .= ' is-dismissible';
+			$notice_obj->notice_class .= ' is-dismissible';
 		}
+		$this->notices[] = $notice_obj;
 		add_action( 'admin_notices', array( $this, 'display_notice' ) );
 	}
 	/**
 	 * Callback function for the admin_notices action in the notice() function.
 	 */
 	public function display_notice() {
-		if ( ! empty( $this->notice_message ) ) {
-			?>
-		<div class="<?php echo esc_attr( $this->notice_class ); ?>">
-			<p><?php echo esc_html( $this->notice_message ); ?></p>
-		</div>
-			<?php
+
+		foreach ( $this->notices as $notice ) {
+			if ( ! empty( $notice->notice_message ) ) {
+				?>
+			<div class="<?php echo esc_attr( $notice->notice_class ); ?>">
+				<p><?php echo esc_html( $notice->notice_message ); ?></p>
+			</div>
+				<?php
+			}
 		}
 	}
 
