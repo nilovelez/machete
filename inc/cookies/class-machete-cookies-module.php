@@ -160,7 +160,7 @@ class MACHETE_COOKIES_MODULE extends MACHETE_MODULE {
 		);
 
 		// cheap and dirty pseudo-random filename generation.
-		$settings['cookie_filename'] = 'cookies_' . strtolower( substr( MD5( time() ), 0, 8 ) ) . '.js';
+		$settings['cookie_filename'] = 'cookies_mct4_' . strtolower( substr( MD5( time() ), 0, 8 ) ) . '.js';
 
 		if ( 'enabled' === $settings['bar_status'] ) {
 			if ( ! $this->put_contents( MACHETE_DATA_PATH . $settings['cookie_filename'], $cookies_bar_js ) ) {
@@ -226,6 +226,7 @@ class MACHETE_COOKIES_MODULE extends MACHETE_MODULE {
 <script>
 <?php $this->readfile( MACHETE_DATA_PATH . $this->settings['cookie_filename'] ); ?>
 (function(){
+	if ( typeof machete_cookies_bar_stylesheet === 'undefined') return;
 	var s = document.createElement('script'); s.type = 'text/javascript';
 	s.defer = true; s.src = '<?php echo esc_url( $this->baseurl . 'js/cookies_bar_js.js' ); ?>';
 	var body = document.getElementsByTagName('body')[0];

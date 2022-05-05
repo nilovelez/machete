@@ -224,7 +224,7 @@ class MACHETE_UTILS_MODULE extends MACHETE_MODULE {
 
 		if ( '' !== $tracking_script_js ) {
 			// cheap and dirty pseudo-random filename generation.
-			$settings['tracking_filename'] = 'tracking_' . strtolower( substr( MD5( time() ), 0, 8 ) ) . '.js';
+			$settings['tracking_filename'] = 'tracking_mct4_' . strtolower( substr( MD5( time() ), 0, 8 ) ) . '.js';
 
 			if ( ! $this->put_contents( MACHETE_DATA_PATH . $settings['tracking_filename'], $tracking_script_js ) ) {
 				if ( ! $silent ) {
@@ -314,7 +314,7 @@ class MACHETE_UTILS_MODULE extends MACHETE_MODULE {
 			if ( 'enabled' === $machete_cookie_settings['bar_status'] ) {
 				add_action(
 					'wp_enqueue_scripts',
-					array( $this, 'enqueue_traking_waiting_cookies' )
+					array( $this, 'enqueue_tracking_waiting_cookies' )
 				);
 				return false;
 			}
@@ -332,7 +332,7 @@ class MACHETE_UTILS_MODULE extends MACHETE_MODULE {
 	/**
 	 * Called from enqueue_tracking_if_no_cookies() if cookies are active
 	 */
-	public function enqueue_traking_waiting_cookies() {
+	public function enqueue_tracking_waiting_cookies() {
 		wp_enqueue_script(
 			'machete-load-tracking',
 			MACHETE_BASE_URL . 'js/gdpr_load_tracking.js',
@@ -345,16 +345,6 @@ class MACHETE_UTILS_MODULE extends MACHETE_MODULE {
 			'var machete_tracking_script_url = "' . MACHETE_DATA_URL . $this->settings['tracking_filename'] . '";',
 			'before'
 		);
-	}
-
-	/**
-	 * Called from frontend-functions.php via add_action .
-	 */
-	public function read_tracking_js() {
-		if ( empty( $this->settings['tracking_filename'] ) ) {
-			return false;
-		}
-		return $this->readfile( MACHETE_DATA_PATH . $this->settings['tracking_filename'] );
 	}
 	/**
 	 * Called from frontend-functions.php via add_action .

@@ -20,7 +20,11 @@ if ( file_exists( MACHETE_DATA_PATH . 'header.html' ) ) {
 }
 
 
-if ( 'none' !== $this->settings['tracking_format'] ) {
+if (
+	( 'none' !== $this->settings['tracking_format'] ) &&
+	( ! empty( $this->settings['tracking_filename'] ) ) &&
+	( file_exists( MACHETE_DATA_PATH . $this->settings['tracking_filename'] ) )
+	) {
 	$this->enqueue_tracking_if_no_cookies();
 }
 
