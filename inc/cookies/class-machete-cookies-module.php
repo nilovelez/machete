@@ -225,6 +225,7 @@ class MACHETE_COOKIES_MODULE extends MACHETE_MODULE {
 		?>
 <script>
 <?php $this->readfile( MACHETE_DATA_PATH . $this->settings['cookie_filename'] ); ?>
+
 (function(){
 	if ( typeof machete_cookies_bar_stylesheet === 'undefined') return;
 	var s = document.createElement('script'); s.type = 'text/javascript';
