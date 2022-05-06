@@ -20,8 +20,8 @@ class MACHETE_COOKIES_MODULE extends MACHETE_MODULE {
 		$this->init(
 			array(
 				'slug'        => 'cookies',
-				'title'       => __( 'Cookie Law', 'machete' ),
-				'full_title'  => __( 'Cookie Law Warning', 'machete' ),
+				'title'       => __( 'Cookies & GDPR', 'machete' ),
+				'full_title'  => __( 'Cookies & GDPR Warning', 'machete' ),
 				'description' => __( 'Light and responsive cookie law warning bar that won\'t affect your PageSpeed score and plays well with static cache plugins.', 'machete' ),
 				'role'        => 'publish_posts', // targeting Author role.
 			)
