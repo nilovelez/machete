@@ -43,3 +43,6 @@ $ phpcs -q --parallel=4 --extensions=php --colors .
 $ git diff --shortstat "@{1 month}"
 $ git diff --shortstat "@{4 days ago}"
 ```
+
+## uglify and compress
+https://jscompress.com/
