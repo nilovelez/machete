@@ -55,7 +55,7 @@ add_action(
 				( isset( $tracking_options['tracking_id'] ) ) &&
 				( ! isset( $tracking_options['tracking_filename'] ) )
 			) {
-				$module_url = add_query_arg( 'page', 'machete-cookies', admin_url( 'admin.php' ) );
+				$module_url = add_query_arg( 'page', 'machete-utils', admin_url( 'admin.php' ) );
 				/* Translators: 1: link open tag 2: link close tag */
 				$machete->notice( sprintf( __( 'You are using Tracking settings from a previous Machete version. Go to the %1$sAnalytics & Code Module page%2$s and <strong>Save Settings</strong> to remove this notice.', 'machete' ), '<a href="' . $module_url . '">', '</a>' ), 'warning', false );
 			}
