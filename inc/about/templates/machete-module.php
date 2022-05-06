@@ -120,7 +120,7 @@ if ( ! array_key_exists( 'banner', $machete_args ) ) {
 		<?php } else { ?>
 			<?php if ( $machete_args['can_be_enabled'] ) { ?>
 			<a href="<?php echo esc_url( add_query_arg( 'machete-action', 'activate', $machete_action_url ) ); ?>" class="button-secondary" data-status="1"><?php esc_html_e( 'Activate', 'machete' ); ?></a>
-			<?php } else {  ?>
+			<?php } else { ?>
 				<span class="button-secondary button-disabled"><?php esc_html_e( 'Activate', 'machete' ); ?></span>
 			<?php } ?>
 
