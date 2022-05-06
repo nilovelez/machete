@@ -28,6 +28,42 @@ add_action(
 	}
 );
 
+// Warning for Machete 3 users.
+add_action(
+	'admin_init',
+	function() {
+		global $machete;
+		if ( $machete->modules['cookies']->params['is_active'] ) {
+
+			$cookie_options = get_option( 'machete_cookies_settings' );
+			// cookies_4943ac95.js .
+			if (
+				$cookie_options &&
+				( isset( $cookie_options['cookie_filename'] ) ) &&
+				( strpos( $cookie_options['cookie_filename'], '_mct4_' ) === false )
+			) {
+				$module_url = add_query_arg( 'page', 'machete-cookies', admin_url( 'admin.php' ) );
+				/* Translators: 1: link open tag 2: link close tag */
+				$machete->notice( sprintf( __( 'You are using Cookie settings from a previous Machete version. Go to the %1$sCookies Module page%2$s and <strong>Save Settings</strong> to remove this notice.', 'machete' ), '<a href="' . $module_url . '">', '</a>' ), 'warning', false );
+			}
+		}
+		if ( $machete->modules['utils']->params['is_active'] ) {
+
+			$tracking_options = get_option( 'machete_utils_settings' );
+			if (
+				$tracking_options &&
+				( isset( $tracking_options['tracking_id'] ) ) &&
+				( ! isset( $tracking_options['tracking_filename'] ) )
+			) {
+				$module_url = add_query_arg( 'page', 'machete-cookies', admin_url( 'admin.php' ) );
+				/* Translators: 1: link open tag 2: link close tag */
+				$machete->notice( sprintf( __( 'You are using Tracking settings from a previous Machete version. Go to the %1$sAnalytics & Code Module page%2$s and <strong>Save Settings</strong> to remove this notice.', 'machete' ), '<a href="' . $module_url . '">', '</a>' ), 'warning', false );
+			}
+		}
+	}
+);
+
+
 // Content specific to Machete admin pages.
 add_action(
 	'current_screen',
