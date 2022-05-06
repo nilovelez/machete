@@ -105,12 +105,17 @@ class MACHETE {
 	 * Callback function for the admin_notices action in the notice() function.
 	 */
 	public function display_notice() {
-
+		$machete_allowed_notice_tags = array(
+			'strong' => array(),
+			'a'      => array(
+				'href' => array(),
+			),
+		);
 		foreach ( $this->notices as $notice ) {
 			if ( ! empty( $notice->notice_message ) ) {
 				?>
 			<div class="<?php echo esc_attr( $notice->notice_class ); ?>">
-				<p><?php echo esc_html( $notice->notice_message ); ?></p>
+				<p><?php echo wp_kses( $notice->notice_message, $machete_allowed_notice_tags ); ?></p>
 			</div>
 				<?php
 			}
