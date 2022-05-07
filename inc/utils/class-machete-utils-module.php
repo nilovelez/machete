@@ -335,7 +335,7 @@ class MACHETE_UTILS_MODULE extends MACHETE_MODULE {
 	public function enqueue_tracking_waiting_cookies() {
 		wp_enqueue_script(
 			'machete-load-tracking',
-			MACHETE_BASE_URL . 'js/gdpr_load_tracking.min.js',
+			$this->baseurl . 'js/gdpr_load_tracking.min.js',
 			array(),
 			MACHETE_VERSION,
 			false
