@@ -73,7 +73,7 @@ Like it or not, the WordPress Block Editor (codenamed Gutenberg) is here to stay
 
 == Changelog ==
 
-= 4.0.0 =
+= 4.0 =
 * Checked for compatibility with WordPress 6.0
 * Cleanup module: Added option to disable WordPress search functions
 * Cookies module: Complete rework to comply with GDPR. New styles and scripts.
