@@ -42,10 +42,6 @@ class MACHETE_POWERTOOLS_MODULE extends MACHETE_MODULE {
 				'title'       => __( 'Excerpts in Pages', 'machete' ),
 				'description' => __( 'Enables excerpts in pages. Useless for most people but awesome when combined with a page builder like Visual Composer', 'machete' ),
 			),
-			'save_with_keyboard'  => array(
-				'title'       => __( 'Save with keyboard', 'machete' ),
-				'description' => __( 'Lets you save your posts, pages, theme and plugin files in the most natural way: pressing Ctrl+S (or Cmd+S on Mac). It saves unpublished posts/pages as drafts and updates the ones that are already public', 'machete' ),
-			),
 			'move_scripts_footer' => array(
 				'title'       => __( 'Move scripts to footer', 'machete' ),
 				'description' => __( 'Move all enqueued JS scripts from the header to the footer. Machete will de-register the call for the JavaScript to load in the HEAD section of the site and re-register it to the FOOTER.', 'machete' ),
@@ -98,9 +94,6 @@ class MACHETE_POWERTOOLS_MODULE extends MACHETE_MODULE {
 			switch ( filter_input( INPUT_POST, 'machete-powertools-action' ) ) {
 				case 'purge_transients':
 					$this->purge_transients();
-					break;
-				case 'purge_revisions':
-					$this->purge_post_revisions();
 					break;
 				case 'flush_rewrites':
 					$this->flush_rewrite_rules();

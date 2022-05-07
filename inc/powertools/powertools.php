@@ -16,7 +16,6 @@ widget_shortcodes
 widget_oembed
 rss_thumbnails
 page_excerpts
-save_with_keyboard
 move_scripts_footer
 defer_all_scripts
 disable_feeds
@@ -56,28 +55,6 @@ if ( in_array( 'rss_thumbnails', $this->settings, true ) && ! is_admin() ) {
 // enable page_excerpts.
 if ( in_array( 'page_excerpts', $this->settings, true ) ) {
 	add_post_type_support( 'page', 'excerpt' );
-}
-
-// save with keyboard.
-if ( in_array( 'save_with_keyboard', $this->settings, true ) && is_admin() ) {
-	add_action(
-		'admin_enqueue_scripts',
-		function() {
-			wp_register_script(
-				'machete_save_with_keyboard',
-				MACHETE_BASE_URL . 'vendor/save-with-keyboard/saveWithKeyboard.js',
-				array( 'jquery' ),
-				MACHETE_VERSION,
-				false
-			);
-			$translation_array = array(
-				'save_button_tooltip'    => __( 'Ctrl+S or Cmd+S to click', 'machete' ),
-				'preview_button_tooltip' => __( 'Ctrl+P or Cmd+P to preview', 'machete' ),
-			);
-			wp_localize_script( 'machete_save_with_keyboard', 'l10n_strings', $translation_array );
-			wp_enqueue_script( 'machete_save_with_keyboard' );
-		}
-	);
 }
 
 // Script to Move JavaScript from the Head to the Footer.

@@ -38,13 +38,6 @@ $machete_allowed_description_tags = array(
 	<td><input type="submit" name="machete-powertools-action" value="purge_transients" class="button button-primary">
 	<p class="description" id="tracking_id_description" style="display: none;"><?php esc_html_e( 'Format:', 'machete' ); ?></p></td>
 	</tr>
-	<!--
-	<tr>
-	<th scope="row"><label for="tracking_id"><?php esc_html_e( 'Delete Unused Post Revisions', 'machete' ); ?></label></th>
-	<td><input type="submit" name="machete-powertools-action" value="purge_revisions" class="button button-primary">
-	<p class="description" id="tracking_id_description" style="display: none;"><?php esc_html_e( 'Format:', 'machete' ); ?></p></td>
-	</tr>
-	-->
 	<tr>
 	<th scope="row"><label for="tracking_id"><?php esc_html_e( 'Delete Permalink Cache', 'machete' ); ?></label></th>
 	<td><input type="submit" name="machete-powertools-action" value="flush_rewrites" class="button button-primary">
