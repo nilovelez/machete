@@ -30,5 +30,5 @@ delete_option( 'machete_maintenance_settings' );
 // machete social sharing options.
 delete_option( 'machete_social_settings' );
 
-// machete woocommerce options.
+// machete WooCommerce options.
 delete_option( 'machete_woocommerce_settings' );
