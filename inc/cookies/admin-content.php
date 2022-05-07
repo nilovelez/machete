@@ -76,12 +76,33 @@ if ( 'dark' === $this->settings['bar_theme'] ) {
 			<p class="description"><?php esc_html_e( 'For your reference, this is the HTML used to render the cookie bar:', 'machete' ); ?></p>
 			<pre style="color: #00f; font-weight: bold;">&lt;div <span style="color: #c00;">id</span>=<span style="color: #f0f;">"machete_cookie_container"</span> <span style="color: #c00;">class</span>=<span style="color: #f0f;">"machete_cookie_container"</span>&gt;
 &nbsp;&nbsp;&lt;div <span style="color: #c00;">id</span>=<span style="color: #f0f;">"machete_cookie_bar"</span> <span style="color: #c00;">class</span>=<span style="color: #f0f;">"machete_cookie_bar"</span>&gt;
-&nbsp;&nbsp;&nbsp;&nbsp;&lt;a <span style="color: #c00;">id</span>=<span style="color: #f0f;">"machete_accept_cookie_btn"</span> <span style="color: #c00;">class</span>=<span style="color: #f0f;">"machete_accept_cookie_btn"</span>&gt;
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color: #000;">[<?php esc_html_e( 'Accept button text', 'machete' ); ?>]</span>
-&nbsp;&nbsp;&nbsp;&nbsp;&lt;/a&gt;
-&nbsp;&nbsp;&nbsp;&nbsp;<span style="color: #000;">[<?php esc_html_e( 'Cookie warning text', 'machete' ); ?>]</span>
+&nbsp;&nbsp;&nbsp;&nbsp;&lt;span
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color: #c00;">id</span>=<span style="color: #f0f;">"machete_cookie_warning_text"</span>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color: #c00;">class</span>=<span style="color: #f0f;">"machete_cookie_warning_text"</span>&gt;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color: #000;">[<?php esc_html_e( 'Cookie warning text', 'machete' ); ?>]</span>
+&nbsp;&nbsp;&nbsp;&nbsp;&lt;/span&gt;
+&nbsp;&nbsp;&nbsp;&nbsp;&lt;button
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color: #c00;">id</span>=<span style="color: #f0f;">"machete_accept_cookie_btn_partial"</span>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color: #c00;">class</span>=<span style="color: #f0f;">"machete_accept_cookie_btn partial"</span>&gt;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color: #000;">[<?php esc_html_e( 'Accept required cookies text', 'machete' ); ?>]</span>
+&nbsp;&nbsp;&nbsp;&nbsp;&lt;/button&gt;
+&nbsp;&nbsp;&nbsp;&nbsp;&lt;button
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color: #c00;">id</span>=<span style="color: #f0f;">"machete_accept_cookie_btn"</span>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color: #c00;">class</span>=<span style="color: #f0f;">"machete_accept_cookie_btn"</span>&gt;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color: #000;">[<?php esc_html_e( 'Accept button text', 'machete' ); ?>]</span>
+&nbsp;&nbsp;&nbsp;&nbsp;&lt;/button&gt;
 &nbsp;&nbsp;&lt;/div&gt;
-&lt;/div&gt;</pre>
+
+&nbsp;&nbsp;&lt;div <span style="color: #c00;">id</span>=<span style="color: #f0f;">"machete_cookie_configbar"</span> <span style="color: #c00;">class</span>=<span style="color: #f0f;">"machete_cookie_configbar"</span>&gt;
+&nbsp;&nbsp;&nbsp;&nbsp;&lt;div
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color: #c00;">id</span>=<span style="color: #f0f;">"machete_cookie_config_btn"</span>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color: #c00;">class</span>=<span style="color: #f0f;">"machete_cookie_config_btn"</span>&gt;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color: #000;"><?php esc_html_e( 'Cookies', 'machete' ); ?></span>
+&nbsp;&nbsp;&nbsp;&nbsp;&lt;/div&gt;
+&nbsp;&nbsp;&lt;/div&gt;
+&lt;/div&gt;
+
+</pre>
 		</td></tr></tbody></table>
 	</div>
 </div>
