@@ -59,10 +59,11 @@ class MACHETE_POWERTOOLS_MODULE extends MACHETE_MODULE {
 				// translators: Link the post "SVG uploads in WordPress (the Inconvenient Truth)".
 				'description' => sprintf( __( 'Enables the upload of SVG images to the media library. This <a href="%s" target="_blank" rel="noopener noreferrer">has been proven to be dangerous</a>, so be careful.', 'machete' ), 'https://bjornjohansen.no/svg-in-wordpress' ),
 			),
-			'widget_oembed'       => array(
-				'title'       => __( 'OEmbed in Widgets', 'machete' ),
-				'description' => __( 'Enables OEmbed in text/html widgets.', 'machete' ) . ' <br><span style="color: red">' . __( 'Deprecated. This feature is natively enabled since WordPress 4.8.1', 'machete' ) . '</span>',
+			'disable_search'      => array(
+				'title'       => __( 'Disable search', 'machete' ),
+				'description' => __( 'Disables the public search from WordPress', 'machete' ),
 			),
+			
 		);
 	}
 	/**

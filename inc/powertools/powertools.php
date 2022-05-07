@@ -13,25 +13,18 @@ if ( ! defined( 'ABSPATH' ) ) {
 /*
 POWERTOOLS
 widget_shortcodes
-widget_oembed
 rss_thumbnails
 page_excerpts
 move_scripts_footer
 defer_all_scripts
 disable_feeds
 enable_svg
+disable_search
 */
 
 // enable shortcodes in widgets.
 if ( in_array( 'widget_shortcodes', $this->settings, true ) && ! is_admin() ) {
 	add_filter( 'widget_text', 'do_shortcode', 11 );
-}
-
-// enable oembed in text widgets.
-if ( in_array( 'widget_oembed', $this->settings, true ) ) {
-	global $wp_embed;
-	add_filter( 'widget_text', array( $wp_embed, 'run_shortcode' ), 8 );
-	add_filter( 'widget_text', array( $wp_embed, 'autoembed' ), 8 );
 }
 
 // enable rss thumbnails.
@@ -118,4 +111,29 @@ if ( in_array( 'enable_svg', $this->settings, true ) ) {
 		10,
 		1
 	);
+}
+
+// disable Search.
+if ( in_array( 'disable_search', $this->settings, true ) ) {
+	/**
+	 * Removes search.
+	 *
+	 * @param WP_Query $query The query object that parsed the query.
+	 */
+	add_action( 'parse_query', function( $query, $error = true ) {
+		if ( is_search() ) {
+			$query->is_search       = false;
+			$query->query_vars[ s ] = false;
+			$query->query[ s ]      = false;
+			if ( true === $error ) {
+				$query->is_404 = true;
+			}
+		}
+	});
+	add_filter( 'get_search_form', function( $a ) {
+		return null;
+	});
+	add_action( 'widgets_init', function() {
+		unregister_widget( 'WP_Widget_Search' );
+	});
 }
