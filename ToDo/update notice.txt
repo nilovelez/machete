@@ -1,4 +1,0 @@
-https://wordpress.stackexchange.com/a/33529/45686
-This approach can be found in the Internal link checker plugin.
-
-https://wpmayor.com/how-to-integrate-wordpress-plugin-update-notifications-into-your-commercial-plugin/
