@@ -63,7 +63,6 @@ class MACHETE_POWERTOOLS_MODULE extends MACHETE_MODULE {
 				'title'       => __( 'Disable search', 'machete' ),
 				'description' => __( 'Disables the public search from WordPress', 'machete' ),
 			),
-			
 		);
 	}
 	/**

@@ -116,7 +116,7 @@ foreach ( $this->themes as $machete_theme_slug => $machete_params ) {
 	} else {
 		$machete_css_disabled = 'disabled';
 	}
-
+	// phpcs:ignore
 	echo '<link rel="stylesheet" id="' . esc_attr( 'machete_theme_' . $machete_theme_slug ) . '" href="' . esc_url( $machete_params['stylesheet'] ) . '" ' . esc_attr( $machete_css_disabled ) . '>' . PHP_EOL;
 }
 ?>

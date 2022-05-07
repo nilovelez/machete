@@ -81,9 +81,9 @@ add_action(
 
 		// Disable WooCommerce module if WooCommece is active.
 		if ( ! function_exists( 'is_woocommerce' ) ) {
-			$machete->modules['woocommerce']->params['is_active']       = false;
-			$machete->modules['woocommerce']->params['can_be_enabled']  = false;
-			$machete->modules['woocommerce']->params['description']     .= ' ' . __( 'You have to install and activate WooCommerce to use this module.', 'machete' );
+			$machete->modules['woocommerce']->params['is_active']      = false;
+			$machete->modules['woocommerce']->params['can_be_enabled'] = false;
+			$machete->modules['woocommerce']->params['description']   .= ' ' . __( 'You have to install and activate WooCommerce to use this module.', 'machete' );
 		}
 
 		if ( defined( 'WP_CLI' ) && WP_CLI ) {

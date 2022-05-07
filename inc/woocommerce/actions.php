@@ -16,24 +16,32 @@ if ( in_array( 'free_shipping', $this->settings, true ) ) {
 	// https://github.com/woocommerce/woocommerce/issues/22100#issuecomment-705037440 .
 	add_filter( 'transient_shipping-transient-version', '__return_false', 10, 2 );
 
-	function machete_hide_shipping_if_free( $rates ) {
-		$filtered_rates = array();
-		foreach ( $rates as $rate_id => $rate ) {
-			if ( in_array( $rate->method_id, array( 'free_shipping', 'local_pickup' ), true ) ) {
-				$filtered_rates[ $rate_id ] = $rate;
+	add_filter(
+		'woocommerce_package_rates',
+		function( $rates ) {
+			$filtered_rates = array();
+			foreach ( $rates as $rate_id => $rate ) {
+				if ( in_array( $rate->method_id, array( 'free_shipping', 'local_pickup' ), true ) ) {
+					$filtered_rates[ $rate_id ] = $rate;
+				}
 			}
-		}
-		if ( ! empty( $filtered_rates ) ) {
-			return $filtered_rates;
-		}
-		return $rates;
-	}
-	add_filter( 'woocommerce_package_rates', 'machete_hide_shipping_if_free', 100 );
+			if ( ! empty( $filtered_rates ) ) {
+				return $filtered_rates;
+			}
+			return $rates;
+		},
+		100
+	);
 }
 
 // Variable price from.
 if ( in_array( 'price_from', $this->settings, true ) && ! is_admin() ) {
-
+	/**
+	 * Converts price range from "20€-30€"" to "From 20€"
+	 *
+	 * @param string     $price   The wc format price range.
+	 * @param WC_Product $product the product instance.
+	 */
 	function machete_precio_desde( $price, $product ) {
 		// Normal price.
 		$prices = array(

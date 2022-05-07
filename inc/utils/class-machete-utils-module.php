@@ -83,8 +83,8 @@ class MACHETE_UTILS_MODULE extends MACHETE_MODULE {
 	 */
 	protected function save_settings( $options = array(), $silent = false ) {
 
-		$settings            = $this->read_settings();
-		$tracking_script_js  = '';
+		$settings           = $this->read_settings();
+		$tracking_script_js = '';
 
 		if ( ! is_dir( MACHETE_DATA_PATH ) ) {
 			if ( ! wp_mkdir_p( MACHETE_DATA_PATH ) ) {
