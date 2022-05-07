@@ -2,7 +2,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Machete\n"
-"POT-Creation-Date: 2022-05-04 11:57+0200\n"
+"POT-Creation-Date: 2022-05-07 20:51+0200\n"
 "PO-Revision-Date: 2016-11-03 19:23+0100\n"
 "Last-Translator: \n"
 "Language-Team: \n"
@@ -81,11 +81,11 @@ msgstr ""
 msgid "Activate"
 msgstr ""
 
-#: inc/class-machete-module.php:155 inc/utils/class-machete-utils-module.php:409
+#: inc/class-machete-module.php:155 inc/utils/class-machete-utils-module.php:392
 msgid "Settings successfully restored from backup"
 msgstr ""
 
-#: inc/class-machete-module.php:157 inc/utils/class-machete-utils-module.php:411
+#: inc/class-machete-module.php:157 inc/utils/class-machete-utils-module.php:394
 msgid "Error restoring settings backup"
 msgstr ""
 
@@ -93,7 +93,7 @@ msgstr ""
 msgid "Options saved!"
 msgstr ""
 
-#: inc/class-machete-module.php:184 inc/class-machete.php:162 inc/class-machete.php:200
+#: inc/class-machete-module.php:184 inc/class-machete.php:181 inc/class-machete.php:219
 msgid "Error saving configuration to database."
 msgstr ""
 
@@ -109,36 +109,36 @@ msgstr ""
 msgid "There was a problem accessing the filesystem. Check your permissions."
 msgstr ""
 
-#: inc/class-machete.php:117
+#: inc/class-machete.php:136
 msgid "Bad request"
 msgstr ""
 
-#: inc/class-machete.php:124
+#: inc/class-machete.php:143
 msgid "Unknown module:"
 msgstr ""
 
-#: inc/class-machete.php:134
+#: inc/class-machete.php:153
 msgid "Nothing to do. The module was already disabled."
 msgstr ""
 
-#: inc/class-machete.php:140
+#: inc/class-machete.php:159
 msgid "Sorry, you can't disable that module"
 msgstr ""
 
-#: inc/class-machete.php:153
+#: inc/class-machete.php:172
 #, php-format
 msgid "Module %s disabled successfully"
 msgstr ""
 
-#: inc/class-machete.php:171
+#: inc/class-machete.php:190
 msgid "Nothing to do. The module was already active."
 msgstr ""
 
-#: inc/class-machete.php:177
+#: inc/class-machete.php:196
 msgid "Sorry, you can't enable that module"
 msgstr ""
 
-#: inc/class-machete.php:190
+#: inc/class-machete.php:209
 #, php-format
 msgid "Module %s enabled successfully"
 msgstr ""
@@ -182,20 +182,20 @@ msgid ""
 msgstr ""
 
 #: inc/cleanup/admin-content.php:63 inc/cleanup/admin-content.php:91
-#: inc/cleanup/admin-content.php:120 inc/powertools/admin-content.php:85
+#: inc/cleanup/admin-content.php:120 inc/powertools/admin-content.php:78
 msgid "Remove"
 msgstr ""
 
 #: inc/cleanup/admin-content.php:64 inc/cleanup/admin-content.php:74
 #: inc/cleanup/admin-content.php:92 inc/cleanup/admin-content.php:102
 #: inc/cleanup/admin-content.php:121 inc/cleanup/admin-content.php:131
-#: inc/powertools/admin-content.php:86 inc/powertools/admin-content.php:96
+#: inc/powertools/admin-content.php:79 inc/powertools/admin-content.php:89
 #: inc/woocommerce/admin-content.php:45 inc/woocommerce/admin-content.php:55
 msgid "Explanation"
 msgstr ""
 
 #: inc/cleanup/admin-content.php:72 inc/cleanup/admin-content.php:100
-#: inc/cleanup/admin-content.php:129 inc/powertools/admin-content.php:94
+#: inc/cleanup/admin-content.php:129 inc/powertools/admin-content.php:87
 #: inc/woocommerce/admin-content.php:53
 msgid "Show more details"
 msgstr ""
@@ -569,7 +569,7 @@ msgid ""
 "to new draft\" function to the post editor."
 msgstr ""
 
-#: inc/cookies/admin-content.php:24 inc/cookies/class-machete-cookies-module.php:24
+#: inc/cookies/admin-content.php:24
 msgid "Cookie Law Warning"
 msgstr ""
 
@@ -607,11 +607,11 @@ msgstr ""
 msgid "Restore default warning text"
 msgstr ""
 
-#: inc/cookies/admin-content.php:49
+#: inc/cookies/admin-content.php:49 inc/cookies/admin-content.php:87
 msgid "Accept required cookies text"
 msgstr ""
 
-#: inc/cookies/admin-content.php:52 inc/cookies/admin-content.php:80
+#: inc/cookies/admin-content.php:52 inc/cookies/admin-content.php:92
 msgid "Accept button text"
 msgstr ""
 
@@ -632,20 +632,28 @@ msgstr ""
 msgid "For your reference, this is the HTML used to render the cookie bar:"
 msgstr ""
 
-#: inc/cookies/admin-content.php:181 inc/cookies/class-machete-cookies-module.php:128
+#: inc/cookies/admin-content.php:100 inc/cookies/class-machete-cookies-module.php:56
+msgid "Cookies"
+msgstr ""
+
+#: inc/cookies/admin-content.php:202 inc/cookies/class-machete-cookies-module.php:128
 msgid "Cookie warning text can't be blank"
 msgstr ""
 
-#: inc/cookies/admin-content.php:186 inc/cookies/class-machete-cookies-module.php:139
+#: inc/cookies/admin-content.php:207 inc/cookies/class-machete-cookies-module.php:139
 msgid "Accept button text can't be blank"
 msgstr ""
 
-#: inc/cookies/admin-content.php:191 inc/cookies/class-machete-cookies-module.php:149
+#: inc/cookies/admin-content.php:212 inc/cookies/class-machete-cookies-module.php:149
 msgid "Accept required cookies button text can't be blank"
 msgstr ""
 
 #: inc/cookies/class-machete-cookies-module.php:23
-msgid "Cookie Law"
+msgid "Cookies & GDPR"
+msgstr ""
+
+#: inc/cookies/class-machete-cookies-module.php:24
+msgid "Cookies & GDPR Warning"
 msgstr ""
 
 #: inc/cookies/class-machete-cookies-module.php:25
@@ -682,18 +690,14 @@ msgstr ""
 msgid "Cookie!"
 msgstr ""
 
-#: inc/cookies/class-machete-cookies-module.php:56
-msgid "Cookies"
-msgstr ""
-
 #: inc/cookies/class-machete-cookies-module.php:108
-#: inc/utils/class-machete-utils-module.php:94
+#: inc/utils/class-machete-utils-module.php:93
 #, php-format
 msgid "Error creating data dir %s please check file permissions"
 msgstr ""
 
 #: inc/cookies/class-machete-cookies-module.php:169
-#: inc/utils/class-machete-utils-module.php:239
+#: inc/utils/class-machete-utils-module.php:232
 #, php-format
 msgid ""
 "Error writing static javascript file to %s please check file permissions. Aborting "
@@ -701,7 +705,7 @@ msgid ""
 msgstr ""
 
 #: inc/cookies/class-machete-cookies-module.php:180
-#: inc/utils/class-machete-utils-module.php:252
+#: inc/utils/class-machete-utils-module.php:245
 #, php-format
 msgid ""
 "Could not delete old javascript file from %s please check file permissions. Aborting "
@@ -843,29 +847,24 @@ msgstr ""
 msgid "Delete Expired Transients"
 msgstr ""
 
-#: inc/powertools/admin-content.php:39 inc/powertools/admin-content.php:45
+#: inc/powertools/admin-content.php:39 inc/powertools/admin-content.php:44
 #: inc/powertools/admin-content.php:51 inc/powertools/admin-content.php:58
-#: inc/powertools/admin-content.php:65
 msgid "Format:"
 msgstr ""
 
-#: inc/powertools/admin-content.php:43
-msgid "Delete Unused Post Revisions"
-msgstr ""
-
-#: inc/powertools/admin-content.php:49
+#: inc/powertools/admin-content.php:42
 msgid "Delete Permalink Cache"
 msgstr ""
 
-#: inc/powertools/admin-content.php:56
+#: inc/powertools/admin-content.php:49
 msgid "Delete Opcache contents"
 msgstr ""
 
-#: inc/powertools/admin-content.php:63
+#: inc/powertools/admin-content.php:56
 msgid "Delete WordPress object cache contents"
 msgstr ""
 
-#: inc/powertools/admin-content.php:78
+#: inc/powertools/admin-content.php:71
 msgid "Machete Toolbox"
 msgstr ""
 
@@ -910,53 +909,42 @@ msgid ""
 msgstr ""
 
 #: inc/powertools/class-machete-powertools-module.php:46
-msgid "Save with keyboard"
-msgstr ""
-
-#: inc/powertools/class-machete-powertools-module.php:47
-msgid ""
-"Lets you save your posts, pages, theme and plugin files in the most natural way: "
-"pressing Ctrl+S (or Cmd+S on Mac). It saves unpublished posts/pages as drafts and "
-"updates the ones that are already public"
-msgstr ""
-
-#: inc/powertools/class-machete-powertools-module.php:50
 msgid "Move scripts to footer"
 msgstr ""
 
-#: inc/powertools/class-machete-powertools-module.php:51
+#: inc/powertools/class-machete-powertools-module.php:47
 msgid ""
 "Move all enqueued JS scripts from the header to the footer. Machete will de-register "
 "the call for the JavaScript to load in the HEAD section of the site and re-register "
 "it to the FOOTER."
 msgstr ""
 
-#: inc/powertools/class-machete-powertools-module.php:54
+#: inc/powertools/class-machete-powertools-module.php:50
 msgid "Defer your JavaScript"
 msgstr ""
 
-#: inc/powertools/class-machete-powertools-module.php:55
+#: inc/powertools/class-machete-powertools-module.php:51
 msgid ""
 "The defer attribute also downloads the JS file during HTML parsing, but it only "
 "executes it after the parsing has completed. Executed in order of appearance on the "
 "page"
 msgstr ""
 
-#: inc/powertools/class-machete-powertools-module.php:58
+#: inc/powertools/class-machete-powertools-module.php:54
 msgid "Disable all feeds"
 msgstr ""
 
-#: inc/powertools/class-machete-powertools-module.php:59
+#: inc/powertools/class-machete-powertools-module.php:55
 msgid ""
 "RSS, RDF, Atom... disables all of them and makes life a little less easy for "
 "leechers."
 msgstr ""
 
-#: inc/powertools/class-machete-powertools-module.php:62
+#: inc/powertools/class-machete-powertools-module.php:58
 msgid "Enable SVG images"
 msgstr ""
 
-#: inc/powertools/class-machete-powertools-module.php:64
+#: inc/powertools/class-machete-powertools-module.php:60
 #, php-format
 msgid ""
 "Enables the upload of SVG images to the media library. This <a href=\"%s\" target="
@@ -964,55 +952,43 @@ msgid ""
 "careful."
 msgstr ""
 
-#: inc/powertools/class-machete-powertools-module.php:67
-msgid "OEmbed in Widgets"
+#: inc/powertools/class-machete-powertools-module.php:63
+msgid "Disable search"
 msgstr ""
 
-#: inc/powertools/class-machete-powertools-module.php:68
-msgid "Enables OEmbed in text/html widgets."
+#: inc/powertools/class-machete-powertools-module.php:64
+msgid "Disables the public search from WordPress"
 msgstr ""
 
-#: inc/powertools/class-machete-powertools-module.php:68
-msgid "Deprecated. This feature is natively enabled since WordPress 4.8.1"
-msgstr ""
-
-#: inc/powertools/class-machete-powertools-module.php:115
+#: inc/powertools/class-machete-powertools-module.php:108
 msgid "Unknown action requested"
 msgstr ""
 
-#: inc/powertools/class-machete-powertools-module.php:222
+#: inc/powertools/class-machete-powertools-module.php:215
 #, php-format
 msgid "%d Transients Rows Cleared"
 msgstr ""
 
-#: inc/powertools/class-machete-powertools-module.php:241
+#: inc/powertools/class-machete-powertools-module.php:234
 #, php-format
 msgid "Success! %s Post revision deleted."
 msgid_plural "Success! %s Post revisions deleted."
 msgstr[0] ""
 msgstr[1] ""
 
-#: inc/powertools/class-machete-powertools-module.php:249
+#: inc/powertools/class-machete-powertools-module.php:242
 msgid "Rewrite rules flushed"
 msgstr ""
 
-#: inc/powertools/class-machete-powertools-module.php:257
+#: inc/powertools/class-machete-powertools-module.php:250
 msgid "Object cache flushed"
 msgstr ""
 
-#: inc/powertools/class-machete-powertools-module.php:265
+#: inc/powertools/class-machete-powertools-module.php:258
 msgid "Opcache flushed"
 msgstr ""
 
-#: inc/powertools/powertools.php:74
-msgid "Ctrl+S or Cmd+S to click"
-msgstr ""
-
-#: inc/powertools/powertools.php:75
-msgid "Ctrl+P or Cmd+P to preview"
-msgstr ""
-
-#: inc/powertools/powertools.php:122
+#: inc/powertools/powertools.php:92
 #, php-format
 msgid "No feed available, please visit our <a href=\"%s\">homepage</a>!"
 msgstr ""
@@ -1231,7 +1207,6 @@ msgid "Google Analytics property ID"
 msgstr ""
 
 #: inc/utils/admin-content.php:105 inc/utils/admin-content.php:106
-#: inc/utils/admin-content.php:119
 msgid "Anonymize user IPs"
 msgstr ""
 
@@ -1247,22 +1222,11 @@ msgstr ""
 msgid "Tag Manager container ID"
 msgstr ""
 
-#: inc/utils/admin-content.php:118
-msgid "CF7 Tracking"
-msgstr ""
-
-#: inc/utils/admin-content.php:121
-#, php-format
-msgid ""
-"Launch a Google Analytics event whenever a visitor submits a <a href=\"%s\">Contact "
-"Form 7</a> form."
-msgstr ""
-
-#: inc/utils/admin-content.php:133 inc/utils/admin-content.php:135
+#: inc/utils/admin-content.php:126 inc/utils/admin-content.php:128
 msgid "Custom header content"
 msgstr ""
 
-#: inc/utils/admin-content.php:138
+#: inc/utils/admin-content.php:131
 #, php-format
 msgid ""
 "This code is included before the closing <code>&lt;/head&gt;</code> tag.<br>Content "
@@ -1270,55 +1234,55 @@ msgid ""
 "so no PHP or shortcodes here."
 msgstr ""
 
-#: inc/utils/admin-content.php:149 inc/utils/admin-content.php:151
+#: inc/utils/admin-content.php:142 inc/utils/admin-content.php:144
 msgid "Custom body content"
 msgstr ""
 
-#: inc/utils/admin-content.php:152
+#: inc/utils/admin-content.php:145
 msgid ""
 "This block is meant to be included just after the beginning of the <code>&lt;body&gt;"
 "</code> tag, and it's mainly used for conversion tracking codes."
 msgstr ""
 
-#: inc/utils/admin-content.php:154
+#: inc/utils/admin-content.php:147
 #, php-format
 msgid ""
 "Content is saved to <code>%s</code> and served using PHP. No PHP code or shortcodes "
 "here."
 msgstr ""
 
-#: inc/utils/admin-content.php:165
+#: inc/utils/admin-content.php:158
 msgid "Code injection method"
 msgstr ""
 
-#: inc/utils/admin-content.php:168
+#: inc/utils/admin-content.php:161
 msgid "Custom body content injection method:"
 msgstr ""
 
-#: inc/utils/admin-content.php:170
+#: inc/utils/admin-content.php:163
 msgid ""
 "Include the code using the native <code>wp_body_open</code> hook (not supported by "
 "all themes)."
 msgstr ""
 
-#: inc/utils/admin-content.php:173
+#: inc/utils/admin-content.php:166
 #, php-format
 msgid ""
 "Try to inject the code automatically using <a href=\"%s\" target=\"_blank\" rel="
 "\"nofollow\">Yaniv Friedensohn's method</a>"
 msgstr ""
 
-#: inc/utils/admin-content.php:175
+#: inc/utils/admin-content.php:168
 msgid ""
 "Edit your theme's <code>header.php</code> template manually and include this "
 "function:"
 msgstr ""
 
-#: inc/utils/admin-content.php:186 inc/utils/admin-content.php:188
+#: inc/utils/admin-content.php:179 inc/utils/admin-content.php:181
 msgid "Custom footer content"
 msgstr ""
 
-#: inc/utils/admin-content.php:190
+#: inc/utils/admin-content.php:183
 #, php-format
 msgid ""
 "This code is included when the <code>wp_footer</code> action is called, normally "
@@ -1327,15 +1291,15 @@ msgid ""
 "shortcodes here."
 msgstr ""
 
-#: inc/utils/admin-content.php:235 inc/utils/class-machete-utils-module.php:168
+#: inc/utils/admin-content.php:228 inc/utils/class-machete-utils-module.php:161
 msgid "That doesn't look like a valid Google Analytics 4 Property ID"
 msgstr ""
 
-#: inc/utils/admin-content.php:242 inc/utils/class-machete-utils-module.php:131
+#: inc/utils/admin-content.php:235 inc/utils/class-machete-utils-module.php:124
 msgid "That doesn't look like a valid Universal Analytics Property ID"
 msgstr ""
 
-#: inc/utils/admin-content.php:249 inc/utils/class-machete-utils-module.php:208
+#: inc/utils/admin-content.php:242 inc/utils/class-machete-utils-module.php:201
 msgid "That doesn't look like a valid Google Tag Manager container ID"
 msgstr ""
 
@@ -1349,11 +1313,11 @@ msgid ""
 "JS snippets or site verification tags."
 msgstr ""
 
-#: inc/utils/class-machete-utils-module.php:102
+#: inc/utils/class-machete-utils-module.php:101
 msgid "Something went wrong. Unknown tracking code format requested."
 msgstr ""
 
-#: inc/woocommerce/actions.php:45 inc/woocommerce/actions.php:61
+#: inc/woocommerce/actions.php:53 inc/woocommerce/actions.php:69
 #, php-format
 msgid "From %1$s"
 msgstr ""
@@ -1410,23 +1374,38 @@ msgstr ""
 msgid "Hides trailing zeros on prices. Shows $5.00 as $5"
 msgstr ""
 
-#: machete-admin.php:44
+#: machete-admin.php:47
+#, php-format
+msgid ""
+"You are using Cookie settings from a previous Machete version. Go to the %1$sCookies "
+"Module page%2$s and <strong>Save Settings</strong> to remove this notice."
+msgstr ""
+
+#: machete-admin.php:60
+#, php-format
+msgid ""
+"You are using Tracking settings from a previous Machete version. Go to the "
+"%1$sAnalytics & Code Module page%2$s and <strong>Save Settings</strong> to remove "
+"this notice."
+msgstr ""
+
+#: machete-admin.php:80
 #, php-format
 msgid ""
 "If you like <strong>Machete</strong>, please %1$sleave us a rating of %2$s. Thank "
 "you!"
 msgstr ""
 
-#: machete-admin.php:70
+#: machete-admin.php:106
 #, php-format
 msgid "<a href=\"%s\">Settings</a>"
 msgstr ""
 
-#: machete.php:79
+#: machete.php:81
 msgid "Machete PowerTools are now active! Enjoy your new toy!"
 msgstr ""
 
-#: machete.php:86
+#: machete.php:88
 msgid "You have to install and activate WooCommerce to use this module."
 msgstr ""
 
