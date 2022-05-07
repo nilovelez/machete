@@ -2,9 +2,9 @@
 Contributors: nilovelez
 Donate link: https://machetewp.com/product/donation/
 Tags: cookies, analytics, code, css, javascript, admin
+Requires PHP: 7.0
 Requires at least: 4.6
-Tested up to: 5.9
-Requires PHP: 5.6
+Tested up to: 6.0
 Stable tag: trunk
 License: WTFPL
 License URI: http://www.wtfpl.net/txt/copying/
@@ -28,7 +28,7 @@ We know you hate cookie warning bars. Well, this is the least hateable cookie ba
 = Analytics and custom code =
 You don't need a zillion plugins to perform easy tasks like inserting a verification meta tag (Google Search Console, Bing, Pinterest), a json-ld snippet or a custom stylesheet (Google Fonts, Print Styles, accessibility tweaks...).
 
-The Google Analytics tracking code is PageSpeed optimized, GPDR friendly and has the option to track Contact Form 7 events.
+The Google Analytics and Google Tag Manager tracking codes are PageSpeed optimized, GPDR friendly.
 
 = Maintenance mode =
 The maintenance mode that ships with WordPress is just a basic lock-down that is activated whenever you do a major update. With machete Maintenance Mode you can hide your unfinished page from visitors and search engines, give your clients a secure temporary access and lock your site without affecting your SEO.
@@ -38,6 +38,9 @@ Adds a "duplicate" link to post, page and most post types lists. Also adds "copy
 
 = Social Sharing Buttons =
 Social sharing done the Machete way. The icons are made as a custom webfont embedded in a minified CSS file that only weighs 5.8KB. The sharing actions use each platform's native share URL.
+
+= WooCommerce =
+WooCommerce was designed to work for every possible use case, but that often leads to unexpected behavior. These simple fixes can improve the WooCommerce user experience by making it behave as clients expect.
 
 == Installation ==
 1. Upload the plugin files to the `/wp-content/plugins/machete` directory, or install the plugin through the WordPress plugins screen directly
@@ -69,6 +72,16 @@ Like it or not, the WordPress Block Editor (codenamed Gutenberg) is here to stay
 3. This is not your typical tracking script...
 
 == Changelog ==
+
+= 4.0.0 =
+* Checked for compatibility with WordPress 6.0
+* Cleanup module: Added option to disable WordPress search functions
+* Cookies module: Complete rework to comply with GDPR. New styles and scripts.
+* Tracking & code: Added Analytics 4 and Google Tag Manager support
+* New WooCommerce module!
+* Import/export module removed
+* Powertools: Removed option to save with keyboard
+* Tracking & code: Removed option to track CF7 forms
 
 = 3.5.1 =
 * Checked for compatibility with WordPress 5.5

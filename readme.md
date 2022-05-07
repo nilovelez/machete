@@ -8,13 +8,13 @@ So far, Machete includes the following tools:
 ### Header cleanup
 WordPress places a lot of code inside the `<head>` tag just to keep backward compatibility or to enable optional features. You can disable most of it and save some time from each page request while making your installation safer.
 
-### Cookie law warning
+### Cookie & GDPR
 We know you hate cookie warning bars. Well, this is the least hateable cookie bar you'll find. It is really light, doesn't affect your PageSpeed score and plays well with static cache plugins.
 
 ### Analytics and custom code
 You don't need a zillion plugins to perform easy tasks like inserting a verification meta tag (Google Search Console, Bing, Pinterest), a json-ld snippet or a custom stylesheet (Google Fonts, Print Styles, accessibility tweaks...).
 
-The Google Analytics tracking code is PageSpeed optimized, GPDR friendly and has the option to track Contact Form 7 events.
+The Google Analytics and Google Tag Manager tracking codes are PageSpeed optimized, GPDR friendly.
 
 ### Maintenance mode
 The maintenance mode that ships with WordPress is just a basic lock-down that is activated whenever you do a major update. With machete Maintenance Mode you can hide your unfinished page from visitors and search engines, give your clients a secure temporary access and lock your site without affecting your SEO.
@@ -24,6 +24,9 @@ Adds a "duplicate" link to post, page and most post types lists. Also adds "copy
 
 ### Social Sharing Buttons
 Social sharing done the Machete way. The icons are made as a custom webfont embedded in a minified CSS file that only weighs 5.8KB. The sharing actions use each platform's native share URL.
+
+### WooCommerce
+WooCommerce was designed to work for every possible use case, but that often leads to unexpected behavior. These simple fixes can improve the WooCommerce user experience by making it behave as clients expect.
 
 ## Installation
 1. Upload the plugin files to the `/wp-content/plugins/machete` directory, or install the plugin through the WordPress plugins screen directly
