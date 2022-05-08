@@ -5,10 +5,10 @@ All Machete tools have two things in common: they solve problems faced by many w
 
 So far, Machete includes the following tools:
 
-### Header cleanup
+### WordPress Optimization
 WordPress places a lot of code inside the `<head>` tag just to keep backward compatibility or to enable optional features. You can disable most of it and save some time from each page request while making your installation safer.
 
-### Cookie & GDPR
+### Cookies & GDPR Warning
 We know you hate cookie warning bars. Well, this is the least hateable cookie bar you'll find. It is really light, doesn't affect your PageSpeed score and plays well with static cache plugins.
 
 ### Analytics and custom code
@@ -25,7 +25,7 @@ Adds a "duplicate" link to post, page and most post types lists. Also adds "copy
 ### Social Sharing Buttons
 Social sharing done the Machete way. The icons are made as a custom webfont embedded in a minified CSS file that only weighs 5.8KB. The sharing actions use each platform's native share URL.
 
-### WooCommerce
+### WooCommerce Utils
 WooCommerce was designed to work for every possible use case, but that often leads to unexpected behavior. These simple fixes can improve the WooCommerce user experience by making it behave as clients expect.
 
 ## Installation

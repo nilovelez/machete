@@ -5,7 +5,7 @@ Tags: cookies, analytics, code, css, javascript, admin
 Requires PHP: 7.0
 Requires at least: 4.6
 Tested up to: 6.0
-Stable tag: trunk
+Stable tag: 3.5.1
 License: WTFPL
 License URI: http://www.wtfpl.net/txt/copying/
 
@@ -19,10 +19,10 @@ All Machete tools have two things in common: they solve problems faced by many w
 
 So far, Machete includes the following tools:
 
-= Header cleanup =
+= WordPress Optimization =
 WordPress places a lot of code inside the `<head>` tag just to keep backward compatibility or to enable optional features. You can disable most of it and save some time from each page request while making your installation safer.
 
-= Cookie law warning =
+= Cookies & GDPR Warning =
 We know you hate cookie warning bars. Well, this is the least hateable cookie bar you'll find. It is really light, doesn't affect your PageSpeed score and plays well with static cache plugins.
 
 = Analytics and custom code =
@@ -39,7 +39,7 @@ Adds a "duplicate" link to post, page and most post types lists. Also adds "copy
 = Social Sharing Buttons =
 Social sharing done the Machete way. The icons are made as a custom webfont embedded in a minified CSS file that only weighs 5.8KB. The sharing actions use each platform's native share URL.
 
-= WooCommerce =
+= WooCommerce Utils =
 WooCommerce was designed to work for every possible use case, but that often leads to unexpected behavior. These simple fixes can improve the WooCommerce user experience by making it behave as clients expect.
 
 == Installation ==
@@ -68,8 +68,11 @@ Like it or not, the WordPress Block Editor (codenamed Gutenberg) is here to stay
 == Screenshots ==
 
 1. Machete Welcome screen
-2. Cookie bar configuration. Why can't it all be so simple?
-3. This is not your typical tracking script...
+2. WordPress Optimization. Cleanup time!
+3. Cookie bar configuration. Simple and sweet
+4. Analytics 4, Universal Analytics and Google tag Manager
+5. Coming soon module with magic link to show your work
+6. Lightest ever social sharing buttons
 
 == Changelog ==
 
@@ -187,6 +190,9 @@ Machete 3.1 is a completely new beast. Almost all the code has been rewritten, t
 * Fixed false ‘error saving to database’ notice
 
 == Upgrade Notice ==
+
+= 4.0 =
+Machete 4.0 is a major upgrade. Re-save your cookie bar, and tracking code settings to regenerate the static files.
 
 = 3.4 =
 Some fixes and lots or refinements. Enjoy!
