@@ -5,7 +5,7 @@ Tags: cookies, analytics, code, css, javascript, admin
 Requires PHP: 7.0
 Requires at least: 4.6
 Tested up to: 6.0
-Stable tag: 3.5.1
+Stable tag: 4.0
 License: WTFPL
 License URI: http://www.wtfpl.net/txt/copying/
 
