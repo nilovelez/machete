@@ -52,6 +52,7 @@ add_action(
 			$tracking_options = get_option( 'machete_utils_settings' );
 			if (
 				$tracking_options &&
+				( 'none' !== $tracking_options['tracking_format'] ) &&
 				( isset( $tracking_options['tracking_id'] ) ) &&
 				( ! isset( $tracking_options['tracking_filename'] ) )
 			) {

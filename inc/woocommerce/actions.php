@@ -43,24 +43,13 @@ if ( in_array( 'price_from', $this->settings, true ) && ! is_admin() ) {
 	 * @param WC_Product $product the product instance.
 	 */
 	function machete_precio_desde( $price, $product ) {
-		// Normal price.
-		$prices = array(
-			$product->get_variation_price( 'min', true ),
-			$product->get_variation_price( 'max', true ),
-		);
-		if ( $prices[0] !== $prices[1] ) {
-			// Translators: From 99$ .
-			$price = sprintf( __( 'From %1$s', 'machete' ), wc_price( $prices[0] ) );
-		} else {
-			$price = wc_price( $prices[0] );
-		}
 
-		// Price on sale.
+		// Price on sale. Must be treieved before so we can compare later.
 		$saleprices = array(
 			$product->get_variation_regular_price( 'min', true ),
 			$product->get_variation_regular_price( 'max', true ),
 		);
-		sort( $prices );
+		sort( $saleprices );
 
 		$saleprice = wc_price( $saleprices[0] );
 
@@ -70,8 +59,29 @@ if ( in_array( 'price_from', $this->settings, true ) && ! is_admin() ) {
 		} else {
 			$saleprice_compare = wc_price( $saleprices[0] );
 		}
-		if ( $price !== $saleprice_compare ) {
-			$price = '<del>' . $saleprice . '</del> <ins>' . $price . '</ins>';
+
+		// Normal price.
+		$prices = array(
+			$product->get_variation_price( 'min', true ),
+			$product->get_variation_price( 'max', true ),
+		);
+		sort( $prices );
+
+		if ( $prices[0] !== $prices[1] ) {
+			$price = sprintf(
+				// Translators: From 99$ .
+				__( 'From %1$s', 'machete' ),
+				wc_price( $prices[0] )
+			);
+			if ( $price !== $saleprice_compare ) {
+				$price = sprintf(
+					// Translators: From 99$ .
+					__( 'From %1$s', 'machete' ),
+					'<del>' . $saleprice . '</del> <ins>' . wc_price( $prices[0] ) . '</ins>'
+				);
+			}
+		} else {
+			$price = wc_price( $prices[0] );
 		}
 
 		return $price;
