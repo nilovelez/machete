@@ -1,6 +1,6 @@
 === Machete ===
 Contributors: nilovelez
-Donate link: https://machetewp.com/product/donation/
+Donate link: https://ko-fi.com/nilovelez
 Tags: cookies, analytics, code, css, javascript, admin
 Requires PHP: 7.0
 Requires at least: 4.6
