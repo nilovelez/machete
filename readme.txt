@@ -5,7 +5,7 @@ Tags: cookies, analytics, code, css, javascript, admin
 Requires PHP: 7.0
 Requires at least: 4.6
 Tested up to: 6.0
-Stable tag: 4.0
+Stable tag: 4.0.1
 License: WTFPL
 License URI: http://www.wtfpl.net/txt/copying/
 
@@ -75,6 +75,9 @@ Like it or not, the WordPress Block Editor (codenamed Gutenberg) is here to stay
 6. Lightest ever social sharing buttons
 
 == Changelog ==
+
+= 4.0.1 =
+Fix: Corrected the bug that prevented the obsolete tracking code warning to be dismissed.
 
 = 4.0 =
 * Checked for compatibility with WordPress 6.0
