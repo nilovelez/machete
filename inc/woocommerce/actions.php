@@ -10,6 +10,16 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 
+/*
+Actions:
+- free_shipping
+- price_from
+- trailing_zeros
+- no_unique_sku
+- disable_skus
+*/
+
+
 // Fix free shipping.
 if ( in_array( 'free_shipping', $this->settings, true ) ) {
 	// Shipping rates can't be live motified if their transient cache is active
@@ -95,4 +105,14 @@ if ( in_array( 'price_from', $this->settings, true ) && ! is_admin() ) {
 // Hide trailing zeros.
 if ( in_array( 'trailing_zeros', $this->settings, true ) && ! is_admin() ) {
 	add_filter( 'woocommerce_price_trim_zeros', '__return_true' );
+}
+
+// Disable unique SKU.
+if ( in_array( 'no_unique_sku', $this->settings, true ) ) {
+	add_filter( 'wc_product_has_unique_sku', '__return_false' );
+}
+
+// Disable SKUs.
+if ( in_array( 'disable_skus', $this->settings, true ) ) {
+	add_filter( 'wc_product_sku_enabled', '__return_false' );
 }
