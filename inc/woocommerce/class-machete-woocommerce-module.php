@@ -40,6 +40,14 @@ class MACHETE_WOOCOMMERCE_MODULE extends MACHETE_MODULE {
 				'title'       => __( 'Hide trailing zeros', 'machete' ),
 				'description' => __( 'Hides trailing zeros on prices. Shows $5.00 as $5', 'machete' ),
 			),
+			'no_unique_sku'  => array(
+				'title'       => __( 'Disable unique SKU', 'machete' ),
+				'description' => __( 'Allows you to use the same SKU in multiple products or prodcut variations', 'machete' ),
+			),
+			'disable_skus'   => array(
+				'title'       => __( 'Disable SKUs', 'machete' ),
+				'description' => __( 'Removes the SKU field in both the backend and frontend of your store.', 'machete' ),
+			),
 		);
 
 		$this->default_settings = array();
@@ -49,22 +57,24 @@ class MACHETE_WOOCOMMERCE_MODULE extends MACHETE_MODULE {
 	 * Executes code related to the WordPress admin.
 	 */
 	public function admin() {
-		add_action(
-			'admin_init',
-			function() {
-				$this->read_settings();
-				if ( filter_input( INPUT_POST, 'machete-woo-saved' ) !== null ) {
-					check_admin_referer( 'machete_save_woo' );
-					$this->save_settings(
-						filter_input( INPUT_POST, 'optionEnabled', FILTER_DEFAULT, FILTER_FORCE_ARRAY )
-					);
-					$this->read_settings();
-				}
+		$this->read_settings();
 
-				$this->all_woo_checked = ( count( array_intersect( array_keys( $this->woo_array ), $this->settings ) ) === count( $this->woo_array ) );
-			}
-		);
+		if ( filter_input( INPUT_POST, 'machete-woo-saved' ) !== null ) {
+			check_admin_referer( 'machete_save_woo' );
+			$this->save_settings(
+				filter_input( INPUT_POST, 'optionEnabled', FILTER_DEFAULT, FILTER_FORCE_ARRAY )
+			);
+			$this->read_settings();
+		}
+
+		if ( count( $this->settings ) > 0 ) {
+			require $this->path . 'actions.php';
+		}
+
+		$this->all_woo_checked = ( count( array_intersect( array_keys( $this->woo_array ), $this->settings ) ) === count( $this->woo_array ) );
+
 		add_action( 'admin_menu', array( $this, 'register_sub_menu' ) );
+
 	}
 	/**
 	 * Executes code related to the front-end.
