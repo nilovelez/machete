@@ -76,6 +76,11 @@ Like it or not, the WordPress Block Editor (codenamed Gutenberg) is here to stay
 
 == Changelog ==
 
+= 4.0.3 = 
+* Cleanup: Removed the opcion to disable the Contact Form 7 refill (no longer used)
+* Cleanup: removed te option to disable the '.recentcomments a' output
+* Fix: declared $machete as global to prevent WP-CLI errors (props Armando Lüscher)
+
 = 4.0.2 =
 * Checked for compatibility with WordPress 6.1
 * Added option to disable WooCommerce SKUs

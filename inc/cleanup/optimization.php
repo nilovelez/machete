@@ -20,7 +20,6 @@ next_prev
 shortlink
 wp_generator
 ver
-recentcomments
 wp_resource_hints
 
 FEATURE CLEANUP
@@ -31,18 +30,18 @@ slow_heartbeat
 comments_reply_feature
 empty_trash_soon
 capital_P_dangit
-disable_editor
 medium_large_size
 comment_autolinks
 disable_login_langs
+disable_editor
 
 OPTIMIZATION TWEAKS
 json_api
 xmlrpc
 jquery-migrate
 oembed_scripts
-wpcf7_refill
 jpeg_quality
+gutenberg_css
 disable_global_css
 */
 
@@ -118,13 +117,6 @@ if ( in_array( 'ver', $this->settings, true ) && ! is_admin() ) {
 		},
 		9999
 	);
-}
-
-if ( in_array( 'recentcomments', $this->settings, true ) && ! is_admin() ) {
-	// Remove the annoying:
-	// <style type="text/css">.recentcomments a{display:inline !important;padding:0 !important;margin:0 !important;}</style>
-	// added in the header.
-	add_filter( 'show_recent_comments_widget_style', '__return_false' );
 }
 
 // remove s.w.org dns-prefetch.
@@ -349,26 +341,6 @@ if ( in_array( 'jquery-migrate', $this->settings, true ) ) {
 if ( in_array( 'oembed_scripts', $this->settings, true ) && ! is_admin() ) {
 	// Since WordPress 4.4, oEmbed is installed and available by default. WordPress assumes you’ll want to easily embed media like tweets and YouTube videos so includes the scripts as standard. If you don’t need oEmbed, you can remove it.
 	wp_deregister_script( 'wp-embed' );
-}
-
-if ( in_array( 'wpcf7_refill', $this->settings, true ) && ! is_admin() ) {
-	add_action(
-		'wp_enqueue_scripts',
-		function() {
-			wp_localize_script(
-				'contact-form-7',
-				'wpcf7',
-				array(
-					'apiSettings' => array(
-						'root'      => esc_url_raw( rest_url( 'contact-form-7/v1' ) ),
-						'namespace' => 'contact-form-7/v1',
-					),
-					'jqueryUi'    => 1,
-				)
-			);
-		},
-		10
-	);
 }
 
 if ( in_array( 'jpeg_quality', $this->settings, true ) ) {

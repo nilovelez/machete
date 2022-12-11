@@ -63,10 +63,6 @@ class MACHETE_CLEANUP_MODULE extends MACHETE_MODULE {
 				'title'       => __( 'version', 'machete' ),
 				'description' => __( 'Remove WordPress version var (?ver=) after styles and scripts. Used by attackers to detect the WordPress version.', 'machete' ),
 			),
-			'recentcomments'    => array(
-				'title'       => __( 'recent_comments_style', 'machete' ),
-				'description' => __( 'Removes a block of inline CSS used by old themes from the header', 'machete' ),
-			),
 			'wp_resource_hints' => array(
 				'title'       => __( 'dns-prefetch', 'machete' ),
 				'description' => __( 'Removes dns-prefetch links from the header', 'machete' ),
@@ -102,10 +98,6 @@ class MACHETE_CLEANUP_MODULE extends MACHETE_MODULE {
 				'title'       => __( 'capital_P_dangit', 'machete' ),
 				'description' => __( 'Removes the filter that converts Wordpress to WordPress in every dang title, content or comment text.', 'machete' ),
 			),
-			'disable_editor'         => array(
-				'title'       => __( 'Plugin and theme editor', 'machete' ),
-				'description' => __( 'Disables the plugins and theme editor. A mostly useless tool that can be very dangerous in the wrong hands.', 'machete' ),
-			),
 			'medium_large_size'      => array(
 				'title'       => __( 'medium_large thumbnail', 'machete' ),
 				'description' => __( 'Prevents WordPress from generating the medium_large 768px thumbnail size of image uploads.', 'machete' ),
@@ -117,6 +109,10 @@ class MACHETE_CLEANUP_MODULE extends MACHETE_MODULE {
 			'disable_login_langs'    => array(
 				'title'       => __( 'Disable login languages', 'machete' ),
 				'description' => __( 'WordPress shows a language switcher at the bottom of the login screen. It\'s not need if you only use one language.', 'machete' ),
+			),
+			'disable_editor'         => array(
+				'title'       => __( 'Plugin and theme editor', 'machete' ),
+				'description' => __( 'Disables the plugins and theme editor. A mostly useless tool that can be very dangerous in the wrong hands.', 'machete' ),
 			),
 		);
 
@@ -136,10 +132,6 @@ class MACHETE_CLEANUP_MODULE extends MACHETE_MODULE {
 			'oembed_scripts'     => array( // @fpuente addons
 				'title'       => __( 'Remove oEmbed Scripts', 'machete' ),
 				'description' => __( 'Since WordPress 4.4, oEmbed is installed and available by default. If you don’t need oEmbed, you can remove it.', 'machete' ),
-			),
-			'wpcf7_refill'       => array(
-				'title'       => __( 'Remove CF7 refill', 'machete' ),
-				'description' => __( 'Disables the Contact Form 7 refill script. Saves one hit to wp-ajax.php per pageview on cached sites', 'machete' ) . ' <br><span style="color: #d94f4f">' . __( 'Activate only if you are not using the reCAPTCHA Contact Form 7 field', 'machete' ) . '</span>',
 			),
 			'jpeg_quality'       => array(
 				'title'       => __( 'Reduce JPEG quality', 'machete' ),
