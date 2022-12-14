@@ -68,7 +68,7 @@ class MACHETE_SOCIAL_MODULE extends MACHETE_MODULE {
 			'pinterest' => array(
 				'title' => _x( 'Pinterest', 'network name', 'machete' ),
 				'label' => _x( 'Pin this', 'Pinterest button label', 'machete' ),
-				'url'   => 'https://pinterest.com/pin/create/button/?url=%s',
+				'url'   => 'https://www.pinterest.com/pin/create/button/?url=%s',
 			),
 
 		);
