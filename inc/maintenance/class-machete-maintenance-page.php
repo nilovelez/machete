@@ -107,6 +107,8 @@ class MACHETE_MAINTENANCE_PAGE {
 				'content_class' => 'default',
 			);
 		}
+		$html_content['body'] .= '<img src="' . MACHETE_BASE_URL . 'img/maintenance.svg" class="maintenance-icon" alt="' . $html_content['title'] . '" width="128" height="128">';
+
 		if ( is_rtl() ) {
 			$html_content['body_class'] = 'rtl';
 		} else {
