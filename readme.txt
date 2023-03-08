@@ -77,6 +77,7 @@ Like it or not, the WordPress Block Editor (codenamed Gutenberg) is here to stay
 == Changelog ==
 
 = 4.0.3 = 
+* Added SVG icon to the maintenance page. Looks cool.
 * Cleanup: Removed the opcion to disable the Contact Form 7 refill (no longer used)
 * Cleanup: removed te option to disable the '.recentcomments a' output
 * Fix: declared $machete as global to prevent WP-CLI errors (props Armando Lüscher)
