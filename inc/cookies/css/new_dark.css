@@ -1,14 +1,13 @@
 @keyframes slide-up {
-  0% {
-    transform: translateY(110vh);
-  }
-  100% {
-    transform: translateY(0vh);
-  }
+	0% {
+		transform: translateY(110vh);
+	}
+	100% {
+		transform: translateY(0vh);
+	}
 }
 body:not(.wp-admin) .machete_cookie_container {
-  /* transform: translateY(110vh); */
-  animation: slide-up 1s forwards;
+	animation: slide-up 1s forwards;
 }
 
 .machete_cookie_container:before {
@@ -59,7 +58,7 @@ body:not(.wp-admin) .machete_cookie_container {
 }
 
 .machete_cookie_warning_text{
-  flex-grow: 1;
+	flex-grow: 1;
 }
 
 .machete_cookie_config_btn {
@@ -127,6 +126,6 @@ body:not(.wp-admin) .machete_cookie_container {
 
 @media (min-width:1024px) {
 	.machete_cookie_bar {
-	  flex-wrap: nowrap;
+		flex-wrap: nowrap;
 	}
 }
