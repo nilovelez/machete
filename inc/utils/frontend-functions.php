@@ -82,6 +82,6 @@ if ( ! function_exists( 'machete_custom_body_content' ) ) {
 	 * Defines an empty function as fallback to prevent errors
 	 */
 	function machete_custom_body_content() {
-		echo '';
+		return;
 	}
 }
