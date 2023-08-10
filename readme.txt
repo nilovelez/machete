@@ -5,7 +5,7 @@ Tags: cookies, analytics, code, css, javascript, admin
 Requires PHP: 7.0
 Requires at least: 4.6
 Tested up to: 6.3
-Stable tag: 4.0.2
+Stable tag: 4.0.3
 License: WTFPL
 License URI: http://www.wtfpl.net/txt/copying/
 
@@ -77,11 +77,11 @@ Like it or not, the WordPress Block Editor (codenamed Gutenberg) is here to stay
 == Changelog ==
 
 = 4.0.3 = 
-* Checked for compatibility with WordPress WordPress 6.3
+* Checked for compatibility with WordPress 6.3
 * Added SVG icon to the maintenance page, just for the looks
 * Changed the Pinterest share URL to prevent redirects
 * Cleanup: Removed the option to disable the Contact Form 7 refill (no longer used)
-* Cleanup: removed te option to disable the '.recentcomments a' output
+* Cleanup: removed the option to disable the '.recentcomments a' output
 * Fix: declared $machete as global to prevent WP-CLI errors (props Armando Lüscher)
 
 = 4.0.2 =
