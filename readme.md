@@ -36,9 +36,9 @@ WooCommerce was designed to work for every possible use case, but that often lea
 ## PHPCS PHP CodeSniffer
 WordPress Coding Standards:
 ```sh
-$ phpcs -q --standard=WordPress --report=summary --parallel=4 .
-$ phpcs -q --standard=WordPress --report=summary --parallel=4 --extensions=php --colors .
-$ phpcs -q --parallel=4 --extensions=php --colors .
+$ phpcs --standard=phpcs.xml --parallel=8 --report=summary --colors .
+$ phpcs --standard=phpcs.xml --parallel=8 --report=summary --colors --extensions=php .
+$ phpcs --standard=phpcs.xml --parallel=8 --extensions=php --colors .
 ```
 
 ## commits summary

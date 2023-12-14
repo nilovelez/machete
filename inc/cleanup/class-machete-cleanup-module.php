@@ -139,11 +139,11 @@ class MACHETE_CLEANUP_MODULE extends MACHETE_MODULE {
 			),
 			'gutenberg_css'      => array(
 				'title'       => __( 'Remove block editor CSS', 'machete' ),
-				'description' => __( 'Dequeues Gutenberg CSS stylesheets from the from the frontend.', 'machete' ) . ' <br><span style="color: #d94f4f">' . __( 'Check this only if you are not using the block editor.', 'machete' ) . '</span>',
+				'description' => __( 'Dequeues Gutenberg CSS stylesheets from the from the frontend.', 'machete' ) . '<br><span style="color: #d94f4f">' . __( 'Check this only if you are not using the block editor.', 'machete' ) . '</span>',
 			),
 			'disable_global_css' => array(
 				'title'       => __( 'Disable Global CSS', 'machete' ),
-				'description' => __( 'Removes the huge inline CSS and SVG elements that the block editor adds by default.', 'machete' ),
+				'description' => __( 'Removes the huge inline CSS elements that the block editor adds by default.', 'machete' ) . '<br><span style="color: #d94f4f">' . __( 'Be careful, you shouldn\'t check this if your current theme uses global styles.', 'machete' ) . '</span>',
 			),
 		);
 	}

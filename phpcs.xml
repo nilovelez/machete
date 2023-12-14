@@ -1,14 +1,20 @@
 <?xml version="1.0"?>
-<ruleset name="Example Project">
+<ruleset name="machete">
 	<description>A custom set of rules to check for a WPized WordPress project</description>
 
+	<arg name="colors"/>
+	<arg name="parallel" value="100"/>
+	<arg name="extensions" value="php"/>
+
 	<!-- Exclude WP Core folders and files from being checked. -->
+	<!--
 	<exclude-pattern>/docroot/wp-admin/*</exclude-pattern>
 	<exclude-pattern>/docroot/wp-includes/*</exclude-pattern>
 	<exclude-pattern>/docroot/wp-*.php</exclude-pattern>
 	<exclude-pattern>/docroot/index.php</exclude-pattern>
 	<exclude-pattern>/docroot/xmlrpc.php</exclude-pattern>
 	<exclude-pattern>/docroot/wp-content/plugins/*</exclude-pattern>
+	-->
 
 	<!-- Exclude the Composer Vendor directory. -->
 	<exclude-pattern>/vendor/*</exclude-pattern>
@@ -40,7 +46,7 @@
 	https://github.com/wimg/PHPCompatibility
 	-->
 	
-	<config name="testVersion" value="7.3"/>
+	<config name="testVersion" value="8.0"/>
 	<rule ref="PHPCompatibility"/>
 	
 
