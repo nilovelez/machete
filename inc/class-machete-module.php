@@ -132,6 +132,8 @@ abstract class MACHETE_MODULE {
 	 * @param bool  $silent   prevent the function from generating admin notices.
 	 */
 	protected function save_settings( $settings = array(), $silent = false ) {
+		$settings = array();
+		$silent   = false;
 		return true;
 	}
 

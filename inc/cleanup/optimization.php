@@ -172,6 +172,8 @@ if ( in_array( 'limit_revisions', $this->settings, true ) && is_admin() ) {
 		add_filter(
 			'wp_revisions_to_keep',
 			function( $num, $post ) {
+				$num  = null; // To prevent WPCS warning.
+				$post = null; // To prevent WPCS warning.
 				return 5;
 			},
 			10,
@@ -347,6 +349,7 @@ if ( in_array( 'jpeg_quality', $this->settings, true ) ) {
 	add_filter(
 		'jpeg_quality',
 		function( $arg ) {
+			$arg = null; // To prevent WPCS warning.
 			return 72;
 		}
 	);
