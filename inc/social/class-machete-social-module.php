@@ -45,15 +45,15 @@ class MACHETE_SOCIAL_MODULE extends MACHETE_MODULE {
 			'footer' => __( 'Floating footer (mobile only)', 'machete' ),
 		);
 		$this->networks         = array(
+			'twitter'   => array(
+				'title' => _x( 'X/Twitter', 'network name', 'machete' ),
+				'label' => _x( 'Post this', 'Twitter button label', 'machete' ),
+				'url'   => 'https://twitter.com/intent/tweet?url=%s',
+			),
 			'facebook'  => array(
 				'title' => _x( 'Facebook', 'network name', 'machete' ),
 				'label' => _x( 'Share this', 'Facebook button label', 'machete' ),
 				'url'   => 'https://facebook.com/sharer/sharer.php?u=%s',
-			),
-			'twitter'   => array(
-				'title' => _x( 'Twitter', 'network name', 'machete' ),
-				'label' => _x( 'Tweet this', 'Twitter button label', 'machete' ),
-				'url'   => 'https://twitter.com/intent/tweet?url=%s',
 			),
 			'linkedin'  => array(
 				'title' => _x( 'LinkedIn', 'network name', 'machete' ),
