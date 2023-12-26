@@ -96,11 +96,14 @@ if ( false !== $machete_editor_settings ) {
 	<p class="description" id="tracking_ga4_description"><?php esc_html_e( 'Google Analytics 4 property ID', 'machete' ); ?><br><?php esc_html_e( 'Valid format:', 'machete' ); ?> G-123456ABCD</p></td>
 	</tr>
 
+	<?php if ( $this->settings['tracking_id'] ) { ?>
 	<tr>
 	<th scope="row"><label for="tracking_id"><?php esc_html_e( 'Universal Analytics', 'machete' ); ?></label></th>
-	<td><input name="tracking_id" id="tracking_id" aria-describedby="tracking_id_description" value="<?php echo esc_attr( $this->settings['tracking_id'] ); ?>" class="regular-text" type="text">
-	<p class="description" id="tracking_id_description"><?php esc_html_e( 'Google Analytics property ID', 'machete' ); ?><br><?php esc_html_e( 'Valid format:', 'machete' ); ?> UA-12345678-1</p></td>
+	<td><input aria-describedby="tracking_id_description" value="<?php echo esc_attr( $this->settings['tracking_id'] ); ?>" class="regular-text" type="text" disabled>
+	<p class="description" id="tracking_id_description"><?php esc_html_e( 'Deprecated. The property id will be deleted as soon as you save settings.', 'machete' ); ?></p></td>
 	</tr>
+	<?php } ?>
+
 	<tr>
 	<th scope="row"><?php esc_html_e( 'Anonymize user IPs', 'machete' ); ?></th>
 	<td><fieldset><legend class="screen-reader-text"><span><?php esc_html_e( 'Anonymize user IPs', 'machete' ); ?></span></legend>
