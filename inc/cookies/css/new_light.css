@@ -9,7 +9,9 @@
 body:not(.wp-admin) .machete_cookie_container {
 	animation: slide-up 1s forwards;
 }
-
+.machete_cookie_container {
+	--machete-cookie-color: #2271b1;
+}
 .machete_cookie_container:before {
 	content: "";
 	position: absolute;
@@ -95,8 +97,8 @@ body:not(.wp-admin) .machete_cookie_container {
 	padding: 5px 10px;
 	white-space: nowrap;
 	border-radius: 8px;
-	border: 2px solid #2271b1;
-	background-color: #2271b1;
+	border: 2px solid var(--machete-cookie-color);
+	background-color: var(--machete-cookie-color);
 	color: #fff;
 }
 
@@ -104,24 +106,17 @@ body:not(.wp-admin) .machete_cookie_container {
 .machete_accept_cookie_btn:focus,
 .machete_accept_cookie_btn:focus-visible{
 	color: #fff;
-	background-color: #135e96;
-	border-color: #135e96;
+	filter: brightness(0.8);
 	text-decoration: none;
 	outline: none !important;
 }
 .machete_accept_cookie_btn:focus {
-	box-shadow: 0 0 0 2px #fff, 0 0 0 4px #135e96;
+	box-shadow: 0 0 0 2px #fff, 0 0 0 4px var( --machete-cookie-color );
 }
 .machete_accept_cookie_btn.partial {
 	background-color: #fff;
-	color: #2271b1;
+	color: var(--machete-cookie-color);
 }
-
-.machete_accept_cookie_btn.partial:hover,
-.machete_accept_cookie_btn.partial:focus{
-	color: #135e96;
-}
-
 @media (min-width:1024px) {
 	.machete_cookie_bar {
 		flex-wrap: nowrap;
