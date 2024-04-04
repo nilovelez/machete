@@ -118,8 +118,44 @@ function machete_clone_custom_button() {
 
 }
 
+/*
+ * Add the duplicate link to edit screen - gutenberg
+ */
+function machete_page_custom_button_guten()
+{
+    global $post;
+    if ($post) {
+
+    	$notify_url = wp_nonce_url( admin_url( 'admin.php?action=machete_clone&amp;post=' . absint( $post->ID ) ), 'machete_clone_' . $post->ID );
+
+        //wp_enqueue_style('dp-main-style', plugin_dir_url(__FILE__) . 'css/dp_gutenberg.css');
+        wp_register_script(
+        	'machete_duplicate_post_script',
+        	MACHETE_BASE_URL . 'inc/clone/js/editor-script.js',
+        	array(
+        		'wp-edit-post',
+        		'wp-plugins',
+        		'wp-i18n',
+        		'wp-element'
+        	),
+        	MACHETE_VERSION
+        );
+        wp_localize_script(
+        	'machete_duplicate_post_script',
+        	'machete_params',
+        	array(
+            	'machete_duplicate_nonce_url' => $notify_url,
+            	'machete_post_text' => __( 'Clone this post', 'machete' ),
+            	'machete_post_title' => __( 'Copy to a new draft', 'machete' ),
+            )
+        );        
+        wp_enqueue_script( 'machete_duplicate_post_script' );
+    }
+}
+
 if ( current_user_can( 'edit_posts' ) ) {
 	add_filter( 'post_row_actions', 'machete_content_clone_link', 10, 2 ); // Posts.
 	add_filter( 'page_row_actions', 'machete_content_clone_link', 10, 2 ); // Pages.
+	add_action( 'admin_head', 'machete_page_custom_button_guten' );
 	add_action( 'post_submitbox_start', 'machete_clone_custom_button' );
 }
