@@ -3,8 +3,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Plugins - Machete - Development (trunk)\n"
-"POT-Creation-Date: 2022-05-07 20:51+0200\n"
-"PO-Revision-Date: 2022-05-07 20:57+0200\n"
+"POT-Creation-Date: 2024-04-04 08:49+0200\n"
+"PO-Revision-Date: 2024-04-04 08:52+0200\n"
 "Last-Translator: Nilo Velez <nilovelez@gmail.com>\n"
 "Language-Team: \n"
 "Language: es\n"
@@ -12,7 +12,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Poedit 3.0.1\n"
+"X-Generator: Poedit 3.4.2\n"
 
 #: inc/about/admin-content.php:16
 msgid "Welcome to Machete!"
@@ -84,34 +84,34 @@ msgstr "Desactivar"
 msgid "Activate"
 msgstr "Activar"
 
-#: inc/class-machete-module.php:155
-#: inc/utils/class-machete-utils-module.php:392
+#: inc/class-machete-module.php:157
+#: inc/utils/class-machete-utils-module.php:411
 msgid "Settings successfully restored from backup"
 msgstr "Ajustes restaurados con éxito desde la copia de seguridad"
 
-#: inc/class-machete-module.php:157
-#: inc/utils/class-machete-utils-module.php:394
+#: inc/class-machete-module.php:159
+#: inc/utils/class-machete-utils-module.php:413
 msgid "Error restoring settings backup"
 msgstr "Error restaurando la copia de seguridad"
 
-#: inc/class-machete-module.php:178
+#: inc/class-machete-module.php:180
 msgid "Options saved!"
 msgstr "¡Ajustes guardados!"
 
-#: inc/class-machete-module.php:184 inc/class-machete.php:181
+#: inc/class-machete-module.php:186 inc/class-machete.php:181
 #: inc/class-machete.php:219
 msgid "Error saving configuration to database."
 msgstr "Error al guardar la configuración a base de datos."
 
-#: inc/class-machete-module.php:190
+#: inc/class-machete-module.php:192
 msgid "No changes were needed."
 msgstr "No había nada que guardar."
 
-#: inc/class-machete-module.php:246
+#: inc/class-machete-module.php:248
 msgid "This function needs direct access to the filesystem."
 msgstr "Esta función necesita acceso directo al sistema de ficheros."
 
-#: inc/class-machete-module.php:252
+#: inc/class-machete-module.php:254
 msgid "There was a problem accessing the filesystem. Check your permissions."
 msgstr ""
 "Se producido un problema al acceder al sistema de ficheros. Comprueba tus "
@@ -351,26 +351,18 @@ msgstr ""
 "scripts. La usan los hackers para detectar la versión de WordPress."
 
 #: inc/cleanup/class-machete-cleanup-module.php:67
-msgid "recent_comments_style"
-msgstr "recent_comments_style"
-
-#: inc/cleanup/class-machete-cleanup-module.php:68
-msgid "Removes a block of inline CSS used by old themes from the header"
-msgstr "Quitar de la cabecera un bloque de CSS que usaban los temas antiguos"
-
-#: inc/cleanup/class-machete-cleanup-module.php:71
 msgid "dns-prefetch"
 msgstr "dns-prefetch"
 
-#: inc/cleanup/class-machete-cleanup-module.php:72
+#: inc/cleanup/class-machete-cleanup-module.php:68
 msgid "Removes dns-prefetch links from the header"
 msgstr "Quitar de la cabecera los enlaces dns-prefetch"
 
-#: inc/cleanup/class-machete-cleanup-module.php:78
+#: inc/cleanup/class-machete-cleanup-module.php:74
 msgid "Emojicons"
 msgstr "Emojicons"
 
-#: inc/cleanup/class-machete-cleanup-module.php:79
+#: inc/cleanup/class-machete-cleanup-module.php:75
 msgid ""
 "Remove lots of emoji styles and scripts from the header, RSS, mail function, "
 "tinyMCE editor..."
@@ -378,11 +370,11 @@ msgstr ""
 "Quitar un montón de scripts y hojas de estilo para los emoij de la cabecera, "
 "los feeds RSS, la función mail,  tinyMCE editor..."
 
-#: inc/cleanup/class-machete-cleanup-module.php:82
+#: inc/cleanup/class-machete-cleanup-module.php:78
 msgid "PDF Thumbnails"
 msgstr "Miniaturas de PDF"
 
-#: inc/cleanup/class-machete-cleanup-module.php:83
+#: inc/cleanup/class-machete-cleanup-module.php:79
 msgid ""
 "Starting with 4.7, WordPress tries to make thumbnails from each PDF you "
 "upload, potentially crashing your server if GhostScript and ImageMagick "
@@ -393,11 +385,11 @@ msgstr ""
 "GhostScript e ImageMagick bien configurados. Esta opción deshabilita las "
 "miniaturas de los PDF."
 
-#: inc/cleanup/class-machete-cleanup-module.php:86
+#: inc/cleanup/class-machete-cleanup-module.php:82
 msgid "Limit Post Revisions"
 msgstr "Limitar Post Revisions"
 
-#: inc/cleanup/class-machete-cleanup-module.php:87
+#: inc/cleanup/class-machete-cleanup-module.php:83
 msgid ""
 "Limits the number of stored revisions to 5 only if WP_POST_REVISIONS "
 "constant has not been defined."
@@ -405,11 +397,11 @@ msgstr ""
 "Limita el número de revisiones almacenadas a 5, sólo si no se ha definido la "
 "constante WP_POST_REVISIONS."
 
-#: inc/cleanup/class-machete-cleanup-module.php:90
+#: inc/cleanup/class-machete-cleanup-module.php:86
 msgid "Slow Heartbeat"
 msgstr "Ralentizar Heartbeat"
 
-#: inc/cleanup/class-machete-cleanup-module.php:91
+#: inc/cleanup/class-machete-cleanup-module.php:87
 msgid ""
 "By default, heartbeat makes a post call every 15 seconds on post edit pages. "
 "Change to 60 seconds (less CPU usage)."
@@ -417,19 +409,19 @@ msgstr ""
 "Por defecto, heartbeat hace una llamada POST cada 15 segundos en las páginas "
 "de edición. Esto lo cambia a 60 segundos."
 
-#: inc/cleanup/class-machete-cleanup-module.php:94
+#: inc/cleanup/class-machete-cleanup-module.php:90
 msgid "JS Comment reply"
 msgstr "JS de respuestas de comentarios"
 
-#: inc/cleanup/class-machete-cleanup-module.php:95
+#: inc/cleanup/class-machete-cleanup-module.php:91
 msgid "Load the comment-reply JS file only when needed."
 msgstr "Carga el JS de las respuestas a comentarios sólo cuando hace falta."
 
-#: inc/cleanup/class-machete-cleanup-module.php:98
+#: inc/cleanup/class-machete-cleanup-module.php:94
 msgid "Empty trash every week"
 msgstr "Vaciar la papelera cada semana"
 
-#: inc/cleanup/class-machete-cleanup-module.php:99
+#: inc/cleanup/class-machete-cleanup-module.php:95
 msgid ""
 "You can shorten the time posts are kept in the trash, which is 30 days by "
 "default, to 1 week."
@@ -437,11 +429,11 @@ msgstr ""
 "Puedes acortar el tiempo que se mantienen las entradas en la papelera de los "
 "30 días predeterminados a una semana."
 
-#: inc/cleanup/class-machete-cleanup-module.php:102
+#: inc/cleanup/class-machete-cleanup-module.php:98
 msgid "capital_P_dangit"
 msgstr "capital_P_dangit"
 
-#: inc/cleanup/class-machete-cleanup-module.php:103
+#: inc/cleanup/class-machete-cleanup-module.php:99
 msgid ""
 "Removes the filter that converts Wordpress to WordPress in every dang title, "
 "content or comment text."
@@ -449,34 +441,22 @@ msgstr ""
 "Quita el filtro que convierte Wordpress en WordPress en el contenido de cada "
 "título, contenido o comentario."
 
-#: inc/cleanup/class-machete-cleanup-module.php:106
-msgid "Plugin and theme editor"
-msgstr "Editor de plugins y temas"
-
-#: inc/cleanup/class-machete-cleanup-module.php:107
-msgid ""
-"Disables the plugins and theme editor. A mostly useless tool that can be "
-"very dangerous in the wrong hands."
-msgstr ""
-"Desactiva el editor de plugins y temas. Una herramienta de dudosa utilidad "
-"que puede ser muy peligrosa en la manos equivocadas."
-
-#: inc/cleanup/class-machete-cleanup-module.php:110
+#: inc/cleanup/class-machete-cleanup-module.php:102
 msgid "medium_large thumbnail"
 msgstr "miniatura medium_large"
 
-#: inc/cleanup/class-machete-cleanup-module.php:111
+#: inc/cleanup/class-machete-cleanup-module.php:103
 msgid ""
 "Prevents WordPress from generating the medium_large 768px thumbnail size of "
 "image uploads."
 msgstr ""
 "Evita que WordPress genere el tamaño de miniatura medium_large de 768px."
 
-#: inc/cleanup/class-machete-cleanup-module.php:114
+#: inc/cleanup/class-machete-cleanup-module.php:106
 msgid "No comment autolinks"
 msgstr "Comentarios sin autolinks"
 
-#: inc/cleanup/class-machete-cleanup-module.php:115
+#: inc/cleanup/class-machete-cleanup-module.php:107
 msgid ""
 "URLs in comments are converted to links by default. This feature is often "
 "exploited by spammers."
@@ -484,11 +464,11 @@ msgstr ""
 "Por defecto, las URLs de los comentarios se convierte automáticamente en "
 "enlaces. Los spammers se aprovechan a menudo de ello."
 
-#: inc/cleanup/class-machete-cleanup-module.php:118
+#: inc/cleanup/class-machete-cleanup-module.php:110
 msgid "Disable login languages"
 msgstr "Desactivar los idiomas del acceso"
 
-#: inc/cleanup/class-machete-cleanup-module.php:119
+#: inc/cleanup/class-machete-cleanup-module.php:111
 msgid ""
 "WordPress shows a language switcher at the bottom of the login screen. It's "
 "not need if you only use one language."
@@ -496,11 +476,23 @@ msgstr ""
 "WordPress muestra un conmutador de idiomas en la parte inferior de la "
 "pantalla de inicio de sesión. No es necesario si sólo utilizas un idioma."
 
-#: inc/cleanup/class-machete-cleanup-module.php:125
+#: inc/cleanup/class-machete-cleanup-module.php:114
+msgid "Plugin and theme editor"
+msgstr "Editor de plugins y temas"
+
+#: inc/cleanup/class-machete-cleanup-module.php:115
+msgid ""
+"Disables the plugins and theme editor. A mostly useless tool that can be "
+"very dangerous in the wrong hands."
+msgstr ""
+"Desactiva el editor de plugins y temas. Una herramienta de dudosa utilidad "
+"que puede ser muy peligrosa en la manos equivocadas."
+
+#: inc/cleanup/class-machete-cleanup-module.php:121
 msgid "JSON API"
 msgstr "JSON API"
 
-#: inc/cleanup/class-machete-cleanup-module.php:126
+#: inc/cleanup/class-machete-cleanup-module.php:122
 msgid ""
 "Remove the JSON-API links from page headers. Also require that API consumers "
 "be authenticated."
@@ -508,26 +500,26 @@ msgstr ""
 "Elimina de las cabeceras de página los enlaces a la JSON-API. También "
 "requiere identificarse para consumir la API."
 
-#: inc/cleanup/class-machete-cleanup-module.php:126
+#: inc/cleanup/class-machete-cleanup-module.php:122
 msgid ""
 "Be careful. Breaks the block editor and many plugins that use the REST API."
 msgstr ""
 "Ten cuidado. Rompe el editor de bloques y muchos plugins que usan la REST "
 "API."
 
-#: inc/cleanup/class-machete-cleanup-module.php:129
+#: inc/cleanup/class-machete-cleanup-module.php:125
 msgid "XML-RPC"
 msgstr "XML-RPC"
 
-#: inc/cleanup/class-machete-cleanup-module.php:130
+#: inc/cleanup/class-machete-cleanup-module.php:126
 msgid "Disable the XML-RPC interface. "
 msgstr "Desactiva la interfaz XML-RPC. "
 
-#: inc/cleanup/class-machete-cleanup-module.php:133
+#: inc/cleanup/class-machete-cleanup-module.php:129
 msgid "remove jQuery-migrate"
 msgstr "quitar jQuery-migrate"
 
-#: inc/cleanup/class-machete-cleanup-module.php:134
+#: inc/cleanup/class-machete-cleanup-module.php:130
 msgid ""
 "jQuery-migrate provides diagnostics that can simplify upgrading to new "
 "versions of jQuery, you can safely disable it."
@@ -535,15 +527,15 @@ msgstr ""
 "jQuery-migrate es una herramienta de diagnóstico para ayuda a cambiar entre "
 "versiones de jQuery, es seguro deshabilitarlo."
 
-#: inc/cleanup/class-machete-cleanup-module.php:134
+#: inc/cleanup/class-machete-cleanup-module.php:130
 msgid "May break some themes and plugins that depend on legacy code."
 msgstr "Puede romper algunos temas y plugins que dependen de código obsoleto."
 
-#: inc/cleanup/class-machete-cleanup-module.php:137
+#: inc/cleanup/class-machete-cleanup-module.php:133
 msgid "Remove oEmbed Scripts"
 msgstr "Quitar los scripts de oEmbed"
 
-#: inc/cleanup/class-machete-cleanup-module.php:138
+#: inc/cleanup/class-machete-cleanup-module.php:134
 msgid ""
 "Since WordPress 4.4, oEmbed is installed and available by default. If you "
 "don’t need oEmbed, you can remove it."
@@ -551,28 +543,11 @@ msgstr ""
 "Desde WordPress 4.4, oEmbed está instalado y habilitado por defecto. Puedes "
 "desactivarlo si no lo necesitas."
 
-#: inc/cleanup/class-machete-cleanup-module.php:141
-msgid "Remove CF7 refill"
-msgstr "Quitar el refill de CF7"
-
-#: inc/cleanup/class-machete-cleanup-module.php:142
-msgid ""
-"Disables the Contact Form 7 refill script. Saves one hit to wp-ajax.php per "
-"pageview on cached sites"
-msgstr ""
-"Desactiva el script refill de Contact Form 7. Ahorra una petición a wp-ajax."
-"php por vista de página en los sitios con caché"
-
-#: inc/cleanup/class-machete-cleanup-module.php:142
-msgid "Activate only if you are not using the reCAPTCHA Contact Form 7 field"
-msgstr ""
-"Actívalo sólo si no estás utilizando el campo reCAPTCHA de Contact Form 7"
-
-#: inc/cleanup/class-machete-cleanup-module.php:145
+#: inc/cleanup/class-machete-cleanup-module.php:137
 msgid "Reduce JPEG quality"
 msgstr "Reducir la calidad JPEG"
 
-#: inc/cleanup/class-machete-cleanup-module.php:146
+#: inc/cleanup/class-machete-cleanup-module.php:138
 msgid ""
 "When WordPress generates a JPEG thumbnail it compresses the image to 82% "
 "quality. Check this to reduce the default quality to 72%. (It doesn't affect "
@@ -582,34 +557,41 @@ msgstr ""
 "calidad del 82%. Marca esto para reducir la calidad por defecto al 72%. (No "
 "afecta a la calidad de la imagen original)."
 
-#: inc/cleanup/class-machete-cleanup-module.php:149
+#: inc/cleanup/class-machete-cleanup-module.php:141
 msgid "Remove block editor CSS"
 msgstr "Quitar CSS del editor de boques"
 
-#: inc/cleanup/class-machete-cleanup-module.php:150
+#: inc/cleanup/class-machete-cleanup-module.php:142
 msgid "Dequeues Gutenberg CSS stylesheets from the from the frontend."
 msgstr ""
 "Desencola las hojas de estilos CSS de Gutenberg de la parte pública de la "
 "web."
 
-#: inc/cleanup/class-machete-cleanup-module.php:150
+#: inc/cleanup/class-machete-cleanup-module.php:142
 msgid "Check this only if you are not using the block editor."
 msgstr ""
 "Actívalo sólo si no estás utilizando el campo reCAPTCHA de Contact Form 7."
 
-#: inc/cleanup/class-machete-cleanup-module.php:153
+#: inc/cleanup/class-machete-cleanup-module.php:145
 msgid "Disable Global CSS"
 msgstr "Desactivar el CSS global"
 
-#: inc/cleanup/class-machete-cleanup-module.php:154
+#: inc/cleanup/class-machete-cleanup-module.php:146
 msgid ""
-"Removes the huge inline CSS and SVG elements that the block editor adds by "
-"default."
+"Removes the huge inline CSS elements that the block editor adds by default."
 msgstr ""
 "Elimina los enormes elementos CSS y SVG en línea que el editor de bloques "
 "añade por defecto."
 
-#: inc/cleanup/optimization.php:303
+#: inc/cleanup/class-machete-cleanup-module.php:146
+msgid ""
+"Be careful, you shouldn't check this if your current theme uses global "
+"styles."
+msgstr ""
+"Ten cuidado, no debes marcar esta opción si tu tema actual utiliza estilos "
+"globales."
+
+#: inc/cleanup/optimization.php:297
 msgid "The REST API on this site has been disabled."
 msgstr "La REST API de este sitio ha sido desactivada."
 
@@ -635,9 +617,13 @@ msgstr "¡Clonar esto!"
 msgid "Duplicate"
 msgstr "Duplicar"
 
-#: inc/clone/admin-functions.php:115
+#: inc/clone/admin-functions.php:115 inc/clone/admin-functions.php:149
 msgid "Copy to a new draft"
 msgstr "Copiar a un nuevo borrador"
+
+#: inc/clone/admin-functions.php:148
+msgid "Clone this post"
+msgstr "Clonar esta publicación"
 
 #: inc/clone/class-machete-clone-module.php:23
 #: inc/clone/class-machete-clone-module.php:24
@@ -674,9 +660,9 @@ msgid ""
 "asynchronously via javascript from a pre-generated static file."
 msgstr ""
 "Esta herramienta añade 0,4KB y una sola petición a base de datos a cada "
-"carga de página. Los demás <abbr title=\"~1.1KB comprimidos con  GZip"
-"\">~2.5KB</abbr> de código se cargan de forma asíncrona mediante javascript "
-"desde un fichero estático pregenerado."
+"carga de página. Los demás <abbr title=\"~1.1KB comprimidos con  "
+"GZip\">~2.5KB</abbr> de código se cargan de forma asíncrona mediante "
+"javascript desde un fichero estático pregenerado."
 
 #: inc/cookies/admin-content.php:39 inc/cookies/admin-content.php:40
 msgid "Cookie alert status"
@@ -768,8 +754,8 @@ msgstr ""
 msgid ""
 "This website uses both technical cookies, essential for you to browse the "
 "website and use its features, and third-party cookies we use for marketing "
-"and data analytics porposes, as explained in our <a href=\"/cookies/\" style="
-"\"color: #007FFF\">cookie policy</a>."
+"and data analytics porposes, as explained in our <a href=\"/cookies/\" "
+"style=\"color: #007FFF\">cookie policy</a>."
 msgstr ""
 "Esta web utiliza tanto cookies técnicas, esenciales para que puedas navegar "
 "por el sitio y utilizar sus funciones, como cookies de terceros que "
@@ -798,14 +784,14 @@ msgid "Cookie!"
 msgstr "¡Galleta!"
 
 #: inc/cookies/class-machete-cookies-module.php:108
-#: inc/utils/class-machete-utils-module.php:93
+#: inc/utils/class-machete-utils-module.php:106
 #, php-format
 msgid "Error creating data dir %s please check file permissions"
 msgstr ""
 "Error al crear el directorio %s comprueba los permisos de archivo, por favor"
 
 #: inc/cookies/class-machete-cookies-module.php:169
-#: inc/utils/class-machete-utils-module.php:232
+#: inc/utils/class-machete-utils-module.php:251
 #, php-format
 msgid ""
 "Error writing static javascript file to %s please check file permissions. "
@@ -815,7 +801,7 @@ msgstr ""
 "permisos. Cancelando para evitar un estado inconsistente."
 
 #: inc/cookies/class-machete-cookies-module.php:180
-#: inc/utils/class-machete-utils-module.php:245
+#: inc/utils/class-machete-utils-module.php:264
 #, php-format
 msgid ""
 "Could not delete old javascript file from %s please check file permissions. "
@@ -1104,9 +1090,9 @@ msgid ""
 "target=\"_blank\" rel=\"noopener noreferrer\">has been proven to be "
 "dangerous</a>, so be careful."
 msgstr ""
-"Permite la subida de imágenes SVG a la biblioteca de medioa. Está <a href="
-"\"%s\" target=\"_blank\" rel=\"noopener noreferrer\">demostrado que esto es "
-"peligroso</a>, así que ten cuidado."
+"Permite la subida de imágenes SVG a la biblioteca de medioa. Está <a "
+"href=\"%s\" target=\"_blank\" rel=\"noopener noreferrer\">demostrado que "
+"esto es peligroso</a>, así que ten cuidado."
 
 #: inc/powertools/class-machete-powertools-module.php:63
 msgid "Disable search"
@@ -1254,23 +1240,23 @@ msgstr "Pie de página flotante (sólo móviles)"
 
 #: inc/social/class-machete-social-module.php:49
 msgctxt "network name"
-msgid "Facebook"
-msgstr "Facebook"
+msgid "X/Twitter"
+msgstr "X/Twitter"
 
 #: inc/social/class-machete-social-module.php:50
-msgctxt "Facebook button label"
-msgid "Share this"
-msgstr "Compártelo"
+msgctxt "Twitter button label"
+msgid "Post this"
+msgstr "Publica esto"
 
 #: inc/social/class-machete-social-module.php:54
 msgctxt "network name"
-msgid "Twitter"
-msgstr "Twitter"
+msgid "Facebook"
+msgstr "Facebook"
 
 #: inc/social/class-machete-social-module.php:55
-msgctxt "Twitter button label"
-msgid "Tweet this"
-msgstr "Tuitéalo"
+msgctxt "Facebook button label"
+msgid "Share this"
+msgstr "Compártelo"
 
 #: inc/social/class-machete-social-module.php:59
 msgctxt "network name"
@@ -1373,42 +1359,43 @@ msgstr "Google Analytics 4"
 msgid "Google Analytics 4 property ID"
 msgstr "ID de propiedad de Google Analytics 4"
 
-#: inc/utils/admin-content.php:96 inc/utils/admin-content.php:102
-#: inc/utils/admin-content.php:114
+#: inc/utils/admin-content.php:96 inc/utils/admin-content.php:117
 msgid "Valid format:"
 msgstr "Formato válido:"
 
-#: inc/utils/admin-content.php:100
+#: inc/utils/admin-content.php:101
 msgid "Universal Analytics"
 msgstr "Universal Analytics"
 
-#: inc/utils/admin-content.php:102
-msgid "Google Analytics property ID"
-msgstr "ID de propiedad de Google Analytics"
+#: inc/utils/admin-content.php:103
+msgid ""
+"Deprecated. The property id will be deleted as soon as you save settings."
+msgstr ""
+"Obsoleto. El id de la propiedad se borrará en cuanto guardes los ajustes."
 
-#: inc/utils/admin-content.php:105 inc/utils/admin-content.php:106
+#: inc/utils/admin-content.php:108 inc/utils/admin-content.php:109
 msgid "Anonymize user IPs"
 msgstr "Anonimizar IPs"
 
-#: inc/utils/admin-content.php:107
+#: inc/utils/admin-content.php:110
 msgid "Check to anonymize visitor IPs. Required in some countries."
 msgstr ""
 "Márcalo para anonimizar las IPs de los visitantes. Obligatorio en algunos "
 "países."
 
-#: inc/utils/admin-content.php:112
+#: inc/utils/admin-content.php:115
 msgid "Google Tag Manager"
 msgstr "Google Tag Manager"
 
-#: inc/utils/admin-content.php:114
+#: inc/utils/admin-content.php:117
 msgid "Tag Manager container ID"
 msgstr "ID de contenedor de Tag Manager"
 
-#: inc/utils/admin-content.php:126 inc/utils/admin-content.php:128
+#: inc/utils/admin-content.php:129 inc/utils/admin-content.php:131
 msgid "Custom header content"
 msgstr "Contenido para la cabecera"
 
-#: inc/utils/admin-content.php:131
+#: inc/utils/admin-content.php:134
 #, php-format
 msgid ""
 "This code is included before the closing <code>&lt;/head&gt;</code> tag."
@@ -1420,11 +1407,11 @@ msgstr ""
 "función <code>readfile()</code> de PHP, así que nada de PHP o shortcodes "
 "aquí."
 
-#: inc/utils/admin-content.php:142 inc/utils/admin-content.php:144
+#: inc/utils/admin-content.php:145 inc/utils/admin-content.php:147
 msgid "Custom body content"
 msgstr "Contenido para el body"
 
-#: inc/utils/admin-content.php:145
+#: inc/utils/admin-content.php:148
 msgid ""
 "This block is meant to be included just after the beginning of the <code>&lt;"
 "body&gt;</code> tag, and it's mainly used for conversion tracking codes."
@@ -1433,7 +1420,7 @@ msgstr ""
 "<code>&lt;body&gt;</code> y se suele usar para insertar códigos de "
 "seguimiento de conversiones."
 
-#: inc/utils/admin-content.php:147
+#: inc/utils/admin-content.php:150
 #, php-format
 msgid ""
 "Content is saved to <code>%s</code> and served using PHP. No PHP code or "
@@ -1442,15 +1429,15 @@ msgstr ""
 "El contenido se guarda en el fichero <code>%s</code> y se sirve usando PHP.  "
 "No uses código PHP ni shortcodes aquí."
 
-#: inc/utils/admin-content.php:158
+#: inc/utils/admin-content.php:161
 msgid "Code injection method"
 msgstr "Método para inyectar el código"
 
-#: inc/utils/admin-content.php:161
+#: inc/utils/admin-content.php:164
 msgid "Custom body content injection method:"
 msgstr "Método para inyectar el código personalizado del body:"
 
-#: inc/utils/admin-content.php:163
+#: inc/utils/admin-content.php:166
 msgid ""
 "Include the code using the native <code>wp_body_open</code> hook (not "
 "supported by all themes)."
@@ -1458,16 +1445,16 @@ msgstr ""
 "Incluir el código usando el gancho nativo <code>wp_body_open</code> (no "
 "todos los temas lo tienen)"
 
-#: inc/utils/admin-content.php:166
+#: inc/utils/admin-content.php:169
 #, php-format
 msgid ""
 "Try to inject the code automatically using <a href=\"%s\" target=\"_blank\" "
 "rel=\"nofollow\">Yaniv Friedensohn's method</a>"
 msgstr ""
-"Intentar inyectar automáticamente el código usando el <a href=\"%s\" target="
-"\"_blank\" rel=\"nofollow\">método de Yaniv Friedensohn</a>"
+"Intentar inyectar automáticamente el código usando el <a href=\"%s\" "
+"target=\"_blank\" rel=\"nofollow\">método de Yaniv Friedensohn</a>"
 
-#: inc/utils/admin-content.php:168
+#: inc/utils/admin-content.php:171
 msgid ""
 "Edit your theme's <code>header.php</code> template manually and include this "
 "function:"
@@ -1475,11 +1462,11 @@ msgstr ""
 "Editar manualmente la plantilla <code>header.php</code> de tu tema y añadir "
 "esta función:"
 
-#: inc/utils/admin-content.php:179 inc/utils/admin-content.php:181
+#: inc/utils/admin-content.php:182 inc/utils/admin-content.php:184
 msgid "Custom footer content"
 msgstr "Contenido para el pie"
 
-#: inc/utils/admin-content.php:183
+#: inc/utils/admin-content.php:186
 #, php-format
 msgid ""
 "This code is included when the <code>wp_footer</code> action is called, "
@@ -1492,15 +1479,15 @@ msgstr ""
 "<br>El contenido se guarda en <code>%s</code> y se sirve usando la función "
 "<code>readfile()</code> de PHP, así que nada de código PHP o shortcodes aquí."
 
-#: inc/utils/admin-content.php:228 inc/utils/class-machete-utils-module.php:161
+#: inc/utils/admin-content.php:231 inc/utils/class-machete-utils-module.php:184
 msgid "That doesn't look like a valid Google Analytics 4 Property ID"
 msgstr "Eso no parece un ID de propiedad válido de Google Analytics 4"
 
-#: inc/utils/admin-content.php:235 inc/utils/class-machete-utils-module.php:124
+#: inc/utils/admin-content.php:238 inc/utils/class-machete-utils-module.php:149
 msgid "That doesn't look like a valid Universal Analytics Property ID"
 msgstr "Eso no parece un ID de propiedad válido de Google Analytics"
 
-#: inc/utils/admin-content.php:242 inc/utils/class-machete-utils-module.php:201
+#: inc/utils/admin-content.php:245 inc/utils/class-machete-utils-module.php:222
 msgid "That doesn't look like a valid Google Tag Manager container ID"
 msgstr "Eso no parece un ID de contenedor válido de Google Tag Manager"
 
@@ -1516,12 +1503,24 @@ msgstr ""
 "Gestor de código de Google Analytics y un editor sencillo para insertar "
 "frangentos HTML, CSS o JS o etiquetas de verificación."
 
-#: inc/utils/class-machete-utils-module.php:101
+#: inc/utils/class-machete-utils-module.php:74
+#, php-format
+msgid ""
+"You are using the obsolete Universal Analytics property id %1$s. Go to the "
+"%2$sMachete Analytics & code module page%3$s and <strong>Save Settings</"
+"strong> to remove this notice."
+msgstr ""
+"Estás utilizando el obsoleto identificador de propiedad de Universal "
+"Analytics %1$s. Ve a la página del módulo de Machete %2$sAnalytics y "
+"código%3$s y <strong>Guarda los ajustes</strong> para eliminar este aviso."
+
+#: inc/utils/class-machete-utils-module.php:114
 msgid "Something went wrong. Unknown tracking code format requested."
 msgstr ""
 "Se ha producido un error. Has solicitado un formato de código desconocido."
 
-#: inc/woocommerce/actions.php:53 inc/woocommerce/actions.php:69
+#: inc/woocommerce/actions.php:68 inc/woocommerce/actions.php:83
+#: inc/woocommerce/actions.php:89
 #, php-format
 msgid "From %1$s"
 msgstr "Desde %1$s"
@@ -1589,6 +1588,27 @@ msgstr "Ocultar los ceros finales"
 msgid "Hides trailing zeros on prices. Shows $5.00 as $5"
 msgstr "Oculta los ceros finales de los precios. Muestra 5.00€ como 5€"
 
+#: inc/woocommerce/class-machete-woocommerce-module.php:44
+msgid "Disable unique SKU"
+msgstr "Desactivar SKU único"
+
+#: inc/woocommerce/class-machete-woocommerce-module.php:45
+msgid ""
+"Allows you to use the same SKU in multiple products or prodcut variations"
+msgstr ""
+"Te permite utilizar el mismo SKU en varios productos o variaciones de "
+"productos"
+
+#: inc/woocommerce/class-machete-woocommerce-module.php:48
+msgid "Disable SKUs"
+msgstr "Desactivar SKUs"
+
+#: inc/woocommerce/class-machete-woocommerce-module.php:49
+msgid "Removes the SKU field in both the backend and frontend of your store."
+msgstr ""
+"Elimina el campo SKU tanto en la parte pública como en la administración de "
+"tu tienda."
+
 #: machete-admin.php:47
 #, php-format
 msgid ""
@@ -1600,7 +1620,7 @@ msgstr ""
 "Ve a la %1$spágina del módulo de cookies%2$s y <strong>guarda los ajustes</"
 "strong> para quitar este aviso."
 
-#: machete-admin.php:60
+#: machete-admin.php:61
 #, php-format
 msgid ""
 "You are using Tracking settings from a previous Machete version. Go to the "
@@ -1611,7 +1631,7 @@ msgstr ""
 "Machete. Ve a la %1$spágina del modulo de Analytics y código%2$s y "
 "<strong>guarda los ajustes</strong> para quitar este aviso."
 
-#: machete-admin.php:80
+#: machete-admin.php:81
 #, php-format
 msgid ""
 "If you like <strong>Machete</strong>, please %1$sleave us a rating of %2$s. "
@@ -1620,16 +1640,16 @@ msgstr ""
 "Si te gusta <strong>Machete</strong>, %1$sdéjame una reseña de %2$s. ¡Muchas "
 "gracias!"
 
-#: machete-admin.php:106
+#: machete-admin.php:107
 #, php-format
 msgid "<a href=\"%s\">Settings</a>"
 msgstr "<a href=\"%s\">Ajustes</a>"
 
-#: machete.php:81
+#: machete.php:82
 msgid "Machete PowerTools are now active! Enjoy your new toy!"
 msgstr "¡Machete PowerTools esta activo! ¡Disfruta tu nuevo juguete!"
 
-#: machete.php:88
+#: machete.php:89
 msgid "You have to install and activate WooCommerce to use this module."
 msgstr "Tienes que instalar y activar WooCommerce para utilizar este módulo."
 
@@ -1658,6 +1678,35 @@ msgstr "Nilo Vélez"
 #. Author URI of the plugin/theme
 msgid "https://www.nilovelez.com"
 msgstr "https://www.nilovelez.com"
+
+#~ msgid "recent_comments_style"
+#~ msgstr "recent_comments_style"
+
+#~ msgid "Removes a block of inline CSS used by old themes from the header"
+#~ msgstr ""
+#~ "Quitar de la cabecera un bloque de CSS que usaban los temas antiguos"
+
+#~ msgid "Remove CF7 refill"
+#~ msgstr "Quitar el refill de CF7"
+
+#~ msgid ""
+#~ "Disables the Contact Form 7 refill script. Saves one hit to wp-ajax.php "
+#~ "per pageview on cached sites"
+#~ msgstr ""
+#~ "Desactiva el script refill de Contact Form 7. Ahorra una petición a wp-"
+#~ "ajax.php por vista de página en los sitios con caché"
+
+#~ msgid ""
+#~ "Activate only if you are not using the reCAPTCHA Contact Form 7 field"
+#~ msgstr ""
+#~ "Actívalo sólo si no estás utilizando el campo reCAPTCHA de Contact Form 7"
+
+#~ msgctxt "Twitter button label"
+#~ msgid "Tweet this"
+#~ msgstr "Tuitéalo"
+
+#~ msgid "Google Analytics property ID"
+#~ msgstr "ID de propiedad de Google Analytics"
 
 #~ msgid "Cookie Law"
 #~ msgstr "Ley de cookies"
@@ -1700,8 +1749,8 @@ msgstr "https://www.nilovelez.com"
 
 #, php-format
 #~ msgid ""
-#~ "Launch a Google Analytics event whenever a visitor submits a <a href=\"%s"
-#~ "\">Contact Form 7</a> form."
+#~ "Launch a Google Analytics event whenever a visitor submits a <a "
+#~ "href=\"%s\">Contact Form 7</a> form."
 #~ msgstr ""
 #~ "Lanza un evento de Google Analytics cada vez que un visitante envía un "
 #~ "formulario de <a href=\"%s\">Contact Form 7</a> ."
