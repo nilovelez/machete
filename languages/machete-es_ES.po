@@ -3,8 +3,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Plugins - Machete - Development (trunk)\n"
-"POT-Creation-Date: 2024-04-04 08:49+0200\n"
-"PO-Revision-Date: 2024-04-04 08:52+0200\n"
+"POT-Creation-Date: 2024-05-19 20:03+0200\n"
+"PO-Revision-Date: 2024-05-19 20:11+0200\n"
 "Last-Translator: Nilo Velez <nilovelez@gmail.com>\n"
 "Language-Team: \n"
 "Language: es\n"
@@ -605,23 +605,23 @@ msgstr "Clonar %s"
 msgid "Copy this %s to a new draft"
 msgstr "Copiar %s a un nuevo borrador"
 
-#: inc/clone/admin-functions.php:46
-msgid "-copy"
-msgstr "-copia"
+#: inc/clone/admin-functions.php:93
+msgid "copy"
+msgstr "copia"
 
-#: inc/clone/admin-functions.php:94
+#: inc/clone/admin-functions.php:118
 msgid "Clone this!"
 msgstr "¡Clonar esto!"
 
-#: inc/clone/admin-functions.php:94
+#: inc/clone/admin-functions.php:118
 msgid "Duplicate"
 msgstr "Duplicar"
 
-#: inc/clone/admin-functions.php:115 inc/clone/admin-functions.php:149
+#: inc/clone/admin-functions.php:139 inc/clone/admin-functions.php:173
 msgid "Copy to a new draft"
 msgstr "Copiar a un nuevo borrador"
 
-#: inc/clone/admin-functions.php:148
+#: inc/clone/admin-functions.php:172
 msgid "Clone this post"
 msgstr "Clonar esta publicación"
 
@@ -1678,6 +1678,11 @@ msgstr "Nilo Vélez"
 #. Author URI of the plugin/theme
 msgid "https://www.nilovelez.com"
 msgstr "https://www.nilovelez.com"
+
+#, fuzzy
+#~| msgid "-copy"
+#~ msgid " copy 2"
+#~ msgstr "-copia"
 
 #~ msgid "recent_comments_style"
 #~ msgstr "recent_comments_style"

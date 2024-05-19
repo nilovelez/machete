@@ -2,7 +2,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Machete\n"
-"POT-Creation-Date: 2024-04-04 08:49+0200\n"
+"POT-Creation-Date: 2024-05-19 20:03+0200\n"
 "PO-Revision-Date: 2016-11-03 19:23+0100\n"
 "Last-Translator: \n"
 "Language-Team: \n"
@@ -523,23 +523,23 @@ msgstr ""
 msgid "Copy this %s to a new draft"
 msgstr ""
 
-#: inc/clone/admin-functions.php:46
-msgid "-copy"
+#: inc/clone/admin-functions.php:93
+msgid "copy"
 msgstr ""
 
-#: inc/clone/admin-functions.php:94
+#: inc/clone/admin-functions.php:118
 msgid "Clone this!"
 msgstr ""
 
-#: inc/clone/admin-functions.php:94
+#: inc/clone/admin-functions.php:118
 msgid "Duplicate"
 msgstr ""
 
-#: inc/clone/admin-functions.php:115 inc/clone/admin-functions.php:149
+#: inc/clone/admin-functions.php:139 inc/clone/admin-functions.php:173
 msgid "Copy to a new draft"
 msgstr ""
 
-#: inc/clone/admin-functions.php:148
+#: inc/clone/admin-functions.php:172
 msgid "Clone this post"
 msgstr ""
 
