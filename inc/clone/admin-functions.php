@@ -43,7 +43,7 @@ function machete_content_clone() {
 		'post_parent'    => $post->post_parent,
 		'post_password'  => $post->post_password,
 		'post_status'    => 'draft',
-		'post_title'     => $post->post_title . __( '-copy', 'machete' ),
+		'post_title'     => machete_content_clone_new_title ( $post->post_title ),
 		'post_type'      => $post->post_type,
 		'to_ping'        => $post->to_ping,
 		'menu_order'     => $post->menu_order,
@@ -81,6 +81,30 @@ function machete_content_clone() {
 
 }
 add_action( 'admin_action_machete_clone', 'machete_content_clone' );
+
+
+/**
+ * Renames the post for the clone
+ *
+ * @param string $title old post title
+ */
+function machete_content_clone_new_title ( $title ) {
+
+	$copy_text = __( 'copy', 'machete' );
+
+	// If title ends in " copy" changes it to " copy 2"
+	if ( preg_match ( '/^.* \b' . $copy_text . '\b$/', $title ) ) {
+		$title .= ' 2';
+	// If title ends in " copy n", changes it to " copy n+1"
+	} elseif ( preg_match( '/^(.* \b' . $copy_text . ' )(\d+)\b$/', $title, $matches ) ) {
+		$next_number = intval( $matches[2] ) + 1;
+		$title = $matches[1] . $next_number;
+	// If title doesn't end in " copy" or " copy n", add " copy" to the title" 
+	} else {	
+		$title .= ' ' . $copy_text;
+	}
+	return $title;
+}
 
 /**
  * Adds the "clone" link to the post and page lists.
