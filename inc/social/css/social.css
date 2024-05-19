@@ -26,7 +26,7 @@
 .mct-social-share a:active {
 	display: block;
 	color: #fff;
-	text-decoration: none;
+	text-decoration: none !important;
 	box-shadow: none;
 	text-shadow: none;
 	border-width: 0;
