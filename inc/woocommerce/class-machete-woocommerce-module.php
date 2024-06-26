@@ -15,6 +15,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 class MACHETE_WOOCOMMERCE_MODULE extends MACHETE_MODULE {
 
 	public $woo_array;
+	public $all_woo_checked;
 
 	/**
 	 * Module constructor, init method overrides parent module default params

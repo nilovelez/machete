@@ -18,7 +18,8 @@ class MACHETE_MAINTENANCE_PAGE {
 	 *
 	 * @var array
 	 */
-	private $settings;
+	public $settings;
+	public $path;
 	/**
 	 * Module constructor, detemines if the maintenance page must be shown
 	 *
@@ -144,6 +145,11 @@ class MACHETE_MAINTENANCE_PAGE {
 					),
 					'content_class' => 'custom',
 				);
+				if ( is_rtl() ) {
+					$html_content['body_class'] = 'rtl';
+				} else {
+					$html_content['body_class'] = '';
+				}
 			}
 		}
 

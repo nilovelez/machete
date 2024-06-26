@@ -15,6 +15,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 class MACHETE_POWERTOOLS_MODULE extends MACHETE_MODULE {
 
 	public $powertools_array;
+	public $all_powertools_checked;
 
 	/**
 	 * Module constructor, init method overrides parent module default params
