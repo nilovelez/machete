@@ -203,7 +203,7 @@ class MACHETE_SOCIAL_MODULE extends MACHETE_MODULE {
 				global $post;
 				if (
 					! is_singular() ||
-					! in_the_loop() ||
+					//! in_the_loop() ||
 					! is_main_query() ||
 					// check if current post type is active.
 					( ! in_array( $post->post_type, $this->settings['post_types'], true ) )
