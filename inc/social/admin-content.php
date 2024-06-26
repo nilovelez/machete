@@ -18,7 +18,7 @@ if ( ! defined( 'MACHETE_ADMIN_INIT' ) ) {
 	<?php $machete->admin_tabs( 'machete-social' ); ?>
 
 
-	<p class="tab-performance"><span><strong><i class="dashicons dashicons-clock"></i> <?php esc_html_e( 'Performance impact:', 'machete' ); ?></strong> <?php echo wp_kses( _e( 'This tool adds 6.1KB and a single database request to each page load.', 'machete' ), wp_kses_allowed_html() ); ?></span></p>
+	<p class="tab-performance"><span><strong><i class="dashicons dashicons-clock"></i> <?php esc_html_e( 'Performance impact:', 'machete' ); ?></strong> <?php esc_html_e( 'This tool adds 6.1KB and a single database request to each page load.', 'machete' ); ?></span></p>
 
 <form id="mache-social-options" action="" method="POST">
 

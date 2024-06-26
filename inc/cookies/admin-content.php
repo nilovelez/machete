@@ -26,7 +26,7 @@ if ( 'dark' === $this->settings['bar_theme'] ) {
 	<?php $machete->admin_tabs( 'machete-cookies' ); ?>
 
 
-	<p class="tab-performance"><span><strong><i class="dashicons dashicons-clock"></i> <?php esc_html_e( 'Performance impact:', 'machete' ); ?></strong> <?php echo wp_kses( _e( 'This tool adds 0,4KB and a single database request to each page load. The remaining <abbr title="~1.1KB if GZipped">~2.5KB</abbr> of code is loaded asynchronously via javascript from a pre-generated static file.', 'machete' ), wp_kses_allowed_html() ); ?></span></p>
+	<p class="tab-performance"><span><strong><i class="dashicons dashicons-clock"></i> <?php esc_html_e( 'Performance impact:', 'machete' ); ?></strong> <?php echo wp_kses_post( __( 'This tool adds 0,4KB and a single database request to each page load. The remaining <abbr title="~1.1KB if GZipped">~2.5KB</abbr> of code is loaded asynchronously via javascript from a pre-generated static file.', 'machete' ) ); ?></span></p>
 
 <form id="mache-cookies-options" action="" method="POST">
 
