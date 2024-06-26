@@ -51,6 +51,7 @@ if ( ! defined( 'MACHETE_ADMIN_INIT' ) ) {
 			<td>
 				<input type="hidden" name="token" id="token_fld" value="<?php echo esc_attr( $this->settings['token'] ); ?>">
 				<a href="<?php echo esc_url( $this->magic_url ); ?>" id="machete_magic_link"><?php echo esc_url( $this->magic_url ); ?></a>
+				<button name="copy_token" id="mct_copy_token_btn" class="button"><?php esc_html_e( 'copy to clipboard', 'machete' ); ?></button>
 				<button name="change_token" id="change_token_btn" class="button action"><?php esc_html_e( 'change secret token', 'machete' ); ?></button>
 		<p class="description"><?php esc_html_e( 'You can use this link to grant anyone access to the website when it is in maintenance mode.', 'machete' ); ?></p>
 
@@ -124,6 +125,21 @@ if ( ! defined( 'MACHETE_ADMIN_INIT' ) ) {
 			token += chrs.substr(Math.round(Math.random()*15),1);
 		}
 		return token;
+	}
+
+	$('#mct_copy_token_btn').click(function(e){
+		navigator.clipboard.writeText( $('#machete_magic_link').attr('href') ).then(
+			() => { mct_toast_copy_token() },
+			() => { console.log('There was an error copying to clipboard.'); },
+		); 
+		e.preventDefault();
+	});
+
+	var mct_toast_copy_token = function(){
+		$('#mct_copy_token_btn').html('<?php esc_html_e( 'copied to clipboard!', 'machete' ); ?>');
+		setTimeout(function() {
+			$('#mct_copy_token_btn').html('<?php esc_html_e( 'copy to clipboard', 'machete' ); ?>');
+		}, 1000);
 	}
 
 	$('#change_token_btn').click(function(e){
