@@ -13,6 +13,9 @@ if ( ! defined( 'ABSPATH' ) ) {
  * Machete PowerTools Module class
  */
 class MACHETE_POWERTOOLS_MODULE extends MACHETE_MODULE {
+
+	public $powertools_array;
+
 	/**
 	 * Module constructor, init method overrides parent module default params
 	 */

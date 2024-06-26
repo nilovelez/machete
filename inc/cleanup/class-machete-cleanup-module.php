@@ -13,6 +13,15 @@ if ( ! defined( 'ABSPATH' ) ) {
  * Machete Cleanup Module class
  */
 class MACHETE_CLEANUP_MODULE extends MACHETE_MODULE {
+	
+	public $cleanup_array;
+	public $optimize_array;
+	public $tweaks_array;
+
+	public $all_cleanup_checked;
+	public $all_optimize_checked;
+	public $all_tweaks_checked;
+
 	/**
 	 * Module constructor, init method overrides parent module default params
 	 */

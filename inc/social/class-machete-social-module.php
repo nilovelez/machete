@@ -13,6 +13,11 @@ if ( ! defined( 'ABSPATH' ) ) {
  * Machete Social Sharing Module class
  */
 class MACHETE_SOCIAL_MODULE extends MACHETE_MODULE {
+	
+	public $positions;
+	public $networks;
+	public $valid_post_types;
+
 	/**
 	 * Module constructor, init method overrides parent module default params
 	 */

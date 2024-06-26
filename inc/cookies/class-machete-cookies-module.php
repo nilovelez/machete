@@ -13,6 +13,10 @@ if ( ! defined( 'ABSPATH' ) ) {
  * Machete Cookies Module class
  */
 class MACHETE_COOKIES_MODULE extends MACHETE_MODULE {
+	
+	public $themes;
+	public $cookies_bar_innerhtml;
+
 	/**
 	 * Module constructor, init method overrides parent module default params
 	 */

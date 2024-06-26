@@ -13,6 +13,9 @@ if ( ! defined( 'ABSPATH' ) ) {
  * Machete WooCommerce Module class
  */
 class MACHETE_WOOCOMMERCE_MODULE extends MACHETE_MODULE {
+
+	public $woo_array;
+
 	/**
 	 * Module constructor, init method overrides parent module default params
 	 */

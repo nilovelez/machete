@@ -19,6 +19,10 @@ abstract class MACHETE_MODULE {
 	 *
 	 * @var array
 	 */
+
+	public $path;
+	public $baseurl;
+
 	public $params = array(
 		'slug'            => '',
 		'title'           => '',

@@ -13,6 +13,12 @@ if ( ! defined( 'ABSPATH' ) ) {
  * Machete Maintenance Module class
  */
 class MACHETE_MAINTENANCE_MODULE extends MACHETE_MODULE {
+
+	public $preview_base_url;
+	public $preview_url;
+	public $magic_base_url;
+	public $magic_url;
+
 	/**
 	 * Module constructor, init method overrides parent module default params
 	 */
