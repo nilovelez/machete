@@ -4,11 +4,11 @@ var el = wp.element.createElement;
     var PluginPostStatusInfo = wp.editPost.PluginPostStatusInfo;
     var buttonControl = wp.components.Button;
 
-    function macheteGutenButton({}) {
+    function macheteCloneGutenButton({}) {
         return el(
             PluginPostStatusInfo,
             {
-                className: 'machete-duplicate-post-status-info'
+                className: 'machete-clone-guten-group'
             },
             el(
                 buttonControl,
@@ -16,13 +16,13 @@ var el = wp.element.createElement;
                     isTertiary: true,
                     name: 'machete_page_link_guten',
                     isLink: true,
-                    title: machete_params.machete_post_title,
-                    href : machete_params.machete_duplicate_nonce_url
-                }, machete_params.machete_post_text
+                    title: machete_params.machete_clone_button_title,
+                    href : machete_params.machete_clone_nonce_url
+                }, machete_params.machete_clone_button_text
             )
         );
     }
 
-    registerPlugin( 'machete-duplicate-post-status-info-plugin', {
-        render: macheteGutenButton
+    registerPlugin( 'machete-clone-plugin', {
+        render: macheteCloneGutenButton
     } );
