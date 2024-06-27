@@ -46,7 +46,7 @@
 	https://github.com/wimg/PHPCompatibility
 	-->
 	
-	<config name="testVersion" value="8.0"/>
+	<config name="testVersion" value="8.2"/>
 	<rule ref="PHPCompatibility"/>
 	
 
