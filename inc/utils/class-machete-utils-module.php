@@ -61,7 +61,7 @@ class MACHETE_UTILS_MODULE extends MACHETE_MODULE {
 
 		add_action(
 			'admin_init',
-			function() {
+			function () {
 				if ( null !== filter_input( INPUT_POST, 'machete-utils-saved' ) ) {
 					check_admin_referer( 'machete_save_utils' );
 					$this->save_settings( filter_input_array( INPUT_POST ) );
@@ -69,15 +69,17 @@ class MACHETE_UTILS_MODULE extends MACHETE_MODULE {
 
 				if ( ! empty( $this->settings['tracking_id'] ) ) {
 					$module_url = add_query_arg( 'page', 'machete-' . $this->params['slug'], admin_url( 'admin.php' ) );
-					$this->notice( sprintf(
-						/* Translators: 1: Analytics property id 2: link open tag 3: link close tag */
-						__( 'You are using the obsolete Universal Analytics property id %1$s. Go to the %2$sMachete Analytics & code module page%3$s and <strong>Save Settings</strong> to remove this notice.', 'machete' ),
-						$this->settings['tracking_id'],
-						'<a href="' . $module_url . '">',
-						'</a>'
-					), 'warning' );
+					$this->notice(
+						sprintf(
+							/* Translators: 1: Analytics property id 2: link open tag 3: link close tag */
+							__( 'You are using the obsolete Universal Analytics property id %1$s. Go to the %2$sMachete Analytics & code module page%3$s and <strong>Save Settings</strong> to remove this notice.', 'machete' ),
+							$this->settings['tracking_id'],
+							'<a href="' . $module_url . '">',
+							'</a>'
+						),
+						'warning'
+					);
 				}
-				
 			}
 		);
 		add_action( 'admin_menu', array( $this, 'register_sub_menu' ) );
@@ -124,15 +126,15 @@ class MACHETE_UTILS_MODULE extends MACHETE_MODULE {
 		}
 
 		if ( empty( $options['tracking_id'] ) ) {
-			$settings['tracking_id'] = '';	
+			$settings['tracking_id'] = '';
 		}
 
 		if ( empty( $options['tracking_ga4'] ) ) {
-			$settings['tracking_ga4'] = '';	
+			$settings['tracking_ga4'] = '';
 		}
 
 		if ( empty( $options['tracking_gtm'] ) ) {
-			$settings['tracking_gtm'] = '';	
+			$settings['tracking_gtm'] = '';
 		}
 
 		/* Start GTAG (universal &y GA4) */
@@ -340,7 +342,7 @@ class MACHETE_UTILS_MODULE extends MACHETE_MODULE {
 		}
 		add_action(
 			'wp_head',
-			function() {
+			function () {
 				echo '<script>' . "\n";
 				$this->readfile( MACHETE_DATA_PATH . $this->settings['tracking_filename'] );
 				echo '</script>' . "\n";
@@ -451,6 +453,5 @@ class MACHETE_UTILS_MODULE extends MACHETE_MODULE {
 
 		return $export;
 	}
-
 }
 $machete->modules['utils'] = new MACHETE_UTILS_MODULE();

@@ -142,7 +142,7 @@ if ( in_array( 'emojicons', $this->settings, true ) ) {
 		remove_filter( 'wp_mail', 'wp_staticize_emoji_for_email' );
 		add_filter(
 			'tiny_mce_plugins',
-			function( $plugins ) {
+			function ( $plugins ) {
 				if ( is_array( $plugins ) ) {
 					return array_diff( $plugins, array( 'wpemoji' ) );
 				}
@@ -161,7 +161,7 @@ if ( in_array( 'emojicons', $this->settings, true ) ) {
 if ( in_array( 'pdf_thumbnails', $this->settings, true ) && is_admin() ) {
 	add_filter(
 		'fallback_intermediate_image_sizes',
-		function() {
+		function () {
 			return array();
 		}
 	);
@@ -171,7 +171,7 @@ if ( in_array( 'limit_revisions', $this->settings, true ) && is_admin() ) {
 	if ( defined( 'WP_POST_REVISIONS' ) && ( WP_POST_REVISIONS !== false ) ) {
 		add_filter(
 			'wp_revisions_to_keep',
-			function( $num, $post ) {
+			function ( $num, $post ) {
 				$num  = null; // To prevent WPCS warning.
 				$post = null; // To prevent WPCS warning.
 				return 5;
@@ -197,7 +197,7 @@ if ( in_array( 'comments_reply_feature', $this->settings, true ) && ! is_admin()
 	// Only load the comment-reply.js when needed.
 	add_action(
 		'wp_print_scripts',
-		function() {
+		function () {
 			if ( is_singular() && ( get_option( 'thread_comments' ) === 1 ) && comments_open() && have_comments() ) {
 				wp_enqueue_script( 'comment-reply' );
 			} else {
@@ -236,7 +236,7 @@ if ( in_array( 'medium_large_size', $this->settings, true ) ) {
 
 	add_filter(
 		'intermediate_image_sizes',
-		function( $sizes ) {
+		function ( $sizes ) {
 			return array_diff( $sizes, array( 'medium_large' ) );
 		},
 		100
@@ -244,7 +244,7 @@ if ( in_array( 'medium_large_size', $this->settings, true ) ) {
 
 	add_filter(
 		'intermediate_image_sizes_advanced',
-		function( $sizes ) {
+		function ( $sizes ) {
 			return array_diff( $sizes, array( 'medium_large' ) );
 		},
 		100
@@ -281,13 +281,13 @@ if ( in_array( 'json_api', $this->settings, true ) ) {
 		// disable json_api.
 		add_filter( 'json_enabled', '__return_false' );
 		add_filter( 'json_jsonp_enabled', '__return_false' );
-	};
+	}
 
 	// Require Authentication for All Reque​sts.
 	// https://developer.wordpress.org/rest-api/using-the-rest-api/frequently-asked-questions/#require-authentication-for-all-requests .
 	add_filter(
 		'rest_authentication_errors',
-		function( $result ) {
+		function ( $result ) {
 			if ( ! empty( $result ) ) {
 				return $result;
 			}
@@ -312,7 +312,7 @@ if ( in_array( 'xmlrpc', $this->settings, true ) ) {
 	// Hide xmlrpc.php in HTTP response headers.
 	add_filter(
 		'wp_headers',
-		function( $headers ) {
+		function ( $headers ) {
 			unset( $headers['X-Pingback'] );
 			return $headers;
 		}
@@ -322,7 +322,7 @@ if ( in_array( 'xmlrpc', $this->settings, true ) ) {
 	add_filter( 'xmlrpc_enabled', '__return_false' );
 	add_filter(
 		'xmlrpc_methods',
-		function( $methods ) {
+		function ( $methods ) {
 			unset( $methods['pingback.ping'] );
 			return $methods;
 		}
@@ -348,7 +348,7 @@ if ( in_array( 'oembed_scripts', $this->settings, true ) && ! is_admin() ) {
 if ( in_array( 'jpeg_quality', $this->settings, true ) ) {
 	add_filter(
 		'jpeg_quality',
-		function( $arg ) {
+		function ( $arg ) {
 			$arg = null; // To prevent WPCS warning.
 			return 72;
 		}
@@ -358,7 +358,7 @@ if ( in_array( 'jpeg_quality', $this->settings, true ) ) {
 if ( in_array( 'gutenberg_css', $this->settings, true ) ) {
 	add_action(
 		'wp_enqueue_scripts',
-		function() {
+		function () {
 			wp_dequeue_style( 'wp-block-library' );            // WordPress core.
 			wp_dequeue_style( 'wp-block-library-theme' );      // WordPress core.
 			wp_dequeue_style( 'wc-block-style' );              // WooCommerce.
@@ -370,7 +370,7 @@ if ( in_array( 'gutenberg_css', $this->settings, true ) ) {
 if ( in_array( 'disable_global_css', $this->settings, true ) && ! is_admin() ) {
 	add_action(
 		'after_setup_theme',
-		function() {
+		function () {
 			// remove SVG and global styles.
 			remove_action( 'wp_enqueue_scripts', 'wp_enqueue_global_styles' );
 

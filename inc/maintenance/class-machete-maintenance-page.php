@@ -46,7 +46,6 @@ class MACHETE_MAINTENANCE_PAGE {
 				add_action( 'template_redirect', array( $this, 'render_comingsoon_page' ) );
 			}
 		}
-
 	}
 	/**
 	 * Used to do the actual rendering of the maintenance page.

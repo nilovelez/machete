@@ -13,7 +13,7 @@ if ( ! defined( 'ABSPATH' ) ) {
  * Machete Social Sharing Module class
  */
 class MACHETE_SOCIAL_MODULE extends MACHETE_MODULE {
-	
+
 	public $positions;
 	public $networks;
 	public $valid_post_types;
@@ -77,7 +77,6 @@ class MACHETE_SOCIAL_MODULE extends MACHETE_MODULE {
 			),
 
 		);
-
 	}
 
 	/**
@@ -115,7 +114,7 @@ class MACHETE_SOCIAL_MODULE extends MACHETE_MODULE {
 
 		add_action(
 			'admin_init',
-			function() {
+			function () {
 				if ( filter_input( INPUT_POST, 'machete-social-saved' ) !== null ) {
 					check_admin_referer( 'machete_save_social' );
 					$this->save_settings( filter_input_array( INPUT_POST ) );
@@ -144,7 +143,7 @@ class MACHETE_SOCIAL_MODULE extends MACHETE_MODULE {
 
 		add_action(
 			'wp_enqueue_scripts',
-			function() {
+			function () {
 
 				global $post;
 
@@ -186,7 +185,7 @@ class MACHETE_SOCIAL_MODULE extends MACHETE_MODULE {
 				remove_shortcode( 'mct-social-share' );
 				add_shortcode(
 					'mct-social-share',
-					function() {
+					function () {
 						$out  = '<div id="mct-shortcode-share" class="mct-social-share">';
 						$out .= $this->share_buttons();
 						$out .= '</div>';
@@ -198,7 +197,7 @@ class MACHETE_SOCIAL_MODULE extends MACHETE_MODULE {
 
 		add_filter(
 			'the_content',
-			function( $content ) {
+			function ( $content ) {
 
 				// bail if no active positions.
 				if ( 0 === count( $this->settings['positions'] ) ) {
@@ -264,7 +263,6 @@ class MACHETE_SOCIAL_MODULE extends MACHETE_MODULE {
 				} // end if after.
 
 				return $content;
-
 			}
 		);
 	}
@@ -430,6 +428,5 @@ class MACHETE_SOCIAL_MODULE extends MACHETE_MODULE {
 			return false;
 		}
 	}
-
 }
 $machete->modules['social'] = new MACHETE_SOCIAL_MODULE();

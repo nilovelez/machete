@@ -55,7 +55,6 @@ class MACHETE_WOOCOMMERCE_MODULE extends MACHETE_MODULE {
 		);
 
 		$this->default_settings = array();
-
 	}
 	/**
 	 * Executes code related to the WordPress admin.
@@ -78,7 +77,6 @@ class MACHETE_WOOCOMMERCE_MODULE extends MACHETE_MODULE {
 		$this->all_woo_checked = ( count( array_intersect( array_keys( $this->woo_array ), $this->settings ) ) === count( $this->woo_array ) );
 
 		add_action( 'admin_menu', array( $this, 'register_sub_menu' ) );
-
 	}
 	/**
 	 * Executes code related to the front-end.

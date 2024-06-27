@@ -43,7 +43,7 @@ function machete_content_clone() {
 		'post_parent'    => $post->post_parent,
 		'post_password'  => $post->post_password,
 		'post_status'    => 'draft',
-		'post_title'     => machete_content_clone_new_title ( $post->post_title ),
+		'post_title'     => machete_content_clone_new_title( $post->post_title ),
 		'post_type'      => $post->post_type,
 		'to_ping'        => $post->to_ping,
 		'menu_order'     => $post->menu_order,
@@ -78,7 +78,6 @@ function machete_content_clone() {
 	// redirect to the post editor.
 	wp_safe_redirect( admin_url( 'post.php?action=edit&post=' . $new_post_id ) );
 	exit;
-
 }
 add_action( 'admin_action_machete_clone', 'machete_content_clone' );
 
@@ -88,19 +87,19 @@ add_action( 'admin_action_machete_clone', 'machete_content_clone' );
  *
  * @param string $title old post title
  */
-function machete_content_clone_new_title ( $title ) {
+function machete_content_clone_new_title( $title ) {
 
 	$copy_text = __( 'copy', 'machete' );
 
-	// If title ends in " copy" changes it to " copy 2"
-	if ( preg_match ( '/^.* \b' . $copy_text . '\b$/', $title ) ) {
+	if ( preg_match( '/^.* \b' . $copy_text . '\b$/', $title ) ) {
+		// If title ends in " copy" changes it to " copy 2"
 		$title .= ' 2';
-	// If title ends in " copy n", changes it to " copy n+1"
 	} elseif ( preg_match( '/^(.* \b' . $copy_text . ' )(\d+)\b$/', $title, $matches ) ) {
+		// If title ends in " copy n", changes it to " copy n+1"
 		$next_number = intval( $matches[2] ) + 1;
-		$title = $matches[1] . $next_number;
-	// If title doesn't end in " copy" or " copy n", add " copy" to the title" 
-	} else {	
+		$title       = $matches[1] . $next_number;
+	} else {
+		// If title doesn't end in " copy" or " copy n", add " copy" to the title"
 		$title .= ' ' . $copy_text;
 	}
 	return $title;
@@ -139,45 +138,48 @@ function machete_clone_button() {
 		<div id="duplicate-action"><a class="submitduplicate duplication" href="<?php echo esc_url( $notify_url ); ?>"><?php esc_html_e( 'Copy to a new draft', 'machete' ); ?></a></div>
 		<?php
 	}
-
 }
 
 /*
  * Add the duplicate link to edit screen - gutenberg
  */
-function machete_clone_button_guten()
-{
-    global $post;
-    if ($post) {
+function machete_clone_button_guten() {
+	global $post;
+	if ( $post ) {
 
-    	$notify_url = wp_nonce_url( admin_url( 'admin.php?action=machete_clone&amp;post=' . absint( $post->ID ) ), 'machete_clone_' . $post->ID );
+		$notify_url = wp_nonce_url( admin_url( 'admin.php?action=machete_clone&amp;post=' . absint( $post->ID ) ), 'machete_clone_' . $post->ID );
 
-        wp_enqueue_style(
-        	'machete_clone_style',
-        	MACHETE_BASE_URL . 'inc/clone/css/editor-style.css'
-        );
-        wp_register_script(
-        	'machete_clone_script',
-        	MACHETE_BASE_URL . 'inc/clone/js/editor-script.js',
-        	array(
-        		'wp-edit-post',
-        		'wp-plugins',
-        		'wp-i18n',
-        		'wp-element'
-        	),
-        	MACHETE_VERSION
-        );
-        wp_localize_script(
-        	'machete_clone_script',
-        	'machete_params',
-        	array(
-            	'machete_clone_nonce_url' => $notify_url,
-            	'machete_clone_button_text' => __( 'Clone this post', 'machete' ),
-            	'machete_clone_button_title' => __( 'Copy to a new draft', 'machete' ),
-            )
-        );        
-        wp_enqueue_script( 'machete_clone_script' );
-    }
+		wp_enqueue_style(
+			'machete_clone_style',
+			MACHETE_BASE_URL . 'inc/clone/css/editor-style.css',
+			array(),
+			MACHETE_VERSION
+		);
+		wp_register_script(
+			'machete_clone_script',
+			MACHETE_BASE_URL . 'inc/clone/js/editor-script.js',
+			array(
+				'wp-edit-post',
+				'wp-plugins',
+				'wp-i18n',
+				'wp-element',
+			),
+			MACHETE_VERSION,
+			array(
+				'in_footer' => false,
+			)
+		);
+		wp_localize_script(
+			'machete_clone_script',
+			'machete_params',
+			array(
+				'machete_clone_nonce_url'    => $notify_url,
+				'machete_clone_button_text'  => __( 'Clone this post', 'machete' ),
+				'machete_clone_button_title' => __( 'Copy to a new draft', 'machete' ),
+			)
+		);
+		wp_enqueue_script( 'machete_clone_script' );
+	}
 }
 
 if ( current_user_can( 'edit_posts' ) ) {

@@ -148,8 +148,6 @@ class MACHETE_MAINTENANCE_MODULE extends MACHETE_MODULE {
 			}
 			return false;
 		}
-
 	}
-
 }
 $machete->modules['maintenance'] = new MACHETE_MAINTENANCE_MODULE();

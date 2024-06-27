@@ -28,7 +28,7 @@ if ( in_array( 'free_shipping', $this->settings, true ) ) {
 
 	add_filter(
 		'woocommerce_package_rates',
-		function( $rates ) {
+		function ( $rates ) {
 			$filtered_rates = array();
 			foreach ( $rates as $rate_id => $rate ) {
 				if ( in_array( $rate->method_id, array( 'free_shipping', 'local_pickup' ), true ) ) {

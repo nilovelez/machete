@@ -54,7 +54,7 @@ if ( in_array( 'page_excerpts', $this->settings, true ) ) {
 if ( in_array( 'move_scripts_footer', $this->settings, true ) ) {
 	add_action(
 		'wp_enqueue_scripts',
-		function() {
+		function () {
 			remove_action( 'wp_head', 'wp_print_scripts' );
 			remove_action( 'wp_head', 'wp_print_head_scripts', 9 );
 			remove_action( 'wp_head', 'wp_enqueue_scripts', 1 );
@@ -70,7 +70,7 @@ if ( in_array( 'move_scripts_footer', $this->settings, true ) ) {
 if ( in_array( 'defer_all_scripts', $this->settings, true ) ) {
 	add_filter(
 		'script_loader_tag',
-		function( $tag ) {
+		function ( $tag ) {
 			return str_replace( ' src', ' defer="defer" src', $tag );
 		},
 		10
@@ -103,7 +103,7 @@ if ( in_array( 'disable_feeds', $this->settings, true ) && ! is_admin() ) {
 if ( in_array( 'enable_svg', $this->settings, true ) ) {
 	add_filter(
 		'upload_mimes',
-		function( $upload_mimes ) {
+		function ( $upload_mimes ) {
 			$upload_mimes['svg']  = 'image/svg+xml';
 			$upload_mimes['svgz'] = 'image/svg+xml';
 			return $upload_mimes;
@@ -122,7 +122,7 @@ if ( in_array( 'disable_search', $this->settings, true ) ) {
 	 */
 	add_action(
 		'parse_query',
-		function( $query, $error = true ) {
+		function ( $query, $error = true ) {
 			if ( is_search() ) {
 				$query->is_search       = false;
 				$query->query_vars[ s ] = false;
@@ -136,13 +136,13 @@ if ( in_array( 'disable_search', $this->settings, true ) ) {
 	add_filter(
 		'get_search_form',
 		// phpcs:ignore Generic.CodeAnalysis.UnusedFunctionParameter
-		function( $a ) {
+		function ( $a ) {
 			return null;
 		}
 	);
 	add_action(
 		'widgets_init',
-		function() {
+		function () {
 			unregister_widget( 'WP_Widget_Search' );
 		}
 	);
