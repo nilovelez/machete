@@ -103,6 +103,9 @@ var machete_cookie_bar = (function(){
 				width: '100%',
 				transform: 'translateY(110vh)'
 			});
+			if ( typeof machete_cookies_accent_color !== 'undefined' ) {
+				container.style.setProperty( '--machete-cookie-color', machete_cookies_accent_color );
+			}
 
 			var body = document.getElementsByTagName( 'body' )[0];
 			body.appendChild( container );

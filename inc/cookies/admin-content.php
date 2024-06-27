@@ -59,6 +59,10 @@ if ( 'dark' === $this->settings['bar_theme'] ) {
 		<label><input type="radio" name="bar_theme" class="bar-theme-radio" value="<?php echo esc_attr( $machete_bar_theme_slug ); ?>" <?php checked( $machete_bar_theme_slug, $this->settings['bar_theme'], true ); ?>> <?php echo esc_html( $machete_bar_theme['name'] ); ?></label><br>
 	<?php } ?>
 	</fieldset></td>
+</tr><tr>
+	<th scope="row"><label for="accept_text"><?php esc_html_e( 'Accent color', 'machete' ); ?></label></th>
+	<td><input name="accent_color" id="accent_color" value="<?php echo esc_html( $this->settings['accent_color'] ); ?>" class="ltr" type="color">
+		<button name="accent_color_restore" id="accent_color_restore_btn" class="button" style="display: none;"><?php esc_html_e( 'Restore default color', 'machete' ); ?></button></td>
 </tr>
 </tbody></table>
 
@@ -72,7 +76,7 @@ if ( 'dark' === $this->settings['bar_theme'] ) {
 	<div class="inside">
 		<table class="form-table"><tbody><tr valign="top"><th scope="row"></th><td>
 			<?php /* Translators: $s: a href part of a link */ ?>
-			<p class="description"><?php echo sprintf( esc_html( __( 'You can customize the cookie bar CSS using the %sAnalytics & Code tab', 'machete' ) ), '<a href="' . esc_url( add_query_arg( array( 'page' => 'machete-utils' ), admin_url( 'admin.php' ) ) ) . '">' ); ?></a></p>
+			<p class="description"><?php printf( esc_html( __( 'You can customize the cookie bar CSS using the %sAnalytics & Code tab', 'machete' ) ), '<a href="' . esc_url( add_query_arg( array( 'page' => 'machete-utils' ), admin_url( 'admin.php' ) ) ) . '">' ); ?></a></p>
 			<p class="description"><?php esc_html_e( 'For your reference, this is the HTML used to render the cookie bar:', 'machete' ); ?></p>
 			<pre style="color: #00f; font-weight: bold;">&lt;div <span style="color: #c00;">id</span>=<span style="color: #f0f;">"machete_cookie_container"</span> <span style="color: #c00;">class</span>=<span style="color: #f0f;">"machete_cookie_container"</span>&gt;
 &nbsp;&nbsp;&lt;div <span style="color: #c00;">id</span>=<span style="color: #f0f;">"machete_cookie_bar"</span> <span style="color: #c00;">class</span>=<span style="color: #f0f;">"machete_cookie_bar"</span>&gt;
@@ -130,7 +134,9 @@ foreach ( $this->themes as $machete_theme_slug => $machete_params ) {
 	cookie_bar_themes['<?php echo esc_js( $machete_theme_slug ); ?>'] = '<?php echo esc_js( 'machete_theme_' . $machete_theme_slug ); ?>';
 <?php } ?>
 
-	var cookie_bar_theme = '<?php echo esc_js( $this->settings['bar_theme'] ); ?>';
+	var cookie_bar_theme     = '<?php echo esc_js( $this->settings['bar_theme'] ); ?>';
+	var accent_color         = '<?php echo esc_js( $this->settings['accent_color'] ); ?>';
+	var accent_color_default = '<?php echo esc_js( $this->default_settings['accent_color'] ); ?>';
 
 	<?php
 	$machete_cookie_replaces = array(
@@ -169,11 +175,18 @@ foreach ( $this->themes as $machete_theme_slug => $machete_params ) {
 		$( '#machete_cookie_warning_text' ).html( $( '#warning_text' ).val() );
 		$( '#machete_accept_cookie_btn_partial' ).html( $( '#partial_accept_text' ).val() );
 		$( '#machete_accept_cookie_btn' ).html( $( '#accept_text' ).val() );
+		$( '#machete_cookie_container' ).css('--machete-cookie-color', $( "#accent_color" ).val() );
+		if ( $( "#accent_color" ).val() !== accent_color_default ) {
+			$( "#accent_color_restore_btn" ).show();
+		} else {
+			$( "#accent_color_restore_btn" ).hide();
+		}
 	}
 
 	$( "#warning_text" ).on( 'input', function() { update_preview_text(); });
 	$( "#accept_text" ).on( 'input', function() { update_preview_text(); });
 	$( "#partial_accept_text" ).on( 'input', function() { update_preview_text(); });
+	$( "#accent_color" ).on( 'input', function() { update_preview_text(); });
 
 	var container       = document.createElement( 'div' );
 	container.id        = 'machete_cookie_container';
@@ -190,8 +203,10 @@ foreach ( $this->themes as $machete_theme_slug => $machete_params ) {
 		position: 'fixed',
 		zIndex: 99999,
 		bottom: 0,
-		width: '100%'
+		width: '100%',
 	});
+	container.style.setProperty('--machete-cookie-color', accent_color);
+
 	var body = document.getElementsByTagName('body')[0];
 	body.appendChild(container);
 	update_preview_text();
@@ -221,6 +236,12 @@ foreach ( $this->themes as $machete_theme_slug => $machete_params ) {
 
 		$( '#partial_accept_text' ).val( '<?php echo $this->default_settings['partial_accept_text']; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?>' );
 
+		update_preview_text();
+	});
+
+	$( '#accent_color_restore_btn' ).click( function( e ) {
+		e.preventDefault();
+		$( "#accent_color" ).val( accent_color_default );
 		update_preview_text();
 	});
 

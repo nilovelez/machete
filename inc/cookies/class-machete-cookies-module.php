@@ -13,7 +13,7 @@ if ( ! defined( 'ABSPATH' ) ) {
  * Machete Cookies Module class
  */
 class MACHETE_COOKIES_MODULE extends MACHETE_MODULE {
-	
+
 	public $themes;
 	public $cookies_bar_innerhtml;
 
@@ -32,11 +32,12 @@ class MACHETE_COOKIES_MODULE extends MACHETE_MODULE {
 		);
 		$this->default_settings = array(
 			'bar_status'          => 'disabled',
-			'warning_text'        => __( 'This website uses both technical cookies, essential for you to browse the website and use its features, and third-party cookies we use for marketing and data analytics porposes, as explained in our <a href="/cookies/" style="color: #007FFF">cookie policy</a>.', 'machete' ),
+			'warning_text'        => __( 'This website uses both technical cookies, essential for you to browse the website and use its features, and third-party cookies we use for marketing and data analytics porposes, as explained in our <a href="/cookies/">cookie policy</a>.', 'machete' ),
 			'accept_text'         => __( 'Accept cookies', 'machete' ),
 			'partial_accept_text' => __( 'Accept only essential', 'machete' ),
 			'bar_theme'           => 'new_light',
 			'cookie_filename'     => '',
+			'accent_color'        => '#2271b1',
 		);
 
 		$this->themes = array(
@@ -68,7 +69,7 @@ class MACHETE_COOKIES_MODULE extends MACHETE_MODULE {
 		$this->read_settings();
 		add_action(
 			'admin_init',
-			function() {
+			function () {
 				if ( filter_input( INPUT_POST, 'machete-cookies-saved' ) !== null ) {
 					check_admin_referer( 'machete_save_cookies' );
 					$this->save_settings( filter_input_array( INPUT_POST ) );
@@ -115,11 +116,22 @@ class MACHETE_COOKIES_MODULE extends MACHETE_MODULE {
 			}
 		}
 
+		// Cookie bar theme.
 		if ( ! empty( $options['bar_theme'] ) && ( array_key_exists( $options['bar_theme'], $this->themes ) ) ) {
 			$settings['bar_theme'] = $options['bar_theme'];
 		}
 		$html_replaces['{{theme_stylesheet}}'] = $this->themes[ $options['bar_theme'] ]['stylesheet'];
 
+		// Cookie bar accent color.
+		if ( ! empty( $options['accent_color'] ) ) {
+
+			$settings['accent_color'] = $options['accent_color'];
+			if ( $options['accent_color'] !== $this->default_settings['accent_color'] ) {
+				$this->cookies_bar_innerhtml .= 'var machete_cookies_accent_color = \'' . $options['accent_color'] . '\';' . "\n";
+			}
+		}
+
+		// Cookie bar status.
 		if ( empty( $options['bar_status'] ) || ( 'disabled' === $options['bar_status'] ) ) {
 			$settings['bar_status'] = 'disabled';
 		} else {
