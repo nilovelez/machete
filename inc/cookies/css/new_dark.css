@@ -1,136 +1,26 @@
 @keyframes slide-up {
-	0% {
-		transform: translateY(110vh);
-	}
-	100% {
-		transform: translateY(0vh);
-	}
+	0% { transform: translateY(110vh); }
+	100% { transform: translateY(0vh); }
 }
-body:not(.wp-admin) .machete_cookie_container {
-	animation: slide-up 1s forwards;
-}
-.machete_cookie_container {
-	--machete-cookie-color: #2271b1;
-}
-.machete_cookie_container:before {
-	content: "";
-	position: absolute;
-	display: block;
-	height: 100%;
-	width: 100vw;
-	top: 10px;
-	left: 50%;
-	margin-left: -50vw
-}
-
-.machete_cookie_container:before,
-.machete_cookie_configbar {
-	background-color: #111;
-	box-shadow: 0 -3px 10px rgba(0, 0, 0, 0.2);
-	background-color: rgba(0, 0, 0, 0.85)
-}
-
-.machete_cookie_container,
-.machete_cookie_configbar {
-	font-size: 14px;
-	font-family: sans-serif;
-	line-height: 1.25;
-	color: #eee;
-}
-
-.machete_cookie_bar {
-	display: flex;
-	align-items: flex-start;
-	align-content: stretch;
-	flex-wrap: wrap;
-	gap: 10px 10px;
-	position: relative;
-	padding: 25px 15px 15px;
-	margin-left: auto;
-	margin-right: auto;
-	max-width: 1200px;
-}
-.machete_cookie_configbar {
-	position: absolute;
-	bottom: 0;
-	left: -5px;
-	padding: 0;
-	transform-origin: 0 0;
-	transform: rotate(-90deg)
-}
-
-.machete_cookie_warning_text{
-	flex-grow: 1;
-}
-
-.machete_cookie_config_btn {
-	padding: 15px 15px 10px 40px;
-	cursor: pointer;
-	font-weight: bold;
-	font-size: 16px;
-	color: #eee;
-	position: relative;
-}
-.machete_cookie_config_btn:hover,
-.machete_cookie_config_btn:focus {
-	box-shadow: inset 0px 0px 0px 2px rgba(238,238,238,1);
-}
-.machete_cookie_config_btn:before {
-	content: '';
-	display: block;
-	position: absolute;
-	left: 15px;
-	top: 5px;
-	width: 16px;
-	height: calc(100% - 5px);
-	background-size: contain;
+body:not(.wp-admin) .machete_cookie_container { animation: slide-up 1s forwards; }
+.machete_cookie_container { --machete-cookie-color: #2271b1; }
+.machete_cookie_container:before { content: ""; position: absolute; display: block; height: 100%; width: 100vw; top: 10px; left: 50%; margin-left: -50vw }
+.machete_cookie_container:before, .machete_cookie_configbar { background-color: #111; box-shadow: 0 -3px 10px rgba(0, 0, 0, 0.2); background-color: rgba(0, 0, 0, 0.85) }
+.machete_cookie_container, .machete_cookie_configbar { font-size: 14px; font-family: sans-serif; line-height: 1.25; color: #eee; }
+.machete_cookie_bar { display: flex; align-items: flex-start; align-content: stretch; flex-wrap: wrap; gap: 10px 10px; position: relative; padding: 25px 15px 15px; margin-left: auto; margin-right: auto; max-width: 1200px; }
+.machete_cookie_configbar { position: absolute; bottom: 0; left: -5px; padding: 0; transform-origin: 0 0; transform: rotate(-90deg) }
+.machete_cookie_warning_text { flex-grow: 1; }
+.machete_cookie_warning_text a { color: var(--machete-cookie-color); filter: brightness(1.5); }
+.machete_cookie_config_btn { padding: 15px 15px 10px 40px; cursor: pointer; font-weight: bold; font-size: 16px; color: #eee; position: relative; }
+.machete_cookie_config_btn:hover, .machete_cookie_config_btn:focus { box-shadow: inset 0px 0px 0px 2px rgba(238, 238, 238, 1); }
+.machete_cookie_config_btn:before { content: ''; display: block; position: absolute; left: 15px; top: 5px; width: 16px; height: calc(100% - 8px); background-size: contain;
 	background: transparent url("data:image/svg+xml,%3Csvg viewBox='0 0 1536 1792' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath fill='%23eee' d='M1024 896q0-106-75-181t-181-75-181 75-75 181 75 181 181 75 181-75 75-181zm512-109v222q0 12-8 23t-20 13l-185 28q-19 54-39 91 35 50 107 138 10 12 10 25t-9 23q-27 37-99 108t-94 71q-12 0-26-9l-138-108q-44 23-91 38-16 136-29 186-7 28-36 28h-222q-14 0-24.5-8.5t-11.5-21.5l-28-184q-49-16-90-37l-141 107q-10 9-25 9-14 0-25-11-126-114-165-168-7-10-7-23 0-12 8-23 15-21 51-66.5t54-70.5q-27-50-41-99l-183-27q-13-2-21-12.5t-8-23.5v-222q0-12 8-23t19-13l186-28q14-46 39-92-40-57-107-138-10-12-10-24 0-10 9-23 26-36 98.5-107.5t94.5-71.5q13 0 26 10l138 107q44-23 91-38 16-136 29-186 7-28 36-28h222q14 0 24.5 8.5t11.5 21.5l28 184q49 16 90 37l142-107q9-9 24-9 13 0 25 10 129 119 165 170 7 8 7 22 0 12-8 23-15 21-51 66.5t-54 70.5q26 50 41 98l183 28q13 2 21 12.5t8 23.5z'/%3E%3C/svg%3E") no-repeat center center;
 }
-
-.machete_accept_cookie_btn {
-	cursor: pointer;
-	text-decoration: none;
-	font-weight: bold;
-	text-transform: none;
-	font-size: 13px;
-	display: block;
-	padding: 5px 10px;
-	white-space: nowrap;
-	border-radius: 8px;
-	border: 2px solid var(--machete-cookie-color);
-	background-color: var(--machete-cookie-color);
-	color: #eee;
-}
-
-.machete_accept_cookie_btn:hover,
-.machete_accept_cookie_btn:focus,
-.machete_accept_cookie_btn:focus-visible{
-	color: #eee;
-	background-color: var(--machete-cookie-color);
-	border-color: var(--machete-cookie-color);
-	filter: brightness( 1.5 );
-
-	text-decoration: none;
-	outline: none !important;
-}
-.machete_accept_cookie_btn:focus {
-	box-shadow: 0 0 0 2px #222, 0 0 0 4px #eee;
-}
-.machete_accept_cookie_btn.partial {
-	background-color: #222;
-	color: #eee;
-	border-color: #eee;
-}
-
-.machete_accept_cookie_btn.partial:hover,
-.machete_accept_cookie_btn.partial:focus{
-	color: var(--machete-cookie-color);
-	border-color: var(--machete-cookie-color);
-	filter: brightness( 1.5 );
-}
-
+.machete_accept_cookie_btn { cursor: pointer; text-decoration: none; font-weight: bold; text-transform: none; font-size: 13px; display: block; padding: 5px 10px; white-space: nowrap; border-radius: 8px; border: 2px solid var(--machete-cookie-color); background-color: var(--machete-cookie-color); color: #eee; }
+.machete_accept_cookie_btn:hover, .machete_accept_cookie_btn:focus, .machete_accept_cookie_btn:focus-visible { color: #eee; background-color: var(--machete-cookie-color); border-color: var(--machete-cookie-color); filter: brightness(1.5); text-decoration: none; outline: none !important; }
+.machete_accept_cookie_btn:focus { box-shadow: 0 0 0 2px #222, 0 0 0 4px #eee; }
+.machete_accept_cookie_btn.partial { background-color: #222; color: #eee; border-color: #eee; }
+.machete_accept_cookie_btn.partial:hover, .machete_accept_cookie_btn.partial:focus { color: var(--machete-cookie-color); border-color: var(--machete-cookie-color); filter: brightness(1.5); }
 @media (min-width:1024px) {
-	.machete_cookie_bar {
-		flex-wrap: nowrap;
-	}
+.machete_cookie_bar { flex-wrap: nowrap; }
 }
