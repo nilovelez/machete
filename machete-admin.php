@@ -13,7 +13,7 @@ if ( ! defined( 'MACHETE_ADMIN_INIT' ) ) {
 // Manages welcome redirect to About page.
 add_action(
 	'admin_init',
-	function() {
+	function () {
 		// Bail if no activation redirect.
 		if ( 'pending' === get_option( 'machete_activation_welcome' ) ) {
 			delete_option( 'machete_activation_welcome' );
@@ -31,7 +31,7 @@ add_action(
 // Warning for Machete 3 users.
 add_action(
 	'admin_init',
-	function() {
+	function () {
 		global $machete;
 		if ( $machete->modules['cookies']->params['is_active'] ) {
 
@@ -68,7 +68,7 @@ add_action(
 // Content specific to Machete admin pages.
 add_action(
 	'current_screen',
-	function() {
+	function () {
 		if ( false === strpos( get_current_screen()->id, 'machete' ) ) {
 			return;
 		}
@@ -76,7 +76,7 @@ add_action(
 		// Machete pages footer credits.
 		add_filter(
 			'admin_footer_text',
-			function() {
+			function () {
 				/* translators: %s: five stars */
 				return ' ' . sprintf( __( 'If you like <strong>Machete</strong>, please %1$sleave us a rating of %2$s. Thank you!', 'machete' ), '<a href="https://wordpress.org/support/plugin/machete/reviews/#new-post" target="_blank">', '5&starf;</a>' ) . ' ';
 			}
@@ -85,7 +85,7 @@ add_action(
 		// Enqueue admin styles.
 		add_action(
 			'admin_enqueue_scripts',
-			function() {
+			function () {
 				wp_enqueue_style(
 					'machete_admin_4',
 					plugin_dir_url( __FILE__ ) . 'css/admin.css',
@@ -100,9 +100,9 @@ add_action(
 // Add "settings" link to Machete in the plugin list.
 add_filter(
 	'plugin_action_links',
-	function( $plugin_actions, $plugin_file ) {
+	function ( $plugin_actions, $plugin_file ) {
 		$new_actions = array();
-		if ( basename( dirname( __FILE__ ) ) . '/machete.php' === $plugin_file ) {
+		if ( basename( __DIR__ ) . '/machete.php' === $plugin_file ) {
 			/* translators: %s: url of plugin settings page */
 			$new_actions['sc_settings'] = sprintf( __( '<a href="%s">Settings</a>', 'machete' ), esc_url( add_query_arg( array( 'page' => 'machete' ), admin_url( 'admin.php' ) ) ) );
 		}
@@ -115,14 +115,14 @@ add_filter(
 // Add machete to the Admin sidemenu.
 add_action(
 	'admin_menu',
-	function() {
+	function () {
 		global $machete;
 		add_menu_page(
 			'Machete',
 			'Machete',
 			'publish_posts', // targeting Author role.
 			'machete',
-			function() {
+			function () {
 				global $machete;
 				require MACHETE_BASE_PATH . 'inc/about/admin-content.php';
 			},
