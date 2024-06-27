@@ -35,7 +35,7 @@ define( 'MACHETE_DATA_URL', $machete_get_upload_dir['baseurl'] . '/machete/' );
 
 register_activation_hook(
 	__FILE__,
-	function() {
+	function () {
 		add_option( 'machete_activation_welcome', 'pending' );
 	}
 );
@@ -71,7 +71,7 @@ foreach ( $machete_disabled_modules as $machete_module ) {
 // Main init.
 add_action(
 	'init',
-	function() {
+	function () {
 		global $machete;
 
 		load_plugin_textdomain( 'machete', false, dirname( plugin_basename( __FILE__ ) ) . '/languages/' );

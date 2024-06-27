@@ -13,7 +13,7 @@ if ( ! defined( 'ABSPATH' ) ) {
  * Machete Cleanup Module class
  */
 class MACHETE_CLEANUP_MODULE extends MACHETE_MODULE {
-	
+
 	public $cleanup_array;
 	public $optimize_array;
 	public $tweaks_array;

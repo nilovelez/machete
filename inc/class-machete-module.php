@@ -14,15 +14,15 @@ if ( ! defined( 'ABSPATH' ) ) {
  * Machete module abstract class
  */
 abstract class MACHETE_MODULE {
+
+	public $path;
+	public $baseurl;
+
 	/**
 	 * Default module properties, can be overridden by child modules.
 	 *
 	 * @var array
 	 */
-
-	public $path;
-	public $baseurl;
-
 	public $params = array(
 		'slug'            => '',
 		'title'           => '',
@@ -226,10 +226,8 @@ abstract class MACHETE_MODULE {
 					if ( count( $recursive_diff ) ) {
 						$return[ $key ] = $recursive_diff;
 					}
-				} else {
-					if ( $value !== $b[ $key ] ) {
-						$return[ $key ] = $value;
-					}
+				} elseif ( $value !== $b[ $key ] ) {
+					$return[ $key ] = $value;
 				}
 			} else {
 				$return[ $key ] = $value;
