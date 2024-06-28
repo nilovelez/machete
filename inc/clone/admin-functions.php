@@ -89,6 +89,7 @@ add_action( 'admin_action_machete_clone', 'machete_content_clone' );
  */
 function machete_content_clone_new_title( $title ) {
 
+	// Translators: noun, text appended to the title of cloned posts
 	$copy_text = __( 'copy', 'machete' );
 
 	if ( preg_match( '/^.* \b' . $copy_text . '\b$/', $title ) ) {
