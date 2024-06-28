@@ -2,9 +2,9 @@
 Contributors: nilovelez
 Donate link: https://ko-fi.com/nilovelez
 Tags: cookies, analytics, code, css, javascript, admin
-Requires PHP: 7.0
+Requires PHP: 7.4
 Requires at least: 4.6
-Tested up to: 6.3
+Tested up to: 6.5
 Stable tag: 4.0.3
 License: WTFPL
 License URI: http://www.wtfpl.net/txt/copying/
