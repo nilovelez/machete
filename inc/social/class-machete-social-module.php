@@ -53,7 +53,7 @@ class MACHETE_SOCIAL_MODULE extends MACHETE_MODULE {
 			'twitter'   => array(
 				'title' => _x( 'X/Twitter', 'network name', 'machete' ),
 				'label' => _x( 'Post this', 'Twitter button label', 'machete' ),
-				'url'   => 'https://twitter.com/intent/tweet?url=%s',
+				'url'   => 'https://x.com/intent/post?url=%s',
 			),
 			'facebook'  => array(
 				'title' => _x( 'Facebook', 'network name', 'machete' ),
