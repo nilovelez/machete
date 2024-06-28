@@ -76,6 +76,23 @@ Like it or not, the WordPress Block Editor (codenamed Gutenberg) is here to stay
 
 == Changelog ==
 
+= 5.0 = 
+* Checked for compatibility with WordPress 6.5.x
+* Checked for compatibility with WooCommerce 9.0.x
+* New: Cookie bar module: accent color option
+* Improvement: Cookie bar module: modified the stylesheet to make them easier to override
+* New: Maintenance module: added button to copy the magic link
+* Update: Analytics and code module: Removed Universal Analytics tracking
+* New: Clone module: added clone button to block editor
+* Fix: Clone module: fixed loop check for block themes
+* Fix: Clone module: added function to fix cloned post title
+* Update: Social share module: replaced Twitter with X
+* Fix: Social share module: force remove of underline in share buttons
+* Fix: Fixed 'body_class undefined' warning
+* Fix: Fixed some escape functions
+* Fix: Added class property declaration to prevent deprecation notice in PHP >8.2
+* Fix: Minor coding standards fixes
+
 = 4.0.3 = 
 * Checked for compatibility with WordPress 6.3
 * Added SVG icon to the maintenance page, just for the looks
