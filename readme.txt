@@ -122,3 +122,8 @@ Fix: Corrected the bug that prevented the obsolete tracking code warning to be d
 * Tracking & code: Removed option to track CF7 forms
 
 [View the complete changelog](https://plugins.svn.wordpress.org/machete/trunk/changelog.md)
+
+== Upgrade Notice ==
+
+= 5.0 =
+Some things have changed. Save your cookie and tracking code settings to finish update.
