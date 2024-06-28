@@ -1,7 +1,7 @@
 === Machete ===
 Contributors: nilovelez
 Donate link: https://ko-fi.com/nilovelez
-Tags: cookies, analytics, code, css, javascript, admin
+Tags: cookies, analytics, code, css, javascript
 Requires PHP: 7.4
 Requires at least: 4.6
 Tested up to: 6.5
@@ -70,9 +70,10 @@ Like it or not, the WordPress Block Editor (codenamed Gutenberg) is here to stay
 1. Machete Welcome screen
 2. WordPress Optimization. Cleanup time!
 3. Cookie bar configuration. Simple and sweet
-4. Analytics 4, Universal Analytics and Google tag Manager
+4. Analytics 4 and Google tag Manager
 5. Coming soon module with magic link to show your work
 6. Lightest ever social sharing buttons
+7. Options WooCommerce should have
 
 == Changelog ==
 
