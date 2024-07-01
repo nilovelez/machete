@@ -66,7 +66,10 @@ class MACHETE_MAINTENANCE_PAGE {
 			) > 0 ) {
 				return false;
 			}
-
+			// Exit if in a custom recover password URL.
+			if ( wp_lostpassword_url() === home_url( filter_input( INPUT_SERVER, 'REQUEST_URI' ) ) ) {
+				return false;
+			}
 			// Exit if user is logged in.
 			if ( is_user_logged_in() && current_user_can( 'publish_posts' ) ) {
 				return false;
