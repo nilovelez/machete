@@ -78,7 +78,7 @@ add_action(
 			'admin_footer_text',
 			function () {
 				/* translators: %s: five stars */
-				return ' ' . sprintf( __( 'If you like <strong>Machete</strong>, please %1$sleave us a rating of %2$s. Thank you!', 'machete' ), '<a href="https://wordpress.org/support/plugin/machete/reviews/#new-post" target="_blank">', '5&starf;</a>' ) . ' ';
+				return ' ' . sprintf( __( 'If you like <strong>Machete</strong>, please help us %1$sleaving a 5&starf; rating%2$s. Thank you!', 'machete' ), '<a href="https://wordpress.org/support/plugin/machete/reviews/#new-post" target="_blank">', '</a>' ) . ' ';
 			}
 		);
 

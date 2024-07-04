@@ -1,9 +1,9 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Plugins - Machete - Development (trunk)\n"
-"Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-05-19 20:03+0200\n"
-"PO-Revision-Date: 2024-06-28 10:11+0200\n"
+"Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/machete\n"
+"POT-Creation-Date: 2024-06-28T08:10:39+00:00\n"
+"PO-Revision-Date: 2024-07-04 11:45+0200\n"
 "Last-Translator: Nilo Velez <nilovelez@gmail.com>\n"
 "Language-Team: \n"
 "Language: es\n"
@@ -12,6 +12,31 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
 "X-Generator: Poedit 3.4.4\n"
+
+#. Plugin Name of the plugin
+#: D:\repos\machete\machete.php
+msgid "Machete"
+msgstr "Machete"
+
+#. Plugin URI of the plugin
+#: D:\repos\machete\machete.php
+msgid "https://machetewp.com"
+msgstr "https://machetewp.com"
+
+#. Description of the plugin
+#: D:\repos\machete\machete.php
+msgid "Machete is a lean and simple suite of tools that makes WordPress development easier: cookie bar, tracking codes, custom code editor, header cleanup, post and page cloner"
+msgstr "Machete es un conjunto de herramientas ligeras y sencillas que facilitan el desarrollo con WordPress: barra de cookies, códigos de seguimiento, editor de código personalizado, limpieza de cabecera, duplicar entradas y páginas"
+
+#. Author of the plugin
+#: D:\repos\machete\machete.php
+msgid "Nilo Velez"
+msgstr "Nilo Vélez"
+
+#. Author URI of the plugin
+#: D:\repos\machete\machete.php
+msgid "https://www.nilovelez.com"
+msgstr "https://www.nilovelez.com"
 
 #: inc/about/admin-content.php:16
 msgid "Welcome to Machete!"
@@ -71,34 +96,24 @@ msgstr "Desactivar"
 msgid "Activate"
 msgstr "Activar"
 
-#: inc/class-machete-module.php:161
-#: inc/utils/class-machete-utils-module.php:413
-msgid "Settings successfully restored from backup"
-msgstr "Ajustes restaurados con éxito desde la copia de seguridad"
-
-#: inc/class-machete-module.php:163
-#: inc/utils/class-machete-utils-module.php:415
-msgid "Error restoring settings backup"
-msgstr "Error restaurando la copia de seguridad"
-
-#: inc/class-machete-module.php:184
+#: inc/class-machete-module.php:162
 msgid "Options saved!"
 msgstr "¡Ajustes guardados!"
 
-#: inc/class-machete-module.php:190 inc/class-machete.php:181
+#: inc/class-machete-module.php:168 inc/class-machete.php:181
 #: inc/class-machete.php:219
 msgid "Error saving configuration to database."
 msgstr "Error al guardar la configuración a base de datos."
 
-#: inc/class-machete-module.php:196
+#: inc/class-machete-module.php:174
 msgid "No changes were needed."
 msgstr "No había nada que guardar."
 
-#: inc/class-machete-module.php:250
+#: inc/class-machete-module.php:228
 msgid "This function needs direct access to the filesystem."
 msgstr "Esta función necesita acceso directo al sistema de ficheros."
 
-#: inc/class-machete-module.php:256
+#: inc/class-machete-module.php:234
 msgid "There was a problem accessing the filesystem. Check your permissions."
 msgstr "Se producido un problema al acceder al sistema de ficheros. Comprueba tus permisos."
 
@@ -120,7 +135,6 @@ msgstr "Lo siento, no puedes desactivar ese módulo"
 
 #. Translators: module title
 #: inc/class-machete.php:172
-#, php-format
 msgid "Module %s disabled successfully"
 msgstr "Módulo %s desactivado con éxito"
 
@@ -134,7 +148,6 @@ msgstr "Lo siento, no puedes habilitar ese módulo"
 
 #. Translators: module title
 #: inc/class-machete.php:209
-#, php-format
 msgid "Module %s enabled successfully"
 msgstr "Módulo %s activado con éxito"
 
@@ -460,13 +473,11 @@ msgstr "La REST API de este sitio ha sido desactivada."
 
 #. translators: %s: singular post type name.
 #: inc/clone/admin-bar.php:40
-#, php-format
 msgid "Clone %s"
 msgstr "Clonar %s"
 
 #. translators: %s: singular post type name.
 #: inc/clone/admin-bar.php:44
-#, php-format
 msgid "Copy this %s to a new draft"
 msgstr "Copiar %s a un nuevo borrador"
 
@@ -543,13 +554,20 @@ msgstr "Texto del botón de aceptación"
 msgid "Cookie bar theme"
 msgstr "Tema de la barra de cookies"
 
+#: inc/cookies/admin-content.php:63
+msgid "Accent color"
+msgstr "Color de acento"
+
+#: inc/cookies/admin-content.php:65
+msgid "Restore default color"
+msgstr "Restaurar color por defecto"
+
 #: inc/cookies/admin-content.php:75
 msgid "How do I customize the cookie bar?"
 msgstr "¿Cómo personalizo la barra de cookies?"
 
 #. Translators: $s: a href part of a link
 #: inc/cookies/admin-content.php:79
-#, php-format
 msgid "You can customize the cookie bar CSS using the %sAnalytics & Code tab"
 msgstr "Puedes personalizar el CSS de la barra de cookies utilizando la pestaña %sAnalytics y código"
 
@@ -590,6 +608,10 @@ msgstr "Aviso de cookies y RGPD"
 msgid "Light and responsive cookie law warning bar that won't affect your PageSpeed score and plays well with static cache plugins."
 msgstr "Barra aviso de ley de cookies ligera y adaptable que no afecta a tu puntuación de PageSpeed y que se lleva bien con los plugins de caché."
 
+#: inc/cookies/class-machete-cookies-module.php:35
+msgid "This website uses both technical cookies, essential for you to browse the website and use its features, and third-party cookies we use for marketing and data analytics porposes, as explained in our <a href=\"/cookies/\">cookie policy</a>."
+msgstr "Esta web utiliza tanto cookies técnicas, esenciales para que puedas navegar por el sitio web y utilizar sus funciones, como cookies de terceros que utilizamos con fines de marketing y análisis de datos, como se explica en nuestra <a href=\"/cookies/\">política de cookies</a>."
+
 #: inc/cookies/class-machete-cookies-module.php:36
 msgid "Accept cookies"
 msgstr "Aceptar cookies"
@@ -613,21 +635,18 @@ msgstr "¡Galleta!"
 #. translators: %s path of data dir.
 #: inc/cookies/class-machete-cookies-module.php:113
 #: inc/utils/class-machete-utils-module.php:108
-#, php-format
 msgid "Error creating data dir %s please check file permissions"
 msgstr "Error al crear el directorio %s comprueba los permisos de archivo, por favor"
 
 #. translators: %s path to machete data dir.
 #: inc/cookies/class-machete-cookies-module.php:185
 #: inc/utils/class-machete-utils-module.php:253
-#, php-format
 msgid "Error writing static javascript file to %s please check file permissions. Aborting to prevent inconsistent state."
 msgstr "Error al guardar el fichero estático de JavaScript a %s , comprueba los permisos. Cancelando para evitar un estado inconsistente."
 
 #. translators: %s path to machete data dir.
 #: inc/cookies/class-machete-cookies-module.php:196
 #: inc/utils/class-machete-utils-module.php:266
-#, php-format
 msgid "Could not delete old javascript file from %s please check file permissions. Aborting to prevent inconsistent state."
 msgstr "Error al borrar el fichero estático antiguo de %s , comprueba los permisos. Cancelando para evitar un estado inconsistente."
 
@@ -668,6 +687,10 @@ msgstr "<strong>Mantenimiento</strong> — Sitio cerrado. Todas las páginas dev
 msgid "Magic Link"
 msgstr "Enlace mágico"
 
+#: inc/maintenance/admin-content.php:54 inc/maintenance/admin-content.php:141
+msgid "copy to clipboard"
+msgstr "copiar al portapapeles"
+
 #: inc/maintenance/admin-content.php:55
 msgid "change secret token"
 msgstr "cambiar el token secreto"
@@ -694,7 +717,6 @@ msgstr "¿Cómo personalizo la página de mantenimiento?"
 
 #. translators: %s: Analytics & code tab link.
 #: inc/maintenance/admin-content.php:93
-#, php-format
 msgid "You can customize the maintenance page CSS using the %sAnalytics & Code tab"
 msgstr "Puedes personalizar el CSS de la página de mantenimiento usando la %spestaña de Analytics y código"
 
@@ -709,6 +731,10 @@ msgstr "título de la página elegida"
 #: inc/maintenance/admin-content.php:102
 msgid "content of the selected page"
 msgstr "contenido de la página elegida"
+
+#: inc/maintenance/admin-content.php:139
+msgid "copied to clipboard!"
+msgstr "¡copiado en el portapapeles!"
 
 #: inc/maintenance/admin-content.php:147
 msgid "Are you sure you want to change the secret token?\\nThis will invalidate previously-shared links."
@@ -835,7 +861,6 @@ msgstr "Permitir imágenes SVG"
 
 #. translators: Link the post "SVG uploads in WordPress (the Inconvenient Truth)".
 #: inc/powertools/class-machete-powertools-module.php:64
-#, php-format
 msgid "Enables the upload of SVG images to the media library. This <a href=\"%s\" target=\"_blank\" rel=\"noopener noreferrer\">has been proven to be dangerous</a>, so be careful."
 msgstr "Permite la subida de imágenes SVG a la biblioteca de medioa. Está <a href=\"%s\" target=\"_blank\" rel=\"noopener noreferrer\">demostrado que esto es peligroso</a>, así que ten cuidado."
 
@@ -853,13 +878,11 @@ msgstr "Se ha solicitado una acción desconocida"
 
 #. translators: $d number of deleted transsients.
 #: inc/powertools/class-machete-powertools-module.php:219
-#, php-format
 msgid "%d Transients Rows Cleared"
 msgstr "%d Filas de transitorios borradas"
 
 #. translators: $d number of deleted post revisions.
 #: inc/powertools/class-machete-powertools-module.php:238
-#, php-format
 msgid "Success! %s Post revision deleted."
 msgid_plural "Success! %s Post revisions deleted."
 msgstr[0] "¡Éxito! Borrada %s revisión de entrada."
@@ -879,7 +902,6 @@ msgstr "Opcache vaciado"
 
 #. translators: %s: homepage URL.
 #: inc/powertools/powertools.php:92
-#, php-format
 msgid "No feed available, please visit our <a href=\"%s\">homepage</a>!"
 msgstr "¡Feed no disponible, visita nuestra <a href=\"%s\">portada</a>!"
 
@@ -915,7 +937,6 @@ msgid "Bottom buttons title"
 msgstr "Título de los botones inferiores"
 
 #: inc/social/admin-content.php:44
-#, php-format
 msgid "Leave blank to remove. The %%post_type%% placeholder is replaced by the post type name. ie: post, page"
 msgstr "Déjalo en blanco para eliminarlo. El texto %%post_type%% se reemplaza por el nombre del tipo de contenido. Ej: entrada, página"
 
@@ -949,7 +970,6 @@ msgstr "Botones de compartir en redes sociales tan sencillos como es posible. Si
 
 #. translators: %%post_type%% is a placeholder, keep it as is.
 #: inc/social/class-machete-social-module.php:37
-#, php-format
 msgid "Share this %%post_type%%"
 msgstr "Comparte este/a %%post_type%%"
 
@@ -1046,10 +1066,8 @@ msgstr "Esta herramienta genera dos ficheros de HTML estático que se cargan med
 msgid "Tracking settings"
 msgstr "Ajustes de seguimiento"
 
-#. Translators: <head>.
-#. Translators: <body>.
+#. Translators: <head> or <body>.
 #: inc/utils/admin-content.php:73 inc/utils/admin-content.php:75
-#, php-format
 msgid "%s code"
 msgstr "Código del %s"
 
@@ -1107,7 +1125,6 @@ msgstr "Contenido para la cabecera"
 
 #. translators: $s: file path.
 #: inc/utils/admin-content.php:134
-#, php-format
 msgid "This code is included before the closing <code>&lt;/head&gt;</code> tag.<br>Content is saved to <code>%s</code> and served using PHP's <code>readfile()</code> function, so no PHP or shortcodes here."
 msgstr "Este código se incluye antes de la etiqueta de cierre <code>&lt;/head&gt;</code>.<br>El contenido se guarda en <code>%s</code> y se sirve usando la función <code>readfile()</code> de PHP, así que nada de PHP o shortcodes aquí."
 
@@ -1121,7 +1138,6 @@ msgstr "Este bloque está pensado para ser incluido justo al principio de la eti
 
 #. translators: $s: file path.
 #: inc/utils/admin-content.php:150
-#, php-format
 msgid "Content is saved to <code>%s</code> and served using PHP. No PHP code or shortcodes here."
 msgstr "El contenido se guarda en el fichero <code>%s</code> y se sirve usando PHP.  No uses código PHP ni shortcodes aquí."
 
@@ -1139,7 +1155,6 @@ msgstr "Incluir el código usando el gancho nativo <code>wp_body_open</code> (no
 
 #. translators: %s url of article with explanation.
 #: inc/utils/admin-content.php:169
-#, php-format
 msgid "Try to inject the code automatically using <a href=\"%s\" target=\"_blank\" rel=\"nofollow\">Yaniv Friedensohn's method</a>"
 msgstr "Intentar inyectar automáticamente el código usando el <a href=\"%s\" target=\"_blank\" rel=\"nofollow\">método de Yaniv Friedensohn</a>"
 
@@ -1153,7 +1168,6 @@ msgstr "Contenido para el pie"
 
 #. translators: $s: file path.
 #: inc/utils/admin-content.php:186
-#, php-format
 msgid "This code is included when the <code>wp_footer</code> action is called, normally just before the closing <code>&lt;/body&gt;</code> tag.<br>Content is saved to <code>%s</code> and served using PHP's <code>readfile()</code> function, so no PHP or shortcodes here."
 msgstr "Este código se incuye cuando se ejecuta la acción <code>wp_footer</code>, normalmente justo antes del cierre de la etiqueta <code>&lt;/body&gt;</code>.<br>El contenido se guarda en <code>%s</code> y se sirve usando la función <code>readfile()</code> de PHP, así que nada de código PHP o shortcodes aquí."
 
@@ -1179,7 +1193,6 @@ msgstr "Gestor de código de Google Analytics y un editor sencillo para insertar
 
 #. Translators: 1: Analytics property id 2: link open tag 3: link close tag
 #: inc/utils/class-machete-utils-module.php:75
-#, php-format
 msgid "You are using the obsolete Universal Analytics property id %1$s. Go to the %2$sMachete Analytics & code module page%3$s and <strong>Save Settings</strong> to remove this notice."
 msgstr "Estás utilizando el obsoleto identificador de propiedad de Universal Analytics %1$s. Ve a la página del módulo de Machete %2$sAnalytics y código%3$s y <strong>Guarda los ajustes</strong> para eliminar este aviso."
 
@@ -1190,7 +1203,6 @@ msgstr "Se ha producido un error. Has solicitado un formato de código desconoci
 #. Translators: From 99$ .
 #: inc/woocommerce/actions.php:68 inc/woocommerce/actions.php:83
 #: inc/woocommerce/actions.php:89
-#, php-format
 msgid "From %1$s"
 msgstr "Desde %1$s"
 
@@ -1257,25 +1269,16 @@ msgstr "Elimina el campo SKU tanto en la parte pública como en la administraci�
 
 #. Translators: 1: link open tag 2: link close tag
 #: machete-admin.php:47
-#, php-format
 msgid "You are using Cookie settings from a previous Machete version. Go to the %1$sCookies Module page%2$s and <strong>Save Settings</strong> to remove this notice."
 msgstr "Estás utilizando los ajustes de cookies de una versión anterior de Machete. Ve a la %1$spágina del módulo de cookies%2$s y <strong>guarda los ajustes</strong> para quitar este aviso."
 
 #. Translators: 1: link open tag 2: link close tag
 #: machete-admin.php:61
-#, php-format
 msgid "You are using Tracking settings from a previous Machete version. Go to the %1$sAnalytics & Code Module page%2$s and <strong>Save Settings</strong> to remove this notice."
 msgstr "Estás utilizando los ajustes de seguimiento de una versión anterior de Machete. Ve a la %1$spágina del modulo de Analytics y código%2$s y <strong>guarda los ajustes</strong> para quitar este aviso."
 
-#. translators: %s: five stars
-#: machete-admin.php:81
-#, php-format
-msgid "If you like <strong>Machete</strong>, please %1$sleave us a rating of %2$s. Thank you!"
-msgstr "Si te gusta <strong>Machete</strong>, %1$sdéjame una reseña de %2$s. ¡Muchas gracias!"
-
 #. translators: %s: url of plugin settings page
 #: machete-admin.php:107
-#, php-format
 msgid "<a href=\"%s\">Settings</a>"
 msgstr "<a href=\"%s\">Ajustes</a>"
 
@@ -1287,42 +1290,7 @@ msgstr "¡Machete PowerTools esta activo! ¡Disfruta tu nuevo juguete!"
 msgid "You have to install and activate WooCommerce to use this module."
 msgstr "Tienes que instalar y activar WooCommerce para utilizar este módulo."
 
-#. Plugin Name of the plugin
-msgid "Machete"
-msgstr "Machete"
-
-#. Plugin URI of the plugin
-msgid "https://machetewp.com"
-msgstr "https://machetewp.com"
-
-#. Description of the plugin
-msgid "Machete is a lean and simple suite of tools that makes WordPress development easier: cookie bar, tracking codes, custom code editor, header cleanup, post and page cloner"
-msgstr "Machete es un conjunto de herramientas ligeras y sencillas que facilitan el desarrollo con WordPress: barra de cookies, códigos de seguimiento, editor de código personalizado, limpieza de cabecera, duplicar entradas y páginas"
-
-#. Author of the plugin
-msgid "Nilo Velez"
-msgstr "Nilo Vélez"
-
-#. Author URI of the plugin
-msgid "https://www.nilovelez.com"
-msgstr "https://www.nilovelez.com"
-
-#: inc/maintenance/admin-content.php:54 inc/maintenance/admin-content.php:141
-msgid "copy to clipboard"
-msgstr "copiar al portapapeles"
-
-#: inc/maintenance/admin-content.php:139
-msgid "copied to clipboard!"
-msgstr "¡copiado en el portapapeles!"
-
-#: inc/cookies/admin-content.php:63
-msgid "Accent color"
-msgstr "Color de acento"
-
-#: inc/cookies/admin-content.php:65
-msgid "Restore default color"
-msgstr "Restaurar color por defecto"
-
-#: inc/cookies/class-machete-cookies-module.php:35
-msgid "This website uses both technical cookies, essential for you to browse the website and use its features, and third-party cookies we use for marketing and data analytics porposes, as explained in our <a href=\"/cookies/\">cookie policy</a>."
-msgstr "Esta web utiliza tanto cookies técnicas, esenciales para que puedas navegar por el sitio web y utilizar sus funciones, como cookies de terceros que utilizamos con fines de marketing y análisis de datos, como se explica en nuestra <a href=\"/cookies/\">política de cookies</a>."
+#. translators: %s: five stars
+#: machete-admin.php:81
+msgid "If you like <strong>Machete</strong>, please help us %1$sleaving a 5&starf; rating%2$s. Thank you!"
+msgstr "Si te gusta <strong>Machete</strong>, ayúdanos %1$sdejando una valoración de 5&starf;%2$s. ¡Gracias!"

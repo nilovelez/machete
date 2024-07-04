@@ -2,35 +2,40 @@
 # This file is distributed under the WTFPL.
 msgid ""
 msgstr ""
-"Project-Id-Version: Machete 4.0.3\n"
+"Project-Id-Version: Machete 5.0\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/machete\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2024-06-28T08:10:39+00:00\n"
+"POT-Creation-Date: 2024-07-04T09:43:32+00:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"X-Generator: WP-CLI 2.9.0\n"
+"X-Generator: WP-CLI 2.10.0\n"
 "X-Domain: machete\n"
 
 #. Plugin Name of the plugin
+#: D:\repos\machete\machete.php
 msgid "Machete"
 msgstr ""
 
 #. Plugin URI of the plugin
+#: D:\repos\machete\machete.php
 msgid "https://machetewp.com"
 msgstr ""
 
 #. Description of the plugin
+#: D:\repos\machete\machete.php
 msgid "Machete is a lean and simple suite of tools that makes WordPress development easier: cookie bar, tracking codes, custom code editor, header cleanup, post and page cloner"
 msgstr ""
 
 #. Author of the plugin
+#: D:\repos\machete\machete.php
 msgid "Nilo Velez"
 msgstr ""
 
 #. Author URI of the plugin
+#: D:\repos\machete\machete.php
 msgid "https://www.nilovelez.com"
 msgstr ""
 
@@ -93,35 +98,25 @@ msgstr ""
 msgid "Activate"
 msgstr ""
 
-#: inc/class-machete-module.php:161
-#: inc/utils/class-machete-utils-module.php:413
-msgid "Settings successfully restored from backup"
-msgstr ""
-
-#: inc/class-machete-module.php:163
-#: inc/utils/class-machete-utils-module.php:415
-msgid "Error restoring settings backup"
-msgstr ""
-
-#: inc/class-machete-module.php:184
+#: inc/class-machete-module.php:162
 msgid "Options saved!"
 msgstr ""
 
-#: inc/class-machete-module.php:190
+#: inc/class-machete-module.php:168
 #: inc/class-machete.php:181
 #: inc/class-machete.php:219
 msgid "Error saving configuration to database."
 msgstr ""
 
-#: inc/class-machete-module.php:196
+#: inc/class-machete-module.php:174
 msgid "No changes were needed."
 msgstr ""
 
-#: inc/class-machete-module.php:250
+#: inc/class-machete-module.php:228
 msgid "This function needs direct access to the filesystem."
 msgstr ""
 
-#: inc/class-machete-module.php:256
+#: inc/class-machete-module.php:234
 msgid "There was a problem accessing the filesystem. Check your permissions."
 msgstr ""
 
@@ -1102,8 +1097,7 @@ msgstr ""
 msgid "Tracking settings"
 msgstr ""
 
-#. Translators: <head>.
-#. Translators: <body>.
+#. Translators: <head> or <body>.
 #: inc/utils/admin-content.php:73
 #: inc/utils/admin-content.php:75
 msgid "%s code"
@@ -1328,7 +1322,7 @@ msgstr ""
 
 #. translators: %s: five stars
 #: machete-admin.php:81
-msgid "If you like <strong>Machete</strong>, please %1$sleave us a rating of %2$s. Thank you!"
+msgid "If you like <strong>Machete</strong>, please help us %1$sleaving a 5&starf; rating%2$s. Thank you!"
 msgstr ""
 
 #. translators: %s: url of plugin settings page
