@@ -215,18 +215,6 @@ class MACHETE_COOKIES_MODULE extends MACHETE_MODULE {
 	}
 
 	/**
-	 * Returns a module settings array to use for backups.
-	 *
-	 * @return array modules settings array.
-	 */
-	protected function export() {
-		$export = $this->read_settings();
-		if ( ! empty( $export['warning_text'] ) ) {
-			$export['warning_text'] = stripslashes( $export['warning_text'] );
-		}
-		return $export;
-	}
-	/**
 	 * Echoes the cookie bar for use in the front-end.
 	 */
 	public function render_cookie_bar() {

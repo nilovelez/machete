@@ -1,6 +1,6 @@
 <?php
 /**
- * Content of the "Import/Export" page.
+ * Content of the "Optimization" page.
 
  * @package WordPress
  * @subpackage Machete
@@ -69,9 +69,9 @@ if ( false !== $machete_editor_settings ) {
 <div id="machete-tabs" class="nav-tab-wrapper" style="display: none;">
 
 	<a href="#machete-tabs-tracking" data-tab="machete-tabs-tracking" class="nav-tab machete-tabs-tracking"><?php esc_html_e( 'Tracking settings', 'machete' ); ?></a>
-	<?php // Translators: <head>. ?>
+	<?php // Translators: <head> or <body>. ?>
 	<a href="#machete-tabs-header" data-tab="machete-tabs-header" class="nav-tab machete-tabs-header"><?php echo esc_html( sprintf( __( '%s code', 'machete' ), '<head>' ) ); ?></a>
-	<?php // Translators: <body>. ?>
+	<?php // Translators: <head> or <body>. ?>
 	<a href="#machete-tabs-alfonso" data-tab="machete-tabs-alfonso" class="nav-tab machete-tabs-alfonso"><?php echo esc_html( sprintf( __( '%s code', 'machete' ), '<body>' ) ); ?></a>
 	<a href="#machete-tabs-footer" data-tab="machete-tabs-footer" class="nav-tab machete-tabs-footer"><?php esc_html_e( 'Footer code', 'machete' ); ?></a>
 

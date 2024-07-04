@@ -141,28 +141,6 @@ abstract class MACHETE_MODULE {
 		return true;
 	}
 
-	/**
-	 * Returns a module settings array to use for backups.
-	 *
-	 * @return array modules settings array.
-	 */
-	protected function export() {
-		return $this->read_settings();
-	}
-
-	/**
-	 * Restores module settings from a backup
-	 *
-	 * @param array $settings modules settings array.
-	 * @return string success/error message.
-	 */
-	protected function import( $settings = array() ) {
-		if ( $this->save_settings( $settings, true ) ) {
-			return __( 'Settings successfully restored from backup', 'machete' ) . "\n";
-		} else {
-			return __( 'Error restoring settings backup', 'machete' ) . "\n";
-		}
-	}
 	/* Dashboard notices */
 
 	/**
