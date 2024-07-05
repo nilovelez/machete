@@ -148,18 +148,5 @@ class MACHETE_WOOCOMMERCE_MODULE extends MACHETE_MODULE {
 		}
 		return true;
 	}
-
-	/**
-	 * Returns a module settings array to use for backups.
-	 *
-	 * @return array modules settings array.
-	 */
-	protected function export() {
-		$export = $this->read_settings();
-		if ( ! empty( $export['warning_text'] ) ) {
-			$export['warning_text'] = stripslashes( $export['warning_text'] );
-		}
-		return $export;
-	}
 }
 $machete->modules['woocommerce'] = new MACHETE_WOOCOMMERCE_MODULE();
