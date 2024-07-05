@@ -248,7 +248,7 @@ class MACHETE_COOKIES_MODULE extends MACHETE_MODULE {
 (function(){
 	if ( typeof machete_cookies_bar_stylesheet === 'undefined') return;
 	var s = document.createElement('script'); s.type = 'text/javascript';
-	s.defer = true; s.src = '<?php echo esc_url( $this->baseurl . 'js/cookies_bar_js.min.js' ); ?>';
+	s.defer = true; s.src = '<?php echo esc_url( $this->baseurl . 'js/cookies_bar_js.js' ); ?>';
 	var body = document.getElementsByTagName('body')[0];
 	body.appendChild(s);
 })();

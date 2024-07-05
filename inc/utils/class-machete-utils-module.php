@@ -330,6 +330,7 @@ class MACHETE_UTILS_MODULE extends MACHETE_MODULE {
 	 */
 	public function enqueue_tracking_if_no_cookies() {
 		global $machete;
+		// If cookie bar is active, load dynamic script to check if cookies accepted.
 		if ( true === $machete->modules['cookies']->params['is_active'] ) {
 			$machete_cookie_settings = $machete->modules['cookies']->read_settings();
 			if ( 'enabled' === $machete_cookie_settings['bar_status'] ) {
@@ -340,6 +341,7 @@ class MACHETE_UTILS_MODULE extends MACHETE_MODULE {
 				return false;
 			}
 		}
+		// If cookie var is not active, load tracking directly.
 		add_action(
 			'wp_head',
 			function () {
@@ -356,14 +358,26 @@ class MACHETE_UTILS_MODULE extends MACHETE_MODULE {
 	public function enqueue_tracking_waiting_cookies() {
 		wp_enqueue_script(
 			'machete-load-tracking',
-			$this->baseurl . 'js/gdpr_load_tracking.min.js',
+			//$this->baseurl . 'js/gdpr_load_tracking.min.js',
+			$this->baseurl . 'js/gdpr_load_tracking.js',
 			array(),
 			MACHETE_VERSION,
 			false
 		);
+		$consent_script  = 'window.dataLayer = window.dataLayer || [];' . PHP_EOL;
+		$consent_script .= 'function gtag(){dataLayer.push(arguments);}' . PHP_EOL;
+		$consent_script .= 'var machete_tracking_script_url = "' . MACHETE_DATA_URL . $this->settings['tracking_filename'] . '";' . PHP_EOL;
+		$consent_script .= <<<EOD
+gtag('consent', 'default', {
+  'ad_storage': 'denied',
+  'ad_user_data': 'denied',
+  'ad_personalization': 'denied',
+  'analytics_storage': 'denied'
+});
+EOD;
 		wp_add_inline_script(
 			'machete-load-tracking',
-			'var machete_tracking_script_url = "' . MACHETE_DATA_URL . $this->settings['tracking_filename'] . '";',
+			$consent_script,
 			'before'
 		);
 	}

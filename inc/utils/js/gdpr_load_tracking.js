@@ -24,30 +24,16 @@ var machete_tracking = (function( script_url ){
 		return get_cookie( 'machete_accepted_cookies' ) || 'no';
 	}
 
-	var tracking_loaded = false;
-
-	var load_tracking = function(){
-		a = document.createElement( 'script' );
-		m = document.getElementsByTagName( 'script' )[0];
-		a.src = script_url;
-		m.parentNode.insertBefore(a,m);
-		tracking_loaded = true;
-	}
-
 	if ( 'yes' === get_status() ){
-		load_tracking();
-	}else{
-		addEventListener('machete_accepted_cookies', function(e){
-			machete_tracking.load();		
-		}, false);
+		gtag('consent', 'update', {
+			'analytics_storage': 'granted'
+		});
 	}
 
-	return {
-		load : function () {
-			if ( ! tracking_loaded ) {
-				load_tracking();
-			}
-		}
-	}
+	a = document.createElement( 'script' );
+	m = document.getElementsByTagName( 'script' )[0];
+	a.src = script_url;
+	m.parentNode.insertBefore(a,m);
+
 
 })( machete_tracking_script_url );

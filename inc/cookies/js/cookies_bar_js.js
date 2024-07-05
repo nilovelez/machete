@@ -120,7 +120,6 @@ var machete_cookie_bar = (function(){
 			document.getElementsByTagName( "head" )[0].appendChild( link );
 			
 			if ( 'yes' === get_status() ) {
-				window.dispatchEvent(machete_cookie_event);
 				configbar.add()
 			} else if ( 'no' === get_status() ) {
 				cookiebar.add();	
@@ -135,7 +134,13 @@ var machete_cookie_bar = (function(){
 			configbar.add();
 			// launches js event
 			if ( 'yes' == cookies ){
-				window.dispatchEvent(machete_cookie_event);
+				gtag('consent', 'update', {
+					'analytics_storage': 'granted'
+				});
+			} else {
+				gtag('consent', 'update', {
+					'analytics_storage': 'denied'
+				});
 			}
 		},
 		config: function(){
@@ -148,5 +153,4 @@ var machete_cookie_bar = (function(){
 		}
 	}
 })();
-const machete_cookie_event = new Event('machete_accepted_cookies');
 machete_cookie_bar.init();
