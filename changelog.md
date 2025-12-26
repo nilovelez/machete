@@ -1,5 +1,10 @@
 == Changelog ==
 
+= 5.0.1 = 
+* Update: Updated translation files
+* Update: Social share module: Updated x.com url for sharing
+* Improvement: Manteintenance mode: Added compatibility with custom password recovery URLs
+
 = 5.0 = 
 * Checked for compatibility with WordPress 6.5.x
 * Checked for compatibility with WooCommerce 9.0.x

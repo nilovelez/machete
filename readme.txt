@@ -4,8 +4,8 @@ Donate link: https://ko-fi.com/nilovelez
 Tags: optimization, cookies, analytics, maintenance, clone
 Requires PHP: 7.4
 Requires at least: 4.6
-Tested up to: 6.5
-Stable tag: 5.0
+Tested up to: 6.6
+Stable tag: 5.0.1
 License: WTFPL
 License URI: http://www.wtfpl.net/txt/copying/
 
@@ -76,6 +76,11 @@ Like it or not, the WordPress Block Editor (codenamed Gutenberg) is here to stay
 7. Options WooCommerce should have
 
 == Changelog ==
+
+= 5.0.1 = 
+* Update: Updated translation files
+* Update: Social share module: Updated x.com url for sharing
+* Improvement: Manteintenance mode: Added compatibility with custom password recovery URLs
 
 = 5.0 = 
 * Checked for compatibility with WordPress 6.5.x
