@@ -151,36 +151,17 @@
 .machete-module-list {
 	zoom: 1;
 	margin: 0 -12px;
-}
-
-.machete-module-list:before {
-	content: '';
-	display: block;
-}
-.machete-module-list:after {
-	content: '';
-	display: table;
-	clear: both;
+	display: flex;
+	flex-wrap: wrap;
 }
 
 .machete-module-list .machete-module-wrap {
-	float: left;
 	-ms-box-sizing: border-box;
 	-moz-box-sizing: border-box;
 	-webkit-box-sizing: border-box;
 	box-sizing: border-box;
 	padding: 0 12px 24px 12px;
 	width: 50%;
-}
-.rtl .machete-module-list .machete-module-wrap {
-	float: right;
-}
-
-.machete-module-list .machete-module-wrap:nth-child(odd) {
-	clear: left;
-}
-.machete-module-list .machete-module-wrap:nth-child(odd) {
-	clear: right;
 }
 
 @media (max-width: 1023px) {
