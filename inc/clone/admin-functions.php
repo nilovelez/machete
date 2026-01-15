@@ -6,7 +6,7 @@
  * @subpackage Machete
  */
 
-if ( ! defined( 'MACHETE_ADMIN_INIT' ) ) {
+if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 /**

@@ -6,7 +6,7 @@
  * @subpackage Machete
  */
 
-if ( ! defined( 'MACHETE_ADMIN_INIT' ) ) {
+if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 
@@ -46,8 +46,9 @@ $this->powertools_array['disable_feeds'] = array(
 );
 
 $this->powertools_array['enable_svg'] = array(
-        'title'       => __( 'Enable SVG images', 'machete' ),
-        'description' => sprintf( __( 'Enables the upload of SVG images to the media library. This <a href="%s" target="_blank" rel="noopener noreferrer">has been proven to be dangerous</a>, so be careful.', 'machete' ), 'https://bjornjohansen.no/svg-in-wordpress' ),
+    'title'       => __( 'Enable SVG images', 'machete' ),
+     // translators: Link the post "SVG uploads in WordPress (the Inconvenient Truth)".
+    'description' => sprintf( __( 'Enables the upload of SVG images to the media library. This <a href="%s" target="_blank" rel="noopener noreferrer">has been proven to be dangerous</a>, so be careful.', 'machete' ), 'https://bjornjohansen.no/svg-in-wordpress' ),
 );
 
 $this->powertools_array['disable_search'] = array(
