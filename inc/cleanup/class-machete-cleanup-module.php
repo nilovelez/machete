@@ -57,6 +57,8 @@ class MACHETE_CLEANUP_MODULE extends MACHETE_MODULE {
 			'empty_trash_soon'       => array(),
 			'capital_P_dangit'       => array(),
 			'medium_large_size'      => array(),
+			'1536x1536_size'         => array(),
+			'2048x2048_size'         => array(),
 			'comment_autolinks'      => array(),
 			'disable_login_langs'    => array(),
 			'disable_editor'         => array(),
@@ -68,6 +70,7 @@ class MACHETE_CLEANUP_MODULE extends MACHETE_MODULE {
 			'jquery-migrate'     => array(),
 			'oembed_scripts'     => array(),
 			'jpeg_quality'       => array(),
+			'big_image_scaling'  => array(),
 			'gutenberg_css'      => array(),
 			'disable_global_css' => array(),
 		);

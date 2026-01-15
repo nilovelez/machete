@@ -85,6 +85,14 @@ $this->optimize_array['medium_large_size'] = array(
     'title'       => __( 'medium_large thumbnail', 'machete' ),
     'description' => __( 'Prevents WordPress from generating the medium_large 768px thumbnail size of image uploads.', 'machete' ),
 );
+$this->optimize_array['1536x1536_size'] = array(
+    'title'       => __( '1536x1536 thumbnail', 'machete' ),
+    'description' => __( 'Prevents WordPress from generating the 1536x1536 thumbnail size of image uploads.', 'machete' ),
+);
+$this->optimize_array['2048x2048_size'] = array(
+    'title'       => __( '2048x2048 thumbnail', 'machete' ),
+    'description' => __( 'Prevents WordPress from generating the 2048x2048 thumbnail size of image uploads.', 'machete' ),
+);
 $this->optimize_array['comment_autolinks'] = array(
     'title'       => __( 'No comment autolinks', 'machete' ),
     'description' => __( 'URLs in comments are converted to links by default. This feature is often exploited by spammers.', 'machete' ),
@@ -118,6 +126,10 @@ $this->tweaks_array['oembed_scripts'] = array(
 $this->tweaks_array['jpeg_quality'] = array(
     'title'       => __( 'Reduce JPEG quality', 'machete' ),
     'description' => __( 'When WordPress generates a JPEG thumbnail it compresses the image to 82% quality. Check this to reduce the default quality to 72%. (It doesn\'t affect original image quality).', 'machete' ),
+);
+$this->tweaks_array['big_image_scaling'] = array(
+    'title'       => __( 'Disable big image scaling', 'machete' ),
+    'description' => __( 'When you upload a huge image, WordPress generates a 2560px version of it. Check this to disable this feature.', 'machete' ),
 );
 $this->tweaks_array['gutenberg_css'] = array(
     'title'       => __( 'Remove block editor CSS', 'machete' ),
