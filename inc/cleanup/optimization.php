@@ -277,10 +277,6 @@ if ( in_array( 'json_api', $this->settings, true ) ) {
 		add_filter( 'embed_oembed_discover', '__return_false' );
 		remove_filter( 'oembed_dataparse', 'wp_filter_oembed_result', 10 );
 		remove_action( 'template_redirect', 'rest_output_link_header', 11, 0 );
-
-		// disable json_api.
-		add_filter( 'json_enabled', '__return_false' );
-		add_filter( 'json_jsonp_enabled', '__return_false' );
 	}
 
 	// Require Authentication for All Reque​sts.
