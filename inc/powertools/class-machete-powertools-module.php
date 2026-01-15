@@ -24,49 +24,20 @@ class MACHETE_POWERTOOLS_MODULE extends MACHETE_MODULE {
 		$this->init(
 			array(
 				'slug'            => 'powertools',
-				'title'           => '<span style="color: #ff9900">' . __( 'PowerTools', 'machete' ) . '</span>',
-				'full_title'      => __( 'Machete PowerTools', 'machete' ),
-				'description'     => __( 'Machete PowerTools is a free upgrade module targeted at WordPress developers and power users.', 'machete' ),
 				'is_active'       => false,
 				'can_be_disabled' => false,
 			)
 		);
 
 		$this->powertools_array = array(
-			'widget_shortcodes'   => array(
-				'title'       => __( 'Shortcodes in Widgets', 'machete' ),
-				'description' => __( 'Enables the use of shortcodes in text/html widgets. It may slightly impact performance', 'machete' ),
-			),
-
-			'rss_thumbnails'      => array(
-				'title'       => __( 'Thumbnails in RSS', 'machete' ),
-				'description' => __( 'Add the featured image or the first attached image as the thumbnail of each post in the RSS feed', 'machete' ),
-			),
-			'page_excerpts'       => array(
-				'title'       => __( 'Excerpts in Pages', 'machete' ),
-				'description' => __( 'Enables excerpts in pages. Useless for most people but awesome when combined with a page builder like Visual Composer', 'machete' ),
-			),
-			'move_scripts_footer' => array(
-				'title'       => __( 'Move scripts to footer', 'machete' ),
-				'description' => __( 'Move all enqueued JS scripts from the header to the footer. Machete will de-register the call for the JavaScript to load in the HEAD section of the site and re-register it to the FOOTER.', 'machete' ),
-			),
-			'defer_all_scripts'   => array(
-				'title'       => __( 'Defer your JavaScript', 'machete' ),
-				'description' => __( 'The defer attribute also downloads the JS file during HTML parsing, but it only executes it after the parsing has completed. Executed in order of appearance on the page', 'machete' ),
-			),
-			'disable_feeds'       => array(
-				'title'       => __( 'Disable all feeds', 'machete' ),
-				'description' => __( 'RSS, RDF, Atom... disables all of them and makes life a little less easy for leechers.', 'machete' ),
-			),
-			'enable_svg'          => array(
-				'title'       => __( 'Enable SVG images', 'machete' ),
-				// translators: Link the post "SVG uploads in WordPress (the Inconvenient Truth)".
-				'description' => sprintf( __( 'Enables the upload of SVG images to the media library. This <a href="%s" target="_blank" rel="noopener noreferrer">has been proven to be dangerous</a>, so be careful.', 'machete' ), 'https://bjornjohansen.no/svg-in-wordpress' ),
-			),
-			'disable_search'      => array(
-				'title'       => __( 'Disable search', 'machete' ),
-				'description' => __( 'Disables the public search from WordPress', 'machete' ),
-			),
+			'widget_shortcodes'   => array(),
+			'rss_thumbnails'      => array(),
+			'page_excerpts'       => array(),
+			'move_scripts_footer' => array(),
+			'defer_all_scripts'   => array(),
+			'disable_feeds'       => array(),
+			'enable_svg'          => array(),
+			'disable_search'      => array(),
 		);
 	}
 	/**
@@ -84,6 +55,9 @@ class MACHETE_POWERTOOLS_MODULE extends MACHETE_MODULE {
 	 * Loads optimization code if there is any option active.
 	 */
 	public function admin() {
+
+		require $this->path . 'i18n.php';
+
 		$this->read_settings();
 
 		if ( filter_input( INPUT_POST, 'machete-powertools-saved' ) !== null ) {

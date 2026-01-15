@@ -25,16 +25,11 @@ class MACHETE_SOCIAL_MODULE extends MACHETE_MODULE {
 		$this->init(
 			array(
 				'slug'        => 'social',
-				'title'       => __( 'Social Sharing', 'machete' ),
-				'full_title'  => __( 'Social Sharing Buttons', 'machete' ),
-				'description' => __( 'Social sharing buttons as simple as they can be. No bloat, no extra JS libraries, no API calls.', 'machete' ),
 				'role'        => 'publish_posts', // targeting Author role.
 			)
 		);
 		$this->default_settings = array(
 			'status'     => 'disabled',
-			/* translators: %%post_type%% is a placeholder, keep it as is. */
-			'title'      => __( 'Share this %%post_type%%', 'machete' ),
 			'networks'   => array(
 				'facebook',
 				'twitter',
@@ -45,34 +40,24 @@ class MACHETE_SOCIAL_MODULE extends MACHETE_MODULE {
 			'responsive' => true,
 		);
 		$this->positions        = array(
-			'before' => __( 'At the beginning of the content', 'machete' ),
-			'after'  => __( 'At the end of the content (hidden on mobile)', 'machete' ),
-			'footer' => __( 'Floating footer (mobile only)', 'machete' ),
+			'before' => '',
+			'after'  => '',
+			'footer' => '',
 		);
 		$this->networks         = array(
 			'twitter'   => array(
-				'title' => _x( 'X/Twitter', 'network name', 'machete' ),
-				'label' => _x( 'Post this', 'Twitter button label', 'machete' ),
 				'url'   => 'https://x.com/intent/post?url=%s',
 			),
 			'facebook'  => array(
-				'title' => _x( 'Facebook', 'network name', 'machete' ),
-				'label' => _x( 'Share this', 'Facebook button label', 'machete' ),
 				'url'   => 'https://facebook.com/sharer/sharer.php?u=%s',
 			),
 			'linkedin'  => array(
-				'title' => _x( 'LinkedIn', 'network name', 'machete' ),
-				'label' => _x( 'Share this', 'LinkedIn button label', 'machete' ),
 				'url'   => 'https://www.linkedin.com/shareArticle?mini=true&url=%s',
 			),
 			'whatsapp'  => array(
-				'title' => _x( 'WhatsApp (only on mobile devices)', 'network name', 'machete' ),
-				'label' => _x( 'Share this', 'WhatsApp button label', 'machete' ),
 				'url'   => 'https://api.whatsapp.com/send?text=%s',
 			),
 			'pinterest' => array(
-				'title' => _x( 'Pinterest', 'network name', 'machete' ),
-				'label' => _x( 'Pin this', 'Pinterest button label', 'machete' ),
 				'url'   => 'https://www.pinterest.com/pin/create/button/?url=%s',
 			),
 
@@ -108,6 +93,9 @@ class MACHETE_SOCIAL_MODULE extends MACHETE_MODULE {
 	 * Executes code related to the WordPress admin.
 	 */
 	public function admin() {
+
+		require $this->path . 'i18n.php';
+
 		$this->read_settings();
 
 		$this->valid_post_types = $this->get_valid_post_types();
@@ -128,6 +116,8 @@ class MACHETE_SOCIAL_MODULE extends MACHETE_MODULE {
 	 */
 	public function frontend() {
 
+		require $this->path . 'i18n.php';
+		
 		$this->read_settings();
 
 		// shortcode returns empty string if it cannot be rendered.

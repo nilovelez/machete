@@ -20,9 +20,6 @@ class MACHETE_UTILS_MODULE extends MACHETE_MODULE {
 		$this->init(
 			array(
 				'slug'        => 'utils',
-				'title'       => __( 'Analytics & Code', 'machete' ),
-				'full_title'  => __( 'Analytics and Custom Code', 'machete' ),
-				'description' => __( 'Google Analytics tracking code manager and a simple editor to insert HTML, CSS and JS snippets or site verification tags.', 'machete' ),
 			)
 		);
 		$this->default_settings = array(
@@ -57,6 +54,9 @@ class MACHETE_UTILS_MODULE extends MACHETE_MODULE {
 	 * Executes code related to the WordPress admin.
 	 */
 	public function admin() {
+
+		require $this->path . 'i18n.php';
+		
 		$this->read_settings();
 
 		add_action(

@@ -24,17 +24,15 @@ class MACHETE_COOKIES_MODULE extends MACHETE_MODULE {
 		$this->init(
 			array(
 				'slug'        => 'cookies',
-				'title'       => __( 'Cookies & GDPR', 'machete' ),
-				'full_title'  => __( 'Cookies & GDPR Warning', 'machete' ),
-				'description' => __( 'Light and responsive cookie law warning bar that won\'t affect your PageSpeed score and plays well with static cache plugins.', 'machete' ),
 				'role'        => 'publish_posts', // targeting Author role.
 			)
 		);
 		$this->default_settings = array(
 			'bar_status'          => 'disabled',
-			'warning_text'        => __( 'This website uses both technical cookies, essential for you to browse the website and use its features, and third-party cookies we use for marketing and data analytics porposes, as explained in our <a href="/cookies/">cookie policy</a>.', 'machete' ),
-			'accept_text'         => __( 'Accept cookies', 'machete' ),
-			'partial_accept_text' => __( 'Accept only essential', 'machete' ),
+			// l18n: 'warning_text'
+			// l18n: 'accept_text'
+			// l18n: 'partial_accept_text'
+			// l18n: 'config_button_text'
 			'bar_theme'           => 'new_light',
 			'cookie_filename'     => '',
 			'accent_color'        => '#2271b1',
@@ -42,30 +40,23 @@ class MACHETE_COOKIES_MODULE extends MACHETE_MODULE {
 
 		$this->themes = array(
 			'new_light' => array(
-				'name'       => __( 'Modern Light', 'machete' ),
 				'stylesheet' => $this->baseurl . 'css/new_light.css',
 			),
 			'new_dark'  => array(
-				'name'       => __( 'Modern Dark', 'machete' ),
 				'stylesheet' => $this->baseurl . 'css/new_dark.css',
 			),
 			'cookie'    => array(
-				'name'       => __( 'Cookie!', 'machete' ),
 				'stylesheet' => $this->baseurl . 'css/cookie.css',
 			),
 		);
 
-		$this->cookies_bar_innerhtml = 'var machete_cookies_bar_html = \'<span id="machete_cookie_warning_text" class="machete_cookie_warning_text">{{warning_text}}</span> <button id="machete_accept_cookie_btn_partial" class="machete_accept_cookie_btn partial">{{partial_accept_text}}</button> <button id="machete_accept_cookie_btn" class="machete_accept_cookie_btn">{{accept_text}}</button>\';' . "\n";
-
-		// translators: button to config cookie settings again.
-		$this->cookies_bar_innerhtml .= 'var machete_cookies_configbar_html = \'<div id="machete_cookie_config_btn\" class=\"machete_cookie_config_btn\">' . __( 'Cookies', 'machete' ) . '</div>\';' . "\n";
-
-		$this->cookies_bar_innerhtml .= 'var machete_cookies_bar_stylesheet = \'{{theme_stylesheet}}\';' . "\n";
 	}
 	/**
 	 * Executes code related to the WordPress admin.
 	 */
 	public function admin() {
+
+		require $this->path . 'i18n.php';
 		$this->read_settings();
 		add_action(
 			'admin_init',
@@ -84,6 +75,7 @@ class MACHETE_COOKIES_MODULE extends MACHETE_MODULE {
 	 * @todo Hook render_cookie_bar function only if bar is active.
 	 */
 	public function frontend() {
+		require $this->path . 'i18n.php';
 		$this->read_settings();
 
 		if ( ! isset( $this->settings['bar_status'] ) || ( 'enabled' !== $this->settings['bar_status'] ) ) {

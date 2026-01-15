@@ -20,8 +20,6 @@ class MACHETE_ABOUT_MODULE extends MACHETE_MODULE {
 		$this->init(
 			array(
 				'slug'            => 'about',
-				'title'           => __( 'Machete Dashboard', 'machete' ),
-				'full_title'      => __( 'Machete Dashboard', 'machete' ),
 				'is_active'       => true,
 				'has_config'      => false,
 				'can_be_disabled' => false,
@@ -34,6 +32,9 @@ class MACHETE_ABOUT_MODULE extends MACHETE_MODULE {
 	 */
 	public function admin() {
 		global $machete;
+
+		require $this->path . 'i18n.php';
+
 		// if this is called after the admin_menu hook, the modules you disable
 		// are still shown in the side menu until you reload.
 		$machete_action = filter_input( INPUT_GET, 'machete-action' );
