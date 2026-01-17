@@ -240,7 +240,8 @@ if ( in_array( 'medium_large_size', $this->settings, true ) ) {
 	add_filter(
 		'intermediate_image_sizes',
 		function ( $sizes ) {
-			return array_diff( $sizes, array( 'medium_large' ) );
+			unset( $sizes['medium_large'] );
+			return $sizes;
 		},
 		100
 	);
@@ -248,7 +249,9 @@ if ( in_array( 'medium_large_size', $this->settings, true ) ) {
 	add_filter(
 		'intermediate_image_sizes_advanced',
 		function ( $sizes ) {
-			return array_diff( $sizes, array( 'medium_large' ) );
+			unset( $sizes['medium_large'] );
+			return $sizes;
+
 		},
 		100
 	);
@@ -259,18 +262,38 @@ if ( in_array( 'medium_large_size', $this->settings, true ) ) {
 
 if ( in_array( '1536x1536_size', $this->settings, true ) ) {
 	remove_image_size( '1536x1536' );
-	add_filter('intermediate_image_sizes_advanced', function($sizes) {
-		unset($sizes['1536x1536']);
-		return $sizes;
-	});
+	add_filter(
+		'intermediate_image_sizes',
+		function($sizes) {
+			unset($sizes['1536x1536']);
+			return $sizes;
+		}
+	);
+	add_filter(
+		'intermediate_image_sizes_advanced',
+		function($sizes) {
+			unset($sizes['1536x1536']);
+			return $sizes;
+		}
+	);
 }
 
 if ( in_array( '2048x2048_size', $this->settings, true ) ) {
 	remove_image_size( '2048x2048' );
-	add_filter('intermediate_image_sizes_advanced', function($sizes) {
-		unset($sizes['2048x2048']);
-		return $sizes;
-	});
+	add_filter(
+		'intermediate_image_sizes',
+		function($sizes) {
+			unset($sizes['2048x2048']);
+			return $sizes;
+		}
+	);
+	add_filter(
+		'intermediate_image_sizes_advanced',
+		function($sizes) {
+			unset($sizes['2048x2048']);
+			return $sizes;
+		}
+	);
 }
 
 
