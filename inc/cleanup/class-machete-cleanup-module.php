@@ -92,7 +92,7 @@ class MACHETE_CLEANUP_MODULE extends MACHETE_MODULE {
 	public function admin() {
 
 		require $this->path . 'i18n.php';
-		
+
 		$this->read_settings();
 
 		if ( filter_input( INPUT_POST, 'machete-cleanup-saved' ) !== null ) {

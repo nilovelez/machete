@@ -25,8 +25,8 @@ class MACHETE_MAINTENANCE_MODULE extends MACHETE_MODULE {
 	public function __construct() {
 		$this->init(
 			array(
-				'slug'        => 'maintenance',
-				'role'        => 'publish_posts', // targeting Author role.
+				'slug' => 'maintenance',
+				'role' => 'publish_posts', // targeting Author role.
 			)
 		);
 		$this->default_settings = array(

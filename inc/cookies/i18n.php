@@ -15,10 +15,10 @@ $this->params['full_title']  = __( 'Cookies & GDPR Warning', 'machete' );
 $this->params['description'] = __( 'Light and responsive cookie law warning bar that won\'t affect your PageSpeed score and plays well with static cache plugins.', 'machete' );
 
 /* Default texts */
-$this->default_settings['warning_text'] = __( 'This website uses both technical cookies, essential for you to browse the website and use its features, and third-party cookies we use for marketing and data analytics porposes, as explained in our <a href="/cookies/">cookie policy</a>.', 'machete' );
-$this->default_settings['accept_text'] = __( 'Accept cookies', 'machete' );
+$this->default_settings['warning_text']        = __( 'This website uses both technical cookies, essential for you to browse the website and use its features, and third-party cookies we use for marketing and data analytics porposes, as explained in our <a href="/cookies/">cookie policy</a>.', 'machete' );
+$this->default_settings['accept_text']         = __( 'Accept cookies', 'machete' );
 $this->default_settings['partial_accept_text'] = __( 'Accept only essential', 'machete' );
-$this->default_settings['config_button_text'] = __( 'Cookies', 'machete' );
+$this->default_settings['config_button_text']  = __( 'Cookies', 'machete' );
 
 /* Themes */
 $this->themes['new_light']['name'] = __( 'Modern Light', 'machete' );

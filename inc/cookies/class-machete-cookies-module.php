@@ -23,19 +23,19 @@ class MACHETE_COOKIES_MODULE extends MACHETE_MODULE {
 	public function __construct() {
 		$this->init(
 			array(
-				'slug'        => 'cookies',
-				'role'        => 'publish_posts', // targeting Author role.
+				'slug' => 'cookies',
+				'role' => 'publish_posts', // targeting Author role.
 			)
 		);
 		$this->default_settings = array(
-			'bar_status'          => 'disabled',
+			'bar_status'      => 'disabled',
 			// l18n: 'warning_text'
 			// l18n: 'accept_text'
 			// l18n: 'partial_accept_text'
 			// l18n: 'config_button_text'
-			'bar_theme'           => 'new_light',
-			'cookie_filename'     => '',
-			'accent_color'        => '#2271b1',
+			'bar_theme'       => 'new_light',
+			'cookie_filename' => '',
+			'accent_color'    => '#2271b1',
 		);
 
 		$this->themes = array(
@@ -49,7 +49,6 @@ class MACHETE_COOKIES_MODULE extends MACHETE_MODULE {
 				'stylesheet' => $this->baseurl . 'css/cookie.css',
 			),
 		);
-
 	}
 	/**
 	 * Executes code related to the WordPress admin.

@@ -6,11 +6,10 @@
  * @subpackage Machete
  */
 
- if ( ! defined( 'ABSPATH' ) ) {
+if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 
 $this->params['title']       = __( 'Maintenance Mode', 'machete' );
 $this->params['full_title']  = __( 'Maintenance Mode', 'machete' );
 $this->params['description'] = __( 'Customizable maintenance page to close your site during updates or development. It has a "magic link" to grant temporary access.', 'machete' );
-				

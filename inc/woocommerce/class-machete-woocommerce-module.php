@@ -23,9 +23,9 @@ class MACHETE_WOOCOMMERCE_MODULE extends MACHETE_MODULE {
 	public function __construct() {
 		$this->init(
 			array(
-				'slug'        => 'woocommerce',
-				'role'        => 'publish_posts', // targeting Author role.
-				'is_active'   => true,
+				'slug'      => 'woocommerce',
+				'role'      => 'publish_posts', // targeting Author role.
+				'is_active' => true,
 			)
 		);
 		$this->woo_array = array(

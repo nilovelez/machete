@@ -15,7 +15,7 @@ $this->params['full_title']  = __( 'Social Sharing Buttons', 'machete' );
 $this->params['description'] = __( 'Social sharing buttons as simple as they can be. No bloat, no extra JS libraries, no API calls.', 'machete' );
 
 /* translators: %%post_type%% is a placeholder, keep it as is. */
-$this->default_settings['title']      = __( 'Share this %%post_type%%', 'machete' );
+$this->default_settings['title'] = __( 'Share this %%post_type%%', 'machete' );
 
 
 $this->positions ['before'] = __( 'At the beginning of the content', 'machete' );

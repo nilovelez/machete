@@ -71,7 +71,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 	</fieldset></td>
 </tr>
 <tr>
-
+	
 	<th scope="row"><?php esc_html_e( 'Force styles in templates', 'machete' ); ?></th>
 	<td><fieldset><legend class="screen-reader-text"><span><?php esc_html_e( 'Force styles in templates', 'machete' ); ?></span></legend>
 		<label><input name="force_styles" value="enabled" type="checkbox" <?php checked( 'enabled', $this->settings['force_styles'], true ); ?>> <?php echo esc_html( _x( 'Make button styles load in active post types single post templates. Useful if you want to use the shortcode outside of the loop in the Site Editor.', 'plural', 'machete' ) ); ?></label><br>

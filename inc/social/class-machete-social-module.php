@@ -24,21 +24,21 @@ class MACHETE_SOCIAL_MODULE extends MACHETE_MODULE {
 	public function __construct() {
 		$this->init(
 			array(
-				'slug'        => 'social',
-				'role'        => 'publish_posts', // targeting Author role.
+				'slug' => 'social',
+				'role' => 'publish_posts', // targeting Author role.
 			)
 		);
 		$this->default_settings = array(
-			'status'     => 'disabled',
-			'networks'   => array(
+			'status'       => 'disabled',
+			'networks'     => array(
 				'facebook',
 				'twitter',
 			),
-			'positions'  => array( 'after', 'footer' ),
-			'post_types' => array( 'post' ),
+			'positions'    => array( 'after', 'footer' ),
+			'post_types'   => array( 'post' ),
 			'force_styles' => 'disabled',
-			'theme'      => 'color',
-			'responsive' => true,
+			'theme'        => 'color',
+			'responsive'   => true,
 		);
 		$this->positions        = array(
 			'before' => '',
@@ -47,19 +47,19 @@ class MACHETE_SOCIAL_MODULE extends MACHETE_MODULE {
 		);
 		$this->networks         = array(
 			'twitter'   => array(
-				'url'   => 'https://x.com/intent/post?url=%s',
+				'url' => 'https://x.com/intent/post?url=%s',
 			),
 			'facebook'  => array(
-				'url'   => 'https://facebook.com/sharer/sharer.php?u=%s',
+				'url' => 'https://facebook.com/sharer/sharer.php?u=%s',
 			),
 			'linkedin'  => array(
-				'url'   => 'https://www.linkedin.com/shareArticle?mini=true&url=%s',
+				'url' => 'https://www.linkedin.com/shareArticle?mini=true&url=%s',
 			),
 			'whatsapp'  => array(
-				'url'   => 'https://api.whatsapp.com/send?text=%s',
+				'url' => 'https://api.whatsapp.com/send?text=%s',
 			),
 			'pinterest' => array(
-				'url'   => 'https://www.pinterest.com/pin/create/button/?url=%s',
+				'url' => 'https://www.pinterest.com/pin/create/button/?url=%s',
 			),
 
 		);
@@ -72,6 +72,7 @@ class MACHETE_SOCIAL_MODULE extends MACHETE_MODULE {
 	 * @return array module settings array
 	 */
 	protected function read_settings() {
+
 		$this->settings = get_option(
 			'machete_' . $this->params['slug'] . '_settings',
 			$this->default_settings
@@ -85,6 +86,11 @@ class MACHETE_SOCIAL_MODULE extends MACHETE_MODULE {
 			unset( $this->settings['positions'], $below_pos );
 			$this->settings['positions'][] = 'after';
 			$this->settings['positions'][] = 'footer';
+		}
+
+		// fix for Machete 5.1
+		if ( ! isset( $this->settings['force_styles'] )) {
+			$this->settings['force_styles'] = 'disabled';
 		}
 
 		return array_merge( $this->default_settings, $this->settings );
@@ -116,11 +122,11 @@ class MACHETE_SOCIAL_MODULE extends MACHETE_MODULE {
 	 * Executes code related to the front-end.
 	 */
 	public function frontend() {
-		
+
 		require $this->path . 'i18n.php';
-		
+
 		$this->read_settings();
-		
+
 		if ( 'enabled' === $this->settings['status'] ) {
 			add_shortcode(
 				'mct-social-share',
@@ -132,18 +138,18 @@ class MACHETE_SOCIAL_MODULE extends MACHETE_MODULE {
 				}
 			);
 		} else {
-			add_shortcode('mct-social-share', '__return_empty_string');
+			add_shortcode( 'mct-social-share', '__return_empty_string' );
 		}
 
 		add_action(
 			'wp_enqueue_scripts',
 			function () {
-				
+
 				global $post;
 
 				// bail if not on a single.
 				if ( ! is_singular() ) {
-					//return;
+					return;
 				}
 
 				if (
@@ -175,13 +181,8 @@ class MACHETE_SOCIAL_MODULE extends MACHETE_MODULE {
 					MACHETE_VERSION,
 					true
 				);
-
-
-
 			}
 		);
-
-
 
 		add_filter(
 			'the_content',
@@ -279,7 +280,7 @@ class MACHETE_SOCIAL_MODULE extends MACHETE_MODULE {
 		}
 
 		// get the canonical URL for the post
-		$canonical = wp_get_canonical_url( $post_id);
+		$canonical = wp_get_canonical_url( $post_id );
 		if ( ! $canonical ) {
 			// if no canonical URL is found, use the permalink
 			$canonical = get_permalink( $post_id );

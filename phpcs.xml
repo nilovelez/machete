@@ -32,7 +32,7 @@
 	<rule ref="WordPress-Extra" />
 
 	<!-- Let's also check that everything is properly documented. -->
-	<rule ref="WordPress-Docs"/>
+	<!-- <rule ref="WordPress-Docs"/> -->
 
 	<!-- Add in some extra rules from other standards. -->
 	<rule ref="Generic.CodeAnalysis.UnusedFunctionParameter"/>

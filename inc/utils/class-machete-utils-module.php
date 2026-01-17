@@ -19,7 +19,7 @@ class MACHETE_UTILS_MODULE extends MACHETE_MODULE {
 	public function __construct() {
 		$this->init(
 			array(
-				'slug'        => 'utils',
+				'slug' => 'utils',
 			)
 		);
 		$this->default_settings = array(
@@ -56,7 +56,7 @@ class MACHETE_UTILS_MODULE extends MACHETE_MODULE {
 	public function admin() {
 
 		require $this->path . 'i18n.php';
-		
+
 		$this->read_settings();
 
 		add_action(
@@ -367,12 +367,12 @@ class MACHETE_UTILS_MODULE extends MACHETE_MODULE {
 		$consent_script  = 'window.dataLayer = window.dataLayer || [];' . PHP_EOL;
 		$consent_script .= 'function gtag(){dataLayer.push(arguments);}' . PHP_EOL;
 		$consent_script .= 'var machete_tracking_script_url = "' . MACHETE_DATA_URL . $this->settings['tracking_filename'] . '";' . PHP_EOL;
-		$consent_script .= "gtag('consent', 'default', {" . PHP_EOL ;
+		$consent_script .= "gtag('consent', 'default', {" . PHP_EOL;
 		$consent_script .= "  'ad_storage': 'denied'," . PHP_EOL;
 		$consent_script .= "  'ad_user_data': 'denied'," . PHP_EOL;
 		$consent_script .= "  'ad_personalization': 'denied'," . PHP_EOL;
 		$consent_script .= "  'analytics_storage': 'denied'" . PHP_EOL;
-		$consent_script .= "});" . PHP_EOL;
+		$consent_script .= '});' . PHP_EOL;
 		wp_add_inline_script(
 			'machete-load-tracking',
 			$consent_script,

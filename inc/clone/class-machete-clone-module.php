@@ -19,8 +19,8 @@ class MACHETE_CLONE_MODULE extends MACHETE_MODULE {
 	public function __construct() {
 		$this->init(
 			array(
-				'slug'        => 'clone',
-				'has_config'  => false,
+				'slug'       => 'clone',
+				'has_config' => false,
 			)
 		);
 	}
