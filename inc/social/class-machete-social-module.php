@@ -36,6 +36,7 @@ class MACHETE_SOCIAL_MODULE extends MACHETE_MODULE {
 			),
 			'positions'  => array( 'after', 'footer' ),
 			'post_types' => array( 'post' ),
+			'force_styles' => 'disabled',
 			'theme'      => 'color',
 			'responsive' => true,
 		);
@@ -115,39 +116,46 @@ class MACHETE_SOCIAL_MODULE extends MACHETE_MODULE {
 	 * Executes code related to the front-end.
 	 */
 	public function frontend() {
-
+		
 		require $this->path . 'i18n.php';
 		
 		$this->read_settings();
-
-		// shortcode returns empty string if it cannot be rendered.
-		add_shortcode( 'mct-social-share', '__return_empty_string' );
-
-		// bail if main switch is set to inactive or no active networks.
-		if (
-			( 'enabled' !== $this->settings['status'] ) ||
-			( 0 === count( $this->settings['networks'] ) )
-		) {
-			return;
+		
+		if ( 'enabled' === $this->settings['status'] ) {
+			add_shortcode(
+				'mct-social-share',
+				function () {
+					$out  = '<div id="mct-shortcode-share" class="mct-social-share">';
+					$out .= $this->share_buttons();
+					$out .= '</div>';
+					return $out;
+				}
+			);
+		} else {
+			add_shortcode('mct-social-share', '__return_empty_string');
 		}
 
 		add_action(
 			'wp_enqueue_scripts',
 			function () {
-
+				
 				global $post;
 
 				// bail if not on a single.
 				if ( ! is_singular() ) {
-					return;
+					//return;
 				}
-				// bail if (no active positions OR no active post types ) AND no shortcode is present.
+
 				if (
 					(
-						( 0 === count( $this->settings['positions'] ) ) ||
-						( ! in_array( $post->post_type, $this->settings['post_types'], true ) )
-					) && (
-						! has_shortcode( $post->post_content, 'mct-social-share' )
+						// bail if post type is not active
+						( ! in_array( $post->post_type, $this->settings['post_types'], true ) ) ||
+						(
+							// OR ( no active positions AND no shortcode is present AND force styles is disabled ).
+							( 0 === count( $this->settings['positions'] ) ) &&
+							( ! has_shortcode( $post->post_content, 'mct-social-share' ) ) &&
+							( 'disabled' === $this->settings['force_styles'] )
+						)
 					)
 				) {
 					return;
@@ -168,22 +176,12 @@ class MACHETE_SOCIAL_MODULE extends MACHETE_MODULE {
 					true
 				);
 
-				/**
-				 * Redefines the mct-social-share shortcode for manually displaying the buttons
-				 * [mct-social-share]
-				 */
-				remove_shortcode( 'mct-social-share' );
-				add_shortcode(
-					'mct-social-share',
-					function () {
-						$out  = '<div id="mct-shortcode-share" class="mct-social-share">';
-						$out .= $this->share_buttons();
-						$out .= '</div>';
-						return $out;
-					}
-				);
+
+
 			}
 		);
+
+
 
 		add_filter(
 			'the_content',
@@ -261,17 +259,36 @@ class MACHETE_SOCIAL_MODULE extends MACHETE_MODULE {
 	 * Pregenerates the HTML code for the buttons.
 	 */
 	private function share_buttons() {
+
+		// bail if no active networks
+		if ( count( $this->settings['networks'] ) === 0 ) {
+			return;
+		}
+
 		$rt = '<ul class="mct-share-buttons">';
 
+		// check id post ID is available in the current context
+		$post_id = get_the_ID();
+		if ( ! $post_id ) {
+			// try to get the post ID from the queried object
+			$post_id = get_queried_object_id();
+			if ( ! $post_id ) {
+				// if no post ID is found, return empty string
+				return;
+			}
+		}
+
+		// get the canonical URL for the post
+		$canonical = wp_get_canonical_url( $post_id);
+		if ( ! $canonical ) {
+			// if no canonical URL is found, use the permalink
+			$canonical = get_permalink( $post_id );
+		}
+
+		// loop through the active networks and generate the buttons
 		foreach ( $this->settings['networks'] as $network_slug ) {
 			$network = $this->networks[ $network_slug ];
-
-			$canonical = wp_get_canonical_url();
-			if ( ! $canonical ) {
-				$canonical = get_permalink();
-			}
-
-			$url = sprintf( $network['url'], rawurlencode( $canonical ) );
+			$url     = sprintf( $network['url'], rawurlencode( $canonical ) );
 
 			$rt .= '<li class="mct-ico-' . esc_attr( $network_slug ) . '"><a href="' . esc_url( $url ) . '" data-network="' . esc_attr( $network_slug ) . '">' . esc_html( $network['label'] ) . '</a></li>' . "\n";
 		}
@@ -395,6 +412,15 @@ class MACHETE_SOCIAL_MODULE extends MACHETE_MODULE {
 			$settings['post_types'] = $options['postTypeEnabled'];
 		} else {
 			$settings['post_types'] = array();
+		}
+
+		if (
+			array_key_exists( 'force_styles', $options ) &&
+			( 'enabled' === $options['force_styles'] )
+		) {
+			$settings['force_styles'] = 'enabled';
+		} else {
+			$settings['force_styles'] = 'disabled';
 		}
 
 		if ( $this->is_equal_array( $this->settings, $settings ) ) {
