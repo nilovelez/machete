@@ -23,7 +23,7 @@ $this->positions ['after']  = __( 'At the end of the content (hidden on mobile)'
 $this->positions ['footer'] = __( 'Floating footer (mobile only)', 'machete' );
 
 
-$this->networks['twitter']['title'] = _x( 'X/Twitter', 'network name', 'machete' );
+$this->networks['twitter']['title'] = _x( 'X', 'network name', 'machete' );
 $this->networks['twitter']['label'] = _x( 'Post this', 'Twitter button label', 'machete' );
 
 $this->networks['facebook']['title'] = _x( 'Facebook', 'network name', 'machete' );
