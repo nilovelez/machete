@@ -291,7 +291,7 @@ class MACHETE_SOCIAL_MODULE extends MACHETE_MODULE {
 			$network = $this->networks[ $network_slug ];
 			$url     = sprintf( $network['url'], rawurlencode( $canonical ) );
 
-			$rt .= '<li class="mct-ico-' . esc_attr( $network_slug ) . '"><a href="' . esc_url( $url ) . '" data-network="' . esc_attr( $network_slug ) . '">' . esc_html( $network['label'] ) . '</a></li>' . "\n";
+			$rt .= '<li class="mct-ico-' . esc_attr( $network_slug ) . '"><a href="' . esc_url( $url ) . '" data-network="' . esc_attr( $network_slug ) . '" rel="nofollow">' . esc_html( $network['label'] ) . '</a></li>' . "\n";
 		}
 
 		$rt .= '</ul>';
