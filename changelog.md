@@ -1,5 +1,17 @@
 == Changelog ==
 
+= 5.1 =
+* Checked for compatibility with WordPress 6.9
+* Cleanup module: Relaxed the function to block the rest-api so it works better with the site editor
+* Cleanup module: Added the option to remove the 1536x1536, 2048x2048 thumbnails and big image scaling
+* Social module: Replaced the method of getting the share url for a more robust one
+* Social module: Shortcode can be used in block templates
+* Fix: Refactored the plugin modules to avoid triggering the translation checks introduced in WordPress 6.7
+* Fix: Minor fixes following Plugin Check Plugin report
+* Enhacement: Minor CSS fixes in the plugin backend
+* Fix: Enhanced the remove extra sizes function
+* Minor changes to adhere to WPCS
+
 = 5.0.1 = 
 * Update: Updated translation files
 * Update: Social share module: Updated x.com url for sharing
