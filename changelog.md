@@ -6,6 +6,7 @@
 * Cleanup module: Added the option to remove the 1536x1536, 2048x2048 thumbnails and big image scaling
 * Social module: Replaced the method of getting the share url for a more robust one
 * Social module: Shortcode can be used in block templates
+* Social module: Accessibility improvements
 * Fix: Refactored the plugin modules to avoid triggering the translation checks introduced in WordPress 6.7
 * Fix: Minor fixes following Plugin Check Plugin report
 * Enhacement: Minor CSS fixes in the plugin backend

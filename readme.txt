@@ -5,7 +5,7 @@ Tags: optimization, cookies, analytics, maintenance, clone
 Requires PHP: 7.4
 Requires at least: 4.6
 Tested up to: 6.9
-Stable tag: 5.0.1
+Stable tag: 5.1
 License: WTFPL
 License URI: http://www.wtfpl.net/txt/copying/
 
@@ -83,6 +83,7 @@ Like it or not, the WordPress Block Editor (codenamed Gutenberg) is here to stay
 * Cleanup module: Added the option to remove the 1536x1536, 2048x2048 thumbnails and big image scaling
 * Social module: Replaced the method of getting the share url for a more robust one
 * Social module: Shortcode can be used in block templates
+* Social module: Accessibility improvements
 * Fix: Refactored the plugin modules to avoid triggering the translation checks introduced in WordPress 6.7
 * Fix: Minor fixes following Plugin Check Plugin report
 * Enhacement: Minor CSS fixes in the plugin backend
