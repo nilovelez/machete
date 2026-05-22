@@ -49,6 +49,22 @@ abstract class MACHETE_MODULE {
 	 */
 	protected $default_settings = array();
 	/**
+	 * Whether this module's i18n file has been loaded.
+	 *
+	 * @var bool
+	 */
+	protected $i18n_loaded = false;
+	/**
+	 * Loads the module i18n file (title, description, and option labels).
+	 */
+	public function load_i18n() {
+		if ( $this->i18n_loaded ) {
+			return;
+		}
+		require $this->path . 'i18n.php';
+		$this->i18n_loaded = true;
+	}
+	/**
 	 * Initialises the module.
 	 *
 	 * @param array $params params array with the immutable module properties.
