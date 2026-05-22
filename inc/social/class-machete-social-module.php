@@ -101,8 +101,7 @@ class MACHETE_SOCIAL_MODULE extends MACHETE_MODULE {
 	 */
 	public function admin() {
 
-		require $this->path . 'i18n.php';
-
+		$this->load_i18n();
 		$this->read_settings();
 
 		$this->valid_post_types = $this->get_valid_post_types();
@@ -123,8 +122,7 @@ class MACHETE_SOCIAL_MODULE extends MACHETE_MODULE {
 	 */
 	public function frontend() {
 
-		require $this->path . 'i18n.php';
-
+		$this->load_i18n();
 		$this->read_settings();
 
 		if ( 'enabled' === $this->settings['status'] ) {

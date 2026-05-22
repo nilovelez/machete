@@ -55,7 +55,7 @@ class MACHETE_COOKIES_MODULE extends MACHETE_MODULE {
 	 */
 	public function admin() {
 
-		require $this->path . 'i18n.php';
+		$this->load_i18n();
 		$this->read_settings();
 		add_action(
 			'admin_init',
@@ -74,7 +74,7 @@ class MACHETE_COOKIES_MODULE extends MACHETE_MODULE {
 	 * @todo Hook render_cookie_bar function only if bar is active.
 	 */
 	public function frontend() {
-		require $this->path . 'i18n.php';
+		$this->load_i18n();
 		$this->read_settings();
 
 		if ( ! isset( $this->settings['bar_status'] ) || ( 'enabled' !== $this->settings['bar_status'] ) ) {

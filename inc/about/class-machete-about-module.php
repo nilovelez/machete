@@ -33,7 +33,7 @@ class MACHETE_ABOUT_MODULE extends MACHETE_MODULE {
 	public function admin() {
 		global $machete;
 
-		require $this->path . 'i18n.php';
+		$this->load_i18n();
 
 		// if this is called after the admin_menu hook, the modules you disable
 		// are still shown in the side menu until you reload.

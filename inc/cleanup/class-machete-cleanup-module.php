@@ -91,7 +91,7 @@ class MACHETE_CLEANUP_MODULE extends MACHETE_MODULE {
 	 */
 	public function admin() {
 
-		require $this->path . 'i18n.php';
+		$this->load_i18n();
 
 		$this->read_settings();
 
