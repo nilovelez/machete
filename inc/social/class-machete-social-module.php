@@ -289,7 +289,7 @@ class MACHETE_SOCIAL_MODULE extends MACHETE_MODULE {
 			$network = $this->networks[ $network_slug ];
 			$url     = sprintf( $network['url'], rawurlencode( $canonical ) );
 			// Translators: Social button title. 1: Action, 2: Network. Example: Share on Facebook 
-			$alt     = sprintf( __( '%1$s on %2$s' ), $network['label'], $network['title']);
+			$alt     = sprintf( __( '%1$s on %2$s', 'machete' ), $network['label'], $network['title']);
 
 			$rt .= sprintf(
 					'<li class="mct-ico-%s"><a href="%s" title="%s" data-network="%s" rel="nofollow">%s</a></li>',
