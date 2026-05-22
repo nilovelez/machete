@@ -22,7 +22,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 
-define( 'MACHETE_VERSION', '5.0' );
+define( 'MACHETE_VERSION', '5.1' );
 
 $machete_get_upload_dir = wp_upload_dir();
 define( 'MACHETE_BASE_PATH', plugin_dir_path( __FILE__ ) );
