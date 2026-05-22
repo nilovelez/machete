@@ -89,7 +89,7 @@ if ( in_array( 'disable_feeds', $this->settings, true ) && ! is_admin() ) {
 			),
 		);
 		// translators: %s: homepage URL.
-		wp_die( sprintf( wp_kses( __( 'No feed available, please visit our <a href="%s">homepage</a>!', 'machete' ), $link_only ), esc_url( get_bloginfo( 'url' ) ) ) );
+		wp_die( sprintf( wp_kses( __( 'No feed available, please visit our <a href="%s">homepage</a>!', 'machete' ), $link_only ), esc_url( home_url( '/' ) ) ) );
 	}
 
 	add_action( 'do_feed', 'machete_disable_feed', 1 );
@@ -125,8 +125,8 @@ if ( in_array( 'disable_search', $this->settings, true ) ) {
 		function ( $query, $error = true ) {
 			if ( is_search() ) {
 				$query->is_search       = false;
-				$query->query_vars[ s ] = false;
-				$query->query[ s ]      = false;
+				$query->query_vars['s'] = false;
+				$query->query['s']      = false;
 				if ( true === $error ) {
 					$query->is_404 = true;
 				}
