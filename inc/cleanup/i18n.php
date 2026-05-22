@@ -109,19 +109,19 @@ $this->optimize_array['disable_editor']         = array(
 /* Tweaks array */
 $this->tweaks_array['json_api']           = array(
 	'title'       => __( 'JSON API', 'machete' ),
-	'description' => __( 'Remove the JSON-API links from page headers. Also require that API consumers be authenticated.', 'machete' ) . ' <br><span style="color: #d94f4f">' . __( 'Be careful. Might break some plugins that use the REST API.', 'machete' ) . '</span>',
+	'description' => __( 'Remove the JSON-API links from page headers. Also require that API consumers be authenticated.', 'machete' ) . ' <br><span style="color: #d94f4f">' . __( 'May break plugins, headless frontends, and the block editor when not logged in. Test any integration that uses the REST API after enabling.', 'machete' ) . '</span>',
 );
 $this->tweaks_array['xmlrpc']             = array(
 	'title'       => __( 'XML-RPC', 'machete' ),
-	'description' => __( 'Disable the XML-RPC interface. ', 'machete' ),
+	'description' => __( 'Disable the XML-RPC interface.', 'machete' ) . ' <br><span style="color: #d94f4f">' . __( 'May break the WordPress mobile app, Jetpack, pingbacks, and plugins that rely on XML-RPC.', 'machete' ) . '</span>',
 );
 $this->tweaks_array['jquery-migrate']     = array(
 	'title'       => __( 'remove jQuery-migrate', 'machete' ),
-	'description' => __( 'jQuery-migrate provides diagnostics that can simplify upgrading to new versions of jQuery, you can safely disable it.', 'machete' ) . ' <br><span style="color: #d94f4f">' . __( 'May break some themes and plugins that depend on legacy code.', 'machete' ) . '</span>',
+	'description' => __( 'Removes jQuery-migrate from the frontend dependency chain. It is a compatibility layer for older jQuery code.', 'machete' ) . ' <br><span style="color: #d94f4f">' . __( 'May break themes and plugins that rely on deprecated jQuery APIs. Test thoroughly, especially after upgrading to WordPress 7.0.', 'machete' ) . '</span>',
 );
 $this->tweaks_array['oembed_scripts']     = array(
 	'title'       => __( 'Remove oEmbed Scripts', 'machete' ),
-	'description' => __( 'Since WordPress 4.4, oEmbed is installed and available by default. If you don’t need oEmbed, you can remove it.', 'machete' ),
+	'description' => __( 'Since WordPress 4.4, oEmbed is installed and available by default. If you don\'t need oEmbed, you can remove it.', 'machete' ) . ' <br><span style="color: #d94f4f">' . __( 'May break embed blocks, auto-embedded URLs in content, and paste-to-embed in the block editor.', 'machete' ) . '</span>',
 );
 $this->tweaks_array['jpeg_quality']       = array(
 	'title'       => __( 'Reduce JPEG quality', 'machete' ),
@@ -133,9 +133,9 @@ $this->tweaks_array['big_image_scaling']  = array(
 );
 $this->tweaks_array['gutenberg_css']      = array(
 	'title'       => __( 'Remove block editor CSS', 'machete' ),
-	'description' => __( 'Dequeues Gutenberg CSS stylesheets from the from the frontend.', 'machete' ) . '<br><span style="color: #d94f4f">' . __( 'Check this only if you are not using the block editor.', 'machete' ) . '</span>',
+	'description' => __( 'Dequeues block editor CSS stylesheets from the frontend.', 'machete' ) . '<br><span style="color: #d94f4f">' . __( 'Do not enable on sites that render blocks on the frontend. WordPress 7.0 loads block styles on demand in classic themes too; disabling them will break block layout and appearance.', 'machete' ) . '</span>',
 );
 $this->tweaks_array['disable_global_css'] = array(
 	'title'       => __( 'Disable Global CSS', 'machete' ),
-	'description' => __( 'Removes the huge inline CSS elements that the block editor adds by default.', 'machete' ) . '<br><span style="color: #d94f4f">' . __( 'Be careful, you shouldn\'t check this if your current theme uses global styles.', 'machete' ) . '</span>',
+	'description' => __( 'Removes the inline global styles and block-support CSS that WordPress adds by default.', 'machete' ) . '<br><span style="color: #d94f4f">' . __( 'Do not enable if your theme or content uses block styles, duotone, or layout support. WordPress 7.0 extends block styling to all themes; this option is likely to break site appearance.', 'machete' ) . '</span>',
 );
