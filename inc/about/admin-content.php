@@ -8,7 +8,22 @@
 
 if ( ! defined( 'ABSPATH' ) ) {
 	exit;
-} ?>
+}
+
+// Inactive modules skip admin(), so load i18n here for module card titles and descriptions.
+foreach ( $machete->modules as $machete_module ) {
+	if ( $machete_module->params['is_active'] ) {
+		continue;
+	}
+	$machete_module->load_i18n();
+}
+
+if ( ! function_exists( 'is_woocommerce' ) && isset( $machete->modules['woocommerce'] ) ) {
+	$machete->modules['woocommerce']->params['can_be_enabled'] = false;
+	$machete->modules['woocommerce']->params['description']   .= ' ' . __( 'You have to install and activate WooCommerce to use this module.', 'machete' );
+}
+?>
+
 
 <div class="wrap about-wrap machete-wrap full-width-layout">
 		<div class="wp-header-end"></div><!-- admin notices go after .wp-header-end or .wrap>h2:first-child -->
