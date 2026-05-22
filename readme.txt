@@ -3,7 +3,7 @@ Contributors: nilovelez
 Donate link: https://ko-fi.com/nilovelez
 Tags: optimization, cookies, analytics, maintenance, clone
 Requires PHP: 7.4
-Requires at least: 4.6
+Requires at least: 5.9
 Tested up to: 7.0
 Stable tag: 5.2
 License: WTFPL
@@ -79,6 +79,7 @@ Like it or not, the WordPress Block Editor (codenamed Gutenberg) is here to stay
 
 = 5.2 =
 * Checked for compatibility with WordPress 7.0
+* Updated minimum WordPress version to 5.9
 * Fix: Admin menu icon color now matches WordPress sidebar icons
 * Social module: Added missing text domain to share button label
 * Improvement: Use random_bytes() for generated filenames and tokens
