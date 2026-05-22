@@ -5,7 +5,7 @@ Tags: optimization, cookies, analytics, maintenance, clone
 Requires PHP: 7.4
 Requires at least: 4.6
 Tested up to: 7.0
-Stable tag: 5.1
+Stable tag: 5.2
 License: WTFPL
 License URI: http://www.wtfpl.net/txt/copying/
 
@@ -76,6 +76,14 @@ Like it or not, the WordPress Block Editor (codenamed Gutenberg) is here to stay
 7. Options WooCommerce should have
 
 == Changelog ==
+
+= 5.2 =
+* Checked for compatibility with WordPress 7.0
+* Fix: Admin menu icon color now matches WordPress sidebar icons
+* Social module: Added missing text domain to share button label
+* Improvement: Use random_bytes() for generated filenames and tokens
+* Fix: Refactored module translations with a centralized load_i18n() method
+* Fix: Load translations for inactive modules on the modules admin page
 
 = 5.1 =
 * Checked for compatibility with WordPress 6.9
