@@ -32,7 +32,7 @@ class MACHETE_MAINTENANCE_MODULE extends MACHETE_MODULE {
 		$this->default_settings = array(
 			'page_id'     => '',
 			'site_status' => 'online',
-			'token'       => strtoupper( substr( MD5( rand() ), 0, 12 ) ), // phpcs:ignore
+			'token'       => strtoupper( bin2hex( random_bytes( 6 ) ) ),
 		);
 	}
 	/**

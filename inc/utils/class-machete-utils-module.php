@@ -245,7 +245,7 @@ class MACHETE_UTILS_MODULE extends MACHETE_MODULE {
 
 		if ( '' !== $tracking_script_js ) {
 			// cheap and dirty pseudo-random filename generation.
-			$settings['tracking_filename'] = 'tracking_mct4_' . strtolower( substr( MD5( time() ), 0, 8 ) ) . '.js';
+			$settings['tracking_filename'] = 'tracking_mct4_' . bin2hex( random_bytes( 4 ) ) . '.js';
 
 			if ( ! $this->put_contents( MACHETE_DATA_PATH . $settings['tracking_filename'], $tracking_script_js ) ) {
 				if ( ! $silent ) {

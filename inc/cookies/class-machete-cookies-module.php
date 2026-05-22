@@ -167,7 +167,7 @@ class MACHETE_COOKIES_MODULE extends MACHETE_MODULE {
 		);
 
 		// cheap and dirty pseudo-random filename generation.
-		$settings['cookie_filename'] = 'cookies_mct4_' . strtolower( substr( MD5( time() ), 0, 8 ) ) . '.js';
+		$settings['cookie_filename'] = 'cookies_mct4_' . bin2hex( random_bytes( 4 ) ) . '.js';
 
 		if ( 'enabled' === $settings['bar_status'] ) {
 			if ( ! $this->put_contents( MACHETE_DATA_PATH . $settings['cookie_filename'], $cookies_bar_js ) ) {
