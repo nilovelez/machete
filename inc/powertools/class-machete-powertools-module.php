@@ -80,6 +80,9 @@ class MACHETE_POWERTOOLS_MODULE extends MACHETE_MODULE {
 				case 'purge_orphaned_meta':
 					$this->purge_orphaned_meta();
 					break;
+				case 'purge_expired_cron':
+					$this->purge_expired_cron();
+					break;
 				case 'flush_rewrites':
 					$this->flush_rewrite_rules();
 					break;
@@ -242,6 +245,36 @@ class MACHETE_POWERTOOLS_MODULE extends MACHETE_MODULE {
 
 		// translators: %s: number of deleted postmeta rows.
 		$this->notice( sprintf( _n( '%s orphaned postmeta row deleted.', '%s orphaned postmeta rows deleted.', $rows, 'machete' ), number_format_i18n( $rows ) ), 'success' );
+		return true;
+	}
+
+	/**
+	 * Removes cron events scheduled in the past.
+	 */
+	private function purge_expired_cron() {
+		if ( ! function_exists( '_get_cron_array' ) ) {
+			require_once ABSPATH . 'wp-includes/cron.php';
+		}
+
+		$cron    = _get_cron_array();
+		$removed = 0;
+		$time    = time();
+
+		if ( ! empty( $cron ) ) {
+			foreach ( $cron as $timestamp => $hooks ) {
+				if ( (int) $timestamp >= $time ) {
+					continue;
+				}
+				foreach ( $hooks as $events ) {
+					$removed += count( $events );
+				}
+				unset( $cron[ $timestamp ] );
+			}
+			_set_cron_array( $cron );
+		}
+
+		// translators: %s: number of removed cron events.
+		$this->notice( sprintf( _n( '%s expired cron event removed.', '%s expired cron events removed.', $removed, 'machete' ), number_format_i18n( $removed ) ), 'success' );
 		return true;
 	}
 	/**

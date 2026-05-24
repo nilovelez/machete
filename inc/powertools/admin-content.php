@@ -47,6 +47,10 @@ $machete_allowed_description_tags = array(
 	<td><input type="submit" name="machete-powertools-action" value="purge_orphaned_meta" class="button button-primary"></td>
 	</tr>
 	<tr>
+	<th scope="row"><label for="purge_expired_cron"><?php esc_html_e( 'Delete Expired Cron Events', 'machete' ); ?></label></th>
+	<td><input type="submit" name="machete-powertools-action" value="purge_expired_cron" class="button button-primary"></td>
+	</tr>
+	<tr>
 	<th scope="row"><label for="tracking_id"><?php esc_html_e( 'Delete Permalink Cache', 'machete' ); ?></label></th>
 	<td><input type="submit" name="machete-powertools-action" value="flush_rewrites" class="button button-primary">
 	<p class="description" id="tracking_id_description" style="display: none;"><?php esc_html_e( 'Format:', 'machete' ); ?></p></td>
