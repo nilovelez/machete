@@ -24,16 +24,17 @@ abstract class MACHETE_MODULE {
 	 * @var array
 	 */
 	public $params = array(
-		'slug'            => '',
-		'title'           => '',
-		'full_title'      => '',
-		'description'     => '',
-		'is_external'     => false,
-		'is_active'       => true,
-		'has_config'      => true,
-		'can_be_disabled' => true,
-		'can_be_enabled'  => true,
-		'role'            => 'manage_options',
+		'slug'               => '',
+		'title'              => '',
+		'full_title'         => '',
+		'description'        => '',
+		'is_active'          => true,
+		'has_warning'        => false,
+		'activation_warning' => '',
+		'has_config'         => true,
+		'can_be_disabled'    => true,
+		'can_be_enabled'     => true,
+		'role'               => 'manage_options',
 	);
 	/**
 	 * Temporal container for the module's database-stored settings
@@ -70,7 +71,8 @@ abstract class MACHETE_MODULE {
 	 * @param array $params params array with the immutable module properties.
 	 */
 	protected function init( $params = array() ) {
-		$this->params = array_merge( $this->params, $params );
+		$this->params                      = array_merge( $this->params, $params );
+		$this->params['is_active_default'] = $this->params['is_active'];
 		if ( array_key_exists( 'path', $this->params ) ) {
 			$this->path = $this->params['path'];
 		} else {
