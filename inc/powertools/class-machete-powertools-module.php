@@ -25,7 +25,8 @@ class MACHETE_POWERTOOLS_MODULE extends MACHETE_MODULE {
 			array(
 				'slug'            => 'powertools',
 				'is_active'       => false,
-				'can_be_disabled' => false,
+				'has_warning'     => true,
+				'can_be_disabled' => true,
 			)
 		);
 
