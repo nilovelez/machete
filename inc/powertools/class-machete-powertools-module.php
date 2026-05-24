@@ -38,7 +38,8 @@ class MACHETE_POWERTOOLS_MODULE extends MACHETE_MODULE {
 			'defer_all_scripts'   => array(),
 			'disable_feeds'       => array(),
 			'enable_svg'          => array(),
-			'disable_search'      => array(),
+			'disable_search'              => array(),
+			'show_admin_ids'              => array(),
 		);
 	}
 	/**
@@ -109,12 +110,14 @@ class MACHETE_POWERTOOLS_MODULE extends MACHETE_MODULE {
 	}
 
 	/**
-	 * Enqueues PowerTools admin styles on the module settings page.
+	 * Enqueues PowerTools admin styles on the module page and when list-table options are active.
 	 *
 	 * @param string $hook_suffix Current admin page hook suffix.
 	 */
 	public function enqueue_admin_styles( $hook_suffix ) {
-		if ( 'machete_page_machete-powertools' !== $hook_suffix ) {
+		$is_powertools_page = ( 'machete_page_machete-powertools' === $hook_suffix );
+
+		if ( ! $is_powertools_page && ! $this->needs_admin_styles() ) {
 			return;
 		}
 
@@ -124,6 +127,15 @@ class MACHETE_POWERTOOLS_MODULE extends MACHETE_MODULE {
 			array(),
 			MACHETE_VERSION
 		);
+	}
+
+	/**
+	 * Whether any active option needs the PowerTools admin stylesheet.
+	 *
+	 * @return bool
+	 */
+	private function needs_admin_styles() {
+		return in_array( 'show_admin_ids', $this->settings, true );
 	}
 	/**
 	 * Saves options to database

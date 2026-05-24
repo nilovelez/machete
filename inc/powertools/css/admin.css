@@ -4,3 +4,12 @@
 	box-sizing: border-box;
 	text-align: center;
 }
+
+/* PowerTools: narrow ID column in admin list tables */
+.wp-list-table th.column-machete_id,
+.wp-list-table td.column-machete_id {
+	width: 1%;
+	max-width: 6em;
+	white-space: nowrap;
+	text-align: right;
+}

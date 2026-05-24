@@ -20,6 +20,7 @@ defer_all_scripts
 disable_feeds
 enable_svg
 disable_search
+show_admin_ids
 */
 
 // enable shortcodes in widgets.
@@ -146,4 +147,106 @@ if ( in_array( 'disable_search', $this->settings, true ) ) {
 			unregister_widget( 'WP_Widget_Search' );
 		}
 	);
+}
+
+// Show post, term and user IDs in admin list tables.
+if ( in_array( 'show_admin_ids', $this->settings, true ) && is_admin() ) {
+	/**
+	 * Inserts an ID column after the primary list column.
+	 *
+	 * @param array $columns List table columns.
+	 * @return array
+	 */
+	function machete_add_admin_id_column( $columns ) {
+		$new_columns = array();
+		$inserted    = false;
+
+		foreach ( $columns as $key => $label ) {
+			$new_columns[ $key ] = $label;
+			if ( ! $inserted && in_array( $key, array( 'title', 'name', 'username', 'cb' ), true ) ) {
+				$new_columns['machete_id'] = __( 'ID', 'machete' );
+				$inserted                  = true;
+			}
+		}
+
+		if ( ! $inserted ) {
+			$new_columns['machete_id'] = __( 'ID', 'machete' );
+		}
+
+		return $new_columns;
+	}
+
+	/**
+	 * Renders the post ID column value.
+	 *
+	 * @param string $column_name Column slug.
+	 * @param int    $post_id     Post ID.
+	 */
+	function machete_render_admin_post_id_column( $column_name, $post_id ) {
+		if ( 'machete_id' === $column_name ) {
+			echo esc_html( (string) $post_id );
+		}
+	}
+
+	/**
+	 * Renders the term ID column value.
+	 *
+	 * @param string $string      Column output.
+	 * @param string $column_name Column slug.
+	 * @param int    $term_id     Term ID.
+	 * @return string
+	 */
+	function machete_render_admin_term_id_column( $string, $column_name, $term_id ) {
+		if ( 'machete_id' === $column_name ) {
+			return esc_html( (string) $term_id );
+		}
+		return $string;
+	}
+
+	/**
+	 * Renders the user ID column value.
+	 *
+	 * @param string $value       Column output.
+	 * @param string $column_name Column slug.
+	 * @param int    $user_id     User ID.
+	 * @return string
+	 */
+	function machete_render_admin_user_id_column( $value, $column_name, $user_id ) {
+		if ( 'machete_id' === $column_name ) {
+			return esc_html( (string) $user_id );
+		}
+		return $value;
+	}
+
+	add_action(
+		'admin_init',
+		function () {
+			$post_types = get_post_types(
+				array(
+					'show_ui' => true,
+				),
+				'names'
+			);
+
+			foreach ( $post_types as $post_type ) {
+				add_filter( "manage_{$post_type}_posts_columns", 'machete_add_admin_id_column' );
+				add_action( "manage_{$post_type}_posts_custom_column", 'machete_render_admin_post_id_column', 10, 2 );
+			}
+
+			$taxonomies = get_taxonomies(
+				array(
+					'show_ui' => true,
+				),
+				'names'
+			);
+
+			foreach ( $taxonomies as $taxonomy ) {
+				add_filter( "manage_edit-{$taxonomy}_columns", 'machete_add_admin_id_column' );
+				add_filter( "manage_{$taxonomy}_custom_column", 'machete_render_admin_term_id_column', 10, 3 );
+			}
+		}
+	);
+
+	add_filter( 'manage_users_columns', 'machete_add_admin_id_column' );
+	add_filter( 'manage_users_custom_column', 'machete_render_admin_user_id_column', 10, 3 );
 }
