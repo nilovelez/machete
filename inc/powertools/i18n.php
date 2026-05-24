@@ -54,7 +54,7 @@ $this->powertools_array['enable_svg'] = array(
 
 $this->powertools_array['disable_search'] = array(
 	'title'       => __( 'Disable search', 'machete' ),
-	'description' => __( 'Disables the public search from WordPress', 'machete' ),
+	'description' => __( 'Disables public search on the frontend. Search URLs return a 404, search forms are hidden, and the Search widget is removed from widget areas.', 'machete' ) . '<br>' . __( 'Does not affect admin search. Useful for brochure sites and layouts that do not need public search.', 'machete' ),
 );
 
 $this->powertools_array['show_admin_ids'] = array(
