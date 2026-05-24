@@ -77,6 +77,9 @@ class MACHETE_POWERTOOLS_MODULE extends MACHETE_MODULE {
 				case 'purge_post_revisions':
 					$this->purge_post_revisions();
 					break;
+				case 'purge_orphaned_meta':
+					$this->purge_orphaned_meta();
+					break;
 				case 'flush_rewrites':
 					$this->flush_rewrite_rules();
 					break;
@@ -222,6 +225,23 @@ class MACHETE_POWERTOOLS_MODULE extends MACHETE_MODULE {
 
 		// translators: %s: number of deleted post revisions.
 		$this->notice( sprintf( _n( 'Success! %s post revision deleted.', 'Success! %s post revisions deleted.', $rows, 'machete' ), number_format_i18n( $rows ) ), 'success' );
+		return true;
+	}
+
+	/**
+	 * Deletes postmeta rows whose post no longer exists.
+	 */
+	private function purge_orphaned_meta() {
+		global $wpdb;
+
+		$rows = $wpdb->query(
+			"DELETE pm FROM $wpdb->postmeta pm
+			LEFT JOIN $wpdb->posts p ON p.ID = pm.post_id
+			WHERE p.ID IS NULL"
+		); // phpcs:ignore WordPress.DB.DirectDatabaseQuery.DirectQuery, WordPress.DB.DirectDatabaseQuery.NoCaching
+
+		// translators: %s: number of deleted postmeta rows.
+		$this->notice( sprintf( _n( '%s orphaned postmeta row deleted.', '%s orphaned postmeta rows deleted.', $rows, 'machete' ), number_format_i18n( $rows ) ), 'success' );
 		return true;
 	}
 	/**
