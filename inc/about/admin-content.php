@@ -48,31 +48,6 @@ if ( ! function_exists( 'is_woocommerce' ) && isset( $machete->modules['woocomme
 			if ( 'about' === $machete_slug ) {
 				continue;
 			}
-			if (
-				in_array( $machete_slug, array( 'about', 'powertools' ), true ) ||
-				$machete_args['is_external']
-			) {
-				continue;
-			}
-			include plugin_dir_path( __FILE__ ) . 'templates/machete-module.php';
-		}
-		?>
-		</div>
-
-		<h2><?php esc_html_e( 'External Modules', 'machete' ); ?></h2>
-
-		<div class="machete-module-list">
-		<?php
-		foreach ( $machete->modules as $machete_module ) {
-			$machete_args = $machete_module->params;
-			$machete_slug = $machete_args['slug'];
-
-			if ( 'about' === $machete_slug ) {
-				continue;
-			}
-			if ( ( 'powertools' !== $machete_slug ) && ( ! $machete_args['is_external'] ) ) {
-				continue;
-			}
 			include plugin_dir_path( __FILE__ ) . 'templates/machete-module.php';
 		}
 		?>
