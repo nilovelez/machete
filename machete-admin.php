@@ -61,6 +61,19 @@ add_action(
 				$machete->notice( sprintf( __( 'You are using Tracking settings from a previous Machete version. Go to the %1$sAnalytics & Code Module page%2$s and <strong>Save Settings</strong> to remove this notice.', 'machete' ), '<a href="' . $module_url . '">', '</a>' ), 'warning', false );
 			}
 		}
+		if ( defined( 'MACHETE_POWERTOOLS_INIT' ) ) {
+			$plugins_url = admin_url( 'plugins.php' );
+			$machete->notice(
+				sprintf(
+					/* Translators: 1: link open tag 2: link close tag */
+					__( 'The Machete PowerTools plugin is no longer needed and can be uninstalled. %1$sGo to Plugins%2$s.', 'machete' ),
+					'<a href="' . esc_url( $plugins_url ) . '">',
+					'</a>'
+				),
+				'warning',
+				true
+			);
+		}
 	}
 );
 
