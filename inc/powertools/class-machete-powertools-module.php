@@ -74,6 +74,9 @@ class MACHETE_POWERTOOLS_MODULE extends MACHETE_MODULE {
 				case 'purge_transients':
 					$this->purge_transients();
 					break;
+				case 'purge_post_revisions':
+					$this->purge_post_revisions();
+					break;
 				case 'flush_rewrites':
 					$this->flush_rewrite_rules();
 					break;
@@ -196,21 +199,29 @@ class MACHETE_POWERTOOLS_MODULE extends MACHETE_MODULE {
 	}
 
 	/**
-	 * Deletes all unused post revisions.
+	 * Deletes all post revisions and their related meta/term rows.
 	 */
 	private function purge_post_revisions() {
 		global $wpdb;
 
+		$wpdb->query(
+			"DELETE pm FROM $wpdb->postmeta pm
+			INNER JOIN $wpdb->posts p ON pm.post_id = p.ID
+			WHERE p.post_type = 'revision'"
+		); // phpcs:ignore WordPress.DB.DirectDatabaseQuery.DirectQuery, WordPress.DB.DirectDatabaseQuery.NoCaching
+
+		$wpdb->query(
+			"DELETE tr FROM $wpdb->term_relationships tr
+			INNER JOIN $wpdb->posts p ON tr.object_id = p.ID
+			WHERE p.post_type = 'revision'"
+		); // phpcs:ignore WordPress.DB.DirectDatabaseQuery.DirectQuery, WordPress.DB.DirectDatabaseQuery.NoCaching
+
 		$rows = $wpdb->query(
-			"DELETE a,b,c
-			FROM wp_posts a
-			WHERE a.post_type = 'revision'
-			LEFT JOIN wp_term_relationships b
-			ON (a.ID = b.object_id)
-			LEFT JOIN wp_postmeta c ON (a.ID = c.post_id);"
-		);  // phpcs: cache ok, db call ok.
-		// translators: $d number of deleted post revisions.
-		$this->notice( sprintf( _n( 'Success! %s Post revision deleted.', 'Success! %s Post revisions deleted.', $rows, 'machete' ), $rows ), 'success' );
+			"DELETE FROM $wpdb->posts WHERE post_type = 'revision'"
+		); // phpcs:ignore WordPress.DB.DirectDatabaseQuery.DirectQuery, WordPress.DB.DirectDatabaseQuery.NoCaching
+
+		// translators: %s: number of deleted post revisions.
+		$this->notice( sprintf( _n( 'Success! %s post revision deleted.', 'Success! %s post revisions deleted.', $rows, 'machete' ), number_format_i18n( $rows ) ), 'success' );
 		return true;
 	}
 	/**
