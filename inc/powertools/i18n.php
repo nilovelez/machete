@@ -61,3 +61,8 @@ $this->powertools_array['show_admin_ids'] = array(
 	'title'       => __( 'Show IDs in admin lists', 'machete' ),
 	'description' => __( 'Adds an ID column to post, page, taxonomy and user list screens in the WordPress admin.', 'machete' ),
 );
+
+$this->powertools_array['disable_admin_bar_frontend'] = array(
+	'title'       => __( 'Disable admin bar on frontend', 'machete' ),
+	'description' => __( 'Hides the WordPress admin bar on the frontend for all users except administrators.', 'machete' ),
+);

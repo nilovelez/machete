@@ -21,6 +21,7 @@ disable_feeds
 enable_svg
 disable_search
 show_admin_ids
+disable_admin_bar_frontend
 */
 
 // enable shortcodes in widgets.
@@ -249,4 +250,17 @@ if ( in_array( 'show_admin_ids', $this->settings, true ) && is_admin() ) {
 
 	add_filter( 'manage_users_columns', 'machete_add_admin_id_column' );
 	add_filter( 'manage_users_custom_column', 'machete_render_admin_user_id_column', 10, 3 );
+}
+
+// Hide the admin bar on the frontend for non-administrators.
+if ( in_array( 'disable_admin_bar_frontend', $this->settings, true ) && ! is_admin() ) {
+	add_action(
+		'after_setup_theme',
+		function () {
+			if ( current_user_can( 'manage_options' ) ) {
+				return;
+			}
+			show_admin_bar( false );
+		}
+	);
 }

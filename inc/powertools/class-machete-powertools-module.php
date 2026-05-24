@@ -40,6 +40,7 @@ class MACHETE_POWERTOOLS_MODULE extends MACHETE_MODULE {
 			'enable_svg'          => array(),
 			'disable_search'              => array(),
 			'show_admin_ids'              => array(),
+			'disable_admin_bar_frontend'  => array(),
 		);
 	}
 	/**
