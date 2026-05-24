@@ -32,15 +32,50 @@ if ( in_array( 'widget_shortcodes', $this->settings, true ) && ! is_admin() ) {
 // enable rss thumbnails.
 if ( in_array( 'rss_thumbnails', $this->settings, true ) && ! is_admin() ) {
 	/**
-	 * Adds the featured image before the content.
+	 * Returns the featured image or the first attached image HTML for RSS feeds.
+	 *
+	 * @param int $post_id Post ID.
+	 * @return string
+	 */
+	function machete_get_rss_thumbnail_html( $post_id ) {
+		if ( has_post_thumbnail( $post_id ) ) {
+			return get_the_post_thumbnail( $post_id, 'full' );
+		}
+
+		$attachments = get_children(
+			array(
+				'post_parent'    => $post_id,
+				'post_status'    => 'inherit',
+				'post_type'      => 'attachment',
+				'post_mime_type' => 'image',
+				'orderby'        => 'menu_order',
+				'order'          => 'ASC',
+				'numberposts'    => 1,
+			)
+		);
+
+		if ( empty( $attachments ) ) {
+			return '';
+		}
+
+		$attachment = array_shift( $attachments );
+
+		return wp_get_attachment_image( $attachment->ID, 'full' );
+	}
+
+	/**
+	 * Adds the featured or first attached image before the content.
 	 *
 	 * @param string $content post content.
 	 */
 	function machete_add_rss_thumbnail( $content ) {
 		global $post;
-		if ( has_post_thumbnail( $post->ID ) ) {
-			$content = '<div class="post-thumbnail-feed">' . get_the_post_thumbnail( $post->ID, 'full' ) . '</div>' . $content;
+
+		$thumbnail_html = machete_get_rss_thumbnail_html( $post->ID );
+		if ( '' !== $thumbnail_html ) {
+			$content = '<div class="post-thumbnail-feed">' . $thumbnail_html . '</div>' . $content;
 		}
+
 		return $content;
 	}
 	add_filter( 'the_excerpt_rss', 'machete_add_rss_thumbnail' );
