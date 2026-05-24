@@ -74,7 +74,7 @@ $machete_allowed_description_tags = array(
 	<table class="wp-list-table widefat fixed striped posts machete-options-table machete-powertools-table">
 	<thead>
 		<tr>
-			<td class="manage-column column-cb check-column " ><input type="checkbox" name="check_all" id="machete_cleanup_checkall_fld" <?php checked( true, $this->all_powertools_checked, true ); ?>></td>
+			<td class="manage-column column-cb check-column " ><input type="checkbox" name="check_all" id="machete_powertools_checkall_fld" <?php checked( true, $this->all_powertools_checked, true ); ?>></td>
 			<th class="column-title manage-column column-primary"><?php esc_html_e( 'Remove', 'machete' ); ?></th>
 			<th><?php esc_html_e( 'Explanation', 'machete' ); ?></th>
 		</tr>
@@ -104,24 +104,13 @@ $machete_allowed_description_tags = array(
 
 ( function( $ ) {
 	$('#machete-powertools-options .machete-powertools-table :checkbox').change(function() {
-		// this will contain a reference to the checkbox
-		console.log(this.id);
 		var checkBoxes = $("#machete-powertools-options .machete-powertools-table input[name=optionEnabled\\[\\]]");
 
-		if ( this.id == 'machete_powertools_checkall_fld' ){
-			if (this.checked) {
-				checkBoxes.prop( "checked" , true );
-			} else {
-				checkBoxes.prop( "checked", false );
-				// the checkbox is now no longer checked
-			}
+		if ( this.id === 'machete_powertools_checkall_fld' ) {
+			checkBoxes.prop( 'checked', this.checked );
 		} else {
 			var checkBoxes_checked = $("#machete-powertools-options .machete-powertools-table input[name=optionEnabled\\[\\]]:checked");
-			if(checkBoxes_checked.length == checkBoxes.length){
-				$('#machete_powertools_checkall_fld').prop("checked", true);
-			} else {
-				$('#machete_powertools_checkall_fld').prop("checked", false);
-			}
+			$('#machete_powertools_checkall_fld').prop( 'checked', checkBoxes_checked.length === checkBoxes.length );
 		}
 	});
 })( jQuery );
