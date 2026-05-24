@@ -89,7 +89,7 @@ class MACHETE_SOCIAL_MODULE extends MACHETE_MODULE {
 		}
 
 		// fix for Machete 5.1
-		if ( ! isset( $this->settings['force_styles'] )) {
+		if ( ! isset( $this->settings['force_styles'] ) ) {
 			$this->settings['force_styles'] = 'disabled';
 		}
 
@@ -194,7 +194,6 @@ class MACHETE_SOCIAL_MODULE extends MACHETE_MODULE {
 				global $post;
 				if (
 					! is_singular() ||
-					//! in_the_loop() ||
 					! is_main_query() ||
 					// check if current post type is active.
 					( ! in_array( $post->post_type, $this->settings['post_types'], true ) )
@@ -288,17 +287,17 @@ class MACHETE_SOCIAL_MODULE extends MACHETE_MODULE {
 		foreach ( $this->settings['networks'] as $network_slug ) {
 			$network = $this->networks[ $network_slug ];
 			$url     = sprintf( $network['url'], rawurlencode( $canonical ) );
-			// Translators: Social button title. 1: Action, 2: Network. Example: Share on Facebook 
-			$alt     = sprintf( __( '%1$s on %2$s', 'machete' ), $network['label'], $network['title']);
+			// Translators: Social button title. 1: Action, 2: Network. Example: Share on Facebook
+			$alt = sprintf( __( '%1$s on %2$s', 'machete' ), $network['label'], $network['title'] );
 
 			$rt .= sprintf(
-					'<li class="mct-ico-%s"><a href="%s" title="%s" data-network="%s" rel="nofollow">%s</a></li>',
-					esc_attr( $network_slug ),
-					esc_url( $url ),
-					esc_attr( $alt ),
-					esc_attr( $network_slug ),
-					esc_html( $network['label'] )
-				) . "\n";
+				'<li class="mct-ico-%s"><a href="%s" title="%s" data-network="%s" rel="nofollow">%s</a></li>',
+				esc_attr( $network_slug ),
+				esc_url( $url ),
+				esc_attr( $alt ),
+				esc_attr( $network_slug ),
+				esc_html( $network['label'] )
+			) . "\n";
 		}
 
 		$rt .= '</ul>';
