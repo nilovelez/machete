@@ -15,7 +15,7 @@ if ( ! array_key_exists( 'banner', $machete_args ) ) {
 	$machete_args['banner'] = MACHETE_BASE_URL . 'inc/' . $machete_slug . '/banner.svg';
 }
 ?>
-<div class="machete-module-wrap"><div class="machete-module <?php echo esc_attr( $machete_slug . '-module' ); ?> module-is-<?php echo $machete_args['is_active'] ? 'active' : 'inactive'; ?>">
+<div class="machete-module-wrap"><div class="machete-module <?php echo esc_attr( $machete_slug . '-module' ); ?><?php echo ! empty( $machete_args['has_warning'] ) ? ' has-warning-module' : ''; ?> module-is-<?php echo $machete_args['is_active'] ? 'active' : 'inactive'; ?>">
 
 <?php if ( $machete_args['is_active'] && $machete_args['has_config'] ) { ?>
 	<a class="machete-module-image"
@@ -59,54 +59,8 @@ if ( ! array_key_exists( 'banner', $machete_args ) ) {
 			'machete_action_' . $machete_slug
 		);
 
-		if ( 'powertools' === $machete_slug ) {
-
-			$machete_powertools_path = 'machete-powertools/machete-powertools.php';
-
-			if ( $machete_args['is_active'] ) {
-
-				$machete_powertools_deactivation_url = wp_nonce_url(
-					add_query_arg(
-						array(
-							'action' => 'deactivate',
-							'plugin' => $machete_powertools_path,
-						),
-						admin_url( 'plugins.php' )
-					),
-					'deactivate-plugin_' . $machete_powertools_path
-				);
-				?>
-
-				<a href="<?php echo esc_url( $machete_powertools_deactivation_url ); ?>" class="button-secondary" data-status="1"><?php esc_html_e( 'Deactivate Plugin', 'machete' ); ?></a>
-
-				<a href="<?php echo esc_url( add_query_arg( 'page', 'machete-' . $machete_slug, admin_url( 'admin.php' ) ) ); ?>"
-				title="<?php echo esc_attr( __( 'Configure', 'machete' ) . ' ' . $machete_args['full_title'] ); ?>" class="button-secondary" data-status="0"><?php esc_html_e( 'Settings', 'machete' ); ?></a>
-
-				<?php
-			} elseif ( file_exists( WP_PLUGIN_DIR . '/' . $machete_powertools_path ) ) {
-
-				$machete_powertools_activation_url = wp_nonce_url(
-					add_query_arg(
-						array(
-							'action' => 'activate',
-							'plugin' => $machete_powertools_path,
-						),
-						admin_url( 'plugins.php' )
-					),
-					'activate-plugin_' . $machete_powertools_path
-				);
-				?>
-
-				<a href="<?php echo esc_url( $machete_powertools_activation_url ); ?>" class="button-primary" data-status="1"><?php esc_html_e( 'Activate Plugin', 'machete' ); ?></a>
-
-			<?php } else { ?>
-
-				<a href="https://machetewp.com/powertools/" class="button-primary" data-status="1"><?php esc_html_e( 'Download Machete PowerTools', 'machete' ); ?></a>
-
-			<?php } ?>
-
-
-		<?php } elseif ( $machete_args['is_active'] ) { ?>
+		if ( $machete_args['is_active'] ) {
+			?>
 
 			<?php if ( $machete_args['can_be_disabled'] ) { ?>
 			<a href="<?php echo esc_url( add_query_arg( 'machete-action', 'deactivate', $machete_action_url ) ); ?>" class="button-secondary" data-status="0"><?php esc_html_e( 'Deactivate', 'machete' ); ?></a>
@@ -119,7 +73,21 @@ if ( ! array_key_exists( 'banner', $machete_args ) ) {
 
 		<?php } else { ?>
 			<?php if ( $machete_args['can_be_enabled'] ) { ?>
-			<a href="<?php echo esc_url( add_query_arg( 'machete-action', 'activate', $machete_action_url ) ); ?>" class="button-secondary" data-status="1"><?php esc_html_e( 'Activate', 'machete' ); ?></a>
+				<?php
+				$machete_activate_url   = add_query_arg( 'machete-action', 'activate', $machete_action_url );
+				$machete_activate_class = 'button-secondary';
+				if ( ! empty( $machete_args['has_warning'] ) ) {
+					$machete_activate_class .= ' machete-module-activate-warning';
+				}
+				?>
+			<a href="<?php echo esc_url( $machete_activate_url ); ?>"
+				class="<?php echo esc_attr( $machete_activate_class ); ?>"
+				data-status="1"
+				<?php if ( ! empty( $machete_args['has_warning'] ) ) { ?>
+				data-warning-title="<?php echo esc_attr( wp_strip_all_tags( $machete_args['full_title'] ) ); ?>"
+				data-warning-message="<?php echo esc_attr( $machete_args['activation_warning'] ); ?>"
+				data-warning-icon-url="<?php echo esc_url( MACHETE_BASE_URL . 'inc/' . $machete_slug . '/icon.svg' ); ?>"
+				<?php } ?>><?php esc_html_e( 'Activate', 'machete' ); ?></a>
 			<?php } else { ?>
 				<span class="button-secondary button-disabled"><?php esc_html_e( 'Activate', 'machete' ); ?></span>
 			<?php } ?>
