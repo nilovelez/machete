@@ -46,9 +46,8 @@
 	https://github.com/wimg/PHPCompatibility
 	-->
 	
-	<config name="testVersion" value="8.2"/>
-	<rule ref="PHPCompatibility"/>
-	
+	<config name="testVersion" value="8.4"/>
+	<rule ref="PHPCompatibilityWP"/>
 
 	<!--
 	To get the optimal benefits of using WPCS, we should add a couple of
@@ -63,13 +62,17 @@
 
 	<rule ref="WordPress.WP.I18n">
 		<properties>
-			<property name="text_domain" type="array" value="machete"/>
+			<property name="text_domain" type="array">
+				<element value="machete"/>
+			</property>
 		</properties>
 	</rule>
 
 	<rule ref="WordPress.NamingConventions.PrefixAllGlobals">
 		<properties>
-			<property name="prefixes" type="array" value="machete"/>
+			<property name="prefixes" type="array">
+				<element value="machete"/>
+			</property>
 		</properties>
 	</rule>
 
