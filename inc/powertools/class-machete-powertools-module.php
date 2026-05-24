@@ -103,7 +103,27 @@ class MACHETE_POWERTOOLS_MODULE extends MACHETE_MODULE {
 			require $this->path . 'powertools.php';
 		}
 
+		add_action( 'admin_enqueue_scripts', array( $this, 'enqueue_admin_styles' ) );
+
 		add_action( 'admin_menu', array( $this, 'register_sub_menu' ) );
+	}
+
+	/**
+	 * Enqueues PowerTools admin styles on the module settings page.
+	 *
+	 * @param string $hook_suffix Current admin page hook suffix.
+	 */
+	public function enqueue_admin_styles( $hook_suffix ) {
+		if ( 'machete_page_machete-powertools' !== $hook_suffix ) {
+			return;
+		}
+
+		wp_enqueue_style(
+			'machete-powertools-admin',
+			MACHETE_BASE_URL . 'inc/powertools/css/admin.css',
+			array(),
+			MACHETE_VERSION
+		);
 	}
 	/**
 	 * Saves options to database
@@ -242,6 +262,64 @@ class MACHETE_POWERTOOLS_MODULE extends MACHETE_MODULE {
 				$time
 			)
 		); // phpcs:ignore WordPress.DB.DirectDatabaseQuery.DirectQuery, WordPress.DB.DirectDatabaseQuery.NoCaching
+
+		return $count;
+	}
+
+	/**
+	 * Returns the number of post revisions.
+	 *
+	 * @return int
+	 */
+	public function count_post_revisions() {
+		global $wpdb;
+
+		return (int) $wpdb->get_var(
+			"SELECT COUNT(*) FROM $wpdb->posts WHERE post_type = 'revision'"
+		); // phpcs:ignore WordPress.DB.DirectDatabaseQuery.DirectQuery, WordPress.DB.DirectDatabaseQuery.NoCaching
+	}
+
+	/**
+	 * Returns the number of orphaned postmeta rows.
+	 *
+	 * @return int
+	 */
+	public function count_orphaned_postmeta() {
+		global $wpdb;
+
+		return (int) $wpdb->get_var(
+			"SELECT COUNT(*) FROM $wpdb->postmeta pm
+			LEFT JOIN $wpdb->posts p ON p.ID = pm.post_id
+			WHERE p.ID IS NULL"
+		); // phpcs:ignore WordPress.DB.DirectDatabaseQuery.DirectQuery, WordPress.DB.DirectDatabaseQuery.NoCaching
+	}
+
+	/**
+	 * Returns the number of expired cron events.
+	 *
+	 * @return int
+	 */
+	public function count_expired_cron_events() {
+		if ( ! function_exists( '_get_cron_array' ) ) {
+			require_once ABSPATH . 'wp-includes/cron.php';
+		}
+
+		$cron  = _get_cron_array();
+		$count = 0;
+		$time  = time();
+
+		if ( empty( $cron ) ) {
+			return 0;
+		}
+
+		foreach ( $cron as $timestamp => $hooks ) {
+			if ( (int) $timestamp >= $time ) {
+				continue;
+			}
+			foreach ( $hooks as $events ) {
+				$count += count( $events );
+			}
+		}
 
 		return $count;
 	}

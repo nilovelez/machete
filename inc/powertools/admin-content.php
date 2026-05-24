@@ -11,11 +11,17 @@ if ( ! defined( 'ABSPATH' ) ) {
 }
 
 $machete_allowed_description_tags = array(
-	'br'   => array(),
-	'span' => array(
+	'br'     => array(),
+	'strong' => array(),
+	'span'   => array(
 		'style' => array(),
 	),
 );
+
+$machete_expired_transients_count = $this->count_expired_transients();
+$machete_post_revisions_count     = $this->count_post_revisions();
+$machete_orphaned_postmeta_count  = $this->count_orphaned_postmeta();
+$machete_expired_cron_count       = $this->count_expired_cron_events();
 
 ?>
 <div class="wrap machete-wrap machete-section-wrap">
@@ -31,43 +37,106 @@ $machete_allowed_description_tags = array(
 
 	<?php wp_nonce_field( 'machete_powertools_action' ); ?>
 
-	<table class="form-table">
+	<table class="form-table machete-powertools-actions-table">
 	<tbody><tr>
 
-	<th scope="row"><label for="tracking_id"><?php esc_html_e( 'Delete Expired Transients', 'machete' ); ?></label></th>
-	<td><input type="submit" name="machete-powertools-action" value="purge_transients" class="button button-primary">
-	<p class="description" id="tracking_id_description" style="display: none;"><?php esc_html_e( 'Format:', 'machete' ); ?></p></td>
+	<th scope="row"><button type="submit" name="machete-powertools-action" id="purge_transients" value="purge_transients" class="button button-primary"><?php esc_html_e( 'Purge transients', 'machete' ); ?></button></th>
+	<td><label for="purge_transients"><?php
+		echo wp_kses(
+			'<strong>' . sprintf(
+				_n(
+					'Remove %1$s expired transient from wp_options.',
+					'Remove %1$s expired transients from wp_options.',
+					$machete_expired_transients_count,
+					'machete'
+				),
+				number_format_i18n( $machete_expired_transients_count )
+			) . '</strong><br>' . __( 'These are temporary cache entries that WordPress and plugins should have deleted automatically.', 'machete' ),
+			$machete_allowed_description_tags
+		);
+	?></label></td>
 	</tr>
 	<tr>
-	<th scope="row"><label for="purge_post_revisions"><?php esc_html_e( 'Delete Post Revisions', 'machete' ); ?></label></th>
-	<td><input type="submit" name="machete-powertools-action" value="purge_post_revisions" class="button button-primary"></td>
+	<th scope="row"><button type="submit" name="machete-powertools-action" id="purge_post_revisions" value="purge_post_revisions" class="button button-primary"><?php esc_html_e( 'Purge post revisions', 'machete' ); ?></button></th>
+	<td><label for="purge_post_revisions"><?php
+		echo wp_kses(
+			'<strong>' . sprintf(
+				_n(
+					'Remove %1$s post revision from the database.',
+					'Remove %1$s post revisions from the database.',
+					$machete_post_revisions_count,
+					'machete'
+				),
+				number_format_i18n( $machete_post_revisions_count )
+			) . '</strong><br>' . __( 'Revisions are automatic snapshots saved each time a post or page is edited.', 'machete' ),
+			$machete_allowed_description_tags
+		);
+	?></label></td>
 	</tr>
 	<tr>
-	<th scope="row"><label for="purge_orphaned_meta"><?php esc_html_e( 'Delete Orphaned Postmeta', 'machete' ); ?></label></th>
-	<td><input type="submit" name="machete-powertools-action" value="purge_orphaned_meta" class="button button-primary"></td>
+	<th scope="row"><button type="submit" name="machete-powertools-action" id="purge_orphaned_meta" value="purge_orphaned_meta" class="button button-primary"><?php esc_html_e( 'Purge orphaned meta', 'machete' ); ?></button></th>
+	<td><label for="purge_orphaned_meta"><?php
+		echo wp_kses(
+			'<strong>' . sprintf(
+				_n(
+					'Remove %1$s orphaned postmeta row.',
+					'Remove %1$s orphaned postmeta rows.',
+					$machete_orphaned_postmeta_count,
+					'machete'
+				),
+				number_format_i18n( $machete_orphaned_postmeta_count )
+			) . '</strong><br>' . __( 'These custom field records reference a post ID that no longer exists.', 'machete' ),
+			$machete_allowed_description_tags
+		);
+	?></label></td>
 	</tr>
 	<tr>
-	<th scope="row"><label for="purge_expired_cron"><?php esc_html_e( 'Delete Expired Cron Events', 'machete' ); ?></label></th>
-	<td><input type="submit" name="machete-powertools-action" value="purge_expired_cron" class="button button-primary"></td>
+	<th scope="row"><button type="submit" name="machete-powertools-action" id="purge_expired_cron" value="purge_expired_cron" class="button button-primary"><?php esc_html_e( 'Purge expired Cron', 'machete' ); ?></button></th>
+	<td><label for="purge_expired_cron"><?php
+		echo wp_kses(
+			'<strong>' . sprintf(
+				_n(
+					'Remove %1$s expired cron event from wp_options.',
+					'Remove %1$s expired cron events from wp_options.',
+					$machete_expired_cron_count,
+					'machete'
+				),
+				number_format_i18n( $machete_expired_cron_count )
+			) . '</strong><br>' . __( 'These scheduled tasks were missed, usually because WP-Cron did not run on time.', 'machete' ),
+			$machete_allowed_description_tags
+		);
+	?></label></td>
 	</tr>
 	<tr>
-	<th scope="row"><label for="tracking_id"><?php esc_html_e( 'Delete Permalink Cache', 'machete' ); ?></label></th>
-	<td><input type="submit" name="machete-powertools-action" value="flush_rewrites" class="button button-primary">
-	<p class="description" id="tracking_id_description" style="display: none;"><?php esc_html_e( 'Format:', 'machete' ); ?></p></td>
+	<th scope="row"><button type="submit" name="machete-powertools-action" id="flush_rewrites" value="flush_rewrites" class="button button-primary">flush_rewrite_rules()</button></th>
+	<td><label for="flush_rewrites"><?php
+		echo wp_kses(
+			'<strong>' . __( 'Regenerate WordPress permalink rewrite rules.', 'machete' ) . '</strong><br>' . __( 'Use this after changing permalink settings, registering custom post types, or when valid URLs return 404 errors.', 'machete' ),
+			$machete_allowed_description_tags
+		);
+	?></label></td>
 	</tr>
 
 	<?php if ( function_exists( 'opcache_reset' ) ) { ?>
 	<tr>
-	<th scope="row"><label for="tracking_id"><?php esc_html_e( 'Delete Opcache contents', 'machete' ); ?></label></th>
-	<td><input type="submit" name="machete-powertools-action" value="flush_opcache" class="button button-primary">
-	<p class="description" id="tracking_id_description" style="display: none;"><?php esc_html_e( 'Format:', 'machete' ); ?></p></td>
+	<th scope="row"><button type="submit" name="machete-powertools-action" id="flush_opcache" value="flush_opcache" class="button button-primary">opcache_reset()</button></th>
+	<td><label for="flush_opcache"><?php
+		echo wp_kses(
+			'<strong>' . __( 'Clear the PHP OPcache bytecode cache.', 'machete' ) . '</strong><br>' . __( 'Use this after deploying PHP changes when the server keeps serving an older version of your files.', 'machete' ),
+			$machete_allowed_description_tags
+		);
+	?></label></td>
 	</tr>
 	<?php } ?>
 
 	<tr>
-	<th scope="row"><label for="tracking_id"><?php esc_html_e( 'Delete WordPress object cache contents', 'machete' ); ?></label></th>
-	<td><input type="submit" name="machete-powertools-action" value="flush_wpcache" class="button button-primary">
-	<p class="description" id="tracking_id_description" style="display: none;"><?php esc_html_e( 'Format:', 'machete' ); ?></p></td>
+	<th scope="row"><button type="submit" name="machete-powertools-action" id="flush_wpcache" value="flush_wpcache" class="button button-primary">wp_cache_flush()</button></th>
+	<td><label for="flush_wpcache"><?php
+		echo wp_kses(
+			'<strong>' . __( 'Flush the WordPress object cache.', 'machete' ) . '</strong><br>' . __( 'Use this when a persistent cache (Redis, Memcached, etc.) keeps serving stale data after updates.', 'machete' ),
+			$machete_allowed_description_tags
+		);
+	?></label></td>
 	</tr>
 
 	</tbody></table>
