@@ -18,7 +18,7 @@ $this->params['activation_warning'] = __( 'This module contains options that can
 /* Powertools options array */
 $this->powertools_array['widget_shortcodes'] = array(
 	'title'       => __( 'Shortcodes in Widgets', 'machete' ),
-	'description' => __( 'Enables the use of shortcodes in text/html widgets. It may slightly impact performance', 'machete' ),
+	'description' => __( 'Enables shortcodes in classic Text and Custom HTML widgets.', 'machete' ) . '<br>' . __( 'For block-based widget areas (WordPress 5.8+), use the Shortcode block instead. Only needed on legacy themes and classic widget setups.', 'machete' ),
 );
 
 $this->powertools_array['rss_thumbnails'] = array(
