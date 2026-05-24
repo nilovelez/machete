@@ -95,16 +95,45 @@ add_action(
 			}
 		);
 
-		// Enqueue admin styles.
+		// Enqueue admin styles and About page scripts.
 		add_action(
 			'admin_enqueue_scripts',
-			function () {
+			function ( $hook_suffix ) {
 				wp_enqueue_style(
 					'machete_admin_4',
 					plugin_dir_url( __FILE__ ) . 'css/admin.css',
 					array(),
 					MACHETE_VERSION
 				);
+
+				if ( 'toplevel_page_machete' !== $hook_suffix ) {
+					return;
+				}
+
+				wp_enqueue_script(
+					'machete-module-activate-warning',
+					MACHETE_BASE_URL . 'inc/about/js/module-activate-warning.js',
+					array( 'wp-element', 'wp-components', 'wp-i18n' ),
+					MACHETE_VERSION,
+					true
+				);
+
+				wp_localize_script(
+					'machete-module-activate-warning',
+					'macheteAboutWarning',
+					array(
+						'confirm' => __( 'Activate', 'machete' ),
+						'cancel'  => __( 'Cancel', 'machete' ),
+					)
+				);
+
+				if ( function_exists( 'wp_set_script_translations' ) ) {
+					wp_set_script_translations(
+						'machete-module-activate-warning',
+						'machete',
+						MACHETE_BASE_PATH . 'languages'
+					);
+				}
 			}
 		);
 	}

@@ -317,3 +317,35 @@
 	background-color: #f0b849;
 	margin-left: 10px;
 }
+
+.machete-module-warning-modal__content {
+	display: flex;
+	gap: 16px;
+	align-items: flex-start;
+	margin-bottom: 8px;
+}
+
+.machete-module-warning-modal__icon {
+	flex-shrink: 0;
+	width: 72px;
+	height: 72px;
+}
+
+.machete-module-warning-modal__icon img,
+.machete-module-warning-modal__icon svg {
+	display: block;
+	width: 72px;
+	height: 72px;
+}
+
+.machete-module-warning-modal__message {
+	margin: 0;
+	flex: 1;
+}
+
+.machete-module-warning-modal__actions {
+	display: flex;
+	justify-content: flex-end;
+	gap: 8px;
+	margin-top: 16px;
+}
