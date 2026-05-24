@@ -174,7 +174,9 @@ class MACHETE_POWERTOOLS_MODULE extends MACHETE_MODULE {
 	private function purge_transients() {
 		global $wpdb;
 
-		$rows = $wpdb->query(
+		$count = $this->count_expired_transients();
+
+		$wpdb->query(
 			$wpdb->prepare(
 				"DELETE a, b FROM $wpdb->options a, $wpdb->options b
 				WHERE a.option_name LIKE %s
@@ -185,9 +187,9 @@ class MACHETE_POWERTOOLS_MODULE extends MACHETE_MODULE {
 				$wpdb->esc_like( '_transient_timeout_' ) . '%',
 				time()
 			)
-		); // phpcs: cache ok, db call ok.
+		); // phpcs:ignore WordPress.DB.DirectDatabaseQuery.DirectQuery, WordPress.DB.DirectDatabaseQuery.NoCaching
 
-		$rows2 = $wpdb->query(
+		$wpdb->query(
 			$wpdb->prepare(
 				"DELETE a, b FROM $wpdb->options a, $wpdb->options b
 				WHERE a.option_name LIKE %s
@@ -198,10 +200,50 @@ class MACHETE_POWERTOOLS_MODULE extends MACHETE_MODULE {
 				$wpdb->esc_like( '_site_transient_timeout_' ) . '%',
 				time()
 			)
-		); // phpcs: cache ok, db call ok.
-		// translators: $d number of deleted transsients.
-		$this->notice( sprintf( __( '%d Transients Rows Cleared', 'machete' ), $rows + $rows2 ), 'success' );
+		); // phpcs:ignore WordPress.DB.DirectDatabaseQuery.DirectQuery, WordPress.DB.DirectDatabaseQuery.NoCaching
+
+		// translators: %s: number of deleted expired transients.
+		$this->notice( sprintf( _n( '%s expired transient cleared.', '%s expired transients cleared.', $count, 'machete' ), number_format_i18n( $count ) ), 'success' );
 		return true;
+	}
+
+	/**
+	 * Returns the number of expired transients.
+	 *
+	 * @return int
+	 */
+	public function count_expired_transients() {
+		global $wpdb;
+
+		$time = time();
+
+		$count = (int) $wpdb->get_var(
+			$wpdb->prepare(
+				"SELECT COUNT(*) FROM $wpdb->options a, $wpdb->options b
+				WHERE a.option_name LIKE %s
+				AND a.option_name NOT LIKE %s
+				AND b.option_name = CONCAT( '_transient_timeout_', SUBSTRING( a.option_name, 12 ) )
+				AND b.option_value < %d",
+				$wpdb->esc_like( '_transient_' ) . '%',
+				$wpdb->esc_like( '_transient_timeout_' ) . '%',
+				$time
+			)
+		); // phpcs:ignore WordPress.DB.DirectDatabaseQuery.DirectQuery, WordPress.DB.DirectDatabaseQuery.NoCaching
+
+		$count += (int) $wpdb->get_var(
+			$wpdb->prepare(
+				"SELECT COUNT(*) FROM $wpdb->options a, $wpdb->options b
+				WHERE a.option_name LIKE %s
+				AND a.option_name NOT LIKE %s
+				AND b.option_name = CONCAT( '_site_transient_timeout_', SUBSTRING( a.option_name, 17 ) )
+				AND b.option_value < %d",
+				$wpdb->esc_like( '_site_transient_' ) . '%',
+				$wpdb->esc_like( '_site_transient_timeout_' ) . '%',
+				$time
+			)
+		); // phpcs:ignore WordPress.DB.DirectDatabaseQuery.DirectQuery, WordPress.DB.DirectDatabaseQuery.NoCaching
+
+		return $count;
 	}
 
 	/**
