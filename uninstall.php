@@ -13,7 +13,7 @@ if ( ! defined( 'WP_UNINSTALL_PLUGIN' ) ) {
 }
 
 // machete module manager options.
-delete_option( 'machete_disabled_modules' );
+delete_option( 'machete_enabled_modules' );
 
 // machete cleanup options.
 delete_option( 'machete_cleanup_settings' );
@@ -32,3 +32,6 @@ delete_option( 'machete_social_settings' );
 
 // machete WooCommerce options.
 delete_option( 'machete_woocommerce_settings' );
+
+// machete powertools options.
+delete_option( 'machete_powertools_settings' );

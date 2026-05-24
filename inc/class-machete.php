@@ -145,10 +145,10 @@ class MACHETE {
 			return false;
 		}
 
-		$disabled_modules = get_option( 'machete_disabled_modules', array() );
+		$enabled_modules = get_option( 'machete_enabled_modules', array() );
 
 		if ( 'deactivate' === $action ) {
-			if ( in_array( $module, $disabled_modules, true ) ) {
+			if ( ! $this->modules[ $module ]->params['is_active'] ) {
 				if ( ! $silent ) {
 					$this->notice( __( 'Nothing to do. The module was already disabled.', 'machete' ), 'notice' );
 				}
@@ -161,9 +161,10 @@ class MACHETE {
 				return false;
 			}
 
-			$disabled_modules[] = $module;
+			$enabled_modules = array_values( array_diff( $enabled_modules, array( $module ) ) );
+			update_option( 'machete_enabled_modules', $enabled_modules );
 
-			if ( update_option( 'machete_disabled_modules', $disabled_modules ) ) {
+			if ( ! in_array( $module, get_option( 'machete_enabled_modules', array() ), true ) ) {
 				$this->modules[ $module ]->params['is_active'] = false;
 				if ( ! $silent ) {
 					$this->notice(
@@ -191,16 +192,13 @@ class MACHETE {
 				}
 				return false;
 			}
-			if ( 'powertools' === $module ) {
-				if ( ! $silent ) {
-					$this->notice( __( 'Sorry, you can\'t enable that module', 'machete' ), 'warning' );
-				}
-				return false;
+
+			if ( ! in_array( $module, $enabled_modules, true ) ) {
+				$enabled_modules[] = $module;
 			}
+			update_option( 'machete_enabled_modules', $enabled_modules );
 
-			$disabled_modules = array_diff( $disabled_modules, array( $module ) );
-
-			if ( update_option( 'machete_disabled_modules', $disabled_modules ) ) {
+			if ( in_array( $module, get_option( 'machete_enabled_modules', array() ), true ) ) {
 				$this->modules[ $module ]->params['is_active'] = true;
 				if ( ! $silent ) {
 					$this->notice(
