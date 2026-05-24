@@ -11,6 +11,11 @@ if ( ! defined( 'ABSPATH' ) ) {
 }
 
 $machete_allowed_description_tags = array(
+	'a'      => array(
+		'href'   => array(),
+		'target' => array(),
+		'rel'    => array(),
+	),
 	'br'     => array(),
 	'strong' => array(),
 	'span'   => array(
@@ -33,7 +38,7 @@ $machete_expired_cron_count       = $this->count_expired_cron_events();
 	<p class="tab-performance"><span><strong><i class="dashicons dashicons-clock"></i> <?php esc_html_e( 'Performance impact:', 'machete' ); ?></strong> <?php esc_html_e( 'This section stores all its settings in a single autoloaded configuration variable.', 'machete' ); ?></span></p>
 
 
-<form id="mache-powertools-actions" action="" method="POST">
+<form id="machete-powertools-actions" action="" method="POST">
 
 	<?php wp_nonce_field( 'machete_powertools_action' ); ?>
 
@@ -156,7 +161,7 @@ $machete_expired_cron_count       = $this->count_expired_cron_events();
 	<thead>
 		<tr>
 			<td class="manage-column column-cb check-column " ><input type="checkbox" name="check_all" id="machete_powertools_checkall_fld" <?php checked( true, $this->all_powertools_checked, true ); ?>></td>
-			<th class="column-title manage-column column-primary"><?php esc_html_e( 'Remove', 'machete' ); ?></th>
+			<th class="column-title manage-column column-primary"><?php esc_html_e( 'Enable', 'machete' ); ?></th>
 			<th><?php esc_html_e( 'Explanation', 'machete' ); ?></th>
 		</tr>
 	</thead>
