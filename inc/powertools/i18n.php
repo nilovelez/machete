@@ -10,9 +10,10 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 
-$this->params['title']       = '<span style="color: #ff9900">' . __( 'PowerTools', 'machete' ) . '</span>';
-$this->params['full_title']  = __( 'Machete PowerTools', 'machete' );
-$this->params['description'] = __( 'Machete PowerTools is a free upgrade module targeted at WordPress developers and power users.', 'machete' );
+$this->params['title']              = '<span style="color: #ff9900">' . __( 'PowerTools', 'machete' ) . '</span>';
+$this->params['full_title']         = __( 'Machete PowerTools', 'machete' );
+$this->params['description']        = __( 'Advanced tools for WordPress developers and power users. Disabled by default.', 'machete' );
+$this->params['activation_warning'] = __( 'This module contains options that can break your site. Only use them if you know what you are doing.', 'machete' );
 
 /* Powertools options array */
 $this->powertools_array['widget_shortcodes'] = array(
