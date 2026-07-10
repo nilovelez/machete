@@ -2,6 +2,16 @@
 
 = 5.2.1 =
 * Security fix: Sanitize cookie bar accent color to prevent stored XSS in generated JavaScript
+* New: PowerTools is now a built-in module, disabled by default
+* Change: Module storage migrated from `machete_disabled_modules` to `machete_enabled_modules` on upgrade
+* New: PowerTools maintenance actions to purge post revisions, orphaned postmeta, expired cron events, and expired transients with live counters
+* New: PowerTools options to show admin list IDs and hide the frontend admin bar for non-administrators
+* Improvement: PowerTools maintenance UI redesign with clearer action labels and descriptions
+* Fix: PowerTools post revision purge SQL and toolbox select-all checkbox
+* Improvement: RSS thumbnails fall back to the first attached image when no featured image is set
+* Fix: Disable search option now only affects the frontend main query
+* New: Modal confirmation before activating modules marked with a warning
+* Improvement: About page warning styling for risky modules and admin notice for the legacy PowerTools activator plugin
 
 = 5.1 =
 * Checked for compatibility with WordPress 6.9
