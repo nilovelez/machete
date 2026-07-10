@@ -49,6 +49,7 @@ $machete_expired_cron_count       = $this->count_expired_cron_events();
 	<td><label for="purge_transients"><?php
 		echo wp_kses(
 			'<strong>' . sprintf(
+				/* translators: %1$s is the number of expired transients */
 				_n(
 					'Remove %1$s expired transient from wp_options.',
 					'Remove %1$s expired transients from wp_options.',
@@ -66,6 +67,7 @@ $machete_expired_cron_count       = $this->count_expired_cron_events();
 	<td><label for="purge_post_revisions"><?php
 		echo wp_kses(
 			'<strong>' . sprintf(
+				/* translators: %1$s is the number of post revisions */
 				_n(
 					'Remove %1$s post revision from the database.',
 					'Remove %1$s post revisions from the database.',
@@ -83,6 +85,7 @@ $machete_expired_cron_count       = $this->count_expired_cron_events();
 	<td><label for="purge_orphaned_meta"><?php
 		echo wp_kses(
 			'<strong>' . sprintf(
+				/* translators: %1$s is the number of orphaned postmeta rows */
 				_n(
 					'Remove %1$s orphaned postmeta row.',
 					'Remove %1$s orphaned postmeta rows.',
@@ -100,6 +103,7 @@ $machete_expired_cron_count       = $this->count_expired_cron_events();
 	<td><label for="purge_expired_cron"><?php
 		echo wp_kses(
 			'<strong>' . sprintf(
+				/* translators: %1$s is the number of expired cron events */
 				_n(
 					'Remove %1$s expired cron event from wp_options.',
 					'Remove %1$s expired cron events from wp_options.',
