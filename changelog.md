@@ -1,5 +1,8 @@
 == Changelog ==
 
+= 5.2.1 =
+* Security fix: Sanitize cookie bar accent color to prevent stored XSS in generated JavaScript
+
 = 5.1 =
 * Checked for compatibility with WordPress 6.9
 * Cleanup module: Relaxed the function to block the rest-api so it works better with the site editor

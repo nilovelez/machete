@@ -114,12 +114,13 @@ class MACHETE_COOKIES_MODULE extends MACHETE_MODULE {
 		$html_replaces['{{theme_stylesheet}}'] = $this->themes[ $options['bar_theme'] ]['stylesheet'];
 
 		// Cookie bar accent color.
-		if ( ! empty( $options['accent_color'] ) ) {
-
-			$settings['accent_color'] = $options['accent_color'];
-			if ( $options['accent_color'] !== $this->default_settings['accent_color'] ) {
-				$this->cookies_bar_innerhtml .= 'var machete_cookies_accent_color = \'' . $options['accent_color'] . '\';' . "\n";
-			}
+		$accent_color = sanitize_hex_color( $options['accent_color'] ?? '' );
+		if ( empty( $accent_color ) ) {
+			$accent_color = $this->default_settings['accent_color'];
+		}
+		$settings['accent_color'] = $accent_color;
+		if ( $accent_color !== $this->default_settings['accent_color'] ) {
+			$this->cookies_bar_innerhtml .= 'var machete_cookies_accent_color = \'' . esc_js( $accent_color ) . '\';' . "\n";
 		}
 
 		// Cookie bar status.

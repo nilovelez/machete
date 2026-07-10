@@ -5,7 +5,7 @@ Tags: optimization, cookies, analytics, maintenance, clone
 Requires PHP: 7.4
 Requires at least: 5.9
 Tested up to: 7.0
-Stable tag: 5.2
+Stable tag: 5.2.1
 License: WTFPL
 License URI: http://www.wtfpl.net/txt/copying/
 
@@ -76,6 +76,9 @@ Like it or not, the WordPress Block Editor (codenamed Gutenberg) is here to stay
 7. Options WooCommerce should have
 
 == Changelog ==
+
+= 5.2.1 =
+* Security fix: Sanitize cookie bar accent color to prevent stored XSS in generated JavaScript
 
 = 5.2 =
 * Checked for compatibility with WordPress 7.0
