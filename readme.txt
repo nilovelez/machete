@@ -5,7 +5,7 @@ Tags: optimization, cookies, analytics, maintenance, clone
 Requires PHP: 7.4
 Requires at least: 5.9
 Tested up to: 7.0
-Stable tag: 5.2.1
+Stable tag: 5.3
 License: WTFPL
 License URI: http://www.wtfpl.net/txt/copying/
 
@@ -77,7 +77,7 @@ Like it or not, the WordPress Block Editor (codenamed Gutenberg) is here to stay
 
 == Changelog ==
 
-= 5.2.1 =
+= 5.3 =
 * Security fix: Sanitize cookie bar accent color to prevent stored XSS in generated JavaScript
 * New: PowerTools is now a built-in module, disabled by default
 * Change: Module storage migrated from `machete_disabled_modules` to `machete_enabled_modules` on upgrade
