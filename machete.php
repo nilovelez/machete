@@ -89,8 +89,6 @@ add_action(
 	function () {
 		global $machete;
 
-		load_plugin_textdomain( 'machete', false, dirname( plugin_basename( __FILE__ ) ) . '/languages/' );
-
 		// Disable WooCommerce module if WooCommece is active.
 		if ( ! function_exists( 'is_woocommerce' ) ) {
 			$machete->modules['woocommerce']->params['is_active']      = false;
