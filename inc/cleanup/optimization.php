@@ -304,6 +304,10 @@ if ( in_array( 'comment_autolinks', $this->settings, true ) && ! is_admin() ) {
 ******** OPTIMIZATION TWEAKS **********
 */
 
+// disable core ai support.
+if ( in_array( 'ai_support', $this->settings, true ) ) {
+	add_filter( 'wp_supports_ai', '__return_false' );
+}
 // disable json api and remove link from header.
 if ( in_array( 'json_api', $this->settings, true ) ) {
 

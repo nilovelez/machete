@@ -65,6 +65,7 @@ class MACHETE_CLEANUP_MODULE extends MACHETE_MODULE {
 		);
 
 		$this->tweaks_array = array(
+			'ai_support'         => array(),
 			'json_api'           => array(),
 			'xmlrpc'             => array(),
 			'jquery-migrate'     => array(),
