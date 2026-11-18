@@ -6,6 +6,7 @@
 * Change: Machete now requires PHP 8.2 or later
 * Change: The cookie bar settings now require the `unfiltered_html` capability (Editors and Administrators)
 * Fix: Saving the cookie bar settings no longer triggers a PHP warning when the selected theme is not valid
+* Fix: The cookie bar no longer throws a JavaScript error when no Google tag is loaded
 
 ## 5.3
 * Security fix: Sanitize cookie bar accent color to prevent stored XSS in generated JavaScript
