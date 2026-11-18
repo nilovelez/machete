@@ -145,12 +145,8 @@ foreach ( $this->themes as $machete_theme_slug => $machete_params ) {
 		'{{warning_text}}'        => '',
 	);
 
-	// OJO, cookies_bar_innerhtml define el innerHTMl de la barra como var machete_cookies_bar_html.
-	echo str_replace( // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped 
-		array_keys( $machete_cookie_replaces ),
-		array_values( $machete_cookie_replaces ),
-		$this->cookies_bar_innerhtml
-	);
+	// get_cookies_bar_js() defines the bar's inner HTML as machete_cookies_bar_html, with every value JSON encoded.
+	echo $this->get_cookies_bar_js( $machete_cookie_replaces, '' ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
 	?>
 
 
