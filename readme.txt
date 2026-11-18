@@ -2,7 +2,7 @@
 Contributors: nilovelez
 Donate link: https://ko-fi.com/nilovelez
 Tags: optimization, cookies, analytics, maintenance, clone
-Requires PHP: 7.4
+Requires PHP: 8.2
 Requires at least: 5.9
 Tested up to: 7.0
 Stable tag: 5.3
