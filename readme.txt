@@ -77,6 +77,10 @@ Like it or not, the WordPress Block Editor (codenamed Gutenberg) is here to stay
 
 == Changelog ==
 
+= 5.4 =
+* New: WordPress Optimization option to disable the WordPress core AI support features
+* Change: Machete now requires PHP 8.2 or later
+
 = 5.3 =
 * Security fix: Sanitize cookie bar accent color to prevent stored XSS in generated JavaScript
 * New: PowerTools is now a built-in module, disabled by default
