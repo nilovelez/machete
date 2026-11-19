@@ -486,7 +486,7 @@ code {
 	display: grid;
 	grid-template-columns: minmax(0, 1fr) minmax(0, 1.15fr);
 	gap: 48px;
-	align-items: center;
+	align-items: start;
 	padding: 40px 0;
 	border-top: 1px solid #dddddd;
 }
@@ -501,6 +501,7 @@ code {
 }
 
 .module h3 {
+	margin-top: 0;
 	color: var(--orange-dark);
 	font-size: 26px;
 	font-weight: 600;
