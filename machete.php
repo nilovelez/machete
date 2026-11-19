@@ -1,7 +1,7 @@
 <?php
 /**
  * Plugin Name: Machete
- * Plugin URI: https://machetewp.com
+ * Plugin URI: https://machete.nilovelez.com
  * Description: Machete is a lean and simple suite of tools that makes WordPress development easier: cookie bar, tracking codes, custom code editor, header cleanup, post and page cloner
  * Version: 5.3
  * Requires at least: 5.9
