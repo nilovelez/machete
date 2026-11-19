@@ -31,10 +31,21 @@
 			<nav class="site-menu" id="site-menu" aria-label="Main">
 				<ul>
 					<li><a href="#philosophy">Philosophy</a></li>
-					<li><a href="#modules">Modules</a></li>
+					<li class="has-submenu">
+						<a href="#modules">Modules</a>
+						<ul class="submenu">
+							<li><a href="#optimization">WordPress Optimization</a></li>
+							<li><a href="#cookies">Cookies &amp; GDPR Warning</a></li>
+							<li><a href="#analytics">Analytics and Custom Code</a></li>
+							<li><a href="#maintenance">Maintenance Mode</a></li>
+							<li><a href="#cloner">Post &amp; Page Cloner</a></li>
+							<li><a href="#social">Social Sharing Buttons</a></li>
+							<li><a href="#woocommerce">WooCommerce Utils</a></li>
+							<li><a href="#powertools">PowerTools</a></li>
+						</ul>
+					</li>
 					<li><a href="#testimonials">Testimonials</a></li>
 					<li><a href="https://github.com/nilovelez/machete">GitHub</a></li>
-					<li><a class="menu-button" href="#install">Install</a></li>
 				</ul>
 			</nav>
 		</div>
@@ -87,113 +98,202 @@
 				<h2>Machete Modules</h2>
 				<p class="section-lead">Lots of great tools, more to come</p>
 
-				<article class="module">
+				<article class="module" id="optimization">
 					<div class="module-text">
 						<img class="module-icon" src="img/modules/cleanup.svg" alt="" width="72" height="72">
 						<h3>WordPress Optimization</h3>
 						<p>WordPress places a lot of code inside the <code>&lt;head&gt;</code> tag just to keep backward compatibility or to enable optional features. You can disable most of it and save some time on every page request, while making your site safer.</p>
-						<ul>
-							<li>Header cleanup: RSD, WLW, generator tags, shortlinks, version strings…</li>
-							<li>Feature cleanup: emojis, PDF thumbnails, extra image sizes, revisions, the <code>/random/</code> redirect…</li>
-							<li>Optional tweaks: XML-RPC, JSON API, jQuery Migrate, oEmbed and core AI features.</li>
-						</ul>
 					</div>
 					<img class="module-screen" src="img/screens/cleanup.png" alt="The WordPress Optimization settings screen" width="1280" height="720" loading="lazy">
+					<div class="module-options">
+						<h4>Header cleanup <span>Completely safe</span></h4>
+						<ul>
+							<li><strong>RSD:</strong> removes the Really Simple Discovery links, used for automatic pingbacks.</li>
+							<li><strong>WLW:</strong> removes the link to <code>wlwmanifest.xml</code>, only needed by Windows Live Writer.</li>
+							<li><strong>Feed links:</strong> removes the automatic RSS links. Feeds still work.</li>
+							<li><strong>Feed generator:</strong> removes the generator tag from RSS feeds.</li>
+							<li><strong>Adjacent posts:</strong> removes the next and previous post links from the header.</li>
+							<li><strong>Shortlink:</strong> removes the shortlink URL from the header.</li>
+							<li><strong>Generator tags:</strong> removes the WordPress and WooCommerce generator meta tags, used by attackers to detect the WordPress version.</li>
+							<li><strong>Version strings:</strong> removes the <code>?ver=</code> query string from styles and scripts.</li>
+							<li><strong>DNS prefetch:</strong> removes the <code>dns-prefetch</code> links from the header.</li>
+						</ul>
+						<h4>Feature cleanup <span>Mostly safe</span></h4>
+						<ul>
+							<li><strong>Emojis:</strong> removes the emoji styles and scripts from the header, RSS, emails and the editor.</li>
+							<li><strong>PDF thumbnails:</strong> stops WordPress from making a thumbnail of every PDF you upload.</li>
+							<li><strong>Limit post revisions:</strong> keeps only 5 revisions per post, unless <code>WP_POST_REVISIONS</code> is already defined.</li>
+							<li><strong>Slow heartbeat:</strong> the editor checks in every 60 seconds instead of every 15.</li>
+							<li><strong>Comment reply script:</strong> loads <code>comment-reply.js</code> only when it is needed.</li>
+							<li><strong>Empty trash every week:</strong> instead of every 30 days.</li>
+							<li><strong>capital_P_dangit:</strong> stops WordPress from rewriting “Wordpress” as “WordPress” in every title, content and comment.</li>
+							<li><strong>medium_large, 1536x1536 and 2048x2048 thumbnails:</strong> each image size can be disabled on its own.</li>
+							<li><strong>No comment autolinks:</strong> URLs in comments are no longer turned into links, a favorite of spammers.</li>
+							<li><strong>Random content redirect:</strong> disables the <code>/random/</code> URLs added in WordPress 7.2, which run a slow random query on every visit.</li>
+							<li><strong>Login languages:</strong> hides the language switcher on the login screen.</li>
+							<li><strong>Plugin and theme editor:</strong> disables a mostly useless tool that can be very dangerous in the wrong hands.</li>
+						</ul>
+						<h4>Optimization tweaks <span>Handle with care</span></h4>
+						<ul>
+							<li><strong>Core AI support:</strong> disables all the WordPress core AI features.</li>
+							<li><strong>JSON API:</strong> removes the REST API links from the header and requires API consumers to be authenticated.</li>
+							<li><strong>XML-RPC:</strong> disables the XML-RPC interface.</li>
+							<li><strong>jQuery Migrate:</strong> removes the compatibility layer for old jQuery code from the frontend.</li>
+							<li><strong>oEmbed scripts:</strong> removes oEmbed if you don’t embed content from other sites.</li>
+							<li><strong>Reduce JPEG quality:</strong> thumbnails are compressed to 72% instead of 82%. Originals are not touched.</li>
+							<li><strong>Big image scaling:</strong> stops WordPress from making a 2560px copy of huge uploads.</li>
+							<li><strong>Block editor CSS:</strong> removes the block stylesheets from the frontend.</li>
+							<li><strong>Global CSS:</strong> removes the inline global styles and block-support CSS.</li>
+						</ul>
+					</div>
 				</article>
 
-				<article class="module">
+				<article class="module" id="cookies">
 					<div class="module-text">
 						<img class="module-icon" src="img/modules/cookies.svg" alt="" width="72" height="72">
 						<h3>Cookies &amp; GDPR Warning</h3>
 						<p>We know you hate cookie warning bars. This is the least hateable one you will find: it is really light, it does not affect your PageSpeed score and it plays well with static cache plugins.</p>
-						<ul>
-							<li>Accept all or accept only essential cookies.</li>
-							<li>Light and dark themes, with your own accent color.</li>
-							<li>Works with the Analytics module and Google consent mode.</li>
-						</ul>
 					</div>
 					<img class="module-screen" src="img/screens/cookies.png" alt="The cookie bar settings screen" width="1280" height="720" loading="lazy">
+					<div class="module-options">
+						<ul>
+							<li><strong>Cookie alert status:</strong> turn the bar on or off.</li>
+							<li><strong>Warning text:</strong> your own text, with a link to your cookie policy.</li>
+							<li><strong>Accept and accept only essential buttons:</strong> with your own text on each.</li>
+							<li><strong>Themes:</strong> Modern Light, Modern Dark and Cookie!</li>
+							<li><strong>Accent color:</strong> for the buttons, to match your site.</li>
+							<li><strong>Cookies button:</strong> a small button lets visitors change their choice later.</li>
+							<li><strong>Consent for tracking codes:</strong> the Analytics module waits for the visitor’s choice, using Google consent mode.</li>
+							<li><strong>Custom CSS:</strong> restyle the bar from the Analytics and Custom Code module.</li>
+						</ul>
+					</div>
 				</article>
 
-				<article class="module">
+				<article class="module" id="analytics">
 					<div class="module-text">
 						<img class="module-icon" src="img/modules/utils.svg" alt="" width="72" height="72">
 						<h3>Analytics and Custom Code</h3>
-						<p>You don’t need a zillion plugins to insert a verification meta tag, a JSON-LD snippet or a custom stylesheet. The Google Analytics and Google Tag Manager tracking codes are PageSpeed optimized and GDPR friendly.</p>
-						<ul>
-							<li>Google Analytics 4 and Google Tag Manager.</li>
-							<li>Custom code in the header, after the opening body tag and in the footer.</li>
-							<li>Site verification tags for Google Search Console, Bing, Pinterest…</li>
-						</ul>
+						<p>You don’t need a zillion plugins to insert a verification meta tag (Google Search Console, Bing, Pinterest), a JSON-LD snippet or a custom stylesheet. The Google Analytics and Google Tag Manager tracking codes are PageSpeed optimized and GDPR friendly.</p>
 					</div>
 					<img class="module-screen" src="img/screens/utils.png" alt="The Analytics and Custom Code settings screen" width="1280" height="720" loading="lazy">
+					<div class="module-options">
+						<ul>
+							<li><strong>Google Analytics 4:</strong> just add your property ID.</li>
+							<li><strong>Anonymize user IPs:</strong> required in some countries.</li>
+							<li><strong>Google Tag Manager:</strong> just add your container ID.</li>
+							<li><strong>Custom header content:</strong> code before the closing <code>&lt;/head&gt;</code> tag.</li>
+							<li><strong>Custom body content:</strong> code right after the opening <code>&lt;body&gt;</code> tag, through the <code>wp_body_open</code> hook or injected automatically.</li>
+							<li><strong>Custom footer content:</strong> code before the closing <code>&lt;/body&gt;</code> tag.</li>
+							<li><strong>Static files:</strong> custom code is saved to static files, so it costs no database queries.</li>
+						</ul>
+					</div>
 				</article>
 
-				<article class="module">
+				<article class="module" id="maintenance">
 					<div class="module-text">
 						<img class="module-icon" src="img/modules/maintenance.svg" alt="" width="72" height="72">
 						<h3>Maintenance Mode</h3>
 						<p>Hide your unfinished site from visitors and search engines, and lock it during updates without affecting your SEO.</p>
-						<ul>
-							<li>Customizable coming soon and maintenance page.</li>
-							<li>A “magic link” gives your clients secure temporary access.</li>
-						</ul>
 					</div>
 					<img class="module-screen" src="img/screens/maintenance.png" alt="The Maintenance Mode settings screen" width="1280" height="720" loading="lazy">
+					<div class="module-options">
+						<ul>
+							<li><strong>Online:</strong> WordPress works as usual.</li>
+							<li><strong>Coming soon:</strong> the site is closed and every page has a <code>noindex, nofollow</code> meta robots tag.</li>
+							<li><strong>Maintenance:</strong> the site is closed and every page returns <code>503 Service Unavailable</code>.</li>
+							<li><strong>Magic link:</strong> gives anyone access to the closed site. Change its secret token to invalidate the links you shared.</li>
+							<li><strong>Page content:</strong> show the content of any page on your site, or the default one.</li>
+							<li><strong>Preview:</strong> see the page before you close the site.</li>
+							<li><strong>Custom CSS:</strong> restyle the page from the Analytics and Custom Code module.</li>
+						</ul>
+					</div>
 				</article>
 
-				<article class="module">
+				<article class="module" id="cloner">
 					<div class="module-text">
 						<img class="module-icon" src="img/modules/clone.svg" alt="" width="72" height="72">
 						<h3>Post &amp; Page Cloner</h3>
 						<p>Duplicate any post, page or custom post type in one click, with its content, taxonomies and custom fields.</p>
-						<ul>
-							<li>A “Duplicate” link in post, page and most post type lists.</li>
-							<li>A “Copy to a new draft” button in the editor.</li>
-						</ul>
 					</div>
 					<img class="module-screen" src="img/screens/clone.png" alt="The Duplicate link in the WordPress post list" width="1280" height="720" loading="lazy">
+					<div class="module-options">
+						<ul>
+							<li><strong>Duplicate link:</strong> in the post, page and most post type lists.</li>
+							<li><strong>Copy to a new draft:</strong> a button in the post editor.</li>
+							<li><strong>Admin bar:</strong> a “Clone” button while you edit a post or page.</li>
+						</ul>
+					</div>
 				</article>
 
-				<article class="module">
+				<article class="module" id="social">
 					<div class="module-text">
 						<img class="module-icon" src="img/modules/social.svg" alt="" width="72" height="72">
 						<h3>Social Sharing Buttons</h3>
 						<p>Social sharing done the Machete way: no bloat, no extra JavaScript libraries and no API calls. The icons are a custom webfont embedded in a tiny minified stylesheet.</p>
-						<ul>
-							<li>At the beginning or the end of the content.</li>
-							<li>A floating footer on mobile.</li>
-						</ul>
 					</div>
 					<img class="module-screen" src="img/screens/social.png" alt="The Social Sharing settings screen" width="1280" height="720" loading="lazy">
+					<div class="module-options">
+						<ul>
+							<li><strong>Networks:</strong> X, Facebook, LinkedIn, WhatsApp (on mobile devices) and Pinterest.</li>
+							<li><strong>Position:</strong> at the beginning of the content, at the end (hidden on mobile) or as a floating footer on mobile.</li>
+							<li><strong>Title:</strong> “Share this post” by default, with a placeholder for the post type.</li>
+							<li><strong>Post types:</strong> choose where the buttons show up.</li>
+							<li><strong>Force styles in templates:</strong> loads the button styles in single post templates, to use the shortcode outside the loop in the Site Editor.</li>
+							<li><strong>Shortcode:</strong> place the buttons anywhere with <code>[mct-social-share]</code>.</li>
+						</ul>
+					</div>
 				</article>
 
-				<article class="module">
+				<article class="module" id="woocommerce">
 					<div class="module-text">
 						<img class="module-icon" src="img/modules/woocommerce.svg" alt="" width="72" height="72">
 						<h3>WooCommerce Utils</h3>
 						<p>WooCommerce was designed to work for every possible use case, and that often leads to unexpected behavior. These simple fixes make it behave the way clients expect.</p>
-						<ul>
-							<li>Hide paid shipping methods when free shipping is available.</li>
-							<li>“Price from” labels on variable products, no trailing zeros on prices.</li>
-							<li>Disable unique SKUs, or SKUs altogether.</li>
-						</ul>
 					</div>
 					<img class="module-screen" src="img/screens/woocommerce.png" alt="The WooCommerce Utils settings screen" width="1280" height="720" loading="lazy">
+					<div class="module-options">
+						<ul>
+							<li><strong>Fix free shipping:</strong> hides the paid shipping methods when free shipping is available. Keeps free shipping and local pickup.</li>
+							<li><strong>Variable price from:</strong> replaces the price range of variable products with a “Price from” label.</li>
+							<li><strong>Hide trailing zeros:</strong> shows $5.00 as $5.</li>
+							<li><strong>Disable unique SKU:</strong> lets you use the same SKU in several products or variations.</li>
+							<li><strong>Disable SKUs:</strong> removes the SKU field from the backend and the frontend of your store.</li>
+						</ul>
+					</div>
 				</article>
 
-				<article class="module">
+				<article class="module" id="powertools">
 					<div class="module-text">
 						<img class="module-icon" src="img/modules/powertools.svg" alt="" width="72" height="72">
 						<h3>PowerTools</h3>
 						<p>Advanced tools for WordPress developers and power users. Disabled by default: as with every Machete tool, don’t enable an option you don’t understand.</p>
-						<ul>
-							<li>Purge expired transients, post revisions, orphaned meta and expired cron events.</li>
-							<li>Flush rewrite rules, OPcache and the object cache.</li>
-							<li>Disable feeds or search, enable SVG uploads, show IDs in admin lists…</li>
-						</ul>
 					</div>
 					<img class="module-screen" src="img/screens/powertools.png" alt="The PowerTools settings screen" width="1280" height="720" loading="lazy">
+					<div class="module-options">
+						<h4>Maintenance actions</h4>
+						<ul>
+							<li><strong>Purge transients:</strong> expired cache entries that WordPress and plugins should have deleted.</li>
+							<li><strong>Purge post revisions:</strong> the snapshots saved each time a post or page is edited.</li>
+							<li><strong>Purge orphaned meta:</strong> custom fields of posts that no longer exist.</li>
+							<li><strong>Purge expired cron:</strong> scheduled tasks that were missed.</li>
+							<li><strong>Flush rewrite rules:</strong> after changing permalinks or registering post types, or when valid URLs return 404 errors.</li>
+							<li><strong>Clear the OPcache:</strong> when the server keeps serving an older version of your PHP files.</li>
+							<li><strong>Flush the object cache:</strong> when Redis, Memcached or similar keep serving stale data.</li>
+						</ul>
+						<h4>Machete toolbox</h4>
+						<ul>
+							<li><strong>Shortcodes in widgets:</strong> in classic Text and Custom HTML widgets.</li>
+							<li><strong>Thumbnails in RSS:</strong> the featured image, or the first attached one, of each post in the feed.</li>
+							<li><strong>Excerpts in pages:</strong> handy with page builders.</li>
+							<li><strong>Move scripts to footer:</strong> moves every enqueued script from the header to the footer.</li>
+							<li><strong>Defer your JavaScript:</strong> scripts download while the page is parsed and run when it is done, in order.</li>
+							<li><strong>Disable all feeds:</strong> RSS, RDF, Atom… makes life a little harder for leechers.</li>
+							<li><strong>Enable SVG images:</strong> allows SVG uploads to the media library. Proven to be dangerous, so be careful.</li>
+							<li><strong>Disable search:</strong> search URLs return a 404 and search forms and widgets are hidden. Admin search still works.</li>
+							<li><strong>Show IDs in admin lists:</strong> an ID column in the post, page, taxonomy and user lists.</li>
+							<li><strong>Disable admin bar on frontend:</strong> for everyone except administrators.</li>
+						</ul>
+					</div>
 				</article>
 			</div>
 		</section>
@@ -229,7 +329,7 @@
 
 	<footer class="site-footer">
 		<div class="container">
-			<p>Copyright © 2026 <a href="https://www.nilovelez.com">Nilo Vélez</a></p>
+			<p>Made with ♥️ by <a href="https://www.nilovelez.com">Nilo Vélez</a> - <a href="http://www.wtfpl.net/txt/copying/">WTFPL License</a></p>
 		</div>
 	</footer>
 

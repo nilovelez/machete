@@ -15,8 +15,11 @@
 	} );
 
 	menu.addEventListener( 'click', function ( event ) {
-		if ( event.target.closest( 'a' ) ) {
+		var link = event.target.closest( 'a' );
+		if ( link ) {
 			setMenu( false );
+			// Let the Modules dropdown close after picking a module.
+			link.blur();
 		}
 	} );
 

@@ -157,18 +157,48 @@ code {
 	color: var(--orange);
 }
 
-.site-menu .menu-button {
-	display: inline-block;
-	padding: 8px 18px;
-	border-radius: var(--radius);
-	background: var(--orange);
-	color: var(--text);
+/* Modules dropdown: opens on hover and on keyboard focus. */
+.site-menu .has-submenu {
+	position: relative;
+	padding: 24px 0;
+	margin: -24px 0;
 }
 
-.site-menu .menu-button:hover,
-.site-menu .menu-button:focus-visible {
-	background: #ffffff;
-	color: var(--text);
+.has-submenu > a::after {
+	display: inline-block;
+	margin-left: 6px;
+	border: 5px solid transparent;
+	border-top-color: currentColor;
+	border-bottom: 0;
+	vertical-align: middle;
+	content: "";
+}
+
+.site-menu .submenu {
+	display: none;
+	position: absolute;
+	top: 100%;
+	left: -20px;
+	flex-direction: column;
+	align-items: stretch;
+	gap: 0;
+	min-width: 260px;
+	padding: 8px 0;
+	background: var(--header);
+	border-radius: 0 0 var(--radius) var(--radius);
+	box-shadow: 0 8px 16px rgba(0, 0, 0, 0.25);
+}
+
+.has-submenu:hover .submenu,
+.has-submenu:focus-within .submenu {
+	display: flex;
+}
+
+.site-menu .submenu a {
+	display: block;
+	padding: 8px 20px;
+	font-size: 16px;
+	white-space: nowrap;
 }
 
 .menu-toggle {
@@ -238,6 +268,8 @@ code {
 		top: 100%;
 		left: 0;
 		right: 0;
+		max-height: calc(100vh - var(--header-height));
+		overflow-y: auto;
 		background: var(--header);
 		border-top: 1px solid rgba(255, 255, 255, 0.1);
 	}
@@ -258,9 +290,23 @@ code {
 		padding: 12px 0;
 	}
 
-	.site-menu .menu-button {
-		margin-top: 8px;
-		text-align: center;
+	.site-menu .has-submenu {
+		padding: 0;
+		margin: 0;
+	}
+
+	.site-menu .submenu {
+		display: flex;
+		position: static;
+		min-width: 0;
+		padding: 0 0 8px 16px;
+		border-radius: 0;
+		box-shadow: none;
+	}
+
+	.site-menu .submenu a {
+		padding: 8px 0;
+		white-space: normal;
 	}
 }
 
@@ -480,6 +526,39 @@ code {
 
 .module li + li {
 	margin-top: 4px;
+}
+
+.module-options {
+	grid-column: 1 / -1;
+	order: 3;
+}
+
+.module-options h4 {
+	margin: 8px 0 12px;
+	font-size: 19px;
+	font-weight: 600;
+}
+
+.module-options h4 span {
+	margin-left: 8px;
+	color: var(--text-muted);
+	font-size: 15px;
+	font-weight: 400;
+}
+
+.module-options ul {
+	columns: 2 320px;
+	column-gap: 48px;
+	margin-bottom: 20px;
+}
+
+.module-options li {
+	break-inside: avoid;
+}
+
+.module-options strong {
+	color: var(--text);
+	font-weight: 600;
 }
 
 .module-screen {
