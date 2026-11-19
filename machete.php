@@ -12,7 +12,6 @@
  * License URI: http://www.wtfpl.net/txt/copying/
 
  * Text Domain: machete
- * Domain Path: /languages
 
  * @package WordPress
  * @subpackage Machete
