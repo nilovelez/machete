@@ -4,8 +4,8 @@ Donate link: https://ko-fi.com/nilovelez
 Tags: optimization, cookies, analytics, maintenance, clone
 Requires PHP: 8.2
 Requires at least: 5.9
-Tested up to: 7.0
-Stable tag: 5.3
+Tested up to: 7.1
+Stable tag: 5.4
 License: WTFPL
 License URI: http://www.wtfpl.net/txt/copying/
 
