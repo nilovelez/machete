@@ -107,7 +107,7 @@
 					</div>
 					<img class="module-screen" src="img/screens/cleanup.png" alt="The WordPress Optimization settings screen" width="1280" height="720" loading="lazy">
 					<div class="module-options">
-						<h4>Header cleanup <span>Completely safe</span></h4>
+						<h4>Header cleanup <span class="badge badge-safe">Completely safe</span></h4>
 						<ul>
 							<li><strong>RSD:</strong> removes the Really Simple Discovery links, used for automatic pingbacks.</li>
 							<li><strong>WLW:</strong> removes the link to <code>wlwmanifest.xml</code>, only needed by Windows Live Writer.</li>
@@ -119,7 +119,7 @@
 							<li><strong>Version strings:</strong> removes the <code>?ver=</code> query string from styles and scripts.</li>
 							<li><strong>DNS prefetch:</strong> removes the <code>dns-prefetch</code> links from the header.</li>
 						</ul>
-						<h4>Feature cleanup <span>Mostly safe</span></h4>
+						<h4>Feature cleanup <span class="badge badge-warning">Mostly safe</span></h4>
 						<ul>
 							<li><strong>Emojis:</strong> removes the emoji styles and scripts from the header, RSS, emails and the editor.</li>
 							<li><strong>PDF thumbnails:</strong> stops WordPress from making a thumbnail of every PDF you upload.</li>
@@ -134,7 +134,7 @@
 							<li><strong>Login languages:</strong> hides the language switcher on the login screen.</li>
 							<li><strong>Plugin and theme editor:</strong> disables a mostly useless tool that can be very dangerous in the wrong hands.</li>
 						</ul>
-						<h4>Optimization tweaks <span>Handle with care</span></h4>
+						<h4>Optimization tweaks <span class="badge badge-danger">Handle with care</span></h4>
 						<ul>
 							<li><strong>Core AI support:</strong> disables all the WordPress core AI features.</li>
 							<li><strong>JSON API:</strong> removes the REST API links from the header and requires API consumers to be authenticated.</li>
@@ -155,7 +155,6 @@
 						<h3>Cookies &amp; GDPR Warning</h3>
 						<p>We know you hate cookie warning bars. Well, this is the least hateable cookie bar you’ll find. It is really light, it doesn’t affect your PageSpeed score and it plays well with static cache plugins.</p>
 						<p>It is GDPR compliant: visitors can accept all cookies or only the essential ones, and change their minds at any time with the Cookies button. It works hand in hand with the Analytics module, so your tracking codes don’t store any analytics cookies until the visitor accepts them.</p>
-						<p>Write your own texts, pick one of the three themes and set your accent color to match your site.</p>
 					</div>
 					<img class="module-screen" src="img/screens/cookies.png" alt="The cookie bar settings screen" width="1280" height="720" loading="lazy">
 				</article>
@@ -176,7 +175,12 @@
 						<img class="module-icon" src="img/modules/maintenance.svg" alt="" width="72" height="72">
 						<h3>Maintenance Mode</h3>
 						<p>If you have to close your website temporarily to the public, the native WordPress maintenance mode falls short and most coming soon plugins are bulky, incomplete or expensive. Machete maintenance mode is light, simple and versatile.</p>
-						<p>Your site can be in one of three states. <strong>Online</strong> means WordPress works as usual. <strong>Coming soon</strong> closes the site and tells search engines not to index any page, perfect for a site you are still building. <strong>Maintenance</strong> closes the site and returns a <code>503 Service Unavailable</code> status, so search engines know it is temporary and your SEO doesn’t suffer.</p>
+						<p>Your site can be in one of three states:</p>
+						<ul class="module-text-list">
+							<li><strong>Online:</strong> WordPress works as usual.</li>
+							<li><strong>Coming soon:</strong> closes the site and tells search engines not to index any page, perfect for a site you are still building.</li>
+							<li><strong>Maintenance:</strong> closes the site and returns a <code>503 Service Unavailable</code> status, so search engines know it is temporary and your SEO doesn’t suffer.</li>
+						</ul>
 						<p>While the site is closed, the magic link lets your clients in without a user account. Share it with anyone who needs to take a look, and change its secret token whenever you want to cancel every link you have shared.</p>
 					</div>
 					<img class="module-screen" src="img/screens/maintenance.png" alt="The Maintenance Mode settings screen" width="1280" height="720" loading="lazy">
@@ -197,7 +201,6 @@
 						<img class="module-icon" src="img/modules/social.svg" alt="" width="72" height="72">
 						<h3>Social Sharing Buttons</h3>
 						<p>Social sharing done the Machete way: no bloat, no extra JavaScript libraries and no API calls. The icons are a custom webfont embedded in a minified CSS file that only weighs 5.8&nbsp;KB, and the buttons use each platform’s native share URL.</p>
-						<p>Let your visitors share your content on X, Facebook, LinkedIn, WhatsApp and Pinterest. Show the buttons at the beginning or the end of the content, or as a floating footer on mobile, choose the post types where they appear, or place them anywhere with the <code>[mct-social-share]</code> shortcode.</p>
 					</div>
 					<img class="module-screen" src="img/screens/social.png" alt="The Social Sharing settings screen" width="1280" height="720" loading="lazy">
 				</article>

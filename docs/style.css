@@ -539,11 +539,37 @@ code {
 	font-weight: 600;
 }
 
-.module-options h4 span {
-	margin-left: 8px;
-	color: var(--text-muted);
-	font-size: 15px;
-	font-weight: 400;
+.module ul.module-text-list {
+	margin-bottom: 12px;
+}
+
+.module strong {
+	color: var(--text);
+	font-weight: 600;
+}
+
+/* Safety badges, with the colors the plugin uses on its Optimization screen. */
+.badge {
+	display: inline-block;
+	margin-left: 10px;
+	padding: 2px 8px;
+	border-radius: 4px;
+	color: #ffffff;
+	font-size: 14px;
+	font-weight: 500;
+	vertical-align: middle;
+}
+
+.badge-safe {
+	background: #4ab866;
+}
+
+.badge-warning {
+	background: #f0b849;
+}
+
+.badge-danger {
+	background: #d94f4f;
 }
 
 .module-options ul {
