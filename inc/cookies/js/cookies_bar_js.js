@@ -132,15 +132,11 @@ var machete_cookie_bar = (function(){
 			set_cookie( 'machete_accepted_cookies', cookies, 365 );
 			cookiebar.remove();
 			configbar.add();
-			// launches js event
-			if ( 'yes' == cookies ){
-				gtag('consent', 'update', {
-					'analytics_storage': 'granted'
-				});
-			} else {
-				gtag('consent', 'update', {
-					'analytics_storage': 'denied'
-				});
+			// updates Google's consent mode, if a Google tag is loaded
+			if ( typeof gtag === 'function' ) {
+				gtag( 'consent', 'update', {
+					'analytics_storage': ( 'yes' == cookies ) ? 'granted' : 'denied'
+				} );
 			}
 		},
 		config: function(){

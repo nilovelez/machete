@@ -1,11 +1,11 @@
 <?php
 /**
  * Plugin Name: Machete
- * Plugin URI: https://machetewp.com
+ * Plugin URI: https://machete.nilovelez.com
  * Description: Machete is a lean and simple suite of tools that makes WordPress development easier: cookie bar, tracking codes, custom code editor, header cleanup, post and page cloner
- * Version: 5.3
+ * Version: 5.4
  * Requires at least: 5.9
- * Requires PHP: 7.4
+ * Requires PHP: 8.2
  * Author: Nilo Velez
  * Author URI: https://www.nilovelez.com
  * License: WTFPL
@@ -22,7 +22,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 
-define( 'MACHETE_VERSION', '5.3' );
+define( 'MACHETE_VERSION', '5.4' );
 
 $machete_get_upload_dir = wp_upload_dir();
 define( 'MACHETE_BASE_PATH', plugin_dir_path( __FILE__ ) );

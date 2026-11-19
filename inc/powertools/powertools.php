@@ -229,16 +229,16 @@ if ( in_array( 'show_admin_ids', $this->settings, true ) && is_admin() ) {
 	/**
 	 * Renders the term ID column value.
 	 *
-	 * @param string $string      Column output.
+	 * @param string $output      Column output.
 	 * @param string $column_name Column slug.
 	 * @param int    $term_id     Term ID.
 	 * @return string
 	 */
-	function machete_render_admin_term_id_column( $string, $column_name, $term_id ) {
+	function machete_render_admin_term_id_column( $output, $column_name, $term_id ) {
 		if ( 'machete_id' === $column_name ) {
 			return esc_html( (string) $term_id );
 		}
-		return $string;
+		return $output;
 	}
 
 	/**

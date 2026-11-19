@@ -97,6 +97,10 @@ $this->optimize_array['comment_autolinks']      = array(
 	'title'       => __( 'No comment autolinks', 'machete' ),
 	'description' => __( 'URLs in comments are converted to links by default. This feature is often exploited by spammers.', 'machete' ),
 );
+$this->optimize_array['random_content']         = array(
+	'title'       => __( 'Random content redirect', 'machete' ),
+	'description' => __( 'Disables the /random/ URLs, added in WordPress 7.2, that redirect visitors to a random post. Each visit runs a slow random query on the database.', 'machete' ),
+);
 $this->optimize_array['disable_login_langs']    = array(
 	'title'       => __( 'Disable login languages', 'machete' ),
 	'description' => __( 'WordPress shows a language switcher at the bottom of the login screen. It\'s not need if you only use one language.', 'machete' ),
@@ -107,6 +111,10 @@ $this->optimize_array['disable_editor']         = array(
 );
 
 /* Tweaks array */
+$this->tweaks_array['ai_support']         = array(
+	'title'       => __( 'Core AI Support', 'machete' ),
+	'description' => __( 'Disable all WordPress core AI support features.', 'machete' ),
+);
 $this->tweaks_array['json_api']           = array(
 	'title'       => __( 'JSON API', 'machete' ),
 	'description' => __( 'Remove the JSON-API links from page headers. Also require that API consumers be authenticated.', 'machete' ) . ' <br><span style="color: #d94f4f">' . __( 'May break plugins, headless frontends, and the block editor when not logged in. Test any integration that uses the REST API after enabling.', 'machete' ) . '</span>',

@@ -31,16 +31,16 @@ class MACHETE_POWERTOOLS_MODULE extends MACHETE_MODULE {
 		);
 
 		$this->powertools_array = array(
-			'widget_shortcodes'   => array(),
-			'rss_thumbnails'      => array(),
-			'page_excerpts'       => array(),
-			'move_scripts_footer' => array(),
-			'defer_all_scripts'   => array(),
-			'disable_feeds'       => array(),
-			'enable_svg'          => array(),
-			'disable_search'              => array(),
-			'show_admin_ids'              => array(),
-			'disable_admin_bar_frontend'  => array(),
+			'widget_shortcodes'          => array(),
+			'rss_thumbnails'             => array(),
+			'page_excerpts'              => array(),
+			'move_scripts_footer'        => array(),
+			'defer_all_scripts'          => array(),
+			'disable_feeds'              => array(),
+			'enable_svg'                 => array(),
+			'disable_search'             => array(),
+			'show_admin_ids'             => array(),
+			'disable_admin_bar_frontend' => array(),
 		);
 	}
 	/**

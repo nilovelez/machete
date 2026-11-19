@@ -2,10 +2,10 @@
 Contributors: nilovelez
 Donate link: https://ko-fi.com/nilovelez
 Tags: optimization, cookies, analytics, maintenance, clone
-Requires PHP: 7.4
+Requires PHP: 8.2
 Requires at least: 5.9
-Tested up to: 7.0
-Stable tag: 5.3
+Tested up to: 7.1
+Stable tag: 5.4
 License: WTFPL
 License URI: http://www.wtfpl.net/txt/copying/
 
@@ -77,6 +77,15 @@ Like it or not, the WordPress Block Editor (codenamed Gutenberg) is here to stay
 
 == Changelog ==
 
+= 5.4 =
+* New: WordPress Optimization option to disable the WordPress core AI support features
+* New: Feature Cleanup option to disable the /random/ content redirect added in WordPress 7.2
+* Security fix: Escape the cookie bar texts in the generated JavaScript
+* Change: Machete now requires PHP 8.2 or later
+* Change: The cookie bar settings now require the `unfiltered_html` capability (Editors and Administrators)
+* Fix: Saving the cookie bar settings no longer triggers a PHP warning when the selected theme is not valid
+* Fix: The cookie bar no longer throws a JavaScript error when no Google tag is loaded
+
 = 5.3 =
 * Security fix: Sanitize cookie bar accent color to prevent stored XSS in generated JavaScript
 * New: PowerTools is now a built-in module, disabled by default
@@ -134,31 +143,4 @@ Like it or not, the WordPress Block Editor (codenamed Gutenberg) is here to stay
 * Fix: Added class property declaration to prevent deprecation notice in PHP >8.2
 * Fix: Minor coding standards fixes
 
-= 4.0.3 = 
-* Checked for compatibility with WordPress 6.3
-* Added SVG icon to the maintenance page, just for the looks
-* Changed the Pinterest share URL to prevent redirects
-* Cleanup: Removed the option to disable the Contact Form 7 refill (no longer used)
-* Cleanup: removed the option to disable the '.recentcomments a' output
-* Fix: declared $machete as global to prevent WP-CLI errors (props Armando Lüscher)
-
-= 4.0.2 =
-* Checked for compatibility with WordPress 6.1
-* Added option to disable WooCommerce SKUs
-* Added option to disable WooCommerce duplicate SKU check
-* Fix: Corrected WooCommerce Settings bug
-
-= 4.0.1 =
-Fix: Corrected the bug that prevented the obsolete tracking code warning to be dismissed.
-
-= 4.0 =
-* Checked for compatibility with WordPress 6.0
-* Cleanup module: Added option to disable WordPress search functions
-* Cookies module: Complete rework to comply with GDPR. New styles and scripts.
-* Tracking & code: Added Analytics 4 and Google Tag Manager support
-* New WooCommerce module!
-* Import/export module removed
-* Powertools: Removed option to save with keyboard
-* Tracking & code: Removed option to track CF7 forms
-
-[View the complete changelog](https://plugins.svn.wordpress.org/machete/trunk/changelog.md)
+[View the complete changelog](https://github.com/nilovelez/machete/blob/master/changelog.md)

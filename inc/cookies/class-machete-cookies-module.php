@@ -15,7 +15,8 @@ if ( ! defined( 'ABSPATH' ) ) {
 class MACHETE_COOKIES_MODULE extends MACHETE_MODULE {
 
 	public $themes;
-	public $cookies_bar_innerhtml;
+	public $cookies_bar_html;
+	public $cookies_configbar_html;
 
 	/**
 	 * Module constructor, init method overrides parent module default params
@@ -24,7 +25,7 @@ class MACHETE_COOKIES_MODULE extends MACHETE_MODULE {
 		$this->init(
 			array(
 				'slug' => 'cookies',
-				'role' => 'publish_posts', // targeting Author role.
+				'role' => 'unfiltered_html', // targeting Editor role.
 			)
 		);
 		$this->default_settings = array(
@@ -62,6 +63,9 @@ class MACHETE_COOKIES_MODULE extends MACHETE_MODULE {
 			function () {
 				if ( filter_input( INPUT_POST, 'machete-cookies-saved' ) !== null ) {
 					check_admin_referer( 'machete_save_cookies' );
+					if ( ! current_user_can( $this->params['role'] ) ) {
+						return;
+					}
 					$this->save_settings( filter_input_array( INPUT_POST ) );
 				}
 			}
@@ -111,7 +115,10 @@ class MACHETE_COOKIES_MODULE extends MACHETE_MODULE {
 		if ( ! empty( $options['bar_theme'] ) && ( array_key_exists( $options['bar_theme'], $this->themes ) ) ) {
 			$settings['bar_theme'] = $options['bar_theme'];
 		}
-		$html_replaces['{{theme_stylesheet}}'] = $this->themes[ $options['bar_theme'] ]['stylesheet'];
+		if ( empty( $settings['bar_theme'] ) || ! array_key_exists( $settings['bar_theme'], $this->themes ) ) {
+			$settings['bar_theme'] = $this->default_settings['bar_theme'];
+		}
+		$theme_stylesheet = $this->themes[ $settings['bar_theme'] ]['stylesheet'];
 
 		// Cookie bar accent color.
 		$accent_color = sanitize_hex_color( $options['accent_color'] ?? '' );
@@ -119,9 +126,6 @@ class MACHETE_COOKIES_MODULE extends MACHETE_MODULE {
 			$accent_color = $this->default_settings['accent_color'];
 		}
 		$settings['accent_color'] = $accent_color;
-		if ( $accent_color !== $this->default_settings['accent_color'] ) {
-			$this->cookies_bar_innerhtml .= 'var machete_cookies_accent_color = \'' . esc_js( $accent_color ) . '\';' . "\n";
-		}
 
 		// Cookie bar status.
 		if ( empty( $options['bar_status'] ) || ( 'disabled' === $options['bar_status'] ) ) {
@@ -161,11 +165,7 @@ class MACHETE_COOKIES_MODULE extends MACHETE_MODULE {
 		$html_replaces['{{partial_accept_text}}'] = $options['partial_accept_text'];
 		$settings['partial_accept_text']          = $options['partial_accept_text'];
 
-		$cookies_bar_js = str_replace(
-			array_keys( $html_replaces ),
-			array_values( $html_replaces ),
-			$this->cookies_bar_innerhtml
-		);
+		$cookies_bar_js = $this->get_cookies_bar_js( $html_replaces, $theme_stylesheet, $accent_color );
 
 		// cheap and dirty pseudo-random filename generation.
 		$settings['cookie_filename'] = 'cookies_mct4_' . bin2hex( random_bytes( 4 ) ) . '.js';
@@ -204,6 +204,38 @@ class MACHETE_COOKIES_MODULE extends MACHETE_MODULE {
 			}
 			return false;
 		}
+	}
+
+	/**
+	 * Builds the JavaScript that defines the cookie bar variables.
+	 *
+	 * Every value is JSON encoded, with the characters that are special in HTML
+	 * and JavaScript written as \u escapes, so no text can break out of its string
+	 * or close the script tag the code is printed in.
+	 *
+	 * @param array  $html_replaces    Placeholders of the bar HTML and their values.
+	 * @param string $theme_stylesheet URL of the bar theme stylesheet.
+	 * @param string $accent_color     Accent color, only set when it is not the default one.
+	 * @return string JavaScript code.
+	 */
+	public function get_cookies_bar_js( $html_replaces, $theme_stylesheet, $accent_color = '' ) {
+		$json_flags = JSON_HEX_TAG | JSON_HEX_APOS | JSON_HEX_QUOT | JSON_HEX_AMP;
+
+		$bar_html = str_replace(
+			array_keys( $html_replaces ),
+			array_values( $html_replaces ),
+			$this->cookies_bar_html
+		);
+
+		$js  = 'var machete_cookies_bar_html = ' . wp_json_encode( $bar_html, $json_flags ) . ';' . "\n";
+		$js .= 'var machete_cookies_configbar_html = ' . wp_json_encode( $this->cookies_configbar_html, $json_flags ) . ';' . "\n";
+		$js .= 'var machete_cookies_bar_stylesheet = ' . wp_json_encode( $theme_stylesheet, $json_flags ) . ';' . "\n";
+
+		if ( ! empty( $accent_color ) && $accent_color !== $this->default_settings['accent_color'] ) {
+			$js .= 'var machete_cookies_accent_color = ' . wp_json_encode( $accent_color, $json_flags ) . ';' . "\n";
+		}
+
+		return $js;
 	}
 
 	/**

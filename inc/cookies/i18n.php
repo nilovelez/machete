@@ -26,10 +26,8 @@ $this->themes['new_dark']['name']  = __( 'Modern Dark', 'machete' );
 $this->themes['cookie']['name']    = __( 'Cookie!', 'machete' );
 
 
-/* Cookies bar inner HTML */
-$this->cookies_bar_innerhtml = 'var machete_cookies_bar_html = \'<span id="machete_cookie_warning_text" class="machete_cookie_warning_text">{{warning_text}}</span> <button id="machete_accept_cookie_btn_partial" class="machete_accept_cookie_btn partial">{{partial_accept_text}}</button> <button id="machete_accept_cookie_btn" class="machete_accept_cookie_btn">{{accept_text}}</button>\';' . "\n";
+/* Cookies bar inner HTML, turned into JavaScript by get_cookies_bar_js() */
+$this->cookies_bar_html = '<span id="machete_cookie_warning_text" class="machete_cookie_warning_text">{{warning_text}}</span> <button id="machete_accept_cookie_btn_partial" class="machete_accept_cookie_btn partial">{{partial_accept_text}}</button> <button id="machete_accept_cookie_btn" class="machete_accept_cookie_btn">{{accept_text}}</button>';
 
 // translators: button to config cookie settings again.
-$this->cookies_bar_innerhtml .= 'var machete_cookies_configbar_html = \'<div id="machete_cookie_config_btn\" class=\"machete_cookie_config_btn\">' . __( 'Cookies', 'machete' ) . '</div>\';' . "\n";
-
-$this->cookies_bar_innerhtml .= 'var machete_cookies_bar_stylesheet = \'{{theme_stylesheet}}\';' . "\n";
+$this->cookies_configbar_html = '<div id="machete_cookie_config_btn" class="machete_cookie_config_btn">' . esc_html__( 'Cookies', 'machete' ) . '</div>';

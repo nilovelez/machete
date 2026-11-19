@@ -1,4 +1,6 @@
 # Machete
+This is the development repository of Machete, published at https://wordpress.org/plugins/machete/.
+
 Machete is a simple suite of tools that solves common WordPress annoyances using as few resources as possible. Machete doesn't cover every single use case, but there is a huge amount of sites that would require less plugins if they used Machete.
 
 All Machete tools have two things in common: they solve problems faced by many web developers and they do it using as few server resources as possible.
