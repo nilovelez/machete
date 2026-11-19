@@ -102,7 +102,8 @@
 					<div class="module-text">
 						<img class="module-icon" src="img/modules/cleanup.svg" alt="" width="72" height="72">
 						<h3>WordPress Optimization</h3>
-						<p>WordPress places a lot of code inside the <code>&lt;head&gt;</code> tag just to keep backward compatibility or to enable optional features. You can disable most of it and save some time on every page request, while making your site safer.</p>
+						<p>WordPress has a lot of code just to keep backward compatibility or to enable optional features. The WordPress Optimization module helps you disable most of it and save some time on each page request, while making your installation safer.</p>
+						<p>The options are sorted by risk, from completely safe to handle with care, so you always know what you are touching.</p>
 					</div>
 					<img class="module-screen" src="img/screens/cleanup.png" alt="The WordPress Optimization settings screen" width="1280" height="720" loading="lazy">
 					<div class="module-options">
@@ -152,103 +153,60 @@
 					<div class="module-text">
 						<img class="module-icon" src="img/modules/cookies.svg" alt="" width="72" height="72">
 						<h3>Cookies &amp; GDPR Warning</h3>
-						<p>We know you hate cookie warning bars. This is the least hateable one you will find: it is really light, it does not affect your PageSpeed score and it plays well with static cache plugins.</p>
+						<p>We know you hate cookie warning bars. Well, this is the least hateable cookie bar you’ll find. It is really light, it doesn’t affect your PageSpeed score and it plays well with static cache plugins.</p>
+						<p>It is GDPR compliant: visitors can accept all cookies or only the essential ones, and change their minds at any time with the Cookies button. It works hand in hand with the Analytics module, so your tracking codes don’t store any analytics cookies until the visitor accepts them.</p>
+						<p>Write your own texts, pick one of the three themes and set your accent color to match your site.</p>
 					</div>
 					<img class="module-screen" src="img/screens/cookies.png" alt="The cookie bar settings screen" width="1280" height="720" loading="lazy">
-					<div class="module-options">
-						<ul>
-							<li><strong>Cookie alert status:</strong> turn the bar on or off.</li>
-							<li><strong>Warning text:</strong> your own text, with a link to your cookie policy.</li>
-							<li><strong>Accept and accept only essential buttons:</strong> with your own text on each.</li>
-							<li><strong>Themes:</strong> Modern Light, Modern Dark and Cookie!</li>
-							<li><strong>Accent color:</strong> for the buttons, to match your site.</li>
-							<li><strong>Cookies button:</strong> a small button lets visitors change their choice later.</li>
-							<li><strong>Consent for tracking codes:</strong> the Analytics module waits for the visitor’s choice, using Google consent mode.</li>
-							<li><strong>Custom CSS:</strong> restyle the bar from the Analytics and Custom Code module.</li>
-						</ul>
-					</div>
 				</article>
 
 				<article class="module" id="analytics">
 					<div class="module-text">
 						<img class="module-icon" src="img/modules/utils.svg" alt="" width="72" height="72">
 						<h3>Analytics and Custom Code</h3>
-						<p>You don’t need a zillion plugins to insert a verification meta tag (Google Search Console, Bing, Pinterest), a JSON-LD snippet or a custom stylesheet. The Google Analytics and Google Tag Manager tracking codes are PageSpeed optimized and GDPR friendly.</p>
+						<p>You don’t need a zillion plugins to perform easy tasks like inserting a verification meta tag (Google Search Console, Bing, Pinterest), a JSON-LD snippet or a custom stylesheet (Google Fonts, print styles, accessibility tweaks…).</p>
+						<p>Just paste your Google Analytics 4 property ID or your Google Tag Manager container ID. The tracking codes are PageSpeed optimized and use Google consent mode, so they respect the choice your visitors make in the cookie bar.</p>
+						<p>Your custom code goes in the header, right after the opening <code>&lt;body&gt;</code> tag or in the footer, and it is saved to static files, so WordPress doesn’t have to build it on every page view.</p>
 					</div>
 					<img class="module-screen" src="img/screens/utils.png" alt="The Analytics and Custom Code settings screen" width="1280" height="720" loading="lazy">
-					<div class="module-options">
-						<ul>
-							<li><strong>Google Analytics 4:</strong> just add your property ID.</li>
-							<li><strong>Anonymize user IPs:</strong> required in some countries.</li>
-							<li><strong>Google Tag Manager:</strong> just add your container ID.</li>
-							<li><strong>Custom header content:</strong> code before the closing <code>&lt;/head&gt;</code> tag.</li>
-							<li><strong>Custom body content:</strong> code right after the opening <code>&lt;body&gt;</code> tag, through the <code>wp_body_open</code> hook or injected automatically.</li>
-							<li><strong>Custom footer content:</strong> code before the closing <code>&lt;/body&gt;</code> tag.</li>
-							<li><strong>Static files:</strong> custom code is saved to static files, so it costs no database queries.</li>
-						</ul>
-					</div>
 				</article>
 
 				<article class="module" id="maintenance">
 					<div class="module-text">
 						<img class="module-icon" src="img/modules/maintenance.svg" alt="" width="72" height="72">
 						<h3>Maintenance Mode</h3>
-						<p>Hide your unfinished site from visitors and search engines, and lock it during updates without affecting your SEO.</p>
+						<p>If you have to close your website temporarily to the public, the native WordPress maintenance mode falls short and most coming soon plugins are bulky, incomplete or expensive. Machete maintenance mode is light, simple and versatile.</p>
+						<p>Your site can be in one of three states. <strong>Online</strong> means WordPress works as usual. <strong>Coming soon</strong> closes the site and tells search engines not to index any page, perfect for a site you are still building. <strong>Maintenance</strong> closes the site and returns a <code>503 Service Unavailable</code> status, so search engines know it is temporary and your SEO doesn’t suffer.</p>
+						<p>While the site is closed, the magic link lets your clients in without a user account. Share it with anyone who needs to take a look, and change its secret token whenever you want to cancel every link you have shared.</p>
 					</div>
 					<img class="module-screen" src="img/screens/maintenance.png" alt="The Maintenance Mode settings screen" width="1280" height="720" loading="lazy">
-					<div class="module-options">
-						<ul>
-							<li><strong>Online:</strong> WordPress works as usual.</li>
-							<li><strong>Coming soon:</strong> the site is closed and every page has a <code>noindex, nofollow</code> meta robots tag.</li>
-							<li><strong>Maintenance:</strong> the site is closed and every page returns <code>503 Service Unavailable</code>.</li>
-							<li><strong>Magic link:</strong> gives anyone access to the closed site. Change its secret token to invalidate the links you shared.</li>
-							<li><strong>Page content:</strong> show the content of any page on your site, or the default one.</li>
-							<li><strong>Preview:</strong> see the page before you close the site.</li>
-							<li><strong>Custom CSS:</strong> restyle the page from the Analytics and Custom Code module.</li>
-						</ul>
-					</div>
 				</article>
 
 				<article class="module" id="cloner">
 					<div class="module-text">
 						<img class="module-icon" src="img/modules/clone.svg" alt="" width="72" height="72">
 						<h3>Post &amp; Page Cloner</h3>
-						<p>Duplicate any post, page or custom post type in one click, with its content, taxonomies and custom fields.</p>
+						<p>Sometimes the quickest way to write a new page is to start from one you already have. Machete adds a “Duplicate” link to post, page and most post type lists, and a “Copy to a new draft” option to the post editor.</p>
+						<p>The copy keeps the content, the categories, tags and other taxonomies, and the custom fields, and it is saved as a draft, so nothing goes live until you publish it.</p>
 					</div>
 					<img class="module-screen" src="img/screens/clone.png" alt="The Duplicate link in the WordPress post list" width="1280" height="720" loading="lazy">
-					<div class="module-options">
-						<ul>
-							<li><strong>Duplicate link:</strong> in the post, page and most post type lists.</li>
-							<li><strong>Copy to a new draft:</strong> a button in the post editor.</li>
-							<li><strong>Admin bar:</strong> a “Clone” button while you edit a post or page.</li>
-						</ul>
-					</div>
 				</article>
 
 				<article class="module" id="social">
 					<div class="module-text">
 						<img class="module-icon" src="img/modules/social.svg" alt="" width="72" height="72">
 						<h3>Social Sharing Buttons</h3>
-						<p>Social sharing done the Machete way: no bloat, no extra JavaScript libraries and no API calls. The icons are a custom webfont embedded in a tiny minified stylesheet.</p>
+						<p>Social sharing done the Machete way: no bloat, no extra JavaScript libraries and no API calls. The icons are a custom webfont embedded in a minified CSS file that only weighs 5.8&nbsp;KB, and the buttons use each platform’s native share URL.</p>
+						<p>Let your visitors share your content on X, Facebook, LinkedIn, WhatsApp and Pinterest. Show the buttons at the beginning or the end of the content, or as a floating footer on mobile, choose the post types where they appear, or place them anywhere with the <code>[mct-social-share]</code> shortcode.</p>
 					</div>
 					<img class="module-screen" src="img/screens/social.png" alt="The Social Sharing settings screen" width="1280" height="720" loading="lazy">
-					<div class="module-options">
-						<ul>
-							<li><strong>Networks:</strong> X, Facebook, LinkedIn, WhatsApp (on mobile devices) and Pinterest.</li>
-							<li><strong>Position:</strong> at the beginning of the content, at the end (hidden on mobile) or as a floating footer on mobile.</li>
-							<li><strong>Title:</strong> “Share this post” by default, with a placeholder for the post type.</li>
-							<li><strong>Post types:</strong> choose where the buttons show up.</li>
-							<li><strong>Force styles in templates:</strong> loads the button styles in single post templates, to use the shortcode outside the loop in the Site Editor.</li>
-							<li><strong>Shortcode:</strong> place the buttons anywhere with <code>[mct-social-share]</code>.</li>
-						</ul>
-					</div>
 				</article>
 
 				<article class="module" id="woocommerce">
 					<div class="module-text">
 						<img class="module-icon" src="img/modules/woocommerce.svg" alt="" width="72" height="72">
 						<h3>WooCommerce Utils</h3>
-						<p>WooCommerce was designed to work for every possible use case, and that often leads to unexpected behavior. These simple fixes make it behave the way clients expect.</p>
+						<p>WooCommerce was designed to work for every possible use case, but that often leads to unexpected behavior. These simple fixes improve the WooCommerce user experience by making it behave the way clients expect.</p>
 					</div>
 					<img class="module-screen" src="img/screens/woocommerce.png" alt="The WooCommerce Utils settings screen" width="1280" height="720" loading="lazy">
 					<div class="module-options">
