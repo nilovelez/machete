@@ -4,8 +4,8 @@
   "description": "Lean WordPress plugin that solves common annoyances with as few resources as possible: cookie bar, tracking codes, header cleanup and more.",
   "status": "active",
   "status_text": "Version 5.4 (PHP 8.2+, tested up to WordPress 7.1) is on WordPress.org, and the plugin website is live at machete.nilovelez.com on GitHub Pages. Next: update the Live Preview blueprint.",
-  "last_update": "2026-11-19 19:24:16 +0100",
-  "last_update_unix": 1795112656,
+  "last_update": "2026-11-19 22:45:43 +0100",
+  "last_update_unix": 1795124743,
   "url": "https://github.com/nilovelez/machete",
   "status_url": "https://raw.githubusercontent.com/nilovelez/machete/master/guppy/STATUS.md",
   "icon": "https://ps.w.org/machete/assets/icon-128x128.png"
