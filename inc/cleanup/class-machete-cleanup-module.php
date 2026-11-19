@@ -60,6 +60,7 @@ class MACHETE_CLEANUP_MODULE extends MACHETE_MODULE {
 			'1536x1536_size'         => array(),
 			'2048x2048_size'         => array(),
 			'comment_autolinks'      => array(),
+			'random_content'         => array(),
 			'disable_login_langs'    => array(),
 			'disable_editor'         => array(),
 		);

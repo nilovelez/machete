@@ -34,6 +34,7 @@ medium_large_size
 1536x1536_size
 2048x2048_size
 comment_autolinks
+random_content
 disable_login_langs
 disable_editor
 
@@ -298,6 +299,11 @@ if ( in_array( '2048x2048_size', $this->settings, true ) ) {
 
 if ( in_array( 'comment_autolinks', $this->settings, true ) && ! is_admin() ) {
 	remove_filter( 'comment_text', 'make_clickable', 9 );
+}
+
+// disable the /random/ content redirect (WordPress 7.2). Also needed in the admin, where the rewrite rules are generated.
+if ( in_array( 'random_content', $this->settings, true ) ) {
+	add_filter( 'wp_enable_random_content_redirect', '__return_false' );
 }
 
 /*

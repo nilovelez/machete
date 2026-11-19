@@ -79,6 +79,7 @@ Like it or not, the WordPress Block Editor (codenamed Gutenberg) is here to stay
 
 = 5.4 =
 * New: WordPress Optimization option to disable the WordPress core AI support features
+* New: Feature Cleanup option to disable the /random/ content redirect added in WordPress 7.2
 * Security fix: Escape the cookie bar texts in the generated JavaScript
 * Change: Machete now requires PHP 8.2 or later
 * Change: The cookie bar settings now require the `unfiltered_html` capability (Editors and Administrators)
