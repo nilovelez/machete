@@ -166,7 +166,7 @@ if ( false !== $machete_editor_settings ) {
 		<label><input name="alfonso_content_injection_method" value="wp_body_open" type="radio" <?php checked( 'wp_body_open', $this->settings['alfonso_content_injection_method'], true ); ?>> <?php echo wp_kses_data( __( 'Include the code using the native <code>wp_body_open</code> hook (not supported by all themes).', 'machete' ) ); ?></label><br>
 
 		<?php // translators: %s url of article with explanation. ?>
-		<label><input name="alfonso_content_injection_method" value="auto" type="radio" <?php checked( 'auto', $this->settings['alfonso_content_injection_method'], true ); ?>> <?php printf( wp_kses_data( __( 'Try to inject the code automatically using <a href="%s" target="_blank" rel="nofollow">Yaniv Friedensohn\'s method</a>', 'machete' ) ), 'https://machetewp.com/hack-placing-the-google-tag-manager-in-wordpress-after-the-body-tag/' ); ?></label><br>
+		<label><input name="alfonso_content_injection_method" value="auto" type="radio" <?php checked( 'auto', $this->settings['alfonso_content_injection_method'], true ); ?>> <?php printf( wp_kses_data( __( 'Try to inject the code automatically using <a href="%s" target="_blank" rel="nofollow">Yaniv Friedensohn\'s method</a>', 'machete' ) ), 'https://www.nilovelez.com/blog/colocar-google-tag-manager-en-wordpress-justo-despues-de-la-etiqueta-body/' ); ?></label><br>
 
 		<label><input name="alfonso_content_injection_method" value="manual" type="radio" <?php checked( 'manual', $this->settings['alfonso_content_injection_method'], true ); ?>> <?php echo wp_kses_data( __( 'Edit your theme\'s <code>header.php</code> template manually and include this function:', 'machete' ) ); ?> <code>&lt;?php machete_custom_body_content() ?&gt;</code></label>
 	</fieldset></td>
