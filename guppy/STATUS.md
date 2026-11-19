@@ -11,6 +11,7 @@ Notes:
 
 Newest entries first. One per work session, brief.
 
+- 2026-11-19: Website review: Modules dropdown in the menu, rewritten module descriptions, full option lists with safety badges for Optimization, WooCommerce and PowerTools, new 1280x720 screenshots on WordPress 7.1, WTFPL footer.
 - 2026-11-19: Built the one-page plugin website in `docs/` (sticky header, hero with the install form, philosophy, the eight modules with screenshots, testimonials) and published it on GitHub Pages at machete.nilovelez.com. Copied the WordPress.org `assets/` folder into git and added `BACKLOG.md`.
 - 2026-11-19: Released 5.4 to WordPress.org (SVN r3811543) and tagged `v5.4` in git. Checked the Spanish translations on a test site: they come from the WordPress.org language pack and still work.
 - 2026-11-19: Prepared 5.4: PHP 8.2 and WordPress 5.9 minimums, WPCS cleanup of `inc/powertools/`, cookie bar script generation reworked (settings now need `unfiltered_html`), gtag guard, `/random/` option, plugin website moved to machete.nilovelez.com and the Analytics article link to nilovelez.com, version bump, tested up to 7.1, removed the unused `languages/` folder. Plugin Check: no errors, 20 direct-query warnings in the PowerTools purges. Checked out the WordPress.org SVN repo.
