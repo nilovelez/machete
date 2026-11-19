@@ -3,9 +3,9 @@
   "title": "Machete",
   "description": "Lean WordPress plugin that solves common annoyances with as few resources as possible: cookie bar, tracking codes, header cleanup and more.",
   "status": "active",
-  "status_text": "Version 5.4 (PHP 8.2+, tested up to WordPress 7.1) is ready and about to be published on WordPress.org. Next: a static plugin website at machete.nilovelez.com.",
-  "last_update": "2026-11-19 13:09:31 +0100",
-  "last_update_unix": 1795090171,
+  "status_text": "Version 5.4 (PHP 8.2+, tested up to WordPress 7.1) is published on WordPress.org. Next: a static plugin website at machete.nilovelez.com on GitHub Pages.",
+  "last_update": "2026-11-19 17:01:59 +0100",
+  "last_update_unix": 1795104119,
   "url": "https://github.com/nilovelez/machete",
   "status_url": "https://raw.githubusercontent.com/nilovelez/machete/master/guppy/STATUS.md",
   "icon": "https://ps.w.org/machete/assets/icon-128x128.png"
