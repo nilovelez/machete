@@ -500,14 +500,6 @@ code {
 	order: 2;
 }
 
-.module-icon {
-	display: block;
-	width: 72px;
-	height: 72px;
-	margin-bottom: 16px;
-	border-radius: 14px;
-}
-
 .module h3 {
 	color: var(--orange-dark);
 	font-size: 26px;
