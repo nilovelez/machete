@@ -15,6 +15,7 @@
 /.github         export-ignore
 /CLAUDE.md       export-ignore
 /BACKLOG.md      export-ignore
+/docs            export-ignore
 /guppy           export-ignore
 /readme.md       export-ignore
 /changelog.md    export-ignore
