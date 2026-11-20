@@ -1,5 +1,5 @@
 # Machete
-![Machete](.github/social-preview.png)
+![Machete](assets/banner-1544x500.png)
 
 This is the development repository of Machete, published at https://wordpress.org/plugins/machete/.
 
