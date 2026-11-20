@@ -18,7 +18,7 @@ We know you hate cookie warning bars. Well, this is the least hateable cookie ba
 ### Analytics and custom code
 You don't need a zillion plugins to perform easy tasks like inserting a verification meta tag (Google Search Console, Bing, Pinterest), a json-ld snippet or a custom stylesheet (Google Fonts, Print Styles, accessibility tweaks...).
 
-The Google Analytics and Google Tag Manager tracking codes are PageSpeed optimized, GPDR friendly.
+The Google Analytics and Google Tag Manager tracking codes are PageSpeed optimized, GDPR friendly.
 
 ### Maintenance mode
 The maintenance mode that ships with WordPress is just a basic lock-down that is activated whenever you do a major update. With machete Maintenance Mode you can hide your unfinished page from visitors and search engines, give your clients a secure temporary access and lock your site without affecting your SEO.
@@ -31,6 +31,11 @@ Social sharing done the Machete way. The icons are made as a custom webfont embe
 
 ### WooCommerce Utils
 WooCommerce was designed to work for every possible use case, but that often leads to unexpected behavior. These simple fixes can improve the WooCommerce user experience by making it behave as clients expect.
+
+### PowerTools
+Advanced tools for WordPress developers and power users, disabled by default. As with every Machete tool, do not enable any option you do not understand.
+
+It bundles maintenance actions (purge expired transients, post revisions, orphaned meta and missed cron events; flush the rewrite rules, the OPcache and the object cache) and a toolbox of tweaks: shortcodes in widgets, thumbnails in RSS, excerpts in pages, scripts moved to the footer or deferred, feeds and search disabled, SVG uploads, IDs in admin lists and no admin bar on the frontend.
 
 ## Installation
 1. Upload the plugin files to the `/wp-content/plugins/machete` directory, or install the plugin through the WordPress plugins screen directly
