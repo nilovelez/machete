@@ -18,7 +18,7 @@ We know you hate cookie warning bars. Well, this is the least hateable cookie ba
 ### Analytics and custom code
 You don't need a zillion plugins to perform easy tasks like inserting a verification meta tag (Google Search Console, Bing, Pinterest), a json-ld snippet or a custom stylesheet (Google Fonts, Print Styles, accessibility tweaks...).
 
-The Google Analytics and Google Tag Manager tracking codes are PageSpeed optimized, GPDR friendly.
+The Google Analytics and Google Tag Manager tracking codes are PageSpeed optimized, GDPR friendly.
 
 ### Maintenance mode
 The maintenance mode that ships with WordPress is just a basic lock-down that is activated whenever you do a major update. With machete Maintenance Mode you can hide your unfinished page from visitors and search engines, give your clients a secure temporary access and lock your site without affecting your SEO.
